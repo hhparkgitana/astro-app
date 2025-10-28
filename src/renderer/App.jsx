@@ -3,6 +3,7 @@ import './App.css';
 import ChartWheel from './components/ChartWheel';
 import AspectTabs from './components/AspectTabs';
 import { DateTime } from 'luxon';
+import { findAspect, getAngularDistance } from '../shared/calculations/aspectsCalculator';
 
 function App() {
   const [chartData, setChartData] = useState(null);
@@ -46,40 +47,7 @@ function App() {
     });
   };
 
-  // Aspect calculation helper functions
-  const ASPECT_TYPES = {
-    CONJUNCTION: { angle: 0, symbol: '☌', name: 'Conjunction' },
-    SEXTILE: { angle: 60, symbol: '⚹', name: 'Sextile' },
-    SQUARE: { angle: 90, symbol: '□', name: 'Square' },
-    TRINE: { angle: 120, symbol: '△', name: 'Trine' },
-    OPPOSITION: { angle: 180, symbol: '☍', name: 'Opposition' }
-  };
-
-  const getAngularDistance = (long1, long2) => {
-    let distance = Math.abs(long1 - long2);
-    if (distance > 180) {
-      distance = 360 - distance;
-    }
-    return distance;
-  };
-
-  const findAspect = (distance, orb = 8) => {
-    for (const [key, aspect] of Object.entries(ASPECT_TYPES)) {
-      const diff = Math.abs(distance - aspect.angle);
-      if (diff <= orb) {
-        return {
-          type: key,
-          symbol: aspect.symbol,
-          name: aspect.name,
-          exactAngle: aspect.angle,
-          actualAngle: distance,
-          orb: diff,
-          applying: null // Can't calculate applying/separating without velocity
-        };
-      }
-    }
-    return null;
-  };
+  // Note: getAngularDistance and findAspect are now imported from aspectsCalculator
 
   // Calculate aspects between natal and transit planets
   const calculateTransitAspects = (natalPlanets, transitPlanets) => {

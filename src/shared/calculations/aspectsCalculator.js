@@ -175,7 +175,8 @@ function isSameSign(long1, long2) {
   return getSign(long1) === getSign(long2);
 }
 
-module.exports = {
+// ES6 exports for renderer process
+export {
   calculateAspects,
   getAngularDistance,
   findAspect,
@@ -183,3 +184,15 @@ module.exports = {
   isSameSign,
   ASPECT_TYPES
 };
+
+// CommonJS exports for main process (backwards compatibility)
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    calculateAspects,
+    getAngularDistance,
+    findAspect,
+    getSign,
+    isSameSign,
+    ASPECT_TYPES
+  };
+}
