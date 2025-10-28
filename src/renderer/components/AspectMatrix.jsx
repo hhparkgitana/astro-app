@@ -69,10 +69,12 @@ function AspectMatrix({ chartData, activeAspects, onAspectToggle }) {
 
   // Get cell size based on orb (tighter orb = larger symbol)
   const getSymbolSize = (orb) => {
-    if (orb < 2) return '1.4em';
-    if (orb < 4) return '1.2em';
-    if (orb < 6) return '1.0em';
-    return '0.9em';
+    if (orb < 0.5) return '1.8em';  // Partile/exact aspects
+    if (orb < 1) return '1.6em';    // Very tight
+    if (orb < 2) return '1.4em';    // Tight
+    if (orb < 4) return '1.2em';    // Moderate
+    if (orb < 6) return '1.0em';    // Wide
+    return '0.9em';                 // Very wide
   };
 
   // Format orb for display

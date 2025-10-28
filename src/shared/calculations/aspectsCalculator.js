@@ -106,6 +106,12 @@ function calculateAspects(planets, orbSettings = {}) {
       const planet1 = planetArray[i];
       const planet2 = planetArray[j];
 
+      // Skip North Node - South Node aspect (always 180° by definition)
+      if ((planet1.name === 'North Node' && planet2.name === 'South Node') ||
+          (planet1.name === 'South Node' && planet2.name === 'North Node')) {
+        continue;
+      }
+
       // Calculate angular distance
       const distance = getAngularDistance(planet1.longitude, planet2.longitude);
 

@@ -93,21 +93,24 @@ function ChartWheel({ chartData, activeAspects }) {
 
     // Helper function to get position on circle
     const getPlanetPosition = (longitude) => {
-      // The chart is rotated so Ascendant is at 9 o'clock (180° in standard coords)
-      // We need to rotate the planet positions to match
+      // The AstroChart library rotates so Ascendant is at 9 o'clock (west/left)
+      // Standard math: 0° = east (right), 90° = north (top), 180° = west (left), 270° = south (bottom)
+      // Ascendant at 9 o'clock = 180° in standard math coordinates
       const ascendant = chartData.ascendant;
 
-      // Calculate the planet's position relative to the Ascendant
-      // Ascendant should be at 180° (9 o'clock/west)
-      const relativePosition = longitude - ascendant;
+      // How many degrees is this planet past the Ascendant (counter-clockwise in zodiac)
+      let degreesFromAsc = longitude - ascendant;
+      if (degreesFromAsc < 0) degreesFromAsc += 360;
 
-      // Convert to radians and adjust so Ascendant = 180° (Math.PI)
-      // In astrology charts, degrees increase counter-clockwise
-      const angle = (180 - relativePosition) * (Math.PI / 180);
+      // Convert to math angle (counter-clockwise from east/right)
+      // Ascendant is at 180° (west), so planet is at (180 - degreesFromAsc)
+      // But we need to account for the fact that zodiac goes counter-clockwise
+      // while standard canvas coordinates go clockwise from east
+      const mathAngle = (180 + degreesFromAsc) * (Math.PI / 180);
 
       return {
-        x: centerX + innerRadius * Math.cos(angle),
-        y: centerY - innerRadius * Math.sin(angle)
+        x: centerX + innerRadius * Math.cos(mathAngle),
+        y: centerY - innerRadius * Math.sin(mathAngle)
       };
     };
 
