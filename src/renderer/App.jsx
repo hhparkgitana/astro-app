@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import './App.css';
 import ChartWheel from './components/ChartWheel';
+import AspectMatrix from './components/AspectMatrix';
 
 function App() {
   const [chartData, setChartData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [locationResults, setLocationResults] = useState([]);
   const [searchingLocation, setSearchingLocation] = useState(false);
+  const [activeAspects, setActiveAspects] = useState(new Set());
   const [formData, setFormData] = useState({
     name: '',
     year: '1990',
@@ -43,6 +45,7 @@ function App() {
       });
       
       console.log('Chart result:', result); // Debug
+      console.log('Aspects found:', result.aspects); // Verify aspects
       setChartData(result);
     } catch (error) {
       console.error('Error:', error);
@@ -53,10 +56,12 @@ function App() {
 
   const resetChart = () => {
     setChartData(null);
+    setActiveAspects(new Set());
   };
 
   const startNewChart = () => {
     setChartData(null);
+    setActiveAspects(new Set());
     setFormData({
       name: '',
       year: new Date().getFullYear().toString(),
@@ -69,6 +74,19 @@ function App() {
       location: 'New York, NY',
       houseSystem: 'placidus',
     });
+  };
+
+  const handleAspectToggle = (aspect) => {
+    const key = `${aspect.planet1}-${aspect.planet2}`;
+    const newActiveAspects = new Set(activeAspects);
+
+    if (newActiveAspects.has(key)) {
+      newActiveAspects.delete(key);
+    } else {
+      newActiveAspects.add(key);
+    }
+
+    setActiveAspects(newActiveAspects);
   };
 
   const searchLocation = async () => {
@@ -350,7 +368,13 @@ function App() {
               </div>
             </div>
 
-            <ChartWheel chartData={chartData} />
+            <ChartWheel chartData={chartData} activeAspects={activeAspects} />
+
+            <AspectMatrix
+              chartData={chartData}
+              activeAspects={activeAspects}
+              onAspectToggle={handleAspectToggle}
+            />
 
             <div className="rising-sign">
               <h4>🌅 Rising Sign: {getSignName(chartData.ascendant)}</h4>
