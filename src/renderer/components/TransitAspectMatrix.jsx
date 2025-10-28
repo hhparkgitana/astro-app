@@ -76,6 +76,72 @@ function TransitAspectMatrix({ chartData, activeTransitAspects, onTransitAspectT
     onTransitAspectToggle(aspect);
   };
 
+  // Handle planet header click - toggle all aspects for that planet
+  const handlePlanetClick = (planet, isTransit) => {
+    if (!chartData || !chartData.transitAspects) return;
+
+    // Find all aspects involving this planet
+    const planetAspects = chartData.transitAspects.filter(aspect => {
+      if (isTransit) {
+        // Transit planet (columns) - match planet2
+        return aspect.planet2 === planet;
+      } else {
+        // Natal planet (rows) - match planet1
+        return aspect.planet1 === planet;
+      }
+    });
+
+    if (planetAspects.length === 0) return;
+
+    // Check if ANY aspects for this planet are currently active
+    const anyActive = planetAspects.some(aspect => {
+      const key = `${aspect.planet1}-${aspect.planet2}`;
+      return activeTransitAspects.has(key);
+    });
+
+    // Determine which aspects to toggle
+    const aspectsToToggle = planetAspects.filter(aspect => {
+      const key = `${aspect.planet1}-${aspect.planet2}`;
+      const isCurrentlyActive = activeTransitAspects.has(key);
+
+      // Toggle: if anyActive, we're turning off; if !anyActive, we're turning on
+      if (anyActive && isCurrentlyActive) {
+        return true; // Turn off
+      } else if (!anyActive && !isCurrentlyActive) {
+        return true; // Turn on
+      }
+      return false;
+    });
+
+    // Toggle all aspects at once
+    if (aspectsToToggle.length > 0) {
+      onTransitAspectToggle(aspectsToToggle);
+    }
+  };
+
+  // Check if all aspects for a planet are inactive
+  const isPlanetInactive = (planet, isTransit) => {
+    if (!chartData || !chartData.transitAspects) return false;
+
+    const planetAspects = chartData.transitAspects.filter(aspect => {
+      if (isTransit) {
+        // Transit planet (columns) - match planet2
+        return aspect.planet2 === planet;
+      } else {
+        // Natal planet (rows) - match planet1
+        return aspect.planet1 === planet;
+      }
+    });
+
+    if (planetAspects.length === 0) return false;
+
+    // Return true if ALL aspects are inactive
+    return planetAspects.every(aspect => {
+      const key = `${aspect.planet1}-${aspect.planet2}`;
+      return !activeTransitAspects.has(key);
+    });
+  };
+
   // Get cell size based on orb (tighter orb = larger symbol)
   const getSymbolSize = (orb) => {
     if (orb < 0.5) return '1.8em';
@@ -107,7 +173,12 @@ function TransitAspectMatrix({ chartData, activeTransitAspects, onTransitAspectT
             <tr>
               <th className="planet-label corner-cell">N↓ T→</th>
               {planetOrder.map(planet => (
-                <th key={planet} className="planet-label transit-label" title={planet}>
+                <th
+                  key={planet}
+                  className={`planet-label transit-label clickable-header ${isPlanetInactive(planet, true) ? 'planet-inactive' : ''}`}
+                  title={`${planet} (Transit) - Click to toggle all aspects`}
+                  onClick={() => handlePlanetClick(planet, true)}
+                >
                   {PLANET_GLYPHS[planet]}
                 </th>
               ))}
@@ -116,7 +187,11 @@ function TransitAspectMatrix({ chartData, activeTransitAspects, onTransitAspectT
           <tbody>
             {planetOrder.map(natalPlanet => (
               <tr key={natalPlanet}>
-                <th className="planet-label natal-label" title={natalPlanet}>
+                <th
+                  className={`planet-label natal-label clickable-header ${isPlanetInactive(natalPlanet, false) ? 'planet-inactive' : ''}`}
+                  title={`${natalPlanet} (Natal) - Click to toggle all aspects`}
+                  onClick={() => handlePlanetClick(natalPlanet, false)}
+                >
                   {PLANET_GLYPHS[natalPlanet]}
                 </th>
                 {planetOrder.map(transitPlanet => {

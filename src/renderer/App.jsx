@@ -296,41 +296,42 @@ function App() {
     });
   };
 
-  const handleAspectToggle = (aspect) => {
-    const key = `${aspect.planet1}-${aspect.planet2}`;
+  const handleAspectToggle = (aspectOrAspects) => {
+    // Support both single aspect and array of aspects
+    const aspects = Array.isArray(aspectOrAspects) ? aspectOrAspects : [aspectOrAspects];
+
     const newActiveAspects = new Set(activeAspects);
 
-    if (newActiveAspects.has(key)) {
-      newActiveAspects.delete(key);
-    } else {
-      newActiveAspects.add(key);
-    }
+    aspects.forEach(aspect => {
+      const key = `${aspect.planet1}-${aspect.planet2}`;
+
+      if (newActiveAspects.has(key)) {
+        newActiveAspects.delete(key);
+      } else {
+        newActiveAspects.add(key);
+      }
+    });
 
     setActiveAspects(newActiveAspects);
   };
 
-  const handleTransitAspectToggle = (aspect) => {
-    console.log('=== handleTransitAspectToggle called ===');
-    console.log('Aspect:', aspect);
-    const key = `${aspect.planet1}-${aspect.planet2}`;
-    console.log('Key:', key);
-    console.log('Current activeTransitAspects size:', activeTransitAspects.size);
-    console.log('Current activeTransitAspects contents:', Array.from(activeTransitAspects).slice(0, 5));
+  const handleTransitAspectToggle = (aspectOrAspects) => {
+    // Support both single aspect and array of aspects
+    const aspects = Array.isArray(aspectOrAspects) ? aspectOrAspects : [aspectOrAspects];
 
     const newActiveAspects = new Set(activeTransitAspects);
-    console.log('New Set created, size:', newActiveAspects.size);
 
-    if (newActiveAspects.has(key)) {
-      console.log('Key exists, deleting');
-      newActiveAspects.delete(key);
-    } else {
-      console.log('Key does not exist, adding');
-      newActiveAspects.add(key);
-    }
+    aspects.forEach(aspect => {
+      const key = `${aspect.planet1}-${aspect.planet2}`;
 
-    console.log('New Set after toggle, size:', newActiveAspects.size);
+      if (newActiveAspects.has(key)) {
+        newActiveAspects.delete(key);
+      } else {
+        newActiveAspects.add(key);
+      }
+    });
+
     setActiveTransitAspects(newActiveAspects);
-    console.log('setActiveTransitAspects called');
   };
 
   const searchLocation = async () => {

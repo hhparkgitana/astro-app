@@ -67,6 +67,56 @@ function AspectMatrix({ chartData, activeAspects, onAspectToggle }) {
     onAspectToggle(aspect);
   };
 
+  // Handle planet header click - toggle all aspects for that planet
+  const handlePlanetClick = (planet) => {
+    // Find all aspects involving this planet
+    const planetAspects = chartData.aspects.filter(
+      aspect => aspect.planet1 === planet || aspect.planet2 === planet
+    );
+
+    if (planetAspects.length === 0) return;
+
+    // Check if ANY aspects for this planet are currently active
+    const anyActive = planetAspects.some(aspect => {
+      const key = `${aspect.planet1}-${aspect.planet2}`;
+      return activeAspects.has(key);
+    });
+
+    // Determine which aspects to toggle
+    const aspectsToToggle = planetAspects.filter(aspect => {
+      const key = `${aspect.planet1}-${aspect.planet2}`;
+      const isCurrentlyActive = activeAspects.has(key);
+
+      // Toggle: if anyActive, we're turning off; if !anyActive, we're turning on
+      if (anyActive && isCurrentlyActive) {
+        return true; // Turn off
+      } else if (!anyActive && !isCurrentlyActive) {
+        return true; // Turn on
+      }
+      return false;
+    });
+
+    // Toggle all aspects at once
+    if (aspectsToToggle.length > 0) {
+      onAspectToggle(aspectsToToggle);
+    }
+  };
+
+  // Check if all aspects for a planet are inactive
+  const isPlanetInactive = (planet) => {
+    const planetAspects = chartData.aspects.filter(
+      aspect => aspect.planet1 === planet || aspect.planet2 === planet
+    );
+
+    if (planetAspects.length === 0) return false;
+
+    // Return true if ALL aspects are inactive
+    return planetAspects.every(aspect => {
+      const key = `${aspect.planet1}-${aspect.planet2}`;
+      return !activeAspects.has(key);
+    });
+  };
+
   // Get cell size based on orb (tighter orb = larger symbol)
   const getSymbolSize = (orb) => {
     if (orb < 0.5) return '1.8em';  // Partile/exact aspects
@@ -90,7 +140,12 @@ function AspectMatrix({ chartData, activeAspects, onAspectToggle }) {
         <div className="matrix-row header-row">
           <div className="matrix-cell corner-cell"></div>
           {planetOrder.map(planet => (
-            <div key={planet} className="matrix-cell header-cell">
+            <div
+              key={planet}
+              className={`matrix-cell header-cell clickable-header ${isPlanetInactive(planet) ? 'planet-inactive' : ''}`}
+              onClick={() => handlePlanetClick(planet)}
+              title={`Click to toggle all ${planet} aspects`}
+            >
               <span className="planet-glyph">{PLANET_GLYPHS[planet]}</span>
             </div>
           ))}
@@ -100,7 +155,11 @@ function AspectMatrix({ chartData, activeAspects, onAspectToggle }) {
         {planetOrder.map((rowPlanet, rowIndex) => (
           <div key={rowPlanet} className="matrix-row">
             {/* Left header cell */}
-            <div className="matrix-cell header-cell">
+            <div
+              className={`matrix-cell header-cell clickable-header ${isPlanetInactive(rowPlanet) ? 'planet-inactive' : ''}`}
+              onClick={() => handlePlanetClick(rowPlanet)}
+              title={`Click to toggle all ${rowPlanet} aspects`}
+            >
               <span className="planet-glyph">{PLANET_GLYPHS[rowPlanet]}</span>
             </div>
 

@@ -50,8 +50,25 @@
   font-size: 1.2em;
 }
 
+.clickable-header {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.clickable-header:hover {
+  background: #ddd;
+}
+
+.planet-inactive {
+  opacity: 0.3;
+  background: #f9f9f9 !important;
+}
+
 .corner-cell {
   background: #e0e0e0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
 }
 
 .planet-glyph {
@@ -61,12 +78,20 @@
 
 .empty-cell {
   background: #fafafa;
+  width: 40px;
+  height: 40px;
+  padding: 0;
 }
 
 .aspect-cell {
   cursor: pointer;
   transition: all 0.2s ease;
   background: white;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .aspect-cell:hover {
@@ -111,20 +136,38 @@
 .planet-label {
   background: #f0f0f0;
   font-weight: bold;
-  font-size: 1.1em;
-  padding: 8px;
+  font-size: 1.2em;
+  padding: 0;
   text-align: center;
   border: 1px solid #ddd;
-  min-width: 35px;
-  min-height: 35px;
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+}
+
+.planet-label.clickable-header {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.planet-label.clickable-header:hover {
+  background: #d0d0d0;
 }
 
 .transit-label {
   background: #e3f2fd;
 }
 
+.transit-label.clickable-header:hover {
+  background: #bbdefb;
+}
+
 .natal-label {
   background: #fff3e0;
+}
+
+.natal-label.clickable-header:hover {
+  background: #ffe0b2;
 }
 
 /* Legend */
