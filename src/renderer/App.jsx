@@ -594,7 +594,12 @@ function App() {
               </div>
             </div>
 
-            <ChartWheel chartData={chartData} activeAspects={activeAspects} />
+            <ChartWheel
+              chartData={chartData}
+              transitData={chartData.transits}
+              activeAspects={activeAspects}
+              onAspectToggle={handleAspectToggle}
+            />
 
             <AspectMatrix
               chartData={chartData}
