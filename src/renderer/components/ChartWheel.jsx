@@ -4,6 +4,8 @@ import {
   createArcPath,
   longitudeToSVGAngle,
   getZodiacSign,
+  calculateCirclePointsAlongLine,
+  getCircleRadiusForOrb,
   CHART_CONFIG
 } from '../utils/chartMath';
 
@@ -11,8 +13,21 @@ import {
  * Custom SVG-based Chart Wheel Component
  * Renders astrological charts with full control over styling and layout
  */
-function ChartWheel({ chartData, transitData = null, activeAspects = new Set(), onAspectToggle }) {
+function ChartWheel({
+  chartData,
+  transitData = null,
+  activeAspects = new Set(),
+  onAspectToggle,
+  activeTransitAspects = new Set(),
+  onTransitAspectToggle,
+  showNatalAspects = true,
+  setShowNatalAspects
+}) {
   const { size, center, radii, colors, glyphs } = CHART_CONFIG;
+
+  // Aspect visibility toggles (only transit-specific ones stay local)
+  const [showTransitNatalAspects, setShowTransitNatalAspects] = useState(true);
+  const [showTransitAspects, setShowTransitAspects] = useState(false);
 
   if (!chartData || !chartData.success) {
     return <div>No chart data available</div>;
@@ -156,10 +171,10 @@ function ChartWheel({ chartData, transitData = null, activeAspects = new Set(), 
   };
 
   /**
-   * Render aspect lines between planets
+   * Render natal-to-natal aspect lines (solid lines)
    */
   const renderAspects = () => {
-    if (!chartData.aspects) return null;
+    if (!chartData.aspects || !showNatalAspects) return null;
 
     const ascendant = chartData.ascendant;
 
@@ -194,6 +209,101 @@ function ChartWheel({ chartData, transitData = null, activeAspects = new Set(), 
           opacity={Math.max(0.2, opacity)}
           style={{ cursor: 'pointer' }}
           onClick={() => onAspectToggle && onAspectToggle(aspect)}
+        />
+      );
+    });
+  };
+
+  /**
+   * Render natal-to-transit aspect lines (dotted circles)
+   */
+  const renderTransitNatalAspects = () => {
+    if (!chartData.transitAspects || !transitData || !showTransitNatalAspects) {
+      return null;
+    }
+
+    const ascendant = chartData.ascendant;
+
+    return chartData.transitAspects.map((aspect, index) => {
+      // Check if this aspect is active/visible
+      const aspectKey = `${aspect.planet1}-${aspect.planet2}`;
+      if (!activeTransitAspects.has(aspectKey)) return null;
+
+      // Get planet positions (one natal, one transit)
+      const natalPlanet = chartData.planets[aspect.planet1Key];
+      const transitPlanet = transitData.planets[aspect.planet2Key];
+
+      if (!natalPlanet || !transitPlanet) return null;
+
+      // Get positions at their respective radii
+      const pos1 = pointOnCircle(center, center, radii.housesInner - 10, natalPlanet.longitude, ascendant);
+      const pos2 = pointOnCircle(center, center, radii.housesInner - 10, transitPlanet.longitude, ascendant);
+
+      // Get circle size based on orb
+      const circleRadius = getCircleRadiusForOrb(aspect.orb);
+
+      // Calculate circle positions along the line
+      const points = calculateCirclePointsAlongLine(pos1.x, pos1.y, pos2.x, pos2.y, circleRadius);
+
+      // Color and opacity
+      const color = colors.aspects[aspect.type];
+      const opacity = Math.max(0.3, 1 - (aspect.orb / 8));
+
+      return (
+        <g
+          key={`transit-natal-${index}`}
+          onClick={() => onTransitAspectToggle && onTransitAspectToggle(aspect)}
+          style={{ cursor: 'pointer' }}
+        >
+          {points.map((point, i) => (
+            <circle
+              key={i}
+              cx={point.x}
+              cy={point.y}
+              r={circleRadius}
+              fill={color}
+              opacity={opacity}
+            />
+          ))}
+        </g>
+      );
+    });
+  };
+
+  /**
+   * Render transit-to-transit aspect lines (solid lines, only when natal hidden)
+   */
+  const renderTransitTransitAspects = () => {
+    if (!chartData.transitTransitAspects || !transitData || !showTransitAspects || showNatalAspects) return null;
+
+    const ascendant = chartData.ascendant;
+
+    return chartData.transitTransitAspects.map((aspect, index) => {
+      // Get both transit planet positions
+      const planet1 = transitData.planets[aspect.planet1Key];
+      const planet2 = transitData.planets[aspect.planet2Key];
+
+      if (!planet1 || !planet2) return null;
+
+      // Keep aspect lines inside the innermost circle
+      const pos1 = pointOnCircle(center, center, radii.housesInner - 10, planet1.longitude, ascendant);
+      const pos2 = pointOnCircle(center, center, radii.housesInner - 10, planet2.longitude, ascendant);
+
+      // Calculate line style based on orb
+      const opacity = 1 - (aspect.orb / 8);
+      const strokeWidth = 3 - (aspect.orb / 4);
+
+      return (
+        <line
+          key={`transit-transit-${index}`}
+          x1={pos1.x}
+          y1={pos1.y}
+          x2={pos2.x}
+          y2={pos2.y}
+          stroke={colors.aspects[aspect.type]}
+          strokeWidth={Math.max(0.5, strokeWidth)}
+          opacity={Math.max(0.2, opacity)}
+          style={{ cursor: 'pointer' }}
         />
       );
     });
@@ -271,11 +381,56 @@ function ChartWheel({ chartData, transitData = null, activeAspects = new Set(), 
   return (
     <div className="chart-wheel-container" style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
       <h4>🎯 Birth Chart Wheel</h4>
+
+      {/* Aspect Toggle Controls */}
+      {transitData && (
+        <div style={{
+          display: 'flex',
+          gap: '20px',
+          marginBottom: '15px',
+          padding: '10px',
+          backgroundColor: '#f0f0f0',
+          borderRadius: '5px'
+        }}>
+          <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+            <input
+              type="checkbox"
+              checked={showNatalAspects}
+              onChange={(e) => setShowNatalAspects && setShowNatalAspects(e.target.checked)}
+            />
+            <span>Show Natal Aspects</span>
+          </label>
+
+          <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+            <input
+              type="checkbox"
+              checked={showTransitNatalAspects}
+              onChange={(e) => setShowTransitNatalAspects(e.target.checked)}
+            />
+            <span>Show Transit-Natal Aspects</span>
+          </label>
+
+          <label style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '5px',
+            cursor: showNatalAspects ? 'not-allowed' : 'pointer',
+            opacity: showNatalAspects ? 0.5 : 1
+          }}>
+            <input
+              type="checkbox"
+              checked={showTransitAspects}
+              onChange={(e) => setShowTransitAspects(e.target.checked)}
+              disabled={showNatalAspects}
+            />
+            <span>Show Transit-Transit Aspects</span>
+          </label>
+        </div>
+      )}
+
       <svg
-        width="1200"
-        height="1200"
         viewBox={`0 0 ${size} ${size}`}
-        style={{ width: '100%', height: 'auto', display: 'block' }}
+        style={{ width: '100%', height: 'auto', maxWidth: '800px', margin: '0 auto', display: 'block' }}
       >
         {/* Background */}
         <rect width={size} height={size} fill="#f5f5f5" />
@@ -284,7 +439,9 @@ function ChartWheel({ chartData, transitData = null, activeAspects = new Set(), 
         <g id="guide-circles">{renderGuideCircles()}</g>
 
         {/* Render layers from back to front */}
-        <g id="aspect-lines">{renderAspects()}</g>
+        <g id="natal-aspect-lines">{renderAspects()}</g>
+        <g id="transit-natal-aspect-lines">{renderTransitNatalAspects()}</g>
+        <g id="transit-transit-aspect-lines">{renderTransitTransitAspects()}</g>
         <g id="houses">{renderHouses()}</g>
         <g id="zodiac-ring">{renderZodiacRing()}</g>
         <g id="natal-planets">{renderPlanets(chartData.planets, radii.natal, '#000')}</g>

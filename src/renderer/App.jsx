@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import ChartWheel from './components/ChartWheel';
-import AspectMatrix from './components/AspectMatrix';
+import AspectTabs from './components/AspectTabs';
 import { DateTime } from 'luxon';
 
 function App() {
@@ -10,6 +10,13 @@ function App() {
   const [locationResults, setLocationResults] = useState([]);
   const [searchingLocation, setSearchingLocation] = useState(false);
   const [activeAspects, setActiveAspects] = useState(new Set());
+  const [activeTransitAspects, setActiveTransitAspects] = useState(new Set());
+  const [showNatalAspects, setShowNatalAspects] = useState(true);
+
+  // Debug: Log state on each render
+  console.log('=== APP RENDER ===');
+  console.log('activeTransitAspects size:', activeTransitAspects.size);
+  console.log('activeTransitAspects first 5:', Array.from(activeTransitAspects).slice(0, 5));
   const [formData, setFormData] = useState({
     name: '',
     year: '1990',
@@ -37,6 +44,115 @@ function App() {
       ...formData,
       [e.target.name]: value,
     });
+  };
+
+  // Aspect calculation helper functions
+  const ASPECT_TYPES = {
+    CONJUNCTION: { angle: 0, symbol: '☌', name: 'Conjunction' },
+    SEXTILE: { angle: 60, symbol: '⚹', name: 'Sextile' },
+    SQUARE: { angle: 90, symbol: '□', name: 'Square' },
+    TRINE: { angle: 120, symbol: '△', name: 'Trine' },
+    OPPOSITION: { angle: 180, symbol: '☍', name: 'Opposition' }
+  };
+
+  const getAngularDistance = (long1, long2) => {
+    let distance = Math.abs(long1 - long2);
+    if (distance > 180) {
+      distance = 360 - distance;
+    }
+    return distance;
+  };
+
+  const findAspect = (distance, orb = 8) => {
+    for (const [key, aspect] of Object.entries(ASPECT_TYPES)) {
+      const diff = Math.abs(distance - aspect.angle);
+      if (diff <= orb) {
+        return {
+          type: key,
+          symbol: aspect.symbol,
+          name: aspect.name,
+          exactAngle: aspect.angle,
+          actualAngle: distance,
+          orb: diff,
+          applying: null // Can't calculate applying/separating without velocity
+        };
+      }
+    }
+    return null;
+  };
+
+  // Calculate aspects between natal and transit planets
+  const calculateTransitAspects = (natalPlanets, transitPlanets) => {
+    const aspects = [];
+    const natalArray = Object.entries(natalPlanets).map(([key, planet]) => ({
+      key,
+      name: planet.name,
+      longitude: planet.longitude
+    }));
+    const transitArray = Object.entries(transitPlanets).map(([key, planet]) => ({
+      key,
+      name: planet.name,
+      longitude: planet.longitude
+    }));
+
+    // Calculate aspects between each natal planet and each transit planet
+    for (const natalPlanet of natalArray) {
+      for (const transitPlanet of transitArray) {
+        const distance = getAngularDistance(natalPlanet.longitude, transitPlanet.longitude);
+        const aspect = findAspect(distance);
+
+        if (aspect) {
+          aspects.push({
+            planet1: natalPlanet.name,
+            planet1Key: natalPlanet.key,
+            planet2: transitPlanet.name,
+            planet2Key: transitPlanet.key,
+            ...aspect
+          });
+        }
+      }
+    }
+
+    return aspects;
+  };
+
+  // Calculate aspects between transit planets
+  const calculateTransitToTransitAspects = (transitPlanets) => {
+    const aspects = [];
+    const planetArray = Object.entries(transitPlanets).map(([key, planet]) => ({
+      key,
+      name: planet.name,
+      longitude: planet.longitude
+    }));
+
+    // Calculate aspects for each pair (upper triangular matrix)
+    for (let i = 0; i < planetArray.length; i++) {
+      for (let j = i + 1; j < planetArray.length; j++) {
+        const planet1 = planetArray[i];
+        const planet2 = planetArray[j];
+
+        // Skip North Node - South Node aspect
+        if ((planet1.name === 'North Node' && planet2.name === 'South Node') ||
+            (planet1.name === 'South Node' && planet2.name === 'North Node')) {
+          continue;
+        }
+
+        const distance = getAngularDistance(planet1.longitude, planet2.longitude);
+        const aspect = findAspect(distance);
+
+        if (aspect) {
+          aspects.push({
+            planet1: planet1.name,
+            planet1Key: planet1.key,
+            planet2: planet2.name,
+            planet2Key: planet2.key,
+            ...aspect
+          });
+        }
+      }
+    }
+
+    return aspects;
   };
 
   const calculateChart = async (e) => {
@@ -123,6 +239,27 @@ function App() {
         if (transitResult.success) {
           transitData = transitResult;
           console.log('Transit chart calculated:', transitResult);
+
+          // Calculate natal-to-transit aspects
+          const transitAspects = calculateTransitAspects(result.planets, transitData.planets);
+          console.log('Transit-to-natal aspects:', transitAspects);
+          result.transitAspects = transitAspects;
+
+          // Set all transit aspects as active by default
+          const allTransitAspectKeys = new Set(
+            transitAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+          );
+          console.log('=== SETTING activeTransitAspects ===');
+          console.log('Number of transit aspects:', allTransitAspectKeys.size);
+          console.log('First 5 keys:', Array.from(allTransitAspectKeys).slice(0, 5));
+          console.log('Set object:', allTransitAspectKeys);
+          setActiveTransitAspects(allTransitAspectKeys);
+          console.log('setActiveTransitAspects called');
+
+          // Calculate transit-to-transit aspects
+          const transitTransitAspects = calculateTransitToTransitAspects(transitData.planets);
+          console.log('Transit-to-transit aspects:', transitTransitAspects);
+          result.transitTransitAspects = transitTransitAspects;
         }
       }
 
@@ -137,11 +274,13 @@ function App() {
   const resetChart = () => {
     setChartData(null);
     setActiveAspects(new Set());
+    setActiveTransitAspects(new Set());
   };
 
   const startNewChart = () => {
     setChartData(null);
     setActiveAspects(new Set());
+    setActiveTransitAspects(new Set());
     setFormData({
       name: '',
       year: new Date().getFullYear().toString(),
@@ -168,6 +307,30 @@ function App() {
     }
 
     setActiveAspects(newActiveAspects);
+  };
+
+  const handleTransitAspectToggle = (aspect) => {
+    console.log('=== handleTransitAspectToggle called ===');
+    console.log('Aspect:', aspect);
+    const key = `${aspect.planet1}-${aspect.planet2}`;
+    console.log('Key:', key);
+    console.log('Current activeTransitAspects size:', activeTransitAspects.size);
+    console.log('Current activeTransitAspects contents:', Array.from(activeTransitAspects).slice(0, 5));
+
+    const newActiveAspects = new Set(activeTransitAspects);
+    console.log('New Set created, size:', newActiveAspects.size);
+
+    if (newActiveAspects.has(key)) {
+      console.log('Key exists, deleting');
+      newActiveAspects.delete(key);
+    } else {
+      console.log('Key does not exist, adding');
+      newActiveAspects.add(key);
+    }
+
+    console.log('New Set after toggle, size:', newActiveAspects.size);
+    setActiveTransitAspects(newActiveAspects);
+    console.log('setActiveTransitAspects called');
   };
 
   const searchLocation = async () => {
@@ -599,12 +762,19 @@ function App() {
               transitData={chartData.transits}
               activeAspects={activeAspects}
               onAspectToggle={handleAspectToggle}
+              activeTransitAspects={activeTransitAspects}
+              onTransitAspectToggle={handleTransitAspectToggle}
+              showNatalAspects={showNatalAspects}
+              setShowNatalAspects={setShowNatalAspects}
             />
 
-            <AspectMatrix
+            <AspectTabs
               chartData={chartData}
               activeAspects={activeAspects}
               onAspectToggle={handleAspectToggle}
+              activeTransitAspects={activeTransitAspects}
+              onTransitAspectToggle={handleTransitAspectToggle}
+              showNatalAspects={showNatalAspects}
             />
 
             <div className="rising-sign">

@@ -98,6 +98,65 @@ export function createArcPath(centerX, centerY, innerRadius, outerRadius, startL
 }
 
 /**
+ * Calculate evenly spaced points along a line for circle placement
+ * @param {number} x1 - Start x coordinate
+ * @param {number} y1 - Start y coordinate
+ * @param {number} x2 - End x coordinate
+ * @param {number} y2 - End y coordinate
+ * @param {number} circleRadius - Radius of circles to be placed
+ * @returns {Array} Array of {x, y} coordinates for circle centers
+ */
+export function calculateCirclePointsAlongLine(x1, y1, x2, y2, circleRadius) {
+  // Calculate line length
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const lineLength = Math.sqrt(dx * dx + dy * dy);
+
+  // Spacing between circle centers = circle radius (as specified)
+  const spacing = circleRadius * 2;
+
+  // Calculate how many circles fit along the line
+  const numCircles = Math.floor(lineLength / spacing);
+
+  // If line is too short for even one circle, return midpoint
+  if (numCircles < 1) {
+    return [{ x: (x1 + x2) / 2, y: (y1 + y2) / 2 }];
+  }
+
+  // Calculate actual spacing to distribute circles evenly
+  const actualSpacing = lineLength / numCircles;
+
+  // Unit vector along the line
+  const unitX = dx / lineLength;
+  const unitY = dy / lineLength;
+
+  // Generate circle positions
+  const points = [];
+  for (let i = 0; i <= numCircles; i++) {
+    const distance = i * actualSpacing;
+    points.push({
+      x: x1 + unitX * distance,
+      y: y1 + unitY * distance
+    });
+  }
+
+  return points;
+}
+
+/**
+ * Get circle radius based on aspect orb (tighter = bigger)
+ * @param {number} orb - Orb in degrees (0-8)
+ * @returns {number} Circle radius in pixels
+ */
+export function getCircleRadiusForOrb(orb) {
+  if (orb <= 1) return 4.5;
+  if (orb <= 3) return 3.5;
+  if (orb <= 5) return 2.5;
+  if (orb <= 7) return 2;
+  return 1.5;
+}
+
+/**
  * Constants for chart dimensions
  */
 export const CHART_CONFIG = {
