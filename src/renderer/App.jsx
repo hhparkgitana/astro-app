@@ -22,12 +22,20 @@ function App() {
     location: 'New York, NY',
     timezone: 'America/New_York',
     houseSystem: 'placidus',
+    // Transit date/time (defaults to current date)
+    showTransits: false,
+    transitYear: new Date().getFullYear().toString(),
+    transitMonth: (new Date().getMonth() + 1).toString(),
+    transitDay: new Date().getDate().toString(),
+    transitHour: new Date().getHours().toString(),
+    transitMinute: new Date().getMinutes().toString(),
   });
 
   const handleInputChange = (e) => {
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: value,
     });
   };
 
@@ -80,7 +88,45 @@ function App() {
         setActiveAspects(allAspectKeys);
       }
 
-      setChartData(result);
+      // Calculate transit positions if enabled
+      let transitData = null;
+      if (formData.showTransits && result.success) {
+        const transitLocalTime = DateTime.fromObject({
+          year: parseInt(formData.transitYear),
+          month: parseInt(formData.transitMonth),
+          day: parseInt(formData.transitDay),
+          hour: parseInt(formData.transitHour),
+          minute: parseInt(formData.transitMinute),
+        }, { zone: formData.timezone });
+
+        const transitUtcTime = transitLocalTime.toUTC();
+
+        console.log('Transit local time:', transitLocalTime.toString());
+        console.log('Transit UTC time:', transitUtcTime.toString());
+
+        const transitResult = await window.astro.calculateChart({
+          year: parseInt(formData.transitYear),
+          month: parseInt(formData.transitMonth),
+          day: parseInt(formData.transitDay),
+          hour: parseInt(formData.transitHour),
+          minute: parseInt(formData.transitMinute),
+          utcYear: transitUtcTime.year,
+          utcMonth: transitUtcTime.month,
+          utcDay: transitUtcTime.day,
+          utcHour: transitUtcTime.hour,
+          utcMinute: transitUtcTime.minute,
+          latitude: parseFloat(formData.latitude),
+          longitude: parseFloat(formData.longitude),
+          houseSystem: formData.houseSystem,
+        });
+
+        if (transitResult.success) {
+          transitData = transitResult;
+          console.log('Transit chart calculated:', transitResult);
+        }
+      }
+
+      setChartData({ ...result, transits: transitData });
     } catch (error) {
       console.error('Error:', error);
       setChartData({ success: false, error: error.message });
@@ -435,6 +481,93 @@ function App() {
               />
             </div>
           </div>
+
+          <div className="form-group" style={{marginTop: '20px', padding: '15px', backgroundColor: '#f5f5f5', borderRadius: '4px'}}>
+            <label style={{display: 'flex', alignItems: 'center', cursor: 'pointer'}}>
+              <input
+                type="checkbox"
+                name="showTransits"
+                checked={formData.showTransits}
+                onChange={handleInputChange}
+                style={{marginRight: '8px', width: '18px', height: '18px'}}
+              />
+              <span style={{fontWeight: 'bold'}}>Show Transits (Bi-Wheel)</span>
+            </label>
+          </div>
+
+          {formData.showTransits && (
+            <div style={{marginTop: '15px', padding: '15px', border: '2px solid #4CAF50', borderRadius: '4px'}}>
+              <h4 style={{marginTop: 0, color: '#4CAF50'}}>Transit Date & Time</h4>
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Year</label>
+                  <input
+                    type="number"
+                    name="transitYear"
+                    value={formData.transitYear}
+                    onChange={handleInputChange}
+                    min="1900"
+                    max="2100"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Month</label>
+                  <input
+                    type="number"
+                    name="transitMonth"
+                    value={formData.transitMonth}
+                    onChange={handleInputChange}
+                    min="1"
+                    max="12"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Day</label>
+                  <input
+                    type="number"
+                    name="transitDay"
+                    value={formData.transitDay}
+                    onChange={handleInputChange}
+                    min="1"
+                    max="31"
+                  />
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Hour (0-23)</label>
+                  <input
+                    type="number"
+                    name="transitHour"
+                    value={formData.transitHour}
+                    onChange={handleInputChange}
+                    min="0"
+                    max="23"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Minute</label>
+                  <input
+                    type="number"
+                    name="transitMinute"
+                    value={formData.transitMinute}
+                    onChange={handleInputChange}
+                    min="0"
+                    max="59"
+                  />
+                </div>
+              </div>
+
+              <small style={{display: 'block', color: '#666'}}>
+                Transit positions will be displayed on outer wheel
+              </small>
+            </div>
+          )}
 
           <button type="submit" disabled={loading} className="calculate-btn">
             {loading ? 'Calculating...' : 'Calculate Chart'}

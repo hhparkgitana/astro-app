@@ -53,10 +53,87 @@ function ChartWheel({ chartData, activeAspects }) {
     console.log('Chart data for AstroChart:', data); // Debug
 
     try {
-      // Create chart at 650x650
+      // Create chart at 650x650 (keeps outer circle at 2 inches)
       const chart = new Chart('chart-paper', 650, 650);
       chart.radix(data);
       chartRef.current = chart;
+
+      // Manually add transit planets if available
+      if (chartData.transits && chartData.transits.success) {
+        console.log('Adding transit planets to outer ring');
+
+        // Get the SVG element
+        const container = document.getElementById('chart-paper');
+        const svg = container.querySelector('svg');
+
+        if (svg) {
+          // Create group for transit wheel
+          const transitGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+          transitGroup.setAttribute('id', 'transit-wheel');
+
+          const centerX = 325;
+          const centerY = 325;
+          const innerRingRadius = 200; // Inner boundary of white transit ring (outside natal planets at 1.5")
+          const outerRingRadius = 245; // Outer boundary of white transit ring (inside zodiac at 1.9")
+          const transitPlanetRadius = 208; // Where transit planets sit (1.6" = 208px)
+
+          // Draw transit ring boundaries
+          const innerRing = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          innerRing.setAttribute('cx', centerX);
+          innerRing.setAttribute('cy', centerY);
+          innerRing.setAttribute('r', innerRingRadius);
+          innerRing.setAttribute('fill', 'none');
+          innerRing.setAttribute('stroke', '#999');
+          innerRing.setAttribute('stroke-width', '1');
+          transitGroup.appendChild(innerRing);
+
+          const outerRing = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          outerRing.setAttribute('cx', centerX);
+          outerRing.setAttribute('cy', centerY);
+          outerRing.setAttribute('r', outerRingRadius);
+          outerRing.setAttribute('fill', 'none');
+          outerRing.setAttribute('stroke', '#999');
+          outerRing.setAttribute('stroke-width', '1');
+          transitGroup.appendChild(outerRing);
+
+          // Draw transit planets
+          Object.entries(chartData.transits.planets).forEach(([key, planet]) => {
+            // Calculate position on outer ring
+            const ascendant = chartData.ascendant;
+            let degreesFromAsc = planet.longitude - ascendant;
+            if (degreesFromAsc < 0) degreesFromAsc += 360;
+            const canvasAngle = (180 + degreesFromAsc) * (Math.PI / 180);
+
+            const x = centerX + transitPlanetRadius * Math.cos(canvasAngle);
+            const y = centerY - transitPlanetRadius * Math.sin(canvasAngle);
+
+            // Create text element for planet glyph
+            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.setAttribute('x', x);
+            text.setAttribute('y', y);
+            text.setAttribute('text-anchor', 'middle');
+            text.setAttribute('dominant-baseline', 'middle');
+            text.setAttribute('fill', '#0D47A1'); // Dark blue color for transits
+            text.setAttribute('font-size', '20');
+            text.setAttribute('font-weight', 'bold');
+            text.setAttribute('class', 'transit-planet');
+
+            // Get planet symbol (using Unicode glyphs)
+            const glyphs = {
+              'Sun': '☉', 'Moon': '☽', 'Mercury': '☿', 'Venus': '♀', 'Mars': '♂',
+              'Jupiter': '♃', 'Saturn': '♄', 'Uranus': '♅', 'Neptune': '♆', 'Pluto': '♇',
+              'North Node': '☊', 'South Node': '☋'
+            };
+
+            text.textContent = glyphs[planet.name] || planet.name.substring(0, 2);
+            transitGroup.appendChild(text);
+          });
+
+          svg.appendChild(transitGroup);
+          console.log('Transit planets added to outer ring');
+        }
+      }
+
       console.log('Chart created successfully!'); // Debug
     } catch (error) {
       console.error('Error creating chart:', error);
