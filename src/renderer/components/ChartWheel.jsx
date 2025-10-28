@@ -21,7 +21,13 @@ function ChartWheel({
   activeTransitAspects = new Set(),
   onTransitAspectToggle,
   showNatalAspects = true,
-  setShowNatalAspects
+  setShowNatalAspects,
+  natalOrb = 8,
+  onNatalOrbChange,
+  transitOrb = 8,
+  onTransitOrbChange,
+  transitTransitOrb = 8,
+  onTransitTransitOrbChange
 }) {
   const { size, center, radii, colors, glyphs } = CHART_CONFIG;
 
@@ -434,39 +440,81 @@ function ChartWheel({
           backgroundColor: '#f0f0f0',
           borderRadius: '5px'
         }}>
-          <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
-            <input
-              type="checkbox"
-              checked={showNatalAspects}
-              onChange={(e) => setShowNatalAspects && setShowNatalAspects(e.target.checked)}
-            />
-            <span>Show Natal Aspects</span>
-          </label>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={showNatalAspects}
+                onChange={(e) => setShowNatalAspects && setShowNatalAspects(e.target.checked)}
+              />
+              <span>Show Natal Aspects</span>
+            </label>
+            <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {natalOrb}°</label>
+              <input
+                type="range"
+                min="0"
+                max="10"
+                step="0.5"
+                value={natalOrb}
+                onChange={(e) => onNatalOrbChange && onNatalOrbChange(parseFloat(e.target.value))}
+                style={{ flex: 1 }}
+              />
+            </div>
+          </div>
 
-          <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
-            <input
-              type="checkbox"
-              checked={showTransitNatalAspects}
-              onChange={(e) => setShowTransitNatalAspects(e.target.checked)}
-            />
-            <span>Show Transit-Natal Aspects</span>
-          </label>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={showTransitNatalAspects}
+                onChange={(e) => setShowTransitNatalAspects(e.target.checked)}
+              />
+              <span>Show Transit-Natal Aspects</span>
+            </label>
+            <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {transitOrb}°</label>
+              <input
+                type="range"
+                min="0"
+                max="10"
+                step="0.5"
+                value={transitOrb}
+                onChange={(e) => onTransitOrbChange && onTransitOrbChange(parseFloat(e.target.value))}
+                style={{ flex: 1 }}
+              />
+            </div>
+          </div>
 
-          <label style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '5px',
-            cursor: showNatalAspects ? 'not-allowed' : 'pointer',
-            opacity: showNatalAspects ? 0.5 : 1
-          }}>
-            <input
-              type="checkbox"
-              checked={showTransitAspects}
-              onChange={(e) => setShowTransitAspects(e.target.checked)}
-              disabled={showNatalAspects}
-            />
-            <span>Show Transit-Transit Aspects</span>
-          </label>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            <label style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '5px',
+              cursor: showNatalAspects ? 'not-allowed' : 'pointer',
+              opacity: showNatalAspects ? 0.5 : 1
+            }}>
+              <input
+                type="checkbox"
+                checked={showTransitAspects}
+                onChange={(e) => setShowTransitAspects(e.target.checked)}
+                disabled={showNatalAspects}
+              />
+              <span>Show Transit-Transit Aspects</span>
+            </label>
+            <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {transitTransitOrb}°</label>
+              <input
+                type="range"
+                min="0"
+                max="10"
+                step="0.5"
+                value={transitTransitOrb}
+                onChange={(e) => onTransitTransitOrbChange && onTransitTransitOrbChange(parseFloat(e.target.value))}
+                style={{ flex: 1 }}
+              />
+            </div>
+          </div>
         </div>
       )}
 

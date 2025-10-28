@@ -3,7 +3,7 @@ import './App.css';
 import ChartWheel from './components/ChartWheel';
 import AspectTabs from './components/AspectTabs';
 import { DateTime } from 'luxon';
-import { findAspect, getAngularDistance } from '../shared/calculations/aspectsCalculator';
+import { findAspect, getAngularDistance, calculateAspects } from '../shared/calculations/aspectsCalculator';
 
 function App() {
   const [chartData, setChartData] = useState(null);
@@ -13,6 +13,11 @@ function App() {
   const [activeAspects, setActiveAspects] = useState(new Set());
   const [activeTransitAspects, setActiveTransitAspects] = useState(new Set());
   const [showNatalAspects, setShowNatalAspects] = useState(true);
+
+  // Orb settings for each aspect type
+  const [natalOrb, setNatalOrb] = useState(8);
+  const [transitOrb, setTransitOrb] = useState(8);
+  const [transitTransitOrb, setTransitTransitOrb] = useState(8);
 
   // Debug: Log state on each render
   console.log('=== APP RENDER ===');
@@ -50,7 +55,7 @@ function App() {
   // Note: getAngularDistance and findAspect are now imported from aspectsCalculator
 
   // Calculate aspects between natal and transit planets
-  const calculateTransitAspects = (natalPlanets, transitPlanets) => {
+  const calculateTransitAspects = (natalPlanets, transitPlanets, orb = 8) => {
     const aspects = [];
     const natalArray = Object.entries(natalPlanets).map(([key, planet]) => ({
       key,
@@ -72,7 +77,7 @@ function App() {
 
         const aspect = findAspect(
           distance,
-          8, // default orb
+          orb,
           natalPlanet.velocity,
           transitPlanet.velocity,
           natalPlanet.longitude,
@@ -95,7 +100,7 @@ function App() {
   };
 
   // Calculate aspects between transit planets
-  const calculateTransitToTransitAspects = (transitPlanets) => {
+  const calculateTransitToTransitAspects = (transitPlanets, orb = 8) => {
     const aspects = [];
     const planetArray = Object.entries(transitPlanets).map(([key, planet]) => ({
       key,
@@ -119,7 +124,7 @@ function App() {
         const distance = getAngularDistance(planet1.longitude, planet2.longitude);
         const aspect = findAspect(
           distance,
-          8, // default orb
+          orb,
           planet1.velocity,
           planet2.velocity,
           planet1.longitude,
@@ -139,6 +144,41 @@ function App() {
     }
 
     return aspects;
+  };
+
+  // Handle orb changes and recalculate aspects
+  const handleNatalOrbChange = (newOrb) => {
+    setNatalOrb(newOrb);
+    if (chartData && chartData.planets) {
+      const newAspects = calculateAspects(chartData.planets, { default: newOrb });
+      setChartData({ ...chartData, aspects: newAspects });
+      // Update active aspects to include all new aspects
+      const allAspectKeys = new Set(
+        newAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+      );
+      setActiveAspects(allAspectKeys);
+    }
+  };
+
+  const handleTransitOrbChange = (newOrb) => {
+    setTransitOrb(newOrb);
+    if (chartData && chartData.planets && chartData.transits && chartData.transits.planets) {
+      const newTransitAspects = calculateTransitAspects(chartData.planets, chartData.transits.planets, newOrb);
+      setChartData({ ...chartData, transitAspects: newTransitAspects });
+      // Update active transit aspects
+      const allTransitAspectKeys = new Set(
+        newTransitAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+      );
+      setActiveTransitAspects(allTransitAspectKeys);
+    }
+  };
+
+  const handleTransitTransitOrbChange = (newOrb) => {
+    setTransitTransitOrb(newOrb);
+    if (chartData && chartData.transits && chartData.transits.planets) {
+      const newTransitTransitAspects = calculateTransitToTransitAspects(chartData.transits.planets, newOrb);
+      setChartData({ ...chartData, transitTransitAspects: newTransitTransitAspects });
+    }
   };
 
   const calculateChart = async (e) => {
@@ -227,7 +267,7 @@ function App() {
           console.log('Transit chart calculated:', transitResult);
 
           // Calculate natal-to-transit aspects
-          const transitAspects = calculateTransitAspects(result.planets, transitData.planets);
+          const transitAspects = calculateTransitAspects(result.planets, transitData.planets, transitOrb);
           console.log('Transit-to-natal aspects:', transitAspects);
           result.transitAspects = transitAspects;
 
@@ -243,7 +283,7 @@ function App() {
           console.log('setActiveTransitAspects called');
 
           // Calculate transit-to-transit aspects
-          const transitTransitAspects = calculateTransitToTransitAspects(transitData.planets);
+          const transitTransitAspects = calculateTransitToTransitAspects(transitData.planets, transitTransitOrb);
           console.log('Transit-to-transit aspects:', transitTransitAspects);
           result.transitTransitAspects = transitTransitAspects;
         }
@@ -753,6 +793,12 @@ function App() {
               onTransitAspectToggle={handleTransitAspectToggle}
               showNatalAspects={showNatalAspects}
               setShowNatalAspects={setShowNatalAspects}
+              natalOrb={natalOrb}
+              onNatalOrbChange={handleNatalOrbChange}
+              transitOrb={transitOrb}
+              onTransitOrbChange={handleTransitOrbChange}
+              transitTransitOrb={transitTransitOrb}
+              onTransitTransitOrbChange={handleTransitTransitOrbChange}
             />
 
             <AspectTabs
