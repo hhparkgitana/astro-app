@@ -35,10 +35,18 @@ function calculateVelocity(body, date, isNode = false) {
 }
 
 function calculateChart(params) {
-  const { year, month, day, hour = 12, minute = 0, latitude = 0, longitude = 0, houseSystem = 'placidus' } = params;
+  const {
+    year, month, day, hour = 12, minute = 0,
+    utcYear, utcMonth, utcDay, utcHour, utcMinute,
+    latitude = 0, longitude = 0, houseSystem = 'placidus'
+  } = params;
 
   try {
-    const date = new Date(year, month - 1, day, hour, minute);
+    // Use UTC time for planetary calculations (astronomy-engine expects UTC)
+    const date = utcYear
+      ? new Date(Date.UTC(utcYear, utcMonth - 1, utcDay, utcHour, utcMinute))
+      : new Date(Date.UTC(year, month - 1, day, hour, minute));
+
     const planets = {};
 
     // Calculate Sun
@@ -90,6 +98,14 @@ function calculateChart(params) {
     };
 
     // Calculate Placidus houses using circular-natal-horoscope-js
+    // Note: This library expects LOCAL time, not UTC
+    // We need to convert back from UTC to local time based on the actual offset at birth location
+    // For now, the astronomy calculations use UTC (from Date.UTC),
+    // but houses need to be calculated with the original local time components
+
+    console.log('chartCalculator - Received params:', { year, month, day, hour, minute, latitude, longitude });
+    console.log('chartCalculator - UTC Date object:', date.toISOString());
+
     // Create origin (note: month is 0-indexed in the library)
     const origin = new Origin({
       year: year,

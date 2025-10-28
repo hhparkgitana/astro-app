@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import ChartWheel from './components/ChartWheel';
 import AspectMatrix from './components/AspectMatrix';
+import { DateTime } from 'luxon';
 
 function App() {
   const [chartData, setChartData] = useState(null);
@@ -19,6 +20,7 @@ function App() {
     latitude: '40.7128',
     longitude: '-74.0060',
     location: 'New York, NY',
+    timezone: 'America/New_York',
     houseSystem: 'placidus',
   });
 
@@ -33,12 +35,35 @@ function App() {
     e.preventDefault();
     setLoading(true);
     try {
-      const result = await window.astro.calculateChart({
+      // Convert local time to UTC using timezone
+      const localTime = DateTime.fromObject({
         year: parseInt(formData.year),
         month: parseInt(formData.month),
         day: parseInt(formData.day),
         hour: parseInt(formData.hour),
         minute: parseInt(formData.minute),
+      }, { zone: formData.timezone });
+
+      const utcTime = localTime.toUTC();
+
+      console.log('Local time:', localTime.toString());
+      console.log('UTC time:', utcTime.toString());
+      console.log('Timezone:', formData.timezone);
+      console.log('DST offset:', localTime.offset / 60, 'hours');
+
+      const result = await window.astro.calculateChart({
+        // Send LOCAL time for house calculations
+        year: parseInt(formData.year),
+        month: parseInt(formData.month),
+        day: parseInt(formData.day),
+        hour: parseInt(formData.hour),
+        minute: parseInt(formData.minute),
+        // Also send UTC time for planetary calculations
+        utcYear: utcTime.year,
+        utcMonth: utcTime.month,
+        utcDay: utcTime.day,
+        utcHour: utcTime.hour,
+        utcMinute: utcTime.minute,
         latitude: parseFloat(formData.latitude),
         longitude: parseFloat(formData.longitude),
         houseSystem: formData.houseSystem,
@@ -81,6 +106,7 @@ function App() {
       latitude: '40.7128',
       longitude: '-74.0060',
       location: 'New York, NY',
+      timezone: 'America/New_York',
       houseSystem: 'placidus',
     });
   };
@@ -304,6 +330,64 @@ function App() {
                 ))}
               </div>
             )}
+          </div>
+
+          <div className="form-group">
+            <label>Timezone *</label>
+            <select
+              name="timezone"
+              value={formData.timezone}
+              onChange={handleInputChange}
+              required
+            >
+              <optgroup label="US Timezones">
+                <option value="America/New_York">Eastern Time (ET)</option>
+                <option value="America/Chicago">Central Time (CT)</option>
+                <option value="America/Denver">Mountain Time (MT)</option>
+                <option value="America/Phoenix">Arizona (no DST)</option>
+                <option value="America/Los_Angeles">Pacific Time (PT)</option>
+                <option value="America/Anchorage">Alaska Time (AKT)</option>
+                <option value="Pacific/Honolulu">Hawaii Time (HST)</option>
+              </optgroup>
+              <optgroup label="Europe">
+                <option value="Europe/London">London (GMT/BST)</option>
+                <option value="Europe/Paris">Paris (CET/CEST)</option>
+                <option value="Europe/Berlin">Berlin (CET/CEST)</option>
+                <option value="Europe/Rome">Rome (CET/CEST)</option>
+                <option value="Europe/Athens">Athens (EET/EEST)</option>
+                <option value="Europe/Moscow">Moscow (MSK)</option>
+              </optgroup>
+              <optgroup label="Asia">
+                <option value="Asia/Dubai">Dubai (GST)</option>
+                <option value="Asia/Kolkata">India (IST)</option>
+                <option value="Asia/Bangkok">Bangkok (ICT)</option>
+                <option value="Asia/Singapore">Singapore (SGT)</option>
+                <option value="Asia/Hong_Kong">Hong Kong (HKT)</option>
+                <option value="Asia/Tokyo">Tokyo (JST)</option>
+                <option value="Asia/Seoul">Seoul (KST)</option>
+              </optgroup>
+              <optgroup label="Australia & Pacific">
+                <option value="Australia/Perth">Perth (AWST)</option>
+                <option value="Australia/Adelaide">Adelaide (ACST/ACDT)</option>
+                <option value="Australia/Sydney">Sydney (AEST/AEDT)</option>
+                <option value="Pacific/Auckland">Auckland (NZST/NZDT)</option>
+              </optgroup>
+              <optgroup label="Americas">
+                <option value="America/Toronto">Toronto (ET)</option>
+                <option value="America/Vancouver">Vancouver (PT)</option>
+                <option value="America/Mexico_City">Mexico City (CST)</option>
+                <option value="America/Sao_Paulo">São Paulo (BRT)</option>
+                <option value="America/Buenos_Aires">Buenos Aires (ART)</option>
+              </optgroup>
+              <optgroup label="Africa & Middle East">
+                <option value="Africa/Cairo">Cairo (EET)</option>
+                <option value="Africa/Johannesburg">Johannesburg (SAST)</option>
+                <option value="Asia/Jerusalem">Jerusalem (IST)</option>
+              </optgroup>
+            </select>
+            <small style={{display: 'block', marginTop: '4px', color: '#666'}}>
+              DST will be automatically applied for historical dates
+            </small>
           </div>
 
           <div className="form-group">
