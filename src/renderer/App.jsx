@@ -46,6 +46,15 @@ function App() {
       
       console.log('Chart result:', result); // Debug
       console.log('Aspects found:', result.aspects); // Verify aspects
+
+      // Set all aspects as active by default
+      if (result.success && result.aspects) {
+        const allAspectKeys = new Set(
+          result.aspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+        );
+        setActiveAspects(allAspectKeys);
+      }
+
       setChartData(result);
     } catch (error) {
       console.error('Error:', error);

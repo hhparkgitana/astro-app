@@ -134,6 +134,17 @@ function ChartWheel({ chartData, activeAspects }) {
               : 'N/A';
             const tooltipText = `${aspect.planet1} ${aspectSymbol} ${aspect.planet2} • ${orbText}° • ${applyingText}`;
 
+            // Calculate line styling based on orb tightness
+            const getLineStyle = (orb) => {
+              if (orb < 1) return { width: 3.5, opacity: 1.0 };      // 0-1°: Very thick, fully opaque
+              if (orb < 3) return { width: 3.0, opacity: 0.85 };     // 1-3°: Thick, mostly opaque
+              if (orb < 5) return { width: 2.5, opacity: 0.7 };      // 3-5°: Medium, medium opacity
+              if (orb < 7) return { width: 2.0, opacity: 0.5 };      // 5-7°: Thin, more transparent
+              return { width: 1.5, opacity: 0.35 };                  // 7-8°: Very thin, quite transparent
+            };
+
+            const lineStyle = getLineStyle(aspect.orb);
+
             // Create line element
             const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
             line.setAttribute('x1', pos1.x);
@@ -141,8 +152,8 @@ function ChartWheel({ chartData, activeAspects }) {
             line.setAttribute('x2', pos2.x);
             line.setAttribute('y2', pos2.y);
             line.setAttribute('stroke', ASPECT_COLORS[aspect.type] || '#999');
-            line.setAttribute('stroke-width', '2');
-            line.setAttribute('stroke-opacity', '0.6');
+            line.setAttribute('stroke-width', lineStyle.width.toString());
+            line.setAttribute('stroke-opacity', lineStyle.opacity.toString());
             line.setAttribute('class', 'aspect-line');
             line.style.cursor = 'pointer';
 
