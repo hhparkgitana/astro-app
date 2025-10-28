@@ -87,19 +87,29 @@ function App() {
     const natalArray = Object.entries(natalPlanets).map(([key, planet]) => ({
       key,
       name: planet.name,
-      longitude: planet.longitude
+      longitude: planet.longitude,
+      velocity: 0  // Natal planets are fixed points
     }));
     const transitArray = Object.entries(transitPlanets).map(([key, planet]) => ({
       key,
       name: planet.name,
-      longitude: planet.longitude
+      longitude: planet.longitude,
+      velocity: planet.velocity !== undefined ? planet.velocity : 0
     }));
 
     // Calculate aspects between each natal planet and each transit planet
     for (const natalPlanet of natalArray) {
       for (const transitPlanet of transitArray) {
         const distance = getAngularDistance(natalPlanet.longitude, transitPlanet.longitude);
-        const aspect = findAspect(distance);
+
+        const aspect = findAspect(
+          distance,
+          8, // default orb
+          natalPlanet.velocity,
+          transitPlanet.velocity,
+          natalPlanet.longitude,
+          transitPlanet.longitude
+        );
 
         if (aspect) {
           aspects.push({
@@ -122,7 +132,8 @@ function App() {
     const planetArray = Object.entries(transitPlanets).map(([key, planet]) => ({
       key,
       name: planet.name,
-      longitude: planet.longitude
+      longitude: planet.longitude,
+      velocity: planet.velocity || 0
     }));
 
     // Calculate aspects for each pair (upper triangular matrix)
@@ -138,7 +149,14 @@ function App() {
         }
 
         const distance = getAngularDistance(planet1.longitude, planet2.longitude);
-        const aspect = findAspect(distance);
+        const aspect = findAspect(
+          distance,
+          8, // default orb
+          planet1.velocity,
+          planet2.velocity,
+          planet1.longitude,
+          planet2.longitude
+        );
 
         if (aspect) {
           aspects.push({

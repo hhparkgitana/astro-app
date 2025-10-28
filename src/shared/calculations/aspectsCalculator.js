@@ -42,27 +42,45 @@ function findAspect(distance, orb = 8, velocity1 = 0, velocity2 = 0, long1 = 0, 
       // Calculate if applying or separating
       let applying = null;
 
-      if (velocity1 !== undefined && velocity2 !== undefined) {
-        // Calculate relative velocity (how fast they're approaching/separating)
-        const relativeVelocity = velocity1 - velocity2;
+      if ((velocity1 !== undefined && velocity2 !== undefined) && (velocity1 !== 0 || velocity2 !== 0)) {
+        // Calculate how the angular distance is changing over time
+        // For planets moving in the same direction (both direct or both retro):
+        // - If planet1 is faster, it's catching up to planet2 (distance decreasing)
+        // - If planet2 is faster, they're moving apart (distance increasing)
 
-        // Determine which direction makes them closer to exact aspect
-        // If planet1 is "behind" planet2 in zodiac order for this aspect
-        let expectedDistance = (long2 - long1 + 360) % 360;
-        if (expectedDistance > 180) expectedDistance = 360 - expectedDistance;
+        // Get the longitudinal separation (accounting for zodiac wraparound)
+        let separation = (long2 - long1 + 360) % 360;
+        if (separation > 180) separation = 360 - separation;
 
-        // Compare current distance to exact aspect angle
-        if (distance < aspect.angle) {
-          // Currently under the exact angle
-          // Applying if distance is increasing toward exact angle
-          applying = relativeVelocity > 0;
-        } else if (distance > aspect.angle) {
-          // Currently over the exact angle
-          // Applying if distance is decreasing toward exact angle
-          applying = relativeVelocity < 0;
+        // Calculate if the angular distance is decreasing (applying) or increasing (separating)
+        // The rate of change of distance depends on relative velocity
+        const relativeVelocity = velocity2 - velocity1;
+
+        // Determine if they're moving toward or away from each other
+        let distanceChangeRate;
+        if (long2 > long1 && (long2 - long1) <= 180) {
+          // Planet 2 is ahead of planet 1 (normal case)
+          distanceChangeRate = relativeVelocity;
+        } else if (long1 > long2 && (long1 - long2) <= 180) {
+          // Planet 1 is ahead of planet 2
+          distanceChangeRate = -relativeVelocity;
         } else {
-          // Exact aspect - consider it applying if moving toward tighter orb
-          applying = false; // Exact, so technically separating from this point
+          // Wraparound case
+          distanceChangeRate = long2 > long1 ? -relativeVelocity : relativeVelocity;
+        }
+
+        // Now check if orb is getting tighter (applying) or wider (separating)
+        // The orb is the difference between actual distance and exact aspect angle
+        const currentOrb = diff; // This is Math.abs(distance - aspect.angle)
+
+        // If distance is less than exact angle, increasing distance means approaching exact
+        // If distance is more than exact angle, decreasing distance means approaching exact
+        if (distance < aspect.angle) {
+          // Need distance to increase to reach exact aspect
+          applying = distanceChangeRate > 0;
+        } else {
+          // Need distance to decrease to reach exact aspect
+          applying = distanceChangeRate < 0;
         }
       }
 

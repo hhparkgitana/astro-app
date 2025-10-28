@@ -29,6 +29,24 @@ function ChartWheel({
   const [showTransitNatalAspects, setShowTransitNatalAspects] = useState(true);
   const [showTransitAspects, setShowTransitAspects] = useState(false);
 
+  // Custom tooltip state
+  const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
+
+  // Tooltip handlers
+  const showTooltip = (event, content) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    setTooltip({
+      visible: true,
+      x: event.clientX,
+      y: event.clientY,
+      content
+    });
+  };
+
+  const hideTooltip = () => {
+    setTooltip({ visible: false, x: 0, y: 0, content: '' });
+  };
+
   if (!chartData || !chartData.success) {
     return <div>No chart data available</div>;
   }
@@ -197,6 +215,12 @@ function ChartWheel({
       const opacity = 1 - (aspect.orb / 8); // Tighter orb = more opaque
       const strokeWidth = 3 - (aspect.orb / 4); // Tighter orb = thicker
 
+      // Format tooltip
+      const applyingSeparating = aspect.applying !== null
+        ? (aspect.applying ? 'Applying' : 'Separating')
+        : 'N/A';
+      const tooltipText = `${aspect.planet1} ${glyphs.aspects[aspect.type]} ${aspect.planet2} • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+
       return (
         <line
           key={index}
@@ -209,6 +233,8 @@ function ChartWheel({
           opacity={Math.max(0.2, opacity)}
           style={{ cursor: 'pointer' }}
           onClick={() => onAspectToggle && onAspectToggle(aspect)}
+          onMouseEnter={(e) => showTooltip(e, tooltipText)}
+          onMouseLeave={hideTooltip}
         />
       );
     });
@@ -249,10 +275,18 @@ function ChartWheel({
       const color = colors.aspects[aspect.type];
       const opacity = Math.max(0.3, 1 - (aspect.orb / 8));
 
+      // Format tooltip
+      const applyingSeparating = aspect.applying !== null
+        ? (aspect.applying ? 'Applying' : 'Separating')
+        : 'N/A';
+      const tooltipText = `${aspect.planet1} (Natal) ${glyphs.aspects[aspect.type]} ${aspect.planet2} (Transit) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+
       return (
         <g
           key={`transit-natal-${index}`}
           onClick={() => onTransitAspectToggle && onTransitAspectToggle(aspect)}
+          onMouseEnter={(e) => showTooltip(e, tooltipText)}
+          onMouseLeave={hideTooltip}
           style={{ cursor: 'pointer' }}
         >
           {points.map((point, i) => (
@@ -293,6 +327,12 @@ function ChartWheel({
       const opacity = 1 - (aspect.orb / 8);
       const strokeWidth = 3 - (aspect.orb / 4);
 
+      // Format tooltip
+      const applyingSeparating = aspect.applying !== null
+        ? (aspect.applying ? 'Applying' : 'Separating')
+        : 'N/A';
+      const tooltipText = `${aspect.planet1} (Transit) ${glyphs.aspects[aspect.type]} ${aspect.planet2} (Transit) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+
       return (
         <line
           key={`transit-transit-${index}`}
@@ -304,6 +344,8 @@ function ChartWheel({
           strokeWidth={Math.max(0.5, strokeWidth)}
           opacity={Math.max(0.2, opacity)}
           style={{ cursor: 'pointer' }}
+          onMouseEnter={(e) => showTooltip(e, tooltipText)}
+          onMouseLeave={hideTooltip}
         />
       );
     });
@@ -450,6 +492,28 @@ function ChartWheel({
         )}
         <g id="angle-labels">{renderAngleLabels()}</g>
       </svg>
+
+      {/* Custom tooltip */}
+      {tooltip.visible && (
+        <div
+          style={{
+            position: 'fixed',
+            left: tooltip.x + 10,
+            top: tooltip.y + 10,
+            backgroundColor: 'rgba(0, 0, 0, 0.85)',
+            color: 'white',
+            padding: '8px 12px',
+            borderRadius: '4px',
+            fontSize: '13px',
+            pointerEvents: 'none',
+            zIndex: 10000,
+            whiteSpace: 'nowrap',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.3)'
+          }}
+        >
+          {tooltip.content}
+        </div>
+      )}
     </div>
   );
 }
