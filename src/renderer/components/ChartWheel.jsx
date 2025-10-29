@@ -166,6 +166,18 @@ function ChartWheel({
   };
 
   /**
+   * Format longitude as degrees and minutes within sign
+   * @param {number} longitude - Longitude in degrees (0-360)
+   * @returns {string} Formatted string like "15°32'"
+   */
+  const formatDegreeMinute = (longitude) => {
+    const degreesInSign = longitude % 30;
+    const degrees = Math.floor(degreesInSign);
+    const minutes = Math.round((degreesInSign - degrees) * 60);
+    return `${degrees}°${minutes.toString().padStart(2, '0')}'`;
+  };
+
+  /**
    * Render planets at a specific radius
    * @param {Object} planets - Planet data
    * @param {number} radius - Radius to place planets
@@ -177,6 +189,11 @@ function ChartWheel({
       const pos = pointOnCircle(center, center, radius, planet.longitude, ascendant);
       const glyph = glyphs.planets[planet.name];
 
+      // Format tooltip: "Planet Name: 15°32' Sign"
+      const degreeStr = formatDegreeMinute(planet.longitude);
+      const sign = getZodiacSign(planet.longitude);
+      const tooltipText = `${planet.name}: ${degreeStr} ${sign}`;
+
       return (
         <text
           key={key}
@@ -187,6 +204,9 @@ function ChartWheel({
           fontSize="20"
           fill={color}
           fontWeight="bold"
+          style={{ cursor: 'pointer' }}
+          onMouseEnter={(e) => showTooltip(e, tooltipText)}
+          onMouseLeave={hideTooltip}
         >
           {glyph}
         </text>
