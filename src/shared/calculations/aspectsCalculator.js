@@ -1,5 +1,9 @@
 /**
  * Calculate aspects between planets in a natal chart
+ *
+ * ⚠️ RENDERER PROCESS ONLY - This file uses ES6 exports for use with Vite in the browser.
+ * Main process (Node.js) CANNOT import this file - use chartCalculator.js instead,
+ * which has the aspect code inlined in CommonJS format.
  */
 
 const ASPECT_TYPES = {
