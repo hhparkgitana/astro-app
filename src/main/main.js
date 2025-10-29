@@ -504,6 +504,7 @@ You must analyze astrological charts using ONLY the data provided. Never invent 
 
           // Format results message
           const resultsMessage = `TRANSIT DATABASE IMPACT:\\n\\n` +
+            `Today's date: ${formatDate(new Date())}\\n` +
             `Transit: ${transitPlanet.toUpperCase()} ${aspect} on ${transitDate}\\n` +
             `Searching for natal ${targetPlanet === 'any' ? 'all planets' : targetPlanet.toUpperCase()} within ${searchOrb}° orb\\n\\n` +
             `Found ${transitResults.length} charts affected:\\n\\n` +
@@ -584,6 +585,7 @@ You must analyze astrological charts using ONLY the data provided. Never invent 
 
           // Format results message
           const resultsMessage = `TRANSIT TIMING RESULTS:\\n\\n` +
+            `Today's date: ${formatDate(now)}\\n` +
             `Looking for transiting ${transitPlanet.toUpperCase()} ${aspect} natal ${(natalPlanet || 'planet').toUpperCase()} at ${getZodiacSign(natalLongitude)}\\n` +
             `Period: ${formatDate(start)} to ${formatDate(end)}\\n\\n` +
             `Found ${transitResults.length} exact hit${transitResults.length !== 1 ? 's' : ''}:\\n\\n` +
