@@ -17,6 +17,9 @@ const { calculateSecondaryProgressions, formatProgressionInfo } = require(path.j
 // Load eclipse calculator
 const { findEclipses, findEclipsesAffectingChart, findEclipsesDatabaseImpact, formatEclipseInfo } = require(path.join(__dirname, '..', 'shared', 'calculations', 'eclipseCalculator.js'));
 
+// Load Sabian symbols utility
+const { getSabianSymbol } = require(path.join(__dirname, '..', 'shared', 'utils', 'sabianSymbols.js'));
+
 let mainWindow;
 
 function createWindow() {
@@ -159,15 +162,22 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
         contextMessage += `NATAL PLANETS:\n`;
         if (chart.planets) {
           Object.values(chart.planets).forEach(planet => {
+            const sabian = getSabianSymbol(planet.longitude);
             contextMessage += `${planet.name}: ${longitudeToZodiac(planet.longitude)}\n`;
+            contextMessage += `  Sabian Symbol: ${sabian.sign} ${sabian.degree}° - "${sabian.symbol}"\n`;
+            contextMessage += `  Keynote: ${sabian.keynote}\n`;
           });
         }
 
         // Natal Houses
         if (chart.ascendant) {
           contextMessage += `\nNATAL ANGLES:\n`;
+          const ascSabian = getSabianSymbol(chart.ascendant);
+          const mcSabian = getSabianSymbol(chart.midheaven);
           contextMessage += `Ascendant: ${longitudeToZodiac(chart.ascendant)}\n`;
+          contextMessage += `  Sabian Symbol: ${ascSabian.sign} ${ascSabian.degree}° - "${ascSabian.symbol}"\n`;
           contextMessage += `Midheaven: ${longitudeToZodiac(chart.midheaven)}\n`;
+          contextMessage += `  Sabian Symbol: ${mcSabian.sign} ${mcSabian.degree}° - "${mcSabian.symbol}"\n`;
         }
 
         // Natal Aspects
@@ -190,7 +200,9 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
           contextMessage += `\n⭐ CURRENT TRANSITS (${chart.transits.date} at ${chart.transits.time}):\n`;
           if (chart.transits.planets) {
             Object.values(chart.transits.planets).forEach(planet => {
+              const sabian = getSabianSymbol(planet.longitude);
               contextMessage += `Transit ${planet.name}: ${longitudeToZodiac(planet.longitude)}\n`;
+              contextMessage += `  Sabian Symbol: ${sabian.sign} ${sabian.degree}° - "${sabian.symbol}"\n`;
             });
           }
 
@@ -241,7 +253,10 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
 You must analyze astrological charts using ONLY the data provided. Never invent or assume aspects.
 
 SECONDARY PROGRESSIONS:
-This application supports secondary progressions using the day-for-a-year method. When Chart B shows progressed planets, interpret them as symbolic timing showing inner development and maturation. Progressed Sun moves ~1° per year, progressed Moon ~13° per year. Outer planets barely move in progressions.`,
+This application supports secondary progressions using the day-for-a-year method. When Chart B shows progressed planets, interpret them as symbolic timing showing inner development and maturation. Progressed Sun moves ~1° per year, progressed Moon ~13° per year. Outer planets barely move in progressions.
+
+SABIAN SYMBOLS:
+Each planet, angle (Ascendant, Midheaven), and transit position includes its Sabian Symbol - a symbolic image and keynote for that specific degree. The Sabian Symbols, channeled by Elsie Wheeler and interpreted by Marc Edmund Jones and Dane Rudhyar, provide rich symbolic meaning for the exact degree of each placement. When interpreting charts, you can reference these symbols to add depth and symbolic resonance to your analysis. The symbols are provided in the chart data for each planetary position and angle.`,
           messages: [{ role: 'user', content: contextMessage }],
           tools: [
             {

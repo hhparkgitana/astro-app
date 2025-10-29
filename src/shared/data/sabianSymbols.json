@@ -1,0 +1,2551 @@
+{
+  "metadata": {
+    "source": "Dane Rudhyar - An Astrological Mandala: The Cycle of Transformations and Its 360 Symbolic Phases",
+    "notes": "Sabian Symbols revealed by Elsie Wheeler, interpreted by Marc Edmund Jones, expanded by Dane Rudhyar",
+    "usage": "Match planet degree (round to nearest integer, 1-30) with sign to find symbol"
+  },
+  "aries": [
+    {
+      "degree": 1,
+      "symbol": "A woman just risen from the sea. A seal is embracing her.",
+      "keynote": "Emergence of new forms and of the potency of the urge toward self-manifestation.",
+      "phase": 1,
+      "theme": "individuation"
+    },
+    {
+      "degree": 2,
+      "symbol": "A comedian reveals human nature.",
+      "keynote": "The capacity to perceive and show to others the humor inherent in any life situation.",
+      "phase": 2,
+      "theme": "differentiation"
+    },
+    {
+      "degree": 3,
+      "symbol": "A cameo profile of a man, in the outline of his country.",
+      "keynote": "The power of clearly defined ideals and group-goals in enhancing the growth of the individual.",
+      "phase": 3,
+      "theme": "stabilization"
+    },
+    {
+      "degree": 4,
+      "symbol": "Two lovers strolling through a secluded walk.",
+      "keynote": "The blessing bestowed upon personal achievement by the spiritualization of the sex urge.",
+      "phase": 4,
+      "theme": "participation"
+    },
+    {
+      "degree": 5,
+      "symbol": "A triangle with wings.",
+      "keynote": "The spiritual blessing which strengthens individuals who, early in life, are able to accept the full responsibility of their destiny.",
+      "phase": 5,
+      "theme": "foundation"
+    },
+    {
+      "degree": 6,
+      "symbol": "A square brightly lighted on one side.",
+      "keynote": "The revelation, beyond an ego-viewpoint, of the essential nature of any being's well-established structure.",
+      "phase": 6,
+      "theme": "release"
+    },
+    {
+      "degree": 7,
+      "symbol": "A man successfully expressing himself in two realms at once.",
+      "keynote": "The ability to function satisfactorily in strictly human and intellectual situations as well as in inner realms of transcendent realization.",
+      "phase": 7,
+      "theme": "integration"
+    },
+    {
+      "degree": 8,
+      "symbol": "A large hat with streamers flying, facing east.",
+      "keynote": "The need to be socially relevant and to 'serve' the needs of the period, whatever one's own desires may be.",
+      "phase": 8,
+      "theme": "externalization"
+    },
+    {
+      "degree": 9,
+      "symbol": "A crystal gazer.",
+      "keynote": "The development of an inner realization of organic wholeness.",
+      "phase": 9,
+      "theme": "interiorization"
+    },
+    {
+      "degree": 10,
+      "symbol": "A teacher gives new symbolic forms to traditional images.",
+      "keynote": "The need to incorporate a vast array of information within a framework allowing the student to grasp the hidden side of what we accept as empirical data.",
+      "phase": 10,
+      "theme": "culmination"
+    },
+    {
+      "degree": 11,
+      "symbol": "The ruler of a nation.",
+      "keynote": "The power inherent in the competent and wise guidance of the collective activities of a group of responsible persons.",
+      "phase": 11,
+      "theme": "release"
+    },
+    {
+      "degree": 12,
+      "symbol": "A triangularly shaped flight of wild geese.",
+      "keynote": "Ideals that has a compelling power over the souls of a group who respond in full consciousness to its magnetic appeal.",
+      "phase": 12,
+      "theme": "expansion"
+    },
+    {
+      "degree": 13,
+      "symbol": "An unsuccessful bomb explosion.",
+      "keynote": "A comforting realization that all things are bound to fail when attempted prematurely.",
+      "phase": 13,
+      "theme": "challenge"
+    },
+    {
+      "degree": 14,
+      "symbol": "A serpent coiling near a man and a woman.",
+      "keynote": "Deeply rooted in past experiences, the secret longing for forbidden memories.",
+      "phase": 14,
+      "theme": "mutation"
+    },
+    {
+      "degree": 15,
+      "symbol": "An Indian weaving a blanket.",
+      "keynote": "The wholesome reliance upon one's own individual inner resources, and the serenity born of the sense of communion with the Mother Force.",
+      "phase": 15,
+      "theme": "technique"
+    },
+    {
+      "degree": 16,
+      "symbol": "Brownies dancing in the setting sun.",
+      "keynote": "The guidance and help of invisible 'companions' ever ready to provide necessary assistance to the earnest striver.",
+      "phase": 16,
+      "theme": "invocation"
+    },
+    {
+      "degree": 17,
+      "symbol": "Two prim spinsters.",
+      "keynote": "The immature boldness that a second-hand knowledge of life or a theoretical idealism may produce when confronted with the rich vitality of actual experience.",
+      "phase": 17,
+      "theme": "repression"
+    },
+    {
+      "degree": 18,
+      "symbol": "An empty hammock.",
+      "keynote": "The need to balance activity and rest, and to seek contact with deeper levels of being.",
+      "phase": 18,
+      "theme": "reorientation"
+    },
+    {
+      "degree": 19,
+      "symbol": "The magic carpet of Oriental imagery.",
+      "keynote": "The use of creative imagination in dealing with practical problems.",
+      "phase": 19,
+      "theme": "transmutation"
+    },
+    {
+      "degree": 20,
+      "symbol": "A young girl feeding birds in winter.",
+      "keynote": "The kindness and compassionate assistance that is the law of life in all realms of being.",
+      "phase": 20,
+      "theme": "compassion"
+    },
+    {
+      "degree": 21,
+      "symbol": "A pugilist entering the ring.",
+      "keynote": "The release and glorification of social aggressiveness.",
+      "phase": 21,
+      "theme": "sublimation"
+    },
+    {
+      "degree": 22,
+      "symbol": "The gate to the garden of all fulfilled desires.",
+      "keynote": "The reward for having faithfully and fully devoted one's whole being to a goal that transcends individualistic values.",
+      "phase": 22,
+      "theme": "fulfillment"
+    },
+    {
+      "degree": 23,
+      "symbol": "A woman in pastel colors carrying a heavy and valuable but veiled load.",
+      "keynote": "The gift of spiritual power which an individual who has fulfilled his evolutionary task holds in trust for his fellows.",
+      "phase": 23,
+      "theme": "seed"
+    },
+    {
+      "degree": 24,
+      "symbol": "Blown inward by the wind, the curtains of an open window take the shape of a cornucopia.",
+      "keynote": "The constant interplay between the individual's need for self-actualization and his environment's response to this need.",
+      "phase": 24,
+      "theme": "abundance"
+    },
+    {
+      "degree": 25,
+      "symbol": "A double promise.",
+      "keynote": "The realization that fulfillment in any life activity requires the ability to relate and to use polar opposites in a spirit of understanding and complementation.",
+      "phase": 25,
+      "theme": "polarity"
+    },
+    {
+      "degree": 26,
+      "symbol": "A man possessed of more gifts than he can hold.",
+      "keynote": "Obsession by potentiality.",
+      "phase": 26,
+      "theme": "overload"
+    },
+    {
+      "degree": 27,
+      "symbol": "Lost opportunity regained in the imagination.",
+      "keynote": "The development of the mind that is able to assess experience truly.",
+      "phase": 27,
+      "theme": "evaluation"
+    },
+    {
+      "degree": 28,
+      "symbol": "A large audience confronts the performer who disappointed its expectations.",
+      "keynote": "The necessity for mature preparation and self-criticism.",
+      "phase": 28,
+      "theme": "responsibility"
+    },
+    {
+      "degree": 29,
+      "symbol": "The music of the spheres.",
+      "keynote": "A cosmic approach to the basic polarity of existence.",
+      "phase": 29,
+      "theme": "harmony"
+    },
+    {
+      "degree": 30,
+      "symbol": "A duck pond and its brood.",
+      "keynote": "The realization of natural abundance and the total acceptance of one's own individuality as a gift of Nature.",
+      "phase": 30,
+      "theme": "tranquility"
+    }
+  ],
+  "taurus": [
+    {
+      "degree": 1,
+      "symbol": "A clear mountain stream.",
+      "keynote": "The pure, uncontaminated and spontaneous manifestation of one's own individual character.",
+      "phase": 31,
+      "theme": "naturalness"
+    },
+    {
+      "degree": 2,
+      "symbol": "An electrical storm.",
+      "keynote": "The cosmic forces that can be released through the disciplined use of the will.",
+      "phase": 32,
+      "theme": "power"
+    },
+    {
+      "degree": 3,
+      "symbol": "Natural steps lead to a lawn of clover in bloom.",
+      "keynote": "The gradual expansion of the individual's field of experience in harmony with natural processes.",
+      "phase": 33,
+      "theme": "growth"
+    },
+    {
+      "degree": 4,
+      "symbol": "The rainbow's pot of gold.",
+      "keynote": "Riches that come from linking the celestial and the earthly nature.",
+      "phase": 34,
+      "theme": "integration"
+    },
+    {
+      "degree": 5,
+      "symbol": "A widow at an open grave.",
+      "keynote": "The serenity of soul that comes to those who have triumphed over their passions.",
+      "phase": 35,
+      "theme": "transcendence"
+    },
+    {
+      "degree": 6,
+      "symbol": "A bridge being built across a gorge.",
+      "keynote": "The conquest of separativeness through group cooperation.",
+      "phase": 36,
+      "theme": "construction"
+    },
+    {
+      "degree": 7,
+      "symbol": "A woman of Samaria comes to draw water from the well.",
+      "keynote": "The meeting of the traditional past and of the creative spirit pointing to the future.",
+      "phase": 37,
+      "theme": "renewal"
+    },
+    {
+      "degree": 8,
+      "symbol": "A sleigh on land uncovered by snow.",
+      "keynote": "The value of anticipating future conditions in order to make full use of every opportunity.",
+      "phase": 38,
+      "theme": "preparation"
+    },
+    {
+      "degree": 9,
+      "symbol": "A Christmas tree decorated.",
+      "keynote": "The ability to express joy through the creation of special moments of celebration.",
+      "phase": 39,
+      "theme": "celebration"
+    },
+    {
+      "degree": 10,
+      "symbol": "A red cross nurse.",
+      "keynote": "Self-transcending service.",
+      "phase": 40,
+      "theme": "service"
+    },
+    {
+      "degree": 11,
+      "symbol": "A woman sprinkling new ground.",
+      "keynote": "Consecration and dedication to a new work.",
+      "phase": 41,
+      "theme": "consecration"
+    },
+    {
+      "degree": 12,
+      "symbol": "A young couple window shopping.",
+      "keynote": "Craving for new experiences and desire-patterns of consumption.",
+      "phase": 42,
+      "theme": "desire"
+    },
+    {
+      "degree": 13,
+      "symbol": "A porter carrying heavy baggage.",
+      "keynote": "The inner strength which may be assumed even under the greatest burden.",
+      "phase": 43,
+      "theme": "endurance"
+    },
+    {
+      "degree": 14,
+      "symbol": "Shellfish groping and children playing.",
+      "keynote": "The first stages in the transcendence of personal relationships.",
+      "phase": 44,
+      "theme": "spontaneity"
+    },
+    {
+      "degree": 15,
+      "symbol": "A man with a rakish silk hat, muffled against the cold, braves a storm.",
+      "keynote": "The courage needed to confront the superiority of natural forces and stand firm against them.",
+      "phase": 45,
+      "theme": "defiance"
+    },
+    {
+      "degree": 16,
+      "symbol": "An old teacher fails to interest his pupils in traditional knowledge.",
+      "keynote": "The difficulty of adjusting oneself to an evolutionary crisis which demands a new form of training.",
+      "phase": 46,
+      "theme": "obsolescence"
+    },
+    {
+      "degree": 17,
+      "symbol": "A symbolic battle between 'swords' and 'torches.'",
+      "keynote": "Refusing to depend upon the past, the seeker turns his back upon the 'loaded' dice of social and intellectual coercion.",
+      "phase": 47,
+      "theme": "emancipation"
+    },
+    {
+      "degree": 18,
+      "symbol": "A new continent rising out of the ocean.",
+      "keynote": "The emergence of new continental life-forms out of the all-mother Sea.",
+      "phase": 48,
+      "theme": "emergence"
+    },
+    {
+      "degree": 19,
+      "symbol": "A newly formed continent. A continent is revealed after the storms of the past have all dried up.",
+      "keynote": "The will to create new forms of existence.",
+      "phase": 49,
+      "theme": "foundation"
+    },
+    {
+      "degree": 20,
+      "symbol": "Wisps of wing-like clouds streaming across the sky.",
+      "keynote": "The awareness of spiritual forces at work.",
+      "phase": 50,
+      "theme": "aspiration"
+    },
+    {
+      "degree": 21,
+      "symbol": "A moving finger points to significant passages in a book.",
+      "keynote": "The Karmic function and responsibility implied in all relatedness.",
+      "phase": 51,
+      "theme": "karma"
+    },
+    {
+      "degree": 22,
+      "symbol": "White dove flying over troubled waters.",
+      "keynote": "The spiritual inspiration that comes to the individual in the overcoming of crisis.",
+      "phase": 52,
+      "theme": "peace"
+    },
+    {
+      "degree": 23,
+      "symbol": "A jewelry shop.",
+      "keynote": "The utilization of natural resources for the enhancing of the personal sense of worth, of beauty, and of prestige.",
+      "phase": 53,
+      "theme": "adornment"
+    },
+    {
+      "degree": 24,
+      "symbol": "An Indian warrior riding fiercely, human scalps hanging from his belt.",
+      "keynote": "Aggressiveness and emotional mobilization of energies.",
+      "phase": 54,
+      "theme": "aggression"
+    },
+    {
+      "degree": 25,
+      "symbol": "A large well-kept public park.",
+      "keynote": "Outer and inner space provided for the development and refreshment of the mind.",
+      "phase": 55,
+      "theme": "culture"
+    },
+    {
+      "degree": 26,
+      "symbol": "A Spaniard serenading his senorita.",
+      "keynote": "The overcoming of social taboos.",
+      "phase": 56,
+      "theme": "romance"
+    },
+    {
+      "degree": 27,
+      "symbol": "An old Indian woman selling the artifacts of her tribe to passers-by.",
+      "keynote": "The commercialization of cultural values.",
+      "phase": 57,
+      "theme": "exploitation"
+    },
+    {
+      "degree": 28,
+      "symbol": "A woman pursued by mature romance.",
+      "keynote": "The magnetism and fulfillment found in mature relationships.",
+      "phase": 58,
+      "theme": "fulfillment"
+    },
+    {
+      "degree": 29,
+      "symbol": "Two cobblers working at a table.",
+      "keynote": "The development of skill through practice and cooperation.",
+      "phase": 59,
+      "theme": "craftsmanship"
+    },
+    {
+      "degree": 30,
+      "symbol": "A peacock parading on the terrace of an old castle.",
+      "keynote": "The personal display of inherited gifts.",
+      "phase": 60,
+      "theme": "display"
+    }
+  ],
+  "gemini": [
+    {
+      "degree": 1,
+      "symbol": "A glass-bottomed boat reveals undersea wonders.",
+      "keynote": "The revelation of unconscious energies and submerged psychic structures.",
+      "phase": 61,
+      "theme": "discovery"
+    },
+    {
+      "degree": 2,
+      "symbol": "Santa Claus furtively filling stockings hanging in front of the fireplace.",
+      "keynote": "The rewards that come to those who, early in life, accept the social tradition and play their appointed role.",
+      "phase": 62,
+      "theme": "tradition"
+    },
+    {
+      "degree": 3,
+      "symbol": "The garden of the Tuileries in Paris.",
+      "keynote": "The cultivation of natural energies for collective use and recreation.",
+      "phase": 63,
+      "theme": "cultivation"
+    },
+    {
+      "degree": 4,
+      "symbol": "Holly and mistletoe reawaken old memories of Christmas.",
+      "keynote": "The yearly social ritual periodically reinforcing the collective values of the group.",
+      "phase": 64,
+      "theme": "memory"
+    },
+    {
+      "degree": 5,
+      "symbol": "A radical magazine displaying a sensational front page.",
+      "keynote": "The explosive tendency of repressed feelings and root emotions.",
+      "phase": 65,
+      "theme": "rebellion"
+    },
+    {
+      "degree": 6,
+      "symbol": "Drilling for oil.",
+      "keynote": "The avidity for knowledge and the conquest of obstacles to getting at the hidden treasures of Mother Earth.",
+      "phase": 66,
+      "theme": "investigation"
+    },
+    {
+      "degree": 7,
+      "symbol": "An old-fashioned well.",
+      "keynote": "The use of natural resources through understanding the past.",
+      "phase": 67,
+      "theme": "heritage"
+    },
+    {
+      "degree": 8,
+      "symbol": "Aroused strikers surround a factory.",
+      "keynote": "Protest against the privileges of wealth and power.",
+      "phase": 68,
+      "theme": "revolution"
+    },
+    {
+      "degree": 9,
+      "symbol": "A quiver filled with arrows.",
+      "keynote": "A blessed openness to new, higher meanings and values.",
+      "phase": 69,
+      "theme": "readiness"
+    },
+    {
+      "degree": 10,
+      "symbol": "An airplane performing a nose dive.",
+      "keynote": "Meeting the challenge of a crisis through courage and skill.",
+      "phase": 70,
+      "theme": "testing"
+    },
+    {
+      "degree": 11,
+      "symbol": "Newly opened lands offer the pioneer new opportunities for experience.",
+      "keynote": "The lure of the unknown and untested.",
+      "phase": 71,
+      "theme": "opportunity"
+    },
+    {
+      "degree": 12,
+      "symbol": "A Negro girl fights for her independence in the city.",
+      "keynote": "The attempt to reach out towards a higher level of being and the risks it entails.",
+      "phase": 72,
+      "theme": "aspiration"
+    },
+    {
+      "degree": 13,
+      "symbol": "A great musician at his piano.",
+      "keynote": "The realization that mastery of a skill is the reward of complete dedication to an ideal and a task.",
+      "phase": 73,
+      "theme": "mastery"
+    },
+    {
+      "degree": 14,
+      "symbol": "Bridging physical space and social differences in a telepathic conversation.",
+      "keynote": "The overcoming of physical limitations through one's mental powers.",
+      "phase": 74,
+      "theme": "telepathy"
+    },
+    {
+      "degree": 15,
+      "symbol": "Two Dutch children talking.",
+      "keynote": "The peaceful companionship of those who share a common cultural and religious background.",
+      "phase": 75,
+      "theme": "communion"
+    },
+    {
+      "degree": 16,
+      "symbol": "A woman activist in an emotional speech dramatizing her cause.",
+      "keynote": "The explosive energy of long-repressed contents of the subconscious.",
+      "phase": 76,
+      "theme": "catharsis"
+    },
+    {
+      "degree": 17,
+      "symbol": "The head of a robust youth changes into that of a mature thinker.",
+      "keynote": "The transformation of physical vitality into the power to build concepts and intellectual formulations.",
+      "phase": 77,
+      "theme": "maturation"
+    },
+    {
+      "degree": 18,
+      "symbol": "Two Chinese men talking Chinese in a Western crowd.",
+      "keynote": "The need for a new relatedness to one's own cultural values.",
+      "phase": 78,
+      "theme": "alienation"
+    },
+    {
+      "degree": 19,
+      "symbol": "A large archaic volume reveals a traditional wisdom.",
+      "keynote": "Contacting the all-human planetary Mind underlying any cultural and personal mentality.",
+      "phase": 79,
+      "theme": "tradition"
+    },
+    {
+      "degree": 20,
+      "symbol": "A modern cafeteria displays an abundance of food, products of various regions.",
+      "keynote": "The assimilation and multiform utilization of vast opportunities.",
+      "phase": 80,
+      "theme": "assimilation"
+    },
+    {
+      "degree": 21,
+      "symbol": "A labor demonstration.",
+      "keynote": "Protest against social inequities.",
+      "phase": 81,
+      "theme": "protest"
+    },
+    {
+      "degree": 22,
+      "symbol": "Dancing couples in a harvest festival.",
+      "keynote": "The wholesome enjoyment of organic processes and physicality in work and recreation.",
+      "phase": 82,
+      "theme": "vitality"
+    },
+    {
+      "degree": 23,
+      "symbol": "Three fledglings in a nest high in a tree.",
+      "keynote": "The need to consciously accept one's own life situation.",
+      "phase": 83,
+      "theme": "acceptance"
+    },
+    {
+      "degree": 24,
+      "symbol": "Children skating on ice.",
+      "keynote": "The release of energies in pure enjoyment of life.",
+      "phase": 84,
+      "theme": "play"
+    },
+    {
+      "degree": 25,
+      "symbol": "A man trimming palms.",
+      "keynote": "The subjugation of natural resources to the need for private or collective comfort and luxury.",
+      "phase": 85,
+      "theme": "cultivation"
+    },
+    {
+      "degree": 26,
+      "symbol": "Winter frost in the woods.",
+      "keynote": "The cyclic need for withdrawal of energies in social living.",
+      "phase": 86,
+      "theme": "dormancy"
+    },
+    {
+      "degree": 27,
+      "symbol": "A gypsy coming out of the forest.",
+      "keynote": "The irrepressible creativeness and wanderlust of the soul.",
+      "phase": 87,
+      "theme": "freedom"
+    },
+    {
+      "degree": 28,
+      "symbol": "Through bankruptcy, society gives him a fresh start.",
+      "keynote": "A realization that one's failures are the result of society's shortcomings.",
+      "phase": 88,
+      "theme": "release"
+    },
+    {
+      "degree": 29,
+      "symbol": "The first mockingbird of spring.",
+      "keynote": "Openness to new inspirations and messages from higher realms.",
+      "phase": 89,
+      "theme": "receptivity"
+    },
+    {
+      "degree": 30,
+      "symbol": "Bathing in a mountain stream under a waterfall.",
+      "keynote": "A return to the source in response to the call of nature.",
+      "phase": 90,
+      "theme": "purification"
+    }
+  ],
+  "cancer": [
+    {
+      "degree": 1,
+      "symbol": "On a ship the sailors lower an old flag and raise a new one.",
+      "keynote": "A radical change of allegiance exteriorized in a symbolical act: a point of no return.",
+      "phase": 91,
+      "theme": "transformation"
+    },
+    {
+      "degree": 2,
+      "symbol": "A man on a magic carpet observes vast vistas below him.",
+      "keynote": "The expansion of consciousness that a symbolical and transcultural kind of education makes possible.",
+      "phase": 92,
+      "theme": "vision"
+    },
+    {
+      "degree": 3,
+      "symbol": "A man bundled in fur leads a shaggy deer.",
+      "keynote": "The conquest of natural life urges through a forceful exercise of willpower.",
+      "phase": 93,
+      "theme": "control"
+    },
+    {
+      "degree": 4,
+      "symbol": "A cat arguing with a mouse.",
+      "keynote": "The attempt to use peaceful means to deal with irrepressible or subversive elements.",
+      "phase": 94,
+      "theme": "persuasion"
+    },
+    {
+      "degree": 5,
+      "symbol": "An automobile wrecked by a train.",
+      "keynote": "The mistake of pitting one's will against superior power.",
+      "phase": 95,
+      "theme": "overconfidence"
+    },
+    {
+      "degree": 6,
+      "symbol": "Game birds feathering their nests.",
+      "keynote": "The concern of mature individuals for the welfare and safety of the coming generation.",
+      "phase": 96,
+      "theme": "nurturing"
+    },
+    {
+      "degree": 7,
+      "symbol": "Two fairies dancing on a moonlit night.",
+      "keynote": "Attunement to cosmic order.",
+      "phase": 97,
+      "theme": "harmony"
+    },
+    {
+      "degree": 8,
+      "symbol": "Dressed in rabbit fur, a man braves the storm.",
+      "keynote": "The identification with Nature forces to preserve self-identity in face of the unknown.",
+      "phase": 98,
+      "theme": "survival"
+    },
+    {
+      "degree": 9,
+      "symbol": "A small naked girl bends over a pond trying to catch a fish.",
+      "keynote": "The intuitive knowledge of the essence of being which precedes any truly objective inquiry.",
+      "phase": 99,
+      "theme": "innocence"
+    },
+    {
+      "degree": 10,
+      "symbol": "A large diamond in the first stages of the cutting process.",
+      "keynote": "A response to human recognition and achievement that blesses with its radiant power the present moment.",
+      "phase": 100,
+      "theme": "potential"
+    },
+    {
+      "degree": 11,
+      "symbol": "A clown making grimaces.",
+      "keynote": "The value of humor as man's one release from the constrictions of his official group-role.",
+      "phase": 101,
+      "theme": "release"
+    },
+    {
+      "degree": 12,
+      "symbol": "A Chinese woman nursing a baby whose aura reveals him to be the reincarnation of a great teacher.",
+      "keynote": "The revelation of latent worth.",
+      "phase": 102,
+      "theme": "recognition"
+    },
+    {
+      "degree": 13,
+      "symbol": "One hand slightly flexed with a very prominent thumb.",
+      "keynote": "The power of the will when confronted with a crucial decision.",
+      "phase": 103,
+      "theme": "determination"
+    },
+    {
+      "degree": 14,
+      "symbol": "A very old man facing a vast dark space to the northeast.",
+      "keynote": "After completing a cycle of existence, the mind reabsorbs its contents and faces the unknown in sheer, fearless faith.",
+      "phase": 104,
+      "theme": "completion"
+    },
+    {
+      "degree": 15,
+      "symbol": "A group of people who have overeaten and enjoyed it.",
+      "keynote": "The enjoyment of temporary freedom from the often oppressive social patterns of group responsibility and conformity.",
+      "phase": 105,
+      "theme": "indulgence"
+    },
+    {
+      "degree": 16,
+      "symbol": "A man studying a mandala in front of him, with the help of a very ancient book.",
+      "keynote": "Reaching out toward the universal and all encompassing symbols of spiritual reality which fulfill and illumine existence.",
+      "phase": 106,
+      "theme": "contemplation"
+    },
+    {
+      "degree": 17,
+      "symbol": "The seed grows into knowledge and life.",
+      "keynote": "The unfoldment of the original experience.",
+      "phase": 107,
+      "theme": "development"
+    },
+    {
+      "degree": 18,
+      "symbol": "A hen scratching for her chicks.",
+      "keynote": "The strongly felt urge for individual self-expression and activity in social fields.",
+      "phase": 108,
+      "theme": "providence"
+    },
+    {
+      "degree": 19,
+      "symbol": "A priest performing a marriage ceremony.",
+      "keynote": "The ritualization of the sex function.",
+      "phase": 109,
+      "theme": "consecration"
+    },
+    {
+      "degree": 20,
+      "symbol": "American Indians, performing a ritual to the sun.",
+      "keynote": "Return to tribal roots as a transcendent unity of human experience.",
+      "phase": 110,
+      "theme": "worship"
+    },
+    {
+      "degree": 21,
+      "symbol": "A famous singer is proving her virtuosity during an operatic performance.",
+      "keynote": "The mastery that comes in performing specialized social rituals.",
+      "phase": 111,
+      "theme": "virtuosity"
+    },
+    {
+      "degree": 22,
+      "symbol": "A woman awaiting a sailboat.",
+      "keynote": "The longing for transcendent new developments in a protected atmosphere.",
+      "phase": 112,
+      "theme": "expectancy"
+    },
+    {
+      "degree": 23,
+      "symbol": "The meeting of a literary society.",
+      "keynote": "The cultural and intellectual values of the past are renewed and refined in the present.",
+      "phase": 113,
+      "theme": "culture"
+    },
+    {
+      "degree": 24,
+      "symbol": "A woman and two men, castaways from a shipwreck on a deserted island in the South Seas.",
+      "keynote": "The fateful confrontation with karmic results of a long-ingrained evasion of relationship.",
+      "phase": 114,
+      "theme": "karma"
+    },
+    {
+      "degree": 25,
+      "symbol": "A dark shadow or mantle thrown suddenly over the right shoulder.",
+      "keynote": "The gift of power to meet a weakening of inherent vitality.",
+      "phase": 115,
+      "theme": "compensation"
+    },
+    {
+      "degree": 26,
+      "symbol": "Guests are reading in the library of a luxurious home.",
+      "keynote": "The opening of new horizons of experience through social interaction.",
+      "phase": 116,
+      "theme": "enrichment"
+    },
+    {
+      "degree": 27,
+      "symbol": "A violent storm in a residential canyon filled with valuable homes.",
+      "keynote": "The violent explosion of long-contained forces.",
+      "phase": 117,
+      "theme": "upheaval"
+    },
+    {
+      "degree": 28,
+      "symbol": "A modern Pocahontas.",
+      "keynote": "The courage to affirm one's own truth and stand up, alone if need be, for one's ideals.",
+      "phase": 118,
+      "theme": "courage"
+    },
+    {
+      "degree": 29,
+      "symbol": "A muse weighing newborn twins in golden scales.",
+      "keynote": "The intuitive scrutiny of every factor involved in seeking an ultimate solution.",
+      "phase": 119,
+      "theme": "discernment"
+    },
+    {
+      "degree": 30,
+      "symbol": "A daughter of the American Revolution.",
+      "keynote": "Individual glorification through collective values which one endorses with enthusiasm.",
+      "phase": 120,
+      "theme": "identification"
+    }
+  ],
+  "leo": [
+    {
+      "degree": 1,
+      "symbol": "Blood rushes to a man's head as his vital energies are mobilized under the spur of ambition.",
+      "keynote": "The energy released by the forceful expression of the will.",
+      "phase": 121,
+      "theme": "power"
+    },
+    {
+      "degree": 2,
+      "symbol": "An epidemic of mumps.",
+      "keynote": "The spreading power of individual contacts in an inflamed state.",
+      "phase": 122,
+      "theme": "contagion"
+    },
+    {
+      "degree": 3,
+      "symbol": "A woman having her hair bobbed.",
+      "keynote": "The deliberate transformation of a personal complex through personal effort.",
+      "phase": 123,
+      "theme": "transformation"
+    },
+    {
+      "degree": 4,
+      "symbol": "A man formally dressed and a deer with its horns folded.",
+      "keynote": "The frontiers of consciousness can be expanded through formal techniques of mental development.",
+      "phase": 124,
+      "theme": "refinement"
+    },
+    {
+      "degree": 5,
+      "symbol": "Rock formations at the edge of a precipice.",
+      "keynote": "The ruggedness of human character revealed in a crisis.",
+      "phase": 125,
+      "theme": "endurance"
+    },
+    {
+      "degree": 6,
+      "symbol": "An old-fashioned woman and an up-to-date girl.",
+      "keynote": "The contrast between tradition and innovation in approaching vital situations.",
+      "phase": 126,
+      "theme": "contrast"
+    },
+    {
+      "degree": 7,
+      "symbol": "The constellations in the sky.",
+      "keynote": "The capacity to recognize from a vast accumulation of seemingly chaotic matters a few basic and meaningful configurations.",
+      "phase": 127,
+      "theme": "pattern"
+    },
+    {
+      "degree": 8,
+      "symbol": "A communist activist spreading his revolutionary ideals.",
+      "keynote": "The emotional and ideological release of collective energies through conscious participation in the 'magic' of mass movements.",
+      "phase": 128,
+      "theme": "activism"
+    },
+    {
+      "degree": 9,
+      "symbol": "Glass blowers.",
+      "keynote": "The skill and perseverance demanded when creative inspiration and vital urges are transformed into cultural products.",
+      "phase": 129,
+      "theme": "craftsmanship"
+    },
+    {
+      "degree": 10,
+      "symbol": "Early morning dew sparkles as sunlight floods the field.",
+      "keynote": "The exalting challenge of new opportunities at the threshold of a new cycle.",
+      "phase": 130,
+      "theme": "renewal"
+    },
+    {
+      "degree": 11,
+      "symbol": "Children on a swing in a huge oak tree.",
+      "keynote": "The development of the most spiritual faculties through the constant cultivation of one's feeling-responsiveness to life.",
+      "phase": 131,
+      "theme": "joy"
+    },
+    {
+      "degree": 12,
+      "symbol": "An evening lawn party of adults.",
+      "keynote": "The poise that comes from a constant inner and outer cultivation of aristocratic manners.",
+      "phase": 132,
+      "theme": "elegance"
+    },
+    {
+      "degree": 13,
+      "symbol": "An old sea captain rocking on the porch of his cottage.",
+      "keynote": "Peace of mind found in becoming completely oneself and in working in complete harmony with one's being.",
+      "phase": 133,
+      "theme": "serenity"
+    },
+    {
+      "degree": 14,
+      "symbol": "A human soul seeking opportunities for outward manifestation.",
+      "keynote": "The urgency of the quest for new modes of expression at the beginning of a new cycle of experience.",
+      "phase": 134,
+      "theme": "seeking"
+    },
+    {
+      "degree": 15,
+      "symbol": "A pageant moving along a street packed with people.",
+      "keynote": "The collective display of a many-sided nature and the value of rite.",
+      "phase": 135,
+      "theme": "ceremony"
+    },
+    {
+      "degree": 16,
+      "symbol": "Sunshine just after a storm.",
+      "keynote": "The capacity to rebound swiftly from the trials experienced on the path of self-actualization.",
+      "phase": 136,
+      "theme": "resilience"
+    },
+    {
+      "degree": 17,
+      "symbol": "A volunteer church choir singing.",
+      "keynote": "The quality of devotion and togetherness that can be brought to a human community by people of like mind and dedication.",
+      "phase": 137,
+      "theme": "devotion"
+    },
+    {
+      "degree": 18,
+      "symbol": "A chemist conducts an experiment for his students.",
+      "keynote": "The transformative power generated by a conscious and total reliance upon the cyclic process of existence.",
+      "phase": 138,
+      "theme": "demonstration"
+    },
+    {
+      "degree": 19,
+      "symbol": "A houseboat party.",
+      "keynote": "The enjoyment of life energies in a new communal and unbound fashion.",
+      "phase": 139,
+      "theme": "freedom"
+    },
+    {
+      "degree": 20,
+      "symbol": "American Indians performing a ritual to the sun.",
+      "keynote": "The value of sun worship as a point of integration for collective as well as individual energies.",
+      "phase": 140,
+      "theme": "worship"
+    },
+    {
+      "degree": 21,
+      "symbol": "Chickens intoxicated by homemade wine.",
+      "keynote": "The dangers and thrills accompanying a release from cultural inhibitions.",
+      "phase": 141,
+      "theme": "intoxication"
+    },
+    {
+      "degree": 22,
+      "symbol": "A carrier pigeon fulfilling its mission.",
+      "keynote": "The value of the training that perfects inherent faculties for performance in social situations.",
+      "phase": 142,
+      "theme": "service"
+    },
+    {
+      "degree": 23,
+      "symbol": "A bareback rider displays her dangerous skill.",
+      "keynote": "The audacity and perseverance required to control and play with the powerful energies of the vital realm in human existence.",
+      "phase": 143,
+      "theme": "daring"
+    },
+    {
+      "degree": 24,
+      "symbol": "An untidy unkempt man.",
+      "keynote": "The escape from convention and conformity in a total commitment to a transcendent goal.",
+      "phase": 144,
+      "theme": "nonconformity"
+    },
+    {
+      "degree": 25,
+      "symbol": "A large camel is seen crossing a vast and forbidding desert.",
+      "keynote": "The nobility of soul which courage gives to those who, although confronted by the immensity of the cosmos, refuse to submit but march on.",
+      "phase": 145,
+      "theme": "perseverance"
+    },
+    {
+      "degree": 26,
+      "symbol": "After the heavy storm, a rainbow.",
+      "keynote": "The peace of mind which is granted to those who have successfully faced inner storms and outer opposition.",
+      "phase": 146,
+      "theme": "blessing"
+    },
+    {
+      "degree": 27,
+      "symbol": "Daybreak. The luminescence of dawn in the eastern sky.",
+      "keynote": "The exalting challenge of new opportunities at the threshold of a new cycle.",
+      "phase": 147,
+      "theme": "promise"
+    },
+    {
+      "degree": 28,
+      "symbol": "Many little birds on the limb of a large tree.",
+      "keynote": "The common bond which unites all individuals who participate in a collective project.",
+      "phase": 148,
+      "theme": "community"
+    },
+    {
+      "degree": 29,
+      "symbol": "A mermaid emerges from the ocean waves ready for rebirth in human form.",
+      "keynote": "The stage at which the individual, having gone through the transforming test of emotional rebirth, is ready to assume a greater role in society.",
+      "phase": 149,
+      "theme": "emergence"
+    },
+    {
+      "degree": 30,
+      "symbol": "An unsealed letter.",
+      "keynote": "Inner knowledge can be shared at the level of everyday living but must be individualized to be communicated.",
+      "phase": 150,
+      "theme": "openness"
+    }
+  ],
+  "virgo": [
+    {
+      "degree": 1,
+      "symbol": "A man's head.",
+      "keynote": "The capacity to project one's vision upon the canvas of reality.",
+      "phase": 151,
+      "theme": "visualization"
+    },
+    {
+      "degree": 2,
+      "symbol": "A large white cross dominates the landscape.",
+      "keynote": "The imperative necessity of giving form to and structured meaning to the new potentiality being released.",
+      "phase": 152,
+      "theme": "structure"
+    },
+    {
+      "degree": 3,
+      "symbol": "Two guardian angels.",
+      "keynote": "Invisible help and protection in times of crisis.",
+      "phase": 153,
+      "theme": "protection"
+    },
+    {
+      "degree": 4,
+      "symbol": "Black and white children play together happily.",
+      "keynote": "The overcoming of socio-cultural prejudices.",
+      "phase": 154,
+      "theme": "innocence"
+    },
+    {
+      "degree": 5,
+      "symbol": "A man becoming aware of nature spirits and normally unseen spiritual agencies.",
+      "keynote": "The development of a deeper sense of relationship between the individual consciousness and the many aspects of the realm of nature.",
+      "phase": 155,
+      "theme": "awareness"
+    },
+    {
+      "degree": 6,
+      "symbol": "A merry-go-round.",
+      "keynote": "The nostalgia for the innocent happiness and unself-conscious wholeness of childhood.",
+      "phase": 156,
+      "theme": "nostalgia"
+    },
+    {
+      "degree": 7,
+      "symbol": "A harem.",
+      "keynote": "The danger of requiring more from others than one is able to give them.",
+      "phase": 157,
+      "theme": "exploitation"
+    },
+    {
+      "degree": 8,
+      "symbol": "A five-year-old child takes a first dancing lesson.",
+      "keynote": "The initial training of consciousness, both to make it fit the prevailing socio-cultural patterns and to fulfill its own individual potentialities.",
+      "phase": 158,
+      "theme": "training"
+    },
+    {
+      "degree": 9,
+      "symbol": "A man making a futurist drawing.",
+      "keynote": "The capacity to picture to oneself clearly the salient features and the overall meaning of any life situation.",
+      "phase": 159,
+      "theme": "vision"
+    },
+    {
+      "degree": 10,
+      "symbol": "Two heads looking out and beyond the shadows.",
+      "keynote": "The development of the inner realization of transcendent factors in and through crises in human relationship.",
+      "phase": 160,
+      "theme": "transcendence"
+    },
+    {
+      "degree": 11,
+      "symbol": "A boy molded in his mother's aspirations for him.",
+      "keynote": "Subservience of the individual to his 'original' vision.",
+      "phase": 161,
+      "theme": "conditioning"
+    },
+    {
+      "degree": 12,
+      "symbol": "A bride with her veil snatched away.",
+      "keynote": "The bursting of a bubble of illusion. Revelation of the truth.",
+      "phase": 162,
+      "theme": "revelation"
+    },
+    {
+      "degree": 13,
+      "symbol": "A powerful statesman overcomes a state of political hysteria.",
+      "keynote": "The power of clear-cut decisions and of a logical mind to give real substance to meaningful ideals.",
+      "phase": 163,
+      "theme": "leadership"
+    },
+    {
+      "degree": 14,
+      "symbol": "A family tree.",
+      "keynote": "An appreciation of the elements which have gone into the formation of one's existence and character.",
+      "phase": 164,
+      "theme": "ancestry"
+    },
+    {
+      "degree": 15,
+      "symbol": "An ornamental handkerchief.",
+      "keynote": "The ability to use common devices in a more meaningful way, thus revealing or developing latent imaginative faculties.",
+      "phase": 165,
+      "theme": "artistry"
+    },
+    {
+      "degree": 16,
+      "symbol": "An orangutan.",
+      "keynote": "The power of spiritual commitment at times of personal crisis and its compulsive overtones.",
+      "phase": 166,
+      "theme": "instinct"
+    },
+    {
+      "degree": 17,
+      "symbol": "A volcanic eruption.",
+      "keynote": "The explosive energy of long-repressed contents of the subconscious.",
+      "phase": 167,
+      "theme": "eruption"
+    },
+    {
+      "degree": 18,
+      "symbol": "Two girls playing with a ouija board.",
+      "keynote": "The search for a new and more inclusive understanding of the workings of universal forces.",
+      "phase": 168,
+      "theme": "exploration"
+    },
+    {
+      "degree": 19,
+      "symbol": "A swimming race.",
+      "keynote": "The stimulating and strengthening power of competition and short term objectives.",
+      "phase": 169,
+      "theme": "competition"
+    },
+    {
+      "degree": 20,
+      "symbol": "A caravan of cars headed to the west coast.",
+      "keynote": "The need for cooperative efforts in reaching any symbolic or transcendent goal.",
+      "phase": 170,
+      "theme": "migration"
+    },
+    {
+      "degree": 21,
+      "symbol": "A girl's basketball team.",
+      "keynote": "A new type of physical and political interaction seeking to supersede aggressive and violent means of achieving social goals.",
+      "phase": 171,
+      "theme": "cooperation"
+    },
+    {
+      "degree": 22,
+      "symbol": "A royal coat of arms.",
+      "keynote": "The assurance of immortality which dedication and service to a transpersonal Whole alone can bestow.",
+      "phase": 172,
+      "theme": "nobility"
+    },
+    {
+      "degree": 23,
+      "symbol": "A lion tamer displays his fearlessness and skill.",
+      "keynote": "The courage required to face the high powers of the vital realm which culture has repressed.",
+      "phase": 173,
+      "theme": "mastery"
+    },
+    {
+      "degree": 24,
+      "symbol": "Mary and her white lamb.",
+      "keynote": "The realization of inner dependences which insure that the Divine will affect all that naturally proceeds from true being.",
+      "phase": 174,
+      "theme": "innocence"
+    },
+    {
+      "degree": 25,
+      "symbol": "A flag at half-mast in front of a public building.",
+      "keynote": "The identification of the individual with a collective truth or value.",
+      "phase": 175,
+      "theme": "mourning"
+    },
+    {
+      "degree": 26,
+      "symbol": "A boy with a censer serves the priest near the altar.",
+      "keynote": "The subjection of the natural energies of the vital to the religious experience.",
+      "phase": 176,
+      "theme": "devotion"
+    },
+    {
+      "degree": 27,
+      "symbol": "A group of aristocratic ladies meet ceremonially at a court's function.",
+      "keynote": "The ability to use social forms and skills for the sake of personal prestige.",
+      "phase": 177,
+      "theme": "formality"
+    },
+    {
+      "degree": 28,
+      "symbol": "A baldheaded man who has seized power.",
+      "keynote": "The sheer power of personality in times that call for decision.",
+      "phase": 178,
+      "theme": "authority"
+    },
+    {
+      "degree": 29,
+      "symbol": "A man gaining secret knowledge from an ancient scroll he is reading.",
+      "keynote": "The realization that knowledge is power.",
+      "phase": 179,
+      "theme": "knowledge"
+    },
+    {
+      "degree": 30,
+      "symbol": "A false call unheeded. A man is disillusioned.",
+      "keynote": "A new cycle of experience is about to begin. A person must let go of past illusions.",
+      "phase": 180,
+      "theme": "disillusionment"
+    }
+  ],
+  "libra": [
+    {
+      "degree": 1,
+      "symbol": "A butterfly made perfect by a dart through it.",
+      "keynote": "The fixation of a perfect moment in evolution beyond which 'nothing' can develop.",
+      "phase": 181,
+      "theme": "perfection"
+    },
+    {
+      "degree": 2,
+      "symbol": "The light of the sixth race transmuted to the seventh.",
+      "keynote": "The gift of knowledge which every epoch bequeaths to the future.",
+      "phase": 182,
+      "theme": "evolution"
+    },
+    {
+      "degree": 3,
+      "symbol": "The dawn of a new day reveals everything changed.",
+      "keynote": "The ever-present possibility of beginning again on a new foundation of values.",
+      "phase": 183,
+      "theme": "renewal"
+    },
+    {
+      "degree": 4,
+      "symbol": "A group of young people sit in spiritual communion around a campfire.",
+      "keynote": "The overthrowing of the old and the revelation of new potentialities of living.",
+      "phase": 184,
+      "theme": "communion"
+    },
+    {
+      "degree": 5,
+      "symbol": "A man teaching new forms for old symbols.",
+      "keynote": "The transformation of physical vitality into the potency of significant living.",
+      "phase": 185,
+      "theme": "teaching"
+    },
+    {
+      "degree": 6,
+      "symbol": "A man watches his ideals taking a concrete form before his inner vision.",
+      "keynote": "The need to visualize one's dreams or ideals in order to make them truly effective.",
+      "phase": 186,
+      "theme": "manifestation"
+    },
+    {
+      "degree": 7,
+      "symbol": "A woman feeding chickens and protecting them from the hawks.",
+      "keynote": "Whom the Gods would destroy, they first make mad with power.",
+      "phase": 187,
+      "theme": "protection"
+    },
+    {
+      "degree": 8,
+      "symbol": "A blazing fireplace in a deserted home.",
+      "keynote": "Reliance upon one's own inner strength.",
+      "phase": 188,
+      "theme": "self-reliance"
+    },
+    {
+      "degree": 9,
+      "symbol": "Three old masters hanging in a special room of an art gallery.",
+      "keynote": "The immortal achievements of cultural excellence.",
+      "phase": 189,
+      "theme": "tradition"
+    },
+    {
+      "degree": 10,
+      "symbol": "A canoe approaching safety through dangerous waters.",
+      "keynote": "The knowledge and skill which avails a person to reach his goal.",
+      "phase": 190,
+      "theme": "navigation"
+    },
+    {
+      "degree": 11,
+      "symbol": "A professor peering over his glasses at his students.",
+      "keynote": "The overtone of superiority implied in all interpersonal relationships based on purely intellectual and rational faculties.",
+      "phase": 191,
+      "theme": "intellect"
+    },
+    {
+      "degree": 12,
+      "symbol": "Miners emerging from a deep coal mine.",
+      "keynote": "Readiness to face the results of past actions and to begin a new cycle of experience.",
+      "phase": 192,
+      "theme": "emergence"
+    },
+    {
+      "degree": 13,
+      "symbol": "Children blowing soap bubbles.",
+      "keynote": "The sheer enjoyment of seeing one's dreams made real, however transitory their materialization may prove.",
+      "phase": 193,
+      "theme": "play"
+    },
+    {
+      "degree": 14,
+      "symbol": "A noon siesta.",
+      "keynote": "The need for recuperation within the social pattern of everyday living.",
+      "phase": 194,
+      "theme": "rest"
+    },
+    {
+      "degree": 15,
+      "symbol": "Circular paths.",
+      "keynote": "The awareness of the limitations and value of a well-organized and structured life process.",
+      "phase": 195,
+      "theme": "structure"
+    },
+    {
+      "degree": 16,
+      "symbol": "A boat landing washed away by storm.",
+      "keynote": "The destructive intervention of superphysical forces in human affairs.",
+      "phase": 196,
+      "theme": "upheaval"
+    },
+    {
+      "degree": 17,
+      "symbol": "A retired sea captain watches ships entering and leaving the harbor.",
+      "keynote": "The capacity to gain inner satisfaction and a new kind of strength from the awareness of the achievements of one's progeny.",
+      "phase": 197,
+      "theme": "observation"
+    },
+    {
+      "degree": 18,
+      "symbol": "Two men placed under arrest.",
+      "keynote": "The breakdown of inhibiting factors in consciousness.",
+      "phase": 198,
+      "theme": "constraint"
+    },
+    {
+      "degree": 19,
+      "symbol": "A gang of robbers in hiding.",
+      "keynote": "The protest of the individual against the pretenses of society and its artificial values.",
+      "phase": 199,
+      "theme": "rebellion"
+    },
+    {
+      "degree": 20,
+      "symbol": "A rabbi performing his duties.",
+      "keynote": "The presentation of spiritual prototypes to the worshipers assembled in a temple.",
+      "phase": 200,
+      "theme": "ritual"
+    },
+    {
+      "degree": 21,
+      "symbol": "A crowd upon a beach.",
+      "keynote": "The longing of the mature individual for a life of feeling untrammeled by sociocultural restraints.",
+      "phase": 201,
+      "theme": "freedom"
+    },
+    {
+      "degree": 22,
+      "symbol": "A child giving birds a drink at a fountain.",
+      "keynote": "The concern of simple souls for even the humble aspects of life.",
+      "phase": 202,
+      "theme": "compassion"
+    },
+    {
+      "degree": 23,
+      "symbol": "Chanticleer.",
+      "keynote": "The glorification of the individual in performance.",
+      "phase": 203,
+      "theme": "pride"
+    },
+    {
+      "degree": 24,
+      "symbol": "A butterfly with the right wing more perfectly formed.",
+      "keynote": "The transformative development which occurs as one polarizes one's consciousness in the higher mind.",
+      "phase": 204,
+      "theme": "transformation"
+    },
+    {
+      "degree": 25,
+      "symbol": "The sight of an autumn leaf brings to a pilgrim the sudden revelation of the mystery of life and death.",
+      "keynote": "The capacity to gain inner strength by accepting separation from one's peers and taking a totally individual journey.",
+      "phase": 205,
+      "theme": "revelation"
+    },
+    {
+      "degree": 26,
+      "symbol": "An eagle and a large white dove turning into each other.",
+      "keynote": "The transformative interplay of forces which reveal to man the workings of Nature.",
+      "phase": 206,
+      "theme": "alchemy"
+    },
+    {
+      "degree": 27,
+      "symbol": "An airplane sails high in the clear sky.",
+      "keynote": "The discovery and use of hidden powers within the psyche which enable man to transcend earthly limitations.",
+      "phase": 207,
+      "theme": "transcendence"
+    },
+    {
+      "degree": 28,
+      "symbol": "A man becoming aware of spiritual forces surrounding and assisting him.",
+      "keynote": "The gift of spiritual power for those who know how to invoke it.",
+      "phase": 208,
+      "theme": "invocation"
+    },
+    {
+      "degree": 29,
+      "symbol": "Mankind's vast enduring effort reaches its apotheosis in the world of culture.",
+      "keynote": "The highest reward for undeviating adherence to a process of Initiation.",
+      "phase": 209,
+      "theme": "attainment"
+    },
+    {
+      "degree": 30,
+      "symbol": "Three mounds of knowledge on a philosopher's head.",
+      "keynote": "The fulfillment of an individual's creative and original destiny.",
+      "phase": 210,
+      "theme": "wisdom"
+    }
+  ],
+  "scorpio": [
+    {
+      "degree": 1,
+      "symbol": "A sightseeing bus.",
+      "keynote": "The fundamental externalizing facet of the growth of personality.",
+      "phase": 211,
+      "theme": "observation"
+    },
+    {
+      "degree": 2,
+      "symbol": "A delicate bottle of perfume lies broken, releasing its fragrance.",
+      "keynote": "The fixation of a perfect moment in evolution beyond which 'nothing' can develop.",
+      "phase": 212,
+      "theme": "release"
+    },
+    {
+      "degree": 3,
+      "symbol": "A house-raising party in a small village enlists the neighbors' cooperation.",
+      "keynote": "The feeling of community and the satisfaction which comes from taking part in a united effort.",
+      "phase": 213,
+      "theme": "cooperation"
+    },
+    {
+      "degree": 4,
+      "symbol": "A youth holding a lighted candle in a devotional ritual gains a sense of the great 'Other World.'",
+      "keynote": "The call of the soul to the self-conscious mind.",
+      "phase": 214,
+      "theme": "devotion"
+    },
+    {
+      "degree": 5,
+      "symbol": "A massive rocky shore withstands the pounding of the sea.",
+      "keynote": "The struggle within a stable civilization to find a way to express the life force's vast energy.",
+      "phase": 215,
+      "theme": "endurance"
+    },
+    {
+      "degree": 6,
+      "symbol": "The Gold Rush tears people away from their native soil.",
+      "keynote": "The passionate search for new value and the personal wealth one could derive from them.",
+      "phase": 216,
+      "theme": "greed"
+    },
+    {
+      "degree": 7,
+      "symbol": "Deep-sea divers.",
+      "keynote": "The skill and courage needed to explore the hidden depths of the unconscious.",
+      "phase": 217,
+      "theme": "exploration"
+    },
+    {
+      "degree": 8,
+      "symbol": "A calm lake bathed in moonlight.",
+      "keynote": "The tranquil inner quality of mind which allows for a clarification of issues in a mature personality.",
+      "phase": 218,
+      "theme": "serenity"
+    },
+    {
+      "degree": 9,
+      "symbol": "A dentist at work.",
+      "keynote": "The forcible overcoming of deeply rooted subconscious fixations.",
+      "phase": 219,
+      "theme": "extraction"
+    },
+    {
+      "degree": 10,
+      "symbol": "A fellowship supper.",
+      "keynote": "The brotherhood of seekers who participate in a common ritual.",
+      "phase": 220,
+      "theme": "fellowship"
+    },
+    {
+      "degree": 11,
+      "symbol": "A drowning man is being rescued.",
+      "keynote": "The readiness to respond to distress calls.",
+      "phase": 221,
+      "theme": "rescue"
+    },
+    {
+      "degree": 12,
+      "symbol": "An official embassy ball.",
+      "keynote": "The ritual identification with the supreme values of a social culture.",
+      "phase": 222,
+      "theme": "diplomacy"
+    },
+    {
+      "degree": 13,
+      "symbol": "An inventor performs a laboratory experiment.",
+      "keynote": "The creative mental ability to perform new experiments.",
+      "phase": 223,
+      "theme": "innovation"
+    },
+    {
+      "degree": 14,
+      "symbol": "Telephone linemen at work installing new connections.",
+      "keynote": "The conscious development of social and individual interconnections.",
+      "phase": 224,
+      "theme": "connection"
+    },
+    {
+      "degree": 15,
+      "symbol": "Children playing around five mounds of sand.",
+      "keynote": "Individual fulfillment as a result of a multifold process of growth and emergence.",
+      "phase": 225,
+      "theme": "play"
+    },
+    {
+      "degree": 16,
+      "symbol": "A girl's face breaking into a smile.",
+      "keynote": "The rousing of one's deepest feelings in human relationships.",
+      "phase": 226,
+      "theme": "joy"
+    },
+    {
+      "degree": 17,
+      "symbol": "A woman, fecundated by her own spirit, is 'great with child.'",
+      "keynote": "The possibility of giving a spiritual form and body to one's ideals.",
+      "phase": 227,
+      "theme": "gestation"
+    },
+    {
+      "degree": 18,
+      "symbol": "A path through woods brilliant with multicolored splendor.",
+      "keynote": "The exalted feeling that springs from a realization of the wealth of significance with which nature develops its seasonal manifestations.",
+      "phase": 228,
+      "theme": "beauty"
+    },
+    {
+      "degree": 19,
+      "symbol": "A parrot listening and then talking, repeats a conversation he has overheard.",
+      "keynote": "The capacity for the mind to transcend the organic limitations of consciousness.",
+      "phase": 229,
+      "theme": "mimicry"
+    },
+    {
+      "degree": 20,
+      "symbol": "A woman draws aside two dark curtains closing the entrance to a sacred pathway.",
+      "keynote": "The revelation of the way to the inner realms of being.",
+      "phase": 230,
+      "theme": "initiation"
+    },
+    {
+      "degree": 21,
+      "symbol": "A soldier derelict in duty.",
+      "keynote": "The social cost of individualistic withdrawal.",
+      "phase": 231,
+      "theme": "dereliction"
+    },
+    {
+      "degree": 22,
+      "symbol": "Hunters shooting wild ducks.",
+      "keynote": "The socially accepted destruction of aspects of nature which it does not need.",
+      "phase": 232,
+      "theme": "sport"
+    },
+    {
+      "degree": 23,
+      "symbol": "A rabbit metamorphoses into a nature spirit.",
+      "keynote": "A return to the glorification of natural energies.",
+      "phase": 233,
+      "theme": "metamorphosis"
+    },
+    {
+      "degree": 24,
+      "symbol": "Crowds coming down the mountain to listen to one man.",
+      "keynote": "The ability of individuals who have won a relatively clear understanding of life to mobilize the will of the masses.",
+      "phase": 234,
+      "theme": "influence"
+    },
+    {
+      "degree": 25,
+      "symbol": "An X-ray.",
+      "keynote": "The ability to discover the hidden structure and mechanism of things.",
+      "phase": 235,
+      "theme": "penetration"
+    },
+    {
+      "degree": 26,
+      "symbol": "American Indians making camp.",
+      "keynote": "Establishing a new phase of group relationship within a context of sociocultural traditions.",
+      "phase": 236,
+      "theme": "settlement"
+    },
+    {
+      "degree": 27,
+      "symbol": "A military band on the march.",
+      "keynote": "The submission of personal will to group need and the potency of a collective display of cultural values.",
+      "phase": 237,
+      "theme": "discipline"
+    },
+    {
+      "degree": 28,
+      "symbol": "The king of the fairies approaching his domain.",
+      "keynote": "The capacity in man to recognize and to pay homage to an integrating Principle at the core of all existence.",
+      "phase": 238,
+      "theme": "recognition"
+    },
+    {
+      "degree": 29,
+      "symbol": "An Indian squaw pleading to the chief for the lives of her children.",
+      "keynote": "The appeal to the higher levels of justice in human relationships.",
+      "phase": 239,
+      "theme": "appeal"
+    },
+    {
+      "degree": 30,
+      "symbol": "The Halloween jester.",
+      "keynote": "The ability to use many-faceted humor to make a wholesome and creative transition from a state of aloneness to a new one of relatedness.",
+      "phase": 240,
+      "theme": "humor"
+    }
+  ],
+  "sagittarius": [
+    {
+      "degree": 1,
+      "symbol": "Retired army veterans gather to reawaken old memories.",
+      "keynote": "The nostalgic attempt to return to a past which only too often is veiled by sentiment.",
+      "phase": 241,
+      "theme": "nostalgia"
+    },
+    {
+      "degree": 2,
+      "symbol": "The ocean covered with whitecaps.",
+      "keynote": "Vigorous activity, a sense of life power and its glorification.",
+      "phase": 242,
+      "theme": "vitality"
+    },
+    {
+      "degree": 3,
+      "symbol": "Two men playing chess.",
+      "keynote": "The transcendent ritualization of conflict.",
+      "phase": 243,
+      "theme": "strategy"
+    },
+    {
+      "degree": 4,
+      "symbol": "A little child learning to walk with the encouragement of his parents.",
+      "keynote": "The need to rely upon a superior strength and wisdom in times of crisis.",
+      "phase": 244,
+      "theme": "support"
+    },
+    {
+      "degree": 5,
+      "symbol": "An old owl perched high up in a tree.",
+      "keynote": "A poised and wise approach to existence based on a clear perception of unconscious factors and their operation.",
+      "phase": 245,
+      "theme": "wisdom"
+    },
+    {
+      "degree": 6,
+      "symbol": "A game of cricket.",
+      "keynote": "The development of group consciousness through structured togetherness.",
+      "phase": 246,
+      "theme": "teamwork"
+    },
+    {
+      "degree": 7,
+      "symbol": "Cupid knocks at the door of a human heart.",
+      "keynote": "The awakening of the emotional self to desire and love.",
+      "phase": 247,
+      "theme": "awakening"
+    },
+    {
+      "degree": 8,
+      "symbol": "Rocks and things forming therein.",
+      "keynote": "The deep-rooted power of the life-force.",
+      "phase": 248,
+      "theme": "formation"
+    },
+    {
+      "degree": 9,
+      "symbol": "A mother leads her small child step by step up a steep stairway.",
+      "keynote": "The need in mature adulthood for re-formulating one's spiritual goals and motivations.",
+      "phase": 249,
+      "theme": "guidance"
+    },
+    {
+      "degree": 10,
+      "symbol": "A theatrical representation of a golden-haired goddess of opportunity.",
+      "keynote": "A formulation of an ideal which implies the possibility of dramatizing it effectively.",
+      "phase": 250,
+      "theme": "idealization"
+    },
+    {
+      "degree": 11,
+      "symbol": "The lamp of physical enlightenment at the left temple.",
+      "keynote": "The need to keep the flame of the inner light alive whatever the circumstances.",
+      "phase": 251,
+      "theme": "enlightenment"
+    },
+    {
+      "degree": 12,
+      "symbol": "A flag that turns into an eagle that crows.",
+      "keynote": "The dynamic incorporation of transcendent goal-images and ideals which have inspired collective human endeavor.",
+      "phase": 252,
+      "theme": "transformation"
+    },
+    {
+      "degree": 13,
+      "symbol": "A widow's past is brought to light.",
+      "keynote": "Karmic readjustment.",
+      "phase": 253,
+      "theme": "revelation"
+    },
+    {
+      "degree": 14,
+      "symbol": "The pyramids and the Sphinx.",
+      "keynote": "The enduring power of occult knowledge and of its quasi-divine Custodians, 'Seed-men' of a previous cycle of existence.",
+      "phase": 254,
+      "theme": "mystery"
+    },
+    {
+      "degree": 15,
+      "symbol": "The ground hog looking for its shadow on Ground-hog Day, February 2.",
+      "keynote": "The value of anticipatory expectancy at times that call for quick and important decisions.",
+      "phase": 255,
+      "theme": "anticipation"
+    },
+    {
+      "degree": 16,
+      "symbol": "Seagulls fly around a ship in expectation of food.",
+      "keynote": "The insistent demands of the natural subhuman realm for recognition and participation in the bounty of civilization.",
+      "phase": 256,
+      "theme": "opportunism"
+    },
+    {
+      "degree": 17,
+      "symbol": "An Easter sunrise service draws a large crowd.",
+      "keynote": "The triumphant feeling generated by the overcoming of one's own personal struggles.",
+      "phase": 257,
+      "theme": "resurrection"
+    },
+    {
+      "degree": 18,
+      "symbol": "Children playing on the beach, their heads protected by sunbonnets.",
+      "keynote": "Natural safeguards provided for adjustment to the glare of an overactive mind.",
+      "phase": 258,
+      "theme": "protection"
+    },
+    {
+      "degree": 19,
+      "symbol": "Pelicans menaced by the behavior and refuse of men seek safer areas for bringing up their young.",
+      "keynote": "The inherent wisdom of Nature's evolutionary processes, however destructive civilization may be.",
+      "phase": 259,
+      "theme": "survival"
+    },
+    {
+      "degree": 20,
+      "symbol": "In an old-fashioned northern village men cut the ice of a frozen pond for use during the summer.",
+      "keynote": "The skill derived from the patient observations of life processes.",
+      "phase": 260,
+      "theme": "foresight"
+    },
+    {
+      "degree": 21,
+      "symbol": "A child and a dog wearing borrowed eyeglasses.",
+      "keynote": "The use of imagination in developing potentialities in personality.",
+      "phase": 261,
+      "theme": "imagination"
+    },
+    {
+      "degree": 22,
+      "symbol": "A Chinese laundry.",
+      "keynote": "The possibility for certain individuals to symbolize in their own private experience the general experiences of their community.",
+      "phase": 262,
+      "theme": "service"
+    },
+    {
+      "degree": 23,
+      "symbol": "A group of immigrants as they fulfill the requirements of entrance into the new country.",
+      "keynote": "The readiness and the ability to respond to new opportunities and to overcome barriers.",
+      "phase": 263,
+      "theme": "adaptation"
+    },
+    {
+      "degree": 24,
+      "symbol": "A bluebird standing at the door of the house.",
+      "keynote": "The fulfillment of hope.",
+      "phase": 264,
+      "theme": "blessing"
+    },
+    {
+      "degree": 25,
+      "symbol": "A chubby little rich boy rides on a hobbyhorse.",
+      "keynote": "The cultivation of powers and values which have not yet found a concrete field of expression.",
+      "phase": 265,
+      "theme": "potential"
+    },
+    {
+      "degree": 26,
+      "symbol": "A flag-bearer.",
+      "keynote": "The nobility of individual dedication to collective values.",
+      "phase": 266,
+      "theme": "dedication"
+    },
+    {
+      "degree": 27,
+      "symbol": "A sculptor at his work.",
+      "keynote": "The ability to project one's vision upon and to give form to materials.",
+      "phase": 267,
+      "theme": "creativity"
+    },
+    {
+      "degree": 28,
+      "symbol": "An old bridge over a beautiful stream.",
+      "keynote": "The conquest of the separative forces of nature.",
+      "phase": 268,
+      "theme": "connection"
+    },
+    {
+      "degree": 29,
+      "symbol": "A fat boy mowing the lawn.",
+      "keynote": "The purgatorial rewards that the privileged can reap by serving the community.",
+      "phase": 269,
+      "theme": "service"
+    },
+    {
+      "degree": 30,
+      "symbol": "The Pope, blessing the faithful.",
+      "keynote": "The need to pay homage to traditional values upon which the  future can be safely built.",
+      "phase": 270,
+      "theme": "blessing"
+    }
+  ],
+  "capricorn": [
+    {
+      "degree": 1,
+      "symbol": "An Indian chief claims power from the assembled tribe.",
+      "keynote": "The power to assume social direction when the time comes to supersede outmoded forms.",
+      "phase": 271,
+      "theme": "authority"
+    },
+    {
+      "degree": 2,
+      "symbol": "Three rose windows in a Gothic church, one damaged by war.",
+      "keynote": "The growth of spiritual consciousness through a struggle with problems and defeats.",
+      "phase": 272,
+      "theme": "endurance"
+    },
+    {
+      "degree": 3,
+      "symbol": "A human soul, in its eagerness for new experiences, seeks embodiment.",
+      "keynote": "An evolutionary urge toward participation in life.",
+      "phase": 273,
+      "theme": "incarnation"
+    },
+    {
+      "degree": 4,
+      "symbol": "A party of young people, in canoes, playing and enjoying themselves on a large lake.",
+      "keynote": "The simple wholesome enjoyment of life.",
+      "phase": 274,
+      "theme": "recreation"
+    },
+    {
+      "degree": 5,
+      "symbol": "Indians rowing a canoe and dancing a war dance.",
+      "keynote": "The mobilization and projection of aggressive power for the conquest of new fields of experience.",
+      "phase": 275,
+      "theme": "mobilization"
+    },
+    {
+      "degree": 6,
+      "symbol": "Ten logs lie under an archway leading to darker woods.",
+      "keynote": "The necessity to complete any undertaking before seeking entrance to whatever new opportunities may appear.",
+      "phase": 276,
+      "theme": "completion"
+    },
+    {
+      "degree": 7,
+      "symbol": "A veiled prophet speaks, seized by the power of a god.",
+      "keynote": "The revelation of the God-will as it flows from whatever symbols man sees as most adequate.",
+      "phase": 277,
+      "theme": "prophecy"
+    },
+    {
+      "degree": 8,
+      "symbol": "In a sun-lit home, domesticated birds sing happily.",
+      "keynote": "The wholesome happiness that subservience to the ideals and patterns of a well-established culture brings to those who accept them unreservedly.",
+      "phase": 278,
+      "theme": "contentment"
+    },
+    {
+      "degree": 9,
+      "symbol": "An angel carrying a harp.",
+      "keynote": "The revelation of the spiritual meaning and purpose at the core of any life situation.",
+      "phase": 279,
+      "theme": "inspiration"
+    },
+    {
+      "degree": 10,
+      "symbol": "An albatross feeding from the hand of a sailor.",
+      "keynote": "The overcoming of fear and its rewards.",
+      "phase": 280,
+      "theme": "trust"
+    },
+    {
+      "degree": 11,
+      "symbol": "A large group of pheasant on a private estate.",
+      "keynote": "The fulfillment of the individual's basic needs by a paternalistic society.",
+      "phase": 281,
+      "theme": "abundance"
+    },
+    {
+      "degree": 12,
+      "symbol": "A student of nature lecturing, revealing little-known aspects of life.",
+      "keynote": "An openness to the influx of spiritual energies.",
+      "phase": 282,
+      "theme": "revelation"
+    },
+    {
+      "degree": 13,
+      "symbol": "A fire worshiper meditates on the ultimate realities of existence.",
+      "keynote": "Awe in front of the burning mystery of existence.",
+      "phase": 283,
+      "theme": "worship"
+    },
+    {
+      "degree": 14,
+      "symbol": "An ancient bas-relief carved in granite remains a witness to a long-forgotten culture.",
+      "keynote": "The enduring power of works that come to concretize archetypal images.",
+      "phase": 284,
+      "theme": "permanence"
+    },
+    {
+      "degree": 15,
+      "symbol": "In a hospital, the children's ward is filled with toys.",
+      "keynote": "The compassionate realization that every life crisis can be overcome and become a means for growth.",
+      "phase": 285,
+      "theme": "healing"
+    },
+    {
+      "degree": 16,
+      "symbol": "School grounds filled with boys and girls in gymnasium suits.",
+      "keynote": "The development of individual skills within a socially structured framework.",
+      "phase": 286,
+      "theme": "training"
+    },
+    {
+      "degree": 17,
+      "symbol": "A repressed woman finds a psychological release in nudism.",
+      "keynote": "The escape from bondage to the social past.",
+      "phase": 287,
+      "theme": "liberation"
+    },
+    {
+      "degree": 18,
+      "symbol": "The Union Jack flies from a British warship.",
+      "keynote": "The protection afforded to individuals and groups by powerful institutions in charge of maintaining order.",
+      "phase": 288,
+      "theme": "protection"
+    },
+    {
+      "degree": 19,
+      "symbol": "A five-year-old child carrying a bag filled with groceries.",
+      "keynote": "The eagerness of the young to assume adult responsibilities.",
+      "phase": 289,
+      "theme": "responsibility"
+    },
+    {
+      "degree": 20,
+      "symbol": "A hidden choir is singing during a religious service.",
+      "keynote": "A group united in a spirit of worship and communion.",
+      "phase": 290,
+      "theme": "communion"
+    },
+    {
+      "degree": 21,
+      "symbol": "A relay race.",
+      "keynote": "The spirit of competitiveness that is glorified in a society in which each individual is expected to surpass his peers.",
+      "phase": 291,
+      "theme": "competition"
+    },
+    {
+      "degree": 22,
+      "symbol": "A general accepting defeat gracefully.",
+      "keynote": "The realization that one may grow through defeat as well as, and perhaps more than, through success.",
+      "phase": 292,
+      "theme": "acceptance"
+    },
+    {
+      "degree": 23,
+      "symbol": "A soldier receiving two awards for bravery in combat.",
+      "keynote": "Recognition of individual worth through social recompense.",
+      "phase": 293,
+      "theme": "recognition"
+    },
+    {
+      "degree": 24,
+      "symbol": "A woman entering a convent.",
+      "keynote": "The fulfillment which results from total dedication and self-commitment to a transpersonal goal.",
+      "phase": 294,
+      "theme": "dedication"
+    },
+    {
+      "degree": 25,
+      "symbol": "A store filled with precious Oriental rugs.",
+      "keynote": "Access to spiritual as well as natural and physical powers.",
+      "phase": 295,
+      "theme": "wealth"
+    },
+    {
+      "degree": 26,
+      "symbol": "A nature spirit dancing in the iridescent mist of a waterfall.",
+      "keynote": "The play of creative imagination bringing delight to the experiencer.",
+      "phase": 296,
+      "theme": "delight"
+    },
+    {
+      "degree": 27,
+      "symbol": "Pilgrims climbing the steep steps leading to a mountain shrine.",
+      "keynote": "Overcoming impulsive and premature reliance upon tradition through faith in one's own strength.",
+      "phase": 297,
+      "theme": "pilgrimage"
+    },
+    {
+      "degree": 28,
+      "symbol": "A large aviary.",
+      "keynote": "The wholesome ability to accept the natural elements of existence.",
+      "phase": 298,
+      "theme": "naturalness"
+    },
+    {
+      "degree": 29,
+      "symbol": "A woman reading tea leaves.",
+      "keynote": "The ability to interiorize at the level of the psychic (or astral) world the process of growth and transformation in nature.",
+      "phase": 299,
+      "theme": "divination"
+    },
+    {
+      "degree": 30,
+      "symbol": "A secret business conference.",
+      "keynote": "The need in all social organizations to acknowledge and to deal with aggressive selfishness.",
+      "phase": 300,
+      "theme": "strategy"
+    }
+  ],
+  "aquarius": [
+    {
+      "degree": 1,
+      "symbol": "An old adobe mission.",
+      "keynote": "The power inherent in all great human works to endure far beyond the workers' life spans.",
+      "phase": 301,
+      "theme": "endurance"
+    },
+    {
+      "degree": 2,
+      "symbol": "An unexpected thunderstorm.",
+      "keynote": "The emotional arousals that come as answers to a new thrust of the life force.",
+      "phase": 302,
+      "theme": "upheaval"
+    },
+    {
+      "degree": 3,
+      "symbol": "A deserter from the navy.",
+      "keynote": "The escape from rigid social structures.",
+      "phase": 303,
+      "theme": "rebellion"
+    },
+    {
+      "degree": 4,
+      "symbol": "A Hindu yogi demonstrates his healing powers.",
+      "keynote": "The development of special abilities offering an original contribution to society.",
+      "phase": 304,
+      "theme": "mastery"
+    },
+    {
+      "degree": 5,
+      "symbol": "A council of ancestors is seen implementing the efforts of a young leader.",
+      "keynote": "The assistance afforded by spiritual agencies to those who enter consecrated areas in the right mood and mental-spiritual condition.",
+      "phase": 305,
+      "theme": "guidance"
+    },
+    {
+      "degree": 6,
+      "symbol": "A masked figure performs ritualistic acts in a mystery play.",
+      "keynote": "The search for relatedness to greater wholes beyond the life-field to which one is usually bound.",
+      "phase": 306,
+      "theme": "ritual"
+    },
+    {
+      "degree": 7,
+      "symbol": "A child born of an eggshell.",
+      "keynote": "Emergence of global thinking at this stage of human evolution.",
+      "phase": 307,
+      "theme": "birth"
+    },
+    {
+      "degree": 8,
+      "symbol": "A large flag raised on a battleship.",
+      "keynote": "Identification with the collectivity to which one belongs.",
+      "phase": 308,
+      "theme": "identity"
+    },
+    {
+      "degree": 9,
+      "symbol": "A flag turned into an eagle; the eagle into a chanticleer saluting the dawn.",
+      "keynote": "The transformation of social efforts into cultural values.",
+      "phase": 309,
+      "theme": "transformation"
+    },
+    {
+      "degree": 10,
+      "symbol": "A popularity that proves to be fleeting.",
+      "keynote": "The inflation of a fad or fashionable idol.",
+      "phase": 310,
+      "theme": "transience"
+    },
+    {
+      "degree": 11,
+      "symbol": "During a silent hour, a person receives a new inspiration which may change his life.",
+      "keynote": "The exalted feeling that comes with the overtone of a transcendent act of consciousness.",
+      "phase": 311,
+      "theme": "inspiration"
+    },
+    {
+      "degree": 12,
+      "symbol": "On a vast staircase stand people of different types, graduated upward.",
+      "keynote": "The hierarchical vision of existence.",
+      "phase": 312,
+      "theme": "hierarchy"
+    },
+    {
+      "degree": 13,
+      "symbol": "A barometer.",
+      "keynote": "The power to deeply feel and respond to environmental stresses.",
+      "phase": 313,
+      "theme": "sensitivity"
+    },
+    {
+      "degree": 14,
+      "symbol": "A train entering a tunnel.",
+      "keynote": "The need to provide channels for the safe operation of natural energies.",
+      "phase": 314,
+      "theme": "direction"
+    },
+    {
+      "degree": 15,
+      "symbol": "Two lovebirds sitting on a fence.",
+      "keynote": "The blessing bestowed upon simple, natural, and yet subtly comforting human companionship.",
+      "phase": 315,
+      "theme": "companionship"
+    },
+    {
+      "degree": 16,
+      "symbol": "A big businessman at his desk.",
+      "keynote": "The capacity to organize the many aspects of an enterprise involving a large group of people.",
+      "phase": 316,
+      "theme": "management"
+    },
+    {
+      "degree": 17,
+      "symbol": "A watchdog standing guard, protecting his master and his possessions.",
+      "keynote": "The development of the safeguarding aspects of relationship.",
+      "phase": 317,
+      "theme": "protection"
+    },
+    {
+      "degree": 18,
+      "symbol": "A man being unmasked at a masquerade.",
+      "keynote": "The unrelenting battle between the individual and society.",
+      "phase": 318,
+      "theme": "exposure"
+    },
+    {
+      "degree": 19,
+      "symbol": "A forest fire is being subdued by the use of water, chemicals and sheer muscular energy.",
+      "keynote": "The skill and courage necessary to bring under control the destructive potential of carelessness of karmic 'visitations.'",
+      "phase": 319,
+      "theme": "control"
+    },
+    {
+      "degree": 20,
+      "symbol": "A big white dove, a message bearer.",
+      "keynote": "The answer of spiritual agencies to thorough, sustained prayer and meditation.",
+      "phase": 320,
+      "theme": "messenger"
+    },
+    {
+      "degree": 21,
+      "symbol": "A woman disappointed and disillusioned.",
+      "keynote": "The termination of a karmic relationship and the facing of the facts.",
+      "phase": 321,
+      "theme": "disillusionment"
+    },
+    {
+      "degree": 22,
+      "symbol": "A rug placed on a floor for children to play on.",
+      "keynote": "Spiritual and mental mobilization of the energies needed for a new start.",
+      "phase": 322,
+      "theme": "foundation"
+    },
+    {
+      "degree": 23,
+      "symbol": "A big bear sitting down and waving all its paws.",
+      "keynote": "Overemphasis on the emotional and dramatic approach to life.",
+      "phase": 323,
+      "theme": "display"
+    },
+    {
+      "degree": 24,
+      "symbol": "A man turning his back on his passions teaches deep wisdom from his experience.",
+      "keynote": "The necessity to learn from the mistakes inherent in all processes involving a descent into matter.",
+      "phase": 324,
+      "theme": "wisdom"
+    },
+    {
+      "degree": 25,
+      "symbol": "A butterfly with a third wing on its left side.",
+      "keynote": "The capacity to develop, through inquiring intellect, a greater degree of complexity.",
+      "phase": 325,
+      "theme": "mutation"
+    },
+    {
+      "degree": 26,
+      "symbol": "A hydrometer.",
+      "keynote": "The overemphasis on quantity and the belief that there is security in numbers.",
+      "phase": 326,
+      "theme": "measurement"
+    },
+    {
+      "degree": 27,
+      "symbol": "An ancient pottery bowl filled with fresh violets.",
+      "keynote": "The preservation and fulfillment of ideals that connect the hands across the centuries.",
+      "phase": 327,
+      "theme": "tradition"
+    },
+    {
+      "degree": 28,
+      "symbol": "A tree felled and sawed to ensure a supply of wood for the winter.",
+      "keynote": "Foresight.",
+      "phase": 328,
+      "theme": "preparation"
+    },
+    {
+      "degree": 29,
+      "symbol": "A butterfly emerging from a chrysalis.",
+      "keynote": "The capacity to utterly transform the character of one's consciousness by radically altering the structural patterns of everyday living.",
+      "phase": 329,
+      "theme": "metamorphosis"
+    },
+    {
+      "degree": 30,
+      "symbol": "The field of Ardath in bloom.",
+      "keynote": "The exalted nature of the final stage at which a long process of development in consciousness reaches a climax.",
+      "phase": 330,
+      "theme": "culmination"
+    }
+  ],
+  "pisces": [
+    {
+      "degree": 1,
+      "symbol": "A crowded public market place.",
+      "keynote": "The interchange of the products of one's skill or karma.",
+      "phase": 331,
+      "theme": "exchange"
+    },
+    {
+      "degree": 2,
+      "symbol": "A squirrel hiding from hunters.",
+      "keynote": "The individual's need both to ensure his future subsistence and to protect himself from aggressive social elements.",
+      "phase": 332,
+      "theme": "survival"
+    },
+    {
+      "degree": 3,
+      "symbol": "Petrified tree trunks in a desert.",
+      "keynote": "The power of past experience as a substantializing and protective agent.",
+      "phase": 333,
+      "theme": "preservation"
+    },
+    {
+      "degree": 4,
+      "symbol": "Heavy car traffic on a narrow isthmus.",
+      "keynote": "The problem of reaching or spreading out to 'the greater spaces' in a world of ever-expanding population.",
+      "phase": 334,
+      "theme": "congestion"
+    },
+    {
+      "degree": 5,
+      "symbol": "A church bazaar.",
+      "keynote": "The value of giving a spiritual or transcendent sanction to even the most secular activities.",
+      "phase": 335,
+      "theme": "blessing"
+    },
+    {
+      "degree": 6,
+      "symbol": "A parade of army officers in full dress.",
+      "keynote": "The satisfaction derived from a sense of participation in a communal ritual.",
+      "phase": 336,
+      "theme": "ceremony"
+    },
+    {
+      "degree": 7,
+      "symbol": "A cross lying on rocks.",
+      "keynote": "Openness to the influx of spiritual energies.",
+      "phase": 337,
+      "theme": "sacrifice"
+    },
+    {
+      "degree": 8,
+      "symbol": "A girl blowing a bugle.",
+      "keynote": "The emotional development of the inner self in response to a call from 'the greater world.'",
+      "phase": 338,
+      "theme": "awakening"
+    },
+    {
+      "degree": 9,
+      "symbol": "A jockey spurs his horse, intent on outdistancing his rivals.",
+      "keynote": "Intensely individualistic desires and skills in the display of ambition.",
+      "phase": 339,
+      "theme": "ambition"
+    },
+    {
+      "degree": 10,
+      "symbol": "An aviator in the clouds.",
+      "keynote": "The growth of a mind able to recognize, for better or for worse, the significance of whatever occurs.",
+      "phase": 340,
+      "theme": "perspective"
+    },
+    {
+      "degree": 11,
+      "symbol": "Men traveling a narrow path, seeking illumination.",
+      "keynote": "The capacity inherent in every individual to seek whatever may answer the basic need of his nature and his stage of growth.",
+      "phase": 341,
+      "theme": "quest"
+    },
+    {
+      "degree": 12,
+      "symbol": "In the sanctuary of an occult brotherhood, newly initiated members are being examined and their character tested.",
+      "keynote": "The process of individualized training through which one can achieve essential goals.",
+      "phase": 342,
+      "theme": "initiation"
+    },
+    {
+      "degree": 13,
+      "symbol": "An ancient sword, used in many battles, is displayed in a museum.",
+      "keynote": "The testimony that strength of will and courage can give as a validation of individual character.",
+      "phase": 343,
+      "theme": "valor"
+    },
+    {
+      "degree": 14,
+      "symbol": "A lady wrapped in a large stole of fox fur.",
+      "keynote": "The use of outer possessions for enhancement of one's natural magnetism and prestige.",
+      "phase": 344,
+      "theme": "prestige"
+    },
+    {
+      "degree": 15,
+      "symbol": "An officer instructing his men before a simulated assault under a barrage of live shells.",
+      "keynote": "The development of techniques that allow one to actively prepare for critical situations.",
+      "phase": 345,
+      "theme": "preparation"
+    },
+    {
+      "degree": 16,
+      "symbol": "The flow of inspiration.",
+      "keynote": "Reliance on the constant flow of spiritual inspiration and guidance.",
+      "phase": 346,
+      "theme": "inspiration"
+    },
+    {
+      "degree": 17,
+      "symbol": "An Easter promenade.",
+      "keynote": "Collective demonstrations and the spiritual force they represent.",
+      "phase": 347,
+      "theme": "celebration"
+    },
+    {
+      "degree": 18,
+      "symbol": "In a gigantic tent, villagers witness a spectacular performance.",
+      "keynote": "The value of the process of dramatization in enhancing the meaning of civilized living.",
+      "phase": 348,
+      "theme": "spectacle"
+    },
+    {
+      "degree": 19,
+      "symbol": "A master instructing his pupil.",
+      "keynote": "The transmission of social and cultural values.",
+      "phase": 349,
+      "theme": "teaching"
+    },
+    {
+      "degree": 20,
+      "symbol": "A table set for an evening meal.",
+      "keynote": "A reminder of what is dependable at a time when life has suddenly turned into an exciting adventure.",
+      "phase": 350,
+      "theme": "sustenance"
+    },
+    {
+      "degree": 21,
+      "symbol": "Under the watchful and kind eye of a Chinese servant, a girl fondles a little white lamb.",
+      "keynote": "Fulfillment in transcending and changeless worth.",
+      "phase": 351,
+      "theme": "tenderness"
+    },
+    {
+      "degree": 22,
+      "symbol": "A prophet carrying tablets of the new law is walking down the slopes of Mount Sinai.",
+      "keynote": "The need to bring abstract principles down to the level of everyday existence.",
+      "phase": 352,
+      "theme": "revelation"
+    },
+    {
+      "degree": 23,
+      "symbol": "A 'materializing' medium giving a seance.",
+      "keynote": "The ability to give to outer manifestations an inner power.",
+      "phase": 353,
+      "theme": "manifestation"
+    },
+    {
+      "degree": 24,
+      "symbol": "On a small island surrounded by the vast expanse of the sea, people are seen living in close interaction.",
+      "keynote": "The organic development of family and community relations.",
+      "phase": 354,
+      "theme": "community"
+    },
+    {
+      "degree": 25,
+      "symbol": "The purging of the priesthood.",
+      "keynote": "The periodic need to cleanse and revitalize one's ego-consciousness.",
+      "phase": 355,
+      "theme": "purification"
+    },
+    {
+      "degree": 26,
+      "symbol": "Watching the very thin moon crescent appearing at sunset, different people realize that the time has come to go ahead with their different projects.",
+      "keynote": "The different modes of response of individuals when faced with a new vital impulse.",
+      "phase": 356,
+      "theme": "beginning"
+    },
+    {
+      "degree": 27,
+      "symbol": "The harvest moon illumines the sky.",
+      "keynote": "The light of fulfillment which blesses work well done.",
+      "phase": 357,
+      "theme": "fulfillment"
+    },
+    {
+      "degree": 28,
+      "symbol": "A fertile garden under the full moon reveals a variety of full-grown vegetables.",
+      "keynote": "Fecundity. The successfully consummated union of the two great polarities of being.",
+      "phase": 358,
+      "theme": "abundance"
+    },
+    {
+      "degree": 29,
+      "symbol": "A majestic rock formation resembling a face is idealized by a boy who takes it as his ideal of greatness, as he grows up.",
+      "keynote": "The power of archetypes in the maturation of man.",
+      "phase": 359,
+      "theme": "idealization"
+    },
+    {
+      "degree": 30,
+      "symbol": "A majestic rock formation resembling a face is idealized by a boy who takes it as his ideal of greatness, and as he grows up, begins to look like it.",
+      "keynote": "The power of clearly visualized ideals to mold the life of the visualizer.",
+      "phase": 360,
+      "theme": "transformation"
+    }
+  ]
+}

@@ -151,6 +151,7 @@ function ChatPanel({ chartData, chartDataB, viewMode, formData, formDataB, isOpe
                   <li>"Interpret this chart for me"</li>
                   <li>"What does Neptune in the 5th house mean?"</li>
                   <li>"What's the most significant aspect?"</li>
+                  <li>"Tell me about the Sabian symbol for my Sun"</li>
                   {viewMode === 'dual' && <li>"How compatible are these two charts?"</li>}
                 </ul>
               </div>
