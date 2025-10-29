@@ -8,6 +8,9 @@ require('dotenv').config();
 // Load chart search utility
 const { searchCharts, formatSearchResults } = require(path.join(__dirname, '..', 'shared', 'utils', 'chartSearch.js'));
 
+// Load transit calculator
+const { findTransitExactitude, findDatabaseImpact, formatDate, getZodiacSign } = require(path.join(__dirname, '..', 'shared', 'calculations', 'transitCalculator.js'));
+
 let mainWindow;
 
 function createWindow() {
@@ -303,6 +306,57 @@ You must analyze astrological charts using ONLY the data provided. Never invent 
                 },
                 additionalProperties: false
               }
+            },
+            {
+              name: "calculate_transits",
+              description: "Calculate when transiting planets form exact aspects to natal positions, or find which charts in the database are affected by transits. Use for queries like 'When will Saturn conjunct my Venus?', 'When did Pluto square my Sun?', or 'Which charts will be affected by transiting Neptune?'",
+              input_schema: {
+                type: "object",
+                properties: {
+                  queryType: {
+                    type: "string",
+                    enum: ["future_timing", "historical_timing", "database_impact"],
+                    description: "Type of transit query: 'future_timing' for when a transit will happen in the future, 'historical_timing' for when it happened in the past, 'database_impact' for which charts are affected by a transit"
+                  },
+                  transitPlanet: {
+                    type: "string",
+                    enum: ["sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto"],
+                    description: "The transiting planet"
+                  },
+                  aspect: {
+                    type: "string",
+                    enum: ["conjunction", "opposition", "square", "trine", "sextile"],
+                    description: "The aspect type"
+                  },
+                  natalPlanet: {
+                    type: "string",
+                    enum: ["sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto", "ascendant", "midheaven", "any"],
+                    description: "The natal planet or point. Use 'any' for database impact searches to check all natal planets"
+                  },
+                  natalLongitude: {
+                    type: "number",
+                    description: "For personal transit timing queries: the exact longitude of the natal planet in degrees (0-360). Required for future_timing and historical_timing queries when chart context is available"
+                  },
+                  startDate: {
+                    type: "string",
+                    description: "Start date for search period in YYYY-MM-DD format. Defaults to today for future queries, or 10 years ago for historical queries"
+                  },
+                  endDate: {
+                    type: "string",
+                    description: "End date for search period in YYYY-MM-DD format. Defaults to 3 years from now for future queries, or today for historical queries"
+                  },
+                  orb: {
+                    type: "number",
+                    description: "Maximum orb in degrees (default 1.0 for database searches, 2.0 for personal timing)"
+                  },
+                  transitDate: {
+                    type: "string",
+                    description: "Specific date for database impact analysis in YYYY-MM-DD format. Required for database_impact queries"
+                  }
+                },
+                required: ["queryType", "transitPlanet", "aspect"],
+                additionalProperties: false
+              }
             }
           ]
         });
@@ -408,6 +462,187 @@ You must analyze astrological charts using ONLY the data provided. Never invent 
         message: finalText ? finalText.text : searchResultsMessage,
         searchResults: formattedResults
       };
+    }
+
+    // Handle calculate_transits tool
+    if (toolUse && toolUse.name === 'calculate_transits') {
+      console.log('Claude used calculate_transits tool with input:', JSON.stringify(toolUse.input, null, 2));
+
+      try {
+        const { queryType, transitPlanet, aspect, natalPlanet, natalLongitude, startDate, endDate, orb, transitDate } = toolUse.input;
+
+        let transitResults;
+
+        if (queryType === 'database_impact') {
+          // Database impact analysis
+          if (!transitDate) {
+            return {
+              success: false,
+              error: 'transitDate is required for database_impact queries'
+            };
+          }
+
+          // Load the calculated charts database
+          const calculatedChartsPath = path.join(__dirname, '..', 'shared', 'data', 'famousChartsCalculated.json');
+          let chartsDatabase;
+          try {
+            const data = fs.readFileSync(calculatedChartsPath, 'utf8');
+            chartsDatabase = JSON.parse(data);
+          } catch (error) {
+            console.error('Failed to load charts database:', error);
+            return {
+              success: false,
+              error: 'Failed to load charts database: ' + error.message
+            };
+          }
+
+          const date = new Date(transitDate + 'T12:00:00Z');
+          const searchOrb = orb || 1.0;
+          const targetPlanet = natalPlanet || 'any';
+
+          transitResults = findDatabaseImpact(transitPlanet, date, targetPlanet, aspect, searchOrb, chartsDatabase);
+
+          // Format results message
+          const resultsMessage = `TRANSIT DATABASE IMPACT:\\n\\n` +
+            `Transit: ${transitPlanet.toUpperCase()} ${aspect} on ${transitDate}\\n` +
+            `Searching for natal ${targetPlanet === 'any' ? 'all planets' : targetPlanet.toUpperCase()} within ${searchOrb}° orb\\n\\n` +
+            `Found ${transitResults.length} charts affected:\\n\\n` +
+            transitResults.map((result, idx) => {
+              return `${idx + 1}. ${result.chart.name} (${result.chart.category})\\n` +
+                     `   Matches: ${result.matches.map(m => `${m.natalPlanet.toUpperCase()} at ${m.natalSign} (${m.orb.toFixed(2)}° orb)`).join(', ')}\\n`;
+            }).join('\\n');
+
+          // Continue conversation with transit results
+          let finalResponse;
+          for (const model of models) {
+            try {
+              finalResponse = await anthropic.messages.create({
+                model: model,
+                max_tokens: 4096,
+                system: `You are an expert professional astrologer.`,
+                messages: [
+                  { role: 'user', content: contextMessage },
+                  { role: 'assistant', content: response.content },
+                  {
+                    role: 'user',
+                    content: [{
+                      type: 'tool_result',
+                      tool_use_id: toolUse.id,
+                      content: resultsMessage
+                    }]
+                  }
+                ]
+              });
+              break;
+            } catch (err) {
+              console.log(`Model ${model} failed on follow-up:`, err.message);
+              continue;
+            }
+          }
+
+          if (!finalResponse) {
+            return {
+              success: true,
+              message: resultsMessage,
+              transitResults: transitResults
+            };
+          }
+
+          const finalText = finalResponse.content.find(block => block.type === 'text');
+          return {
+            success: true,
+            message: finalText ? finalText.text : resultsMessage,
+            transitResults: transitResults
+          };
+
+        } else {
+          // Future or historical timing
+          if (!natalLongitude) {
+            return {
+              success: false,
+              error: 'natalLongitude is required for timing queries'
+            };
+          }
+
+          // Set default date ranges
+          const now = new Date();
+          let start, end;
+
+          if (queryType === 'future_timing') {
+            start = startDate ? new Date(startDate + 'T00:00:00Z') : now;
+            end = endDate ? new Date(endDate + 'T00:00:00Z') : new Date(now.getTime() + 3 * 365 * 24 * 60 * 60 * 1000); // 3 years
+          } else {
+            start = startDate ? new Date(startDate + 'T00:00:00Z') : new Date(now.getTime() - 10 * 365 * 24 * 60 * 60 * 1000); // 10 years ago
+            end = endDate ? new Date(endDate + 'T00:00:00Z') : now;
+          }
+
+          const searchOrb = orb || 2.0;
+
+          transitResults = findTransitExactitude(transitPlanet, aspect, natalLongitude, start, end, searchOrb);
+
+          // Format results message
+          const resultsMessage = `TRANSIT TIMING RESULTS:\\n\\n` +
+            `Looking for transiting ${transitPlanet.toUpperCase()} ${aspect} natal ${(natalPlanet || 'planet').toUpperCase()} at ${getZodiacSign(natalLongitude)}\\n` +
+            `Period: ${formatDate(start)} to ${formatDate(end)}\\n\\n` +
+            `Found ${transitResults.length} exact hit${transitResults.length !== 1 ? 's' : ''}:\\n\\n` +
+            transitResults.map((hit, idx) => {
+              return `${idx + 1}. ${formatDate(hit.date)}\\n` +
+                     `   Transit ${transitPlanet} at ${getZodiacSign(hit.transitLongitude)}\\n` +
+                     `   Orb: ${hit.orb.toFixed(3)}°\\n` +
+                     `   ${hit.isRetrograde ? 'Retrograde' : 'Direct'}\\n`;
+            }).join('\\n');
+
+          // Continue conversation with transit results
+          let finalResponse;
+          for (const model of models) {
+            try {
+              finalResponse = await anthropic.messages.create({
+                model: model,
+                max_tokens: 4096,
+                system: `You are an expert professional astrologer.`,
+                messages: [
+                  { role: 'user', content: contextMessage },
+                  { role: 'assistant', content: response.content },
+                  {
+                    role: 'user',
+                    content: [{
+                      type: 'tool_result',
+                      tool_use_id: toolUse.id,
+                      content: resultsMessage
+                    }]
+                  }
+                ]
+              });
+              break;
+            } catch (err) {
+              console.log(`Model ${model} failed on follow-up:`, err.message);
+              continue;
+            }
+          }
+
+          if (!finalResponse) {
+            return {
+              success: true,
+              message: resultsMessage,
+              transitResults: transitResults
+            };
+          }
+
+          const finalText = finalResponse.content.find(block => block.type === 'text');
+          return {
+            success: true,
+            message: finalText ? finalText.text : resultsMessage,
+            transitResults: transitResults
+          };
+        }
+
+      } catch (error) {
+        console.error('Transit calculation error:', error);
+        return {
+          success: false,
+          error: 'Transit calculation failed: ' + error.message
+        };
+      }
     }
 
     // Handle present_astrological_analysis tool
