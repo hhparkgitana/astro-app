@@ -933,7 +933,7 @@ function App() {
                 value={formData.year}
                 onChange={handleInputChange}
                 required
-                min="1900"
+                min="500"
                 max="2100"
               />
             </div>
@@ -1161,7 +1161,7 @@ function App() {
                     name="transitYear"
                     value={formData.transitYear}
                     onChange={handleInputChange}
-                    min="1900"
+                    min="500"
                     max="2100"
                   />
                 </div>

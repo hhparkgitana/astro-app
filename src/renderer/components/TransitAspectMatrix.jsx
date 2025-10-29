@@ -50,7 +50,9 @@ function TransitAspectMatrix({ chartData, activeTransitAspects, onTransitAspectT
 
   // Get aspect between natal planet and transit planet
   const getAspect = (natalPlanet, transitPlanet) => {
-    return aspectMap[`${natalPlanet}-${transitPlanet}`];
+    // In App.jsx, aspects are stored as planet1=transit, planet2=natal
+    // So the key is ${transitPlanet}-${natalPlanet}
+    return aspectMap[`${transitPlanet}-${natalPlanet}`];
   };
 
   // Check if aspect is active
