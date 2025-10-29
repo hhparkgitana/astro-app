@@ -120,6 +120,10 @@ function findTransitExactitude(transitPlanet, aspect, natalLongitude, startDate,
   let prevDistance = null;
   let prevSpeed = null;
   let prevDate = null;
+  let lastHitTime = null;
+
+  // Minimum time between hits to avoid duplicates (30 days in milliseconds)
+  const minTimeBetweenHits = 30 * msPerDay;
 
   // Iterate through the date range
   for (let currentTime = startDate.getTime(); currentTime <= endDate.getTime(); currentTime += stepSize) {
@@ -133,26 +137,31 @@ function findTransitExactitude(transitPlanet, aspect, natalLongitude, startDate,
         // If distance is getting smaller, we're approaching exact
         if (distance < prevDistance && prevSpeed !== null) {
           // Continue to next iteration
-        } else if (distance > prevDistance) {
-          // We passed the exact point, interpolate to find exact moment
-          const exactTime = interpolateExactMoment(prevDate.getTime(), currentTime, prevDistance, distance);
-          const exactDate = new Date(exactTime);
-          const exactPos = getPlanetPosition(transitPlanet, exactDate);
-          const exactDistance = getAngularDistance(exactPos.longitude, natalLongitude, aspectAngle);
+        } else if (distance > prevDistance && prevDistance < 0.5) {
+          // We passed the exact point AND it was close enough to count
+          // Also check cooldown period to avoid duplicate detections
+          if (lastHitTime === null || (currentTime - lastHitTime) >= minTimeBetweenHits) {
+            const exactTime = interpolateExactMoment(prevDate.getTime(), currentTime, prevDistance, distance);
+            const exactDate = new Date(exactTime);
+            const exactPos = getPlanetPosition(transitPlanet, exactDate);
+            const exactDistance = getAngularDistance(exactPos.longitude, natalLongitude, aspectAngle);
 
-          // Determine if retrograde
-          const isRetrograde = transitPos.speed < 0;
+            // Determine if retrograde
+            const isRetrograde = transitPos.speed < 0;
 
-          exactHits.push({
-            date: exactDate,
-            orb: exactDistance,
-            transitLongitude: exactPos.longitude,
-            natalLongitude: natalLongitude,
-            aspect: aspect,
-            transitPlanet: transitPlanet,
-            isRetrograde: isRetrograde,
-            speed: transitPos.speed
-          });
+            exactHits.push({
+              date: exactDate,
+              orb: exactDistance,
+              transitLongitude: exactPos.longitude,
+              natalLongitude: natalLongitude,
+              aspect: aspect,
+              transitPlanet: transitPlanet,
+              isRetrograde: isRetrograde,
+              speed: transitPos.speed
+            });
+
+            lastHitTime = currentTime;
+          }
         }
       }
 

@@ -578,7 +578,9 @@ You must analyze astrological charts using ONLY the data provided. Never invent 
 
           const searchOrb = orb || 2.0;
 
+          console.log(`Starting transit calculation: ${transitPlanet} ${aspect} ${natalLongitude}° from ${start.toISOString()} to ${end.toISOString()}`);
           transitResults = findTransitExactitude(transitPlanet, aspect, natalLongitude, start, end, searchOrb);
+          console.log(`Transit calculation complete. Found ${transitResults.length} results.`);
 
           // Format results message
           const resultsMessage = `TRANSIT TIMING RESULTS:\\n\\n` +
@@ -593,9 +595,11 @@ You must analyze astrological charts using ONLY the data provided. Never invent 
             }).join('\\n');
 
           // Continue conversation with transit results
+          console.log('Making follow-up API call to Claude with transit timing results...');
           let finalResponse;
           for (const model of models) {
             try {
+              console.log(`Trying model: ${model}`);
               finalResponse = await anthropic.messages.create({
                 model: model,
                 max_tokens: 4096,
@@ -613,12 +617,14 @@ You must analyze astrological charts using ONLY the data provided. Never invent 
                   }
                 ]
               });
+              console.log(`Model ${model} succeeded on follow-up`);
               break;
             } catch (err) {
               console.log(`Model ${model} failed on follow-up:`, err.message);
               continue;
             }
           }
+          console.log('Follow-up API call complete');
 
           if (!finalResponse) {
             return {
