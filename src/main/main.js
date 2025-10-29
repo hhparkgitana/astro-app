@@ -11,6 +11,9 @@ const { searchCharts, formatSearchResults } = require(path.join(__dirname, '..',
 // Load transit calculator
 const { findTransitExactitude, findDatabaseImpact, formatDate, getZodiacSign } = require(path.join(__dirname, '..', 'shared', 'calculations', 'transitCalculator.js'));
 
+// Load progressions calculator
+const { calculateSecondaryProgressions, formatProgressionInfo } = require(path.join(__dirname, '..', 'shared', 'calculations', 'progressionsCalculator.js'));
+
 let mainWindow;
 
 function createWindow() {
@@ -39,6 +42,30 @@ ipcMain.handle('calculate-chart', async (event, params) => {
     const result = calculateChart(params);
     return result;
   } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+    };
+  }
+});
+
+// Handle secondary progressions calculation requests
+ipcMain.handle('calculate-progressions', async (event, params) => {
+  try {
+    const { natalData, target } = params;
+
+    if (!natalData || !target) {
+      throw new Error('Natal data and target (date or age) are required');
+    }
+
+    const result = calculateSecondaryProgressions(natalData, target);
+
+    return {
+      success: true,
+      data: result
+    };
+  } catch (error) {
+    console.error('Error calculating progressions:', error);
     return {
       success: false,
       error: error.message,
@@ -168,7 +195,10 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
           max_tokens: 4096,
           system: `You are an expert professional astrologer.
 
-You must analyze astrological charts using ONLY the data provided. Never invent or assume aspects.`,
+You must analyze astrological charts using ONLY the data provided. Never invent or assume aspects.
+
+SECONDARY PROGRESSIONS:
+This application supports secondary progressions using the day-for-a-year method. When Chart B shows progressed planets, interpret them as symbolic timing showing inner development and maturation. Progressed Sun moves ~1° per year, progressed Moon ~13° per year. Outer planets barely move in progressions.`,
           messages: [{ role: 'user', content: contextMessage }],
           tools: [
             {

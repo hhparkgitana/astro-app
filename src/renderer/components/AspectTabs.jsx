@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AspectMatrix from './AspectMatrix';
 import TransitAspectMatrix from './TransitAspectMatrix';
+import TransitTransitAspectMatrix from './TransitTransitAspectMatrix';
 import './AspectTabs.css';
 
 function AspectTabs({
@@ -65,12 +66,7 @@ function AspectTabs({
         )}
 
         {activeTab === 'transit-transit' && hasTransitTransitAspects && (
-          <div className="aspect-matrix-container">
-            <h4>🔄 Transit-Transit Aspects</h4>
-            <p style={{ color: '#666' }}>
-              Transit-transit aspect matrix coming soon...
-            </p>
-          </div>
+          <TransitTransitAspectMatrix chartData={chartData} />
         )}
       </div>
     </div>

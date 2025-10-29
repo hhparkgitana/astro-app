@@ -38,6 +38,9 @@ function App() {
   const [activeTransitAspectsB, setActiveTransitAspectsB] = useState(new Set());
   const [showNatalAspectsB, setShowNatalAspectsB] = useState(true);
 
+  // Progressions state
+  const [progressionAge, setProgressionAge] = useState('30');
+
   // Debug: Log state on each render
   console.log('=== APP RENDER ===');
   console.log('activeTransitAspects size:', activeTransitAspects.size);
@@ -656,6 +659,77 @@ function App() {
     setLoadingB(false);
   };
 
+  // Calculate Secondary Progressions
+  const calculateProgressions = async () => {
+    if (!chartData || !chartData.success) {
+      alert('Please calculate Chart A first (natal chart required for progressions)');
+      return;
+    }
+
+    if (!progressionAge || parseFloat(progressionAge) <= 0) {
+      alert('Please enter a valid age for progressions');
+      return;
+    }
+
+    setLoadingB(true);
+    try {
+      const result = await window.astro.calculateProgressions({
+        natalData: {
+          year: parseInt(formData.year),
+          month: parseInt(formData.month),
+          day: parseInt(formData.day),
+          hour: parseInt(formData.hour),
+          minute: parseInt(formData.minute),
+          latitude: parseFloat(formData.latitude),
+          longitude: parseFloat(formData.longitude),
+          houseSystem: formData.houseSystem
+        },
+        target: {
+          age: parseFloat(progressionAge)
+        }
+      });
+
+      if (result.success && result.data) {
+        // Format as standard chart data
+        const progressedChart = {
+          ...result.data,
+          success: true,
+          metadata: result.data.metadata
+        };
+
+        // Set all progressed aspects as active by default
+        if (progressedChart.aspects) {
+          const allAspectKeys = new Set(
+            progressedChart.aspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+          );
+          setActiveAspectsB(allAspectKeys);
+        }
+
+        // Update Chart B with progressed chart
+        setChartDataB(progressedChart);
+
+        // Update formDataB to show progression info
+        setFormDataB({
+          ...formDataB,
+          name: `${formData.name || 'Chart'} - Progressed (Age ${progressionAge})`
+        });
+
+        // Switch to dual view to show both charts
+        setViewMode('dual');
+
+        console.log('Progressions calculated:', progressedChart);
+      } else {
+        alert('Error calculating progressions: ' + (result.error || 'Unknown error'));
+        setChartDataB({ success: false, error: result.error });
+      }
+    } catch (error) {
+      console.error('Error calculating progressions:', error);
+      alert('Error calculating progressions: ' + error.message);
+      setChartDataB({ success: false, error: error.message });
+    }
+    setLoadingB(false);
+  };
+
   const handleAspectToggle = (aspectOrAspects) => {
     // Support both single aspect and array of aspects
     const aspects = Array.isArray(aspectOrAspects) ? aspectOrAspects : [aspectOrAspects];
@@ -1184,6 +1258,34 @@ function App() {
               </div>
             </div>
 
+            <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: '#f0f0f0', borderRadius: '8px' }}>
+              <div style={{ fontWeight: 'bold', marginBottom: '0.5rem', fontSize: '0.9rem' }}>
+                📈 Secondary Progressions
+              </div>
+              <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                <input
+                  type="number"
+                  value={progressionAge}
+                  onChange={(e) => setProgressionAge(e.target.value)}
+                  placeholder="Age"
+                  min="0"
+                  step="0.1"
+                  style={{ width: '80px', padding: '8px', fontSize: '0.9rem' }}
+                />
+                <button
+                  className="load-chart-btn"
+                  onClick={calculateProgressions}
+                  disabled={loadingB}
+                  style={{ fontSize: '0.85rem', padding: '8px 12px' }}
+                >
+                  {loadingB ? '⏳' : 'Calculate Progressions'}
+                </button>
+              </div>
+              <div style={{ fontSize: '0.75rem', color: '#666', marginTop: '0.5rem' }}>
+                Day-for-a-year method: View progressed vs natal in dual mode
+              </div>
+            </div>
+
             <ChartWheel
               chartData={chartData}
               transitData={chartData.transits}
@@ -1311,6 +1413,36 @@ function App() {
                     >
                       {loading ? '⏳ Calculating...' : '🔮 Calculate Chart A'}
                     </button>
+
+                    {chartData && chartData.success && (
+                      <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: '#f0f0f0', borderRadius: '8px' }}>
+                        <div style={{ fontWeight: 'bold', marginBottom: '0.5rem', fontSize: '0.9rem' }}>
+                          📈 Secondary Progressions
+                        </div>
+                        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                          <input
+                            type="number"
+                            value={progressionAge}
+                            onChange={(e) => setProgressionAge(e.target.value)}
+                            placeholder="Age"
+                            min="0"
+                            step="0.1"
+                            style={{ width: '80px', padding: '8px', fontSize: '0.9rem' }}
+                          />
+                          <button
+                            className="load-chart-btn"
+                            onClick={calculateProgressions}
+                            disabled={loadingB}
+                            style={{ fontSize: '0.85rem', padding: '8px 12px' }}
+                          >
+                            {loadingB ? '⏳' : 'Calculate to Chart B'}
+                          </button>
+                        </div>
+                        <div style={{ fontSize: '0.75rem', color: '#666', marginTop: '0.5rem' }}>
+                          Day-for-a-year method: Progressed chart loaded into Chart B
+                        </div>
+                      </div>
+                    )}
                   </>
                 )}
               </div>

@@ -120,6 +120,21 @@
     "tags": ["mundane", "usa", "founding", "event"]
   },
   {
+    "id": "usa-constitution",
+    "name": "United States (Constitution)",
+    "category": "National Charts",
+    "date": "1787-09-17",
+    "time": "16:00",
+    "location": "Philadelphia, Pennsylvania, USA",
+    "latitude": 39.9526,
+    "longitude": -75.1652,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Constitution signed September 17, 1787",
+    "notes": "US Constitution signing, alternative to July 4 1776 chart, some astrologers prefer this as US birth",
+    "tags": ["national-chart", "usa", "constitution", "founding"]
+  },
+  {
     "id": "911-attack",
     "name": "9/11 Attacks",
     "category": "Events",
