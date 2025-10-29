@@ -1,8 +1,12 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
+const fs = require('fs');
 
 // Load environment variables
 require('dotenv').config();
+
+// Load chart search utility
+const { searchCharts, formatSearchResults } = require(path.join(__dirname, '..', 'shared', 'utils', 'chartSearch.js'));
 
 let mainWindow;
 
@@ -163,44 +167,144 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
 
 You must analyze astrological charts using ONLY the data provided. Never invent or assume aspects.`,
           messages: [{ role: 'user', content: contextMessage }],
-          tools: [{
-            name: "present_astrological_analysis",
-            description: "Present astrological analysis based strictly on the provided chart data. You must ONLY reference aspects that appear in the TRANSIT-TO-NATAL ASPECTS or NATAL ASPECTS sections.",
-            input_schema: {
-              type: "object",
-              properties: {
-                relevant_transits: {
-                  type: "array",
-                  description: "List of relevant transit aspects. Each aspect MUST be copied exactly from the TRANSIT-TO-NATAL ASPECTS section - do not invent new aspects.",
-                  items: {
-                    type: "object",
-                    properties: {
-                      aspect_description: {
-                        type: "string",
-                        description: "Exact description as shown in the data (e.g., 'Transit Saturn ☌ Natal Jupiter (orb: 1.0°) [separating]')"
+          tools: [
+            {
+              name: "present_astrological_analysis",
+              description: "Present astrological analysis based strictly on the provided chart data. You must ONLY reference aspects that appear in the TRANSIT-TO-NATAL ASPECTS or NATAL ASPECTS sections. Use this tool when the user asks for interpretation or analysis of the currently displayed chart.",
+              input_schema: {
+                type: "object",
+                properties: {
+                  relevant_transits: {
+                    type: "array",
+                    description: "List of relevant transit aspects. Each aspect MUST be copied exactly from the TRANSIT-TO-NATAL ASPECTS section - do not invent new aspects.",
+                    items: {
+                      type: "object",
+                      properties: {
+                        aspect_description: {
+                          type: "string",
+                          description: "Exact description as shown in the data (e.g., 'Transit Saturn ☌ Natal Jupiter (orb: 1.0°) [separating]')"
+                        },
+                        interpretation: {
+                          type: "string",
+                          description: "Astrological interpretation of this specific aspect"
+                        },
+                        significance: {
+                          type: "string",
+                          enum: ["high", "medium", "low"],
+                          description: "How significant this transit is based on orb tightness and planet importance"
+                        }
                       },
-                      interpretation: {
-                        type: "string",
-                        description: "Astrological interpretation of this specific aspect"
-                      },
-                      significance: {
-                        type: "string",
-                        enum: ["high", "medium", "low"],
-                        description: "How significant this transit is based on orb tightness and planet importance"
-                      }
-                    },
-                    required: ["aspect_description", "interpretation", "significance"]
+                      required: ["aspect_description", "interpretation", "significance"]
+                    }
+                  },
+                  overall_summary: {
+                    type: "string",
+                    description: "Brief overall summary of the most important themes from the analyzed aspects"
                   }
                 },
-                overall_summary: {
-                  type: "string",
-                  description: "Brief overall summary of the most important themes from the analyzed aspects"
-                }
-              },
-              required: ["relevant_transits", "overall_summary"]
+                required: ["relevant_transits", "overall_summary"]
+              }
+            },
+            {
+              name: "search_famous_charts",
+              description: "Search through the famous charts database for charts matching astrological criteria. Use this tool when the user asks to find, show, or search for charts based on planetary positions, signs, houses, aspects, or categories (like 'musicians', 'presidents', etc.). Supports both AND logic (all criteria must match) and threshold logic (at least N out of M criteria must match).",
+              input_schema: {
+                type: "object",
+                properties: {
+                  planetInSign: {
+                    type: "array",
+                    description: "Find charts with specific planets in specific signs",
+                    items: {
+                      type: "object",
+                      properties: {
+                        planet: {
+                          type: "string",
+                          enum: ["sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto", "north_node", "south_node"],
+                          description: "The planet to search for"
+                        },
+                        sign: {
+                          type: "string",
+                          enum: ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"],
+                          description: "The zodiac sign"
+                        }
+                      },
+                      required: ["planet", "sign"]
+                    }
+                  },
+                  planetInHouse: {
+                    type: "array",
+                    description: "Find charts with specific planets in specific houses",
+                    items: {
+                      type: "object",
+                      properties: {
+                        planet: {
+                          type: "string",
+                          enum: ["sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto"],
+                          description: "The planet to search for"
+                        },
+                        house: {
+                          type: "integer",
+                          minimum: 1,
+                          maximum: 12,
+                          description: "The house number (1-12)"
+                        }
+                      },
+                      required: ["planet", "house"]
+                    }
+                  },
+                  ascendantSign: {
+                    type: "string",
+                    enum: ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"],
+                    description: "Find charts with a specific ascendant (rising) sign"
+                  },
+                  aspects: {
+                    type: "array",
+                    description: "Find charts with specific aspects between planets",
+                    items: {
+                      type: "object",
+                      properties: {
+                        planet1: {
+                          type: "string",
+                          enum: ["sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto"],
+                          description: "First planet in the aspect"
+                        },
+                        planet2: {
+                          type: "string",
+                          enum: ["sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto"],
+                          description: "Second planet in the aspect"
+                        },
+                        aspect: {
+                          type: "string",
+                          enum: ["conjunction", "opposition", "square", "trine", "sextile"],
+                          description: "Type of aspect (optional - if omitted, finds any aspect between the planets)"
+                        },
+                        maxOrb: {
+                          type: "number",
+                          description: "Maximum orb in degrees (optional - filters to tighter orbs)"
+                        }
+                      },
+                      required: ["planet1", "planet2"]
+                    }
+                  },
+                  category: {
+                    type: "string",
+                    description: "Filter by category or tag (e.g., 'musicians', 'presidents', 'scientists', 'politicians')"
+                  },
+                  matchMode: {
+                    type: "string",
+                    enum: ["all", "threshold"],
+                    description: "How to match criteria: 'all' (default) requires all specified criteria to match (AND logic), 'threshold' requires at least minMatches criteria to match (OR logic with minimum threshold). Use 'threshold' when the user asks for 'at least N of' or '2 out of 3' type queries."
+                  },
+                  minMatches: {
+                    type: "integer",
+                    minimum: 1,
+                    description: "When matchMode is 'threshold', the minimum number of criteria that must match. For example, if user asks for '2 out of 3 placements', set minMatches to 2. Only used when matchMode is 'threshold'."
+                  }
+                },
+                additionalProperties: false
+              }
             }
-          }],
-          tool_choice: { type: "tool", name: "present_astrological_analysis" }
+          ]
         });
         console.log(`Successfully used model: ${model}`);
         break;
@@ -218,6 +322,95 @@ You must analyze astrological charts using ONLY the data provided. Never invent 
     // Parse structured tool response
     const toolUse = response.content.find(block => block.type === 'tool_use');
 
+    // Handle search_famous_charts tool
+    if (toolUse && toolUse.name === 'search_famous_charts') {
+      console.log('Claude used search_famous_charts tool with criteria:', JSON.stringify(toolUse.input, null, 2));
+
+      // Load the calculated charts database
+      const calculatedChartsPath = path.join(__dirname, '..', 'shared', 'data', 'famousChartsCalculated.json');
+      let chartsDatabase;
+      try {
+        const data = fs.readFileSync(calculatedChartsPath, 'utf8');
+        chartsDatabase = JSON.parse(data);
+      } catch (error) {
+        console.error('Failed to load charts database:', error);
+        return {
+          success: false,
+          error: 'Failed to load charts database: ' + error.message
+        };
+      }
+
+      // Execute the search with options
+      const searchOptions = {};
+      if (toolUse.input.matchMode) {
+        searchOptions.matchMode = toolUse.input.matchMode;
+      }
+      if (toolUse.input.minMatches) {
+        searchOptions.minMatches = toolUse.input.minMatches;
+      }
+
+      const searchResults = searchCharts(chartsDatabase, toolUse.input, searchOptions);
+      const formattedResults = formatSearchResults(searchResults, toolUse.input);
+
+      console.log(`Search found ${formattedResults.count} results`);
+
+      // Continue conversation with search results
+      const searchResultsMessage = `SEARCH RESULTS:\n\nFound ${formattedResults.count} charts matching the criteria.\n\n` +
+        formattedResults.results.map((chart, idx) => {
+          return `${idx + 1}. ${chart.name} (${chart.category})\n` +
+                 `   ID: ${chart.id}\n` +
+                 `   Birth: ${chart.date}${chart.time ? ' at ' + chart.time : ''}\n` +
+                 `   Location: ${chart.location}\n` +
+                 `   Matched: ${chart.matchedCriteria.join(', ')}\n` +
+                 (chart.notes ? `   Notes: ${chart.notes.substring(0, 100)}${chart.notes.length > 100 ? '...' : ''}\n` : '');
+        }).join('\n');
+
+      // Make a second API call with the search results for Claude to format
+      let finalResponse;
+      for (const model of models) {
+        try {
+          finalResponse = await anthropic.messages.create({
+            model: model,
+            max_tokens: 4096,
+            system: `You are an expert professional astrologer.`,
+            messages: [
+              { role: 'user', content: contextMessage },
+              { role: 'assistant', content: response.content },
+              {
+                role: 'user',
+                content: [{
+                  type: 'tool_result',
+                  tool_use_id: toolUse.id,
+                  content: searchResultsMessage
+                }]
+              }
+            ]
+          });
+          break;
+        } catch (err) {
+          console.log(`Model ${model} failed on follow-up:`, err.message);
+          continue;
+        }
+      }
+
+      if (!finalResponse) {
+        // Fallback: just return the results directly
+        return {
+          success: true,
+          message: searchResultsMessage,
+          searchResults: formattedResults
+        };
+      }
+
+      const finalText = finalResponse.content.find(block => block.type === 'text');
+      return {
+        success: true,
+        message: finalText ? finalText.text : searchResultsMessage,
+        searchResults: formattedResults
+      };
+    }
+
+    // Handle present_astrological_analysis tool
     if (toolUse && toolUse.name === 'present_astrological_analysis') {
       const analysis = toolUse.input;
 
