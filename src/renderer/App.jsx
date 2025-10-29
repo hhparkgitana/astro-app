@@ -125,18 +125,18 @@ function App() {
         const aspect = findAspect(
           distance,
           orb,
-          natalPlanet.velocity,
-          transitPlanet.velocity,
-          natalPlanet.longitude,
-          transitPlanet.longitude
+          transitPlanet.velocity,  // velocity1 for transit planet
+          natalPlanet.velocity,    // velocity2 for natal planet
+          transitPlanet.longitude, // long1 for transit planet
+          natalPlanet.longitude    // long2 for natal planet
         );
 
         if (aspect) {
           aspects.push({
-            planet1: natalPlanet.name,
-            planet1Key: natalPlanet.key,
-            planet2: transitPlanet.name,
-            planet2Key: transitPlanet.key,
+            planet1: transitPlanet.name,  // Transit planet first
+            planet1Key: transitPlanet.key,
+            planet2: natalPlanet.name,    // Natal planet second
+            planet2Key: natalPlanet.key,
             ...aspect
           });
         }
