@@ -14,6 +14,9 @@ const { findTransitExactitude, findDatabaseImpact, formatDate, getZodiacSign } =
 // Load progressions calculator
 const { calculateSecondaryProgressions, formatProgressionInfo } = require(path.join(__dirname, '..', 'shared', 'calculations', 'progressionsCalculator.js'));
 
+// Load eclipse calculator
+const { findEclipses, findEclipsesAffectingChart, findEclipsesDatabaseImpact, formatEclipseInfo } = require(path.join(__dirname, '..', 'shared', 'calculations', 'eclipseCalculator.js'));
+
 let mainWindow;
 
 function createWindow() {
@@ -66,6 +69,46 @@ ipcMain.handle('calculate-progressions', async (event, params) => {
     };
   } catch (error) {
     console.error('Error calculating progressions:', error);
+    return {
+      success: false,
+      error: error.message,
+    };
+  }
+});
+
+// Handle eclipse calculation requests
+ipcMain.handle('find-eclipses', async (event, params) => {
+  try {
+    const { queryType, startDate, endDate, natalChart, orb = 3 } = params;
+
+    const start = startDate ? new Date(startDate) : new Date();
+    const end = endDate ? new Date(endDate) : new Date(start.getTime() + (2 * 365.25 * 24 * 60 * 60 * 1000)); // Default: 2 years
+
+    let result;
+
+    if (queryType === 'upcoming' || queryType === 'list') {
+      // Just find eclipses in date range
+      result = findEclipses(start, end);
+    } else if (queryType === 'affecting_chart' && natalChart) {
+      // Find eclipses affecting specific chart
+      result = findEclipsesAffectingChart(natalChart, start, end, orb);
+    } else if (queryType === 'database_impact') {
+      // Find eclipses affecting famous charts database
+      const calculatedChartsPath = path.join(__dirname, '..', 'shared', 'data', 'famousChartsCalculated.json');
+      const data = fs.readFileSync(calculatedChartsPath, 'utf8');
+      const chartsDatabase = JSON.parse(data);
+      result = findEclipsesDatabaseImpact(chartsDatabase, start, end, orb);
+    } else {
+      throw new Error('Invalid query type or missing required parameters');
+    }
+
+    return {
+      success: true,
+      data: result,
+      queryType: queryType
+    };
+  } catch (error) {
+    console.error('Error finding eclipses:', error);
     return {
       success: false,
       error: error.message,
@@ -387,6 +430,34 @@ This application supports secondary progressions using the day-for-a-year method
                 required: ["queryType", "transitPlanet", "aspect"],
                 additionalProperties: false
               }
+            },
+            {
+              name: "find_eclipses",
+              description: "Find solar and lunar eclipses and analyze their impact on natal charts or the famous charts database. Use for queries like 'When's the next eclipse?', 'Show me all eclipses in 2025', 'Which eclipses will hit my Venus?', or 'Find charts affected by the March 2025 eclipse'.",
+              input_schema: {
+                type: "object",
+                properties: {
+                  queryType: {
+                    type: "string",
+                    enum: ["upcoming", "list", "affecting_chart", "database_impact"],
+                    description: "'upcoming' or 'list' - find all eclipses in a date range, 'affecting_chart' - find eclipses affecting the current chart, 'database_impact' - find which charts in database are affected by eclipses"
+                  },
+                  startDate: {
+                    type: "string",
+                    description: "Start date in YYYY-MM-DD format. Defaults to today"
+                  },
+                  endDate: {
+                    type: "string",
+                    description: "End date in YYYY-MM-DD format. Defaults to 2 years from start date"
+                  },
+                  orb: {
+                    type: "number",
+                    description: "Maximum orb in degrees for eclipse activation (default 3°)"
+                  }
+                },
+                required: ["queryType"],
+                additionalProperties: false
+              }
             }
           ]
         });
@@ -679,6 +750,119 @@ This application supports secondary progressions using the day-for-a-year method
         return {
           success: false,
           error: 'Transit calculation failed: ' + error.message
+        };
+      }
+    }
+
+    // Handle find_eclipses tool
+    if (toolUse && toolUse.name === 'find_eclipses') {
+      console.log('Claude used find_eclipses tool with input:', JSON.stringify(toolUse.input, null, 2));
+
+      try {
+        const { queryType, startDate, endDate, orb } = toolUse.input;
+
+        // Parse dates
+        const start = startDate ? new Date(startDate + 'T00:00:00Z') : new Date();
+        const end = endDate ? new Date(endDate + 'T00:00:00Z') : new Date(start.getTime() + (2 * 365.25 * 24 * 60 * 60 * 1000)); // Default: 2 years
+
+        const searchOrb = orb || 3;
+        let eclipses = [];
+
+        if (queryType === 'affecting_chart' && chartContext && chartContext.charts && chartContext.charts.length > 0) {
+          // Use the first chart's data for eclipse impacts
+          const chart = chartContext.charts[0];
+          eclipses = findEclipsesAffectingChart(chart, start, end, searchOrb);
+        } else if (queryType === 'database_impact') {
+          // Load charts database
+          const calculatedChartsPath = path.join(__dirname, '..', 'shared', 'data', 'famousChartsCalculated.json');
+          const data = fs.readFileSync(calculatedChartsPath, 'utf8');
+          const chartsDatabase = JSON.parse(data);
+          eclipses = findEclipsesDatabaseImpact(chartsDatabase, start, end, searchOrb);
+        } else {
+          // Just find eclipses in date range
+          eclipses = findEclipses(start, end);
+        }
+
+        // Format results message
+        const now = new Date();
+        let resultsMessage = `ECLIPSE RESULTS:\n\nToday's date: ${formatDate(now)}\n`;
+        resultsMessage += `Period: ${formatDate(start)} to ${formatDate(end)}\n\n`;
+        resultsMessage += `Found ${eclipses.length} eclipse${eclipses.length !== 1 ? 's' : ''}:\n\n`;
+
+        eclipses.forEach((eclipse, idx) => {
+          const typeLabel = eclipse.type === 'solar' ? '☉ Solar' : '☽ Lunar';
+          const kindLabel = eclipse.kind.charAt(0).toUpperCase() + eclipse.kind.slice(1);
+          resultsMessage += `${idx + 1}. ${kindLabel} ${typeLabel} Eclipse\n`;
+          resultsMessage += `   Date: ${formatDate(eclipse.date)}\n`;
+          resultsMessage += `   Position: ${eclipse.sign}\n`;
+
+          if (eclipse.house) {
+            resultsMessage += `   House: ${eclipse.house}\n`;
+          }
+
+          if (eclipse.affectedPlanets && eclipse.affectedPlanets.length > 0) {
+            resultsMessage += `   Activates: `;
+            resultsMessage += eclipse.affectedPlanets.map(p =>
+              `${p.planet} (orb: ${p.orb.toFixed(2)}°)`
+            ).join(', ');
+            resultsMessage += `\n`;
+          }
+
+          if (eclipse.affectedCharts && eclipse.affectedCharts.length > 0) {
+            resultsMessage += `   Affects ${eclipse.affectedCharts.length} chart(s) in database\n`;
+          }
+
+          resultsMessage += `\n`;
+        });
+
+        // Make follow-up API call with results
+        let finalResponse;
+        for (const model of models) {
+          try {
+            finalResponse = await anthropic.messages.create({
+              model: model,
+              max_tokens: 4096,
+              system: `You are an expert professional astrologer. Eclipses are major timing indicators that activate specific degrees in the zodiac. Solar eclipses (New Moons on steroids) are about new beginnings and external events. Lunar eclipses (Full Moons on steroids) are about endings, revelations, and emotional releases. Eclipse effects can last for months.`,
+              messages: [
+                { role: 'user', content: contextMessage },
+                { role: 'assistant', content: response.content },
+                {
+                  role: 'user',
+                  content: [{
+                    type: 'tool_result',
+                    tool_use_id: toolUse.id,
+                    content: resultsMessage
+                  }]
+                }
+              ]
+            });
+            break;
+          } catch (err) {
+            console.log(`Model ${model} failed on follow-up:`, err.message);
+            continue;
+          }
+        }
+
+        if (!finalResponse) {
+          return {
+            success: true,
+            message: resultsMessage,
+            eclipses: eclipses
+          };
+        }
+
+        const finalText = finalResponse.content.find(block => block.type === 'text');
+        return {
+          success: true,
+          message: finalText ? finalText.text : resultsMessage,
+          eclipses: eclipses
+        };
+
+      } catch (error) {
+        console.error('Eclipse calculation error:', error);
+        return {
+          success: false,
+          error: 'Eclipse calculation failed: ' + error.message
         };
       }
     }
