@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import ChartWheel from './components/ChartWheel';
 import AspectTabs from './components/AspectTabs';
+import FamousChartsBrowser from './components/FamousChartsBrowser';
 import { DateTime } from 'luxon';
 import { findAspect, getAngularDistance, calculateAspects } from '../shared/calculations/aspectsCalculator';
 
@@ -18,6 +19,9 @@ function App() {
   const [natalOrb, setNatalOrb] = useState(8);
   const [transitOrb, setTransitOrb] = useState(8);
   const [transitTransitOrb, setTransitTransitOrb] = useState(8);
+
+  // Famous charts browser
+  const [isBrowserOpen, setIsBrowserOpen] = useState(false);
 
   // Debug: Log state on each render
   console.log('=== APP RENDER ===');
@@ -322,6 +326,42 @@ function App() {
     });
   };
 
+  const handleFamousChartSelect = (chart) => {
+    // Parse date (YYYY-MM-DD format)
+    const [year, month, day] = chart.date.split('-');
+
+    // Parse time (HH:MM format)
+    const [hour, minute] = chart.time.split(':');
+
+    // Clear any existing chart data
+    setChartData(null);
+    setActiveAspects(new Set());
+    setActiveTransitAspects(new Set());
+
+    // Populate form with famous chart data
+    setFormData({
+      name: chart.name,
+      year: year,
+      month: month,
+      day: day,
+      hour: hour,
+      minute: minute,
+      latitude: chart.latitude.toString(),
+      longitude: chart.longitude.toString(),
+      location: chart.location,
+      timezone: chart.timezone,
+      houseSystem: formData.houseSystem, // Keep current house system
+      showTransits: formData.showTransits, // Keep transit setting
+      transitYear: formData.transitYear,
+      transitMonth: formData.transitMonth,
+      transitDay: formData.transitDay,
+      transitHour: formData.transitHour,
+      transitMinute: formData.transitMinute,
+    });
+
+    console.log('Loaded famous chart:', chart.name);
+  };
+
   const handleAspectToggle = (aspectOrAspects) => {
     // Support both single aspect and array of aspects
     const aspects = Array.isArray(aspectOrAspects) ? aspectOrAspects : [aspectOrAspects];
@@ -447,7 +487,7 @@ function App() {
       </header>
       <main className="app-main">
         <h2>Calculate Natal Chart</h2>
-        
+
         <form onSubmit={calculateChart} className="chart-form">
           <div className="form-group">
             <label>Name (optional)</label>
@@ -764,6 +804,16 @@ function App() {
           </button>
         </form>
 
+        <div style={{ textAlign: 'center', marginTop: '20px', paddingTop: '20px', borderTop: '1px solid #e0e0e0' }}>
+          <button
+            type="button"
+            onClick={() => setIsBrowserOpen(true)}
+            className="famous-charts-btn"
+          >
+            📚 Browse Famous Charts Database
+          </button>
+        </div>
+
         {chartData && chartData.success && (
           <div className="chart-results">
             <div className="chart-header">
@@ -863,6 +913,12 @@ function App() {
           </div>
         )}
       </main>
+
+      <FamousChartsBrowser
+        isOpen={isBrowserOpen}
+        onClose={() => setIsBrowserOpen(false)}
+        onSelectChart={handleFamousChartSelect}
+      />
     </div>
   );
 }

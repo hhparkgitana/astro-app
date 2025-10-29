@@ -175,8 +175,8 @@ function isSameSign(long1, long2) {
   return getSign(long1) === getSign(long2);
 }
 
-// ES6 exports for renderer process
-export {
+// CommonJS exports only (works for both Node.js main process and Vite renderer)
+module.exports = {
   calculateAspects,
   getAngularDistance,
   findAspect,
@@ -184,15 +184,3 @@ export {
   isSameSign,
   ASPECT_TYPES
 };
-
-// CommonJS exports for main process (backwards compatibility)
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    calculateAspects,
-    getAngularDistance,
-    findAspect,
-    getSign,
-    isSameSign,
-    ASPECT_TYPES
-  };
-}

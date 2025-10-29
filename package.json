@@ -5,7 +5,7 @@
   "main": "src/main/main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "concurrently \"vite\" \"wait-on http://localhost:3000 && electron .\"",
+    "dev": "concurrently \"vite\" \"wait-on http://localhost:3456 && electron .\"",
     "build": "vite build",
     "rebuild": "electron-rebuild -f -w swisseph"
   },
