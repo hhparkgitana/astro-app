@@ -22,6 +22,17 @@ function App() {
 
   // Famous charts browser
   const [isBrowserOpen, setIsBrowserOpen] = useState(false);
+  const [activeChart, setActiveChart] = useState('A'); // Which chart the browser is loading into
+
+  // View mode: 'single' or 'dual'
+  const [viewMode, setViewMode] = useState('single');
+
+  // Chart B states (for dual view)
+  const [chartDataB, setChartDataB] = useState(null);
+  const [loadingB, setLoadingB] = useState(false);
+  const [activeAspectsB, setActiveAspectsB] = useState(new Set());
+  const [activeTransitAspectsB, setActiveTransitAspectsB] = useState(new Set());
+  const [showNatalAspectsB, setShowNatalAspectsB] = useState(true);
 
   // Debug: Log state on each render
   console.log('=== APP RENDER ===');
@@ -40,6 +51,26 @@ function App() {
     timezone: 'America/New_York',
     houseSystem: 'placidus',
     // Transit date/time (defaults to current date)
+    showTransits: false,
+    transitYear: new Date().getFullYear().toString(),
+    transitMonth: (new Date().getMonth() + 1).toString(),
+    transitDay: new Date().getDate().toString(),
+    transitHour: new Date().getHours().toString(),
+    transitMinute: new Date().getMinutes().toString(),
+  });
+
+  const [formDataB, setFormDataB] = useState({
+    name: '',
+    year: '1990',
+    month: '1',
+    day: '1',
+    hour: '12',
+    minute: '0',
+    latitude: '40.7128',
+    longitude: '-74.0060',
+    location: 'New York, NY',
+    timezone: 'America/New_York',
+    houseSystem: 'placidus',
     showTransits: false,
     transitYear: new Date().getFullYear().toString(),
     transitMonth: (new Date().getMonth() + 1).toString(),
@@ -326,40 +357,162 @@ function App() {
     });
   };
 
-  const handleFamousChartSelect = (chart) => {
+  const handleFamousChartSelect = async (chart) => {
     // Parse date (YYYY-MM-DD format)
     const [year, month, day] = chart.date.split('-');
 
     // Parse time (HH:MM format)
     const [hour, minute] = chart.time.split(':');
 
-    // Clear any existing chart data
-    setChartData(null);
-    setActiveAspects(new Set());
-    setActiveTransitAspects(new Set());
+    // Determine which chart to load into
+    if (activeChart === 'A') {
+      // Clear any existing chart data for A
+      setChartData(null);
+      setActiveAspects(new Set());
+      setActiveTransitAspects(new Set());
 
-    // Populate form with famous chart data
-    setFormData({
-      name: chart.name,
-      year: year,
-      month: month,
-      day: day,
-      hour: hour,
-      minute: minute,
-      latitude: chart.latitude.toString(),
-      longitude: chart.longitude.toString(),
-      location: chart.location,
-      timezone: chart.timezone,
-      houseSystem: formData.houseSystem, // Keep current house system
-      showTransits: formData.showTransits, // Keep transit setting
-      transitYear: formData.transitYear,
-      transitMonth: formData.transitMonth,
-      transitDay: formData.transitDay,
-      transitHour: formData.transitHour,
-      transitMinute: formData.transitMinute,
-    });
+      // Populate form with famous chart data
+      setFormData({
+        name: chart.name,
+        year: year,
+        month: month,
+        day: day,
+        hour: hour,
+        minute: minute,
+        latitude: chart.latitude.toString(),
+        longitude: chart.longitude.toString(),
+        location: chart.location,
+        timezone: chart.timezone,
+        houseSystem: formData.houseSystem,
+        showTransits: false,
+        transitYear: formData.transitYear,
+        transitMonth: formData.transitMonth,
+        transitDay: formData.transitDay,
+        transitHour: formData.transitHour,
+        transitMinute: formData.transitMinute,
+      });
 
-    console.log('Loaded famous chart:', chart.name);
+      console.log('Loaded famous chart A:', chart.name);
+    } else {
+      // Load into Chart B
+      setChartDataB(null);
+      setActiveAspectsB(new Set());
+      setActiveTransitAspectsB(new Set());
+
+      setFormDataB({
+        name: chart.name,
+        year: year,
+        month: month,
+        day: day,
+        hour: hour,
+        minute: minute,
+        latitude: chart.latitude.toString(),
+        longitude: chart.longitude.toString(),
+        location: chart.location,
+        timezone: chart.timezone,
+        houseSystem: formDataB.houseSystem,
+        showTransits: false,
+        transitYear: formDataB.transitYear,
+        transitMonth: formDataB.transitMonth,
+        transitDay: formDataB.transitDay,
+        transitHour: formDataB.transitHour,
+        transitMinute: formDataB.transitMinute,
+      });
+
+      console.log('Loaded famous chart B:', chart.name);
+    }
+  };
+
+  // Calculate Chart A (for dual view)
+  const calculateChartA = async () => {
+    setLoading(true);
+    try {
+      const localTime = DateTime.fromObject({
+        year: parseInt(formData.year),
+        month: parseInt(formData.month),
+        day: parseInt(formData.day),
+        hour: parseInt(formData.hour),
+        minute: parseInt(formData.minute),
+      }, { zone: formData.timezone });
+
+      const utcTime = localTime.toUTC();
+
+      const result = await window.astro.calculateChart({
+        year: parseInt(formData.year),
+        month: parseInt(formData.month),
+        day: parseInt(formData.day),
+        hour: parseInt(formData.hour),
+        minute: parseInt(formData.minute),
+        utcYear: utcTime.year,
+        utcMonth: utcTime.month,
+        utcDay: utcTime.day,
+        utcHour: utcTime.hour,
+        utcMinute: utcTime.minute,
+        latitude: parseFloat(formData.latitude),
+        longitude: parseFloat(formData.longitude),
+        houseSystem: formData.houseSystem,
+      });
+
+      if (result.success && result.aspects) {
+        const allAspectKeys = new Set(
+          result.aspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+        );
+        setActiveAspects(allAspectKeys);
+      }
+
+      setChartData(result);
+      console.log('Chart A calculated:', result);
+    } catch (error) {
+      console.error('Error calculating Chart A:', error);
+      setChartData({ success: false, error: error.message });
+    }
+    setLoading(false);
+  };
+
+  // Calculate Chart B (for dual view)
+  const calculateChartB = async () => {
+    setLoadingB(true);
+    try {
+      const localTime = DateTime.fromObject({
+        year: parseInt(formDataB.year),
+        month: parseInt(formDataB.month),
+        day: parseInt(formDataB.day),
+        hour: parseInt(formDataB.hour),
+        minute: parseInt(formDataB.minute),
+      }, { zone: formDataB.timezone });
+
+      const utcTime = localTime.toUTC();
+
+      const result = await window.astro.calculateChart({
+        year: parseInt(formDataB.year),
+        month: parseInt(formDataB.month),
+        day: parseInt(formDataB.day),
+        hour: parseInt(formDataB.hour),
+        minute: parseInt(formDataB.minute),
+        utcYear: utcTime.year,
+        utcMonth: utcTime.month,
+        utcDay: utcTime.day,
+        utcHour: utcTime.hour,
+        utcMinute: utcTime.minute,
+        latitude: parseFloat(formDataB.latitude),
+        longitude: parseFloat(formDataB.longitude),
+        houseSystem: formDataB.houseSystem,
+      });
+
+      if (result.success && result.aspects) {
+        const allAspectKeys = new Set(
+          result.aspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+        );
+        setActiveAspectsB(allAspectKeys);
+      }
+
+      setChartDataB(result);
+      console.log('Chart B calculated:', result);
+    } catch (error) {
+      console.error('Error calculating Chart B:', error);
+      setChartDataB({ success: false, error: error.message });
+    }
+    setLoadingB(false);
   };
 
   const handleAspectToggle = (aspectOrAspects) => {
@@ -484,8 +637,24 @@ function App() {
     <div className="app">
       <header className="app-header">
         <h1>🌟 AstroApp</h1>
+        <div className="view-mode-toggle">
+          <button
+            className={`mode-btn ${viewMode === 'single' ? 'active' : ''}`}
+            onClick={() => setViewMode('single')}
+          >
+            Single Chart
+          </button>
+          <button
+            className={`mode-btn ${viewMode === 'dual' ? 'active' : ''}`}
+            onClick={() => setViewMode('dual')}
+          >
+            Compare Charts
+          </button>
+        </div>
       </header>
       <main className="app-main">
+        {viewMode === 'single' ? (
+          <>
         <h2>Calculate Natal Chart</h2>
 
         <form onSubmit={calculateChart} className="chart-form">
@@ -910,6 +1079,72 @@ function App() {
         {chartData && !chartData.success && (
           <div className="error">
             <p>Error: {chartData.error}</p>
+          </div>
+        )}
+          </>
+        ) : (
+          <div className="dual-charts-container">
+            <div className="chart-panel">
+              <div className="chart-panel-header chart-a">
+                Chart A: {formData.name || 'Unnamed Chart'}
+              </div>
+              <div className="load-chart-section">
+                <button
+                  className="load-chart-btn"
+                  onClick={() => { setActiveChart('A'); setIsBrowserOpen(true); }}
+                >
+                  📚 Load Chart A from Database
+                </button>
+                {formData.name && (
+                  <button
+                    className="load-chart-btn"
+                    onClick={calculateChartA}
+                    disabled={loading}
+                    style={{ marginTop: '1rem' }}
+                  >
+                    {loading ? '⏳ Calculating...' : '🔮 Calculate Chart A'}
+                  </button>
+                )}
+              </div>
+              {chartData && chartData.success && (
+                <div className="chart-results">
+                  <div className="chart-display">
+                    <ChartWheel chartData={chartData} activeAspects={activeAspects} />
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="chart-panel">
+              <div className="chart-panel-header chart-b">
+                Chart B: {formDataB.name || 'Unnamed Chart'}
+              </div>
+              <div className="load-chart-section">
+                <button
+                  className="load-chart-btn"
+                  onClick={() => { setActiveChart('B'); setIsBrowserOpen(true); }}
+                >
+                  📚 Load Chart B from Database
+                </button>
+                {formDataB.name && (
+                  <button
+                    className="load-chart-btn"
+                    onClick={calculateChartB}
+                    disabled={loadingB}
+                    style={{ marginTop: '1rem' }}
+                  >
+                    {loadingB ? '⏳ Calculating...' : '🔮 Calculate Chart B'}
+                  </button>
+                )}
+              </div>
+              {chartDataB && chartDataB.success && (
+                <div className="chart-results">
+                  <div className="chart-display">
+                    <ChartWheel chartData={chartDataB} activeAspects={activeAspectsB} />
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </main>
