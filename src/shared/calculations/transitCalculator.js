@@ -40,21 +40,33 @@ function getPlanetPosition(planetName, date) {
   }
 
   // Get ecliptic coordinates
-  const ecliptic = Astronomy.Ecliptic(bodyName, date);
+  // Moon uses GeoMoon, other bodies use GeoVector
+  let ecliptic, nextEcliptic;
+
+  if (bodyName === 'Moon') {
+    ecliptic = Astronomy.Ecliptic(Astronomy.GeoMoon(date));
+  } else {
+    ecliptic = Astronomy.Ecliptic(Astronomy.GeoVector(bodyName, date, true));
+  }
 
   // Calculate speed by checking position 1 hour later
   const nextDate = new Date(date.getTime() + 3600000); // +1 hour
-  const nextEcliptic = Astronomy.Ecliptic(bodyName, nextDate);
+
+  if (bodyName === 'Moon') {
+    nextEcliptic = Astronomy.Ecliptic(Astronomy.GeoMoon(nextDate));
+  } else {
+    nextEcliptic = Astronomy.Ecliptic(Astronomy.GeoVector(bodyName, nextDate, true));
+  }
 
   // Speed in degrees per day
-  let speed = (nextEcliptic.eLon - ecliptic.eLon) * 24;
+  let speed = (nextEcliptic.elon - ecliptic.elon) * 24;
 
   // Handle 360° wraparound
   if (speed > 180) speed -= 360;
   if (speed < -180) speed += 360;
 
   return {
-    longitude: normalizeAngle(ecliptic.eLon),
+    longitude: normalizeAngle(ecliptic.elon),
     speed: speed
   };
 }
