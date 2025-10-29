@@ -87,6 +87,14 @@ function App() {
     });
   };
 
+  const handleInputChangeB = (e) => {
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    setFormDataB({
+      ...formDataB,
+      [e.target.name]: value,
+    });
+  };
+
   // Note: getAngularDistance and findAspect are now imported from aspectsCalculator
 
   // Calculate aspects between natal and transit planets
@@ -460,7 +468,55 @@ function App() {
         setActiveAspects(allAspectKeys);
       }
 
-      setChartData(result);
+      // Calculate transit positions if enabled
+      let transitData = null;
+      if (formData.showTransits && result.success) {
+        const transitLocalTime = DateTime.fromObject({
+          year: parseInt(formData.transitYear),
+          month: parseInt(formData.transitMonth),
+          day: parseInt(formData.transitDay),
+          hour: parseInt(formData.transitHour),
+          minute: parseInt(formData.transitMinute),
+        }, { zone: formData.timezone });
+
+        const transitUtcTime = transitLocalTime.toUTC();
+
+        const transitResult = await window.astro.calculateChart({
+          year: parseInt(formData.transitYear),
+          month: parseInt(formData.transitMonth),
+          day: parseInt(formData.transitDay),
+          hour: parseInt(formData.transitHour),
+          minute: parseInt(formData.transitMinute),
+          utcYear: transitUtcTime.year,
+          utcMonth: transitUtcTime.month,
+          utcDay: transitUtcTime.day,
+          utcHour: transitUtcTime.hour,
+          utcMinute: transitUtcTime.minute,
+          latitude: parseFloat(formData.latitude),
+          longitude: parseFloat(formData.longitude),
+          houseSystem: formData.houseSystem,
+        });
+
+        if (transitResult.success) {
+          transitData = transitResult;
+
+          // Calculate natal-to-transit aspects
+          const transitAspects = calculateTransitAspects(result.planets, transitData.planets, transitOrb);
+          result.transitAspects = transitAspects;
+
+          // Set all transit aspects as active by default
+          const allTransitAspectKeys = new Set(
+            transitAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+          );
+          setActiveTransitAspects(allTransitAspectKeys);
+
+          // Calculate transit-to-transit aspects
+          const transitTransitAspects = calculateTransitToTransitAspects(transitData.planets, transitTransitOrb);
+          result.transitTransitAspects = transitTransitAspects;
+        }
+      }
+
+      setChartData({ ...result, transits: transitData });
       console.log('Chart A calculated:', result);
     } catch (error) {
       console.error('Error calculating Chart A:', error);
@@ -506,7 +562,55 @@ function App() {
         setActiveAspectsB(allAspectKeys);
       }
 
-      setChartDataB(result);
+      // Calculate transit positions if enabled
+      let transitData = null;
+      if (formDataB.showTransits && result.success) {
+        const transitLocalTime = DateTime.fromObject({
+          year: parseInt(formDataB.transitYear),
+          month: parseInt(formDataB.transitMonth),
+          day: parseInt(formDataB.transitDay),
+          hour: parseInt(formDataB.transitHour),
+          minute: parseInt(formDataB.transitMinute),
+        }, { zone: formDataB.timezone });
+
+        const transitUtcTime = transitLocalTime.toUTC();
+
+        const transitResult = await window.astro.calculateChart({
+          year: parseInt(formDataB.transitYear),
+          month: parseInt(formDataB.transitMonth),
+          day: parseInt(formDataB.transitDay),
+          hour: parseInt(formDataB.transitHour),
+          minute: parseInt(formDataB.transitMinute),
+          utcYear: transitUtcTime.year,
+          utcMonth: transitUtcTime.month,
+          utcDay: transitUtcTime.day,
+          utcHour: transitUtcTime.hour,
+          utcMinute: transitUtcTime.minute,
+          latitude: parseFloat(formDataB.latitude),
+          longitude: parseFloat(formDataB.longitude),
+          houseSystem: formDataB.houseSystem,
+        });
+
+        if (transitResult.success) {
+          transitData = transitResult;
+
+          // Calculate natal-to-transit aspects
+          const transitAspects = calculateTransitAspects(result.planets, transitData.planets, transitOrb);
+          result.transitAspects = transitAspects;
+
+          // Set all transit aspects as active by default
+          const allTransitAspectKeys = new Set(
+            transitAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+          );
+          setActiveTransitAspectsB(allTransitAspectKeys);
+
+          // Calculate transit-to-transit aspects
+          const transitTransitAspects = calculateTransitToTransitAspects(transitData.planets, transitTransitOrb);
+          result.transitTransitAspects = transitTransitAspects;
+        }
+      }
+
+      setChartDataB({ ...result, transits: transitData });
       console.log('Chart B calculated:', result);
     } catch (error) {
       console.error('Error calculating Chart B:', error);
@@ -1096,20 +1200,52 @@ function App() {
                   📚 Load Chart A from Database
                 </button>
                 {formData.name && (
-                  <button
-                    className="load-chart-btn"
-                    onClick={calculateChartA}
-                    disabled={loading}
-                    style={{ marginTop: '1rem' }}
-                  >
-                    {loading ? '⏳ Calculating...' : '🔮 Calculate Chart A'}
-                  </button>
+                  <>
+                    <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: 'white', borderRadius: '8px', textAlign: 'left' }}>
+                      <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '0.5rem' }}>
+                        <input
+                          type="checkbox"
+                          name="showTransits"
+                          checked={formData.showTransits}
+                          onChange={handleInputChange}
+                          style={{ marginRight: '8px', width: '18px', height: '18px' }}
+                        />
+                        <span style={{ fontWeight: 'bold', fontSize: '0.9rem' }}>Show Transits (Bi-Wheel)</span>
+                      </label>
+                      {formData.showTransits && (
+                        <div style={{ marginTop: '0.5rem', paddingLeft: '26px' }}>
+                          <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                            <input type="number" name="transitYear" value={formData.transitYear} onChange={handleInputChange} placeholder="Year" style={{ width: '70px', padding: '4px', fontSize: '0.85rem' }} />
+                            <input type="number" name="transitMonth" value={formData.transitMonth} onChange={handleInputChange} placeholder="Mo" min="1" max="12" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
+                            <input type="number" name="transitDay" value={formData.transitDay} onChange={handleInputChange} placeholder="Day" min="1" max="31" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
+                          </div>
+                          <div style={{ display: 'flex', gap: '0.5rem' }}>
+                            <input type="number" name="transitHour" value={formData.transitHour} onChange={handleInputChange} placeholder="Hr" min="0" max="23" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
+                            <input type="number" name="transitMinute" value={formData.transitMinute} onChange={handleInputChange} placeholder="Min" min="0" max="59" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    <button
+                      className="load-chart-btn"
+                      onClick={calculateChartA}
+                      disabled={loading}
+                      style={{ marginTop: '1rem' }}
+                    >
+                      {loading ? '⏳ Calculating...' : '🔮 Calculate Chart A'}
+                    </button>
+                  </>
                 )}
               </div>
               {chartData && chartData.success && (
                 <div className="chart-results">
                   <div className="chart-display">
-                    <ChartWheel chartData={chartData} activeAspects={activeAspects} />
+                    <ChartWheel
+                      chartData={chartData}
+                      transitData={chartData.transits}
+                      activeAspects={activeAspects}
+                      activeTransitAspects={activeTransitAspects}
+                    />
                   </div>
                 </div>
               )}
@@ -1127,20 +1263,52 @@ function App() {
                   📚 Load Chart B from Database
                 </button>
                 {formDataB.name && (
-                  <button
-                    className="load-chart-btn"
-                    onClick={calculateChartB}
-                    disabled={loadingB}
-                    style={{ marginTop: '1rem' }}
-                  >
-                    {loadingB ? '⏳ Calculating...' : '🔮 Calculate Chart B'}
-                  </button>
+                  <>
+                    <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: 'white', borderRadius: '8px', textAlign: 'left' }}>
+                      <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '0.5rem' }}>
+                        <input
+                          type="checkbox"
+                          name="showTransits"
+                          checked={formDataB.showTransits}
+                          onChange={handleInputChangeB}
+                          style={{ marginRight: '8px', width: '18px', height: '18px' }}
+                        />
+                        <span style={{ fontWeight: 'bold', fontSize: '0.9rem' }}>Show Transits (Bi-Wheel)</span>
+                      </label>
+                      {formDataB.showTransits && (
+                        <div style={{ marginTop: '0.5rem', paddingLeft: '26px' }}>
+                          <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                            <input type="number" name="transitYear" value={formDataB.transitYear} onChange={handleInputChangeB} placeholder="Year" style={{ width: '70px', padding: '4px', fontSize: '0.85rem' }} />
+                            <input type="number" name="transitMonth" value={formDataB.transitMonth} onChange={handleInputChangeB} placeholder="Mo" min="1" max="12" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
+                            <input type="number" name="transitDay" value={formDataB.transitDay} onChange={handleInputChangeB} placeholder="Day" min="1" max="31" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
+                          </div>
+                          <div style={{ display: 'flex', gap: '0.5rem' }}>
+                            <input type="number" name="transitHour" value={formDataB.transitHour} onChange={handleInputChangeB} placeholder="Hr" min="0" max="23" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
+                            <input type="number" name="transitMinute" value={formDataB.transitMinute} onChange={handleInputChangeB} placeholder="Min" min="0" max="59" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    <button
+                      className="load-chart-btn"
+                      onClick={calculateChartB}
+                      disabled={loadingB}
+                      style={{ marginTop: '1rem' }}
+                    >
+                      {loadingB ? '⏳ Calculating...' : '🔮 Calculate Chart B'}
+                    </button>
+                  </>
                 )}
               </div>
               {chartDataB && chartDataB.success && (
                 <div className="chart-results">
                   <div className="chart-display">
-                    <ChartWheel chartData={chartDataB} activeAspects={activeAspectsB} />
+                    <ChartWheel
+                      chartData={chartDataB}
+                      transitData={chartDataB.transits}
+                      activeAspects={activeAspectsB}
+                      activeTransitAspects={activeTransitAspectsB}
+                    />
                   </div>
                 </div>
               )}
