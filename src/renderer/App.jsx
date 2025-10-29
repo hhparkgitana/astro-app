@@ -224,6 +224,39 @@ function App() {
     }
   };
 
+  // Chart B orb change handlers
+  const handleNatalOrbChangeB = (newOrb) => {
+    setNatalOrb(newOrb);
+    if (chartDataB && chartDataB.planets) {
+      const newAspects = calculateAspects(chartDataB.planets, { default: newOrb });
+      setChartDataB({ ...chartDataB, aspects: newAspects });
+      const allAspectKeys = new Set(
+        newAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+      );
+      setActiveAspectsB(allAspectKeys);
+    }
+  };
+
+  const handleTransitOrbChangeB = (newOrb) => {
+    setTransitOrb(newOrb);
+    if (chartDataB && chartDataB.planets && chartDataB.transits && chartDataB.transits.planets) {
+      const newTransitAspects = calculateTransitAspects(chartDataB.planets, chartDataB.transits.planets, newOrb);
+      setChartDataB({ ...chartDataB, transitAspects: newTransitAspects });
+      const allTransitAspectKeys = new Set(
+        newTransitAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+      );
+      setActiveTransitAspectsB(allTransitAspectKeys);
+    }
+  };
+
+  const handleTransitTransitOrbChangeB = (newOrb) => {
+    setTransitTransitOrb(newOrb);
+    if (chartDataB && chartDataB.transits && chartDataB.transits.planets) {
+      const newTransitTransitAspects = calculateTransitToTransitAspects(chartDataB.transits.planets, newOrb);
+      setChartDataB({ ...chartDataB, transitTransitAspects: newTransitTransitAspects });
+    }
+  };
+
   const calculateChart = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -655,6 +688,39 @@ function App() {
     });
 
     setActiveTransitAspects(newActiveAspects);
+  };
+
+  // Chart B aspect toggle handlers
+  const handleAspectToggleB = (aspectOrAspects) => {
+    const aspects = Array.isArray(aspectOrAspects) ? aspectOrAspects : [aspectOrAspects];
+    const newActiveAspects = new Set(activeAspectsB);
+
+    aspects.forEach(aspect => {
+      const key = `${aspect.planet1}-${aspect.planet2}`;
+      if (newActiveAspects.has(key)) {
+        newActiveAspects.delete(key);
+      } else {
+        newActiveAspects.add(key);
+      }
+    });
+
+    setActiveAspectsB(newActiveAspects);
+  };
+
+  const handleTransitAspectToggleB = (aspectOrAspects) => {
+    const aspects = Array.isArray(aspectOrAspects) ? aspectOrAspects : [aspectOrAspects];
+    const newActiveAspects = new Set(activeTransitAspectsB);
+
+    aspects.forEach(aspect => {
+      const key = `${aspect.planet1}-${aspect.planet2}`;
+      if (newActiveAspects.has(key)) {
+        newActiveAspects.delete(key);
+      } else {
+        newActiveAspects.add(key);
+      }
+    });
+
+    setActiveTransitAspectsB(newActiveAspects);
   };
 
   const searchLocation = async () => {
@@ -1245,8 +1311,27 @@ function App() {
                       transitData={chartData.transits}
                       activeAspects={activeAspects}
                       activeTransitAspects={activeTransitAspects}
+                      onAspectToggle={handleAspectToggle}
+                      onTransitAspectToggle={handleTransitAspectToggle}
+                      showNatalAspects={showNatalAspects}
+                      setShowNatalAspects={setShowNatalAspects}
+                      natalOrb={natalOrb}
+                      onNatalOrbChange={handleNatalOrbChange}
+                      transitOrb={transitOrb}
+                      onTransitOrbChange={handleTransitOrbChange}
+                      transitTransitOrb={transitTransitOrb}
+                      onTransitTransitOrbChange={handleTransitTransitOrbChange}
                     />
                   </div>
+
+                  <AspectTabs
+                    chartData={chartData}
+                    activeAspects={activeAspects}
+                    onAspectToggle={handleAspectToggle}
+                    activeTransitAspects={activeTransitAspects}
+                    onTransitAspectToggle={handleTransitAspectToggle}
+                    showNatalAspects={showNatalAspects}
+                  />
                 </div>
               )}
             </div>
@@ -1308,8 +1393,27 @@ function App() {
                       transitData={chartDataB.transits}
                       activeAspects={activeAspectsB}
                       activeTransitAspects={activeTransitAspectsB}
+                      onAspectToggle={handleAspectToggleB}
+                      onTransitAspectToggle={handleTransitAspectToggleB}
+                      showNatalAspects={showNatalAspectsB}
+                      setShowNatalAspects={setShowNatalAspectsB}
+                      natalOrb={natalOrb}
+                      onNatalOrbChange={handleNatalOrbChangeB}
+                      transitOrb={transitOrb}
+                      onTransitOrbChange={handleTransitOrbChangeB}
+                      transitTransitOrb={transitTransitOrb}
+                      onTransitTransitOrbChange={handleTransitTransitOrbChangeB}
                     />
                   </div>
+
+                  <AspectTabs
+                    chartData={chartDataB}
+                    activeAspects={activeAspectsB}
+                    onAspectToggle={handleAspectToggleB}
+                    activeTransitAspects={activeTransitAspectsB}
+                    onTransitAspectToggle={handleTransitAspectToggleB}
+                    showNatalAspects={showNatalAspectsB}
+                  />
                 </div>
               )}
             </div>
