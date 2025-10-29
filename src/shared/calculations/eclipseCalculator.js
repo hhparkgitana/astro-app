@@ -61,29 +61,29 @@ function findEclipses(startDate, endDate) {
   try {
     // Find solar eclipses
     let solarSearch = Astronomy.SearchGlobalSolarEclipse(startDate);
-    while (solarSearch && solarSearch.peak && solarSearch.peak < endDate) {
-      const sunPosition = calculatePlanetPosition('Sun', solarSearch.peak);
+    while (solarSearch && solarSearch.peak && solarSearch.peak.date < endDate) {
+      const sunPosition = calculatePlanetPosition('Sun', solarSearch.peak.date);
 
       eclipses.push({
         type: 'solar',
-        date: solarSearch.peak,
+        date: solarSearch.peak.date,
         kind: solarSearch.kind, // 'partial', 'annular', 'total', 'hybrid'
         longitude: sunPosition.longitude,
         sign: sunPosition.sign,
         obscuration: solarSearch.obscuration
       });
 
-      solarSearch = Astronomy.NextGlobalSolarEclipse(solarSearch.peak);
+      solarSearch = Astronomy.NextGlobalSolarEclipse(solarSearch.peak.date);
     }
 
     // Find lunar eclipses
     let lunarSearch = Astronomy.SearchLunarEclipse(startDate);
-    while (lunarSearch && lunarSearch.peak && lunarSearch.peak < endDate) {
-      const moonPosition = calculatePlanetPosition('Moon', lunarSearch.peak);
+    while (lunarSearch && lunarSearch.peak && lunarSearch.peak.date < endDate) {
+      const moonPosition = calculatePlanetPosition('Moon', lunarSearch.peak.date);
 
       eclipses.push({
         type: 'lunar',
-        date: lunarSearch.peak,
+        date: lunarSearch.peak.date,
         kind: lunarSearch.kind, // 'penumbral', 'partial', 'total'
         longitude: moonPosition.longitude,
         sign: moonPosition.sign,
@@ -92,7 +92,7 @@ function findEclipses(startDate, endDate) {
         sdPenum: lunarSearch.sd_penum
       });
 
-      lunarSearch = Astronomy.NextLunarEclipse(lunarSearch.peak);
+      lunarSearch = Astronomy.NextLunarEclipse(lunarSearch.peak.date);
     }
   } catch (error) {
     console.error('Error finding eclipses:', error);
