@@ -3,6 +3,7 @@ import './App.css';
 import ChartWheel from './components/ChartWheel';
 import AspectTabs from './components/AspectTabs';
 import FamousChartsBrowser from './components/FamousChartsBrowser';
+import ChatPanel from './components/ChatPanel';
 import { DateTime } from 'luxon';
 import { findAspect, getAngularDistance, calculateAspects } from '../shared/calculations/aspectsCalculator';
 
@@ -26,6 +27,9 @@ function App() {
 
   // View mode: 'single' or 'dual'
   const [viewMode, setViewMode] = useState('single');
+
+  // Chat panel state
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   // Chart B states (for dual view)
   const [chartDataB, setChartDataB] = useState(null);
@@ -820,9 +824,16 @@ function App() {
           >
             Compare Charts
           </button>
+          <button
+            className={`mode-btn ${isChatOpen ? 'active' : ''}`}
+            onClick={() => setIsChatOpen(!isChatOpen)}
+            title="AI Assistant"
+          >
+            🤖 AI Chat
+          </button>
         </div>
       </header>
-      <main className="app-main">
+      <main className={`app-main ${isChatOpen ? 'chat-open' : ''}`}>
         {viewMode === 'single' ? (
           <>
         <h2>Calculate Natal Chart</h2>
@@ -1425,6 +1436,16 @@ function App() {
         isOpen={isBrowserOpen}
         onClose={() => setIsBrowserOpen(false)}
         onSelectChart={handleFamousChartSelect}
+      />
+
+      <ChatPanel
+        chartData={chartData}
+        chartDataB={chartDataB}
+        viewMode={viewMode}
+        formData={formData}
+        formDataB={formDataB}
+        isOpen={isChatOpen}
+        onToggle={() => setIsChatOpen(!isChatOpen)}
       />
     </div>
   );
