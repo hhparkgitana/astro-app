@@ -1,5 +1,7 @@
-export const famousChartsData = 
-[
+// Famous Charts Database
+// This file is auto-generated from famousCharts.json
+
+export const famousChartsData = [
   {
     "id": "einstein-albert",
     "name": "Albert Einstein",
@@ -13,7 +15,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Theoretical physicist, developed theory of relativity, Nobel Prize 1921",
-    "tags": ["physics", "nobel-prize", "relativity", "scientist"]
+    "tags": [
+      "physics",
+      "nobel-prize",
+      "relativity",
+      "scientist"
+    ]
   },
   {
     "id": "bowie-david",
@@ -23,12 +30,17 @@ export const famousChartsData =
     "time": "09:00",
     "location": "Brixton, London, England",
     "latitude": 51.4667,
-    "longitude": -0.1000,
+    "longitude": -0.1,
     "timezone": "Europe/London",
     "roddenRating": "A",
     "source": "Biography, confirmed by family",
     "notes": "Legendary musician, Ziggy Stardust, chameleonic artist",
-    "tags": ["music", "rock", "glam-rock", "artist"]
+    "tags": [
+      "music",
+      "rock",
+      "glam-rock",
+      "artist"
+    ]
   },
   {
     "id": "kennedy-john-f",
@@ -37,13 +49,18 @@ export const famousChartsData =
     "date": "1917-05-29",
     "time": "15:00",
     "location": "Brookline, Massachusetts, USA",
-    "latitude": 42.3320,
+    "latitude": 42.332,
     "longitude": -71.1212,
     "timezone": "America/New_York",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "35th US President, assassinated 1963",
-    "tags": ["president", "politics", "kennedy", "assassination"]
+    "tags": [
+      "president",
+      "politics",
+      "kennedy",
+      "assassination"
+    ]
   },
   {
     "id": "trump-donald",
@@ -58,7 +75,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "45th & 47th US President, businessman, real estate mogul",
-    "tags": ["president", "politics", "business", "republican"]
+    "tags": [
+      "president",
+      "politics",
+      "business",
+      "republican"
+    ]
   },
   {
     "id": "obama-barack",
@@ -73,7 +95,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "44th US President, first African American president",
-    "tags": ["president", "politics", "democratic", "historic"]
+    "tags": [
+      "president",
+      "politics",
+      "democratic",
+      "historic"
+    ]
   },
   {
     "id": "kahlo-frida",
@@ -81,18 +108,23 @@ export const famousChartsData =
     "category": "Artists",
     "date": "1907-07-06",
     "time": "08:30",
-    "location": "Coyoacán, Mexico City, Mexico",
+    "location": "Coyoac\u00e1n, Mexico City, Mexico",
     "latitude": 19.3467,
     "longitude": -99.1618,
     "timezone": "America/Mexico_City",
     "roddenRating": "B",
     "source": "Biography",
     "notes": "Mexican painter, surrealist icon, married to Diego Rivera",
-    "tags": ["art", "surrealism", "mexican", "painter"]
+    "tags": [
+      "art",
+      "surrealism",
+      "mexican",
+      "painter"
+    ]
   },
   {
     "id": "dali-salvador",
-    "name": "Salvador Dalí",
+    "name": "Salvador Dal\u00ed",
     "category": "Artists",
     "date": "1904-05-11",
     "time": "08:45",
@@ -103,7 +135,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Surrealist painter, The Persistence of Memory",
-    "tags": ["art", "surrealism", "spanish", "painter"]
+    "tags": [
+      "art",
+      "surrealism",
+      "spanish",
+      "painter"
+    ]
   },
   {
     "id": "us-sibley-chart",
@@ -118,7 +155,32 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Astrological tradition (Ebenezer Sibly)",
     "notes": "Most popular US natal chart, Declaration of Independence",
-    "tags": ["mundane", "usa", "founding", "event"]
+    "tags": [
+      "mundane",
+      "usa",
+      "founding",
+      "event"
+    ]
+  },
+  {
+    "id": "usa-constitution",
+    "name": "United States (Constitution)",
+    "category": "National Charts",
+    "date": "1787-09-17",
+    "time": "16:00",
+    "location": "Philadelphia, Pennsylvania, USA",
+    "latitude": 39.9526,
+    "longitude": -75.1652,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Constitution signed September 17, 1787",
+    "notes": "US Constitution signing, alternative to July 4 1776 chart, some astrologers prefer this as US birth",
+    "tags": [
+      "national-chart",
+      "usa",
+      "constitution",
+      "founding"
+    ]
   },
   {
     "id": "911-attack",
@@ -128,12 +190,17 @@ export const famousChartsData =
     "time": "08:46",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "News reports, first plane impact",
     "notes": "World Trade Center attack, first plane impact",
-    "tags": ["tragedy", "terrorism", "historic", "event"]
+    "tags": [
+      "tragedy",
+      "terrorism",
+      "historic",
+      "event"
+    ]
   },
   {
     "id": "jackson-michael",
@@ -148,7 +215,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "King of Pop, Thriller album",
-    "tags": ["music", "pop", "dance", "icon"]
+    "tags": [
+      "music",
+      "pop",
+      "dance",
+      "icon"
+    ]
   },
   {
     "id": "monroe-marilyn",
@@ -163,7 +235,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Hollywood icon, actress, model",
-    "tags": ["hollywood", "actress", "icon", "golden-age"]
+    "tags": [
+      "hollywood",
+      "actress",
+      "icon",
+      "golden-age"
+    ]
   },
   {
     "id": "swift-taylor",
@@ -178,7 +255,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Pop superstar, songwriter, multiple Grammy winner",
-    "tags": ["music", "pop", "country", "contemporary"]
+    "tags": [
+      "music",
+      "pop",
+      "country",
+      "contemporary"
+    ]
   },
   {
     "id": "mercury-freddie",
@@ -193,7 +275,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Queen frontman, legendary vocalist",
-    "tags": ["music", "rock", "queen", "vocalist"]
+    "tags": [
+      "music",
+      "rock",
+      "queen",
+      "vocalist"
+    ]
   },
   {
     "id": "winfrey-oprah",
@@ -208,7 +295,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Media mogul, talk show host, philanthropist",
-    "tags": ["media", "television", "business", "influence"]
+    "tags": [
+      "media",
+      "television",
+      "business",
+      "influence"
+    ]
   },
   {
     "id": "musk-elon",
@@ -223,7 +315,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Tesla, SpaceX, entrepreneur",
-    "tags": ["business", "tech", "space", "entrepreneur"]
+    "tags": [
+      "business",
+      "tech",
+      "space",
+      "entrepreneur"
+    ]
   },
   {
     "id": "jobs-steve",
@@ -238,7 +335,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Apple co-founder, visionary, iPhone creator",
-    "tags": ["business", "tech", "apple", "innovation"]
+    "tags": [
+      "business",
+      "tech",
+      "apple",
+      "innovation"
+    ]
   },
   {
     "id": "curie-marie",
@@ -253,11 +355,16 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Physicist, chemist, radioactivity pioneer, Nobel Prize x2",
-    "tags": ["science", "nobel-prize", "physics", "chemistry"]
+    "tags": [
+      "science",
+      "nobel-prize",
+      "physics",
+      "chemistry"
+    ]
   },
   {
     "id": "beyonce",
-    "name": "Beyoncé",
+    "name": "Beyonc\u00e9",
     "category": "Musicians",
     "date": "1981-09-04",
     "time": "10:00",
@@ -268,7 +375,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "R&B superstar, performer, cultural icon",
-    "tags": ["music", "pop", "rnb", "performer"]
+    "tags": [
+      "music",
+      "pop",
+      "rnb",
+      "performer"
+    ]
   },
   {
     "id": "nixon-richard",
@@ -283,7 +395,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "37th US President, Watergate scandal, resigned",
-    "tags": ["president", "politics", "scandal", "republican"]
+    "tags": [
+      "president",
+      "politics",
+      "scandal",
+      "republican"
+    ]
   },
   {
     "id": "mandela-nelson",
@@ -298,7 +415,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Anti-apartheid revolutionary, President of South Africa",
-    "tags": ["politics", "activism", "south-africa", "peace"]
+    "tags": [
+      "politics",
+      "activism",
+      "south-africa",
+      "peace"
+    ]
   },
   {
     "id": "princess-diana",
@@ -313,7 +435,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Birth certificate",
     "notes": "Princess of Wales, humanitarian, fashion icon",
-    "tags": ["royalty", "humanitarian", "british", "icon"]
+    "tags": [
+      "royalty",
+      "humanitarian",
+      "british",
+      "icon"
+    ]
   },
   {
     "id": "lennon-john",
@@ -328,7 +455,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Beatles co-founder, peace activist, Imagine",
-    "tags": ["music", "rock", "beatles", "peace"]
+    "tags": [
+      "music",
+      "rock",
+      "beatles",
+      "peace"
+    ]
   },
   {
     "id": "angelou-maya",
@@ -337,13 +469,18 @@ export const famousChartsData =
     "date": "1928-04-04",
     "time": "14:10",
     "location": "St. Louis, Missouri, USA",
-    "latitude": 38.6270,
+    "latitude": 38.627,
     "longitude": -90.1994,
     "timezone": "America/Chicago",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Poet, author, I Know Why the Caged Bird Sings",
-    "tags": ["literature", "poetry", "civil-rights", "author"]
+    "tags": [
+      "literature",
+      "poetry",
+      "civil-rights",
+      "author"
+    ]
   },
   {
     "id": "hawking-stephen",
@@ -352,13 +489,18 @@ export const famousChartsData =
     "date": "1942-01-08",
     "time": "08:00",
     "location": "Oxford, England",
-    "latitude": 51.7520,
+    "latitude": 51.752,
     "longitude": -1.2577,
     "timezone": "Europe/London",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Theoretical physicist, A Brief History of Time, black holes",
-    "tags": ["physics", "science", "cosmology", "author"]
+    "tags": [
+      "physics",
+      "science",
+      "cosmology",
+      "author"
+    ]
   },
   {
     "id": "gandhi-mahatma",
@@ -373,7 +515,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Indian independence leader, nonviolent resistance",
-    "tags": ["politics", "activism", "india", "peace"]
+    "tags": [
+      "politics",
+      "activism",
+      "india",
+      "peace"
+    ]
   },
   {
     "id": "presley-elvis",
@@ -388,7 +535,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "King of Rock and Roll, cultural icon",
-    "tags": ["music", "rock", "icon", "elvis"]
+    "tags": [
+      "music",
+      "rock",
+      "icon",
+      "elvis"
+    ]
   },
   {
     "id": "gates-bill",
@@ -403,7 +555,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Microsoft co-founder, philanthropist",
-    "tags": ["business", "tech", "microsoft", "philanthropy"]
+    "tags": [
+      "business",
+      "tech",
+      "microsoft",
+      "philanthropy"
+    ]
   },
   {
     "id": "woolf-virginia",
@@ -418,7 +575,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "Modernist author, Mrs. Dalloway, To the Lighthouse",
-    "tags": ["literature", "modernism", "author", "feminist"]
+    "tags": [
+      "literature",
+      "modernism",
+      "author",
+      "feminist"
+    ]
   },
   {
     "id": "hendrix-jimi",
@@ -433,7 +595,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Revolutionary guitarist, Woodstock legend",
-    "tags": ["music", "rock", "guitar", "psychedelic"]
+    "tags": [
+      "music",
+      "rock",
+      "guitar",
+      "psychedelic"
+    ]
   },
   {
     "id": "thatcher-margaret",
@@ -448,7 +615,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "British Prime Minister, Iron Lady",
-    "tags": ["politics", "british", "conservative", "prime-minister"]
+    "tags": [
+      "politics",
+      "british",
+      "conservative",
+      "prime-minister"
+    ]
   },
   {
     "id": "picasso-pablo",
@@ -456,14 +628,19 @@ export const famousChartsData =
     "category": "Artists",
     "date": "1881-10-25",
     "time": "23:15",
-    "location": "Málaga, Spain",
+    "location": "M\u00e1laga, Spain",
     "latitude": 36.7213,
     "longitude": -4.4214,
     "timezone": "Europe/Madrid",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Cubist painter, Guernica, revolutionary artist",
-    "tags": ["art", "cubism", "painter", "spanish"]
+    "tags": [
+      "art",
+      "cubism",
+      "painter",
+      "spanish"
+    ]
   },
   {
     "id": "roosevelt-franklin",
@@ -478,7 +655,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "32nd US President, New Deal, WWII leader",
-    "tags": ["president", "politics", "new-deal", "wwii"]
+    "tags": [
+      "president",
+      "politics",
+      "new-deal",
+      "wwii"
+    ]
   },
   {
     "id": "chernobyl-disaster",
@@ -493,7 +675,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Official records",
     "notes": "Nuclear reactor explosion, worst nuclear disaster",
-    "tags": ["disaster", "nuclear", "historic", "event"]
+    "tags": [
+      "disaster",
+      "nuclear",
+      "historic",
+      "event"
+    ]
   },
   {
     "id": "moon-landing",
@@ -508,7 +695,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "NASA mission control time",
     "notes": "Apollo 11 moon landing, first humans on moon",
-    "tags": ["space", "historic", "nasa", "event"]
+    "tags": [
+      "space",
+      "historic",
+      "nasa",
+      "event"
+    ]
   },
   {
     "id": "king-martin-luther",
@@ -517,13 +709,18 @@ export const famousChartsData =
     "date": "1929-01-15",
     "time": "12:00",
     "location": "Atlanta, Georgia, USA",
-    "latitude": 33.7490,
-    "longitude": -84.3880,
+    "latitude": 33.749,
+    "longitude": -84.388,
     "timezone": "America/New_York",
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Civil rights leader, I Have a Dream speech",
-    "tags": ["activism", "civil-rights", "peace", "minister"]
+    "tags": [
+      "activism",
+      "civil-rights",
+      "peace",
+      "minister"
+    ]
   },
   {
     "id": "hepburn-audrey",
@@ -538,7 +735,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Actress, Breakfast at Tiffany's, humanitarian",
-    "tags": ["hollywood", "actress", "icon", "humanitarian"]
+    "tags": [
+      "hollywood",
+      "actress",
+      "icon",
+      "humanitarian"
+    ]
   },
   {
     "id": "zuckerberg-mark",
@@ -547,13 +749,18 @@ export const famousChartsData =
     "date": "1984-05-14",
     "time": "12:00",
     "location": "White Plains, New York, USA",
-    "latitude": 41.0340,
+    "latitude": 41.034,
     "longitude": -73.7629,
     "timezone": "America/New_York",
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Facebook/Meta founder, social media pioneer",
-    "tags": ["business", "tech", "social-media", "entrepreneur"]
+    "tags": [
+      "business",
+      "tech",
+      "social-media",
+      "entrepreneur"
+    ]
   },
   {
     "id": "joplin-janis",
@@ -563,12 +770,17 @@ export const famousChartsData =
     "time": "09:45",
     "location": "Port Arthur, Texas, USA",
     "latitude": 29.8844,
-    "longitude": -93.9400,
+    "longitude": -93.94,
     "timezone": "America/Chicago",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Blues-rock singer, countercultural icon",
-    "tags": ["music", "rock", "blues", "60s"]
+    "tags": [
+      "music",
+      "rock",
+      "blues",
+      "60s"
+    ]
   },
   {
     "id": "shakespeare-william",
@@ -583,7 +795,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Historical records (birth time uncertain)",
     "notes": "Playwright, poet, Romeo and Juliet, Hamlet",
-    "tags": ["literature", "drama", "poetry", "elizabethan"]
+    "tags": [
+      "literature",
+      "drama",
+      "poetry",
+      "elizabethan"
+    ]
   },
   {
     "id": "vance-jd",
@@ -598,7 +815,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "US Vice President, author of Hillbilly Elegy, Senator from Ohio",
-    "tags": ["vice-president", "politics", "republican", "author"]
+    "tags": [
+      "vice-president",
+      "politics",
+      "republican",
+      "author"
+    ]
   },
   {
     "id": "johnson-mike",
@@ -613,7 +835,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Speaker of the House, Louisiana Representative",
-    "tags": ["speaker", "house", "republican", "conservative"]
+    "tags": [
+      "speaker",
+      "house",
+      "republican",
+      "conservative"
+    ]
   },
   {
     "id": "kennedy-rfk-jr",
@@ -628,7 +855,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Environmental lawyer, vaccine skeptic, HHS Secretary nominee",
-    "tags": ["politics", "kennedy", "environment", "health"]
+    "tags": [
+      "politics",
+      "kennedy",
+      "environment",
+      "health"
+    ]
   },
   {
     "id": "rubio-marco",
@@ -643,7 +875,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "US Senator from Florida, Secretary of State nominee",
-    "tags": ["senator", "florida", "republican", "foreign-policy"]
+    "tags": [
+      "senator",
+      "florida",
+      "republican",
+      "foreign-policy"
+    ]
   },
   {
     "id": "bondi-pam",
@@ -658,7 +895,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Former Florida Attorney General, Attorney General nominee",
-    "tags": ["attorney-general", "florida", "republican", "legal"]
+    "tags": [
+      "attorney-general",
+      "florida",
+      "republican",
+      "legal"
+    ]
   },
   {
     "id": "bongino-dan",
@@ -673,7 +915,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Conservative commentator, former Secret Service agent, radio host",
-    "tags": ["media", "conservative", "commentator", "radio"]
+    "tags": [
+      "media",
+      "conservative",
+      "commentator",
+      "radio"
+    ]
   },
   {
     "id": "noem-kristi",
@@ -688,7 +935,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Governor of South Dakota, Homeland Security Secretary nominee",
-    "tags": ["governor", "south-dakota", "republican", "homeland-security"]
+    "tags": [
+      "governor",
+      "south-dakota",
+      "republican",
+      "homeland-security"
+    ]
   },
   {
     "id": "wiles-susie",
@@ -703,7 +955,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Political strategist, Trump campaign manager, Chief of Staff",
-    "tags": ["politics", "strategist", "republican", "chief-of-staff"]
+    "tags": [
+      "politics",
+      "strategist",
+      "republican",
+      "chief-of-staff"
+    ]
   },
   {
     "id": "ocasio-cortez-aoc",
@@ -718,7 +975,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "US Representative, progressive Democrat, Green New Deal advocate",
-    "tags": ["representative", "progressive", "democratic", "new-york"]
+    "tags": [
+      "representative",
+      "progressive",
+      "democratic",
+      "new-york"
+    ]
   },
   {
     "id": "sanders-bernie",
@@ -733,7 +995,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "US Senator from Vermont, progressive icon, Democratic Socialist",
-    "tags": ["senator", "progressive", "vermont", "democratic-socialist"]
+    "tags": [
+      "senator",
+      "progressive",
+      "vermont",
+      "democratic-socialist"
+    ]
   },
   {
     "id": "crockett-jasmine",
@@ -742,13 +1009,18 @@ export const famousChartsData =
     "date": "1981-03-29",
     "time": "12:00",
     "location": "St. Louis, Missouri, USA",
-    "latitude": 38.6270,
+    "latitude": 38.627,
     "longitude": -90.1994,
     "timezone": "America/Chicago",
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "US Representative from Texas, civil rights attorney",
-    "tags": ["representative", "democratic", "texas", "civil-rights"]
+    "tags": [
+      "representative",
+      "democratic",
+      "texas",
+      "civil-rights"
+    ]
   },
   {
     "id": "carlson-tucker",
@@ -763,7 +1035,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Conservative commentator, former Fox News host, media personality",
-    "tags": ["media", "conservative", "commentator", "fox-news"]
+    "tags": [
+      "media",
+      "conservative",
+      "commentator",
+      "fox-news"
+    ]
   },
   {
     "id": "kelly-megyn",
@@ -778,7 +1055,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Journalist, former Fox News and NBC anchor, podcaster",
-    "tags": ["media", "journalist", "conservative", "podcast"]
+    "tags": [
+      "media",
+      "journalist",
+      "conservative",
+      "podcast"
+    ]
   },
   {
     "id": "newsom-gavin",
@@ -793,7 +1075,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Governor of California, former San Francisco Mayor",
-    "tags": ["governor", "california", "democratic", "progressive"]
+    "tags": [
+      "governor",
+      "california",
+      "democratic",
+      "progressive"
+    ]
   },
   {
     "id": "desantis-ron",
@@ -808,7 +1095,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Governor of Florida, 2024 presidential candidate",
-    "tags": ["governor", "florida", "republican", "conservative"]
+    "tags": [
+      "governor",
+      "florida",
+      "republican",
+      "conservative"
+    ]
   },
   {
     "id": "harris-kamala",
@@ -823,7 +1115,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Birth certificate",
     "notes": "US Vice President (2021-2025), former Senator, California AG",
-    "tags": ["vice-president", "democratic", "california", "historic"]
+    "tags": [
+      "vice-president",
+      "democratic",
+      "california",
+      "historic"
+    ]
   },
   {
     "id": "pelosi-nancy",
@@ -838,7 +1135,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Former Speaker of the House, US Representative from California",
-    "tags": ["speaker", "house", "democratic", "california"]
+    "tags": [
+      "speaker",
+      "house",
+      "democratic",
+      "california"
+    ]
   },
   {
     "id": "mcconnell-mitch",
@@ -853,7 +1155,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "US Senator from Kentucky, former Senate Majority Leader",
-    "tags": ["senator", "kentucky", "republican", "senate-leader"]
+    "tags": [
+      "senator",
+      "kentucky",
+      "republican",
+      "senate-leader"
+    ]
   },
   {
     "id": "schumer-chuck",
@@ -868,7 +1175,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "US Senator from New York, Senate Majority Leader",
-    "tags": ["senator", "new-york", "democratic", "senate-leader"]
+    "tags": [
+      "senator",
+      "new-york",
+      "democratic",
+      "senate-leader"
+    ]
   },
   {
     "id": "haley-nikki",
@@ -883,7 +1195,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Former UN Ambassador, former South Carolina Governor",
-    "tags": ["governor", "un-ambassador", "republican", "south-carolina"]
+    "tags": [
+      "governor",
+      "un-ambassador",
+      "republican",
+      "south-carolina"
+    ]
   },
   {
     "id": "buttigieg-pete",
@@ -893,12 +1210,17 @@ export const famousChartsData =
     "time": "12:00",
     "location": "South Bend, Indiana, USA",
     "latitude": 41.6764,
-    "longitude": -86.2520,
+    "longitude": -86.252,
     "timezone": "America/Indiana/Indianapolis",
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Secretary of Transportation, former South Bend Mayor",
-    "tags": ["transportation", "democratic", "indiana", "mayor"]
+    "tags": [
+      "transportation",
+      "democratic",
+      "indiana",
+      "mayor"
+    ]
   },
   {
     "id": "warren-elizabeth",
@@ -913,7 +1235,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "US Senator from Massachusetts, progressive leader",
-    "tags": ["senator", "massachusetts", "democratic", "progressive"]
+    "tags": [
+      "senator",
+      "massachusetts",
+      "democratic",
+      "progressive"
+    ]
   },
   {
     "id": "shapiro-ben",
@@ -928,7 +1255,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Conservative commentator, political pundit, Daily Wire co-founder",
-    "tags": ["media", "conservative", "commentator", "podcast"]
+    "tags": [
+      "media",
+      "conservative",
+      "commentator",
+      "podcast"
+    ]
   },
   {
     "id": "abrams-stacey",
@@ -943,7 +1275,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Voting rights activist, former Georgia gubernatorial candidate",
-    "tags": ["activism", "voting-rights", "democratic", "georgia"]
+    "tags": [
+      "activism",
+      "voting-rights",
+      "democratic",
+      "georgia"
+    ]
   },
   {
     "id": "pence-mike",
@@ -958,7 +1295,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Former US Vice President, former Indiana Governor",
-    "tags": ["vice-president", "republican", "indiana", "governor"]
+    "tags": [
+      "vice-president",
+      "republican",
+      "indiana",
+      "governor"
+    ]
   },
   {
     "id": "roberts-john",
@@ -973,7 +1315,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Chief Justice of the United States, appointed by Bush 2005",
-    "tags": ["supreme-court", "chief-justice", "conservative", "judicial"]
+    "tags": [
+      "supreme-court",
+      "chief-justice",
+      "conservative",
+      "judicial"
+    ]
   },
   {
     "id": "thomas-clarence",
@@ -988,7 +1335,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Supreme Court Justice, appointed by Bush 1991, originalist",
-    "tags": ["supreme-court", "conservative", "originalist", "judicial"]
+    "tags": [
+      "supreme-court",
+      "conservative",
+      "originalist",
+      "judicial"
+    ]
   },
   {
     "id": "alito-samuel",
@@ -1003,7 +1355,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Supreme Court Justice, appointed by Bush 2006, conservative",
-    "tags": ["supreme-court", "conservative", "judicial", "originalist"]
+    "tags": [
+      "supreme-court",
+      "conservative",
+      "judicial",
+      "originalist"
+    ]
   },
   {
     "id": "sotomayor-sonia",
@@ -1018,7 +1375,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Supreme Court Justice, appointed by Obama 2009, first Latina justice",
-    "tags": ["supreme-court", "liberal", "judicial", "historic"]
+    "tags": [
+      "supreme-court",
+      "liberal",
+      "judicial",
+      "historic"
+    ]
   },
   {
     "id": "kagan-elena",
@@ -1028,12 +1390,17 @@ export const famousChartsData =
     "time": "12:00",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Supreme Court Justice, appointed by Obama 2010, former Solicitor General",
-    "tags": ["supreme-court", "liberal", "judicial", "harvard"]
+    "tags": [
+      "supreme-court",
+      "liberal",
+      "judicial",
+      "harvard"
+    ]
   },
   {
     "id": "gorsuch-neil",
@@ -1048,7 +1415,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Supreme Court Justice, appointed by Trump 2017, textualist",
-    "tags": ["supreme-court", "conservative", "judicial", "textualist"]
+    "tags": [
+      "supreme-court",
+      "conservative",
+      "judicial",
+      "textualist"
+    ]
   },
   {
     "id": "kavanaugh-brett",
@@ -1063,7 +1435,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Supreme Court Justice, appointed by Trump 2018, controversial confirmation",
-    "tags": ["supreme-court", "conservative", "judicial", "controversial"]
+    "tags": [
+      "supreme-court",
+      "conservative",
+      "judicial",
+      "controversial"
+    ]
   },
   {
     "id": "barrett-amy-coney",
@@ -1078,7 +1455,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Supreme Court Justice, appointed by Trump 2020, originalist",
-    "tags": ["supreme-court", "conservative", "judicial", "originalist"]
+    "tags": [
+      "supreme-court",
+      "conservative",
+      "judicial",
+      "originalist"
+    ]
   },
   {
     "id": "jackson-ketanji-brown",
@@ -1093,7 +1475,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Supreme Court Justice, appointed by Biden 2022, first Black woman justice",
-    "tags": ["supreme-court", "liberal", "judicial", "historic"]
+    "tags": [
+      "supreme-court",
+      "liberal",
+      "judicial",
+      "historic"
+    ]
   },
   {
     "id": "netanyahu-benjamin",
@@ -1108,7 +1495,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Prime Minister of Israel, longest-serving PM, Likud party leader",
-    "tags": ["prime-minister", "israel", "likud", "middle-east"]
+    "tags": [
+      "prime-minister",
+      "israel",
+      "likud",
+      "middle-east"
+    ]
   },
   {
     "id": "putin-vladimir",
@@ -1123,7 +1515,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "President of Russia, former KGB officer, authoritarian leader",
-    "tags": ["president", "russia", "authoritarian", "geopolitics"]
+    "tags": [
+      "president",
+      "russia",
+      "authoritarian",
+      "geopolitics"
+    ]
   },
   {
     "id": "xi-jinping",
@@ -1138,7 +1535,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "General Secretary of Chinese Communist Party, President of China",
-    "tags": ["president", "china", "communist", "geopolitics"]
+    "tags": [
+      "president",
+      "china",
+      "communist",
+      "geopolitics"
+    ]
   },
   {
     "id": "trudeau-justin",
@@ -1153,7 +1555,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Birth certificate",
     "notes": "Prime Minister of Canada, Liberal Party leader, son of Pierre Trudeau",
-    "tags": ["prime-minister", "canada", "liberal", "trudeau"]
+    "tags": [
+      "prime-minister",
+      "canada",
+      "liberal",
+      "trudeau"
+    ]
   },
   {
     "id": "macron-emmanuel",
@@ -1168,7 +1575,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Birth certificate",
     "notes": "President of France, centrist, En Marche founder",
-    "tags": ["president", "france", "centrist", "european"]
+    "tags": [
+      "president",
+      "france",
+      "centrist",
+      "european"
+    ]
   },
   {
     "id": "starmer-keir",
@@ -1183,7 +1595,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Prime Minister of the UK, Labour Party leader, former barrister",
-    "tags": ["prime-minister", "uk", "labour", "british"]
+    "tags": [
+      "prime-minister",
+      "uk",
+      "labour",
+      "british"
+    ]
   },
   {
     "id": "modi-narendra",
@@ -1198,7 +1615,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "Prime Minister of India, BJP leader, Hindu nationalist",
-    "tags": ["prime-minister", "india", "bjp", "nationalist"]
+    "tags": [
+      "prime-minister",
+      "india",
+      "bjp",
+      "nationalist"
+    ]
   },
   {
     "id": "zelensky-volodymyr",
@@ -1213,22 +1635,32 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "President of Ukraine, former comedian, wartime leader",
-    "tags": ["president", "ukraine", "war", "resistance"]
+    "tags": [
+      "president",
+      "ukraine",
+      "war",
+      "resistance"
+    ]
   },
   {
     "id": "lula-da-silva",
-    "name": "Luiz Inácio Lula da Silva",
+    "name": "Luiz In\u00e1cio Lula da Silva",
     "category": "International Leaders",
     "date": "1945-10-27",
     "time": "08:00",
-    "location": "Caetés, Pernambuco, Brazil",
+    "location": "Caet\u00e9s, Pernambuco, Brazil",
     "latitude": -8.7769,
     "longitude": -36.6378,
     "timezone": "America/Sao_Paulo",
     "roddenRating": "B",
     "source": "Biography",
     "notes": "President of Brazil, Workers' Party, leftist icon",
-    "tags": ["president", "brazil", "leftist", "workers-party"]
+    "tags": [
+      "president",
+      "brazil",
+      "leftist",
+      "workers-party"
+    ]
   },
   {
     "id": "milei-javier",
@@ -1243,7 +1675,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "President of Argentina, libertarian, anarcho-capitalist economist",
-    "tags": ["president", "argentina", "libertarian", "economist"]
+    "tags": [
+      "president",
+      "argentina",
+      "libertarian",
+      "economist"
+    ]
   },
   {
     "id": "merkle-angela",
@@ -1258,7 +1695,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "Former Chancellor of Germany, CDU leader, longest-serving German chancellor",
-    "tags": ["chancellor", "germany", "european", "cdu"]
+    "tags": [
+      "chancellor",
+      "germany",
+      "european",
+      "cdu"
+    ]
   },
   {
     "id": "pope-francis",
@@ -1273,7 +1715,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Birth certificate",
     "notes": "Pope, first Jesuit pope, first from Americas, progressive reformer",
-    "tags": ["pope", "vatican", "catholic", "religious"]
+    "tags": [
+      "pope",
+      "vatican",
+      "catholic",
+      "religious"
+    ]
   },
   {
     "id": "kim-jong-un",
@@ -1288,7 +1735,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time uncertain)",
     "notes": "Supreme Leader of North Korea, third-generation dictator",
-    "tags": ["dictator", "north-korea", "authoritarian", "kim-dynasty"]
+    "tags": [
+      "dictator",
+      "north-korea",
+      "authoritarian",
+      "kim-dynasty"
+    ]
   },
   {
     "id": "bin-salman-mohammed",
@@ -1303,7 +1755,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Crown Prince of Saudi Arabia, de facto ruler, Vision 2030 architect",
-    "tags": ["crown-prince", "saudi-arabia", "middle-east", "reformer"]
+    "tags": [
+      "crown-prince",
+      "saudi-arabia",
+      "middle-east",
+      "reformer"
+    ]
   },
   {
     "id": "sunak-rishi",
@@ -1318,7 +1775,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Public records (birth time unknown)",
     "notes": "Former UK Prime Minister, Conservative Party, first Hindu PM",
-    "tags": ["prime-minister", "uk", "conservative", "finance"]
+    "tags": [
+      "prime-minister",
+      "uk",
+      "conservative",
+      "finance"
+    ]
   },
   {
     "id": "russia-chart",
@@ -1333,7 +1795,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Official records - Soviet flag lowered",
     "notes": "Russian Federation independence, end of Soviet Union",
-    "tags": ["mundane", "russia", "independence", "national-chart"]
+    "tags": [
+      "mundane",
+      "russia",
+      "independence",
+      "national-chart"
+    ]
   },
   {
     "id": "china-prc-chart",
@@ -1348,7 +1815,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Official ceremony time - Mao's proclamation",
     "notes": "People's Republic of China founding, Tiananmen Square ceremony",
-    "tags": ["mundane", "china", "communist", "national-chart"]
+    "tags": [
+      "mundane",
+      "china",
+      "communist",
+      "national-chart"
+    ]
   },
   {
     "id": "israel-chart",
@@ -1363,7 +1835,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Declaration of Independence ceremony",
     "notes": "State of Israel proclaimed, Ben-Gurion declaration",
-    "tags": ["mundane", "israel", "independence", "national-chart"]
+    "tags": [
+      "mundane",
+      "israel",
+      "independence",
+      "national-chart"
+    ]
   },
   {
     "id": "uk-chart-1801",
@@ -1378,7 +1855,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Act of Union effective date",
     "notes": "United Kingdom of Great Britain and Ireland formation",
-    "tags": ["mundane", "uk", "union", "national-chart"]
+    "tags": [
+      "mundane",
+      "uk",
+      "union",
+      "national-chart"
+    ]
   },
   {
     "id": "france-fifth-republic",
@@ -1393,7 +1875,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Constitution effective date",
     "notes": "Fifth Republic constitution, de Gaulle era begins",
-    "tags": ["mundane", "france", "republic", "national-chart"]
+    "tags": [
+      "mundane",
+      "france",
+      "republic",
+      "national-chart"
+    ]
   },
   {
     "id": "germany-reunification",
@@ -1402,13 +1889,18 @@ export const famousChartsData =
     "date": "1990-10-03",
     "time": "00:00",
     "location": "Berlin, Germany",
-    "latitude": 52.5200,
-    "longitude": 13.4050,
+    "latitude": 52.52,
+    "longitude": 13.405,
     "timezone": "Europe/Berlin",
     "roddenRating": "AA",
     "source": "Official reunification date",
     "notes": "German reunification, end of Cold War division",
-    "tags": ["mundane", "germany", "reunification", "national-chart"]
+    "tags": [
+      "mundane",
+      "germany",
+      "reunification",
+      "national-chart"
+    ]
   },
   {
     "id": "india-independence",
@@ -1418,12 +1910,17 @@ export const famousChartsData =
     "time": "00:00",
     "location": "New Delhi, India",
     "latitude": 28.6139,
-    "longitude": 77.2090,
+    "longitude": 77.209,
     "timezone": "Asia/Kolkata",
     "roddenRating": "AA",
     "source": "Independence Day midnight",
     "notes": "India gains independence from British Empire, Nehru's speech",
-    "tags": ["mundane", "india", "independence", "national-chart"]
+    "tags": [
+      "mundane",
+      "india",
+      "independence",
+      "national-chart"
+    ]
   },
   {
     "id": "canada-chart",
@@ -1438,7 +1935,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "British North America Act effective",
     "notes": "Canadian Confederation, Dominion of Canada",
-    "tags": ["mundane", "canada", "confederation", "national-chart"]
+    "tags": [
+      "mundane",
+      "canada",
+      "confederation",
+      "national-chart"
+    ]
   },
   {
     "id": "australia-federation",
@@ -1453,7 +1955,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Official ceremony time",
     "notes": "Commonwealth of Australia proclaimed, federation of colonies",
-    "tags": ["mundane", "australia", "federation", "national-chart"]
+    "tags": [
+      "mundane",
+      "australia",
+      "federation",
+      "national-chart"
+    ]
   },
   {
     "id": "japan-constitution",
@@ -1468,7 +1975,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Post-war constitution effective",
     "notes": "Modern Japanese constitution, post-WWII democratic government",
-    "tags": ["mundane", "japan", "constitution", "national-chart"]
+    "tags": [
+      "mundane",
+      "japan",
+      "constitution",
+      "national-chart"
+    ]
   },
   {
     "id": "south-africa-democracy",
@@ -1483,7 +1995,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "First democratic election",
     "notes": "First post-apartheid election, Mandela era begins",
-    "tags": ["mundane", "south-africa", "democracy", "national-chart"]
+    "tags": [
+      "mundane",
+      "south-africa",
+      "democracy",
+      "national-chart"
+    ]
   },
   {
     "id": "brazil-republic",
@@ -1498,7 +2015,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Republic proclamation",
     "notes": "End of monarchy, Republic of Brazil proclaimed",
-    "tags": ["mundane", "brazil", "republic", "national-chart"]
+    "tags": [
+      "mundane",
+      "brazil",
+      "republic",
+      "national-chart"
+    ]
   },
   {
     "id": "mexico-constitution",
@@ -1506,14 +2028,19 @@ export const famousChartsData =
     "category": "National Charts",
     "date": "1917-02-05",
     "time": "17:00",
-    "location": "Querétaro, Mexico",
+    "location": "Quer\u00e9taro, Mexico",
     "latitude": 20.5888,
     "longitude": -100.3899,
     "timezone": "America/Mexico_City",
     "roddenRating": "A",
     "source": "Constitution signing",
     "notes": "Current Mexican constitution, post-revolution",
-    "tags": ["mundane", "mexico", "constitution", "national-chart"]
+    "tags": [
+      "mundane",
+      "mexico",
+      "constitution",
+      "national-chart"
+    ]
   },
   {
     "id": "ukraine-independence",
@@ -1528,7 +2055,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Declaration of Independence",
     "notes": "Ukraine declares independence from Soviet Union",
-    "tags": ["mundane", "ukraine", "independence", "national-chart"]
+    "tags": [
+      "mundane",
+      "ukraine",
+      "independence",
+      "national-chart"
+    ]
   },
   {
     "id": "european-union",
@@ -1543,7 +2075,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Treaty effective date",
     "notes": "European Union officially formed, replacing European Community",
-    "tags": ["mundane", "european-union", "treaty", "supranational"]
+    "tags": [
+      "mundane",
+      "european-union",
+      "treaty",
+      "supranational"
+    ]
   },
   {
     "id": "north-korea-chart",
@@ -1558,7 +2095,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Official founding date",
     "notes": "Democratic People's Republic of Korea proclaimed",
-    "tags": ["mundane", "north-korea", "communist", "national-chart"]
+    "tags": [
+      "mundane",
+      "north-korea",
+      "communist",
+      "national-chart"
+    ]
   },
   {
     "id": "south-korea-chart",
@@ -1568,12 +2110,17 @@ export const famousChartsData =
     "time": "00:00",
     "location": "Seoul, South Korea",
     "latitude": 37.5665,
-    "longitude": 126.9780,
+    "longitude": 126.978,
     "timezone": "Asia/Seoul",
     "roddenRating": "AA",
     "source": "Official founding date",
     "notes": "Republic of Korea established",
-    "tags": ["mundane", "south-korea", "republic", "national-chart"]
+    "tags": [
+      "mundane",
+      "south-korea",
+      "republic",
+      "national-chart"
+    ]
   },
   {
     "id": "saudi-arabia-chart",
@@ -1588,7 +2135,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Kingdom proclamation",
     "notes": "Kingdom of Saudi Arabia unified by Ibn Saud",
-    "tags": ["mundane", "saudi-arabia", "kingdom", "national-chart"]
+    "tags": [
+      "mundane",
+      "saudi-arabia",
+      "kingdom",
+      "national-chart"
+    ]
   },
   {
     "id": "iran-islamic-republic",
@@ -1598,12 +2150,17 @@ export const famousChartsData =
     "time": "15:00",
     "location": "Tehran, Iran",
     "latitude": 35.6892,
-    "longitude": 51.3890,
+    "longitude": 51.389,
     "timezone": "Asia/Tehran",
     "roddenRating": "A",
     "source": "Referendum results announced",
     "notes": "Islamic Republic declared after revolution, Khomeini era",
-    "tags": ["mundane", "iran", "revolution", "national-chart"]
+    "tags": [
+      "mundane",
+      "iran",
+      "revolution",
+      "national-chart"
+    ]
   },
   {
     "id": "turkey-republic",
@@ -1617,8 +2174,13 @@ export const famousChartsData =
     "timezone": "Europe/Istanbul",
     "roddenRating": "A",
     "source": "Republic proclamation",
-    "notes": "Republic of Turkey proclaimed, Atatürk era begins",
-    "tags": ["mundane", "turkey", "republic", "national-chart"]
+    "notes": "Republic of Turkey proclaimed, Atat\u00fcrk era begins",
+    "tags": [
+      "mundane",
+      "turkey",
+      "republic",
+      "national-chart"
+    ]
   },
   {
     "id": "pakistan-independence",
@@ -1633,7 +2195,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Independence Day midnight",
     "notes": "Pakistan gains independence, partition from India",
-    "tags": ["mundane", "pakistan", "independence", "national-chart"]
+    "tags": [
+      "mundane",
+      "pakistan",
+      "independence",
+      "national-chart"
+    ]
   },
   {
     "id": "argentina-independence",
@@ -1641,14 +2208,19 @@ export const famousChartsData =
     "category": "National Charts",
     "date": "1816-07-09",
     "time": "12:00",
-    "location": "Tucumán, Argentina",
+    "location": "Tucum\u00e1n, Argentina",
     "latitude": -26.8083,
     "longitude": -65.2176,
     "timezone": "America/Argentina/Buenos_Aires",
     "roddenRating": "B",
     "source": "Declaration signing",
     "notes": "Independence from Spain declared",
-    "tags": ["mundane", "argentina", "independence", "national-chart"]
+    "tags": [
+      "mundane",
+      "argentina",
+      "independence",
+      "national-chart"
+    ]
   },
   {
     "id": "nyse-founding",
@@ -1658,12 +2230,17 @@ export const famousChartsData =
     "time": "12:00",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "B",
     "source": "Buttonwood Agreement signing",
     "notes": "NYSE founded under buttonwood tree, 24 brokers",
-    "tags": ["finance", "stock-market", "nyse", "institution"]
+    "tags": [
+      "finance",
+      "stock-market",
+      "nyse",
+      "institution"
+    ]
   },
   {
     "id": "nasdaq-launch",
@@ -1673,12 +2250,17 @@ export const famousChartsData =
     "time": "09:30",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "Market opening time",
     "notes": "First electronic stock market, tech-focused exchange",
-    "tags": ["finance", "stock-market", "nasdaq", "technology"]
+    "tags": [
+      "finance",
+      "stock-market",
+      "nasdaq",
+      "technology"
+    ]
   },
   {
     "id": "federal-reserve",
@@ -1693,7 +2275,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Federal Reserve Act signed by Wilson",
     "notes": "US central banking system created",
-    "tags": ["finance", "central-bank", "fed", "institution"]
+    "tags": [
+      "finance",
+      "central-bank",
+      "fed",
+      "institution"
+    ]
   },
   {
     "id": "bitcoin-genesis",
@@ -1708,7 +2295,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Genesis block timestamp",
     "notes": "First Bitcoin block mined by Satoshi Nakamoto",
-    "tags": ["crypto", "bitcoin", "blockchain", "digital-currency"]
+    "tags": [
+      "crypto",
+      "bitcoin",
+      "blockchain",
+      "digital-currency"
+    ]
   },
   {
     "id": "ethereum-launch",
@@ -1723,7 +2315,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Genesis block timestamp",
     "notes": "Ethereum blockchain launched, smart contracts platform",
-    "tags": ["crypto", "ethereum", "blockchain", "smart-contracts"]
+    "tags": [
+      "crypto",
+      "ethereum",
+      "blockchain",
+      "smart-contracts"
+    ]
   },
   {
     "id": "apple-ipo",
@@ -1733,12 +2330,17 @@ export const famousChartsData =
     "time": "09:30",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "NASDAQ opening bell",
     "notes": "Apple goes public at $22/share, instant success",
-    "tags": ["tech", "ipo", "apple", "nasdaq"]
+    "tags": [
+      "tech",
+      "ipo",
+      "apple",
+      "nasdaq"
+    ]
   },
   {
     "id": "microsoft-ipo",
@@ -1748,12 +2350,17 @@ export const famousChartsData =
     "time": "09:30",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "NASDAQ opening bell",
     "notes": "Microsoft IPO at $21/share, Bill Gates becomes billionaire",
-    "tags": ["tech", "ipo", "microsoft", "nasdaq"]
+    "tags": [
+      "tech",
+      "ipo",
+      "microsoft",
+      "nasdaq"
+    ]
   },
   {
     "id": "amazon-ipo",
@@ -1763,12 +2370,17 @@ export const famousChartsData =
     "time": "09:30",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "NASDAQ opening bell",
     "notes": "Amazon IPO at $18/share, online bookstore goes public",
-    "tags": ["tech", "ipo", "amazon", "nasdaq"]
+    "tags": [
+      "tech",
+      "ipo",
+      "amazon",
+      "nasdaq"
+    ]
   },
   {
     "id": "google-ipo",
@@ -1778,12 +2390,17 @@ export const famousChartsData =
     "time": "09:30",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "NASDAQ opening bell",
     "notes": "Google IPO at $85/share, Dutch auction method",
-    "tags": ["tech", "ipo", "google", "nasdaq"]
+    "tags": [
+      "tech",
+      "ipo",
+      "google",
+      "nasdaq"
+    ]
   },
   {
     "id": "facebook-ipo",
@@ -1793,12 +2410,17 @@ export const famousChartsData =
     "time": "11:30",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "NASDAQ delayed opening",
     "notes": "Facebook IPO at $38/share, technical glitches delay opening",
-    "tags": ["tech", "ipo", "facebook", "nasdaq"]
+    "tags": [
+      "tech",
+      "ipo",
+      "facebook",
+      "nasdaq"
+    ]
   },
   {
     "id": "tesla-ipo",
@@ -1808,12 +2430,17 @@ export const famousChartsData =
     "time": "09:30",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "NASDAQ opening bell",
     "notes": "Tesla IPO at $17/share, first US car company IPO since Ford 1956",
-    "tags": ["tech", "ipo", "tesla", "nasdaq"]
+    "tags": [
+      "tech",
+      "ipo",
+      "tesla",
+      "nasdaq"
+    ]
   },
   {
     "id": "world-wide-web",
@@ -1828,7 +2455,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Tim Berners-Lee's announcement",
     "notes": "WWW made publicly available, internet revolution begins",
-    "tags": ["tech", "internet", "www", "innovation"]
+    "tags": [
+      "tech",
+      "internet",
+      "www",
+      "innovation"
+    ]
   },
   {
     "id": "internet-arpanet",
@@ -1843,7 +2475,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "First ARPANET message sent",
     "notes": "First internet message UCLA to Stanford, system crashed on 'G'",
-    "tags": ["tech", "internet", "arpanet", "innovation"]
+    "tags": [
+      "tech",
+      "internet",
+      "arpanet",
+      "innovation"
+    ]
   },
   {
     "id": "iphone-launch",
@@ -1852,13 +2489,18 @@ export const famousChartsData =
     "date": "2007-06-29",
     "time": "18:00",
     "location": "Cupertino, California, USA",
-    "latitude": 37.3230,
+    "latitude": 37.323,
     "longitude": -122.0322,
     "timezone": "America/Los_Angeles",
     "roddenRating": "AA",
     "source": "Apple Store opening time",
     "notes": "First iPhone goes on sale, smartphone revolution",
-    "tags": ["tech", "apple", "iphone", "innovation"]
+    "tags": [
+      "tech",
+      "apple",
+      "iphone",
+      "innovation"
+    ]
   },
   {
     "id": "roman-empire",
@@ -1873,7 +2515,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Historical records (27 BCE)",
     "notes": "Augustus becomes first Roman Emperor, Republic ends",
-    "tags": ["empire", "rome", "ancient", "historical"]
+    "tags": [
+      "empire",
+      "rome",
+      "ancient",
+      "historical"
+    ]
   },
   {
     "id": "british-empire-act",
@@ -1888,7 +2535,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Act of Union effective",
     "notes": "Kingdom of Great Britain formed, England and Scotland unite",
-    "tags": ["empire", "british", "union", "historical"]
+    "tags": [
+      "empire",
+      "british",
+      "union",
+      "historical"
+    ]
   },
   {
     "id": "ottoman-conquest",
@@ -1903,7 +2555,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Historical records",
     "notes": "Constantinople falls to Mehmed II, Byzantine Empire ends",
-    "tags": ["empire", "ottoman", "conquest", "historical"]
+    "tags": [
+      "empire",
+      "ottoman",
+      "conquest",
+      "historical"
+    ]
   },
   {
     "id": "soviet-union",
@@ -1918,7 +2575,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Treaty signing",
     "notes": "USSR formally established, Lenin era",
-    "tags": ["empire", "soviet", "communist", "historical"]
+    "tags": [
+      "empire",
+      "soviet",
+      "communist",
+      "historical"
+    ]
   },
   {
     "id": "un-founding",
@@ -1928,12 +2590,17 @@ export const famousChartsData =
     "time": "16:50",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "Charter ratification ceremony",
     "notes": "UN Charter enters into force, post-WWII world order",
-    "tags": ["international", "un", "diplomacy", "institution"]
+    "tags": [
+      "international",
+      "un",
+      "diplomacy",
+      "institution"
+    ]
   },
   {
     "id": "nato-founding",
@@ -1948,7 +2615,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Treaty signing ceremony",
     "notes": "North Atlantic Treaty signed, Cold War alliance",
-    "tags": ["international", "nato", "military", "alliance"]
+    "tags": [
+      "international",
+      "nato",
+      "military",
+      "alliance"
+    ]
   },
   {
     "id": "who-founding",
@@ -1963,7 +2635,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Constitution effective date",
     "notes": "WHO established as UN specialized agency",
-    "tags": ["international", "who", "health", "institution"]
+    "tags": [
+      "international",
+      "who",
+      "health",
+      "institution"
+    ]
   },
   {
     "id": "wto-founding",
@@ -1978,7 +2655,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Organization established",
     "notes": "WTO replaces GATT, global trade regulation",
-    "tags": ["international", "wto", "trade", "institution"]
+    "tags": [
+      "international",
+      "wto",
+      "trade",
+      "institution"
+    ]
   },
   {
     "id": "berlin-wall-fall",
@@ -1987,13 +2669,18 @@ export const famousChartsData =
     "date": "1989-11-09",
     "time": "18:57",
     "location": "Berlin, Germany",
-    "latitude": 52.5200,
-    "longitude": 13.4050,
+    "latitude": 52.52,
+    "longitude": 13.405,
     "timezone": "Europe/Berlin",
     "roddenRating": "AA",
     "source": "Border crossing announcement",
     "notes": "Berlin Wall opens, Cold War ends, German reunification begins",
-    "tags": ["historical", "cold-war", "germany", "event"]
+    "tags": [
+      "historical",
+      "cold-war",
+      "germany",
+      "event"
+    ]
   },
   {
     "id": "covid-pandemic-who",
@@ -2008,7 +2695,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "WHO press conference",
     "notes": "WHO declares COVID-19 a pandemic",
-    "tags": ["pandemic", "covid", "health", "crisis"]
+    "tags": [
+      "pandemic",
+      "covid",
+      "health",
+      "crisis"
+    ]
   },
   {
     "id": "pearl-harbor",
@@ -2017,13 +2709,18 @@ export const famousChartsData =
     "date": "1941-12-07",
     "time": "07:48",
     "location": "Pearl Harbor, Hawaii, USA",
-    "latitude": 21.3640,
+    "latitude": 21.364,
     "longitude": -157.9525,
     "timezone": "Pacific/Honolulu",
     "roddenRating": "AA",
     "source": "Military records - first wave attack",
     "notes": "Japanese attack on Pearl Harbor, US enters WWII",
-    "tags": ["war", "wwii", "attack", "historic"]
+    "tags": [
+      "war",
+      "wwii",
+      "attack",
+      "historic"
+    ]
   },
   {
     "id": "jfk-assassination",
@@ -2033,12 +2730,17 @@ export const famousChartsData =
     "time": "12:30",
     "location": "Dallas, Texas, USA",
     "latitude": 32.7767,
-    "longitude": -96.7970,
+    "longitude": -96.797,
     "timezone": "America/Chicago",
     "roddenRating": "AA",
     "source": "Official records - shots fired",
     "notes": "President Kennedy assassinated in Dallas motorcade",
-    "tags": ["assassination", "kennedy", "tragedy", "historic"]
+    "tags": [
+      "assassination",
+      "kennedy",
+      "tragedy",
+      "historic"
+    ]
   },
   {
     "id": "mlk-assassination",
@@ -2048,12 +2750,17 @@ export const famousChartsData =
     "time": "18:01",
     "location": "Memphis, Tennessee, USA",
     "latitude": 35.1495,
-    "longitude": -90.0490,
+    "longitude": -90.049,
     "timezone": "America/Chicago",
     "roddenRating": "AA",
     "source": "Official records",
     "notes": "Martin Luther King Jr. assassinated at Lorraine Motel",
-    "tags": ["assassination", "civil-rights", "tragedy", "historic"]
+    "tags": [
+      "assassination",
+      "civil-rights",
+      "tragedy",
+      "historic"
+    ]
   },
   {
     "id": "d-day-normandy",
@@ -2068,7 +2775,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Military records - amphibious landing",
     "notes": "Allied invasion of Normandy, Operation Overlord",
-    "tags": ["war", "wwii", "invasion", "historic"]
+    "tags": [
+      "war",
+      "wwii",
+      "invasion",
+      "historic"
+    ]
   },
   {
     "id": "hiroshima-bombing",
@@ -2083,7 +2795,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Military records",
     "notes": "First atomic bomb dropped on Hiroshima, 'Little Boy'",
-    "tags": ["war", "wwii", "atomic", "tragedy"]
+    "tags": [
+      "war",
+      "wwii",
+      "atomic",
+      "tragedy"
+    ]
   },
   {
     "id": "stock-crash-1929",
@@ -2093,12 +2810,17 @@ export const famousChartsData =
     "time": "09:30",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "NYSE opening",
     "notes": "Black Tuesday, Great Depression begins, massive sell-off",
-    "tags": ["finance", "crash", "depression", "historic"]
+    "tags": [
+      "finance",
+      "crash",
+      "depression",
+      "historic"
+    ]
   },
   {
     "id": "stock-crash-1987",
@@ -2108,12 +2830,17 @@ export const famousChartsData =
     "time": "09:30",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "NYSE opening",
     "notes": "Black Monday, Dow drops 22.6% in single day",
-    "tags": ["finance", "crash", "black-monday", "historic"]
+    "tags": [
+      "finance",
+      "crash",
+      "black-monday",
+      "historic"
+    ]
   },
   {
     "id": "lehman-collapse",
@@ -2123,12 +2850,17 @@ export const famousChartsData =
     "time": "01:45",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "Bankruptcy filing time",
     "notes": "Lehman Brothers files for bankruptcy, financial crisis peaks",
-    "tags": ["finance", "crisis", "bankruptcy", "historic"]
+    "tags": [
+      "finance",
+      "crisis",
+      "bankruptcy",
+      "historic"
+    ]
   },
   {
     "id": "challenger-disaster",
@@ -2138,12 +2870,17 @@ export const famousChartsData =
     "time": "11:39",
     "location": "Cape Canaveral, Florida, USA",
     "latitude": 28.5729,
-    "longitude": -80.6490,
+    "longitude": -80.649,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "NASA records - explosion",
     "notes": "Space Shuttle Challenger explodes 73 seconds after launch",
-    "tags": ["space", "disaster", "nasa", "tragedy"]
+    "tags": [
+      "space",
+      "disaster",
+      "nasa",
+      "tragedy"
+    ]
   },
   {
     "id": "columbia-disaster",
@@ -2158,7 +2895,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "NASA records - re-entry breakup",
     "notes": "Space Shuttle Columbia disintegrates during re-entry",
-    "tags": ["space", "disaster", "nasa", "tragedy"]
+    "tags": [
+      "space",
+      "disaster",
+      "nasa",
+      "tragedy"
+    ]
   },
   {
     "id": "london-stock-exchange",
@@ -2173,7 +2915,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Official founding",
     "notes": "LSE formally established after meeting at coffeehouse for decades",
-    "tags": ["finance", "stock-market", "lse", "institution"]
+    "tags": [
+      "finance",
+      "stock-market",
+      "lse",
+      "institution"
+    ]
   },
   {
     "id": "tokyo-stock-exchange",
@@ -2188,7 +2935,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Official founding",
     "notes": "TSE established during Meiji Restoration modernization",
-    "tags": ["finance", "stock-market", "tse", "institution"]
+    "tags": [
+      "finance",
+      "stock-market",
+      "tse",
+      "institution"
+    ]
   },
   {
     "id": "shanghai-stock-exchange",
@@ -2203,7 +2955,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Official opening",
     "notes": "SSE opens, first Chinese stock exchange since revolution",
-    "tags": ["finance", "stock-market", "sse", "china"]
+    "tags": [
+      "finance",
+      "stock-market",
+      "sse",
+      "china"
+    ]
   },
   {
     "id": "hong-kong-stock-exchange",
@@ -2218,7 +2975,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Official founding",
     "notes": "HKSE founded as Association of Stockbrokers",
-    "tags": ["finance", "stock-market", "hkse", "institution"]
+    "tags": [
+      "finance",
+      "stock-market",
+      "hkse",
+      "institution"
+    ]
   },
   {
     "id": "netflix-ipo",
@@ -2228,12 +2990,17 @@ export const famousChartsData =
     "time": "09:30",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "NASDAQ opening bell",
     "notes": "Netflix IPO at $15/share, DVD rental company",
-    "tags": ["tech", "ipo", "netflix", "streaming"]
+    "tags": [
+      "tech",
+      "ipo",
+      "netflix",
+      "streaming"
+    ]
   },
   {
     "id": "nvidia-ipo",
@@ -2243,12 +3010,17 @@ export const famousChartsData =
     "time": "09:30",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "NASDAQ opening bell",
     "notes": "Nvidia IPO at $12/share, GPU pioneer",
-    "tags": ["tech", "ipo", "nvidia", "ai"]
+    "tags": [
+      "tech",
+      "ipo",
+      "nvidia",
+      "ai"
+    ]
   },
   {
     "id": "spacex-founding",
@@ -2263,7 +3035,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Company incorporation",
     "notes": "Elon Musk founds Space Exploration Technologies Corp",
-    "tags": ["tech", "space", "spacex", "innovation"]
+    "tags": [
+      "tech",
+      "space",
+      "spacex",
+      "innovation"
+    ]
   },
   {
     "id": "twitter-ipo",
@@ -2273,12 +3050,17 @@ export const famousChartsData =
     "time": "09:30",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "NYSE opening bell",
     "notes": "Twitter IPO at $26/share, microblogging platform",
-    "tags": ["tech", "ipo", "twitter", "social-media"]
+    "tags": [
+      "tech",
+      "ipo",
+      "twitter",
+      "social-media"
+    ]
   },
   {
     "id": "uber-ipo",
@@ -2288,12 +3070,17 @@ export const famousChartsData =
     "time": "09:30",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "NYSE opening bell",
     "notes": "Uber IPO at $45/share, ride-sharing giant",
-    "tags": ["tech", "ipo", "uber", "gig-economy"]
+    "tags": [
+      "tech",
+      "ipo",
+      "uber",
+      "gig-economy"
+    ]
   },
   {
     "id": "airbnb-ipo",
@@ -2303,12 +3090,17 @@ export const famousChartsData =
     "time": "09:30",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "NASDAQ opening bell",
     "notes": "Airbnb IPO at $68/share during pandemic, doubles on first day",
-    "tags": ["tech", "ipo", "airbnb", "hospitality"]
+    "tags": [
+      "tech",
+      "ipo",
+      "airbnb",
+      "hospitality"
+    ]
   },
   {
     "id": "openai-chatgpt",
@@ -2323,7 +3115,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Public release",
     "notes": "OpenAI launches ChatGPT to public, AI revolution begins",
-    "tags": ["tech", "ai", "chatgpt", "innovation"]
+    "tags": [
+      "tech",
+      "ai",
+      "chatgpt",
+      "innovation"
+    ]
   },
   {
     "id": "euro-currency-launch",
@@ -2338,7 +3135,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Official launch date",
     "notes": "Euro becomes official currency for 11 EU nations",
-    "tags": ["finance", "currency", "euro", "european-union"]
+    "tags": [
+      "finance",
+      "currency",
+      "euro",
+      "european-union"
+    ]
   },
   {
     "id": "bretton-woods",
@@ -2353,7 +3155,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Agreement signed",
     "notes": "Post-WWII monetary system, IMF and World Bank created",
-    "tags": ["finance", "international", "bretton-woods", "institution"]
+    "tags": [
+      "finance",
+      "international",
+      "bretton-woods",
+      "institution"
+    ]
   },
   {
     "id": "gold-standard-abandoned",
@@ -2368,7 +3175,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "TV address time",
     "notes": "Nixon Shock - US abandons gold standard, fiat currency era",
-    "tags": ["finance", "gold-standard", "nixon", "historic"]
+    "tags": [
+      "finance",
+      "gold-standard",
+      "nixon",
+      "historic"
+    ]
   },
   {
     "id": "dna-structure-discovery",
@@ -2383,7 +3195,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Watson & Crick breakthrough",
     "notes": "Double helix structure discovered, molecular biology revolution",
-    "tags": ["science", "dna", "biology", "discovery"]
+    "tags": [
+      "science",
+      "dna",
+      "biology",
+      "discovery"
+    ]
   },
   {
     "id": "relativity-announcement",
@@ -2392,13 +3209,18 @@ export const famousChartsData =
     "date": "1905-06-30",
     "time": "12:00",
     "location": "Bern, Switzerland",
-    "latitude": 46.9480,
+    "latitude": 46.948,
     "longitude": 7.4474,
     "timezone": "Europe/Zurich",
     "roddenRating": "A",
     "source": "Annalen der Physik publication",
-    "notes": "Einstein's special relativity paper published, E=mc²",
-    "tags": ["science", "physics", "einstein", "discovery"]
+    "notes": "Einstein's special relativity paper published, E=mc\u00b2",
+    "tags": [
+      "science",
+      "physics",
+      "einstein",
+      "discovery"
+    ]
   },
   {
     "id": "first-flight",
@@ -2413,7 +3235,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Wright Brothers records",
     "notes": "Wright Brothers achieve first powered flight, 12 seconds",
-    "tags": ["science", "aviation", "invention", "historic"]
+    "tags": [
+      "science",
+      "aviation",
+      "invention",
+      "historic"
+    ]
   },
   {
     "id": "penicillin-discovery",
@@ -2428,7 +3255,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Fleming's laboratory notes",
     "notes": "Alexander Fleming discovers penicillin, antibiotic revolution",
-    "tags": ["science", "medicine", "penicillin", "discovery"]
+    "tags": [
+      "science",
+      "medicine",
+      "penicillin",
+      "discovery"
+    ]
   },
   {
     "id": "first-nuclear-reaction",
@@ -2443,7 +3275,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Fermi's experiment records",
     "notes": "Enrico Fermi achieves first controlled nuclear reaction, Chicago Pile-1",
-    "tags": ["science", "nuclear", "physics", "discovery"]
+    "tags": [
+      "science",
+      "nuclear",
+      "physics",
+      "discovery"
+    ]
   },
   {
     "id": "human-genome-announcement",
@@ -2458,7 +3295,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Official announcement",
     "notes": "Human genome fully sequenced, genetic revolution",
-    "tags": ["science", "genetics", "genome", "discovery"]
+    "tags": [
+      "science",
+      "genetics",
+      "genome",
+      "discovery"
+    ]
   },
   {
     "id": "polio-vaccine",
@@ -2468,12 +3310,17 @@ export const famousChartsData =
     "time": "10:20",
     "location": "Ann Arbor, Michigan, USA",
     "latitude": 42.2808,
-    "longitude": -83.7430,
+    "longitude": -83.743,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "Press conference",
     "notes": "Salk vaccine declared safe and effective, church bells rang",
-    "tags": ["science", "medicine", "vaccine", "discovery"]
+    "tags": [
+      "science",
+      "medicine",
+      "vaccine",
+      "discovery"
+    ]
   },
   {
     "id": "first-heart-transplant",
@@ -2488,7 +3335,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Surgery start time",
     "notes": "Dr. Christiaan Barnard performs first successful heart transplant",
-    "tags": ["science", "medicine", "surgery", "discovery"]
+    "tags": [
+      "science",
+      "medicine",
+      "surgery",
+      "discovery"
+    ]
   },
   {
     "id": "crispr-discovery",
@@ -2498,12 +3350,17 @@ export const famousChartsData =
     "time": "12:00",
     "location": "Berkeley, California, USA",
     "latitude": 37.8715,
-    "longitude": -122.2730,
+    "longitude": -122.273,
     "timezone": "America/Los_Angeles",
     "roddenRating": "A",
     "source": "Science journal publication",
     "notes": "Doudna and Charpentier publish CRISPR-Cas9 gene editing",
-    "tags": ["science", "genetics", "crispr", "discovery"]
+    "tags": [
+      "science",
+      "genetics",
+      "crispr",
+      "discovery"
+    ]
   },
   {
     "id": "higgs-boson",
@@ -2518,7 +3375,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "CERN announcement",
     "notes": "CERN announces Higgs boson discovery, God particle",
-    "tags": ["science", "physics", "cern", "discovery"]
+    "tags": [
+      "science",
+      "physics",
+      "cern",
+      "discovery"
+    ]
   },
   {
     "id": "first-black-hole-image",
@@ -2533,7 +3395,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Press conference",
     "notes": "Event Horizon Telescope reveals first black hole image, M87",
-    "tags": ["science", "astronomy", "black-hole", "discovery"]
+    "tags": [
+      "science",
+      "astronomy",
+      "black-hole",
+      "discovery"
+    ]
   },
   {
     "id": "dolly-sheep-cloning",
@@ -2548,7 +3415,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Birth date",
     "notes": "First mammal cloned from adult cell, ethics debates begin",
-    "tags": ["science", "cloning", "genetics", "discovery"]
+    "tags": [
+      "science",
+      "cloning",
+      "genetics",
+      "discovery"
+    ]
   },
   {
     "id": "woodstock-festival",
@@ -2563,7 +3435,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "First act on stage (Richie Havens)",
     "notes": "3 days of peace and music, counterculture peak, 400,000 attend",
-    "tags": ["culture", "music", "counterculture", "festival"]
+    "tags": [
+      "culture",
+      "music",
+      "counterculture",
+      "festival"
+    ]
   },
   {
     "id": "stonewall-riots",
@@ -2578,7 +3455,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Police raid time",
     "notes": "LGBTQ+ rights movement catalyst, Greenwich Village uprising",
-    "tags": ["culture", "lgbtq", "rights", "uprising"]
+    "tags": [
+      "culture",
+      "lgbtq",
+      "rights",
+      "uprising"
+    ]
   },
   {
     "id": "march-on-washington",
@@ -2593,7 +3475,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "MLK 'I Have a Dream' speech time",
     "notes": "250,000 march for civil rights, MLK's iconic speech",
-    "tags": ["culture", "civil-rights", "mlk", "protest"]
+    "tags": [
+      "culture",
+      "civil-rights",
+      "mlk",
+      "protest"
+    ]
   },
   {
     "id": "live-aid",
@@ -2608,7 +3495,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Wembley Stadium concert start",
     "notes": "Global charity concert, 1.9 billion viewers, Queen's legendary set",
-    "tags": ["culture", "music", "charity", "concert"]
+    "tags": [
+      "culture",
+      "music",
+      "charity",
+      "concert"
+    ]
   },
   {
     "id": "summer-of-love",
@@ -2623,7 +3515,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Cultural consensus - June 1967",
     "notes": "100,000 gather in Haight-Ashbury, hippie movement peak",
-    "tags": ["culture", "counterculture", "hippie", "movement"]
+    "tags": [
+      "culture",
+      "counterculture",
+      "hippie",
+      "movement"
+    ]
   },
   {
     "id": "roe-v-wade",
@@ -2638,7 +3535,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Supreme Court announcement",
     "notes": "Supreme Court legalizes abortion nationwide, landmark ruling",
-    "tags": ["culture", "rights", "abortion", "supreme-court"]
+    "tags": [
+      "culture",
+      "rights",
+      "abortion",
+      "supreme-court"
+    ]
   },
   {
     "id": "roe-overturned",
@@ -2653,7 +3555,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Dobbs decision released",
     "notes": "Supreme Court overturns Roe v. Wade after 49 years",
-    "tags": ["culture", "rights", "abortion", "supreme-court"]
+    "tags": [
+      "culture",
+      "rights",
+      "abortion",
+      "supreme-court"
+    ]
   },
   {
     "id": "gay-marriage-legalized",
@@ -2668,7 +3575,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Obergefell decision announced",
     "notes": "Supreme Court legalizes same-sex marriage nationwide",
-    "tags": ["culture", "lgbtq", "rights", "supreme-court"]
+    "tags": [
+      "culture",
+      "lgbtq",
+      "rights",
+      "supreme-court"
+    ]
   },
   {
     "id": "womens-march",
@@ -2683,7 +3595,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "March start time",
     "notes": "Largest single-day protest in US history, millions worldwide",
-    "tags": ["culture", "protest", "womens-rights", "activism"]
+    "tags": [
+      "culture",
+      "protest",
+      "womens-rights",
+      "activism"
+    ]
   },
   {
     "id": "metoo-movement",
@@ -2693,12 +3610,17 @@ export const famousChartsData =
     "time": "16:21",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "Alyssa Milano's tweet timestamp",
     "notes": "Me Too goes viral, Weinstein allegations catalyze movement",
-    "tags": ["culture", "metoo", "activism", "social-media"]
+    "tags": [
+      "culture",
+      "metoo",
+      "activism",
+      "social-media"
+    ]
   },
   {
     "id": "aids-crisis-declared",
@@ -2707,13 +3629,18 @@ export const famousChartsData =
     "date": "1981-06-05",
     "time": "12:00",
     "location": "Atlanta, Georgia, USA",
-    "latitude": 33.7490,
-    "longitude": -84.3880,
+    "latitude": 33.749,
+    "longitude": -84.388,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "CDC MMWR publication",
     "notes": "CDC reports first AIDS cases, LGBTQ+ community crisis begins",
-    "tags": ["culture", "health", "aids", "crisis"]
+    "tags": [
+      "culture",
+      "health",
+      "aids",
+      "crisis"
+    ]
   },
   {
     "id": "watts-riots",
@@ -2728,7 +3655,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Police confrontation start",
     "notes": "6-day uprising in LA, civil rights era, 34 deaths",
-    "tags": ["culture", "civil-rights", "uprising", "protest"]
+    "tags": [
+      "culture",
+      "civil-rights",
+      "uprising",
+      "protest"
+    ]
   },
   {
     "id": "punk-rock-birth",
@@ -2737,13 +3669,18 @@ export const famousChartsData =
     "date": "1974-08-16",
     "time": "20:00",
     "location": "New York City, New York, USA",
-    "latitude": 40.7260,
+    "latitude": 40.726,
     "longitude": -73.9908,
     "timezone": "America/New_York",
     "roddenRating": "A",
     "source": "First Ramones show at CBGB",
     "notes": "Ramones debut at CBGB, punk rock movement ignites",
-    "tags": ["culture", "music", "punk", "movement"]
+    "tags": [
+      "culture",
+      "music",
+      "punk",
+      "movement"
+    ]
   },
   {
     "id": "washington-george",
@@ -2758,7 +3695,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography (birth time uncertain)",
     "notes": "1st President, Founding Father, Revolutionary War commander",
-    "tags": ["president", "founding-father", "revolutionary", "first"]
+    "tags": [
+      "president",
+      "founding-father",
+      "revolutionary",
+      "first"
+    ]
   },
   {
     "id": "adams-john",
@@ -2768,12 +3710,17 @@ export const famousChartsData =
     "time": "08:00",
     "location": "Braintree, Massachusetts, USA",
     "latitude": 42.2084,
-    "longitude": -71.0020,
+    "longitude": -71.002,
     "timezone": "America/New_York",
     "roddenRating": "B",
     "source": "Biography",
     "notes": "2nd President, Founding Father, Declaration signer",
-    "tags": ["president", "founding-father", "federalist", "second"]
+    "tags": [
+      "president",
+      "founding-father",
+      "federalist",
+      "second"
+    ]
   },
   {
     "id": "jefferson-thomas",
@@ -2788,7 +3735,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "3rd President, Declaration author, Louisiana Purchase",
-    "tags": ["president", "founding-father", "declaration", "third"]
+    "tags": [
+      "president",
+      "founding-father",
+      "declaration",
+      "third"
+    ]
   },
   {
     "id": "madison-james",
@@ -2803,7 +3755,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "4th President, Father of the Constitution, War of 1812",
-    "tags": ["president", "founding-father", "constitution", "fourth"]
+    "tags": [
+      "president",
+      "founding-father",
+      "constitution",
+      "fourth"
+    ]
   },
   {
     "id": "monroe-james",
@@ -2818,7 +3775,11 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "5th President, Monroe Doctrine, Era of Good Feelings",
-    "tags": ["president", "monroe-doctrine", "fifth"]
+    "tags": [
+      "president",
+      "monroe-doctrine",
+      "fifth"
+    ]
   },
   {
     "id": "adams-john-quincy",
@@ -2828,12 +3789,16 @@ export const famousChartsData =
     "time": "07:45",
     "location": "Braintree, Massachusetts, USA",
     "latitude": 42.2084,
-    "longitude": -71.0020,
+    "longitude": -71.002,
     "timezone": "America/New_York",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "6th President, son of John Adams, abolitionist",
-    "tags": ["president", "adams", "sixth"]
+    "tags": [
+      "president",
+      "adams",
+      "sixth"
+    ]
   },
   {
     "id": "jackson-andrew",
@@ -2848,7 +3813,11 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "7th President, founder of Democratic Party, Indian Removal Act",
-    "tags": ["president", "democratic", "seventh"]
+    "tags": [
+      "president",
+      "democratic",
+      "seventh"
+    ]
   },
   {
     "id": "van-buren-martin",
@@ -2863,7 +3832,11 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "8th President, first president born US citizen, Panic of 1837",
-    "tags": ["president", "democratic", "eighth"]
+    "tags": [
+      "president",
+      "democratic",
+      "eighth"
+    ]
   },
   {
     "id": "harrison-william-henry",
@@ -2878,7 +3851,11 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "9th President, died after 31 days in office, shortest presidency",
-    "tags": ["president", "whig", "ninth"]
+    "tags": [
+      "president",
+      "whig",
+      "ninth"
+    ]
   },
   {
     "id": "tyler-john",
@@ -2893,7 +3870,11 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "10th President, first VP to assume presidency, annexed Texas",
-    "tags": ["president", "whig", "tenth"]
+    "tags": [
+      "president",
+      "whig",
+      "tenth"
+    ]
   },
   {
     "id": "polk-james",
@@ -2903,12 +3884,16 @@ export const famousChartsData =
     "time": "12:00",
     "location": "Pineville, North Carolina, USA",
     "latitude": 35.0832,
-    "longitude": -80.8920,
+    "longitude": -80.892,
     "timezone": "America/New_York",
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "11th President, Mexican-American War, Manifest Destiny",
-    "tags": ["president", "democratic", "eleventh"]
+    "tags": [
+      "president",
+      "democratic",
+      "eleventh"
+    ]
   },
   {
     "id": "taylor-zachary",
@@ -2923,7 +3908,11 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "12th President, Mexican War hero, died in office after 16 months",
-    "tags": ["president", "whig", "twelfth"]
+    "tags": [
+      "president",
+      "whig",
+      "twelfth"
+    ]
   },
   {
     "id": "fillmore-millard",
@@ -2938,7 +3927,11 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "13th President, Compromise of 1850, opened trade with Japan",
-    "tags": ["president", "whig", "thirteenth"]
+    "tags": [
+      "president",
+      "whig",
+      "thirteenth"
+    ]
   },
   {
     "id": "pierce-franklin",
@@ -2953,7 +3946,11 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "14th President, Kansas-Nebraska Act, pre-Civil War tensions",
-    "tags": ["president", "democratic", "fourteenth"]
+    "tags": [
+      "president",
+      "democratic",
+      "fourteenth"
+    ]
   },
   {
     "id": "buchanan-james",
@@ -2968,7 +3965,11 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "15th President, only bachelor president, pre-Civil War",
-    "tags": ["president", "democratic", "fifteenth"]
+    "tags": [
+      "president",
+      "democratic",
+      "fifteenth"
+    ]
   },
   {
     "id": "lincoln-abraham",
@@ -2983,7 +3984,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "16th President, Civil War, Emancipation Proclamation, assassinated",
-    "tags": ["president", "republican", "civil-war", "assassination"]
+    "tags": [
+      "president",
+      "republican",
+      "civil-war",
+      "assassination"
+    ]
   },
   {
     "id": "johnson-andrew",
@@ -2998,7 +4004,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "17th President, post-Civil War Reconstruction, impeached",
-    "tags": ["president", "democratic", "reconstruction", "impeached"]
+    "tags": [
+      "president",
+      "democratic",
+      "reconstruction",
+      "impeached"
+    ]
   },
   {
     "id": "grant-ulysses",
@@ -3013,7 +4024,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "18th President, Civil War general, Reconstruction",
-    "tags": ["president", "republican", "civil-war", "eighteenth"]
+    "tags": [
+      "president",
+      "republican",
+      "civil-war",
+      "eighteenth"
+    ]
   },
   {
     "id": "hayes-rutherford",
@@ -3028,7 +4044,11 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "19th President, contested election, end of Reconstruction",
-    "tags": ["president", "republican", "nineteenth"]
+    "tags": [
+      "president",
+      "republican",
+      "nineteenth"
+    ]
   },
   {
     "id": "garfield-james",
@@ -3038,12 +4058,17 @@ export const famousChartsData =
     "time": "12:00",
     "location": "Moreland Hills, Ohio, USA",
     "latitude": 41.4434,
-    "longitude": -81.4290,
+    "longitude": -81.429,
     "timezone": "America/New_York",
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "20th President, assassinated after 6 months in office",
-    "tags": ["president", "republican", "assassination", "twentieth"]
+    "tags": [
+      "president",
+      "republican",
+      "assassination",
+      "twentieth"
+    ]
   },
   {
     "id": "arthur-chester",
@@ -3058,7 +4083,11 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "21st President, civil service reform, Pendleton Act",
-    "tags": ["president", "republican", "twenty-first"]
+    "tags": [
+      "president",
+      "republican",
+      "twenty-first"
+    ]
   },
   {
     "id": "cleveland-grover",
@@ -3073,7 +4102,11 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "22nd & 24th President, only president to serve non-consecutive terms",
-    "tags": ["president", "democratic", "non-consecutive"]
+    "tags": [
+      "president",
+      "democratic",
+      "non-consecutive"
+    ]
   },
   {
     "id": "harrison-benjamin",
@@ -3088,7 +4121,11 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "23rd President, grandson of William Henry Harrison",
-    "tags": ["president", "republican", "twenty-third"]
+    "tags": [
+      "president",
+      "republican",
+      "twenty-third"
+    ]
   },
   {
     "id": "mckinley-william",
@@ -3103,7 +4140,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "25th President, Spanish-American War, assassinated 1901",
-    "tags": ["president", "republican", "assassination", "twenty-fifth"]
+    "tags": [
+      "president",
+      "republican",
+      "assassination",
+      "twenty-fifth"
+    ]
   },
   {
     "id": "roosevelt-theodore",
@@ -3113,12 +4155,17 @@ export const famousChartsData =
     "time": "19:45",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "26th President, trust-buster, conservationist, Nobel Peace Prize",
-    "tags": ["president", "republican", "progressive", "twenty-sixth"]
+    "tags": [
+      "president",
+      "republican",
+      "progressive",
+      "twenty-sixth"
+    ]
   },
   {
     "id": "taft-william",
@@ -3128,12 +4175,17 @@ export const famousChartsData =
     "time": "20:00",
     "location": "Cincinnati, Ohio, USA",
     "latitude": 39.1031,
-    "longitude": -84.5120,
+    "longitude": -84.512,
     "timezone": "America/New_York",
     "roddenRating": "B",
     "source": "Biography",
     "notes": "27th President, later Chief Justice, only person to serve in both roles",
-    "tags": ["president", "republican", "chief-justice", "twenty-seventh"]
+    "tags": [
+      "president",
+      "republican",
+      "chief-justice",
+      "twenty-seventh"
+    ]
   },
   {
     "id": "wilson-woodrow",
@@ -3148,7 +4200,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "28th President, WWI, League of Nations, Federal Reserve Act",
-    "tags": ["president", "democratic", "wwi", "twenty-eighth"]
+    "tags": [
+      "president",
+      "democratic",
+      "wwi",
+      "twenty-eighth"
+    ]
   },
   {
     "id": "harding-warren",
@@ -3163,7 +4220,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "29th President, died in office, Teapot Dome scandal",
-    "tags": ["president", "republican", "scandal", "twenty-ninth"]
+    "tags": [
+      "president",
+      "republican",
+      "scandal",
+      "twenty-ninth"
+    ]
   },
   {
     "id": "coolidge-calvin",
@@ -3178,7 +4240,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "30th President, Roaring Twenties, pro-business, Silent Cal",
-    "tags": ["president", "republican", "twenties", "thirtieth"]
+    "tags": [
+      "president",
+      "republican",
+      "twenties",
+      "thirtieth"
+    ]
   },
   {
     "id": "hoover-herbert",
@@ -3193,7 +4260,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "31st President, Great Depression began during term",
-    "tags": ["president", "republican", "depression", "thirty-first"]
+    "tags": [
+      "president",
+      "republican",
+      "depression",
+      "thirty-first"
+    ]
   },
   {
     "id": "truman-harry",
@@ -3208,7 +4280,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "33rd President, atomic bombs on Japan, Cold War begins",
-    "tags": ["president", "democratic", "wwii", "thirty-third"]
+    "tags": [
+      "president",
+      "democratic",
+      "wwii",
+      "thirty-third"
+    ]
   },
   {
     "id": "eisenhower-dwight",
@@ -3223,7 +4300,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "34th President, WWII Supreme Commander, Interstate Highway System",
-    "tags": ["president", "republican", "wwii", "thirty-fourth"]
+    "tags": [
+      "president",
+      "republican",
+      "wwii",
+      "thirty-fourth"
+    ]
   },
   {
     "id": "johnson-lyndon",
@@ -3238,7 +4320,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "36th President, Great Society, Civil Rights Act, Vietnam War",
-    "tags": ["president", "democratic", "civil-rights", "thirty-sixth"]
+    "tags": [
+      "president",
+      "democratic",
+      "civil-rights",
+      "thirty-sixth"
+    ]
   },
   {
     "id": "ford-gerald",
@@ -3253,7 +4340,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "38th President, pardoned Nixon, only unelected president",
-    "tags": ["president", "republican", "watergate", "thirty-eighth"]
+    "tags": [
+      "president",
+      "republican",
+      "watergate",
+      "thirty-eighth"
+    ]
   },
   {
     "id": "carter-jimmy",
@@ -3268,7 +4360,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "39th President, Camp David Accords, humanitarian work",
-    "tags": ["president", "democratic", "humanitarian", "thirty-ninth"]
+    "tags": [
+      "president",
+      "democratic",
+      "humanitarian",
+      "thirty-ninth"
+    ]
   },
   {
     "id": "reagan-ronald",
@@ -3283,7 +4380,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "40th President, ended Cold War, Reaganomics, former actor",
-    "tags": ["president", "republican", "cold-war", "fortieth"]
+    "tags": [
+      "president",
+      "republican",
+      "cold-war",
+      "fortieth"
+    ]
   },
   {
     "id": "bush-george-hw",
@@ -3298,7 +4400,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "41st President, Gulf War, Cold War ends, 'Read my lips'",
-    "tags": ["president", "republican", "gulf-war", "forty-first"]
+    "tags": [
+      "president",
+      "republican",
+      "gulf-war",
+      "forty-first"
+    ]
   },
   {
     "id": "clinton-bill",
@@ -3313,7 +4420,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "42nd President, economic prosperity, impeached and acquitted",
-    "tags": ["president", "democratic", "impeached", "forty-second"]
+    "tags": [
+      "president",
+      "democratic",
+      "impeached",
+      "forty-second"
+    ]
   },
   {
     "id": "bush-george-w",
@@ -3328,7 +4440,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "43rd President, 9/11, Iraq War, War on Terror",
-    "tags": ["president", "republican", "9-11", "forty-third"]
+    "tags": [
+      "president",
+      "republican",
+      "9-11",
+      "forty-third"
+    ]
   },
   {
     "id": "biden-joe",
@@ -3337,13 +4454,18 @@ export const famousChartsData =
     "date": "1942-11-20",
     "time": "08:30",
     "location": "Scranton, Pennsylvania, USA",
-    "latitude": 41.4090,
+    "latitude": 41.409,
     "longitude": -75.6624,
     "timezone": "America/New_York",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "46th President, COVID recovery, infrastructure, oldest president",
-    "tags": ["president", "democratic", "covid", "forty-sixth"]
+    "tags": [
+      "president",
+      "democratic",
+      "covid",
+      "forty-sixth"
+    ]
   },
   {
     "id": "monet-claude",
@@ -3358,7 +4480,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Impressionist painter, Water Lilies, founder of French Impressionism",
-    "tags": ["art", "impressionism", "painter", "french"]
+    "tags": [
+      "art",
+      "impressionism",
+      "painter",
+      "french"
+    ]
   },
   {
     "id": "van-gogh-vincent",
@@ -3373,7 +4500,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Post-Impressionist painter, Starry Night, sold one painting in lifetime",
-    "tags": ["art", "post-impressionism", "painter", "dutch"]
+    "tags": [
+      "art",
+      "post-impressionism",
+      "painter",
+      "dutch"
+    ]
   },
   {
     "id": "warhol-andy",
@@ -3388,7 +4520,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Pop Art pioneer, Campbell's Soup Cans, The Factory",
-    "tags": ["art", "pop-art", "painter", "contemporary"]
+    "tags": [
+      "art",
+      "pop-art",
+      "painter",
+      "contemporary"
+    ]
   },
   {
     "id": "basquiat-jean-michel",
@@ -3403,7 +4540,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Neo-expressionist painter, graffiti artist SAMO, died at 27",
-    "tags": ["art", "neo-expressionism", "graffiti", "contemporary"]
+    "tags": [
+      "art",
+      "neo-expressionism",
+      "graffiti",
+      "contemporary"
+    ]
   },
   {
     "id": "pollock-jackson",
@@ -3418,7 +4560,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Abstract Expressionist, drip painting technique, action painting",
-    "tags": ["art", "abstract-expressionism", "painter", "american"]
+    "tags": [
+      "art",
+      "abstract-expressionism",
+      "painter",
+      "american"
+    ]
   },
   {
     "id": "matisse-henri",
@@ -3426,14 +4573,19 @@ export const famousChartsData =
     "category": "Artists",
     "date": "1869-12-31",
     "time": "08:00",
-    "location": "Le Cateau-Cambrésis, France",
+    "location": "Le Cateau-Cambr\u00e9sis, France",
     "latitude": 50.1056,
     "longitude": 3.5439,
     "timezone": "Europe/Paris",
     "roddenRating": "B",
     "source": "Biography",
     "notes": "Fauvist painter, The Dance, bold colors and forms",
-    "tags": ["art", "fauvism", "painter", "french"]
+    "tags": [
+      "art",
+      "fauvism",
+      "painter",
+      "french"
+    ]
   },
   {
     "id": "ohara-georgia",
@@ -3448,7 +4600,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Modernist painter, flower paintings, New Mexico landscapes",
-    "tags": ["art", "modernism", "painter", "american"]
+    "tags": [
+      "art",
+      "modernism",
+      "painter",
+      "american"
+    ]
   },
   {
     "id": "hemingway-ernest",
@@ -3457,13 +4614,18 @@ export const famousChartsData =
     "date": "1899-07-21",
     "time": "08:00",
     "location": "Oak Park, Illinois, USA",
-    "latitude": 41.8850,
+    "latitude": 41.885,
     "longitude": -87.7845,
     "timezone": "America/Chicago",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Novelist, The Old Man and the Sea, Nobel Prize 1954",
-    "tags": ["literature", "novelist", "nobel-prize", "american"]
+    "tags": [
+      "literature",
+      "novelist",
+      "nobel-prize",
+      "american"
+    ]
   },
   {
     "id": "joyce-james",
@@ -3478,7 +4640,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Modernist novelist, Ulysses, stream of consciousness pioneer",
-    "tags": ["literature", "modernism", "novelist", "irish"]
+    "tags": [
+      "literature",
+      "modernism",
+      "novelist",
+      "irish"
+    ]
   },
   {
     "id": "morrison-toni",
@@ -3493,7 +4660,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Novelist, Beloved, Nobel Prize 1993, first Black woman to win",
-    "tags": ["literature", "novelist", "nobel-prize", "african-american"]
+    "tags": [
+      "literature",
+      "novelist",
+      "nobel-prize",
+      "african-american"
+    ]
   },
   {
     "id": "kerouac-jack",
@@ -3508,7 +4680,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "Beat Generation writer, On the Road, spontaneous prose",
-    "tags": ["literature", "beat-generation", "novelist", "american"]
+    "tags": [
+      "literature",
+      "beat-generation",
+      "novelist",
+      "american"
+    ]
   },
   {
     "id": "fitzgerald-f-scott",
@@ -3518,12 +4695,17 @@ export const famousChartsData =
     "time": "15:30",
     "location": "St. Paul, Minnesota, USA",
     "latitude": 44.9537,
-    "longitude": -93.0900,
+    "longitude": -93.09,
     "timezone": "America/Chicago",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Novelist, The Great Gatsby, Jazz Age chronicler",
-    "tags": ["literature", "novelist", "jazz-age", "american"]
+    "tags": [
+      "literature",
+      "novelist",
+      "jazz-age",
+      "american"
+    ]
   },
   {
     "id": "orwell-george",
@@ -3538,7 +4720,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "Novelist, 1984, Animal Farm, dystopian fiction pioneer",
-    "tags": ["literature", "novelist", "dystopian", "british"]
+    "tags": [
+      "literature",
+      "novelist",
+      "dystopian",
+      "british"
+    ]
   },
   {
     "id": "tolkien-jrr",
@@ -3553,7 +4740,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Fantasy author, Lord of the Rings, The Hobbit",
-    "tags": ["literature", "fantasy", "novelist", "british"]
+    "tags": [
+      "literature",
+      "fantasy",
+      "novelist",
+      "british"
+    ]
   },
   {
     "id": "plath-sylvia",
@@ -3568,7 +4760,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Poet, The Bell Jar, confessional poetry pioneer",
-    "tags": ["literature", "poetry", "confessional", "american"]
+    "tags": [
+      "literature",
+      "poetry",
+      "confessional",
+      "american"
+    ]
   },
   {
     "id": "bach-js",
@@ -3583,7 +4780,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Historical records (birth time uncertain)",
     "notes": "Baroque composer, Mass in B Minor, Well-Tempered Clavier",
-    "tags": ["music", "classical", "baroque", "composer"]
+    "tags": [
+      "music",
+      "classical",
+      "baroque",
+      "composer"
+    ]
   },
   {
     "id": "mozart-wolfgang",
@@ -3593,12 +4795,17 @@ export const famousChartsData =
     "time": "20:00",
     "location": "Salzburg, Austria",
     "latitude": 47.8095,
-    "longitude": 13.0550,
+    "longitude": 13.055,
     "timezone": "Europe/Vienna",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Classical composer, child prodigy, Requiem, Don Giovanni",
-    "tags": ["music", "classical", "composer", "prodigy"]
+    "tags": [
+      "music",
+      "classical",
+      "composer",
+      "prodigy"
+    ]
   },
   {
     "id": "beethoven-ludwig",
@@ -3613,7 +4820,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Historical records (baptism date, birth time uncertain)",
     "notes": "Classical/Romantic composer, 9th Symphony, deaf genius",
-    "tags": ["music", "classical", "romantic", "composer"]
+    "tags": [
+      "music",
+      "classical",
+      "romantic",
+      "composer"
+    ]
   },
   {
     "id": "davis-miles",
@@ -3628,7 +4840,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "Jazz trumpeter, Kind of Blue, jazz fusion pioneer",
-    "tags": ["music", "jazz", "trumpet", "innovative"]
+    "tags": [
+      "music",
+      "jazz",
+      "trumpet",
+      "innovative"
+    ]
   },
   {
     "id": "simone-nina",
@@ -3637,13 +4854,18 @@ export const famousChartsData =
     "date": "1933-02-21",
     "time": "18:00",
     "location": "Tryon, North Carolina, USA",
-    "latitude": 35.2090,
+    "latitude": 35.209,
     "longitude": -82.2387,
     "timezone": "America/New_York",
     "roddenRating": "B",
     "source": "Biography",
     "notes": "Jazz/soul singer, civil rights activist, High Priestess of Soul",
-    "tags": ["music", "jazz", "soul", "civil-rights"]
+    "tags": [
+      "music",
+      "jazz",
+      "soul",
+      "civil-rights"
+    ]
   },
   {
     "id": "coltrane-john",
@@ -3658,7 +4880,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "Jazz saxophonist, A Love Supreme, spiritual jazz pioneer",
-    "tags": ["music", "jazz", "saxophone", "spiritual"]
+    "tags": [
+      "music",
+      "jazz",
+      "saxophone",
+      "spiritual"
+    ]
   },
   {
     "id": "cash-johnny",
@@ -3673,7 +4900,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "Country music legend, Man in Black, Folsom Prison Blues",
-    "tags": ["music", "country", "outlaw", "icon"]
+    "tags": [
+      "music",
+      "country",
+      "outlaw",
+      "icon"
+    ]
   },
   {
     "id": "dylan-bob",
@@ -3688,7 +4920,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Singer-songwriter, Nobel Prize 2016, voice of a generation",
-    "tags": ["music", "folk", "rock", "nobel-prize"]
+    "tags": [
+      "music",
+      "folk",
+      "rock",
+      "nobel-prize"
+    ]
   },
   {
     "id": "mitchell-joni",
@@ -3703,7 +4940,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Singer-songwriter, Blue album, folk/rock pioneer",
-    "tags": ["music", "folk", "singer-songwriter", "canadian"]
+    "tags": [
+      "music",
+      "folk",
+      "singer-songwriter",
+      "canadian"
+    ]
   },
   {
     "id": "prince-artist",
@@ -3713,12 +4955,17 @@ export const famousChartsData =
     "time": "18:17",
     "location": "Minneapolis, Minnesota, USA",
     "latitude": 44.9778,
-    "longitude": -93.2650,
+    "longitude": -93.265,
     "timezone": "America/Chicago",
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Multi-instrumentalist, Purple Rain, genre-defying genius",
-    "tags": ["music", "funk", "rock", "genius"]
+    "tags": [
+      "music",
+      "funk",
+      "rock",
+      "genius"
+    ]
   },
   {
     "id": "franklin-aretha",
@@ -3728,12 +4975,17 @@ export const famousChartsData =
     "time": "22:30",
     "location": "Memphis, Tennessee, USA",
     "latitude": 35.1495,
-    "longitude": -90.0490,
+    "longitude": -90.049,
     "timezone": "America/Chicago",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Queen of Soul, Respect, 18 Grammy Awards",
-    "tags": ["music", "soul", "rnb", "queen"]
+    "tags": [
+      "music",
+      "soul",
+      "rnb",
+      "queen"
+    ]
   },
   {
     "id": "marley-bob",
@@ -3748,7 +5000,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Reggae legend, One Love, Rastafarian icon",
-    "tags": ["music", "reggae", "jamaican", "icon"]
+    "tags": [
+      "music",
+      "reggae",
+      "jamaican",
+      "icon"
+    ]
   },
   {
     "id": "hitchcock-alfred",
@@ -3763,7 +5020,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Master of Suspense, Psycho, Vertigo, Rear Window",
-    "tags": ["film", "director", "suspense", "british"]
+    "tags": [
+      "film",
+      "director",
+      "suspense",
+      "british"
+    ]
   },
   {
     "id": "kubrick-stanley",
@@ -3773,12 +5035,17 @@ export const famousChartsData =
     "time": "12:00",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Director, 2001: A Space Odyssey, The Shining, perfectionist",
-    "tags": ["film", "director", "visionary", "american"]
+    "tags": [
+      "film",
+      "director",
+      "visionary",
+      "american"
+    ]
   },
   {
     "id": "scorsese-martin",
@@ -3793,7 +5060,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Director, Goodfellas, Taxi Driver, The Irishman",
-    "tags": ["film", "director", "crime", "american"]
+    "tags": [
+      "film",
+      "director",
+      "crime",
+      "american"
+    ]
   },
   {
     "id": "tarantino-quentin",
@@ -3808,7 +5080,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Director, Pulp Fiction, Kill Bill, dialogue master",
-    "tags": ["film", "director", "postmodern", "american"]
+    "tags": [
+      "film",
+      "director",
+      "postmodern",
+      "american"
+    ]
   },
   {
     "id": "spielberg-steven",
@@ -3818,12 +5095,17 @@ export const famousChartsData =
     "time": "18:16",
     "location": "Cincinnati, Ohio, USA",
     "latitude": 39.1031,
-    "longitude": -84.5120,
+    "longitude": -84.512,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Director, Jaws, E.T., Schindler's List, blockbuster pioneer",
-    "tags": ["film", "director", "blockbuster", "american"]
+    "tags": [
+      "film",
+      "director",
+      "blockbuster",
+      "american"
+    ]
   },
   {
     "id": "coppola-francis-ford",
@@ -3838,7 +5120,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Director, The Godfather trilogy, Apocalypse Now",
-    "tags": ["film", "director", "epic", "american"]
+    "tags": [
+      "film",
+      "director",
+      "epic",
+      "american"
+    ]
   },
   {
     "id": "welles-orson",
@@ -3853,7 +5140,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Director/actor, Citizen Kane, War of the Worlds broadcast",
-    "tags": ["film", "director", "actor", "revolutionary"]
+    "tags": [
+      "film",
+      "director",
+      "actor",
+      "revolutionary"
+    ]
   },
   {
     "id": "kurosawa-akira",
@@ -3868,7 +5160,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Director, Seven Samurai, Rashomon, influenced worldwide cinema",
-    "tags": ["film", "director", "japanese", "master"]
+    "tags": [
+      "film",
+      "director",
+      "japanese",
+      "master"
+    ]
   },
   {
     "id": "crowley-aleister",
@@ -3883,7 +5180,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Occultist, Thelema founder, magician, The Beast 666",
-    "tags": ["occult", "magick", "thelema", "ceremonial"]
+    "tags": [
+      "occult",
+      "magick",
+      "thelema",
+      "ceremonial"
+    ]
   },
   {
     "id": "blavatsky-helena",
@@ -3898,7 +5200,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Theosophical Society founder, The Secret Doctrine, occult teacher",
-    "tags": ["occult", "theosophy", "spiritualism", "founder"]
+    "tags": [
+      "occult",
+      "theosophy",
+      "spiritualism",
+      "founder"
+    ]
   },
   {
     "id": "dee-john",
@@ -3913,7 +5220,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Dee's own chart records",
     "notes": "Enochian magic creator, Queen Elizabeth I advisor, mathematician",
-    "tags": ["occult", "enochian", "elizabethan", "magician"]
+    "tags": [
+      "occult",
+      "enochian",
+      "elizabethan",
+      "magician"
+    ]
   },
   {
     "id": "hand-robert",
@@ -3928,7 +5240,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Astrologer, Planets in Transit, historical astrology scholar",
-    "tags": ["astrology", "scholar", "transits", "modern"]
+    "tags": [
+      "astrology",
+      "scholar",
+      "transits",
+      "modern"
+    ]
   },
   {
     "id": "greene-liz",
@@ -3943,7 +5260,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Astrologer, Jungian analyst, psychological astrology pioneer",
-    "tags": ["astrology", "jungian", "psychological", "modern"]
+    "tags": [
+      "astrology",
+      "jungian",
+      "psychological",
+      "modern"
+    ]
   },
   {
     "id": "rudhyar-dane",
@@ -3958,7 +5280,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Astrologer, humanistic astrology founder, composer, philosopher",
-    "tags": ["astrology", "humanistic", "philosophy", "pioneer"]
+    "tags": [
+      "astrology",
+      "humanistic",
+      "philosophy",
+      "pioneer"
+    ]
   },
   {
     "id": "mather-cotton",
@@ -3973,7 +5300,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Historical records (birth time uncertain)",
     "notes": "Puritan minister, Salem witch trials involvement, scholar",
-    "tags": ["occult", "witchcraft", "puritan", "colonial"]
+    "tags": [
+      "occult",
+      "witchcraft",
+      "puritan",
+      "colonial"
+    ]
   },
   {
     "id": "fortune-dion",
@@ -3988,7 +5320,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Occultist, The Mystical Qabalah, Society of the Inner Light founder",
-    "tags": ["occult", "qabalah", "ceremonial", "british"]
+    "tags": [
+      "occult",
+      "qabalah",
+      "ceremonial",
+      "british"
+    ]
   },
   {
     "id": "gardner-gerald",
@@ -3998,12 +5335,17 @@ export const famousChartsData =
     "time": "12:00",
     "location": "Blundellsands, England",
     "latitude": 53.4833,
-    "longitude": -3.0500,
+    "longitude": -3.05,
     "timezone": "Europe/London",
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Wicca founder, modern witchcraft revival, Book of Shadows",
-    "tags": ["occult", "wicca", "witchcraft", "founder"]
+    "tags": [
+      "occult",
+      "wicca",
+      "witchcraft",
+      "founder"
+    ]
   },
   {
     "id": "waite-arthur-edward",
@@ -4018,7 +5360,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Occultist, Rider-Waite Tarot deck co-creator, Golden Dawn member",
-    "tags": ["occult", "tarot", "golden-dawn", "mystic"]
+    "tags": [
+      "occult",
+      "tarot",
+      "golden-dawn",
+      "mystic"
+    ]
   },
   {
     "id": "regardie-israel",
@@ -4033,7 +5380,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Occultist, Crowley's secretary, Golden Dawn system publisher",
-    "tags": ["occult", "golden-dawn", "ceremonial", "teacher"]
+    "tags": [
+      "occult",
+      "golden-dawn",
+      "ceremonial",
+      "teacher"
+    ]
   },
   {
     "id": "steiner-rudolf",
@@ -4048,7 +5400,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Anthroposophy founder, Waldorf education, biodynamic agriculture",
-    "tags": ["occult", "anthroposophy", "philosophy", "education"]
+    "tags": [
+      "occult",
+      "anthroposophy",
+      "philosophy",
+      "education"
+    ]
   },
   {
     "id": "arroyo-stephen",
@@ -4063,7 +5420,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Astrologer, Astrology, Psychology and the Four Elements",
-    "tags": ["astrology", "psychological", "elements", "modern"]
+    "tags": [
+      "astrology",
+      "psychological",
+      "elements",
+      "modern"
+    ]
   },
   {
     "id": "nietzsche-friedrich",
@@ -4071,14 +5433,19 @@ export const famousChartsData =
     "category": "Philosophers",
     "date": "1844-10-15",
     "time": "10:00",
-    "location": "Röcken, Germany",
-    "latitude": 51.2500,
+    "location": "R\u00f6cken, Germany",
+    "latitude": 51.25,
     "longitude": 12.1333,
     "timezone": "Europe/Berlin",
     "roddenRating": "B",
     "source": "Biography",
-    "notes": "Philosopher, Thus Spoke Zarathustra, God is dead, Übermensch",
-    "tags": ["philosophy", "existentialism", "nihilism", "german"]
+    "notes": "Philosopher, Thus Spoke Zarathustra, God is dead, \u00dcbermensch",
+    "tags": [
+      "philosophy",
+      "existentialism",
+      "nihilism",
+      "german"
+    ]
   },
   {
     "id": "sartre-jean-paul",
@@ -4093,7 +5460,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Existentialist philosopher, Being and Nothingness, refused Nobel",
-    "tags": ["philosophy", "existentialism", "french", "writer"]
+    "tags": [
+      "philosophy",
+      "existentialism",
+      "french",
+      "writer"
+    ]
   },
   {
     "id": "beauvoir-simone-de",
@@ -4108,7 +5480,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Philosopher, The Second Sex, feminist existentialist, Sartre's partner",
-    "tags": ["philosophy", "feminism", "existentialism", "french"]
+    "tags": [
+      "philosophy",
+      "feminism",
+      "existentialism",
+      "french"
+    ]
   },
   {
     "id": "foucault-michel",
@@ -4123,7 +5500,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "Philosopher, Discipline and Punish, power-knowledge theory",
-    "tags": ["philosophy", "poststructuralism", "french", "social-theory"]
+    "tags": [
+      "philosophy",
+      "poststructuralism",
+      "french",
+      "social-theory"
+    ]
   },
   {
     "id": "wright-frank-lloyd",
@@ -4138,7 +5520,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "Architect, Fallingwater, organic architecture pioneer",
-    "tags": ["architecture", "organic", "modern", "american"]
+    "tags": [
+      "architecture",
+      "organic",
+      "modern",
+      "american"
+    ]
   },
   {
     "id": "hadid-zaha",
@@ -4153,7 +5540,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Architect, deconstructivist, first woman to win Pritzker Prize",
-    "tags": ["architecture", "deconstructivist", "contemporary", "iraqi"]
+    "tags": [
+      "architecture",
+      "deconstructivist",
+      "contemporary",
+      "iraqi"
+    ]
   },
   {
     "id": "corbusier-le",
@@ -4162,13 +5554,18 @@ export const famousChartsData =
     "date": "1887-10-06",
     "time": "09:00",
     "location": "La Chaux-de-Fonds, Switzerland",
-    "latitude": 47.1000,
+    "latitude": 47.1,
     "longitude": 6.8333,
     "timezone": "Europe/Zurich",
     "roddenRating": "B",
     "source": "Biography",
     "notes": "Architect, modernist pioneer, urban planning revolutionary",
-    "tags": ["architecture", "modernism", "urban-planning", "swiss"]
+    "tags": [
+      "architecture",
+      "modernism",
+      "urban-planning",
+      "swiss"
+    ]
   },
   {
     "id": "gehry-frank",
@@ -4183,7 +5580,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Architect, Guggenheim Bilbao, deconstructivist, sculptural buildings",
-    "tags": ["architecture", "deconstructivist", "contemporary", "canadian"]
+    "tags": [
+      "architecture",
+      "deconstructivist",
+      "contemporary",
+      "canadian"
+    ]
   },
   {
     "id": "chanel-coco",
@@ -4192,13 +5594,18 @@ export const famousChartsData =
     "date": "1883-08-19",
     "time": "16:00",
     "location": "Saumur, France",
-    "latitude": 47.2600,
+    "latitude": 47.26,
     "longitude": -0.0772,
     "timezone": "Europe/Paris",
     "roddenRating": "B",
     "source": "Biography",
     "notes": "Fashion designer, Chanel No. 5, little black dress, modernized women's fashion",
-    "tags": ["fashion", "designer", "icon", "french"]
+    "tags": [
+      "fashion",
+      "designer",
+      "icon",
+      "french"
+    ]
   },
   {
     "id": "mcqueen-alexander",
@@ -4213,7 +5620,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Fashion designer, avant-garde, theatrical runway shows, tragic genius",
-    "tags": ["fashion", "designer", "avant-garde", "british"]
+    "tags": [
+      "fashion",
+      "designer",
+      "avant-garde",
+      "british"
+    ]
   },
   {
     "id": "ysl-yves-saint-laurent",
@@ -4228,7 +5640,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Fashion designer, Le Smoking tuxedo, revolutionized women's fashion",
-    "tags": ["fashion", "designer", "haute-couture", "french"]
+    "tags": [
+      "fashion",
+      "designer",
+      "haute-couture",
+      "french"
+    ]
   },
   {
     "id": "westwood-vivienne",
@@ -4237,13 +5654,18 @@ export const famousChartsData =
     "date": "1941-04-08",
     "time": "12:00",
     "location": "Tintwistle, England",
-    "latitude": 53.4800,
-    "longitude": -1.9800,
+    "latitude": 53.48,
+    "longitude": -1.98,
     "timezone": "Europe/London",
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Fashion designer, punk fashion pioneer, political activism",
-    "tags": ["fashion", "designer", "punk", "british"]
+    "tags": [
+      "fashion",
+      "designer",
+      "punk",
+      "british"
+    ]
   },
   {
     "id": "banksy",
@@ -4258,7 +5680,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Speculative (identity unknown)",
     "notes": "Street artist, anonymous, political satire, Girl with Balloon",
-    "tags": ["art", "street-art", "anonymous", "contemporary"]
+    "tags": [
+      "art",
+      "street-art",
+      "anonymous",
+      "contemporary"
+    ]
   },
   {
     "id": "hirst-damien",
@@ -4273,7 +5700,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Contemporary artist, The Physical Impossibility of Death, YBA movement",
-    "tags": ["art", "contemporary", "yba", "british"]
+    "tags": [
+      "art",
+      "contemporary",
+      "yba",
+      "british"
+    ]
   },
   {
     "id": "koons-jeff",
@@ -4288,7 +5720,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Contemporary artist, Balloon Dog, kitsch appropriation, most expensive living artist",
-    "tags": ["art", "contemporary", "pop", "american"]
+    "tags": [
+      "art",
+      "contemporary",
+      "pop",
+      "american"
+    ]
   },
   {
     "id": "haring-keith",
@@ -4303,7 +5740,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Street artist, pop art, subway drawings, AIDS activism, died at 31",
-    "tags": ["art", "street-art", "pop-art", "lgbtq"]
+    "tags": [
+      "art",
+      "street-art",
+      "pop-art",
+      "lgbtq"
+    ]
   },
   {
     "id": "graham-martha",
@@ -4318,7 +5760,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Modern dance pioneer, Graham technique, revolutionary choreographer",
-    "tags": ["dance", "choreography", "modern", "pioneer"]
+    "tags": [
+      "dance",
+      "choreography",
+      "modern",
+      "pioneer"
+    ]
   },
   {
     "id": "baryshnikov-mikhail",
@@ -4333,7 +5780,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Ballet dancer, defected from USSR, greatest male dancer of his generation",
-    "tags": ["dance", "ballet", "defector", "latvian"]
+    "tags": [
+      "dance",
+      "ballet",
+      "defector",
+      "latvian"
+    ]
   },
   {
     "id": "nureyev-rudolf",
@@ -4343,12 +5795,17 @@ export const famousChartsData =
     "time": "12:00",
     "location": "Irkutsk, Russia",
     "latitude": 52.2869,
-    "longitude": 104.3050,
+    "longitude": 104.305,
     "timezone": "Asia/Irkutsk",
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Ballet dancer, defected from USSR 1961, revolutionary performer",
-    "tags": ["dance", "ballet", "defector", "russian"]
+    "tags": [
+      "dance",
+      "ballet",
+      "defector",
+      "russian"
+    ]
   },
   {
     "id": "plato",
@@ -4363,7 +5820,12 @@ export const famousChartsData =
     "roddenRating": "D",
     "source": "Traditional date (428 BCE, highly speculative)",
     "notes": "Philosopher, The Republic, Theory of Forms, Socrates' student",
-    "tags": ["philosophy", "ancient", "classical", "greek"]
+    "tags": [
+      "philosophy",
+      "ancient",
+      "classical",
+      "greek"
+    ]
   },
   {
     "id": "aristotle",
@@ -4373,12 +5835,17 @@ export const famousChartsData =
     "time": "12:00",
     "location": "Stagira, Greece",
     "latitude": 40.5333,
-    "longitude": 23.7500,
+    "longitude": 23.75,
     "timezone": "Europe/Athens",
     "roddenRating": "D",
     "source": "Traditional date (384 BCE, highly speculative)",
     "notes": "Philosopher, Nicomachean Ethics, logic founder, Plato's student",
-    "tags": ["philosophy", "ancient", "classical", "greek"]
+    "tags": [
+      "philosophy",
+      "ancient",
+      "classical",
+      "greek"
+    ]
   },
   {
     "id": "socrates",
@@ -4393,7 +5860,12 @@ export const famousChartsData =
     "roddenRating": "D",
     "source": "Traditional date (470 BCE, highly speculative)",
     "notes": "Philosopher, Socratic method, know thyself, executed by hemlock",
-    "tags": ["philosophy", "ancient", "classical", "greek"]
+    "tags": [
+      "philosophy",
+      "ancient",
+      "classical",
+      "greek"
+    ]
   },
   {
     "id": "pythagoras",
@@ -4402,13 +5874,18 @@ export const famousChartsData =
     "date": "-0570-01-01",
     "time": "12:00",
     "location": "Samos, Greece",
-    "latitude": 37.7500,
+    "latitude": 37.75,
     "longitude": 26.9833,
     "timezone": "Europe/Athens",
     "roddenRating": "D",
     "source": "Traditional date (570 BCE, highly speculative)",
     "notes": "Philosopher, mathematician, Pythagorean theorem, music of spheres",
-    "tags": ["philosophy", "mathematics", "ancient", "greek"]
+    "tags": [
+      "philosophy",
+      "mathematics",
+      "ancient",
+      "greek"
+    ]
   },
   {
     "id": "confucius",
@@ -4423,7 +5900,12 @@ export const famousChartsData =
     "roddenRating": "D",
     "source": "Traditional date (551 BCE, speculative)",
     "notes": "Philosopher, Confucianism founder, Analects, ethical system",
-    "tags": ["philosophy", "ancient", "chinese", "ethics"]
+    "tags": [
+      "philosophy",
+      "ancient",
+      "chinese",
+      "ethics"
+    ]
   },
   {
     "id": "lao-tzu",
@@ -4432,13 +5914,18 @@ export const famousChartsData =
     "date": "-0604-01-01",
     "time": "12:00",
     "location": "Henan, China",
-    "latitude": 34.7650,
+    "latitude": 34.765,
     "longitude": 113.7539,
     "timezone": "Asia/Shanghai",
     "roddenRating": "D",
     "source": "Traditional date (604 BCE, highly speculative)",
     "notes": "Philosopher, Taoism founder, Tao Te Ching, the Way",
-    "tags": ["philosophy", "ancient", "taoism", "chinese"]
+    "tags": [
+      "philosophy",
+      "ancient",
+      "taoism",
+      "chinese"
+    ]
   },
   {
     "id": "buddha-gautama",
@@ -4453,7 +5940,12 @@ export const famousChartsData =
     "roddenRating": "D",
     "source": "Traditional date (563 BCE, speculative)",
     "notes": "Buddhism founder, enlightenment under Bodhi tree, Four Noble Truths",
-    "tags": ["religion", "buddhism", "enlightenment", "ancient"]
+    "tags": [
+      "religion",
+      "buddhism",
+      "enlightenment",
+      "ancient"
+    ]
   },
   {
     "id": "jesus-christ",
@@ -4468,7 +5960,12 @@ export const famousChartsData =
     "roddenRating": "D",
     "source": "Traditional date (highly speculative, various charts used)",
     "notes": "Christianity founder, crucified and resurrected according to Christian faith",
-    "tags": ["religion", "christianity", "messiah", "ancient"]
+    "tags": [
+      "religion",
+      "christianity",
+      "messiah",
+      "ancient"
+    ]
   },
   {
     "id": "muhammad-prophet",
@@ -4483,7 +5980,12 @@ export const famousChartsData =
     "roddenRating": "D",
     "source": "Traditional date (570 CE, speculative)",
     "notes": "Islam founder, Prophet, Quran revelation, Hijra to Medina",
-    "tags": ["religion", "islam", "prophet", "ancient"]
+    "tags": [
+      "religion",
+      "islam",
+      "prophet",
+      "ancient"
+    ]
   },
   {
     "id": "joan-of-arc",
@@ -4491,14 +5993,19 @@ export const famousChartsData =
     "category": "Religious/Spiritual",
     "date": "1412-01-06",
     "time": "12:00",
-    "location": "Domrémy, France",
+    "location": "Domr\u00e9my, France",
     "latitude": 48.4433,
     "longitude": 5.6758,
     "timezone": "Europe/Paris",
     "roddenRating": "C",
     "source": "Traditional date (birth time uncertain)",
     "notes": "Saint, warrior, visions led France, burned at stake at 19",
-    "tags": ["religion", "saint", "warrior", "medieval"]
+    "tags": [
+      "religion",
+      "saint",
+      "warrior",
+      "medieval"
+    ]
   },
   {
     "id": "francis-of-assisi",
@@ -4513,22 +6020,32 @@ export const famousChartsData =
     "roddenRating": "D",
     "source": "Traditional date (speculative)",
     "notes": "Saint, Franciscan Order founder, animals and nature patron",
-    "tags": ["religion", "saint", "franciscan", "medieval"]
+    "tags": [
+      "religion",
+      "saint",
+      "franciscan",
+      "medieval"
+    ]
   },
   {
     "id": "teresa-of-avila",
-    "name": "Teresa of Ávila",
+    "name": "Teresa of \u00c1vila",
     "category": "Religious/Spiritual",
     "date": "1515-03-28",
     "time": "05:30",
-    "location": "Ávila, Spain",
+    "location": "\u00c1vila, Spain",
     "latitude": 40.6561,
     "longitude": -4.6811,
     "timezone": "Europe/Madrid",
     "roddenRating": "B",
     "source": "Traditional time (dawn)",
     "notes": "Saint, mystic, Doctor of the Church, The Interior Castle",
-    "tags": ["religion", "saint", "mystic", "spanish"]
+    "tags": [
+      "religion",
+      "saint",
+      "mystic",
+      "spanish"
+    ]
   },
   {
     "id": "dalai-lama-14th",
@@ -4543,7 +6060,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Tibetan Buddhist leader, Nobel Peace Prize 1989, exiled",
-    "tags": ["religion", "buddhism", "nobel-prize", "tibetan"]
+    "tags": [
+      "religion",
+      "buddhism",
+      "nobel-prize",
+      "tibetan"
+    ]
   },
   {
     "id": "mother-teresa",
@@ -4553,12 +6075,17 @@ export const famousChartsData =
     "time": "14:25",
     "location": "Skopje, North Macedonia",
     "latitude": 41.9973,
-    "longitude": 21.4280,
+    "longitude": 21.428,
     "timezone": "Europe/Skopje",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Saint, Missionaries of Charity founder, Nobel Peace Prize 1979",
-    "tags": ["religion", "saint", "humanitarian", "catholic"]
+    "tags": [
+      "religion",
+      "saint",
+      "humanitarian",
+      "catholic"
+    ]
   },
   {
     "id": "yogananda-paramahansa",
@@ -4573,7 +6100,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Yogi, Autobiography of a Yogi, brought yoga to the West",
-    "tags": ["religion", "yoga", "hinduism", "spiritual"]
+    "tags": [
+      "religion",
+      "yoga",
+      "hinduism",
+      "spiritual"
+    ]
   },
   {
     "id": "krishnamurti-jiddu",
@@ -4582,13 +6114,18 @@ export const famousChartsData =
     "date": "1895-05-12",
     "time": "00:30",
     "location": "Madanapalle, India",
-    "latitude": 13.5500,
+    "latitude": 13.55,
     "longitude": 78.5033,
     "timezone": "Asia/Kolkata",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Philosopher, spiritual teacher, rejected messiah role, choiceless awareness",
-    "tags": ["philosophy", "spiritual", "teacher", "indian"]
+    "tags": [
+      "philosophy",
+      "spiritual",
+      "teacher",
+      "indian"
+    ]
   },
   {
     "id": "rumi-jalal-ad-din",
@@ -4603,7 +6140,12 @@ export const famousChartsData =
     "roddenRating": "D",
     "source": "Traditional date (speculative)",
     "notes": "Sufi poet, mystic, Masnavi, whirling dervishes, divine love",
-    "tags": ["religion", "sufism", "poetry", "persian"]
+    "tags": [
+      "religion",
+      "sufism",
+      "poetry",
+      "persian"
+    ]
   },
   {
     "id": "guevara-che",
@@ -4618,7 +6160,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Revolutionary, Marxist guerrilla leader, iconic image, executed 1967",
-    "tags": ["revolution", "marxist", "guerrilla", "icon"]
+    "tags": [
+      "revolution",
+      "marxist",
+      "guerrilla",
+      "icon"
+    ]
   },
   {
     "id": "malcolm-x",
@@ -4633,7 +6180,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Civil rights leader, Nation of Islam, Black nationalism, assassinated 1965",
-    "tags": ["civil-rights", "activism", "black-power", "assassination"]
+    "tags": [
+      "civil-rights",
+      "activism",
+      "black-power",
+      "assassination"
+    ]
   },
   {
     "id": "castro-fidel",
@@ -4641,14 +6193,19 @@ export const famousChartsData =
     "category": "Revolutionary Figures",
     "date": "1926-08-13",
     "time": "02:00",
-    "location": "Birán, Cuba",
+    "location": "Bir\u00e1n, Cuba",
     "latitude": 20.6167,
     "longitude": -75.7667,
     "timezone": "America/Havana",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Cuban revolutionary, Prime Minister/President, communist leader",
-    "tags": ["revolution", "communist", "cuba", "dictator"]
+    "tags": [
+      "revolution",
+      "communist",
+      "cuba",
+      "dictator"
+    ]
   },
   {
     "id": "lenin-vladimir",
@@ -4663,7 +6220,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Bolshevik revolutionary, Soviet Union founder, Marxist theorist",
-    "tags": ["revolution", "communist", "soviet", "founder"]
+    "tags": [
+      "revolution",
+      "communist",
+      "soviet",
+      "founder"
+    ]
   },
   {
     "id": "trotsky-leon",
@@ -4672,13 +6234,18 @@ export const famousChartsData =
     "date": "1879-11-07",
     "time": "09:45",
     "location": "Yanovka, Ukraine",
-    "latitude": 48.0000,
-    "longitude": 37.8000,
+    "latitude": 48.0,
+    "longitude": 37.8,
     "timezone": "Europe/Kiev",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Bolshevik revolutionary, Red Army founder, exiled, assassinated 1940",
-    "tags": ["revolution", "communist", "soviet", "assassination"]
+    "tags": [
+      "revolution",
+      "communist",
+      "soviet",
+      "assassination"
+    ]
   },
   {
     "id": "mao-zedong",
@@ -4693,11 +6260,16 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Biography",
     "notes": "Communist revolutionary, PRC founder, Cultural Revolution, Great Leap Forward",
-    "tags": ["revolution", "communist", "china", "dictator"]
+    "tags": [
+      "revolution",
+      "communist",
+      "china",
+      "dictator"
+    ]
   },
   {
     "id": "bolivar-simon",
-    "name": "Simón Bolívar",
+    "name": "Sim\u00f3n Bol\u00edvar",
     "category": "Revolutionary Figures",
     "date": "1783-07-24",
     "time": "12:00",
@@ -4708,7 +6280,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Revolutionary, liberated South America from Spain, El Libertador",
-    "tags": ["revolution", "independence", "south-america", "liberator"]
+    "tags": [
+      "revolution",
+      "independence",
+      "south-america",
+      "liberator"
+    ]
   },
   {
     "id": "zapata-emiliano",
@@ -4718,12 +6295,17 @@ export const famousChartsData =
     "time": "12:00",
     "location": "Anenecuilco, Mexico",
     "latitude": 18.7833,
-    "longitude": -99.0500,
+    "longitude": -99.05,
     "timezone": "America/Mexico_City",
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Mexican revolutionary, agrarian reform leader, Zapatista icon",
-    "tags": ["revolution", "mexican", "agrarian", "icon"]
+    "tags": [
+      "revolution",
+      "mexican",
+      "agrarian",
+      "icon"
+    ]
   },
   {
     "id": "parks-rosa",
@@ -4732,13 +6314,18 @@ export const famousChartsData =
     "date": "1913-02-04",
     "time": "21:00",
     "location": "Tuskegee, Alabama, USA",
-    "latitude": 32.4240,
+    "latitude": 32.424,
     "longitude": -85.7077,
     "timezone": "America/Chicago",
     "roddenRating": "B",
     "source": "Biography",
     "notes": "Civil rights activist, Montgomery Bus Boycott, refused to give up seat",
-    "tags": ["civil-rights", "activism", "bus-boycott", "icon"]
+    "tags": [
+      "civil-rights",
+      "activism",
+      "bus-boycott",
+      "icon"
+    ]
   },
   {
     "id": "tubman-harriet",
@@ -4753,7 +6340,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Approximate date (birth records uncertain)",
     "notes": "Abolitionist, Underground Railroad conductor, freed ~70 enslaved people",
-    "tags": ["abolition", "activism", "underground-railroad", "hero"]
+    "tags": [
+      "abolition",
+      "activism",
+      "underground-railroad",
+      "hero"
+    ]
   },
   {
     "id": "pentecost-church-birth",
@@ -4768,7 +6360,12 @@ export const famousChartsData =
     "roddenRating": "D",
     "source": "Traditional date, 50 days after Easter (highly speculative)",
     "notes": "Holy Spirit descends on apostles, considered birth of Christian Church",
-    "tags": ["religion", "christianity", "pentecost", "founding"]
+    "tags": [
+      "religion",
+      "christianity",
+      "pentecost",
+      "founding"
+    ]
   },
   {
     "id": "council-of-nicaea",
@@ -4783,7 +6380,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Historical records (opening date, time speculative)",
     "notes": "First ecumenical council, Nicene Creed, established Church doctrine",
-    "tags": ["religion", "christianity", "council", "doctrine"]
+    "tags": [
+      "religion",
+      "christianity",
+      "council",
+      "doctrine"
+    ]
   },
   {
     "id": "great-schism-1054",
@@ -4798,7 +6400,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Historical records - excommunication date",
     "notes": "Roman Catholic and Eastern Orthodox split, defines Roman Catholicism",
-    "tags": ["religion", "schism", "catholic", "orthodox"]
+    "tags": [
+      "religion",
+      "schism",
+      "catholic",
+      "orthodox"
+    ]
   },
   {
     "id": "vatican-city-state",
@@ -4813,7 +6420,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Lateran Treaty signing",
     "notes": "Vatican becomes independent sovereign state, Lateran Pacts",
-    "tags": ["religion", "vatican", "catholic", "state"]
+    "tags": [
+      "religion",
+      "vatican",
+      "catholic",
+      "state"
+    ]
   },
   {
     "id": "protestant-reformation",
@@ -4828,7 +6440,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Traditional date - Luther's 95 Theses",
     "notes": "Martin Luther posts 95 Theses, Protestant Reformation begins",
-    "tags": ["religion", "protestant", "reformation", "luther"]
+    "tags": [
+      "religion",
+      "protestant",
+      "reformation",
+      "luther"
+    ]
   },
   {
     "id": "church-of-england",
@@ -4843,7 +6460,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Act of Supremacy enacted",
     "notes": "Henry VIII breaks from Rome, Anglican Church established",
-    "tags": ["religion", "anglican", "england", "schism"]
+    "tags": [
+      "religion",
+      "anglican",
+      "england",
+      "schism"
+    ]
   },
   {
     "id": "church-of-jesus-christ-lds",
@@ -4858,7 +6480,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Official founding date",
     "notes": "Joseph Smith founds LDS Church, Book of Mormon",
-    "tags": ["religion", "mormon", "lds", "american"]
+    "tags": [
+      "religion",
+      "mormon",
+      "lds",
+      "american"
+    ]
   },
   {
     "id": "first-buddhist-council",
@@ -4873,7 +6500,12 @@ export const famousChartsData =
     "roddenRating": "D",
     "source": "Traditional date after Buddha's death (highly speculative)",
     "notes": "First Buddhist council, codified Buddha's teachings",
-    "tags": ["religion", "buddhism", "council", "ancient"]
+    "tags": [
+      "religion",
+      "buddhism",
+      "council",
+      "ancient"
+    ]
   },
   {
     "id": "islam-hijra",
@@ -4888,7 +6520,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Traditional date - Islamic calendar begins",
     "notes": "Prophet's migration to Medina, Islamic calendar year 1",
-    "tags": ["religion", "islam", "hijra", "founding"]
+    "tags": [
+      "religion",
+      "islam",
+      "hijra",
+      "founding"
+    ]
   },
   {
     "id": "scientology-founding",
@@ -4903,7 +6540,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Official incorporation date",
     "notes": "L. Ron Hubbard founds Scientology, Dianetics",
-    "tags": ["religion", "scientology", "hubbard", "controversial"]
+    "tags": [
+      "religion",
+      "scientology",
+      "hubbard",
+      "controversial"
+    ]
   },
   {
     "id": "jesuits-founding",
@@ -4918,7 +6560,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Papal approval date",
     "notes": "Ignatius of Loyola founds Jesuits, Counter-Reformation",
-    "tags": ["religion", "catholic", "jesuits", "order"]
+    "tags": [
+      "religion",
+      "catholic",
+      "jesuits",
+      "order"
+    ]
   },
   {
     "id": "second-vatican-council",
@@ -4933,7 +6580,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Council opening ceremony",
     "notes": "Vatican II begins, Catholic Church modernization",
-    "tags": ["religion", "catholic", "vatican-ii", "reform"]
+    "tags": [
+      "religion",
+      "catholic",
+      "vatican-ii",
+      "reform"
+    ]
   },
   {
     "id": "nation-of-islam",
@@ -4948,7 +6600,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Traditional founding date",
     "notes": "Wallace Fard Muhammad founds Nation of Islam",
-    "tags": ["religion", "islam", "black-power", "american"]
+    "tags": [
+      "religion",
+      "islam",
+      "black-power",
+      "american"
+    ]
   },
   {
     "id": "salvation-army",
@@ -4963,7 +6620,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Founding date",
     "notes": "William Booth founds Salvation Army, Christian charity organization",
-    "tags": ["religion", "christian", "charity", "organization"]
+    "tags": [
+      "religion",
+      "christian",
+      "charity",
+      "organization"
+    ]
   },
   {
     "id": "revolutionary-war-start",
@@ -4978,7 +6640,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Battle of Lexington - shot heard round the world",
     "notes": "Revolutionary War begins, independence from Britain",
-    "tags": ["war", "revolutionary", "independence", "start"]
+    "tags": [
+      "war",
+      "revolutionary",
+      "independence",
+      "start"
+    ]
   },
   {
     "id": "revolutionary-war-end",
@@ -4993,7 +6660,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Treaty of Paris signed",
     "notes": "Revolutionary War ends, British recognize US independence",
-    "tags": ["war", "revolutionary", "treaty", "end"]
+    "tags": [
+      "war",
+      "revolutionary",
+      "treaty",
+      "end"
+    ]
   },
   {
     "id": "war-of-1812-start",
@@ -5008,7 +6680,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Congress declares war on Britain",
     "notes": "War of 1812 begins, US vs Britain again",
-    "tags": ["war", "1812", "britain", "start"]
+    "tags": [
+      "war",
+      "1812",
+      "britain",
+      "start"
+    ]
   },
   {
     "id": "war-of-1812-end",
@@ -5023,7 +6700,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Treaty of Ghent ratified",
     "notes": "War of 1812 ends, status quo restored",
-    "tags": ["war", "1812", "treaty", "end"]
+    "tags": [
+      "war",
+      "1812",
+      "treaty",
+      "end"
+    ]
   },
   {
     "id": "mexican-american-war-start",
@@ -5032,13 +6714,18 @@ export const famousChartsData =
     "date": "1846-04-25",
     "time": "12:00",
     "location": "Texas-Mexico border",
-    "latitude": 26.0000,
-    "longitude": -98.0000,
+    "latitude": 26.0,
+    "longitude": -98.0,
     "timezone": "America/Chicago",
     "roddenRating": "A",
     "source": "Thornton Affair - first clash",
     "notes": "Mexican-American War begins, territorial expansion",
-    "tags": ["war", "mexican", "expansion", "start"]
+    "tags": [
+      "war",
+      "mexican",
+      "expansion",
+      "start"
+    ]
   },
   {
     "id": "mexican-american-war-end",
@@ -5053,7 +6740,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Treaty of Guadalupe Hidalgo signed",
     "notes": "Mexican-American War ends, US gains Southwest territories",
-    "tags": ["war", "mexican", "treaty", "end"]
+    "tags": [
+      "war",
+      "mexican",
+      "treaty",
+      "end"
+    ]
   },
   {
     "id": "civil-war-start",
@@ -5068,7 +6760,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Battle of Fort Sumter - first shots",
     "notes": "Civil War begins, Confederate attack on Fort Sumter",
-    "tags": ["war", "civil-war", "confederate", "start"]
+    "tags": [
+      "war",
+      "civil-war",
+      "confederate",
+      "start"
+    ]
   },
   {
     "id": "civil-war-end",
@@ -5077,13 +6774,18 @@ export const famousChartsData =
     "date": "1865-04-09",
     "time": "15:00",
     "location": "Appomattox, Virginia, USA",
-    "latitude": 37.3760,
+    "latitude": 37.376,
     "longitude": -78.7978,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "Lee surrenders to Grant at Appomattox",
     "notes": "Civil War ends, Lee's surrender, Union preserved",
-    "tags": ["war", "civil-war", "surrender", "end"]
+    "tags": [
+      "war",
+      "civil-war",
+      "surrender",
+      "end"
+    ]
   },
   {
     "id": "spanish-american-war-start",
@@ -5098,7 +6800,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Congress declares war on Spain",
     "notes": "Spanish-American War begins, Remember the Maine",
-    "tags": ["war", "spanish", "cuba", "start"]
+    "tags": [
+      "war",
+      "spanish",
+      "cuba",
+      "start"
+    ]
   },
   {
     "id": "spanish-american-war-end",
@@ -5113,7 +6820,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Treaty of Paris signed",
     "notes": "Spanish-American War ends, US gains territories",
-    "tags": ["war", "spanish", "treaty", "end"]
+    "tags": [
+      "war",
+      "spanish",
+      "treaty",
+      "end"
+    ]
   },
   {
     "id": "wwi-us-entry",
@@ -5128,7 +6840,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Congress declares war on Germany",
     "notes": "US enters WWI, make the world safe for democracy",
-    "tags": ["war", "wwi", "germany", "entry"]
+    "tags": [
+      "war",
+      "wwi",
+      "germany",
+      "entry"
+    ]
   },
   {
     "id": "wwi-armistice",
@@ -5136,14 +6853,19 @@ export const famousChartsData =
     "category": "Wars",
     "date": "1918-11-11",
     "time": "11:00",
-    "location": "Compiègne, France",
+    "location": "Compi\u00e8gne, France",
     "latitude": 49.4178,
     "longitude": 2.8261,
     "timezone": "Europe/Paris",
     "roddenRating": "AA",
     "source": "Armistice signed - 11th hour of 11th day of 11th month",
     "notes": "WWI ends, Armistice Day, Veterans Day",
-    "tags": ["war", "wwi", "armistice", "end"]
+    "tags": [
+      "war",
+      "wwi",
+      "armistice",
+      "end"
+    ]
   },
   {
     "id": "wwii-us-entry",
@@ -5158,7 +6880,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Congress declares war after Pearl Harbor",
     "notes": "US enters WWII, day after Pearl Harbor, day of infamy",
-    "tags": ["war", "wwii", "pearl-harbor", "entry"]
+    "tags": [
+      "war",
+      "wwii",
+      "pearl-harbor",
+      "entry"
+    ]
   },
   {
     "id": "wwii-ve-day",
@@ -5167,13 +6894,18 @@ export const famousChartsData =
     "date": "1945-05-08",
     "time": "23:01",
     "location": "Berlin, Germany",
-    "latitude": 52.5200,
-    "longitude": 13.4050,
+    "latitude": 52.52,
+    "longitude": 13.405,
     "timezone": "Europe/Berlin",
     "roddenRating": "AA",
     "source": "German surrender takes effect",
     "notes": "Victory in Europe Day, Nazi Germany surrenders",
-    "tags": ["war", "wwii", "victory", "europe"]
+    "tags": [
+      "war",
+      "wwii",
+      "victory",
+      "europe"
+    ]
   },
   {
     "id": "wwii-vj-day",
@@ -5188,7 +6920,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Japan announces surrender",
     "notes": "Victory over Japan Day, WWII ends, atomic bombs aftermath",
-    "tags": ["war", "wwii", "victory", "japan"]
+    "tags": [
+      "war",
+      "wwii",
+      "victory",
+      "japan"
+    ]
   },
   {
     "id": "korean-war-start",
@@ -5197,13 +6934,18 @@ export const famousChartsData =
     "date": "1950-06-25",
     "time": "04:00",
     "location": "38th Parallel, Korea",
-    "latitude": 38.0000,
-    "longitude": 127.5000,
+    "latitude": 38.0,
+    "longitude": 127.5,
     "timezone": "Asia/Seoul",
     "roddenRating": "AA",
     "source": "North Korea invades South Korea",
     "notes": "Korean War begins, Cold War turns hot",
-    "tags": ["war", "korean", "cold-war", "start"]
+    "tags": [
+      "war",
+      "korean",
+      "cold-war",
+      "start"
+    ]
   },
   {
     "id": "korean-war-armistice",
@@ -5218,7 +6960,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Armistice agreement signed",
     "notes": "Korean War armistice, technically still at war",
-    "tags": ["war", "korean", "armistice", "end"]
+    "tags": [
+      "war",
+      "korean",
+      "armistice",
+      "end"
+    ]
   },
   {
     "id": "vietnam-war-gulf-of-tonkin",
@@ -5233,7 +6980,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Congress passes resolution",
     "notes": "Gulf of Tonkin Resolution, major US escalation in Vietnam",
-    "tags": ["war", "vietnam", "escalation", "start"]
+    "tags": [
+      "war",
+      "vietnam",
+      "escalation",
+      "start"
+    ]
   },
   {
     "id": "vietnam-war-end",
@@ -5248,7 +7000,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Fall of Saigon, North Vietnamese take presidential palace",
     "notes": "Vietnam War ends, Fall of Saigon, helicopter evacuations",
-    "tags": ["war", "vietnam", "fall", "end"]
+    "tags": [
+      "war",
+      "vietnam",
+      "fall",
+      "end"
+    ]
   },
   {
     "id": "gulf-war-start",
@@ -5263,7 +7020,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Operation Desert Storm begins - first air strikes",
     "notes": "Gulf War begins, coalition liberates Kuwait",
-    "tags": ["war", "gulf", "iraq", "start"]
+    "tags": [
+      "war",
+      "gulf",
+      "iraq",
+      "start"
+    ]
   },
   {
     "id": "gulf-war-end",
@@ -5278,7 +7040,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Ceasefire declared by Bush",
     "notes": "Gulf War ends after 100-hour ground campaign",
-    "tags": ["war", "gulf", "ceasefire", "end"]
+    "tags": [
+      "war",
+      "gulf",
+      "ceasefire",
+      "end"
+    ]
   },
   {
     "id": "afghanistan-war-start",
@@ -5288,12 +7055,17 @@ export const famousChartsData =
     "time": "12:57",
     "location": "Afghanistan",
     "latitude": 33.9391,
-    "longitude": 67.7100,
+    "longitude": 67.71,
     "timezone": "Asia/Kabul",
     "roddenRating": "AA",
     "source": "Operation Enduring Freedom begins",
     "notes": "Afghanistan War begins, response to 9/11, Taliban target",
-    "tags": ["war", "afghanistan", "9-11", "start"]
+    "tags": [
+      "war",
+      "afghanistan",
+      "9-11",
+      "start"
+    ]
   },
   {
     "id": "afghanistan-war-end",
@@ -5308,7 +7080,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Last US troops leave Afghanistan",
     "notes": "Afghanistan War ends, longest US war, Taliban returns to power",
-    "tags": ["war", "afghanistan", "withdrawal", "end"]
+    "tags": [
+      "war",
+      "afghanistan",
+      "withdrawal",
+      "end"
+    ]
   },
   {
     "id": "iraq-war-start",
@@ -5323,7 +7100,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Shock and Awe campaign begins",
     "notes": "Iraq War begins, WMD justification, topple Saddam Hussein",
-    "tags": ["war", "iraq", "shock-and-awe", "start"]
+    "tags": [
+      "war",
+      "iraq",
+      "shock-and-awe",
+      "start"
+    ]
   },
   {
     "id": "iraq-war-end",
@@ -5338,7 +7120,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Last US troops leave Iraq",
     "notes": "Iraq War officially ends, Mission Accomplished controversial",
-    "tags": ["war", "iraq", "withdrawal", "end"]
+    "tags": [
+      "war",
+      "iraq",
+      "withdrawal",
+      "end"
+    ]
   },
   {
     "id": "newman-paul",
@@ -5353,7 +7140,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Actor, married Joanne Woodward 50 years, legendary devoted couple",
-    "tags": ["couple", "adorers", "actor", "hollywood"]
+    "tags": [
+      "couple",
+      "adorers",
+      "actor",
+      "hollywood"
+    ]
   },
   {
     "id": "woodward-joanne",
@@ -5368,7 +7160,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Actress, married Paul Newman 1958-2008 (his death), devoted partnership",
-    "tags": ["couple", "adorers", "actress", "hollywood"]
+    "tags": [
+      "couple",
+      "adorers",
+      "actress",
+      "hollywood"
+    ]
   },
   {
     "id": "carter-june",
@@ -5383,7 +7180,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Singer, married Johnny Cash, helped him through addiction, Ring of Fire",
-    "tags": ["couple", "adorers", "singer", "country"]
+    "tags": [
+      "couple",
+      "adorers",
+      "singer",
+      "country"
+    ]
   },
   {
     "id": "pitt-brad",
@@ -5398,7 +7200,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Actor, married Angelina Jolie (toxic/public), Jennifer Aniston (friendly split)",
-    "tags": ["couple", "disaster", "actor", "hollywood"]
+    "tags": [
+      "couple",
+      "disaster",
+      "actor",
+      "hollywood"
+    ]
   },
   {
     "id": "jolie-angelina",
@@ -5413,7 +7220,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Actress, married Brad Pitt, messy divorce, custody battles, Brangelina",
-    "tags": ["couple", "disaster", "actress", "hollywood"]
+    "tags": [
+      "couple",
+      "disaster",
+      "actress",
+      "hollywood"
+    ]
   },
   {
     "id": "aniston-jennifer",
@@ -5428,7 +7240,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Actress, married Brad Pitt (left for Jolie), Friends star",
-    "tags": ["couple", "disaster", "actress", "hollywood"]
+    "tags": [
+      "couple",
+      "disaster",
+      "actress",
+      "hollywood"
+    ]
   },
   {
     "id": "burton-richard",
@@ -5443,7 +7260,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Actor, married Elizabeth Taylor twice, volatile passion, legendary fights",
-    "tags": ["couple", "fatal-attraction", "actor", "hollywood"]
+    "tags": [
+      "couple",
+      "fatal-attraction",
+      "actor",
+      "hollywood"
+    ]
   },
   {
     "id": "taylor-elizabeth",
@@ -5458,7 +7280,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Actress, married Richard Burton twice, 8 marriages total, volatile passion",
-    "tags": ["couple", "fatal-attraction", "actress", "hollywood"]
+    "tags": [
+      "couple",
+      "fatal-attraction",
+      "actress",
+      "hollywood"
+    ]
   },
   {
     "id": "lennon-john-ono",
@@ -5473,7 +7300,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Artist, married John Lennon, blamed for Beatles breakup, avant-garde",
-    "tags": ["couple", "adorers", "artist", "controversial"]
+    "tags": [
+      "couple",
+      "adorers",
+      "artist",
+      "controversial"
+    ]
   },
   {
     "id": "smith-will",
@@ -5488,7 +7320,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Actor, married Jada Pinkett Smith, Oscar slap, entanglement drama",
-    "tags": ["couple", "disaster", "actor", "hollywood"]
+    "tags": [
+      "couple",
+      "disaster",
+      "actor",
+      "hollywood"
+    ]
   },
   {
     "id": "pinkett-smith-jada",
@@ -5503,7 +7340,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Actress, married Will Smith, Red Table Talk, entanglement revelations",
-    "tags": ["couple", "disaster", "actress", "hollywood"]
+    "tags": [
+      "couple",
+      "disaster",
+      "actress",
+      "hollywood"
+    ]
   },
   {
     "id": "depp-johnny",
@@ -5518,7 +7360,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Actor, married Amber Heard, highly publicized abusive relationship trial",
-    "tags": ["couple", "disaster", "actor", "toxic"]
+    "tags": [
+      "couple",
+      "disaster",
+      "actor",
+      "toxic"
+    ]
   },
   {
     "id": "heard-amber",
@@ -5533,7 +7380,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Actress, married Johnny Depp, defamation trial, mutual abuse allegations",
-    "tags": ["couple", "disaster", "actress", "toxic"]
+    "tags": [
+      "couple",
+      "disaster",
+      "actress",
+      "toxic"
+    ]
   },
   {
     "id": "kardashian-kim",
@@ -5548,7 +7400,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Reality TV star, married Kanye West (messy divorce), Kris Humphries (72 days)",
-    "tags": ["couple", "disaster", "reality-tv", "celebrity"]
+    "tags": [
+      "couple",
+      "disaster",
+      "reality-tv",
+      "celebrity"
+    ]
   },
   {
     "id": "west-kanye",
@@ -5557,13 +7414,18 @@ export const famousChartsData =
     "date": "1977-06-08",
     "time": "08:45",
     "location": "Atlanta, Georgia, USA",
-    "latitude": 33.7490,
-    "longitude": -84.3880,
+    "latitude": 33.749,
+    "longitude": -84.388,
     "timezone": "America/New_York",
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Rapper, married Kim Kardashian, erratic behavior, public meltdowns",
-    "tags": ["couple", "disaster", "rapper", "controversial"]
+    "tags": [
+      "couple",
+      "disaster",
+      "rapper",
+      "controversial"
+    ]
   },
   {
     "id": "obama-michelle",
@@ -5578,7 +7440,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Former First Lady, married Barack Obama, partnership goals",
-    "tags": ["couple", "adorers", "first-lady", "power-couple"]
+    "tags": [
+      "couple",
+      "adorers",
+      "first-lady",
+      "power-couple"
+    ]
   },
   {
     "id": "clinton-hillary",
@@ -5593,7 +7460,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Politician, married Bill Clinton, survived Lewinsky scandal, power couple",
-    "tags": ["couple", "disaster", "politician", "scandal"]
+    "tags": [
+      "couple",
+      "disaster",
+      "politician",
+      "scandal"
+    ]
   },
   {
     "id": "fisher-carrie",
@@ -5603,12 +7475,17 @@ export const famousChartsData =
     "time": "12:16",
     "location": "Burbank, California, USA",
     "latitude": 34.1808,
-    "longitude": -118.3090,
+    "longitude": -118.309,
     "timezone": "America/Los_Angeles",
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Actress, Princess Leia, brief marriage to Paul Simon, volatile relationship",
-    "tags": ["couple", "disaster", "actress", "star-wars"]
+    "tags": [
+      "couple",
+      "disaster",
+      "actress",
+      "star-wars"
+    ]
   },
   {
     "id": "simon-paul",
@@ -5623,7 +7500,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Singer-songwriter, married Carrie Fisher briefly, Hearts and Bones about her",
-    "tags": ["couple", "disaster", "musician", "singer-songwriter"]
+    "tags": [
+      "couple",
+      "disaster",
+      "musician",
+      "singer-songwriter"
+    ]
   },
   {
     "id": "simpson-oj",
@@ -5638,7 +7520,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Football player, married Nicole Brown Simpson (murdered), trial of century",
-    "tags": ["couple", "fatal-attraction", "murder", "trial"]
+    "tags": [
+      "couple",
+      "fatal-attraction",
+      "murder",
+      "trial"
+    ]
   },
   {
     "id": "brown-simpson-nicole",
@@ -5653,7 +7540,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Married O.J. Simpson, domestic violence victim, murdered 1994",
-    "tags": ["couple", "fatal-attraction", "murder", "victim"]
+    "tags": [
+      "couple",
+      "fatal-attraction",
+      "murder",
+      "victim"
+    ]
   },
   {
     "id": "harry-prince",
@@ -5668,7 +7560,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Official royal records",
     "notes": "Royal, married Meghan Markle, Megxit, stepped back from duties",
-    "tags": ["couple", "disaster", "royalty", "megxit"]
+    "tags": [
+      "couple",
+      "disaster",
+      "royalty",
+      "megxit"
+    ]
   },
   {
     "id": "markle-meghan",
@@ -5683,7 +7580,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Actress/Duchess, married Prince Harry, Megxit, Oprah interview",
-    "tags": ["couple", "disaster", "royalty", "megxit"]
+    "tags": [
+      "couple",
+      "disaster",
+      "royalty",
+      "megxit"
+    ]
   },
   {
     "id": "curie-pierre",
@@ -5698,7 +7600,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Physicist, married Marie Curie, research partnership, Nobel Prize together",
-    "tags": ["couple", "adorers", "scientist", "nobel-prize"]
+    "tags": [
+      "couple",
+      "adorers",
+      "scientist",
+      "nobel-prize"
+    ]
   },
   {
     "id": "bogart-humphrey",
@@ -5708,12 +7615,17 @@ export const famousChartsData =
     "time": "22:00",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Actor, married Lauren Bacall (25 year age gap), devoted until death",
-    "tags": ["couple", "adorers", "actor", "golden-age"]
+    "tags": [
+      "couple",
+      "adorers",
+      "actor",
+      "golden-age"
+    ]
   },
   {
     "id": "bacall-lauren",
@@ -5723,12 +7635,17 @@ export const famousChartsData =
     "time": "02:00",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "A",
     "source": "Biography",
     "notes": "Actress, married Humphrey Bogart, You know how to whistle, devoted",
-    "tags": ["couple", "adorers", "actress", "golden-age"]
+    "tags": [
+      "couple",
+      "adorers",
+      "actress",
+      "golden-age"
+    ]
   },
   {
     "id": "ariana-grande",
@@ -5743,7 +7660,12 @@ export const famousChartsData =
     "roddenRating": "AA",
     "source": "Birth certificate",
     "notes": "Singer, engaged to Pete Davidson (whirlwind), multiple quick relationships",
-    "tags": ["couple", "disaster", "singer", "pop"]
+    "tags": [
+      "couple",
+      "disaster",
+      "singer",
+      "pop"
+    ]
   },
   {
     "id": "davidson-pete",
@@ -5758,7 +7680,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Comedian, engaged to Ariana Grande (whirlwind), dates high-profile women",
-    "tags": ["couple", "disaster", "comedian", "snl"]
+    "tags": [
+      "couple",
+      "disaster",
+      "comedian",
+      "snl"
+    ]
   },
   {
     "id": "winfrey-oprah-relocation",
@@ -5773,7 +7700,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Started hosting AM Chicago show",
     "notes": "Moved from Baltimore to Chicago, became #1 talk show, media empire born. Birth: Kosciusko MS",
-    "tags": ["astrocartography", "relocation", "success", "media"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "success",
+      "media"
+    ]
   },
   {
     "id": "madonna-new-york-move",
@@ -5783,12 +7715,17 @@ export const famousChartsData =
     "time": "12:00",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "B",
     "source": "Moved with $35 to pursue dance/music",
     "notes": "Left Michigan for NYC with $35, became Queen of Pop. Birth: Bay City MI, 1958-08-16, 07:05",
-    "tags": ["astrocartography", "relocation", "success", "pop"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "success",
+      "pop"
+    ]
   },
   {
     "id": "spielberg-la-move",
@@ -5803,7 +7740,12 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Moved to pursue film career",
     "notes": "Left Ohio for LA, became legendary director. Birth: Cincinnati OH, 1946-12-18, 18:16",
-    "tags": ["astrocartography", "relocation", "success", "film"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "success",
+      "film"
+    ]
   },
   {
     "id": "beatles-hamburg",
@@ -5818,7 +7760,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "First Hamburg performance",
     "notes": "Left Liverpool for Hamburg clubs, honed craft, returned as legends",
-    "tags": ["astrocartography", "relocation", "music", "beatles"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "music",
+      "beatles"
+    ]
   },
   {
     "id": "hemingway-paris",
@@ -5833,7 +7780,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Moved to Paris as foreign correspondent",
     "notes": "Left Chicago for Paris, Lost Generation, wrote best works. Birth: Oak Park IL, 1899-07-21, 08:00",
-    "tags": ["astrocartography", "relocation", "writer", "paris"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "writer",
+      "paris"
+    ]
   },
   {
     "id": "hendrix-london",
@@ -5848,7 +7800,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Moved to London, discovered by Chas Chandler",
     "notes": "Left US for London, became guitar god, Experience formed. Birth: Seattle WA, 1942-11-27, 10:15",
-    "tags": ["astrocartography", "relocation", "guitar", "rock"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "guitar",
+      "rock"
+    ]
   },
   {
     "id": "job-steve-california",
@@ -5863,7 +7820,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Apple founded in garage",
     "notes": "Started Apple in Silicon Valley garage, tech revolution. Birth: SF CA, 1955-02-24, 19:15",
-    "tags": ["astrocartography", "relocation", "tech", "apple"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "tech",
+      "apple"
+    ]
   },
   {
     "id": "einstein-princeton",
@@ -5878,7 +7840,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Fled Nazi Germany to Princeton",
     "notes": "Left Germany for Princeton, escaped Nazis, continued physics work. Birth: Ulm Germany, 1879-03-14, 11:30",
-    "tags": ["astrocartography", "relocation", "scientist", "refugee"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "scientist",
+      "refugee"
+    ]
   },
   {
     "id": "callas-maria-milan",
@@ -5888,12 +7855,17 @@ export const famousChartsData =
     "time": "20:00",
     "location": "Milan, Italy",
     "latitude": 45.4642,
-    "longitude": 9.1900,
+    "longitude": 9.19,
     "timezone": "Europe/Rome",
     "roddenRating": "A",
     "source": "La Scala debut",
     "notes": "Left Greece/US for Milan, La Scala debut, became opera legend. Birth: NYC, 1923-12-02",
-    "tags": ["astrocartography", "relocation", "opera", "diva"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "opera",
+      "diva"
+    ]
   },
   {
     "id": "kerouac-san-francisco",
@@ -5908,7 +7880,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Six Gallery reading, Howl premiere",
     "notes": "Left East Coast for SF, Beat Generation epicenter. Birth: Lowell MA, 1922-03-12, 17:00",
-    "tags": ["astrocartography", "relocation", "writer", "beat"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "writer",
+      "beat"
+    ]
   },
   {
     "id": "picasso-paris",
@@ -5922,8 +7899,13 @@ export const famousChartsData =
     "timezone": "Europe/Paris",
     "roddenRating": "B",
     "source": "Settled permanently in Paris",
-    "notes": "Left Spain for Paris, Cubism born, became art legend. Birth: Málaga Spain, 1881-10-25, 23:15",
-    "tags": ["astrocartography", "relocation", "artist", "cubism"]
+    "notes": "Left Spain for Paris, Cubism born, became art legend. Birth: M\u00e1laga Spain, 1881-10-25, 23:15",
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "artist",
+      "cubism"
+    ]
   },
   {
     "id": "chaplin-hollywood",
@@ -5938,7 +7920,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Moved to Hollywood for films",
     "notes": "Left London vaudeville for Hollywood, became silent film icon. Birth: London, 1889-04-16",
-    "tags": ["astrocartography", "relocation", "film", "silent"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "film",
+      "silent"
+    ]
   },
   {
     "id": "wilde-oscar-paris-exile",
@@ -5953,7 +7940,12 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Released from prison, exiled to Paris",
     "notes": "Exiled from England to Paris after prison, wrote final works in poverty. Birth: Dublin Ireland, 1854-10-16",
-    "tags": ["astrocartography", "relocation", "writer", "exile"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "writer",
+      "exile"
+    ]
   },
   {
     "id": "nightingale-florence-crimea",
@@ -5968,7 +7960,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Arrived in Crimea to nurse soldiers",
     "notes": "Left England for Crimean War, revolutionized nursing. Birth: Florence Italy, 1820-05-12",
-    "tags": ["astrocartography", "relocation", "nursing", "pioneer"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "nursing",
+      "pioneer"
+    ]
   },
   {
     "id": "dalai-lama-exile",
@@ -5977,13 +7974,18 @@ export const famousChartsData =
     "date": "1959-03-31",
     "time": "12:00",
     "location": "Dharamsala, India",
-    "latitude": 32.2190,
+    "latitude": 32.219,
     "longitude": 76.3234,
     "timezone": "Asia/Kolkata",
     "roddenRating": "AA",
     "source": "Arrived in India after fleeing Tibet",
     "notes": "Fled Tibet to India, established exile government, global peace advocate. Birth: Taktser Tibet, 1935-07-06, 04:38",
-    "tags": ["astrocartography", "relocation", "spiritual", "exile"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "spiritual",
+      "exile"
+    ]
   },
   {
     "id": "marley-bob-london",
@@ -5998,7 +8000,12 @@ export const famousChartsData =
     "roddenRating": "A",
     "source": "Moved to London after assassination attempt",
     "notes": "Fled Jamaica assassination attempt to London, recorded Exodus. Birth: Nine Mile Jamaica, 1945-02-06, 02:30",
-    "tags": ["astrocartography", "relocation", "reggae", "exile"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "reggae",
+      "exile"
+    ]
   },
   {
     "id": "tesla-new-york",
@@ -6008,12 +8015,17 @@ export const famousChartsData =
     "time": "12:00",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "B",
     "source": "Arrived in US with 4 cents",
     "notes": "Left Serbia for NYC with 4 cents, AC electricity revolution. Birth: Smiljan Croatia, 1856-07-10",
-    "tags": ["astrocartography", "relocation", "inventor", "electricity"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "inventor",
+      "electricity"
+    ]
   },
   {
     "id": "fitzgerald-french-riviera",
@@ -6028,22 +8040,32 @@ export const famousChartsData =
     "roddenRating": "B",
     "source": "Moved to French Riviera",
     "notes": "Left US for French Riviera, wrote Gatsby. Birth: St. Paul MN, 1896-09-24, 15:30",
-    "tags": ["astrocartography", "relocation", "writer", "jazz-age"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "writer",
+      "jazz-age"
+    ]
   },
   {
     "id": "dali-new-york",
-    "name": "Salvador Dalí (New York)",
+    "name": "Salvador Dal\u00ed (New York)",
     "category": "Astrocartography",
     "date": "1940-08-16",
     "time": "12:00",
     "location": "New York City, New York, USA",
     "latitude": 40.7128,
-    "longitude": -74.0060,
+    "longitude": -74.006,
     "timezone": "America/New_York",
     "roddenRating": "B",
     "source": "Fled Spain for US during WWII",
     "notes": "Fled Spanish Civil War/WWII to NYC, global fame. Birth: Figueres Spain, 1904-05-11, 08:45",
-    "tags": ["astrocartography", "relocation", "artist", "surrealism"]
+    "tags": [
+      "astrocartography",
+      "relocation",
+      "artist",
+      "surrealism"
+    ]
   },
   {
     "id": "thunberg-greta-global",
@@ -6058,7 +8080,231 @@ export const famousChartsData =
     "roddenRating": "C",
     "source": "Biography (birth time uncertain)",
     "notes": "Climate activist, travels globally for advocacy, born Stockholm, became global icon",
-    "tags": ["astrocartography", "activism", "climate", "youth"]
+    "tags": [
+      "astrocartography",
+      "activism",
+      "climate",
+      "youth"
+    ]
+  },
+  {
+    "id": "hitler-adolf",
+    "name": "Adolf Hitler",
+    "category": "Historical Political Figures",
+    "date": "1889-04-20",
+    "time": "18:30",
+    "location": "Braunau am Inn, Austria",
+    "latitude": 48.2558,
+    "longitude": 13.0464,
+    "timezone": "Europe/Vienna",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Nazi dictator, WWII, Holocaust architect, suicide 1945",
+    "tags": [
+      "dictator",
+      "nazi",
+      "wwii",
+      "historical"
+    ]
+  },
+  {
+    "id": "mussolini-benito",
+    "name": "Benito Mussolini",
+    "category": "Historical Political Figures",
+    "date": "1883-07-29",
+    "time": "14:00",
+    "location": "Predappio, Italy",
+    "latitude": 44.1019,
+    "longitude": 11.9794,
+    "timezone": "Europe/Rome",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Fascist dictator of Italy, Axis alliance, executed 1945",
+    "tags": [
+      "dictator",
+      "fascist",
+      "wwii",
+      "italian"
+    ]
+  },
+  {
+    "id": "churchill-winston",
+    "name": "Winston Churchill",
+    "category": "Historical Political Figures",
+    "date": "1874-11-30",
+    "time": "01:30",
+    "location": "Woodstock, England",
+    "latitude": 51.8482,
+    "longitude": -1.3547,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth records",
+    "notes": "British PM during WWII, Nobel Prize Literature 1953, iconic leader",
+    "tags": [
+      "prime-minister",
+      "wwii",
+      "british",
+      "nobel-prize"
+    ]
+  },
+  {
+    "id": "stalin-joseph",
+    "name": "Joseph Stalin",
+    "category": "Historical Political Figures",
+    "date": "1878-12-18",
+    "time": "12:00",
+    "location": "Gori, Georgia",
+    "latitude": 41.9842,
+    "longitude": 44.1086,
+    "timezone": "Asia/Tbilisi",
+    "roddenRating": "C",
+    "source": "Official date (birth time uncertain, conflicting records)",
+    "notes": "Soviet dictator, Great Purge, WWII alliance, died 1953",
+    "tags": [
+      "dictator",
+      "soviet",
+      "communist",
+      "wwii"
+    ]
+  },
+  {
+    "id": "roosevelt-fdr",
+    "name": "Franklin D. Roosevelt",
+    "category": "Historical Political Figures",
+    "date": "1882-01-30",
+    "time": "20:45",
+    "location": "Hyde Park, New York, USA",
+    "latitude": 41.7848,
+    "longitude": -73.9329,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "32nd US President, 4 terms, New Deal, led US through WWII, died in office 1945",
+    "tags": [
+      "president",
+      "wwii",
+      "new-deal",
+      "american"
+    ]
+  },
+  {
+    "id": "franco-francisco",
+    "name": "Francisco Franco",
+    "category": "Historical Political Figures",
+    "date": "1892-12-04",
+    "time": "12:00",
+    "location": "Ferrol, Spain",
+    "latitude": 43.4833,
+    "longitude": -8.2333,
+    "timezone": "Europe/Madrid",
+    "roddenRating": "C",
+    "source": "Biography (birth time uncertain)",
+    "notes": "Spanish dictator, Spanish Civil War, ruled until 1975",
+    "tags": [
+      "dictator",
+      "fascist",
+      "spanish",
+      "civil-war"
+    ]
+  },
+  {
+    "id": "de-gaulle-charles",
+    "name": "Charles de Gaulle",
+    "category": "Historical Political Figures",
+    "date": "1890-11-22",
+    "time": "04:00",
+    "location": "Lille, France",
+    "latitude": 50.6292,
+    "longitude": 3.0573,
+    "timezone": "Europe/Paris",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "French general, leader of Free France WWII, President 1959-1969",
+    "tags": [
+      "president",
+      "general",
+      "wwii",
+      "french"
+    ]
+  },
+  {
+    "id": "gorbachev-mikhail",
+    "name": "Mikhail Gorbachev",
+    "category": "Historical Political Figures",
+    "date": "1931-03-02",
+    "time": "22:00",
+    "location": "Privolnoye, Russia",
+    "latitude": 45.0667,
+    "longitude": 43.25,
+    "timezone": "Europe/Moscow",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Soviet leader, glasnost/perestroika, ended Cold War, Nobel Peace Prize 1990",
+    "tags": [
+      "soviet",
+      "reformer",
+      "cold-war",
+      "nobel-prize"
+    ]
+  },
+  {
+    "id": "arafat-yasser",
+    "name": "Yasser Arafat",
+    "category": "Historical Political Figures",
+    "date": "1929-08-24",
+    "time": "03:00",
+    "location": "Cairo, Egypt",
+    "latitude": 30.0444,
+    "longitude": 31.2357,
+    "timezone": "Africa/Cairo",
+    "roddenRating": "B",
+    "source": "Biography (some sources say Jerusalem)",
+    "notes": "PLO leader, Palestinian liberation, Nobel Peace Prize 1994, controversial",
+    "tags": [
+      "leader",
+      "palestinian",
+      "conflict",
+      "nobel-prize"
+    ]
+  },
+  {
+    "id": "begin-menachem",
+    "name": "Menachem Begin",
+    "category": "Historical Political Figures",
+    "date": "1913-08-16",
+    "time": "12:00",
+    "location": "Brest, Belarus",
+    "latitude": 52.0978,
+    "longitude": 23.7342,
+    "timezone": "Europe/Minsk",
+    "roddenRating": "C",
+    "source": "Biography (birth time uncertain)",
+    "notes": "Israeli PM, Camp David Accords, Nobel Peace Prize 1978",
+    "tags": [
+      "prime-minister",
+      "israeli",
+      "peace",
+      "nobel-prize"
+    ]
+  },
+  {
+    "id": "pinochet-augusto",
+    "name": "Augusto Pinochet",
+    "category": "Historical Political Figures",
+    "date": "1915-11-25",
+    "time": "13:30",
+    "location": "Valpara\u00edso, Chile",
+    "latitude": -33.0472,
+    "longitude": -71.6127,
+    "timezone": "America/Santiago",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Chilean dictator 1973-1990, military coup, human rights violations",
+    "tags": [
+      "dictator",
+      "military",
+      "coup",
+      "chilean"
+    ]
   }
-]
-;
+];

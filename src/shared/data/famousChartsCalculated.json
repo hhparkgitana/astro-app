@@ -137689,5 +137689,4200 @@
         "rodden_rating_note": "Houses and angles uncertain due to unknown birth time"
       }
     }
+  },
+  {
+    "id": "hitler-adolf",
+    "name": "Adolf Hitler",
+    "category": "Historical Political Figures",
+    "date": "1889-04-20",
+    "time": "18:30",
+    "location": "Braunau am Inn, Austria",
+    "latitude": 48.2558,
+    "longitude": 13.0464,
+    "timezone": "Europe/Vienna",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Nazi dictator, WWII, Holocaust architect, suicide 1945",
+    "tags": [
+      "dictator",
+      "nazi",
+      "wwii",
+      "historical"
+    ],
+    "calculated": {
+      "success": true,
+      "planets": {
+        "SUN": {
+          "name": "Sun",
+          "longitude": 30.841642361642293,
+          "velocity": 0.9744528168747557
+        },
+        "MOON": {
+          "name": "Moon",
+          "longitude": 277.1495809651171,
+          "velocity": 14.17891218429503
+        },
+        "MERCURY": {
+          "name": "Mercury",
+          "longitude": 25.7413363379651,
+          "velocity": 2.0711851544112143
+        },
+        "VENUS": {
+          "name": "Venus",
+          "longitude": 46.67854432649913,
+          "velocity": -0.45279479651775745
+        },
+        "MARS": {
+          "name": "Mars",
+          "longitude": 46.40590006324839,
+          "velocity": 0.7180227788735749
+        },
+        "JUPITER": {
+          "name": "Jupiter",
+          "longitude": 278.244854406188,
+          "velocity": 0.011605797866366174
+        },
+        "SATURN": {
+          "name": "Saturn",
+          "longitude": 133.45885755363568,
+          "velocity": 0.012175199143740656
+        },
+        "URANUS": {
+          "name": "Uranus",
+          "longitude": 199.48763815329133,
+          "velocity": -0.04172149742868214
+        },
+        "NEPTUNE": {
+          "name": "Neptune",
+          "longitude": 60.84341315866668,
+          "velocity": 0.03344156534291187
+        },
+        "PLUTO": {
+          "name": "Pluto",
+          "longitude": 64.66898819615592,
+          "velocity": 0.019405615025490874
+        },
+        "NORTH_NODE": {
+          "name": "North Node",
+          "longitude": 106.04534792950017,
+          "velocity": -0.053
+        },
+        "SOUTH_NODE": {
+          "name": "South Node",
+          "longitude": 286.04534792950017,
+          "velocity": -0.053
+        }
+      },
+      "aspects": [
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Moon",
+          "planet2Key": "MOON",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 113.69206139652522,
+          "orb": 6.307938603474781,
+          "applying": false
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Mercury",
+          "planet2Key": "MERCURY",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 5.1003060236771915,
+          "orb": 5.1003060236771915,
+          "applying": true
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 112.59678795545432,
+          "orb": 7.403212044545683,
+          "applying": true
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 1.0952734410709013,
+          "orb": 1.0952734410709013,
+          "applying": true
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 173.74630181532623,
+          "orb": 6.253698184673766,
+          "applying": false
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Mars",
+          "planet2Key": "MARS",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 0.27264426325074,
+          "orb": 0.27264426325074,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 86.78031322713656,
+          "orb": 3.21968677286344,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 59.36680360300104,
+          "orb": 0.6331963969989616,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 120.63319639699895,
+          "orb": 0.6331963969989545,
+          "applying": true
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 87.05295749038729,
+          "orb": 2.9470425096127144,
+          "applying": false
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 59.63944786625178,
+          "orb": 0.3605521337482216,
+          "applying": false
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 120.36055213374823,
+          "orb": 0.3605521337482287,
+          "applying": false
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 172.19950647668782,
+          "orb": 7.800493523312184,
+          "applying": true
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 7.800493523312184,
+          "orb": 7.800493523312184,
+          "applying": true
+        },
+        {
+          "planet1": "Saturn",
+          "planet1Key": "SATURN",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 66.02878059965565,
+          "orb": 6.028780599655647,
+          "applying": true
+        },
+        {
+          "planet1": "Uranus",
+          "planet1Key": "URANUS",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 93.44229022379116,
+          "orb": 3.4422902237911615,
+          "applying": false
+        },
+        {
+          "planet1": "Uranus",
+          "planet1Key": "URANUS",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 86.55770977620884,
+          "orb": 3.4422902237911615,
+          "applying": false
+        },
+        {
+          "planet1": "Neptune",
+          "planet1Key": "NEPTUNE",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 3.8255750374892443,
+          "orb": 3.8255750374892443,
+          "applying": true
+        }
+      ],
+      "ascendant": 205.2619,
+      "midheaven": 122.2725,
+      "descendant": 25.26189999999997,
+      "ic": 302.2725,
+      "houses": [
+        205.2619,
+        232.5492,
+        265.6424,
+        302.2725,
+        336.2489,
+        3.7366,
+        25.2619,
+        52.5492,
+        85.6424,
+        122.2725,
+        156.2489,
+        183.7366
+      ],
+      "date": "1889-04-20T18:30:00.000Z"
+    }
+  },
+  {
+    "id": "mussolini-benito",
+    "name": "Benito Mussolini",
+    "category": "Historical Political Figures",
+    "date": "1883-07-29",
+    "time": "14:00",
+    "location": "Predappio, Italy",
+    "latitude": 44.1019,
+    "longitude": 11.9794,
+    "timezone": "Europe/Rome",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Fascist dictator of Italy, Axis alliance, executed 1945",
+    "tags": [
+      "dictator",
+      "fascist",
+      "wwii",
+      "italian"
+    ],
+    "calculated": {
+      "success": true,
+      "planets": {
+        "SUN": {
+          "name": "Sun",
+          "longitude": 126.05380521758991,
+          "velocity": 0.9567484886806596
+        },
+        "MOON": {
+          "name": "Moon",
+          "longitude": 69.66689746782293,
+          "velocity": 13.84180650608559
+        },
+        "MERCURY": {
+          "name": "Mercury",
+          "longitude": 125.60323795730181,
+          "velocity": 2.0863623685108337
+        },
+        "VENUS": {
+          "name": "Venus",
+          "longitude": 111.59297388247741,
+          "velocity": 1.2255234515602922
+        },
+        "MARS": {
+          "name": "Mars",
+          "longitude": 73.15864702493084,
+          "velocity": 0.6773706326842728
+        },
+        "JUPITER": {
+          "name": "Jupiter",
+          "longitude": 108.55512873857853,
+          "velocity": 0.21966688110531152
+        },
+        "SATURN": {
+          "name": "Saturn",
+          "longitude": 67.56961648163012,
+          "velocity": 0.0868562738224341
+        },
+        "URANUS": {
+          "name": "Uranus",
+          "longitude": 170.8706215037889,
+          "velocity": 0.04921852149732331
+        },
+        "NEPTUNE": {
+          "name": "Neptune",
+          "longitude": 50.90648956714133,
+          "velocity": 0.014006009556823074
+        },
+        "PLUTO": {
+          "name": "Pluto",
+          "longitude": 61.029753783476885,
+          "velocity": 0.010978779151407991
+        },
+        "NORTH_NODE": {
+          "name": "North Node",
+          "longitude": 216.83419418206722,
+          "velocity": -0.053
+        },
+        "SOUTH_NODE": {
+          "name": "South Node",
+          "longitude": 36.83419418206722,
+          "velocity": -0.053
+        }
+      },
+      "aspects": [
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Moon",
+          "planet2Key": "MOON",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 56.386907749766976,
+          "orb": 3.6130922502330236,
+          "applying": false
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Mercury",
+          "planet2Key": "MERCURY",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 0.45056726028809635,
+          "orb": 0.45056726028809635,
+          "applying": true
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Mars",
+          "planet2Key": "MARS",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 52.89515819265907,
+          "orb": 7.104841807340932,
+          "applying": true
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 58.48418873595979,
+          "orb": 1.5158112640402095,
+          "applying": true
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 65.02405143411303,
+          "orb": 5.024051434113034,
+          "applying": false
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 90.78038896447731,
+          "orb": 0.7803889644773108,
+          "applying": true
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 89.21961103552269,
+          "orb": 0.7803889644773108,
+          "applying": true
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Mercury",
+          "planet2Key": "MERCURY",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 55.93634048947888,
+          "orb": 4.06365951052112,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Mars",
+          "planet2Key": "MARS",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 3.4917495571079087,
+          "orb": 3.4917495571079087,
+          "applying": true
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 2.097280986192814,
+          "orb": 2.097280986192814,
+          "applying": false
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Mars",
+          "planet2Key": "MARS",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 52.44459093237097,
+          "orb": 7.555409067629029,
+          "applying": true
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 58.033621475671694,
+          "orb": 1.9663785243283058,
+          "applying": true
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 64.57348417382494,
+          "orb": 4.573484173824937,
+          "applying": false
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 91.23095622476541,
+          "orb": 1.2309562247654071,
+          "applying": true
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 88.76904377523459,
+          "orb": 1.2309562247654071,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 3.0378451438988776,
+          "orb": 3.0378451438988776,
+          "applying": false
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 59.27764762131149,
+          "orb": 0.7223523786885124,
+          "applying": false
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 60.68648431533608,
+          "orb": 0.6864843153360809,
+          "applying": false
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 5.589030543300723,
+          "orb": 5.589030543300723,
+          "applying": false
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 97.71197447885805,
+          "orb": 7.711974478858053,
+          "applying": true
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 62.315492765210365,
+          "orb": 2.315492765210365,
+          "applying": true
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 57.6486391714372,
+          "orb": 2.3513608285627967,
+          "applying": true
+        },
+        {
+          "planet1": "Saturn",
+          "planet1Key": "SATURN",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 6.539862698153236,
+          "orb": 6.539862698153236,
+          "applying": false
+        },
+        {
+          "planet1": "Uranus",
+          "planet1Key": "URANUS",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 119.96413193664756,
+          "orb": 0.03586806335243864,
+          "applying": true
+        }
+      ],
+      "ascendant": 228.6279,
+      "midheaven": 151.8087,
+      "descendant": 48.62790000000001,
+      "ic": 331.8087,
+      "houses": [
+        228.6279,
+        258.8889,
+        294.6964,
+        331.8087,
+        3.6448,
+        28.6326,
+        48.6279,
+        78.8889,
+        114.6964,
+        151.8087,
+        183.6448,
+        208.6326
+      ],
+      "date": "1883-07-29T14:00:00.000Z"
+    }
+  },
+  {
+    "id": "churchill-winston",
+    "name": "Winston Churchill",
+    "category": "Historical Political Figures",
+    "date": "1874-11-30",
+    "time": "01:30",
+    "location": "Woodstock, England",
+    "latitude": 51.8482,
+    "longitude": -1.3547,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth records",
+    "notes": "British PM during WWII, Nobel Prize Literature 1953, iconic leader",
+    "tags": [
+      "prime-minister",
+      "wwii",
+      "british",
+      "nobel-prize"
+    ],
+    "calculated": {
+      "success": true,
+      "planets": {
+        "SUN": {
+          "name": "Sun",
+          "longitude": 247.71908987987328,
+          "velocity": 1.0140536897122558
+        },
+        "MOON": {
+          "name": "Moon",
+          "longitude": 149.6161693985393,
+          "velocity": 12.41422735854107
+        },
+        "MERCURY": {
+          "name": "Mercury",
+          "longitude": 227.59241742998813,
+          "velocity": 0.8604770499115091
+        },
+        "VENUS": {
+          "name": "Venus",
+          "longitude": 262.02716743999696,
+          "velocity": -0.4621701868242667
+        },
+        "MARS": {
+          "name": "Mars",
+          "longitude": 196.54940651209054,
+          "velocity": 0.6105848399127467
+        },
+        "JUPITER": {
+          "name": "Jupiter",
+          "longitude": 203.56773166913803,
+          "velocity": 0.18247263784752477
+        },
+        "SATURN": {
+          "name": "Saturn",
+          "longitude": 309.5925244168265,
+          "velocity": 0.0764590061315289
+        },
+        "URANUS": {
+          "name": "Uranus",
+          "longitude": 135.2298371614289,
+          "velocity": -0.008982814702619635
+        },
+        "NEPTUNE": {
+          "name": "Neptune",
+          "longitude": 28.43302102726081,
+          "velocity": -0.020049837666071824
+        },
+        "PLUTO": {
+          "name": "Pluto",
+          "longitude": 51.426212569376105,
+          "velocity": -0.017879740076416795
+        },
+        "NORTH_NODE": {
+          "name": "North Node",
+          "longitude": 24.35399019507213,
+          "velocity": -0.053
+        },
+        "SOUTH_NODE": {
+          "name": "South Node",
+          "longitude": 204.35399019507213,
+          "velocity": -0.053
+        }
+      },
+      "aspects": [
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 61.873434536953226,
+          "orb": 1.8734345369532264,
+          "applying": true
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 112.48925271844439,
+          "orb": 7.510747281555609,
+          "applying": true
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Venus",
+          "planet2Key": "VENUS",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 112.41099804145765,
+          "orb": 7.5890019585423545,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 53.951562270598714,
+          "orb": 6.048437729401286,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 121.1831483712785,
+          "orb": 1.1831483712785058,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 125.26217920346718,
+          "orb": 5.262179203467184,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 54.737820796532816,
+          "orb": 5.262179203467184,
+          "applying": false
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 82.00010698683838,
+          "orb": 7.999893013161625,
+          "applying": false
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 92.36258026855924,
+          "orb": 2.362580268559242,
+          "applying": false
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 176.16620486061203,
+          "orb": 3.8337951393879734,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Mars",
+          "planet2Key": "MARS",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 65.47776092790642,
+          "orb": 5.4777609279064166,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 58.45943577085893,
+          "orb": 1.5405642291410686,
+          "applying": false
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 126.79733027856807,
+          "orb": 6.797330278568069,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 126.40585358726386,
+          "orb": 6.405853587263863,
+          "applying": false
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 122.32682275507517,
+          "orb": 2.3268227550751703,
+          "applying": false
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 57.67317724492483,
+          "orb": 2.3268227550751703,
+          "applying": false
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 7.018325157047485,
+          "orb": 7.018325157047485,
+          "applying": true
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 113.04311790473596,
+          "orb": 6.956882095264035,
+          "applying": false
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 61.31956935066165,
+          "orb": 1.3195693506616522,
+          "applying": false
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 172.1954163170184,
+          "orb": 7.804583682981587,
+          "applying": true
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 7.804583682981587,
+          "orb": 7.804583682981587,
+          "applying": true
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 175.1347106418772,
+          "orb": 4.865289358122794,
+          "applying": true
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 179.2137414740659,
+          "orb": 0.7862585259341017,
+          "applying": true
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 0.7862585259341017,
+          "orb": 0.7862585259341017,
+          "applying": true
+        },
+        {
+          "planet1": "Saturn",
+          "planet1Key": "SATURN",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 174.36268725539762,
+          "orb": 5.637312744602383,
+          "applying": true
+        },
+        {
+          "planet1": "Uranus",
+          "planet1Key": "URANUS",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 83.80362459205278,
+          "orb": 6.196375407947215,
+          "applying": true
+        },
+        {
+          "planet1": "Neptune",
+          "planet1Key": "NEPTUNE",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 4.079030832188682,
+          "orb": 4.079030832188682,
+          "applying": false
+        },
+        {
+          "planet1": "Neptune",
+          "planet1Key": "NEPTUNE",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 175.9209691678113,
+          "orb": 4.079030832188693,
+          "applying": false
+        }
+      ],
+      "ascendant": 179.9326,
+      "midheaven": 89.912,
+      "descendant": 359.9326,
+      "ic": 269.91200000000003,
+      "houses": [
+        179.9326,
+        203.7529,
+        233.989,
+        269.912,
+        305.843,
+        336.0956,
+        359.9326,
+        23.7529,
+        53.989,
+        89.912,
+        125.843,
+        156.0956
+      ],
+      "date": "1874-11-30T01:30:00.000Z"
+    }
+  },
+  {
+    "id": "stalin-joseph",
+    "name": "Joseph Stalin",
+    "category": "Historical Political Figures",
+    "date": "1878-12-18",
+    "time": "12:00",
+    "location": "Gori, Georgia",
+    "latitude": 41.9842,
+    "longitude": 44.1086,
+    "timezone": "Asia/Tbilisi",
+    "roddenRating": "C",
+    "source": "Official date (birth time uncertain, conflicting records)",
+    "notes": "Soviet dictator, Great Purge, WWII alliance, died 1953",
+    "tags": [
+      "dictator",
+      "soviet",
+      "communist",
+      "wwii"
+    ],
+    "calculated": {
+      "success": true,
+      "planets": {
+        "SUN": {
+          "name": "Sun",
+          "longitude": 266.48992544980337,
+          "velocity": 1.0185437206387746
+        },
+        "MOON": {
+          "name": "Moon",
+          "longitude": 194.56133234060619,
+          "velocity": 14.373427567311268
+        },
+        "MERCURY": {
+          "name": "Mercury",
+          "longitude": 281.7438869635507,
+          "velocity": -0.41127322734325844
+        },
+        "VENUS": {
+          "name": "Venus",
+          "longitude": 269.5618819414923,
+          "velocity": 1.2581904266110087
+        },
+        "MARS": {
+          "name": "Mars",
+          "longitude": 235.9354710059701,
+          "velocity": 0.6881591645603748
+        },
+        "JUPITER": {
+          "name": "Jupiter",
+          "longitude": 307.59068632689775,
+          "velocity": 0.20808808284766656
+        },
+        "SATURN": {
+          "name": "Saturn",
+          "longitude": 356.4591138868387,
+          "velocity": 0.034776593123524435
+        },
+        "URANUS": {
+          "name": "Uranus",
+          "longitude": 154.20512476062447,
+          "velocity": -0.008624022657869546
+        },
+        "NEPTUNE": {
+          "name": "Neptune",
+          "longitude": 37.256712584152226,
+          "velocity": -0.015922490466287798
+        },
+        "PLUTO": {
+          "name": "Pluto",
+          "longitude": 54.94334224499652,
+          "velocity": -0.01557777406420513
+        },
+        "NORTH_NODE": {
+          "name": "North Node",
+          "longitude": 306.0124583162219,
+          "velocity": -0.053
+        },
+        "SOUTH_NODE": {
+          "name": "South Node",
+          "longitude": 126.01245831622191,
+          "velocity": -0.053
+        }
+      },
+      "aspects": [
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Venus",
+          "planet2Key": "VENUS",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 3.0719564916889226,
+          "orb": 3.0719564916889226,
+          "applying": false
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 89.96918843703531,
+          "orb": 0.030811562964686345,
+          "applying": false
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 112.2848006891789,
+          "orb": 7.715199310821106,
+          "applying": true
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Mercury",
+          "planet2Key": "MERCURY",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 87.18255462294454,
+          "orb": 2.8174453770554635,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 113.02935398629157,
+          "orb": 6.970646013708432,
+          "applying": false
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 127.53876220292625,
+          "orb": 7.53876220292625,
+          "applying": true
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 115.51282562060152,
+          "orb": 4.487174379398482,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 86.89723194534639,
+          "orb": 3.102768054653609,
+          "applying": false
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 115.35675718086782,
+          "orb": 4.643242819132183,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 127.69483064265995,
+          "orb": 7.6948306426599515,
+          "applying": true
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 120.52364288086858,
+          "orb": 0.5236428808685787,
+          "applying": true
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 179.00787123902643,
+          "orb": 0.9921287609735714,
+          "applying": false
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 89.66602625725449,
+          "orb": 0.3339737427455134,
+          "applying": false
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 1.5782280106758435,
+          "orb": 1.5782280106758435,
+          "applying": false
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 178.42177198932416,
+          "orb": 1.5782280106758435,
+          "applying": false
+        },
+        {
+          "planet1": "Saturn",
+          "planet1Key": "SATURN",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 58.48422835815785,
+          "orb": 1.51577164184215,
+          "applying": false
+        },
+        {
+          "planet1": "Uranus",
+          "planet1Key": "URANUS",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 116.94841217647225,
+          "orb": 3.051587823527754,
+          "applying": true
+        },
+        {
+          "planet1": "Neptune",
+          "planet1Key": "NEPTUNE",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 91.24425426793033,
+          "orb": 1.2442542679303301,
+          "applying": false
+        },
+        {
+          "planet1": "Neptune",
+          "planet1Key": "NEPTUNE",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 88.75574573206968,
+          "orb": 1.244254267930316,
+          "applying": false
+        }
+      ],
+      "ascendant": 352.7733,
+      "midheaven": 266.2811,
+      "descendant": 172.77330000000006,
+      "ic": 86.28109999999998,
+      "houses": [
+        352.7733,
+        36.7294,
+        64.5419,
+        86.2811,
+        107.4207,
+        132.9671,
+        172.7733,
+        216.7294,
+        244.5419,
+        266.2811,
+        287.4207,
+        312.9671
+      ],
+      "date": "1878-12-18T12:00:00.000Z"
+    }
+  },
+  {
+    "id": "roosevelt-fdr",
+    "name": "Franklin D. Roosevelt",
+    "category": "Historical Political Figures",
+    "date": "1882-01-30",
+    "time": "20:45",
+    "location": "Hyde Park, New York, USA",
+    "latitude": 41.7848,
+    "longitude": -73.9329,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "32nd US President, 4 terms, New Deal, led US through WWII, died in office 1945",
+    "tags": [
+      "president",
+      "wwii",
+      "new-deal",
+      "american"
+    ],
+    "calculated": {
+      "success": true,
+      "planets": {
+        "SUN": {
+          "name": "Sun",
+          "longitude": 310.92830088511937,
+          "velocity": 1.014370739078231
+        },
+        "MOON": {
+          "name": "Moon",
+          "longitude": 93.75544569648329,
+          "velocity": 12.094595518021336
+        },
+        "MERCURY": {
+          "name": "Mercury",
+          "longitude": 326.8744598942164,
+          "velocity": 1.5436156389991993
+        },
+        "VENUS": {
+          "name": "Venus",
+          "longitude": 305.79959218545713,
+          "velocity": 1.2548995995181258
+        },
+        "MARS": {
+          "name": "Mars",
+          "longitude": 87.01289029189988,
+          "velocity": -0.030191757791968143
+        },
+        "JUPITER": {
+          "name": "Jupiter",
+          "longitude": 46.92064703261648,
+          "velocity": 0.06999333015826181
+        },
+        "SATURN": {
+          "name": "Saturn",
+          "longitude": 36.081853097192145,
+          "velocity": 0.04469176989231727
+        },
+        "URANUS": {
+          "name": "Uranus",
+          "longitude": 167.92942656066808,
+          "velocity": -0.032099810528649186
+        },
+        "NEPTUNE": {
+          "name": "Neptune",
+          "longitude": 43.78738076285444,
+          "velocity": 0.004425879569673441
+        },
+        "PLUTO": {
+          "name": "Pluto",
+          "longitude": 57.36800524343297,
+          "velocity": -0.0034413374540420705
+        },
+        "NORTH_NODE": {
+          "name": "North Node",
+          "longitude": 245.67900940280606,
+          "velocity": -0.053
+        },
+        "SOUTH_NODE": {
+          "name": "South Node",
+          "longitude": 65.67900940280606,
+          "velocity": -0.053
+        }
+      },
+      "aspects": [
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Venus",
+          "planet2Key": "VENUS",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 5.128708699662241,
+          "orb": 5.128708699662241,
+          "applying": true
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 95.99234614749713,
+          "orb": 5.9923461474971305,
+          "applying": true
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 85.15355221207278,
+          "orb": 4.846447787927218,
+          "applying": false
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 92.8590798777351,
+          "orb": 2.8590798777350983,
+          "applying": true
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 65.24929148231331,
+          "orb": 5.2492914823133106,
+          "applying": false
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 114.75070851768669,
+          "orb": 5.2492914823133106,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Mercury",
+          "planet2Key": "MERCURY",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 126.8809858022669,
+          "orb": 6.880985802266906,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Mars",
+          "planet2Key": "MARS",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 6.742555404583413,
+          "orb": 6.742555404583413,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 57.67359259929115,
+          "orb": 2.3264074007088524,
+          "applying": true
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Mars",
+          "planet2Key": "MARS",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 120.13843039768349,
+          "orb": 0.13843039768349286,
+          "applying": true
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 90.49354534921656,
+          "orb": 0.4935453492165607,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 90.28226091173502,
+          "orb": 0.28226091173502255,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 97.98778857739728,
+          "orb": 7.987788577397282,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 60.12058278265107,
+          "orb": 0.12058278265106992,
+          "applying": false
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 119.87941721734893,
+          "orb": 0.12058278265106992,
+          "applying": false
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 121.0087795280516,
+          "orb": 1.0087795280516048,
+          "applying": true
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 3.1332662697620393,
+          "orb": 3.1332662697620393,
+          "applying": false
+        },
+        {
+          "planet1": "Saturn",
+          "planet1Key": "SATURN",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 7.705527665662295,
+          "orb": 7.705527665662295,
+          "applying": true
+        },
+        {
+          "planet1": "Uranus",
+          "planet1Key": "URANUS",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 124.14204579781364,
+          "orb": 4.142045797813637,
+          "applying": true
+        }
+      ],
+      "ascendant": 174.1065,
+      "midheaven": 83.1094,
+      "descendant": 354.1065,
+      "ic": 263.1094,
+      "houses": [
+        174.1065,
+        199.4314,
+        229.5208,
+        263.1094,
+        296.9401,
+        327.7477,
+        354.1065,
+        19.4314,
+        49.5208,
+        83.1094,
+        116.9401,
+        147.7477
+      ],
+      "date": "1882-01-30T20:45:00.000Z"
+    }
+  },
+  {
+    "id": "franco-francisco",
+    "name": "Francisco Franco",
+    "category": "Historical Political Figures",
+    "date": "1892-12-04",
+    "time": "12:00",
+    "location": "Ferrol, Spain",
+    "latitude": 43.4833,
+    "longitude": -8.2333,
+    "timezone": "Europe/Madrid",
+    "roddenRating": "C",
+    "source": "Biography (birth time uncertain)",
+    "notes": "Spanish dictator, Spanish Civil War, ruled until 1975",
+    "tags": [
+      "dictator",
+      "fascist",
+      "spanish",
+      "civil-war"
+    ],
+    "calculated": {
+      "success": true,
+      "planets": {
+        "SUN": {
+          "name": "Sun",
+          "longitude": 252.86095800727824,
+          "velocity": 1.0151940200624665
+        },
+        "MOON": {
+          "name": "Moon",
+          "longitude": 78.55207245395732,
+          "velocity": 14.929774252041199
+        },
+        "MERCURY": {
+          "name": "Mercury",
+          "longitude": 268.36780286974886,
+          "velocity": -0.45625766602893236
+        },
+        "VENUS": {
+          "name": "Venus",
+          "longitude": 217.44840450477423,
+          "velocity": 1.2229539735917
+        },
+        "MARS": {
+          "name": "Mars",
+          "longitude": 344.99307186672945,
+          "velocity": 0.625036397351721
+        },
+        "JUPITER": {
+          "name": "Jupiter",
+          "longitude": 15.028762414785284,
+          "velocity": -0.016156071965507834
+        },
+        "SATURN": {
+          "name": "Saturn",
+          "longitude": 190.84170656855778,
+          "velocity": 0.07752990702570628
+        },
+        "URANUS": {
+          "name": "Uranus",
+          "longitude": 218.58686727705404,
+          "velocity": 0.05433227639579741
+        },
+        "NEPTUNE": {
+          "name": "Neptune",
+          "longitude": 69.81687245831812,
+          "velocity": -0.02821289844888497
+        },
+        "PLUTO": {
+          "name": "Pluto",
+          "longitude": 68.75560700628917,
+          "velocity": -0.01894372043196313
+        },
+        "NORTH_NODE": {
+          "name": "North Node",
+          "longitude": 35.94913182751543,
+          "velocity": -0.053
+        },
+        "SOUTH_NODE": {
+          "name": "South Node",
+          "longitude": 215.94913182751543,
+          "velocity": -0.053
+        }
+      },
+      "aspects": [
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Moon",
+          "planet2Key": "MOON",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 174.30888555332092,
+          "orb": 5.69111444667908,
+          "applying": false
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Mars",
+          "planet2Key": "MARS",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 92.13211385945121,
+          "orb": 2.1321138594512092,
+          "applying": true
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 122.16780440750705,
+          "orb": 2.167804407507049,
+          "applying": true
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 62.01925143872046,
+          "orb": 2.0192514387204596,
+          "applying": false
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 176.95591445103986,
+          "orb": 3.0440855489601404,
+          "applying": false
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 175.89464899901094,
+          "orb": 4.10535100098906,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Mars",
+          "planet2Key": "MARS",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 93.55900058722784,
+          "orb": 3.5590005872278425,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 63.52331003917204,
+          "orb": 3.5233100391720384,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 112.28963411460046,
+          "orb": 7.71036588539954,
+          "applying": false
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 127.58132895776657,
+          "orb": 7.581328957766573,
+          "applying": false
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 52.41867104223343,
+          "orb": 7.581328957766573,
+          "applying": false
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Mars",
+          "planet2Key": "MARS",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 127.54466736195522,
+          "orb": 7.54466736195522,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 1.1384627722798086,
+          "orb": 1.1384627722798086,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 178.5007273227412,
+          "orb": 1.4992726772588014,
+          "applying": false
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 1.4992726772588014,
+          "orb": 1.4992726772588014,
+          "applying": false
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 126.40620458967541,
+          "orb": 6.406204589675411,
+          "applying": false
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 84.82380059158868,
+          "orb": 5.176199408411321,
+          "applying": false
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 83.7625351395597,
+          "orb": 6.237464860440298,
+          "applying": false
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 175.8129441537725,
+          "orb": 4.1870558462275085,
+          "applying": true
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 54.78811004353283,
+          "orb": 5.211889956467168,
+          "applying": false
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 53.726844591503884,
+          "orb": 6.273155408496116,
+          "applying": false
+        },
+        {
+          "planet1": "Saturn",
+          "planet1Key": "SATURN",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 121.02483411023967,
+          "orb": 1.0248341102396665,
+          "applying": false
+        },
+        {
+          "planet1": "Saturn",
+          "planet1Key": "SATURN",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 122.08609956226861,
+          "orb": 2.0860995622686147,
+          "applying": false
+        },
+        {
+          "planet1": "Uranus",
+          "planet1Key": "URANUS",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 177.3622645504614,
+          "orb": 2.63773544953861,
+          "applying": false
+        },
+        {
+          "planet1": "Uranus",
+          "planet1Key": "URANUS",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 2.63773544953861,
+          "orb": 2.63773544953861,
+          "applying": false
+        },
+        {
+          "planet1": "Neptune",
+          "planet1Key": "NEPTUNE",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 1.0612654520289482,
+          "orb": 1.0612654520289482,
+          "applying": true
+        }
+      ],
+      "ascendant": 317.8666,
+      "midheaven": 247.3376,
+      "descendant": 137.8666,
+      "ic": 67.33760000000001,
+      "houses": [
+        317.8666,
+        8.2862,
+        43.1041,
+        67.3376,
+        87.8531,
+        109.0943,
+        137.8666,
+        188.2862,
+        223.1041,
+        247.3376,
+        267.8531,
+        289.0943
+      ],
+      "date": "1892-12-04T12:00:00.000Z"
+    }
+  },
+  {
+    "id": "de-gaulle-charles",
+    "name": "Charles de Gaulle",
+    "category": "Historical Political Figures",
+    "date": "1890-11-22",
+    "time": "04:00",
+    "location": "Lille, France",
+    "latitude": 50.6292,
+    "longitude": 3.0573,
+    "timezone": "Europe/Paris",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "French general, leader of Free France WWII, President 1959-1969",
+    "tags": [
+      "president",
+      "general",
+      "wwii",
+      "french"
+    ],
+    "calculated": {
+      "success": true,
+      "planets": {
+        "SUN": {
+          "name": "Sun",
+          "longitude": 239.8391552685558,
+          "velocity": 1.0109994281759498
+        },
+        "MOON": {
+          "name": "Moon",
+          "longitude": 4.4159036550203,
+          "velocity": 13.960138740246254
+        },
+        "MERCURY": {
+          "name": "Mercury",
+          "longitude": 242.67715125857728,
+          "velocity": 1.568093490861429
+        },
+        "VENUS": {
+          "name": "Venus",
+          "longitude": 258.2178229077555,
+          "velocity": -0.3614548358384013
+        },
+        "MARS": {
+          "name": "Mars",
+          "longitude": 311.4821646847321,
+          "velocity": 0.7387908495127249
+        },
+        "JUPITER": {
+          "name": "Jupiter",
+          "longitude": 306.8919150845916,
+          "velocity": 0.15680918486930295
+        },
+        "SATURN": {
+          "name": "Saturn",
+          "longitude": 166.05320174948773,
+          "velocity": 0.06111940986002651
+        },
+        "URANUS": {
+          "name": "Uranus",
+          "longitude": 209.0571538919872,
+          "velocity": 0.05606395340231529
+        },
+        "NEPTUNE": {
+          "name": "Neptune",
+          "longitude": 65.55624063541728,
+          "velocity": -0.028192028000376013
+        },
+        "PLUTO": {
+          "name": "Pluto",
+          "longitude": 67.02958194618694,
+          "velocity": -0.018869172790004995
+        },
+        "NORTH_NODE": {
+          "name": "North Node",
+          "longitude": 75.31130294318973,
+          "velocity": -0.053
+        },
+        "SOUTH_NODE": {
+          "name": "South Node",
+          "longitude": 255.31130294318973,
+          "velocity": -0.053
+        }
+      },
+      "aspects": [
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Moon",
+          "planet2Key": "MOON",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 124.57674838646449,
+          "orb": 4.576748386464487,
+          "applying": false
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Mercury",
+          "planet2Key": "MERCURY",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 2.837995990021483,
+          "orb": 2.837995990021483,
+          "applying": false
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 67.05275981603577,
+          "orb": 7.052759816035774,
+          "applying": true
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 174.28291463313852,
+          "orb": 5.7170853668614825,
+          "applying": true
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 172.80957332236886,
+          "orb": 7.190426677631137,
+          "applying": true
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Mercury",
+          "planet2Key": "MERCURY",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 121.738752396443,
+          "orb": 1.7387523964430045,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Mars",
+          "planet2Key": "MARS",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 52.93373897028823,
+          "orb": 7.066261029711768,
+          "applying": true
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 57.52398857042874,
+          "orb": 2.4760114295712583,
+          "applying": true
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 61.14033698039698,
+          "orb": 1.140336980396981,
+          "applying": true
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 62.613678291166636,
+          "orb": 2.613678291166636,
+          "applying": true
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 64.21476382601429,
+          "orb": 4.214763826014291,
+          "applying": true
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 177.12091062316,
+          "orb": 2.8790893768399997,
+          "applying": true
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 175.64756931239035,
+          "orb": 4.352430687609655,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Mars",
+          "planet2Key": "MARS",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 53.26434177697661,
+          "orb": 6.735658223023393,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 92.16462115826775,
+          "orb": 2.1646211582677495,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 177.09348003543425,
+          "orb": 2.906519964565746,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 2.906519964565746,
+          "orb": 2.906519964565746,
+          "applying": true
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 4.59024960014051,
+          "orb": 4.59024960014051,
+          "applying": false
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 114.0740759506852,
+          "orb": 5.925924049314801,
+          "applying": false
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 115.54741726145485,
+          "orb": 4.452582738545146,
+          "applying": false
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 123.82913825845765,
+          "orb": 3.8291382584576468,
+          "applying": true
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 56.17086174154235,
+          "orb": 3.8291382584576468,
+          "applying": true
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 97.83476119260436,
+          "orb": 7.834761192604361,
+          "applying": false
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 118.66432555082571,
+          "orb": 1.3356744491742916,
+          "applying": false
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 120.13766686159536,
+          "orb": 0.13766686159536334,
+          "applying": true
+        },
+        {
+          "planet1": "Saturn",
+          "planet1Key": "SATURN",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 90.741898806298,
+          "orb": 0.7418988062979963,
+          "applying": false
+        },
+        {
+          "planet1": "Saturn",
+          "planet1Key": "SATURN",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 89.258101193702,
+          "orb": 0.7418988062979963,
+          "applying": false
+        },
+        {
+          "planet1": "Neptune",
+          "planet1Key": "NEPTUNE",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 1.473341310769655,
+          "orb": 1.473341310769655,
+          "applying": false
+        }
+      ],
+      "ascendant": 202.5167,
+      "midheaven": 119.4903,
+      "descendant": 22.516700000000014,
+      "ic": 299.4903,
+      "houses": [
+        202.5167,
+        229.2307,
+        262.2996,
+        299.4903,
+        333.8934,
+        1.3298,
+        22.5167,
+        49.2307,
+        82.2996,
+        119.4903,
+        153.8934,
+        181.3298
+      ],
+      "date": "1890-11-22T04:00:00.000Z"
+    }
+  },
+  {
+    "id": "gorbachev-mikhail",
+    "name": "Mikhail Gorbachev",
+    "category": "Historical Political Figures",
+    "date": "1931-03-02",
+    "time": "22:00",
+    "location": "Privolnoye, Russia",
+    "latitude": 45.0667,
+    "longitude": 43.25,
+    "timezone": "Europe/Moscow",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Soviet leader, glasnost/perestroika, ended Cold War, Nobel Peace Prize 1990",
+    "tags": [
+      "soviet",
+      "reformer",
+      "cold-war",
+      "nobel-prize"
+    ],
+    "calculated": {
+      "success": true,
+      "planets": {
+        "SUN": {
+          "name": "Sun",
+          "longitude": 341.3681029475579,
+          "velocity": 1.0021828517695894
+        },
+        "MOON": {
+          "name": "Moon",
+          "longitude": 139.6498490723111,
+          "velocity": 15.220122033026854
+        },
+        "MERCURY": {
+          "name": "Mercury",
+          "longitude": 330.32533870481495,
+          "velocity": 1.733054210886678
+        },
+        "VENUS": {
+          "name": "Venus",
+          "longitude": 296.61268059586416,
+          "velocity": 1.1306291292187325
+        },
+        "MARS": {
+          "name": "Mars",
+          "longitude": 117.62963605007826,
+          "velocity": -0.06486289655346411
+        },
+        "JUPITER": {
+          "name": "Jupiter",
+          "longitude": 100.48096496799704,
+          "velocity": -0.012908756165714408
+        },
+        "SATURN": {
+          "name": "Saturn",
+          "longitude": 290.35620624431596,
+          "velocity": 0.0878660490448624
+        },
+        "URANUS": {
+          "name": "Uranus",
+          "longitude": 13.452039144896437,
+          "velocity": 0.05056010919621734
+        },
+        "NEPTUNE": {
+          "name": "Neptune",
+          "longitude": 154.22189144282586,
+          "velocity": -0.027658163335871677
+        },
+        "PLUTO": {
+          "name": "Pluto",
+          "longitude": 108.87572853708268,
+          "velocity": -0.011676828503169645
+        },
+        "NORTH_NODE": {
+          "name": "North Node",
+          "longitude": 16.37718199863116,
+          "velocity": -0.053
+        },
+        "SOUTH_NODE": {
+          "name": "South Node",
+          "longitude": 196.37718199863116,
+          "velocity": -0.053
+        }
+      },
+      "aspects": [
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 119.11286202043917,
+          "orb": 0.8871379795608334,
+          "applying": false
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 172.853788495268,
+          "orb": 7.146211504732008,
+          "applying": false
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 127.50762558952482,
+          "orb": 7.507625589524821,
+          "applying": true
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 126.19780992741467,
+          "orb": 6.197809927414667,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 123.27266707367994,
+          "orb": 3.2726670736799406,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 56.72733292632006,
+          "orb": 3.2726670736799406,
+          "applying": false
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 176.1034472619891,
+          "orb": 3.896552738010911,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Mars",
+          "planet2Key": "MARS",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 178.9830445457859,
+          "orb": 1.0169554542140986,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 6.256474351548206,
+          "orb": 6.256474351548206,
+          "applying": false
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 172.26304794121853,
+          "orb": 7.736952058781469,
+          "applying": false
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 172.7265701942377,
+          "orb": 7.273429805762305,
+          "applying": true
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 87.02892582310061,
+          "orb": 2.9710741768993927,
+          "applying": false
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 53.740926474828825,
+          "orb": 6.259073525171175,
+          "applying": false
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 84.10378296936588,
+          "orb": 5.896217030634119,
+          "applying": true
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 95.89621703063412,
+          "orb": 5.896217030634119,
+          "applying": true
+        },
+        {
+          "planet1": "Saturn",
+          "planet1Key": "SATURN",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 83.09583290058049,
+          "orb": 6.90416709941951,
+          "applying": false
+        },
+        {
+          "planet1": "Saturn",
+          "planet1Key": "SATURN",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 178.51952229276674,
+          "orb": 1.4804777072332627,
+          "applying": false
+        },
+        {
+          "planet1": "Saturn",
+          "planet1Key": "SATURN",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 86.0209757543152,
+          "orb": 3.9790242456847977,
+          "applying": false
+        },
+        {
+          "planet1": "Saturn",
+          "planet1Key": "SATURN",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 93.9790242456848,
+          "orb": 3.9790242456847977,
+          "applying": false
+        },
+        {
+          "planet1": "Uranus",
+          "planet1Key": "URANUS",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 95.42368939218625,
+          "orb": 5.4236893921862475,
+          "applying": true
+        },
+        {
+          "planet1": "Uranus",
+          "planet1Key": "URANUS",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 2.9251428537347213,
+          "orb": 2.9251428537347213,
+          "applying": true
+        },
+        {
+          "planet1": "Uranus",
+          "planet1Key": "URANUS",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 177.0748571462653,
+          "orb": 2.9251428537347124,
+          "applying": true
+        },
+        {
+          "planet1": "Pluto",
+          "planet1Key": "PLUTO",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 92.49854653845152,
+          "orb": 2.498546538451521,
+          "applying": false
+        },
+        {
+          "planet1": "Pluto",
+          "planet1Key": "PLUTO",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 87.50145346154848,
+          "orb": 2.498546538451521,
+          "applying": false
+        }
+      ],
+      "ascendant": 208.6504,
+      "midheaven": 125.4898,
+      "descendant": 28.65039999999999,
+      "ic": 305.4898,
+      "houses": [
+        208.6504,
+        236.5593,
+        269.5639,
+        305.4898,
+        339.0113,
+        6.6339,
+        28.6504,
+        56.5593,
+        89.5639,
+        125.4898,
+        159.0113,
+        186.6339
+      ],
+      "date": "1931-03-02T22:00:00.000Z"
+    }
+  },
+  {
+    "id": "arafat-yasser",
+    "name": "Yasser Arafat",
+    "category": "Historical Political Figures",
+    "date": "1929-08-24",
+    "time": "03:00",
+    "location": "Cairo, Egypt",
+    "latitude": 30.0444,
+    "longitude": 31.2357,
+    "timezone": "Africa/Cairo",
+    "roddenRating": "B",
+    "source": "Biography (some sources say Jerusalem)",
+    "notes": "PLO leader, Palestinian liberation, Nobel Peace Prize 1994, controversial",
+    "tags": [
+      "leader",
+      "palestinian",
+      "conflict",
+      "nobel-prize"
+    ],
+    "calculated": {
+      "success": true,
+      "planets": {
+        "SUN": {
+          "name": "Sun",
+          "longitude": 150.45432516134852,
+          "velocity": 0.9643918417374095
+        },
+        "MOON": {
+          "name": "Moon",
+          "longitude": 14.136706485184432,
+          "velocity": 13.144308303072568
+        },
+        "MERCURY": {
+          "name": "Mercury",
+          "longitude": 171.0417812177726,
+          "velocity": 1.5225062477055644
+        },
+        "VENUS": {
+          "name": "Venus",
+          "longitude": 111.44900777698014,
+          "velocity": 1.157252099910167
+        },
+        "MARS": {
+          "name": "Mars",
+          "longitude": 181.41543715330926,
+          "velocity": 0.6405230683673437
+        },
+        "JUPITER": {
+          "name": "Jupiter",
+          "longitude": 73.60545681692821,
+          "velocity": 0.12392380961648541
+        },
+        "SATURN": {
+          "name": "Saturn",
+          "longitude": 263.91304462304157,
+          "velocity": -0.007181877327411712
+        },
+        "URANUS": {
+          "name": "Uranus",
+          "longitude": 10.831222140139205,
+          "velocity": -0.027975149103356856
+        },
+        "NEPTUNE": {
+          "name": "Neptune",
+          "longitude": 151.09368590281133,
+          "velocity": 0.03706013842483458
+        },
+        "PLUTO": {
+          "name": "Pluto",
+          "longitude": 108.98937977130066,
+          "velocity": 0.020389147477956726
+        },
+        "NORTH_NODE": {
+          "name": "North Node",
+          "longitude": 45.808347946611775,
+          "velocity": -0.053
+        },
+        "SOUTH_NODE": {
+          "name": "South Node",
+          "longitude": 225.80834794661178,
+          "velocity": -0.053
+        }
+      },
+      "aspects": [
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 113.45871946169305,
+          "orb": 6.54128053830695,
+          "applying": false
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 0.6393607414628093,
+          "orb": 0.6393607414628093,
+          "applying": true
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Venus",
+          "planet2Key": "VENUS",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 97.3123012917957,
+          "orb": 7.3123012917957055,
+          "applying": true
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 59.46875033174378,
+          "orb": 0.5312496682562227,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 3.305484345045226,
+          "orb": 3.305484345045226,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 94.85267328611623,
+          "orb": 4.852673286116229,
+          "applying": true
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Venus",
+          "planet2Key": "VENUS",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 59.59277344079247,
+          "orb": 0.4072265592075297,
+          "applying": true
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 97.4363244008444,
+          "orb": 7.4363244008443985,
+          "applying": false
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 92.87126340526896,
+          "orb": 2.8712634052689623,
+          "applying": true
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 62.05240144647195,
+          "orb": 2.052401446471947,
+          "applying": false
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 125.23343327116083,
+          "orb": 5.233433271160834,
+          "applying": false
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 54.766566728839166,
+          "orb": 5.233433271160834,
+          "applying": false
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 2.459628005679477,
+          "orb": 2.459628005679477,
+          "applying": false
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 65.64065983036836,
+          "orb": 5.640659830368364,
+          "applying": false
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 114.35934016963164,
+          "orb": 5.640659830368364,
+          "applying": false
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 82.49760746973232,
+          "orb": 7.502392530267684,
+          "applying": false
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 62.77423467678901,
+          "orb": 2.774234676789007,
+          "applying": false
+        },
+        {
+          "planet1": "Saturn",
+          "planet1Key": "SATURN",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 112.81935872023024,
+          "orb": 7.180641279769759,
+          "applying": false
+        },
+        {
+          "planet1": "Pluto",
+          "planet1Key": "PLUTO",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 63.18103182468889,
+          "orb": 3.181031824688887,
+          "applying": false
+        },
+        {
+          "planet1": "Pluto",
+          "planet1Key": "PLUTO",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 116.81896817531111,
+          "orb": 3.181031824688887,
+          "applying": false
+        }
+      ],
+      "ascendant": 118.4234,
+      "midheaven": 19.5698,
+      "descendant": 298.4234,
+      "ic": 199.5698,
+      "houses": [
+        118.4234,
+        141.3575,
+        168.0164,
+        199.5698,
+        234.2018,
+        267.87,
+        298.4234,
+        321.3575,
+        348.0164,
+        19.5698,
+        54.2018,
+        87.87
+      ],
+      "date": "1929-08-24T03:00:00.000Z"
+    }
+  },
+  {
+    "id": "begin-menachem",
+    "name": "Menachem Begin",
+    "category": "Historical Political Figures",
+    "date": "1913-08-16",
+    "time": "12:00",
+    "location": "Brest, Belarus",
+    "latitude": 52.0978,
+    "longitude": 23.7342,
+    "timezone": "Europe/Minsk",
+    "roddenRating": "C",
+    "source": "Biography (birth time uncertain)",
+    "notes": "Israeli PM, Camp David Accords, Nobel Peace Prize 1978",
+    "tags": [
+      "prime-minister",
+      "israeli",
+      "peace",
+      "nobel-prize"
+    ],
+    "calculated": {
+      "success": true,
+      "planets": {
+        "SUN": {
+          "name": "Sun",
+          "longitude": 142.98871493387597,
+          "velocity": 0.9613173288020391
+        },
+        "MOON": {
+          "name": "Moon",
+          "longitude": 319.1111539617249,
+          "velocity": 11.948673949091244
+        },
+        "MERCURY": {
+          "name": "Mercury",
+          "longitude": 126.79771468503728,
+          "velocity": 0.28336727145040186
+        },
+        "VENUS": {
+          "name": "Venus",
+          "longitude": 101.74822243515183,
+          "velocity": 1.131727407827313
+        },
+        "MARS": {
+          "name": "Mars",
+          "longitude": 71.87769390434464,
+          "velocity": 0.6376619889270927
+        },
+        "JUPITER": {
+          "name": "Jupiter",
+          "longitude": 278.5812511713194,
+          "velocity": -0.057701949153226906
+        },
+        "SATURN": {
+          "name": "Saturn",
+          "longitude": 76.36859489793248,
+          "velocity": 0.07506080278561456
+        },
+        "URANUS": {
+          "name": "Uranus",
+          "longitude": 304.8602776870416,
+          "velocity": -0.037124463047916834
+        },
+        "NEPTUNE": {
+          "name": "Neptune",
+          "longitude": 116.76099391085849,
+          "velocity": 0.03388198055129976
+        },
+        "PLUTO": {
+          "name": "Pluto",
+          "longitude": 90.75869898100126,
+          "velocity": 0.01582453573166731
+        },
+        "NORTH_NODE": {
+          "name": "North Node",
+          "longitude": 355.6729190965091,
+          "velocity": -0.053
+        },
+        "SOUTH_NODE": {
+          "name": "South Node",
+          "longitude": 175.67291909650908,
+          "velocity": -0.053
+        }
+      },
+      "aspects": [
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Moon",
+          "planet2Key": "MOON",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 176.1224390278489,
+          "orb": 3.8775609721510875,
+          "applying": true
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 66.62012003594349,
+          "orb": 6.620120035943486,
+          "applying": false
+        },
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 52.23001595287471,
+          "orb": 7.769984047125291,
+          "applying": true
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Mars",
+          "planet2Key": "MARS",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 112.76653994261977,
+          "orb": 7.233460057380228,
+          "applying": false
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 117.25744093620762,
+          "orb": 2.7425590637923847,
+          "applying": false
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Mars",
+          "planet2Key": "MARS",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 54.92002078069264,
+          "orb": 5.079979219307361,
+          "applying": false
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 178.06256300200434,
+          "orb": 1.9374369979956612,
+          "applying": false
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 176.8330287361676,
+          "orb": 3.1669712638324086,
+          "applying": false
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 4.490900993587843,
+          "orb": 4.490900993587843,
+          "applying": true
+        },
+        {
+          "planet1": "Mars",
+          "planet1Key": "MARS",
+          "planet2": "Uranus",
+          "planet2Key": "URANUS",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 127.01741621730304,
+          "orb": 7.017416217303037,
+          "applying": false
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "Pluto",
+          "planet2Key": "PLUTO",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 172.17744780968184,
+          "orb": 7.822552190318163,
+          "applying": true
+        },
+        {
+          "planet1": "Neptune",
+          "planet1Key": "NEPTUNE",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 121.0880748143494,
+          "orb": 1.0880748143493975,
+          "applying": false
+        },
+        {
+          "planet1": "Neptune",
+          "planet1Key": "NEPTUNE",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "SEXTILE",
+          "symbol": "⚹",
+          "name": "Sextile",
+          "exactAngle": 60,
+          "actualAngle": 58.91192518565059,
+          "orb": 1.0880748143494117,
+          "applying": false
+        },
+        {
+          "planet1": "Pluto",
+          "planet1Key": "PLUTO",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 95.08577988449218,
+          "orb": 5.085779884492183,
+          "applying": false
+        },
+        {
+          "planet1": "Pluto",
+          "planet1Key": "PLUTO",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 84.91422011550782,
+          "orb": 5.085779884492183,
+          "applying": false
+        }
+      ],
+      "ascendant": 215.1368,
+      "midheaven": 137.9918,
+      "descendant": 35.136799999999994,
+      "ic": 317.9918,
+      "houses": [
+        215.1368,
+        243.4322,
+        279.0936,
+        317.9918,
+        351.2098,
+        16.215,
+        35.1368,
+        63.4322,
+        99.0936,
+        137.9918,
+        171.2098,
+        196.215
+      ],
+      "date": "1913-08-16T12:00:00.000Z"
+    }
+  },
+  {
+    "id": "pinochet-augusto",
+    "name": "Augusto Pinochet",
+    "category": "Historical Political Figures",
+    "date": "1915-11-25",
+    "time": "13:30",
+    "location": "Valparaíso, Chile",
+    "latitude": -33.0472,
+    "longitude": -71.6127,
+    "timezone": "America/Santiago",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Chilean dictator 1973-1990, military coup, human rights violations",
+    "tags": [
+      "dictator",
+      "military",
+      "coup",
+      "chilean"
+    ],
+    "calculated": {
+      "success": true,
+      "planets": {
+        "SUN": {
+          "name": "Sun",
+          "longitude": 242.20222704557972,
+          "velocity": 1.0117011055065461
+        },
+        "MOON": {
+          "name": "Moon",
+          "longitude": 103.74900696784759,
+          "velocity": 11.847043302761932
+        },
+        "MERCURY": {
+          "name": "Mercury",
+          "longitude": 230.86589565623683,
+          "velocity": 1.5662510452666254
+        },
+        "VENUS": {
+          "name": "Venus",
+          "longitude": 260.994468207501,
+          "velocity": 1.2485317759300187
+        },
+        "MARS": {
+          "name": "Mars",
+          "longitude": 142.7436339552531,
+          "velocity": 0.3466209761286052
+        },
+        "JUPITER": {
+          "name": "Jupiter",
+          "longitude": 348.8086007974092,
+          "velocity": 0.038383983713742964
+        },
+        "SATURN": {
+          "name": "Saturn",
+          "longitude": 105.857673266095,
+          "velocity": -0.04819224562255897
+        },
+        "URANUS": {
+          "name": "Uranus",
+          "longitude": 312.2215687217198,
+          "velocity": 0.028402863362259723
+        },
+        "NEPTUNE": {
+          "name": "Neptune",
+          "longitude": 122.5711405707691,
+          "velocity": -0.011036085478039581
+        },
+        "PLUTO": {
+          "name": "Pluto",
+          "longitude": 92.84394592791323,
+          "velocity": -0.016925330221525314
+        },
+        "NORTH_NODE": {
+          "name": "North Node",
+          "longitude": 311.6651733572894,
+          "velocity": -0.053
+        },
+        "SOUTH_NODE": {
+          "name": "South Node",
+          "longitude": 131.6651733572894,
+          "velocity": -0.053
+        }
+      },
+      "aspects": [
+        {
+          "planet1": "Sun",
+          "planet1Key": "SUN",
+          "planet2": "Neptune",
+          "planet2Key": "NEPTUNE",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 119.63108647481062,
+          "orb": 0.3689135251893845,
+          "applying": true
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Mercury",
+          "planet2Key": "MERCURY",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 127.11688868838924,
+          "orb": 7.116888688389238,
+          "applying": true
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 114.9404061704384,
+          "orb": 5.0595938295616065,
+          "applying": true
+        },
+        {
+          "planet1": "Moon",
+          "planet1Key": "MOON",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 2.108666298247414,
+          "orb": 2.108666298247414,
+          "applying": true
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Mars",
+          "planet2Key": "MARS",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 88.12226170098373,
+          "orb": 1.877738299016272,
+          "applying": true
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 117.94270514117238,
+          "orb": 2.0572948588276176,
+          "applying": false
+        },
+        {
+          "planet1": "Mercury",
+          "planet1Key": "MERCURY",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 125.00822239014182,
+          "orb": 5.008222390141825,
+          "applying": false
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Mars",
+          "planet2Key": "MARS",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 118.25083425224787,
+          "orb": 1.74916574775213,
+          "applying": true
+        },
+        {
+          "planet1": "Venus",
+          "planet1Key": "VENUS",
+          "planet2": "Jupiter",
+          "planet2Key": "JUPITER",
+          "type": "SQUARE",
+          "symbol": "□",
+          "name": "Square",
+          "exactAngle": 90,
+          "actualAngle": 87.81413258990824,
+          "orb": 2.1858674100917597,
+          "applying": false
+        },
+        {
+          "planet1": "Jupiter",
+          "planet1Key": "JUPITER",
+          "planet2": "Saturn",
+          "planet2Key": "SATURN",
+          "type": "TRINE",
+          "symbol": "△",
+          "name": "Trine",
+          "exactAngle": 120,
+          "actualAngle": 117.04907246868578,
+          "orb": 2.950927531314221,
+          "applying": false
+        },
+        {
+          "planet1": "Uranus",
+          "planet1Key": "URANUS",
+          "planet2": "North Node",
+          "planet2Key": "NORTH_NODE",
+          "type": "CONJUNCTION",
+          "symbol": "☌",
+          "name": "Conjunction",
+          "exactAngle": 0,
+          "actualAngle": 0.5563953644303865,
+          "orb": 0.5563953644303865,
+          "applying": false
+        },
+        {
+          "planet1": "Uranus",
+          "planet1Key": "URANUS",
+          "planet2": "South Node",
+          "planet2Key": "SOUTH_NODE",
+          "type": "OPPOSITION",
+          "symbol": "☍",
+          "name": "Opposition",
+          "exactAngle": 180,
+          "actualAngle": 179.4436046355696,
+          "orb": 0.5563953644303865,
+          "applying": false
+        }
+      ],
+      "ascendant": 359.5744,
+      "midheaven": 269.5406,
+      "descendant": 179.57439999999997,
+      "ic": 89.54059999999998,
+      "houses": [
+        359.5744,
+        26.889,
+        57.3577,
+        89.5406,
+        121.7236,
+        152.2097,
+        179.5744,
+        206.889,
+        237.3577,
+        269.5406,
+        301.7236,
+        332.2097
+      ],
+      "date": "1915-11-25T13:30:00.000Z"
+    }
   }
 ]
