@@ -2020,6 +2020,204 @@ function App() {
                 >
                   📚 Load Chart A from Database
                 </button>
+
+                {/* Chart A Input Form */}
+                <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: '#f8f9fa', borderRadius: '8px' }}>
+                  <div className="form-group" style={{ marginBottom: '0.75rem' }}>
+                    <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.9rem' }}>Name (optional)</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="Enter name"
+                      style={{ width: '100%', padding: '6px', fontSize: '0.9rem' }}
+                    />
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Year *</label>
+                      <input
+                        type="number"
+                        name="year"
+                        value={formData.year}
+                        onChange={handleInputChange}
+                        required
+                        min="500"
+                        max="2100"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Month *</label>
+                      <input
+                        type="number"
+                        name="month"
+                        value={formData.month}
+                        onChange={handleInputChange}
+                        required
+                        min="1"
+                        max="12"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Day *</label>
+                      <input
+                        type="number"
+                        name="day"
+                        value={formData.day}
+                        onChange={handleInputChange}
+                        required
+                        min="1"
+                        max="31"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Hour (0-23)</label>
+                      <input
+                        type="number"
+                        name="hour"
+                        value={formData.hour}
+                        onChange={handleInputChange}
+                        min="0"
+                        max="23"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Minute</label>
+                      <input
+                        type="number"
+                        name="minute"
+                        value={formData.minute}
+                        onChange={handleInputChange}
+                        min="0"
+                        max="59"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-group" style={{ marginBottom: '0.75rem' }}>
+                    <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.9rem' }}>Location</label>
+                    <input
+                      type="text"
+                      name="location"
+                      value={formData.location}
+                      onChange={handleInputChange}
+                      placeholder="City, State/Country"
+                      style={{ width: '100%', padding: '6px', fontSize: '0.9rem' }}
+                    />
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Latitude *</label>
+                      <input
+                        type="number"
+                        name="latitude"
+                        value={formData.latitude}
+                        onChange={handleInputChange}
+                        step="0.0001"
+                        required
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Longitude *</label>
+                      <input
+                        type="number"
+                        name="longitude"
+                        value={formData.longitude}
+                        onChange={handleInputChange}
+                        step="0.0001"
+                        required
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-group" style={{ marginBottom: '0.75rem' }}>
+                    <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.9rem' }}>Timezone *</label>
+                    <select
+                      name="timezone"
+                      value={formData.timezone}
+                      onChange={handleInputChange}
+                      required
+                      style={{ width: '100%', padding: '6px', fontSize: '0.9rem' }}
+                    >
+                      <optgroup label="US Timezones">
+                        <option value="America/New_York">Eastern Time (ET)</option>
+                        <option value="America/Chicago">Central Time (CT)</option>
+                        <option value="America/Denver">Mountain Time (MT)</option>
+                        <option value="America/Phoenix">Arizona (no DST)</option>
+                        <option value="America/Los_Angeles">Pacific Time (PT)</option>
+                        <option value="America/Anchorage">Alaska Time (AKT)</option>
+                        <option value="Pacific/Honolulu">Hawaii Time (HST)</option>
+                      </optgroup>
+                      <optgroup label="Europe">
+                        <option value="Europe/London">London (GMT/BST)</option>
+                        <option value="Europe/Paris">Paris (CET/CEST)</option>
+                        <option value="Europe/Berlin">Berlin (CET/CEST)</option>
+                        <option value="Europe/Rome">Rome (CET/CEST)</option>
+                        <option value="Europe/Athens">Athens (EET/EEST)</option>
+                        <option value="Europe/Moscow">Moscow (MSK)</option>
+                      </optgroup>
+                      <optgroup label="Asia">
+                        <option value="Asia/Dubai">Dubai (GST)</option>
+                        <option value="Asia/Kolkata">India (IST)</option>
+                        <option value="Asia/Bangkok">Bangkok (ICT)</option>
+                        <option value="Asia/Singapore">Singapore (SGT)</option>
+                        <option value="Asia/Hong_Kong">Hong Kong (HKT)</option>
+                        <option value="Asia/Tokyo">Tokyo (JST)</option>
+                        <option value="Asia/Seoul">Seoul (KST)</option>
+                      </optgroup>
+                      <optgroup label="Australia & Pacific">
+                        <option value="Australia/Perth">Perth (AWST)</option>
+                        <option value="Australia/Adelaide">Adelaide (ACST/ACDT)</option>
+                        <option value="Australia/Sydney">Sydney (AEST/AEDT)</option>
+                        <option value="Pacific/Auckland">Auckland (NZST/NZDT)</option>
+                      </optgroup>
+                      <optgroup label="Americas">
+                        <option value="America/Toronto">Toronto (ET)</option>
+                        <option value="America/Vancouver">Vancouver (PT)</option>
+                        <option value="America/Mexico_City">Mexico City (CST)</option>
+                        <option value="America/Sao_Paulo">São Paulo (BRT)</option>
+                        <option value="America/Buenos_Aires">Buenos Aires (ART)</option>
+                      </optgroup>
+                      <optgroup label="Africa & Middle East">
+                        <option value="Africa/Cairo">Cairo (EET)</option>
+                        <option value="Africa/Johannesburg">Johannesburg (SAST)</option>
+                        <option value="Asia/Jerusalem">Jerusalem (IST)</option>
+                      </optgroup>
+                    </select>
+                  </div>
+
+                  <div className="form-group">
+                    <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.9rem' }}>House System</label>
+                    <select
+                      name="houseSystem"
+                      value={formData.houseSystem}
+                      onChange={handleInputChange}
+                      style={{ width: '100%', padding: '6px', fontSize: '0.9rem' }}
+                    >
+                      <option value="placidus">Placidus</option>
+                      <option value="koch">Koch</option>
+                      <option value="whole-sign">Whole Sign</option>
+                      <option value="equal-house">Equal House</option>
+                      <option value="campanus">Campanus</option>
+                      <option value="regiomontanus">Regiomontanus</option>
+                      <option value="topocentric">Topocentric</option>
+                    </select>
+                  </div>
+                </div>
+
                 <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: 'white', borderRadius: '8px', textAlign: 'left' }}>
                   <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '0.5rem' }}>
                         <input
