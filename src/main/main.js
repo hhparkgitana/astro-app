@@ -128,6 +128,32 @@ function longitudeToZodiac(longitude) {
   return `${signs[signIndex]} ${degreesInSign.toFixed(2)}°`;
 }
 
+// Helper function to determine which house a planet is in
+function getPlanetHouse(planetLongitude, houseCusps) {
+  // House cusps are in order: houses[0] = 1st house cusp (Ascendant), houses[1] = 2nd house cusp, etc.
+  for (let i = 0; i < 12; i++) {
+    const currentCusp = houseCusps[i];
+    const nextCusp = houseCusps[(i + 1) % 12]; // Wrap around to house 1
+
+    // Check if planet is between current cusp and next cusp
+    // Need to handle wraparound at 360°/0°
+    if (nextCusp > currentCusp) {
+      // Normal case: no wraparound
+      if (planetLongitude >= currentCusp && planetLongitude < nextCusp) {
+        return i + 1; // House numbers are 1-12
+      }
+    } else {
+      // Wraparound case: current cusp is near 360°, next cusp is near 0°
+      if (planetLongitude >= currentCusp || planetLongitude < nextCusp) {
+        return i + 1;
+      }
+    }
+  }
+
+  // Fallback: should never reach here, but return 1 if we do
+  return 1;
+}
+
 // Handle Claude AI chat requests
 ipcMain.handle('chat-with-claude', async (event, params) => {
   try {
@@ -160,10 +186,11 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
 
         // Natal Planets
         contextMessage += `NATAL PLANETS:\n`;
-        if (chart.planets) {
+        if (chart.planets && chart.houses) {
           Object.values(chart.planets).forEach(planet => {
             const sabian = getSabianSymbol(planet.longitude);
-            contextMessage += `${planet.name}: ${longitudeToZodiac(planet.longitude)}\n`;
+            const house = getPlanetHouse(planet.longitude, chart.houses);
+            contextMessage += `${planet.name}: ${longitudeToZodiac(planet.longitude)} in House ${house}\n`;
             contextMessage += `  Sabian Symbol: ${sabian.sign} ${sabian.degree}° - "${sabian.symbol}"\n`;
             contextMessage += `  Keynote: ${sabian.keynote}\n`;
           });
@@ -195,10 +222,11 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
         // TRANSITS if available
         if (chart.hasTransits && chart.transits) {
           contextMessage += `\n⭐ CURRENT TRANSITS (${chart.transits.date} at ${chart.transits.time}):\n`;
-          if (chart.transits.planets) {
+          if (chart.transits.planets && chart.houses) {
             Object.values(chart.transits.planets).forEach(planet => {
               const sabian = getSabianSymbol(planet.longitude);
-              contextMessage += `Transit ${planet.name}: ${longitudeToZodiac(planet.longitude)}\n`;
+              const house = getPlanetHouse(planet.longitude, chart.houses);
+              contextMessage += `Transit ${planet.name}: ${longitudeToZodiac(planet.longitude)} in House ${house}\n`;
               contextMessage += `  Sabian Symbol: ${sabian.sign} ${sabian.degree}° - "${sabian.symbol}"\n`;
             });
           }
@@ -245,6 +273,9 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
           system: `You are an expert professional astrologer.
 
 You must analyze astrological charts using ONLY the data provided. Never invent or assume aspects.
+
+HOUSE PLACEMENTS:
+Each planet position includes its house placement (1-12). Houses represent different life areas and contexts for planetary expression. Always consider both sign and house when interpreting planetary placements.
 
 SECONDARY PROGRESSIONS:
 This application supports secondary progressions using the day-for-a-year method. When Chart B shows progressed planets, interpret them as symbolic timing showing inner development and maturation. Progressed Sun moves ~1° per year, progressed Moon ~13° per year. Outer planets barely move in progressions.
