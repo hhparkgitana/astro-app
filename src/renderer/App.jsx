@@ -1072,6 +1072,76 @@ function App() {
     setLoadingB(false);
   };
 
+  // Clear Chart A
+  const clearChartA = () => {
+    setFormData({
+      name: '',
+      year: '1990',
+      month: '1',
+      day: '1',
+      hour: '12',
+      minute: '0',
+      latitude: '40.7128',
+      longitude: '-74.0060',
+      location: 'New York, NY',
+      timezone: 'America/New_York',
+      houseSystem: 'placidus',
+      showTransits: false,
+      showProgressions: false,
+      transitYear: new Date().getFullYear().toString(),
+      transitMonth: (new Date().getMonth() + 1).toString(),
+      transitDay: new Date().getDate().toString(),
+      transitHour: new Date().getHours().toString(),
+      transitMinute: new Date().getMinutes().toString(),
+      progressionYear: new Date().getFullYear().toString(),
+      progressionMonth: (new Date().getMonth() + 1).toString(),
+      progressionDay: new Date().getDate().toString(),
+      progressionHour: new Date().getHours().toString(),
+      progressionMinute: new Date().getMinutes().toString(),
+    });
+    setChartData(null);
+    setActiveAspects(new Set());
+    setActiveTransitAspects(new Set());
+    setActiveProgressionNatalAspects(new Set());
+    setActiveTransitProgressionAspects(new Set());
+    setShowNatalAspects(true);
+  };
+
+  // Clear Chart B
+  const clearChartB = () => {
+    setFormDataB({
+      name: '',
+      year: '1990',
+      month: '1',
+      day: '1',
+      hour: '12',
+      minute: '0',
+      latitude: '40.7128',
+      longitude: '-74.0060',
+      location: 'New York, NY',
+      timezone: 'America/New_York',
+      houseSystem: 'placidus',
+      showTransits: false,
+      showProgressions: false,
+      transitYear: new Date().getFullYear().toString(),
+      transitMonth: (new Date().getMonth() + 1).toString(),
+      transitDay: new Date().getDate().toString(),
+      transitHour: new Date().getHours().toString(),
+      transitMinute: new Date().getMinutes().toString(),
+      progressionYear: new Date().getFullYear().toString(),
+      progressionMonth: (new Date().getMonth() + 1).toString(),
+      progressionDay: new Date().getDate().toString(),
+      progressionHour: new Date().getHours().toString(),
+      progressionMinute: new Date().getMinutes().toString(),
+    });
+    setChartDataB(null);
+    setActiveAspectsB(new Set());
+    setActiveTransitAspectsB(new Set());
+    setActiveProgressionNatalAspectsB(new Set());
+    setActiveTransitProgressionAspectsB(new Set());
+    setShowNatalAspectsB(true);
+  };
+
   // Calculate Secondary Progressions
   const calculateProgressions = async () => {
     if (!chartData || !chartData.success) {
@@ -1950,10 +2020,8 @@ function App() {
                 >
                   📚 Load Chart A from Database
                 </button>
-                {formData.name && (
-                  <>
-                    <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: 'white', borderRadius: '8px', textAlign: 'left' }}>
-                      <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '0.5rem' }}>
+                <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: 'white', borderRadius: '8px', textAlign: 'left' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '0.5rem' }}>
                         <input
                           type="checkbox"
                           name="showTransits"
@@ -1962,8 +2030,8 @@ function App() {
                           style={{ marginRight: '8px', width: '18px', height: '18px' }}
                         />
                         <span style={{ fontWeight: 'bold', fontSize: '0.9rem' }}>Show Transits (Bi-Wheel)</span>
-                      </label>
-                      <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '0.5rem' }}>
+                  </label>
+                  <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '0.5rem' }}>
                         <input
                           type="checkbox"
                           name="showProgressions"
@@ -1973,8 +2041,8 @@ function App() {
                         />
                         <span style={{ fontWeight: 'bold', fontSize: '0.9rem' }}>Show Progressions (Bi-Wheel)</span>
                       </label>
-                      {formData.showTransits && (
-                        <div style={{ marginTop: '0.5rem', paddingLeft: '26px' }}>
+                  {formData.showTransits && (
+                    <div style={{ marginTop: '0.5rem', paddingLeft: '26px' }}>
                           <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
                             <input type="number" name="transitYear" value={formData.transitYear} onChange={handleInputChange} placeholder="Year" style={{ width: '70px', padding: '4px', fontSize: '0.85rem' }} />
                             <input type="number" name="transitMonth" value={formData.transitMonth} onChange={handleInputChange} placeholder="Mo" min="1" max="12" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
@@ -2003,17 +2071,21 @@ function App() {
                         </div>
                       )}
                     </div>
-                    <button
-                      className="load-chart-btn"
-                      onClick={calculateChartA}
-                      disabled={loading}
-                      style={{ marginTop: '1rem' }}
-                    >
-                      {loading ? '⏳ Calculating...' : '🔮 Calculate Chart A'}
-                    </button>
-
-                  </>
-                )}
+                <button
+                  className="load-chart-btn"
+                  onClick={calculateChartA}
+                  disabled={loading}
+                  style={{ marginTop: '1rem' }}
+                >
+                  {loading ? '⏳ Calculating...' : '🔮 Calculate Chart A'}
+                </button>
+                <button
+                  className="load-chart-btn"
+                  onClick={clearChartA}
+                  style={{ marginTop: '0.5rem', backgroundColor: '#dc3545', borderColor: '#dc3545' }}
+                >
+                  🗑️ Clear Chart A
+                </button>
               </div>
               {chartData && chartData.success && (
                 <div className="chart-results">
@@ -2074,10 +2146,8 @@ function App() {
                 >
                   📚 Load Chart B from Database
                 </button>
-                {formDataB.name && (
-                  <>
-                    <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: 'white', borderRadius: '8px', textAlign: 'left' }}>
-                      <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '0.5rem' }}>
+                <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: 'white', borderRadius: '8px', textAlign: 'left' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '0.5rem' }}>
                         <input
                           type="checkbox"
                           name="showTransits"
@@ -2086,8 +2156,8 @@ function App() {
                           style={{ marginRight: '8px', width: '18px', height: '18px' }}
                         />
                         <span style={{ fontWeight: 'bold', fontSize: '0.9rem' }}>Show Transits (Bi-Wheel)</span>
-                      </label>
-                      <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '0.5rem' }}>
+                  </label>
+                  <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '0.5rem' }}>
                         <input
                           type="checkbox"
                           name="showProgressions"
@@ -2127,16 +2197,21 @@ function App() {
                         </div>
                       )}
                     </div>
-                    <button
-                      className="load-chart-btn"
-                      onClick={calculateChartB}
-                      disabled={loadingB}
-                      style={{ marginTop: '1rem' }}
-                    >
-                      {loadingB ? '⏳ Calculating...' : '🔮 Calculate Chart B'}
-                    </button>
-                  </>
-                )}
+                <button
+                  className="load-chart-btn"
+                  onClick={calculateChartB}
+                  disabled={loadingB}
+                  style={{ marginTop: '1rem' }}
+                >
+                  {loadingB ? '⏳ Calculating...' : '🔮 Calculate Chart B'}
+                </button>
+                <button
+                  className="load-chart-btn"
+                  onClick={clearChartB}
+                  style={{ marginTop: '0.5rem', backgroundColor: '#dc3545', borderColor: '#dc3545' }}
+                >
+                  🗑️ Clear Chart B
+                </button>
               </div>
               {chartDataB && chartDataB.success && (
                 <div className="chart-results">
