@@ -14,12 +14,16 @@ function App() {
   const [searchingLocation, setSearchingLocation] = useState(false);
   const [activeAspects, setActiveAspects] = useState(new Set());
   const [activeTransitAspects, setActiveTransitAspects] = useState(new Set());
+  const [activeProgressionNatalAspects, setActiveProgressionNatalAspects] = useState(new Set());
+  const [activeTransitProgressionAspects, setActiveTransitProgressionAspects] = useState(new Set());
   const [showNatalAspects, setShowNatalAspects] = useState(true);
 
   // Orb settings for each aspect type
   const [natalOrb, setNatalOrb] = useState(8);
   const [transitOrb, setTransitOrb] = useState(8);
+  const [progressionNatalOrb, setProgressionNatalOrb] = useState(8);
   const [transitTransitOrb, setTransitTransitOrb] = useState(8);
+  const [transitProgressionOrb, setTransitProgressionOrb] = useState(8);
 
   // Famous charts browser
   const [isBrowserOpen, setIsBrowserOpen] = useState(false);
@@ -36,6 +40,8 @@ function App() {
   const [loadingB, setLoadingB] = useState(false);
   const [activeAspectsB, setActiveAspectsB] = useState(new Set());
   const [activeTransitAspectsB, setActiveTransitAspectsB] = useState(new Set());
+  const [activeProgressionNatalAspectsB, setActiveProgressionNatalAspectsB] = useState(new Set());
+  const [activeTransitProgressionAspectsB, setActiveTransitProgressionAspectsB] = useState(new Set());
   const [showNatalAspectsB, setShowNatalAspectsB] = useState(true);
 
   const [formData, setFormData] = useState({
@@ -214,6 +220,56 @@ function App() {
     return aspects;
   };
 
+  // Calculate aspects between transit and progression planets
+  const calculateTransitProgressionAspects = (transitPlanets, progressionPlanets, orb = 8) => {
+    const aspects = [];
+    const transitArray = Object.entries(transitPlanets).map(([key, planet]) => ({
+      key,
+      name: planet.name,
+      longitude: planet.longitude,
+      velocity: planet.velocity || 0
+    }));
+    const progressionArray = Object.entries(progressionPlanets).map(([key, planet]) => ({
+      key,
+      name: planet.name,
+      longitude: planet.longitude,
+      velocity: planet.velocity || 0
+    }));
+
+    // Calculate aspects between each transit planet and each progression planet
+    for (const transitPlanet of transitArray) {
+      for (const progressionPlanet of progressionArray) {
+        // Skip North Node - South Node aspect
+        if ((transitPlanet.name === 'North Node' && progressionPlanet.name === 'South Node') ||
+            (transitPlanet.name === 'South Node' && progressionPlanet.name === 'North Node')) {
+          continue;
+        }
+
+        const distance = getAngularDistance(transitPlanet.longitude, progressionPlanet.longitude);
+        const aspect = findAspect(
+          distance,
+          orb,
+          transitPlanet.velocity,
+          progressionPlanet.velocity,
+          transitPlanet.longitude,
+          progressionPlanet.longitude
+        );
+
+        if (aspect) {
+          aspects.push({
+            planet1: transitPlanet.name,
+            planet1Key: transitPlanet.key,
+            planet2: progressionPlanet.name,
+            planet2Key: progressionPlanet.key,
+            ...aspect
+          });
+        }
+      }
+    }
+
+    return aspects;
+  };
+
   // Handle orb changes and recalculate aspects
   const handleNatalOrbChange = (newOrb) => {
     setNatalOrb(newOrb);
@@ -241,11 +297,41 @@ function App() {
     }
   };
 
+  const handleProgressionNatalOrbChange = (newOrb) => {
+    setProgressionNatalOrb(newOrb);
+    if (chartData && chartData.planets && chartData.progressions && chartData.progressions.planets) {
+      const newProgressionAspects = calculateTransitAspects(chartData.planets, chartData.progressions.planets, newOrb);
+      setChartData({ ...chartData, progressionNatalAspects: newProgressionAspects });
+      // Update active progression-natal aspects
+      const allProgressionAspectKeys = new Set(
+        newProgressionAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+      );
+      setActiveProgressionNatalAspects(allProgressionAspectKeys);
+    }
+  };
+
   const handleTransitTransitOrbChange = (newOrb) => {
     setTransitTransitOrb(newOrb);
     if (chartData && chartData.transits && chartData.transits.planets) {
       const newTransitTransitAspects = calculateTransitToTransitAspects(chartData.transits.planets, newOrb);
       setChartData({ ...chartData, transitTransitAspects: newTransitTransitAspects });
+    }
+  };
+
+  const handleTransitProgressionOrbChange = (newOrb) => {
+    setTransitProgressionOrb(newOrb);
+    if (chartData && chartData.transits && chartData.transits.planets && chartData.progressions && chartData.progressions.planets) {
+      const newTransitProgressionAspects = calculateTransitProgressionAspects(
+        chartData.transits.planets,
+        chartData.progressions.planets,
+        newOrb
+      );
+      setChartData({ ...chartData, transitProgressionAspects: newTransitProgressionAspects });
+      // Update active transit-progression aspects
+      const allTransitProgressionAspectKeys = new Set(
+        newTransitProgressionAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+      );
+      setActiveTransitProgressionAspects(allTransitProgressionAspectKeys);
     }
   };
 
@@ -279,6 +365,35 @@ function App() {
     if (chartDataB && chartDataB.transits && chartDataB.transits.planets) {
       const newTransitTransitAspects = calculateTransitToTransitAspects(chartDataB.transits.planets, newOrb);
       setChartDataB({ ...chartDataB, transitTransitAspects: newTransitTransitAspects });
+    }
+  };
+
+  const handleTransitProgressionOrbChangeB = (newOrb) => {
+    setTransitProgressionOrb(newOrb);
+    if (chartDataB && chartDataB.transits && chartDataB.transits.planets && chartDataB.progressions && chartDataB.progressions.planets) {
+      const newTransitProgressionAspects = calculateTransitProgressionAspects(
+        chartDataB.transits.planets,
+        chartDataB.progressions.planets,
+        newOrb
+      );
+      setChartDataB({ ...chartDataB, transitProgressionAspects: newTransitProgressionAspects });
+      // Update active transit-progression aspects for Chart B
+      const allTransitProgressionAspectKeys = new Set(
+        newTransitProgressionAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+      );
+      setActiveTransitProgressionAspectsB(allTransitProgressionAspectKeys);
+    }
+  };
+
+  const handleProgressionNatalOrbChangeB = (newOrb) => {
+    setProgressionNatalOrb(newOrb);
+    if (chartDataB && chartDataB.planets && chartDataB.progressions && chartDataB.progressions.planets) {
+      const newProgressionAspects = calculateTransitAspects(chartDataB.planets, chartDataB.progressions.planets, newOrb);
+      setChartDataB({ ...chartDataB, progressionNatalAspects: newProgressionAspects });
+      const allProgressionAspectKeys = new Set(
+        newProgressionAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+      );
+      setActiveProgressionNatalAspectsB(allProgressionAspectKeys);
     }
   };
 
@@ -440,17 +555,40 @@ function App() {
           // Calculate progressed-to-natal aspects
           const progressedAspects = calculateTransitAspects(result.planets, progressedData.planets, transitOrb);
           console.log('Progressed-to-natal aspects:', progressedAspects);
-          result.transitAspects = progressedAspects;
 
-          // Set all progressed aspects as active by default
-          const allProgressedAspectKeys = new Set(
-            progressedAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
-          );
-          setActiveTransitAspects(allProgressedAspectKeys);
+          // Always store progression-natal aspects separately
+          result.progressionNatalAspects = progressedAspects;
+
+          // Only set as transitAspects if transits are not also enabled (for backwards compatibility)
+          if (!formData.showTransits) {
+            result.transitAspects = progressedAspects;
+
+            // Set all progressed aspects as active by default
+            const allProgressedAspectKeys = new Set(
+              progressedAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+            );
+            setActiveTransitAspects(allProgressedAspectKeys);
+          }
 
           // Store progressed data separately
           progressionsData = progressedData;
         }
+      }
+
+      // Calculate transit-to-progression aspects if both exist
+      if (transitData && progressionsData) {
+        const transitProgressionAspects = calculateTransitProgressionAspects(
+          transitData.planets,
+          progressionsData.planets,
+          transitProgressionOrb
+        );
+        console.log('Transit-to-progression aspects:', transitProgressionAspects);
+        result.transitProgressionAspects = transitProgressionAspects;
+        // Set all transit-progression aspects as active by default
+        const allTransitProgressionAspectKeys = new Set(
+          transitProgressionAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+        );
+        setActiveTransitProgressionAspects(allTransitProgressionAspectKeys);
       }
 
       setChartData({ ...result, transits: transitData, progressions: progressionsData });
@@ -712,17 +850,39 @@ function App() {
 
           // Calculate progressed-to-natal aspects
           const progressedAspects = calculateTransitAspects(result.planets, progressedData.planets, transitOrb);
-          result.transitAspects = progressedAspects;
 
-          // Set all progressed aspects as active by default
-          const allProgressedAspectKeys = new Set(
-            progressedAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
-          );
-          setActiveTransitAspects(allProgressedAspectKeys);
+          // Always store progression-natal aspects separately
+          result.progressionNatalAspects = progressedAspects;
 
-          // Store progressed data in transits field
-          transitData = progressedData;
+          // Only set as transitAspects if transits are not also enabled (for backwards compatibility)
+          if (!formData.showTransits) {
+            result.transitAspects = progressedAspects;
+
+            // Set all progressed aspects as active by default
+            const allProgressedAspectKeys = new Set(
+              progressedAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+            );
+            setActiveTransitAspects(allProgressedAspectKeys);
+          }
+
+          // Store progressed data separately
+          progressionsData = progressedData;
         }
+      }
+
+      // Calculate transit-to-progression aspects if both exist
+      if (transitData && progressionsData) {
+        const transitProgressionAspects = calculateTransitProgressionAspects(
+          transitData.planets,
+          progressionsData.planets,
+          transitProgressionOrb
+        );
+        result.transitProgressionAspects = transitProgressionAspects;
+        // Set all transit-progression aspects as active by default
+        const allTransitProgressionAspectKeys = new Set(
+          transitProgressionAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+        );
+        setActiveTransitProgressionAspects(allTransitProgressionAspectKeys);
       }
 
       setChartData({ ...result, transits: transitData, progressions: progressionsData });
@@ -868,17 +1028,39 @@ function App() {
 
           // Calculate progressed-to-natal aspects
           const progressedAspects = calculateTransitAspects(result.planets, progressedData.planets, transitOrb);
-          result.transitAspects = progressedAspects;
 
-          // Set all progressed aspects as active by default
-          const allProgressedAspectKeys = new Set(
-            progressedAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
-          );
-          setActiveTransitAspectsB(allProgressedAspectKeys);
+          // Always store progression-natal aspects separately
+          result.progressionNatalAspects = progressedAspects;
 
-          // Store progressed data in transits field
-          transitData = progressedData;
+          // Only set as transitAspects if transits are not also enabled (for backwards compatibility)
+          if (!formDataB.showTransits) {
+            result.transitAspects = progressedAspects;
+
+            // Set all progressed aspects as active by default
+            const allProgressedAspectKeys = new Set(
+              progressedAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+            );
+            setActiveTransitAspectsB(allProgressedAspectKeys);
+          }
+
+          // Store progressed data separately
+          progressionsData = progressedData;
         }
+      }
+
+      // Calculate transit-to-progression aspects if both exist
+      if (transitData && progressionsData) {
+        const transitProgressionAspects = calculateTransitProgressionAspects(
+          transitData.planets,
+          progressionsData.planets,
+          transitProgressionOrb
+        );
+        result.transitProgressionAspects = transitProgressionAspects;
+        // Set all transit-progression aspects as active by default
+        const allTransitProgressionAspectKeys = new Set(
+          transitProgressionAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+        );
+        setActiveTransitProgressionAspectsB(allTransitProgressionAspectKeys);
       }
 
       setChartDataB({ ...result, transits: transitData, progressions: progressionsData });
@@ -1017,6 +1199,44 @@ function App() {
     setActiveTransitAspects(newActiveAspects);
   };
 
+  const handleProgressionNatalAspectToggle = (aspectOrAspects) => {
+    // Support both single aspect and array of aspects
+    const aspects = Array.isArray(aspectOrAspects) ? aspectOrAspects : [aspectOrAspects];
+
+    const newActiveAspects = new Set(activeProgressionNatalAspects);
+
+    aspects.forEach(aspect => {
+      const key = `${aspect.planet1}-${aspect.planet2}`;
+
+      if (newActiveAspects.has(key)) {
+        newActiveAspects.delete(key);
+      } else {
+        newActiveAspects.add(key);
+      }
+    });
+
+    setActiveProgressionNatalAspects(newActiveAspects);
+  };
+
+  const handleTransitProgressionAspectToggle = (aspectOrAspects) => {
+    // Support both single aspect and array of aspects
+    const aspects = Array.isArray(aspectOrAspects) ? aspectOrAspects : [aspectOrAspects];
+
+    const newActiveAspects = new Set(activeTransitProgressionAspects);
+
+    aspects.forEach(aspect => {
+      const key = `${aspect.planet1}-${aspect.planet2}`;
+
+      if (newActiveAspects.has(key)) {
+        newActiveAspects.delete(key);
+      } else {
+        newActiveAspects.add(key);
+      }
+    });
+
+    setActiveTransitProgressionAspects(newActiveAspects);
+  };
+
   // Chart B aspect toggle handlers
   const handleAspectToggleB = (aspectOrAspects) => {
     const aspects = Array.isArray(aspectOrAspects) ? aspectOrAspects : [aspectOrAspects];
@@ -1048,6 +1268,38 @@ function App() {
     });
 
     setActiveTransitAspectsB(newActiveAspects);
+  };
+
+  const handleTransitProgressionAspectToggleB = (aspectOrAspects) => {
+    const aspects = Array.isArray(aspectOrAspects) ? aspectOrAspects : [aspectOrAspects];
+    const newActiveAspects = new Set(activeTransitProgressionAspectsB);
+
+    aspects.forEach(aspect => {
+      const key = `${aspect.planet1}-${aspect.planet2}`;
+      if (newActiveAspects.has(key)) {
+        newActiveAspects.delete(key);
+      } else {
+        newActiveAspects.add(key);
+      }
+    });
+
+    setActiveTransitProgressionAspectsB(newActiveAspects);
+  };
+
+  const handleProgressionNatalAspectToggleB = (aspectOrAspects) => {
+    const aspects = Array.isArray(aspectOrAspects) ? aspectOrAspects : [aspectOrAspects];
+    const newActiveAspects = new Set(activeProgressionNatalAspectsB);
+
+    aspects.forEach(aspect => {
+      const key = `${aspect.planet1}-${aspect.planet2}`;
+      if (newActiveAspects.has(key)) {
+        newActiveAspects.delete(key);
+      } else {
+        newActiveAspects.add(key);
+      }
+    });
+
+    setActiveProgressionNatalAspectsB(newActiveAspects);
   };
 
   const searchLocation = async () => {
@@ -1599,14 +1851,20 @@ function App() {
               onAspectToggle={handleAspectToggle}
               activeTransitAspects={activeTransitAspects}
               onTransitAspectToggle={handleTransitAspectToggle}
+              activeProgressionNatalAspects={activeProgressionNatalAspects}
+              onProgressionNatalAspectToggle={handleProgressionNatalAspectToggle}
               showNatalAspects={showNatalAspects}
               setShowNatalAspects={setShowNatalAspects}
               natalOrb={natalOrb}
               onNatalOrbChange={handleNatalOrbChange}
               transitOrb={transitOrb}
               onTransitOrbChange={handleTransitOrbChange}
+              progressionNatalOrb={progressionNatalOrb}
+              onProgressionNatalOrbChange={handleProgressionNatalOrbChange}
               transitTransitOrb={transitTransitOrb}
               onTransitTransitOrbChange={handleTransitTransitOrbChange}
+              transitProgressionOrb={transitProgressionOrb}
+              onTransitProgressionOrbChange={handleTransitProgressionOrbChange}
               showProgressions={formData.showProgressions}
             />
 
@@ -1616,6 +1874,10 @@ function App() {
               onAspectToggle={handleAspectToggle}
               activeTransitAspects={activeTransitAspects}
               onTransitAspectToggle={handleTransitAspectToggle}
+              activeProgressionNatalAspects={activeProgressionNatalAspects}
+              onProgressionNatalAspectToggle={handleProgressionNatalAspectToggle}
+              activeTransitProgressionAspects={activeTransitProgressionAspects}
+              onTransitProgressionAspectToggle={handleTransitProgressionAspectToggle}
               showNatalAspects={showNatalAspects}
               showProgressions={formData.showProgressions}
             />
@@ -1757,18 +2019,25 @@ function App() {
                     <ChartWheel
                       chartData={chartData}
                       transitData={chartData.transits}
+                      progressionsData={chartData.progressions}
                       activeAspects={activeAspects}
                       activeTransitAspects={activeTransitAspects}
+                      activeProgressionNatalAspects={activeProgressionNatalAspects}
                       onAspectToggle={handleAspectToggle}
                       onTransitAspectToggle={handleTransitAspectToggle}
+                      onProgressionNatalAspectToggle={handleProgressionNatalAspectToggle}
                       showNatalAspects={showNatalAspects}
                       setShowNatalAspects={setShowNatalAspects}
                       natalOrb={natalOrb}
                       onNatalOrbChange={handleNatalOrbChange}
                       transitOrb={transitOrb}
                       onTransitOrbChange={handleTransitOrbChange}
+                      progressionNatalOrb={progressionNatalOrb}
+                      onProgressionNatalOrbChange={handleProgressionNatalOrbChange}
                       transitTransitOrb={transitTransitOrb}
                       onTransitTransitOrbChange={handleTransitTransitOrbChange}
+                      transitProgressionOrb={transitProgressionOrb}
+                      onTransitProgressionOrbChange={handleTransitProgressionOrbChange}
                       showProgressions={formData.showProgressions}
                     />
                   </div>
@@ -1779,6 +2048,10 @@ function App() {
                     onAspectToggle={handleAspectToggle}
                     activeTransitAspects={activeTransitAspects}
                     onTransitAspectToggle={handleTransitAspectToggle}
+                    activeProgressionNatalAspects={activeProgressionNatalAspects}
+                    onProgressionNatalAspectToggle={handleProgressionNatalAspectToggle}
+                    activeTransitProgressionAspects={activeTransitProgressionAspects}
+                    onTransitProgressionAspectToggle={handleTransitProgressionAspectToggle}
                     showNatalAspects={showNatalAspects}
                     showProgressions={formData.showProgressions}
                   />
@@ -1870,16 +2143,22 @@ function App() {
                       progressionsData={chartDataB.progressions}
                       activeAspects={activeAspectsB}
                       activeTransitAspects={activeTransitAspectsB}
+                      activeProgressionNatalAspects={activeProgressionNatalAspectsB}
                       onAspectToggle={handleAspectToggleB}
                       onTransitAspectToggle={handleTransitAspectToggleB}
+                      onProgressionNatalAspectToggle={handleProgressionNatalAspectToggleB}
                       showNatalAspects={showNatalAspectsB}
                       setShowNatalAspects={setShowNatalAspectsB}
                       natalOrb={natalOrb}
                       onNatalOrbChange={handleNatalOrbChangeB}
                       transitOrb={transitOrb}
                       onTransitOrbChange={handleTransitOrbChangeB}
+                      progressionNatalOrb={progressionNatalOrb}
+                      onProgressionNatalOrbChange={handleProgressionNatalOrbChangeB}
                       transitTransitOrb={transitTransitOrb}
                       onTransitTransitOrbChange={handleTransitTransitOrbChangeB}
+                      transitProgressionOrb={transitProgressionOrb}
+                      onTransitProgressionOrbChange={handleTransitProgressionOrbChangeB}
                       showProgressions={formDataB.showProgressions}
                     />
                   </div>
@@ -1890,6 +2169,10 @@ function App() {
                     onAspectToggle={handleAspectToggleB}
                     activeTransitAspects={activeTransitAspectsB}
                     onTransitAspectToggle={handleTransitAspectToggleB}
+                    activeProgressionNatalAspects={activeProgressionNatalAspectsB}
+                    onProgressionNatalAspectToggle={handleProgressionNatalAspectToggleB}
+                    activeTransitProgressionAspects={activeTransitProgressionAspectsB}
+                    onTransitProgressionAspectToggle={handleTransitProgressionAspectToggleB}
                     showNatalAspects={showNatalAspectsB}
                     showProgressions={formDataB.showProgressions}
                   />

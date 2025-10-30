@@ -21,21 +21,29 @@ function ChartWheel({
   onAspectToggle,
   activeTransitAspects = new Set(),
   onTransitAspectToggle,
+  activeProgressionNatalAspects = new Set(),
+  onProgressionNatalAspectToggle,
   showNatalAspects = true,
   setShowNatalAspects,
   natalOrb = 8,
   onNatalOrbChange,
   transitOrb = 8,
   onTransitOrbChange,
+  progressionNatalOrb = 8,
+  onProgressionNatalOrbChange,
   transitTransitOrb = 8,
   onTransitTransitOrbChange,
+  transitProgressionOrb = 8,
+  onTransitProgressionOrbChange,
   showProgressions = false
 }) {
   const { size, center, radii, colors, glyphs } = CHART_CONFIG;
 
   // Aspect visibility toggles (only transit-specific ones stay local)
   const [showTransitNatalAspects, setShowTransitNatalAspects] = useState(true);
+  const [showProgressionNatalAspects, setShowProgressionNatalAspects] = useState(true);
   const [showTransitAspects, setShowTransitAspects] = useState(false);
+  const [showTransitProgressionAspects, setShowTransitProgressionAspects] = useState(false);
 
   // Custom tooltip state
   const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
@@ -333,6 +341,70 @@ function ChartWheel({
   };
 
   /**
+   * Render progression-to-natal aspect lines (dotted circles) - only in tri-wheel mode
+   */
+  const renderProgressionNatalAspects = () => {
+    if (!chartData.progressionNatalAspects || !progressionsData || !showProgressionNatalAspects) {
+      return null;
+    }
+
+    const ascendant = chartData.ascendant;
+
+    return chartData.progressionNatalAspects.map((aspect, index) => {
+      // Check if this aspect is active/visible
+      const aspectKey = `${aspect.planet1}-${aspect.planet2}`;
+      if (!activeProgressionNatalAspects.has(aspectKey)) return null;
+
+      // Get planet positions (planet1 = progression, planet2 = natal)
+      const progressedPlanet = progressionsData.planets[aspect.planet1Key];
+      const natalPlanet = chartData.planets[aspect.planet2Key];
+
+      if (!progressedPlanet || !natalPlanet) return null;
+
+      // Get positions at their respective radii
+      const pos1 = pointOnCircle(center, center, radii.housesInner - 10, progressedPlanet.longitude, ascendant);
+      const pos2 = pointOnCircle(center, center, radii.housesInner - 10, natalPlanet.longitude, ascendant);
+
+      // Get circle size based on orb
+      const circleRadius = getCircleRadiusForOrb(aspect.orb);
+
+      // Calculate circle positions along the line
+      const points = calculateCirclePointsAlongLine(pos1.x, pos1.y, pos2.x, pos2.y, circleRadius);
+
+      // Color and opacity
+      const color = colors.aspects[aspect.type];
+      const opacity = Math.max(0.3, 1 - (aspect.orb / 8));
+
+      // Format tooltip
+      const applyingSeparating = aspect.applying !== null
+        ? (aspect.applying ? 'Applying' : 'Separating')
+        : 'N/A';
+      const tooltipText = `${aspect.planet1} (Progression) ${glyphs.aspects[aspect.type]} ${aspect.planet2} (Natal) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+
+      return (
+        <g
+          key={`progression-natal-${index}`}
+          onClick={() => onProgressionNatalAspectToggle && onProgressionNatalAspectToggle(aspect)}
+          onMouseEnter={(e) => showTooltip(e, tooltipText)}
+          onMouseLeave={hideTooltip}
+          style={{ cursor: 'pointer' }}
+        >
+          {points.map((point, i) => (
+            <circle
+              key={i}
+              cx={point.x}
+              cy={point.y}
+              r={circleRadius}
+              fill={color}
+              opacity={opacity}
+            />
+          ))}
+        </g>
+      );
+    });
+  };
+
+  /**
    * Render transit-to-transit aspect lines (solid lines on outer ring for tri-wheel)
    */
   const renderTransitTransitAspects = () => {
@@ -395,6 +467,18 @@ function ChartWheel({
           stroke="#ccc"
           strokeWidth="1"
         />
+        {/* Circle separating progressions from transits */}
+        {progressionsData && transitData && (
+          <circle
+            cx={center}
+            cy={center}
+            r={(radii.transit + radii.transitOuter) / 2}
+            fill="none"
+            stroke="#999"
+            strokeWidth="1.5"
+            strokeDasharray="5,5"
+          />
+        )}
         {/* Circle just outside house numbers */}
         <circle
           cx={center}
@@ -493,7 +577,7 @@ function ChartWheel({
                 checked={showTransitNatalAspects}
                 onChange={(e) => setShowTransitNatalAspects(e.target.checked)}
               />
-              <span>Show {showProgressions ? 'Progressed' : 'Transit'}-Natal Aspects</span>
+              <span>Show {transitData ? 'Transit' : 'Progressed'}-Natal Aspects</span>
             </label>
             <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
               <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {transitOrb}°</label>
@@ -509,33 +593,92 @@ function ChartWheel({
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-            <label style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '5px',
-              cursor: 'pointer'
-            }}>
-              <input
-                type="checkbox"
-                checked={showTransitAspects}
-                onChange={(e) => setShowTransitAspects(e.target.checked)}
-              />
-              <span>Show {showProgressions ? 'Progressed' : 'Transit'}-{showProgressions ? 'Progressed' : 'Transit'} Aspects (Tri-Wheel)</span>
-            </label>
-            <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {transitTransitOrb}°</label>
-              <input
-                type="range"
-                min="0"
-                max="10"
-                step="0.5"
-                value={transitTransitOrb}
-                onChange={(e) => onTransitTransitOrbChange && onTransitTransitOrbChange(parseFloat(e.target.value))}
-                style={{ flex: 1 }}
-              />
+          {/* Progression-Natal Aspects (only in tri-wheel mode) */}
+          {transitData && progressionsData && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={showProgressionNatalAspects}
+                  onChange={(e) => setShowProgressionNatalAspects(e.target.checked)}
+                />
+                <span>Show Progression-Natal Aspects</span>
+              </label>
+              <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {progressionNatalOrb}°</label>
+                <input
+                  type="range"
+                  min="0"
+                  max="10"
+                  step="0.5"
+                  value={progressionNatalOrb}
+                  onChange={(e) => onProgressionNatalOrbChange && onProgressionNatalOrbChange(parseFloat(e.target.value))}
+                  style={{ flex: 1 }}
+                />
+              </div>
             </div>
-          </div>
+          )}
+
+          {/* Transit-Transit Aspects (hide in tri-wheel mode - user said too busy) */}
+          {!(transitData && progressionsData) && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+              <label style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '5px',
+                cursor: 'pointer'
+              }}>
+                <input
+                  type="checkbox"
+                  checked={showTransitAspects}
+                  onChange={(e) => setShowTransitAspects(e.target.checked)}
+                />
+                <span>Show {transitData ? 'Transit' : 'Progressed'}-{transitData ? 'Transit' : 'Progressed'} Aspects</span>
+              </label>
+              <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {transitTransitOrb}°</label>
+                <input
+                  type="range"
+                  min="0"
+                  max="10"
+                  step="0.5"
+                  value={transitTransitOrb}
+                  onChange={(e) => onTransitTransitOrbChange && onTransitTransitOrbChange(parseFloat(e.target.value))}
+                  style={{ flex: 1 }}
+                />
+              </div>
+            </div>
+          )}
+
+          {progressionsData && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+              <label style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '5px',
+                cursor: 'pointer'
+              }}>
+                <input
+                  type="checkbox"
+                  checked={showTransitProgressionAspects}
+                  onChange={(e) => setShowTransitProgressionAspects(e.target.checked)}
+                />
+                <span>Show Transit-Progression Aspects (Tri-Wheel)</span>
+              </label>
+              <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {transitProgressionOrb}°</label>
+                <input
+                  type="range"
+                  min="0"
+                  max="10"
+                  step="0.5"
+                  value={transitProgressionOrb}
+                  onChange={(e) => onTransitProgressionOrbChange && onTransitProgressionOrbChange(parseFloat(e.target.value))}
+                  style={{ flex: 1 }}
+                />
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -552,6 +695,7 @@ function ChartWheel({
         {/* Render layers from back to front */}
         <g id="natal-aspect-lines">{renderAspects()}</g>
         <g id="transit-natal-aspect-lines">{renderTransitNatalAspects()}</g>
+        <g id="progression-natal-aspect-lines">{renderProgressionNatalAspects()}</g>
         <g id="transit-transit-aspect-lines">{renderTransitTransitAspects()}</g>
         <g id="houses">{renderHouses()}</g>
         <g id="zodiac-ring">{renderZodiacRing()}</g>
