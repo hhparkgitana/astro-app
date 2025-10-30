@@ -23,6 +23,8 @@ function ChartWheel({
   onTransitAspectToggle,
   activeProgressionNatalAspects = new Set(),
   onProgressionNatalAspectToggle,
+  activeTransitProgressionAspects = new Set(),
+  onTransitProgressionAspectToggle,
   showNatalAspects = true,
   setShowNatalAspects,
   natalOrb = 8,
@@ -453,6 +455,70 @@ function ChartWheel({
   };
 
   /**
+   * Render transit-to-progression aspect lines (for tri-wheel)
+   */
+  const renderTransitProgressionAspects = () => {
+    if (!chartData.transitProgressionAspects || !transitData || !progressionsData || !showTransitProgressionAspects) {
+      return null;
+    }
+
+    const ascendant = chartData.ascendant;
+
+    return chartData.transitProgressionAspects.map((aspect, index) => {
+      // Check if this aspect is active/visible
+      const aspectKey = `${aspect.planet1}-${aspect.planet2}`;
+      if (!activeTransitProgressionAspects.has(aspectKey)) return null;
+
+      // Get transit and progression planet positions
+      const transitPlanet = transitData.planets[aspect.planet1Key];
+      const progressionPlanet = progressionsData.planets[aspect.planet2Key];
+
+      if (!transitPlanet || !progressionPlanet) return null;
+
+      // Get positions at their respective radii
+      const pos1 = pointOnCircle(center, center, radii.housesInner - 10, transitPlanet.longitude, ascendant);
+      const pos2 = pointOnCircle(center, center, radii.housesInner - 10, progressionPlanet.longitude, ascendant);
+
+      // Get circle size based on orb
+      const circleRadius = getCircleRadiusForOrb(aspect.orb);
+
+      // Calculate circle positions along the line
+      const points = calculateCirclePointsAlongLine(pos1.x, pos1.y, pos2.x, pos2.y, circleRadius);
+
+      // Color and opacity
+      const color = colors.aspects[aspect.type];
+      const opacity = Math.max(0.3, 1 - (aspect.orb / 8));
+
+      // Format tooltip
+      const applyingSeparating = aspect.applying !== null
+        ? (aspect.applying ? 'Applying' : 'Separating')
+        : 'N/A';
+      const tooltipText = `${aspect.planet1} (Transit) ${glyphs.aspects[aspect.type]} ${aspect.planet2} (Progression) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+
+      return (
+        <g
+          key={`transit-progression-${index}`}
+          onClick={() => onTransitProgressionAspectToggle && onTransitProgressionAspectToggle(aspect)}
+          onMouseEnter={(e) => showTooltip(e, tooltipText)}
+          onMouseLeave={hideTooltip}
+          style={{ cursor: 'pointer' }}
+        >
+          {points.map((point, i) => (
+            <circle
+              key={i}
+              cx={point.x}
+              cy={point.y}
+              r={circleRadius}
+              fill={color}
+              opacity={opacity}
+            />
+          ))}
+        </g>
+      );
+    });
+  };
+
+  /**
    * Render guide circles to visually separate layers
    */
   const renderGuideCircles = () => {
@@ -696,6 +762,7 @@ function ChartWheel({
         <g id="natal-aspect-lines">{renderAspects()}</g>
         <g id="transit-natal-aspect-lines">{renderTransitNatalAspects()}</g>
         <g id="progression-natal-aspect-lines">{renderProgressionNatalAspects()}</g>
+        <g id="transit-progression-aspect-lines">{renderTransitProgressionAspects()}</g>
         <g id="transit-transit-aspect-lines">{renderTransitTransitAspects()}</g>
         <g id="houses">{renderHouses()}</g>
         <g id="zodiac-ring">{renderZodiacRing()}</g>

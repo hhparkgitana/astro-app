@@ -1853,6 +1853,8 @@ function App() {
               onTransitAspectToggle={handleTransitAspectToggle}
               activeProgressionNatalAspects={activeProgressionNatalAspects}
               onProgressionNatalAspectToggle={handleProgressionNatalAspectToggle}
+              activeTransitProgressionAspects={activeTransitProgressionAspects}
+              onTransitProgressionAspectToggle={handleTransitProgressionAspectToggle}
               showNatalAspects={showNatalAspects}
               setShowNatalAspects={setShowNatalAspects}
               natalOrb={natalOrb}
@@ -2023,9 +2025,11 @@ function App() {
                       activeAspects={activeAspects}
                       activeTransitAspects={activeTransitAspects}
                       activeProgressionNatalAspects={activeProgressionNatalAspects}
+                      activeTransitProgressionAspects={activeTransitProgressionAspects}
                       onAspectToggle={handleAspectToggle}
                       onTransitAspectToggle={handleTransitAspectToggle}
                       onProgressionNatalAspectToggle={handleProgressionNatalAspectToggle}
+                      onTransitProgressionAspectToggle={handleTransitProgressionAspectToggle}
                       showNatalAspects={showNatalAspects}
                       setShowNatalAspects={setShowNatalAspects}
                       natalOrb={natalOrb}
@@ -2144,9 +2148,11 @@ function App() {
                       activeAspects={activeAspectsB}
                       activeTransitAspects={activeTransitAspectsB}
                       activeProgressionNatalAspects={activeProgressionNatalAspectsB}
+                      activeTransitProgressionAspects={activeTransitProgressionAspectsB}
                       onAspectToggle={handleAspectToggleB}
                       onTransitAspectToggle={handleTransitAspectToggleB}
                       onProgressionNatalAspectToggle={handleProgressionNatalAspectToggleB}
+                      onTransitProgressionAspectToggle={handleTransitProgressionAspectToggleB}
                       showNatalAspects={showNatalAspectsB}
                       setShowNatalAspects={setShowNatalAspectsB}
                       natalOrb={natalOrb}
