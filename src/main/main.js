@@ -183,16 +183,13 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
         // Natal Aspects
         if (chart.aspects && chart.aspects.length > 0) {
           contextMessage += `\nNATAL ASPECTS:\n`;
-          chart.aspects.slice(0, 10).forEach(aspect => {
+          chart.aspects.forEach(aspect => {
             contextMessage += `${aspect.planet1} ${aspect.symbol} ${aspect.planet2} (orb: ${aspect.orb.toFixed(1)}°)`;
             if (aspect.applying !== null) {
               contextMessage += ` [${aspect.applying ? 'applying' : 'separating'}]`;
             }
             contextMessage += `\n`;
           });
-          if (chart.aspects.length > 10) {
-            contextMessage += `... and ${chart.aspects.length - 10} more aspects\n`;
-          }
         }
 
         // TRANSITS if available
@@ -209,16 +206,13 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
           // Transit-to-Natal Aspects
           if (chart.transits.transitAspects && chart.transits.transitAspects.length > 0) {
             contextMessage += `\nTRANSIT-TO-NATAL ASPECTS:\n`;
-            chart.transits.transitAspects.slice(0, 15).forEach(aspect => {
+            chart.transits.transitAspects.forEach(aspect => {
               contextMessage += `Transit ${aspect.planet1} ${aspect.symbol} Natal ${aspect.planet2} (orb: ${aspect.orb.toFixed(1)}°)`;
               if (aspect.applying !== null) {
                 contextMessage += ` [${aspect.applying ? 'applying' : 'separating'}]`;
               }
               contextMessage += `\n`;
             });
-            if (chart.transits.transitAspects.length > 15) {
-              contextMessage += `... and ${chart.transits.transitAspects.length - 15} more transit aspects\n`;
-            }
           }
         }
 
