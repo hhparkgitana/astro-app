@@ -332,10 +332,10 @@ function ChartWheel({
   };
 
   /**
-   * Render transit-to-transit aspect lines (solid lines, only when natal hidden)
+   * Render transit-to-transit aspect lines (solid lines on outer ring for tri-wheel)
    */
   const renderTransitTransitAspects = () => {
-    if (!chartData.transitTransitAspects || !transitData || !showTransitAspects || showNatalAspects) return null;
+    if (!chartData.transitTransitAspects || !transitData || !showTransitAspects) return null;
 
     const ascendant = chartData.ascendant;
 
@@ -346,9 +346,10 @@ function ChartWheel({
 
       if (!planet1 || !planet2) return null;
 
-      // Keep aspect lines inside the innermost circle
-      const pos1 = pointOnCircle(center, center, radii.housesInner - 10, planet1.longitude, ascendant);
-      const pos2 = pointOnCircle(center, center, radii.housesInner - 10, planet2.longitude, ascendant);
+      // Draw aspect lines at the outer transit radius (for tri-wheel visualization)
+      const aspectRadius = radii.transit + 20; // Place between transit and transitOuter
+      const pos1 = pointOnCircle(center, center, aspectRadius, planet1.longitude, ascendant);
+      const pos2 = pointOnCircle(center, center, aspectRadius, planet2.longitude, ascendant);
 
       // Calculate line style based on orb
       const opacity = 1 - (aspect.orb / 8);
@@ -512,16 +513,14 @@ function ChartWheel({
               display: 'flex',
               alignItems: 'center',
               gap: '5px',
-              cursor: showNatalAspects ? 'not-allowed' : 'pointer',
-              opacity: showNatalAspects ? 0.5 : 1
+              cursor: 'pointer'
             }}>
               <input
                 type="checkbox"
                 checked={showTransitAspects}
                 onChange={(e) => setShowTransitAspects(e.target.checked)}
-                disabled={showNatalAspects}
               />
-              <span>Show {showProgressions ? 'Progressed' : 'Transit'}-{showProgressions ? 'Progressed' : 'Transit'} Aspects</span>
+              <span>Show {showProgressions ? 'Progressed' : 'Transit'}-{showProgressions ? 'Progressed' : 'Transit'} Aspects (Tri-Wheel)</span>
             </label>
             <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
               <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {transitTransitOrb}°</label>
@@ -559,6 +558,11 @@ function ChartWheel({
         {transitData && (
           <g id="transit-planets">
             {renderPlanets(transitData.planets, radii.transit, showProgressions ? '#9C27B0' : '#3498db')}
+          </g>
+        )}
+        {transitData && showTransitAspects && (
+          <g id="transit-planets-outer">
+            {renderPlanets(transitData.planets, radii.transitOuter, showProgressions ? '#8B008B' : '#FF6B6B')}
           </g>
         )}
         <g id="angle-labels">{renderAngleLabels()}</g>

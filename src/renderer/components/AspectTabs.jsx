@@ -41,10 +41,9 @@ function AspectTabs({
           <button
             className={`aspect-tab ${activeTab === 'transit-transit' ? 'active' : ''}`}
             onClick={() => setActiveTab('transit-transit')}
-            disabled={showNatalAspects}
-            title={showNatalAspects ? `Hide natal aspects first to view ${showProgressions ? 'progressed-progressed' : 'transit-transit'} aspects` : ''}
+            title={`View ${showProgressions ? 'progressed-progressed' : 'transit-transit'} aspects on tri-wheel`}
           >
-            {showProgressions ? 'Progressed' : 'Transit'}-{showProgressions ? 'Progressed' : 'Transit'} Aspects
+            {showProgressions ? 'Progressed' : 'Transit'}-{showProgressions ? 'Progressed' : 'Transit'} Aspects (Tri-Wheel)
           </button>
         )}
       </div>

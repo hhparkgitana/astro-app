@@ -165,8 +165,9 @@ export const CHART_CONFIG = {
   radii: {
     zodiac: 380,        // Outer zodiac ring
     zodiacInner: 340,   // Inner edge of zodiac ring
-    transit: 320,       // Transit planet ring
-    natal: 260,         // Natal planet ring  
+    transitOuter: 330,  // Outer transit planet ring (for tri-wheel transit-transit aspects)
+    transit: 300,       // Transit planet ring (middle)
+    natal: 260,         // Natal planet ring
     houses: 240,        // House cusp lines extend to here
     housesInner: 180,   // House numbers placed here
     aspectOuter: 240,   // Aspect lines drawn within this
