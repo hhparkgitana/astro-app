@@ -16,6 +16,7 @@ import {
 function ChartWheel({
   chartData,
   transitData = null,
+  progressionsData = null,
   activeAspects = new Set(),
   onAspectToggle,
   activeTransitAspects = new Set(),
@@ -555,14 +556,14 @@ function ChartWheel({
         <g id="houses">{renderHouses()}</g>
         <g id="zodiac-ring">{renderZodiacRing()}</g>
         <g id="natal-planets">{renderPlanets(chartData.planets, radii.natal, '#000')}</g>
-        {transitData && (
-          <g id="transit-planets">
-            {renderPlanets(transitData.planets, radii.transit, showProgressions ? '#9C27B0' : '#3498db')}
+        {progressionsData && (
+          <g id="progression-planets">
+            {renderPlanets(progressionsData.planets, radii.transit, '#9C27B0')}
           </g>
         )}
-        {transitData && showTransitAspects && (
-          <g id="transit-planets-outer">
-            {renderPlanets(transitData.planets, radii.transitOuter, showProgressions ? '#8B008B' : '#FF6B6B')}
+        {transitData && (
+          <g id="transit-planets">
+            {renderPlanets(transitData.planets, radii.transitOuter, '#3498db')}
           </g>
         )}
         <g id="angle-labels">{renderAngleLabels()}</g>

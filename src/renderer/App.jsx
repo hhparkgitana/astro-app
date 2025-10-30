@@ -95,35 +95,19 @@ function App() {
 
   const handleInputChange = (e) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    const updates = { [e.target.name]: value };
-
-    // Make showTransits and showProgressions mutually exclusive
-    if (e.target.name === 'showTransits' && value === true) {
-      updates.showProgressions = false;
-    } else if (e.target.name === 'showProgressions' && value === true) {
-      updates.showTransits = false;
-    }
 
     setFormData({
       ...formData,
-      ...updates,
+      [e.target.name]: value,
     });
   };
 
   const handleInputChangeB = (e) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    const updates = { [e.target.name]: value };
-
-    // Make showTransits and showProgressions mutually exclusive
-    if (e.target.name === 'showTransits' && value === true) {
-      updates.showProgressions = false;
-    } else if (e.target.name === 'showProgressions' && value === true) {
-      updates.showTransits = false;
-    }
 
     setFormDataB({
       ...formDataB,
-      ...updates,
+      [e.target.name]: value,
     });
   };
 
@@ -347,8 +331,9 @@ function App() {
         setActiveAspects(allAspectKeys);
       }
 
-      // Calculate transit positions if enabled
+      // Calculate transit and progression positions if enabled
       let transitData = null;
+      let progressionsData = null;
       if (formData.showTransits && result.success) {
         const transitLocalTime = DateTime.fromObject({
           year: parseInt(formData.transitYear),
@@ -463,12 +448,12 @@ function App() {
           );
           setActiveTransitAspects(allProgressedAspectKeys);
 
-          // Store progressed data in transits field (for now, to reuse rendering logic)
-          transitData = progressedData;
+          // Store progressed data separately
+          progressionsData = progressedData;
         }
       }
 
-      setChartData({ ...result, transits: transitData });
+      setChartData({ ...result, transits: transitData, progressions: progressionsData });
     } catch (error) {
       console.error('Error:', error);
       setChartData({ success: false, error: error.message });
@@ -630,8 +615,9 @@ function App() {
         setActiveAspects(allAspectKeys);
       }
 
-      // Calculate transit positions if enabled
+      // Calculate transit and progression positions if enabled
       let transitData = null;
+      let progressionsData = null;
       if (formData.showTransits && result.success) {
         const transitLocalTime = DateTime.fromObject({
           year: parseInt(formData.transitYear),
@@ -739,7 +725,7 @@ function App() {
         }
       }
 
-      setChartData({ ...result, transits: transitData });
+      setChartData({ ...result, transits: transitData, progressions: progressionsData });
       console.log('Chart A calculated:', result);
     } catch (error) {
       console.error('Error calculating Chart A:', error);
@@ -785,8 +771,9 @@ function App() {
         setActiveAspectsB(allAspectKeys);
       }
 
-      // Calculate transit positions if enabled
+      // Calculate transit and progression positions if enabled
       let transitData = null;
+      let progressionsData = null;
       if (formDataB.showTransits && result.success) {
         const transitLocalTime = DateTime.fromObject({
           year: parseInt(formDataB.transitYear),
@@ -894,7 +881,7 @@ function App() {
         }
       }
 
-      setChartDataB({ ...result, transits: transitData });
+      setChartDataB({ ...result, transits: transitData, progressions: progressionsData });
       console.log('Chart B calculated:', result);
     } catch (error) {
       console.error('Error calculating Chart B:', error);
@@ -1607,6 +1594,7 @@ function App() {
             <ChartWheel
               chartData={chartData}
               transitData={chartData.transits}
+              progressionsData={chartData.progressions}
               activeAspects={activeAspects}
               onAspectToggle={handleAspectToggle}
               activeTransitAspects={activeTransitAspects}
@@ -1879,6 +1867,7 @@ function App() {
                     <ChartWheel
                       chartData={chartDataB}
                       transitData={chartDataB.transits}
+                      progressionsData={chartDataB.progressions}
                       activeAspects={activeAspectsB}
                       activeTransitAspects={activeTransitAspectsB}
                       onAspectToggle={handleAspectToggleB}
