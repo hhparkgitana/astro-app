@@ -27,7 +27,8 @@ function ChartWheel({
   transitOrb = 8,
   onTransitOrbChange,
   transitTransitOrb = 8,
-  onTransitTransitOrbChange
+  onTransitTransitOrbChange,
+  showProgressions = false
 }) {
   const { size, center, radii, colors, glyphs } = CHART_CONFIG;
 
@@ -490,7 +491,7 @@ function ChartWheel({
                 checked={showTransitNatalAspects}
                 onChange={(e) => setShowTransitNatalAspects(e.target.checked)}
               />
-              <span>Show Transit-Natal Aspects</span>
+              <span>Show {showProgressions ? 'Progressed' : 'Transit'}-Natal Aspects</span>
             </label>
             <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
               <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {transitOrb}°</label>
@@ -520,7 +521,7 @@ function ChartWheel({
                 onChange={(e) => setShowTransitAspects(e.target.checked)}
                 disabled={showNatalAspects}
               />
-              <span>Show Transit-Transit Aspects</span>
+              <span>Show {showProgressions ? 'Progressed' : 'Transit'}-{showProgressions ? 'Progressed' : 'Transit'} Aspects</span>
             </label>
             <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
               <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {transitTransitOrb}°</label>
@@ -556,7 +557,9 @@ function ChartWheel({
         <g id="zodiac-ring">{renderZodiacRing()}</g>
         <g id="natal-planets">{renderPlanets(chartData.planets, radii.natal, '#000')}</g>
         {transitData && (
-          <g id="transit-planets">{renderPlanets(transitData.planets, radii.transit, '#3498db')}</g>
+          <g id="transit-planets">
+            {renderPlanets(transitData.planets, radii.transit, showProgressions ? '#9C27B0' : '#3498db')}
+          </g>
         )}
         <g id="angle-labels">{renderAngleLabels()}</g>
       </svg>

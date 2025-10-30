@@ -38,13 +38,6 @@ function App() {
   const [activeTransitAspectsB, setActiveTransitAspectsB] = useState(new Set());
   const [showNatalAspectsB, setShowNatalAspectsB] = useState(true);
 
-  // Progressions state
-  const [progressionAge, setProgressionAge] = useState('30');
-
-  // Debug: Log state on each render
-  console.log('=== APP RENDER ===');
-  console.log('activeTransitAspects size:', activeTransitAspects.size);
-  console.log('activeTransitAspects first 5:', Array.from(activeTransitAspects).slice(0, 5));
   const [formData, setFormData] = useState({
     name: '',
     year: '1990',
@@ -59,11 +52,18 @@ function App() {
     houseSystem: 'placidus',
     // Transit date/time (defaults to current date)
     showTransits: false,
+    showProgressions: false,
     transitYear: new Date().getFullYear().toString(),
     transitMonth: (new Date().getMonth() + 1).toString(),
     transitDay: new Date().getDate().toString(),
     transitHour: new Date().getHours().toString(),
     transitMinute: new Date().getMinutes().toString(),
+    // Progression date/time (defaults to current date)
+    progressionYear: new Date().getFullYear().toString(),
+    progressionMonth: (new Date().getMonth() + 1).toString(),
+    progressionDay: new Date().getDate().toString(),
+    progressionHour: new Date().getHours().toString(),
+    progressionMinute: new Date().getMinutes().toString(),
   });
 
   const [formDataB, setFormDataB] = useState({
@@ -79,30 +79,64 @@ function App() {
     timezone: 'America/New_York',
     houseSystem: 'placidus',
     showTransits: false,
+    showProgressions: false,
     transitYear: new Date().getFullYear().toString(),
     transitMonth: (new Date().getMonth() + 1).toString(),
     transitDay: new Date().getDate().toString(),
     transitHour: new Date().getHours().toString(),
     transitMinute: new Date().getMinutes().toString(),
+    // Progression date/time (defaults to current date)
+    progressionYear: new Date().getFullYear().toString(),
+    progressionMonth: (new Date().getMonth() + 1).toString(),
+    progressionDay: new Date().getDate().toString(),
+    progressionHour: new Date().getHours().toString(),
+    progressionMinute: new Date().getMinutes().toString(),
   });
 
   const handleInputChange = (e) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    const updates = { [e.target.name]: value };
+
+    // Make showTransits and showProgressions mutually exclusive
+    if (e.target.name === 'showTransits' && value === true) {
+      updates.showProgressions = false;
+    } else if (e.target.name === 'showProgressions' && value === true) {
+      updates.showTransits = false;
+    }
+
     setFormData({
       ...formData,
-      [e.target.name]: value,
+      ...updates,
     });
   };
 
   const handleInputChangeB = (e) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    const updates = { [e.target.name]: value };
+
+    // Make showTransits and showProgressions mutually exclusive
+    if (e.target.name === 'showTransits' && value === true) {
+      updates.showProgressions = false;
+    } else if (e.target.name === 'showProgressions' && value === true) {
+      updates.showTransits = false;
+    }
+
     setFormDataB({
       ...formDataB,
-      [e.target.name]: value,
+      ...updates,
     });
   };
 
   // Note: getAngularDistance and findAspect are now imported from aspectsCalculator
+
+  // Helper function to calculate age in years from two dates
+  const calculateAgeFromDates = (birthDate, targetDate) => {
+    const birth = DateTime.fromObject(birthDate);
+    const target = DateTime.fromObject(targetDate);
+    const diffInDays = target.diff(birth, 'days').days;
+    const ageInYears = diffInDays / 365.25; // Account for leap years
+    return ageInYears;
+  };
 
   // Calculate aspects between natal and transit planets
   const calculateTransitAspects = (natalPlanets, transitPlanets, orb = 8) => {
@@ -372,6 +406,68 @@ function App() {
         }
       }
 
+      // Calculate progressions if enabled
+      if (formData.showProgressions && result.success) {
+        // Calculate age from natal date to progression date
+        const age = calculateAgeFromDates(
+          {
+            year: parseInt(formData.year),
+            month: parseInt(formData.month),
+            day: parseInt(formData.day),
+            hour: parseInt(formData.hour),
+            minute: parseInt(formData.minute)
+          },
+          {
+            year: parseInt(formData.progressionYear),
+            month: parseInt(formData.progressionMonth),
+            day: parseInt(formData.progressionDay),
+            hour: parseInt(formData.progressionHour),
+            minute: parseInt(formData.progressionMinute)
+          }
+        );
+
+        if (age <= 0) {
+          alert('Progression date must be after natal date');
+          setLoading(false);
+          return;
+        }
+
+        const progressionsResult = await window.astro.calculateProgressions({
+          natalData: {
+            year: parseInt(formData.year),
+            month: parseInt(formData.month),
+            day: parseInt(formData.day),
+            hour: parseInt(formData.hour),
+            minute: parseInt(formData.minute),
+            latitude: parseFloat(formData.latitude),
+            longitude: parseFloat(formData.longitude),
+            houseSystem: formData.houseSystem
+          },
+          target: {
+            age: age
+          }
+        });
+
+        if (progressionsResult.success && progressionsResult.data) {
+          const progressedData = progressionsResult.data;
+          console.log('Progressions calculated:', progressedData);
+
+          // Calculate progressed-to-natal aspects
+          const progressedAspects = calculateTransitAspects(result.planets, progressedData.planets, transitOrb);
+          console.log('Progressed-to-natal aspects:', progressedAspects);
+          result.transitAspects = progressedAspects;
+
+          // Set all progressed aspects as active by default
+          const allProgressedAspectKeys = new Set(
+            progressedAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+          );
+          setActiveTransitAspects(allProgressedAspectKeys);
+
+          // Store progressed data in transits field (for now, to reuse rendering logic)
+          transitData = progressedData;
+        }
+      }
+
       setChartData({ ...result, transits: transitData });
     } catch (error) {
       console.error('Error:', error);
@@ -402,6 +498,20 @@ function App() {
       location: 'New York, NY',
       timezone: 'America/New_York',
       houseSystem: 'placidus',
+      showTransits: false,
+      showProgressions: false,
+      // Transit date/time (defaults to current date)
+      transitYear: new Date().getFullYear().toString(),
+      transitMonth: (new Date().getMonth() + 1).toString(),
+      transitDay: new Date().getDate().toString(),
+      transitHour: new Date().getHours().toString(),
+      transitMinute: new Date().getMinutes().toString(),
+      // Progression date/time (defaults to current date)
+      progressionYear: new Date().getFullYear().toString(),
+      progressionMonth: (new Date().getMonth() + 1).toString(),
+      progressionDay: new Date().getDate().toString(),
+      progressionHour: new Date().getHours().toString(),
+      progressionMinute: new Date().getMinutes().toString(),
     });
   };
 
@@ -433,11 +543,17 @@ function App() {
         timezone: chart.timezone,
         houseSystem: formData.houseSystem,
         showTransits: false,
+        showProgressions: false,
         transitYear: formData.transitYear,
         transitMonth: formData.transitMonth,
         transitDay: formData.transitDay,
         transitHour: formData.transitHour,
         transitMinute: formData.transitMinute,
+        progressionYear: formData.progressionYear,
+        progressionMonth: formData.progressionMonth,
+        progressionDay: formData.progressionDay,
+        progressionHour: formData.progressionHour,
+        progressionMinute: formData.progressionMinute,
       });
 
       console.log('Loaded famous chart A:', chart.name);
@@ -460,11 +576,17 @@ function App() {
         timezone: chart.timezone,
         houseSystem: formDataB.houseSystem,
         showTransits: false,
+        showProgressions: false,
         transitYear: formDataB.transitYear,
         transitMonth: formDataB.transitMonth,
         transitDay: formDataB.transitDay,
         transitHour: formDataB.transitHour,
         transitMinute: formDataB.transitMinute,
+        progressionYear: formDataB.progressionYear,
+        progressionMonth: formDataB.progressionMonth,
+        progressionDay: formDataB.progressionDay,
+        progressionHour: formDataB.progressionHour,
+        progressionMinute: formDataB.progressionMinute,
       });
 
       console.log('Loaded famous chart B:', chart.name);
@@ -553,6 +675,67 @@ function App() {
           // Calculate transit-to-transit aspects
           const transitTransitAspects = calculateTransitToTransitAspects(transitData.planets, transitTransitOrb);
           result.transitTransitAspects = transitTransitAspects;
+        }
+      }
+
+      // Calculate progressions if enabled
+      if (formData.showProgressions && result.success) {
+        // Calculate age from natal date to progression date
+        const age = calculateAgeFromDates(
+          {
+            year: parseInt(formData.year),
+            month: parseInt(formData.month),
+            day: parseInt(formData.day),
+            hour: parseInt(formData.hour),
+            minute: parseInt(formData.minute)
+          },
+          {
+            year: parseInt(formData.progressionYear),
+            month: parseInt(formData.progressionMonth),
+            day: parseInt(formData.progressionDay),
+            hour: parseInt(formData.progressionHour),
+            minute: parseInt(formData.progressionMinute)
+          }
+        );
+
+        if (age <= 0) {
+          alert('Progression date must be after natal date');
+          setLoading(false);
+          return;
+        }
+
+        const progressionsResult = await window.astro.calculateProgressions({
+          natalData: {
+            year: parseInt(formData.year),
+            month: parseInt(formData.month),
+            day: parseInt(formData.day),
+            hour: parseInt(formData.hour),
+            minute: parseInt(formData.minute),
+            latitude: parseFloat(formData.latitude),
+            longitude: parseFloat(formData.longitude),
+            houseSystem: formData.houseSystem
+          },
+          target: {
+            age: age
+          }
+        });
+
+        if (progressionsResult.success && progressionsResult.data) {
+          const progressedData = progressionsResult.data;
+          console.log('Progressions calculated for Chart A:', progressedData);
+
+          // Calculate progressed-to-natal aspects
+          const progressedAspects = calculateTransitAspects(result.planets, progressedData.planets, transitOrb);
+          result.transitAspects = progressedAspects;
+
+          // Set all progressed aspects as active by default
+          const allProgressedAspectKeys = new Set(
+            progressedAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+          );
+          setActiveTransitAspects(allProgressedAspectKeys);
+
+          // Store progressed data in transits field
+          transitData = progressedData;
         }
       }
 
@@ -650,6 +833,67 @@ function App() {
         }
       }
 
+      // Calculate progressions if enabled
+      if (formDataB.showProgressions && result.success) {
+        // Calculate age from natal date to progression date
+        const age = calculateAgeFromDates(
+          {
+            year: parseInt(formDataB.year),
+            month: parseInt(formDataB.month),
+            day: parseInt(formDataB.day),
+            hour: parseInt(formDataB.hour),
+            minute: parseInt(formDataB.minute)
+          },
+          {
+            year: parseInt(formDataB.progressionYear),
+            month: parseInt(formDataB.progressionMonth),
+            day: parseInt(formDataB.progressionDay),
+            hour: parseInt(formDataB.progressionHour),
+            minute: parseInt(formDataB.progressionMinute)
+          }
+        );
+
+        if (age <= 0) {
+          alert('Progression date must be after natal date');
+          setLoadingB(false);
+          return;
+        }
+
+        const progressionsResult = await window.astro.calculateProgressions({
+          natalData: {
+            year: parseInt(formDataB.year),
+            month: parseInt(formDataB.month),
+            day: parseInt(formDataB.day),
+            hour: parseInt(formDataB.hour),
+            minute: parseInt(formDataB.minute),
+            latitude: parseFloat(formDataB.latitude),
+            longitude: parseFloat(formDataB.longitude),
+            houseSystem: formDataB.houseSystem
+          },
+          target: {
+            age: age
+          }
+        });
+
+        if (progressionsResult.success && progressionsResult.data) {
+          const progressedData = progressionsResult.data;
+          console.log('Progressions calculated for Chart B:', progressedData);
+
+          // Calculate progressed-to-natal aspects
+          const progressedAspects = calculateTransitAspects(result.planets, progressedData.planets, transitOrb);
+          result.transitAspects = progressedAspects;
+
+          // Set all progressed aspects as active by default
+          const allProgressedAspectKeys = new Set(
+            progressedAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+          );
+          setActiveTransitAspectsB(allProgressedAspectKeys);
+
+          // Store progressed data in transits field
+          transitData = progressedData;
+        }
+      }
+
       setChartDataB({ ...result, transits: transitData });
       console.log('Chart B calculated:', result);
     } catch (error) {
@@ -666,8 +910,26 @@ function App() {
       return;
     }
 
-    if (!progressionAge || parseFloat(progressionAge) <= 0) {
-      alert('Please enter a valid age for progressions');
+    // Calculate age from natal date to progression date
+    const age = calculateAgeFromDates(
+      {
+        year: parseInt(formData.year),
+        month: parseInt(formData.month),
+        day: parseInt(formData.day),
+        hour: parseInt(formData.hour),
+        minute: parseInt(formData.minute)
+      },
+      {
+        year: parseInt(formData.progressionYear),
+        month: parseInt(formData.progressionMonth),
+        day: parseInt(formData.progressionDay),
+        hour: parseInt(formData.progressionHour),
+        minute: parseInt(formData.progressionMinute)
+      }
+    );
+
+    if (age <= 0) {
+      alert('Progression date must be after natal date');
       return;
     }
 
@@ -685,7 +947,7 @@ function App() {
           houseSystem: formData.houseSystem
         },
         target: {
-          age: parseFloat(progressionAge)
+          age: age
         }
       });
 
@@ -711,7 +973,7 @@ function App() {
         // Update formDataB to show progression info
         setFormDataB({
           ...formDataB,
-          name: `${formData.name || 'Chart'} - Progressed (Age ${progressionAge})`
+          name: `${formData.name || 'Chart'} - Progressed (${formData.progressionMonth}/${formData.progressionDay}/${formData.progressionYear})`
         });
 
         // Switch to dual view to show both charts
@@ -1137,7 +1399,7 @@ function App() {
           </div>
 
           <div className="form-group" style={{marginTop: '20px', padding: '15px', backgroundColor: '#f5f5f5', borderRadius: '4px'}}>
-            <label style={{display: 'flex', alignItems: 'center', cursor: 'pointer'}}>
+            <label style={{display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '10px'}}>
               <input
                 type="checkbox"
                 name="showTransits"
@@ -1146,6 +1408,16 @@ function App() {
                 style={{marginRight: '8px', width: '18px', height: '18px'}}
               />
               <span style={{fontWeight: 'bold'}}>Show Transits (Bi-Wheel)</span>
+            </label>
+            <label style={{display: 'flex', alignItems: 'center', cursor: 'pointer'}}>
+              <input
+                type="checkbox"
+                name="showProgressions"
+                checked={formData.showProgressions}
+                onChange={handleInputChange}
+                style={{marginRight: '8px', width: '18px', height: '18px'}}
+              />
+              <span style={{fontWeight: 'bold'}}>Show Progressions (Bi-Wheel)</span>
             </label>
           </div>
 
@@ -1223,6 +1495,80 @@ function App() {
             </div>
           )}
 
+          {formData.showProgressions && (
+            <div style={{marginTop: '15px', padding: '15px', border: '2px solid #9C27B0', borderRadius: '4px'}}>
+              <h4 style={{marginTop: 0, color: '#9C27B0'}}>Progression Date & Time</h4>
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Year</label>
+                  <input
+                    type="number"
+                    name="progressionYear"
+                    value={formData.progressionYear}
+                    onChange={handleInputChange}
+                    min="500"
+                    max="2100"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Month</label>
+                  <input
+                    type="number"
+                    name="progressionMonth"
+                    value={formData.progressionMonth}
+                    onChange={handleInputChange}
+                    min="1"
+                    max="12"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Day</label>
+                  <input
+                    type="number"
+                    name="progressionDay"
+                    value={formData.progressionDay}
+                    onChange={handleInputChange}
+                    min="1"
+                    max="31"
+                  />
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Hour (0-23)</label>
+                  <input
+                    type="number"
+                    name="progressionHour"
+                    value={formData.progressionHour}
+                    onChange={handleInputChange}
+                    min="0"
+                    max="23"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Minute</label>
+                  <input
+                    type="number"
+                    name="progressionMinute"
+                    value={formData.progressionMinute}
+                    onChange={handleInputChange}
+                    min="0"
+                    max="59"
+                  />
+                </div>
+              </div>
+
+              <small style={{display: 'block', color: '#666'}}>
+                Progressed positions will be displayed on outer wheel (day-for-a-year method)
+              </small>
+            </div>
+          )}
+
           <button type="submit" disabled={loading} className="calculate-btn">
             {loading ? 'Calculating...' : 'Calculate Chart'}
           </button>
@@ -1258,34 +1604,6 @@ function App() {
               </div>
             </div>
 
-            <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: '#f0f0f0', borderRadius: '8px' }}>
-              <div style={{ fontWeight: 'bold', marginBottom: '0.5rem', fontSize: '0.9rem' }}>
-                📈 Secondary Progressions
-              </div>
-              <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-                <input
-                  type="number"
-                  value={progressionAge}
-                  onChange={(e) => setProgressionAge(e.target.value)}
-                  placeholder="Age"
-                  min="0"
-                  step="0.1"
-                  style={{ width: '80px', padding: '8px', fontSize: '0.9rem' }}
-                />
-                <button
-                  className="load-chart-btn"
-                  onClick={calculateProgressions}
-                  disabled={loadingB}
-                  style={{ fontSize: '0.85rem', padding: '8px 12px' }}
-                >
-                  {loadingB ? '⏳' : 'Calculate Progressions'}
-                </button>
-              </div>
-              <div style={{ fontSize: '0.75rem', color: '#666', marginTop: '0.5rem' }}>
-                Day-for-a-year method: View progressed vs natal in dual mode
-              </div>
-            </div>
-
             <ChartWheel
               chartData={chartData}
               transitData={chartData.transits}
@@ -1301,6 +1619,7 @@ function App() {
               onTransitOrbChange={handleTransitOrbChange}
               transitTransitOrb={transitTransitOrb}
               onTransitTransitOrbChange={handleTransitTransitOrbChange}
+              showProgressions={formData.showProgressions}
             />
 
             <AspectTabs
@@ -1310,6 +1629,7 @@ function App() {
               activeTransitAspects={activeTransitAspects}
               onTransitAspectToggle={handleTransitAspectToggle}
               showNatalAspects={showNatalAspects}
+              showProgressions={formData.showProgressions}
             />
 
             <div className="rising-sign">
@@ -1391,6 +1711,16 @@ function App() {
                         />
                         <span style={{ fontWeight: 'bold', fontSize: '0.9rem' }}>Show Transits (Bi-Wheel)</span>
                       </label>
+                      <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '0.5rem' }}>
+                        <input
+                          type="checkbox"
+                          name="showProgressions"
+                          checked={formData.showProgressions}
+                          onChange={handleInputChange}
+                          style={{ marginRight: '8px', width: '18px', height: '18px' }}
+                        />
+                        <span style={{ fontWeight: 'bold', fontSize: '0.9rem' }}>Show Progressions (Bi-Wheel)</span>
+                      </label>
                       {formData.showTransits && (
                         <div style={{ marginTop: '0.5rem', paddingLeft: '26px' }}>
                           <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
@@ -1404,6 +1734,22 @@ function App() {
                           </div>
                         </div>
                       )}
+                      {formData.showProgressions && (
+                        <div style={{ marginTop: '0.5rem', paddingLeft: '26px' }}>
+                          <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                            <input type="number" name="progressionYear" value={formData.progressionYear} onChange={handleInputChange} placeholder="Year" style={{ width: '70px', padding: '4px', fontSize: '0.85rem' }} />
+                            <input type="number" name="progressionMonth" value={formData.progressionMonth} onChange={handleInputChange} placeholder="Mo" min="1" max="12" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
+                            <input type="number" name="progressionDay" value={formData.progressionDay} onChange={handleInputChange} placeholder="Day" min="1" max="31" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
+                          </div>
+                          <div style={{ display: 'flex', gap: '0.5rem' }}>
+                            <input type="number" name="progressionHour" value={formData.progressionHour} onChange={handleInputChange} placeholder="Hr" min="0" max="23" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
+                            <input type="number" name="progressionMinute" value={formData.progressionMinute} onChange={handleInputChange} placeholder="Min" min="0" max="59" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
+                          </div>
+                          <small style={{ display: 'block', color: '#666', marginTop: '4px' }}>
+                            Day-for-a-year method
+                          </small>
+                        </div>
+                      )}
                     </div>
                     <button
                       className="load-chart-btn"
@@ -1414,35 +1760,6 @@ function App() {
                       {loading ? '⏳ Calculating...' : '🔮 Calculate Chart A'}
                     </button>
 
-                    {chartData && chartData.success && (
-                      <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: '#f0f0f0', borderRadius: '8px' }}>
-                        <div style={{ fontWeight: 'bold', marginBottom: '0.5rem', fontSize: '0.9rem' }}>
-                          📈 Secondary Progressions
-                        </div>
-                        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-                          <input
-                            type="number"
-                            value={progressionAge}
-                            onChange={(e) => setProgressionAge(e.target.value)}
-                            placeholder="Age"
-                            min="0"
-                            step="0.1"
-                            style={{ width: '80px', padding: '8px', fontSize: '0.9rem' }}
-                          />
-                          <button
-                            className="load-chart-btn"
-                            onClick={calculateProgressions}
-                            disabled={loadingB}
-                            style={{ fontSize: '0.85rem', padding: '8px 12px' }}
-                          >
-                            {loadingB ? '⏳' : 'Calculate to Chart B'}
-                          </button>
-                        </div>
-                        <div style={{ fontSize: '0.75rem', color: '#666', marginTop: '0.5rem' }}>
-                          Day-for-a-year method: Progressed chart loaded into Chart B
-                        </div>
-                      </div>
-                    )}
                   </>
                 )}
               </div>
@@ -1464,6 +1781,7 @@ function App() {
                       onTransitOrbChange={handleTransitOrbChange}
                       transitTransitOrb={transitTransitOrb}
                       onTransitTransitOrbChange={handleTransitTransitOrbChange}
+                      showProgressions={formData.showProgressions}
                     />
                   </div>
 
@@ -1474,6 +1792,7 @@ function App() {
                     activeTransitAspects={activeTransitAspects}
                     onTransitAspectToggle={handleTransitAspectToggle}
                     showNatalAspects={showNatalAspects}
+                    showProgressions={formData.showProgressions}
                   />
                 </div>
               )}
@@ -1503,6 +1822,16 @@ function App() {
                         />
                         <span style={{ fontWeight: 'bold', fontSize: '0.9rem' }}>Show Transits (Bi-Wheel)</span>
                       </label>
+                      <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '0.5rem' }}>
+                        <input
+                          type="checkbox"
+                          name="showProgressions"
+                          checked={formDataB.showProgressions}
+                          onChange={handleInputChangeB}
+                          style={{ marginRight: '8px', width: '18px', height: '18px' }}
+                        />
+                        <span style={{ fontWeight: 'bold', fontSize: '0.9rem' }}>Show Progressions (Bi-Wheel)</span>
+                      </label>
                       {formDataB.showTransits && (
                         <div style={{ marginTop: '0.5rem', paddingLeft: '26px' }}>
                           <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
@@ -1514,6 +1843,22 @@ function App() {
                             <input type="number" name="transitHour" value={formDataB.transitHour} onChange={handleInputChangeB} placeholder="Hr" min="0" max="23" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
                             <input type="number" name="transitMinute" value={formDataB.transitMinute} onChange={handleInputChangeB} placeholder="Min" min="0" max="59" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
                           </div>
+                        </div>
+                      )}
+                      {formDataB.showProgressions && (
+                        <div style={{ marginTop: '0.5rem', paddingLeft: '26px' }}>
+                          <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                            <input type="number" name="progressionYear" value={formDataB.progressionYear} onChange={handleInputChangeB} placeholder="Year" style={{ width: '70px', padding: '4px', fontSize: '0.85rem' }} />
+                            <input type="number" name="progressionMonth" value={formDataB.progressionMonth} onChange={handleInputChangeB} placeholder="Mo" min="1" max="12" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
+                            <input type="number" name="progressionDay" value={formDataB.progressionDay} onChange={handleInputChangeB} placeholder="Day" min="1" max="31" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
+                          </div>
+                          <div style={{ display: 'flex', gap: '0.5rem' }}>
+                            <input type="number" name="progressionHour" value={formDataB.progressionHour} onChange={handleInputChangeB} placeholder="Hr" min="0" max="23" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
+                            <input type="number" name="progressionMinute" value={formDataB.progressionMinute} onChange={handleInputChangeB} placeholder="Min" min="0" max="59" style={{ width: '50px', padding: '4px', fontSize: '0.85rem' }} />
+                          </div>
+                          <small style={{ display: 'block', color: '#666', marginTop: '4px' }}>
+                            Day-for-a-year method
+                          </small>
                         </div>
                       )}
                     </div>
@@ -1546,6 +1891,7 @@ function App() {
                       onTransitOrbChange={handleTransitOrbChangeB}
                       transitTransitOrb={transitTransitOrb}
                       onTransitTransitOrbChange={handleTransitTransitOrbChangeB}
+                      showProgressions={formDataB.showProgressions}
                     />
                   </div>
 
@@ -1556,6 +1902,7 @@ function App() {
                     activeTransitAspects={activeTransitAspectsB}
                     onTransitAspectToggle={handleTransitAspectToggleB}
                     showNatalAspects={showNatalAspectsB}
+                    showProgressions={formDataB.showProgressions}
                   />
                 </div>
               )}

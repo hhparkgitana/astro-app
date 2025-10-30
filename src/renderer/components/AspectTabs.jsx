@@ -10,7 +10,8 @@ function AspectTabs({
   onAspectToggle,
   activeTransitAspects,
   onTransitAspectToggle,
-  showNatalAspects // from chart wheel visibility
+  showNatalAspects, // from chart wheel visibility
+  showProgressions = false
 }) {
   const [activeTab, setActiveTab] = useState('natal');
 
@@ -32,7 +33,7 @@ function AspectTabs({
             className={`aspect-tab ${activeTab === 'transit-natal' ? 'active' : ''}`}
             onClick={() => setActiveTab('transit-natal')}
           >
-            Transit-Natal Aspects
+            {showProgressions ? 'Progressed' : 'Transit'}-Natal Aspects
           </button>
         )}
 
@@ -41,9 +42,9 @@ function AspectTabs({
             className={`aspect-tab ${activeTab === 'transit-transit' ? 'active' : ''}`}
             onClick={() => setActiveTab('transit-transit')}
             disabled={showNatalAspects}
-            title={showNatalAspects ? 'Hide natal aspects first to view transit-transit aspects' : ''}
+            title={showNatalAspects ? `Hide natal aspects first to view ${showProgressions ? 'progressed-progressed' : 'transit-transit'} aspects` : ''}
           >
-            Transit-Transit Aspects
+            {showProgressions ? 'Progressed' : 'Transit'}-{showProgressions ? 'Progressed' : 'Transit'} Aspects
           </button>
         )}
       </div>
