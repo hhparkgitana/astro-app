@@ -21,6 +21,7 @@ function App() {
   const [activeTransitProgressionAspects, setActiveTransitProgressionAspects] = useState(new Set());
   const [activeSynastryAspects, setActiveSynastryAspects] = useState(new Set());
   const [activeReturnAspects, setActiveReturnAspects] = useState(new Set());
+  const [activeReturnInternalAspects, setActiveReturnInternalAspects] = useState(new Set());
   const [showNatalAspects, setShowNatalAspects] = useState(true);
 
   // Orb settings for each aspect type
@@ -1860,6 +1861,22 @@ function App() {
     });
 
     setActiveReturnAspects(newActiveAspects);
+  };
+
+  const handleReturnInternalAspectToggle = (aspectOrAspects) => {
+    const aspects = Array.isArray(aspectOrAspects) ? aspectOrAspects : [aspectOrAspects];
+    const newActiveAspects = new Set(activeReturnInternalAspects);
+
+    aspects.forEach(aspect => {
+      const key = `${aspect.planet1}-${aspect.planet2}`;
+      if (newActiveAspects.has(key)) {
+        newActiveAspects.delete(key);
+      } else {
+        newActiveAspects.add(key);
+      }
+    });
+
+    setActiveReturnInternalAspects(newActiveAspects);
   };
 
   const handleProgressionNatalAspectToggleB = (aspectOrAspects) => {
@@ -4340,16 +4357,46 @@ function App() {
                   />
                 </div>
 
-                {returnChartData.returnToNatalAspects && returnChartData.returnToNatalAspects.length > 0 && (
-                  <div style={{ marginTop: '2rem' }}>
-                    <ReturnAspectMatrix
-                      chartData={returnChartData}
-                      activeReturnAspects={activeReturnAspects}
-                      onReturnAspectToggle={handleReturnAspectToggle}
-                      returnType={returnType}
-                    />
-                  </div>
-                )}
+                {/* Aspect Matrices Section */}
+                <div style={{ marginTop: '2rem' }}>
+                  {/* Natal Chart Internal Aspects */}
+                  {returnChartData.natalChart && returnChartData.natalChart.aspects && returnChartData.natalChart.aspects.length > 0 && (
+                    <div style={{ marginBottom: '2rem' }}>
+                      <h4 style={{ marginTop: 0 }}>⭐ Natal Chart Aspects</h4>
+                      <AspectMatrix
+                        chartData={returnChartData.natalChart}
+                        activeAspects={activeAspects}
+                        onAspectToggle={handleAspectToggle}
+                      />
+                    </div>
+                  )}
+
+                  {/* Return-to-Natal Aspects */}
+                  {returnChartData.returnToNatalAspects && returnChartData.returnToNatalAspects.length > 0 && (
+                    <div style={{ marginBottom: '2rem' }}>
+                      <ReturnAspectMatrix
+                        chartData={returnChartData}
+                        activeReturnAspects={activeReturnAspects}
+                        onReturnAspectToggle={handleReturnAspectToggle}
+                        returnType={returnType}
+                      />
+                    </div>
+                  )}
+
+                  {/* Return Chart Internal Aspects */}
+                  {returnChartData.aspects && returnChartData.aspects.length > 0 && (
+                    <div style={{ marginBottom: '2rem' }}>
+                      <h4 style={{ marginTop: 0 }}>
+                        {returnType === 'solar' ? '🌞' : '🌙'} {returnType === 'solar' ? 'Solar' : 'Lunar'} Return Chart Aspects
+                      </h4>
+                      <AspectMatrix
+                        chartData={returnChartData}
+                        activeAspects={activeReturnInternalAspects}
+                        onAspectToggle={handleReturnInternalAspectToggle}
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
             )}
 
