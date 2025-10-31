@@ -2018,36 +2018,50 @@ function App() {
   };
 
   const handleLoadChart = (chart) => {
-    // Load the chart data into the appropriate form
-    if (chart.formData) {
-      setFormData(chart.formData);
-    }
+    // Determine which chart slot to load into
+    const targetChart = activeChart || 'A';
 
-    if (chart.formDataB) {
-      setFormDataB(chart.formDataB);
-    }
+    if (targetChart === 'A') {
+      // Load into Chart A
+      if (chart.formData) {
+        setFormData(chart.formData);
+      }
 
-    // Set the view mode based on chart type
-    if (chart.chartType === 'synastry' || chart.chartType === 'composite') {
-      setViewMode('relationship');
-      setRelationshipChartType(chart.chartType);
-    } else if (chart.chartType === 'solar-return' || chart.chartType === 'lunar-return') {
-      setViewMode('returns');
-      setReturnType(chart.chartType === 'solar-return' ? 'solar' : 'lunar');
+      if (chart.chartData) {
+        setChartData(chart.chartData);
+      }
+
+      // Set the view mode based on chart type (only when loading into Chart A)
+      if (chart.chartType === 'synastry' || chart.chartType === 'composite') {
+        setViewMode('relationship');
+        setRelationshipChartType(chart.chartType);
+        // Also load Chart B if it exists
+        if (chart.formDataB) {
+          setFormDataB(chart.formDataB);
+        }
+        if (chart.chartDataB) {
+          setChartDataB(chart.chartDataB);
+        }
+      } else if (chart.chartType === 'solar-return' || chart.chartType === 'lunar-return') {
+        setViewMode('returns');
+        setReturnType(chart.chartType === 'solar-return' ? 'solar' : 'lunar');
+      } else {
+        setViewMode('single');
+      }
+
+      console.log('Loaded chart into Chart A:', chart.name);
     } else {
-      setViewMode('single');
-    }
+      // Load into Chart B
+      if (chart.formData) {
+        setFormDataB(chart.formData);
+      }
 
-    // Load the chart data
-    if (chart.chartData) {
-      setChartData(chart.chartData);
-    }
+      if (chart.chartData) {
+        setChartDataB(chart.chartData);
+      }
 
-    if (chart.chartDataB) {
-      setChartDataB(chart.chartDataB);
+      console.log('Loaded chart into Chart B:', chart.name);
     }
-
-    console.log('Loaded chart:', chart.name);
   };
 
   const searchLocation = async () => {
@@ -2826,7 +2840,14 @@ function App() {
                   className="load-chart-btn"
                   onClick={() => { setActiveChart('A'); setIsBrowserOpen(true); }}
                 >
-                  📚 Load Chart A from Database
+                  📚 Famous Charts
+                </button>
+                <button
+                  className="load-chart-btn"
+                  onClick={() => { setActiveChart('A'); setIsLibraryOpen(true); }}
+                  style={{ marginLeft: '0.5rem' }}
+                >
+                  💾 My Library
                 </button>
 
                 {/* Chart A Input Form */}
@@ -3158,7 +3179,14 @@ function App() {
                   className="load-chart-btn"
                   onClick={() => { setActiveChart('B'); setIsBrowserOpen(true); }}
                 >
-                  📚 Load Chart B from Database
+                  📚 Famous Charts
+                </button>
+                <button
+                  className="load-chart-btn"
+                  onClick={() => { setActiveChart('B'); setIsLibraryOpen(true); }}
+                  style={{ marginLeft: '0.5rem' }}
+                >
+                  💾 My Library
                 </button>
 
                 {/* Chart B Input Form */}
@@ -3622,7 +3650,14 @@ function App() {
                     className="load-chart-btn"
                     onClick={() => { setActiveChart('A'); setIsBrowserOpen(true); }}
                   >
-                    📚 Load Person A from Database
+                    📚 Famous Charts
+                  </button>
+                  <button
+                    className="load-chart-btn"
+                    onClick={() => { setActiveChart('A'); setIsLibraryOpen(true); }}
+                    style={{ marginLeft: '0.5rem' }}
+                  >
+                    💾 My Library
                   </button>
                 </div>
 
@@ -3882,7 +3917,14 @@ function App() {
                     className="load-chart-btn"
                     onClick={() => { setActiveChart('B'); setIsBrowserOpen(true); }}
                   >
-                    📚 Load Person B from Database
+                    📚 Famous Charts
+                  </button>
+                  <button
+                    className="load-chart-btn"
+                    onClick={() => { setActiveChart('B'); setIsLibraryOpen(true); }}
+                    style={{ marginLeft: '0.5rem' }}
+                  >
+                    💾 My Library
                   </button>
                 </div>
 
