@@ -3003,6 +3003,35 @@ function App() {
                     </button>
                   </div>
 
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Latitude *</label>
+                      <input
+                        type="number"
+                        step="any"
+                        name="latitude"
+                        value={formData.latitude}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="40.7128"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Longitude *</label>
+                      <input
+                        type="number"
+                        step="any"
+                        name="longitude"
+                        value={formData.longitude}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="-74.0060"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                  </div>
+
                   <div className="form-group" style={{ marginBottom: '0.75rem' }}>
                     <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.9rem' }}>Timezone *</label>
                     <select
@@ -3212,6 +3241,35 @@ function App() {
                     >
                       {searchingLocation ? '🔍 Searching...' : '🔍 Search'}
                     </button>
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Latitude *</label>
+                      <input
+                        type="number"
+                        step="any"
+                        name="latitude"
+                        value={formDataB.latitude}
+                        onChange={handleInputChangeB}
+                        required
+                        placeholder="40.7128"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Longitude *</label>
+                      <input
+                        type="number"
+                        step="any"
+                        name="longitude"
+                        value={formDataB.longitude}
+                        onChange={handleInputChangeB}
+                        required
+                        placeholder="-74.0060"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
                   </div>
 
                   <div className="form-group" style={{ marginBottom: '0.75rem' }}>
