@@ -4718,10 +4718,13 @@ function App() {
         chartData={chartData}
         chartDataB={chartDataB}
         compositeChartData={compositeChartData}
+        returnChartData={returnChartData}
+        returnType={returnType}
         viewMode={viewMode}
         relationshipChartType={relationshipChartType}
         formData={formData}
         formDataB={formDataB}
+        returnsFormData={returnsFormData}
         isOpen={isChatOpen}
         onToggle={() => setIsChatOpen(!isChatOpen)}
       />

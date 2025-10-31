@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './ChatPanel.css';
 
-function ChatPanel({ chartData, chartDataB, compositeChartData, viewMode, relationshipChartType, formData, formDataB, isOpen, onToggle }) {
+function ChatPanel({ chartData, chartDataB, compositeChartData, returnChartData, returnType, viewMode, relationshipChartType, formData, formDataB, returnsFormData, isOpen, onToggle }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -83,6 +83,55 @@ function ChatPanel({ chartData, chartDataB, compositeChartData, viewMode, relati
         aspects: compositeChartData.aspects,
         ascendant: compositeChartData.ascendant,
         midheaven: compositeChartData.midheaven
+      };
+    }
+
+    // Add solar/lunar return information if available
+    if (viewMode === 'returns' && returnChartData && returnChartData.success && returnsFormData) {
+      context.returnChart = {
+        returnType: returnType, // 'solar' or 'lunar'
+        natalInfo: {
+          name: returnsFormData.name || 'Unnamed',
+          birthDate: `${returnsFormData.month}/${returnsFormData.day}/${returnsFormData.year}`,
+          birthTime: `${returnsFormData.hour}:${returnsFormData.minute}`,
+          location: returnsFormData.location,
+          timezone: returnsFormData.timezone
+        },
+        returnDate: returnChartData.returnDate,
+        returnLocation: {
+          location: returnsFormData.returnLocation,
+          latitude: returnsFormData.returnLatitude,
+          longitude: returnsFormData.returnLongitude,
+          timezone: returnsFormData.returnTimezone
+        },
+        natalChart: {
+          planets: returnChartData.natalPlanets,
+          ascendant: returnChartData.natalAscendant,
+          midheaven: returnChartData.natalMC
+        },
+        returnChart: {
+          planets: returnChartData.planets,
+          houses: returnChartData.houses,
+          ascendant: returnChartData.ascendant,
+          midheaven: returnChartData.midheaven,
+          aspects: returnChartData.aspects
+        },
+        returnToNatalAspects: returnChartData.returnToNatalAspects
+      };
+    }
+
+    // Add progressions/solar arcs information if available in Chart A
+    if (chartData && chartData.progressions) {
+      const progressionType = formData.directionType === 'solarArcs' ? 'Solar Arcs' : 'Secondary Progressions';
+      if (!context.charts[0]) {
+        context.charts[0] = {};
+      }
+      context.charts[0].progressions = {
+        type: progressionType,
+        date: `${formData.progressionMonth}/${formData.progressionDay}/${formData.progressionYear}`,
+        planets: chartData.progressions.planets,
+        progressionNatalAspects: chartData.progressionNatalAspects,
+        progressionInternalAspects: chartData.progressionInternalAspects
       };
     }
 
