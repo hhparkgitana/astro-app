@@ -16,6 +16,8 @@ import {
 function ChartWheel({
   isSynastry = false,
   isComposite = false,
+  isReturnChart = false,
+  returnType = 'solar',
   chartData,
   chartDataB = null,
   transitData = null,
@@ -44,6 +46,8 @@ function ChartWheel({
   onTransitTransitOrbChange,
   transitProgressionOrb = 8,
   onTransitProgressionOrbChange,
+  returnInternalOrb = 8,
+  onReturnInternalOrbChange,
   showProgressions = false,
   personAName = 'Person A',
   personBName = 'Person B'
@@ -672,7 +676,86 @@ function ChartWheel({
       <h4>🎯 Birth Chart Wheel</h4>
 
       {/* Aspect Toggle Controls */}
-      {isSynastry ? (
+      {isReturnChart ? (
+        /* Returns mode controls */
+        <div style={{
+          display: 'flex',
+          gap: '20px',
+          marginBottom: '15px',
+          padding: '10px',
+          backgroundColor: '#f0f0f0',
+          borderRadius: '5px'
+        }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={showNatalAspects}
+                onChange={(e) => setShowNatalAspects && setShowNatalAspects(e.target.checked)}
+              />
+              <span>Show Natal Aspects</span>
+            </label>
+            <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {natalOrb}°</label>
+              <input
+                type="range"
+                min="0"
+                max="10"
+                step="0.5"
+                value={natalOrb}
+                onChange={(e) => onNatalOrbChange && onNatalOrbChange(parseFloat(e.target.value))}
+                style={{ flex: 1 }}
+              />
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={showTransitNatalAspects}
+                onChange={(e) => setShowTransitNatalAspects(e.target.checked)}
+              />
+              <span>Show Return-to-Natal Aspects</span>
+            </label>
+            <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {transitOrb}°</label>
+              <input
+                type="range"
+                min="0"
+                max="10"
+                step="0.5"
+                value={transitOrb}
+                onChange={(e) => onTransitOrbChange && onTransitOrbChange(parseFloat(e.target.value))}
+                style={{ flex: 1 }}
+              />
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={showNatalAspectsB}
+                onChange={(e) => setShowNatalAspectsB && setShowNatalAspectsB(e.target.checked)}
+              />
+              <span>Show Return Internal Aspects</span>
+            </label>
+            <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {returnInternalOrb}°</label>
+              <input
+                type="range"
+                min="0"
+                max="10"
+                step="0.5"
+                value={returnInternalOrb}
+                onChange={(e) => onReturnInternalOrbChange && onReturnInternalOrbChange(parseFloat(e.target.value))}
+                style={{ flex: 1 }}
+              />
+            </div>
+          </div>
+        </div>
+      ) : isSynastry ? (
         /* Synastry mode controls */
         <div style={{
           display: 'flex',
@@ -956,7 +1039,13 @@ function ChartWheel({
         )}
         {transitData && (
           <g id="transit-planets">
-            {renderPlanets(transitData.planets, radii.transitOuter, '#3498db')}
+            {renderPlanets(
+              transitData.planets,
+              radii.transitOuter,
+              isReturnChart
+                ? (returnType === 'solar' ? '#FFB347' : '#C0C0C0') // Solar: gold/amber, Lunar: silver
+                : '#3498db' // Default: blue for regular transits
+            )}
           </g>
         )}
         <g id="angle-labels">{renderAngleLabels()}</g>

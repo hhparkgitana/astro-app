@@ -7,6 +7,7 @@ import ChatPanel from './components/ChatPanel';
 import { DateTime } from 'luxon';
 import { findAspect, getAngularDistance, calculateAspects } from '../shared/calculations/aspectsCalculator';
 import { calculateCompositeChart, calculateGeographicMidpoint } from '../shared/calculations/compositeCalculator';
+import { calculateSolarReturn, calculateLunarReturn } from '../shared/calculations/returnsCalculator';
 
 function App() {
   const [chartData, setChartData] = useState(null);
@@ -27,12 +28,14 @@ function App() {
   const [transitTransitOrb, setTransitTransitOrb] = useState(8);
   const [transitProgressionOrb, setTransitProgressionOrb] = useState(8);
   const [synastryOrb, setSynastryOrb] = useState(8);
+  const [returnNatalOrb, setReturnNatalOrb] = useState(8);
+  const [returnInternalOrb, setReturnInternalOrb] = useState(8);
 
   // Famous charts browser
   const [isBrowserOpen, setIsBrowserOpen] = useState(false);
   const [activeChart, setActiveChart] = useState('A'); // Which chart the browser is loading into
 
-  // View mode: 'single', 'dual', or 'relationship'
+  // View mode: 'single', 'dual', 'relationship', or 'returns'
   const [viewMode, setViewMode] = useState('single');
 
   // Chat panel state
@@ -52,6 +55,36 @@ function App() {
     hour: new Date().getHours().toString(),
     minute: new Date().getMinutes().toString()
   });
+
+  // Returns mode state
+  const [returnType, setReturnType] = useState('solar'); // 'solar' or 'lunar'
+  const [returnChartData, setReturnChartData] = useState(null);
+  const [loadingReturn, setLoadingReturn] = useState(false);
+  const [returnsFormData, setReturnsFormData] = useState({
+    name: '',
+    year: '1990',
+    month: '1',
+    day: '1',
+    hour: '12',
+    minute: '0',
+    latitude: '40.7128',
+    longitude: '-74.0060',
+    location: 'New York, NY',
+    timezone: 'America/New_York',
+    houseSystem: 'placidus',
+    // Return calculation parameters
+    returnYear: new Date().getFullYear().toString(), // For Solar Returns
+    returnMonth: new Date().getMonth() + 1,          // For Lunar Returns
+    returnDay: new Date().getDate(),                  // For Lunar Returns
+    returnLatitude: '40.7128',                        // Return location
+    returnLongitude: '-74.0060',
+    returnLocation: 'New York, NY',
+    returnTimezone: 'America/New_York',
+  });
+  const [returnsBirthLocationResults, setReturnsBirthLocationResults] = useState([]);
+  const [returnsReturnLocationResults, setReturnsReturnLocationResults] = useState([]);
+  const [searchingReturnsBirthLocation, setSearchingReturnsBirthLocation] = useState(false);
+  const [searchingReturnsReturnLocation, setSearchingReturnsReturnLocation] = useState(false);
 
   // Chart B states (for dual view)
   const [chartDataB, setChartDataB] = useState(null);
@@ -131,6 +164,15 @@ function App() {
 
     setFormDataB({
       ...formDataB,
+      [e.target.name]: value,
+    });
+  };
+
+  const handleReturnsInputChange = (e) => {
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+
+    setReturnsFormData({
+      ...returnsFormData,
       [e.target.name]: value,
     });
   };
@@ -473,6 +515,25 @@ function App() {
         newSynastryAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
       );
       setActiveSynastryAspects(allSynastryAspectKeys);
+    }
+  };
+
+  // Returns orb change handlers
+  const handleReturnNatalOrbChange = (newOrb) => {
+    setReturnNatalOrb(newOrb);
+    // Recalculate return-to-natal aspects if return chart exists
+    if (returnChartData && returnChartData.planets && returnChartData.natalChart && returnChartData.natalChart.planets) {
+      const newReturnToNatalAspects = calculateTransitAspects(returnChartData.natalChart.planets, returnChartData.planets, newOrb);
+      setReturnChartData({ ...returnChartData, returnToNatalAspects: newReturnToNatalAspects });
+    }
+  };
+
+  const handleReturnInternalOrbChange = (newOrb) => {
+    setReturnInternalOrb(newOrb);
+    // Recalculate return chart internal aspects
+    if (returnChartData && returnChartData.planets) {
+      const newReturnAspects = calculateAspects(returnChartData.planets, { default: newOrb });
+      setReturnChartData({ ...returnChartData, aspects: newReturnAspects });
     }
   };
 
@@ -1121,6 +1182,176 @@ function App() {
       setChartData({ success: false, error: error.message });
     }
     setLoading(false);
+  };
+
+  // Calculate Return Chart (Solar or Lunar)
+  const calculateReturn = async (e) => {
+    e.preventDefault();
+    setLoadingReturn(true);
+
+    try {
+      const natalData = {
+        year: parseInt(returnsFormData.year),
+        month: parseInt(returnsFormData.month),
+        day: parseInt(returnsFormData.day),
+        hour: parseInt(returnsFormData.hour),
+        minute: parseInt(returnsFormData.minute),
+        latitude: parseFloat(returnsFormData.latitude),
+        longitude: parseFloat(returnsFormData.longitude),
+        timezone: returnsFormData.timezone,
+        houseSystem: returnsFormData.houseSystem || 'placidus',
+      };
+
+      const returnLocation = {
+        latitude: parseFloat(returnsFormData.returnLatitude),
+        longitude: parseFloat(returnsFormData.returnLongitude),
+        timezone: returnsFormData.returnTimezone,
+        houseSystem: returnsFormData.houseSystem || 'placidus',
+      };
+
+      let returnResult;
+      if (returnType === 'solar') {
+        console.log('Calculating Solar Return...');
+        returnResult = await calculateSolarReturn(
+          natalData,
+          parseInt(returnsFormData.returnYear),
+          returnLocation,
+          window.astro.calculateChart
+        );
+      } else {
+        console.log('Calculating Lunar Return...');
+        returnResult = await calculateLunarReturn(
+          natalData,
+          parseInt(returnsFormData.returnYear),
+          parseInt(returnsFormData.returnMonth),
+          returnLocation,
+          window.astro.calculateChart
+        );
+      }
+
+      console.log('Return chart calculated:', returnResult);
+
+      // Calculate Return-to-Natal aspects
+      if (returnResult.success && returnResult.natalChart) {
+        const returnToNatalAspects = calculateTransitAspects(
+          returnResult.natalChart.planets,
+          returnResult.planets,
+          transitOrb
+        );
+        returnResult.returnToNatalAspects = returnToNatalAspects;
+        console.log('Return-to-natal aspects:', returnToNatalAspects);
+      }
+
+      setReturnChartData(returnResult);
+    } catch (error) {
+      console.error('Error calculating return chart:', error);
+      setReturnChartData({ success: false, error: error.message });
+      alert(`Error: ${error.message}`);
+    }
+
+    setLoadingReturn(false);
+  };
+
+  // Location search for Returns birth location
+  const searchReturnsBirthLocation = async () => {
+    if (!returnsFormData.location.trim()) {
+      alert('Please enter a birth location to search');
+      return;
+    }
+
+    setSearchingReturnsBirthLocation(true);
+    setReturnsBirthLocationResults([]);
+
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?` +
+        `q=${encodeURIComponent(returnsFormData.location)}` +
+        `&format=json&limit=5&addressdetails=1`,
+        {
+          headers: {
+            'User-Agent': 'AstroApp/1.0'
+          }
+        }
+      );
+
+      const data = await response.json();
+
+      if (data && data.length > 0) {
+        setReturnsBirthLocationResults(data);
+      } else {
+        alert('No locations found. Try a different search term.');
+      }
+    } catch (error) {
+      console.error('Location search error:', error);
+      alert('Error searching for location. Please try again.');
+    }
+
+    setSearchingReturnsBirthLocation(false);
+  };
+
+  const selectReturnsBirthLocation = (result) => {
+    const displayName = result.display_name;
+
+    setReturnsFormData({
+      ...returnsFormData,
+      location: displayName,
+      latitude: String(result.lat),
+      longitude: String(result.lon),
+      timezone: result.address?.country_code === 'us' ? 'America/New_York' : 'UTC'
+    });
+
+    setReturnsBirthLocationResults([]);
+  };
+
+  // Location search for Returns return location
+  const searchReturnsReturnLocation = async () => {
+    if (!returnsFormData.returnLocation.trim()) {
+      alert('Please enter a return location to search');
+      return;
+    }
+
+    setSearchingReturnsReturnLocation(true);
+    setReturnsReturnLocationResults([]);
+
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?` +
+        `q=${encodeURIComponent(returnsFormData.returnLocation)}` +
+        `&format=json&limit=5&addressdetails=1`,
+        {
+          headers: {
+            'User-Agent': 'AstroApp/1.0'
+          }
+        }
+      );
+
+      const data = await response.json();
+
+      if (data && data.length > 0) {
+        setReturnsReturnLocationResults(data);
+      } else {
+        alert('No locations found. Try a different search term.');
+      }
+    } catch (error) {
+      console.error('Location search error:', error);
+      alert('Error searching for location. Please try again.');
+    }
+
+    setSearchingReturnsReturnLocation(false);
+  };
+
+  const selectReturnsReturnLocation = (result) => {
+    const displayName = result.display_name;
+
+    setReturnsFormData({
+      ...returnsFormData,
+      returnLocation: displayName,
+      returnLatitude: String(result.lat),
+      returnLongitude: String(result.lon),
+      returnTimezone: result.address?.country_code === 'us' ? 'America/New_York' : 'UTC'
+    });
+
+    setReturnsReturnLocationResults([]);
   };
 
   // Calculate Chart B (for dual view)
@@ -1783,6 +2014,13 @@ function App() {
             title="Synastry & Composite Charts"
           >
             💞 Relationship Chart
+          </button>
+          <button
+            className={`mode-btn ${viewMode === 'returns' ? 'active' : ''}`}
+            onClick={() => setViewMode('returns')}
+            title="Solar & Lunar Returns"
+          >
+            🔄 Returns
           </button>
           <button
             className={`mode-btn ${isChatOpen ? 'active' : ''}`}
@@ -2978,7 +3216,7 @@ function App() {
               )}
             </div>
           </div>
-        ) : (
+        ) : viewMode === 'relationship' ? (
           <div className="relationship-container">
             <h2>💞 Relationship Chart</h2>
 
@@ -3763,7 +4001,368 @@ function App() {
               </div>
             )}
           </div>
-        )}
+        ) : viewMode === 'returns' ? (
+          <div className="returns-mode">
+            <h2>🔄 Solar & Lunar Returns</h2>
+            <p style={{ fontSize: '0.9em', color: '#666', marginBottom: '1.5rem' }}>
+              Calculate Solar Returns (annual forecast) or Lunar Returns (monthly forecast) to see timing for the upcoming period.
+            </p>
+
+            {/* Return Type Selector */}
+            <div style={{ marginBottom: '2rem', padding: '1rem', backgroundColor: '#f8f9fa', borderRadius: '8px' }}>
+              <h3 style={{ marginTop: 0 }}>Return Type</h3>
+              <div style={{ display: 'flex', gap: '1.5rem' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+                  <input
+                    type="radio"
+                    name="returnType"
+                    value="solar"
+                    checked={returnType === 'solar'}
+                    onChange={(e) => setReturnType(e.target.value)}
+                  />
+                  <span>🌞 Solar Return (Annual)</span>
+                </label>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+                  <input
+                    type="radio"
+                    name="returnType"
+                    value="lunar"
+                    checked={returnType === 'lunar'}
+                    onChange={(e) => setReturnType(e.target.value)}
+                  />
+                  <span>🌙 Lunar Return (Monthly)</span>
+                </label>
+              </div>
+              <p style={{ fontSize: '0.85em', color: '#666', margin: '0.5rem 0 0 0' }}>
+                {returnType === 'solar'
+                  ? 'Solar Return: Cast for when Sun returns to its exact natal position (your birthday). Shows themes for the year ahead.'
+                  : 'Lunar Return: Cast for when Moon returns to its exact natal position (monthly). Shows themes for the month ahead.'}
+              </p>
+            </div>
+
+            <form onSubmit={calculateReturn} className="chart-form">
+              {/* Natal Birth Data Section */}
+              <div style={{ marginBottom: '2rem' }}>
+                <h3>Natal Birth Data</h3>
+
+                <div className="form-group">
+                  <label>Name (optional)</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={returnsFormData.name}
+                    onChange={handleReturnsInputChange}
+                    placeholder="Enter name"
+                  />
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label>Year *</label>
+                    <input
+                      type="number"
+                      name="year"
+                      value={returnsFormData.year}
+                      onChange={handleReturnsInputChange}
+                      required
+                      min="500"
+                      max="2100"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Month *</label>
+                    <input
+                      type="number"
+                      name="month"
+                      value={returnsFormData.month}
+                      onChange={handleReturnsInputChange}
+                      required
+                      min="1"
+                      max="12"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Day *</label>
+                    <input
+                      type="number"
+                      name="day"
+                      value={returnsFormData.day}
+                      onChange={handleReturnsInputChange}
+                      required
+                      min="1"
+                      max="31"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label>Hour (0-23) *</label>
+                    <input
+                      type="number"
+                      name="hour"
+                      value={returnsFormData.hour}
+                      onChange={handleReturnsInputChange}
+                      required
+                      min="0"
+                      max="23"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Minute *</label>
+                    <input
+                      type="number"
+                      name="minute"
+                      value={returnsFormData.minute}
+                      onChange={handleReturnsInputChange}
+                      required
+                      min="0"
+                      max="59"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label>Birth Location *</label>
+                  <div className="location-search-group">
+                    <input
+                      type="text"
+                      name="location"
+                      value={returnsFormData.location}
+                      onChange={handleReturnsInputChange}
+                      placeholder="Enter birth location"
+                      required
+                    />
+                    <button
+                      type="button"
+                      onClick={searchReturnsBirthLocation}
+                      disabled={searchingReturnsBirthLocation}
+                      className="search-btn"
+                    >
+                      {searchingReturnsBirthLocation ? 'Searching...' : 'Search'}
+                    </button>
+                  </div>
+                  {returnsBirthLocationResults.length > 0 && (
+                    <div className="location-results">
+                      {returnsBirthLocationResults.map((result, index) => (
+                        <div
+                          key={index}
+                          className="location-result-item"
+                          onClick={() => selectReturnsBirthLocation(result)}
+                        >
+                          <div className="location-name">{result.display_name}</div>
+                          <div className="location-coords">
+                            Lat: {parseFloat(result.lat).toFixed(4)}, Lon: {parseFloat(result.lon).toFixed(4)}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {returnsFormData.latitude && returnsFormData.longitude && (
+                    <div style={{ fontSize: '0.85em', color: '#28a745', marginTop: '0.5rem' }}>
+                      ✓ Location set: {parseFloat(returnsFormData.latitude).toFixed(4)}°, {parseFloat(returnsFormData.longitude).toFixed(4)}°
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Return Parameters Section */}
+              <div style={{ marginBottom: '2rem' }}>
+                <h3>{returnType === 'solar' ? 'Solar' : 'Lunar'} Return Parameters</h3>
+
+                {returnType === 'solar' ? (
+                  <div className="form-group">
+                    <label>Return Year *</label>
+                    <input
+                      type="number"
+                      name="returnYear"
+                      value={returnsFormData.returnYear}
+                      onChange={handleReturnsInputChange}
+                      required
+                      min="1900"
+                      max="2100"
+                      placeholder={`e.g., ${new Date().getFullYear()}`}
+                    />
+                    <small style={{ display: 'block', marginTop: '0.25rem', color: '#666' }}>
+                      Year for which to calculate the Solar Return
+                    </small>
+                  </div>
+                ) : (
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label>Month *</label>
+                      <input
+                        type="number"
+                        name="returnMonth"
+                        value={returnsFormData.returnMonth}
+                        onChange={handleReturnsInputChange}
+                        required
+                        min="1"
+                        max="12"
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Year *</label>
+                      <input
+                        type="number"
+                        name="returnYear"
+                        value={returnsFormData.returnYear}
+                        onChange={handleReturnsInputChange}
+                        required
+                        min="1900"
+                        max="2100"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Return Location Section */}
+              <div style={{ marginBottom: '2rem' }}>
+                <h3>Return Location</h3>
+                <div className="form-group">
+                  <label>Location *</label>
+                  <div className="location-search-group">
+                    <input
+                      type="text"
+                      name="returnLocation"
+                      value={returnsFormData.returnLocation}
+                      onChange={handleReturnsInputChange}
+                      placeholder="Where you'll be during the return"
+                      required
+                    />
+                    <button
+                      type="button"
+                      onClick={searchReturnsReturnLocation}
+                      disabled={searchingReturnsReturnLocation}
+                      className="search-btn"
+                    >
+                      {searchingReturnsReturnLocation ? 'Searching...' : 'Search'}
+                    </button>
+                  </div>
+                  {returnsReturnLocationResults.length > 0 && (
+                    <div className="location-results">
+                      {returnsReturnLocationResults.map((result, index) => (
+                        <div
+                          key={index}
+                          className="location-result-item"
+                          onClick={() => selectReturnsReturnLocation(result)}
+                        >
+                          <div className="location-name">{result.display_name}</div>
+                          <div className="location-coords">
+                            Lat: {parseFloat(result.lat).toFixed(4)}, Lon: {parseFloat(result.lon).toFixed(4)}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {returnsFormData.returnLatitude && returnsFormData.returnLongitude && (
+                    <div style={{ fontSize: '0.85em', color: '#28a745', marginTop: '0.5rem' }}>
+                      ✓ Location set: {parseFloat(returnsFormData.returnLatitude).toFixed(4)}°, {parseFloat(returnsFormData.returnLongitude).toFixed(4)}°
+                    </div>
+                  )}
+                  <small style={{ display: 'block', marginTop: '0.25rem', color: '#666' }}>
+                    Enter the location where you will be when the {returnType === 'solar' ? 'Sun' : 'Moon'} returns to its natal position
+                  </small>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={loadingReturn}
+                style={{
+                  padding: '0.75rem 2rem',
+                  fontSize: '1rem',
+                  backgroundColor: loadingReturn ? '#ccc' : (returnType === 'solar' ? '#f39c12' : '#95a5a6'),
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '6px',
+                  cursor: loadingReturn ? 'not-allowed' : 'pointer',
+                  fontWeight: 'bold'
+                }}
+              >
+                {loadingReturn ? 'Calculating...' : `Calculate ${returnType === 'solar' ? 'Solar' : 'Lunar'} Return`}
+              </button>
+            </form>
+
+            {/* Chart display area */}
+            {returnChartData && returnChartData.success && (
+              <div style={{ marginTop: '2rem' }}>
+                <h3>
+                  {returnType === 'solar' ? '🌞 Solar' : '🌙 Lunar'} Return Chart
+                  {returnChartData.returnDatetime && (
+                    <span style={{ fontSize: '0.85em', fontWeight: 'normal', color: '#666', marginLeft: '1rem' }}>
+                      Exact return: {new Date(returnChartData.returnDatetime).toLocaleString()}
+                    </span>
+                  )}
+                </h3>
+
+                <div className="chart-display">
+                  <ChartWheel
+                    chartData={returnChartData.natalChart}
+                    chartDataB={returnChartData}
+                    transitData={{ planets: returnChartData.planets }}
+                    isSynastry={true}
+                    activeAspects={new Set()}
+                    onAspectToggle={() => {}}
+                    activeTransitAspects={new Set()}
+                    onTransitAspectToggle={() => {}}
+                    showNatalAspects={false}
+                    setShowNatalAspects={setShowNatalAspects}
+                    showNatalAspectsB={false}
+                    setShowNatalAspectsB={setShowNatalAspectsB}
+                    isReturnChart={true}
+                    returnType={returnType}
+                    natalOrb={natalOrb}
+                    onNatalOrbChange={handleNatalOrbChange}
+                    transitOrb={returnNatalOrb}
+                    onTransitOrbChange={handleReturnNatalOrbChange}
+                    returnInternalOrb={returnInternalOrb}
+                    onReturnInternalOrbChange={handleReturnInternalOrbChange}
+                  />
+                </div>
+
+                {returnChartData.returnToNatalAspects && returnChartData.returnToNatalAspects.length > 0 && (
+                  <div style={{ marginTop: '2rem' }}>
+                    <h3>Return-to-Natal Aspects</h3>
+                    <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
+                      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                        <thead>
+                          <tr style={{ borderBottom: '2px solid #ddd' }}>
+                            <th style={{ padding: '0.5rem', textAlign: 'left' }}>Return Planet</th>
+                            <th style={{ padding: '0.5rem', textAlign: 'center' }}>Aspect</th>
+                            <th style={{ padding: '0.5rem', textAlign: 'left' }}>Natal Planet</th>
+                            <th style={{ padding: '0.5rem', textAlign: 'right' }}>Orb</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {returnChartData.returnToNatalAspects.map((aspect, idx) => (
+                            <tr key={idx} style={{ borderBottom: '1px solid #eee' }}>
+                              <td style={{ padding: '0.5rem' }}>{aspect.planet1}</td>
+                              <td style={{ padding: '0.5rem', textAlign: 'center' }}>
+                                {aspect.symbol} {aspect.name}
+                              </td>
+                              <td style={{ padding: '0.5rem' }}>{aspect.planet2}</td>
+                              <td style={{ padding: '0.5rem', textAlign: 'right' }}>
+                                {aspect.orb.toFixed(2)}°
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {returnChartData && !returnChartData.success && (
+              <div style={{ marginTop: '2rem', padding: '1rem', backgroundColor: '#f8d7da', borderRadius: '8px', color: '#721c24' }}>
+                <strong>Error:</strong> {returnChartData.error}
+              </div>
+            )}
+          </div>
+        ) : null}
       </main>
 
       <FamousChartsBrowser
