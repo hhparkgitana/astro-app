@@ -3001,6 +3001,26 @@ function App() {
                     >
                       {searchingLocation ? '🔍 Searching...' : '🔍 Search'}
                     </button>
+
+                    {locationResults.length > 0 && (
+                      <div className="location-results" style={{ marginTop: '0.5rem' }}>
+                        <div className="location-results-header">
+                          Select a location:
+                        </div>
+                        {locationResults.map((result, index) => (
+                          <div
+                            key={index}
+                            className="location-result-item"
+                            onClick={() => selectLocation(result)}
+                          >
+                            <div className="location-name">{result.display_name}</div>
+                            <div className="location-coords">
+                              {parseFloat(result.lat).toFixed(4)}°, {parseFloat(result.lon).toFixed(4)}°
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.75rem' }}>
@@ -3241,6 +3261,26 @@ function App() {
                     >
                       {searchingLocation ? '🔍 Searching...' : '🔍 Search'}
                     </button>
+
+                    {locationResults.length > 0 && (
+                      <div className="location-results" style={{ marginTop: '0.5rem' }}>
+                        <div className="location-results-header">
+                          Select a location:
+                        </div>
+                        {locationResults.map((result, index) => (
+                          <div
+                            key={index}
+                            className="location-result-item"
+                            onClick={() => selectLocationB(result)}
+                          >
+                            <div className="location-name">{result.display_name}</div>
+                            <div className="location-coords">
+                              {parseFloat(result.lat).toFixed(4)}°, {parseFloat(result.lon).toFixed(4)}°
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.75rem' }}>
