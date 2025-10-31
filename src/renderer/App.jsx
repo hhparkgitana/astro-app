@@ -108,6 +108,7 @@ function App() {
 
   const handleInputChange = (e) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    console.log('Person A input change:', e.target.name, '=', value);
 
     setFormData({
       ...formData,
@@ -117,6 +118,7 @@ function App() {
 
   const handleInputChangeB = (e) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    console.log('Person B input change:', e.target.name, '=', value);
 
     setFormDataB({
       ...formDataB,
