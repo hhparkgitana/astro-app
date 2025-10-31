@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import ChartWheel from './components/ChartWheel';
 import AspectTabs from './components/AspectTabs';
+import AspectMatrix from './components/AspectMatrix';
 import ReturnAspectMatrix from './components/ReturnAspectMatrix';
 import FamousChartsBrowser from './components/FamousChartsBrowser';
 import ChatPanel from './components/ChatPanel';
