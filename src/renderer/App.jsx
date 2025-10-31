@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import ChartWheel from './components/ChartWheel';
 import AspectTabs from './components/AspectTabs';
+import ReturnAspectMatrix from './components/ReturnAspectMatrix';
 import FamousChartsBrowser from './components/FamousChartsBrowser';
 import ChatPanel from './components/ChatPanel';
 import { DateTime } from 'luxon';
@@ -19,6 +20,7 @@ function App() {
   const [activeProgressionNatalAspects, setActiveProgressionNatalAspects] = useState(new Set());
   const [activeTransitProgressionAspects, setActiveTransitProgressionAspects] = useState(new Set());
   const [activeSynastryAspects, setActiveSynastryAspects] = useState(new Set());
+  const [activeReturnAspects, setActiveReturnAspects] = useState(new Set());
   const [showNatalAspects, setShowNatalAspects] = useState(true);
 
   // Orb settings for each aspect type
@@ -1842,6 +1844,22 @@ function App() {
     });
 
     setActiveSynastryAspects(newActiveAspects);
+  };
+
+  const handleReturnAspectToggle = (aspectOrAspects) => {
+    const aspects = Array.isArray(aspectOrAspects) ? aspectOrAspects : [aspectOrAspects];
+    const newActiveAspects = new Set(activeReturnAspects);
+
+    aspects.forEach(aspect => {
+      const key = `${aspect.planet1}-${aspect.planet2}`;
+      if (newActiveAspects.has(key)) {
+        newActiveAspects.delete(key);
+      } else {
+        newActiveAspects.add(key);
+      }
+    });
+
+    setActiveReturnAspects(newActiveAspects);
   };
 
   const handleProgressionNatalAspectToggleB = (aspectOrAspects) => {
@@ -4324,33 +4342,12 @@ function App() {
 
                 {returnChartData.returnToNatalAspects && returnChartData.returnToNatalAspects.length > 0 && (
                   <div style={{ marginTop: '2rem' }}>
-                    <h3>Return-to-Natal Aspects</h3>
-                    <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
-                      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                        <thead>
-                          <tr style={{ borderBottom: '2px solid #ddd' }}>
-                            <th style={{ padding: '0.5rem', textAlign: 'left' }}>Return Planet</th>
-                            <th style={{ padding: '0.5rem', textAlign: 'center' }}>Aspect</th>
-                            <th style={{ padding: '0.5rem', textAlign: 'left' }}>Natal Planet</th>
-                            <th style={{ padding: '0.5rem', textAlign: 'right' }}>Orb</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {returnChartData.returnToNatalAspects.map((aspect, idx) => (
-                            <tr key={idx} style={{ borderBottom: '1px solid #eee' }}>
-                              <td style={{ padding: '0.5rem' }}>{aspect.planet1}</td>
-                              <td style={{ padding: '0.5rem', textAlign: 'center' }}>
-                                {aspect.symbol} {aspect.name}
-                              </td>
-                              <td style={{ padding: '0.5rem' }}>{aspect.planet2}</td>
-                              <td style={{ padding: '0.5rem', textAlign: 'right' }}>
-                                {aspect.orb.toFixed(2)}°
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
+                    <ReturnAspectMatrix
+                      chartData={returnChartData}
+                      activeReturnAspects={activeReturnAspects}
+                      onReturnAspectToggle={handleReturnAspectToggle}
+                      returnType={returnType}
+                    />
                   </div>
                 )}
               </div>
