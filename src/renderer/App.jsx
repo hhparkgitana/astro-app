@@ -1542,6 +1542,57 @@ function App() {
     });
   };
 
+  const searchLocationB = async () => {
+    if (!formDataB.location.trim()) {
+      alert('Please enter a location to search');
+      return;
+    }
+
+    setSearchingLocation(true);
+    setLocationResults([]);
+
+    try {
+      // Query OpenStreetMap Nominatim API
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?` +
+        `q=${encodeURIComponent(formDataB.location)}` +
+        `&format=json&limit=5&addressdetails=1`,
+        {
+          headers: {
+            'User-Agent': 'AstroApp/1.0' // Nominatim requires a user agent
+          }
+        }
+      );
+
+      const data = await response.json();
+
+      if (data && data.length > 0) {
+        setLocationResults(data);
+      } else {
+        alert('No locations found. Try a different search term.');
+      }
+    } catch (error) {
+      console.error('Location search error:', error);
+      alert('Error searching for location. Please try again.');
+    } finally {
+      setSearchingLocation(false);
+    }
+  };
+
+  const selectLocationB = (result) => {
+    // Format the display name nicely
+    const displayName = result.display_name;
+
+    setFormDataB({
+      ...formDataB,
+      location: displayName,
+      latitude: String(result.lat),
+      longitude: String(result.lon),
+    });
+
+    setLocationResults([]); // Clear results after selection
+  };
+
   const getZodiacSign = (longitude) => {
     if (longitude === undefined || isNaN(longitude)) return 'N/A';
     const signs = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
