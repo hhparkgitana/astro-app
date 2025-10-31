@@ -4,6 +4,7 @@ import TransitAspectMatrix from './TransitAspectMatrix';
 import TransitTransitAspectMatrix from './TransitTransitAspectMatrix';
 import TransitProgressionAspectMatrix from './TransitProgressionAspectMatrix';
 import ProgressionNatalAspectMatrix from './ProgressionNatalAspectMatrix';
+import SynastryAspectMatrix from './SynastryAspectMatrix';
 import './AspectTabs.css';
 
 function AspectTabs({
@@ -16,6 +17,8 @@ function AspectTabs({
   onProgressionNatalAspectToggle,
   activeTransitProgressionAspects,
   onTransitProgressionAspectToggle,
+  activeSynastryAspects,
+  onSynastryAspectToggle,
   showNatalAspects, // from chart wheel visibility
   showProgressions = false
 }) {
@@ -25,6 +28,7 @@ function AspectTabs({
   const hasProgressionNatalAspects = chartData && chartData.progressionNatalAspects;
   const hasTransitTransitAspects = chartData && chartData.transitTransitAspects;
   const hasTransitProgressionAspects = chartData && chartData.transitProgressionAspects;
+  const hasSynastryAspects = chartData && chartData.synastryAspects;
 
   return (
     <div className="aspect-tabs-container">
@@ -74,6 +78,16 @@ function AspectTabs({
             Transit-Progression Aspects (Tri-Wheel)
           </button>
         )}
+
+        {hasSynastryAspects && (
+          <button
+            className={`aspect-tab ${activeTab === 'synastry' ? 'active' : ''}`}
+            onClick={() => setActiveTab('synastry')}
+            title="View synastry aspects between Chart A and Chart B"
+          >
+            Synastry Aspects
+          </button>
+        )}
       </div>
 
       <div className="aspect-tabs-content">
@@ -110,6 +124,14 @@ function AspectTabs({
             chartData={chartData}
             activeTransitProgressionAspects={activeTransitProgressionAspects}
             onTransitProgressionAspectToggle={onTransitProgressionAspectToggle}
+          />
+        )}
+
+        {activeTab === 'synastry' && hasSynastryAspects && (
+          <SynastryAspectMatrix
+            chartData={chartData}
+            activeSynastryAspects={activeSynastryAspects}
+            onSynastryAspectToggle={onSynastryAspectToggle}
           />
         )}
       </div>

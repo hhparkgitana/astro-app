@@ -16,6 +16,7 @@ function App() {
   const [activeTransitAspects, setActiveTransitAspects] = useState(new Set());
   const [activeProgressionNatalAspects, setActiveProgressionNatalAspects] = useState(new Set());
   const [activeTransitProgressionAspects, setActiveTransitProgressionAspects] = useState(new Set());
+  const [activeSynastryAspects, setActiveSynastryAspects] = useState(new Set());
   const [showNatalAspects, setShowNatalAspects] = useState(true);
 
   // Orb settings for each aspect type
@@ -24,6 +25,7 @@ function App() {
   const [progressionNatalOrb, setProgressionNatalOrb] = useState(8);
   const [transitTransitOrb, setTransitTransitOrb] = useState(8);
   const [transitProgressionOrb, setTransitProgressionOrb] = useState(8);
+  const [synastryOrb, setSynastryOrb] = useState(8);
 
   // Famous charts browser
   const [isBrowserOpen, setIsBrowserOpen] = useState(false);
@@ -394,6 +396,19 @@ function App() {
         newProgressionAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
       );
       setActiveProgressionNatalAspectsB(allProgressionAspectKeys);
+    }
+  };
+
+  const handleSynastryOrbChange = (newOrb) => {
+    setSynastryOrb(newOrb);
+    // Recalculate synastry aspects if both charts exist
+    if (chartData && chartData.planets && chartDataB && chartDataB.planets) {
+      const newSynastryAspects = calculateTransitAspects(chartData.planets, chartDataB.planets, newOrb);
+      setChartData({ ...chartData, synastryAspects: newSynastryAspects });
+      const allSynastryAspectKeys = new Set(
+        newSynastryAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+      );
+      setActiveSynastryAspects(allSynastryAspectKeys);
     }
   };
 
@@ -885,6 +900,17 @@ function App() {
         setActiveTransitProgressionAspects(allTransitProgressionAspectKeys);
       }
 
+      // Calculate synastry aspects if Chart B exists
+      if (chartDataB && chartDataB.planets && result.success && result.planets) {
+        const synastryAspects = calculateTransitAspects(result.planets, chartDataB.planets, synastryOrb);
+        result.synastryAspects = synastryAspects;
+        // Set all synastry aspects as active by default
+        const allSynastryAspectKeys = new Set(
+          synastryAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+        );
+        setActiveSynastryAspects(allSynastryAspectKeys);
+      }
+
       setChartData({ ...result, transits: transitData, progressions: progressionsData });
       console.log('Chart A calculated:', result);
     } catch (error) {
@@ -1061,6 +1087,18 @@ function App() {
           transitProgressionAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
         );
         setActiveTransitProgressionAspectsB(allTransitProgressionAspectKeys);
+      }
+
+      // Calculate synastry aspects if Chart A exists
+      if (chartData && chartData.planets && result.success && result.planets) {
+        const synastryAspects = calculateTransitAspects(chartData.planets, result.planets, synastryOrb);
+        // Store synastry aspects in Chart A (since we'll render them from Chart A's perspective)
+        setChartData(prevChartData => ({ ...prevChartData, synastryAspects }));
+        // Set all synastry aspects as active by default
+        const allSynastryAspectKeys = new Set(
+          synastryAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+        );
+        setActiveSynastryAspects(allSynastryAspectKeys);
       }
 
       setChartDataB({ ...result, transits: transitData, progressions: progressionsData });
@@ -1354,6 +1392,22 @@ function App() {
     });
 
     setActiveTransitProgressionAspectsB(newActiveAspects);
+  };
+
+  const handleSynastryAspectToggle = (aspectOrAspects) => {
+    const aspects = Array.isArray(aspectOrAspects) ? aspectOrAspects : [aspectOrAspects];
+    const newActiveAspects = new Set(activeSynastryAspects);
+
+    aspects.forEach(aspect => {
+      const key = `${aspect.planet1}-${aspect.planet2}`;
+      if (newActiveAspects.has(key)) {
+        newActiveAspects.delete(key);
+      } else {
+        newActiveAspects.add(key);
+      }
+    });
+
+    setActiveSynastryAspects(newActiveAspects);
   };
 
   const handleProgressionNatalAspectToggleB = (aspectOrAspects) => {
@@ -1950,6 +2004,8 @@ function App() {
               onProgressionNatalAspectToggle={handleProgressionNatalAspectToggle}
               activeTransitProgressionAspects={activeTransitProgressionAspects}
               onTransitProgressionAspectToggle={handleTransitProgressionAspectToggle}
+              activeSynastryAspects={activeSynastryAspects}
+              onSynastryAspectToggle={handleSynastryAspectToggle}
               showNatalAspects={showNatalAspects}
               showProgressions={formData.showProgressions}
             />
@@ -2326,6 +2382,8 @@ function App() {
                     onProgressionNatalAspectToggle={handleProgressionNatalAspectToggle}
                     activeTransitProgressionAspects={activeTransitProgressionAspects}
                     onTransitProgressionAspectToggle={handleTransitProgressionAspectToggle}
+                    activeSynastryAspects={activeSynastryAspects}
+                    onSynastryAspectToggle={handleSynastryAspectToggle}
                     showNatalAspects={showNatalAspects}
                     showProgressions={formData.showProgressions}
                   />
@@ -2650,6 +2708,8 @@ function App() {
                     onProgressionNatalAspectToggle={handleProgressionNatalAspectToggleB}
                     activeTransitProgressionAspects={activeTransitProgressionAspectsB}
                     onTransitProgressionAspectToggle={handleTransitProgressionAspectToggleB}
+                    activeSynastryAspects={activeSynastryAspects}
+                    onSynastryAspectToggle={handleSynastryAspectToggle}
                     showNatalAspects={showNatalAspectsB}
                     showProgressions={formDataB.showProgressions}
                   />
