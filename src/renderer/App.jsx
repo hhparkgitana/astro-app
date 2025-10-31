@@ -116,6 +116,7 @@ function App() {
     // Transit date/time (defaults to current date)
     showTransits: false,
     showProgressions: false,
+    directionType: 'progressions', // 'progressions' or 'solarArcs'
     transitYear: new Date().getFullYear().toString(),
     transitMonth: (new Date().getMonth() + 1).toString(),
     transitDay: new Date().getDate().toString(),
@@ -143,6 +144,7 @@ function App() {
     houseSystem: 'placidus',
     showTransits: false,
     showProgressions: false,
+    directionType: 'progressions', // 'progressions' or 'solarArcs'
     transitYear: new Date().getFullYear().toString(),
     transitMonth: (new Date().getMonth() + 1).toString(),
     transitDay: new Date().getDate().toString(),
