@@ -7,11 +7,14 @@ import AspectMatrix from './components/AspectMatrix';
 import ReturnAspectMatrix from './components/ReturnAspectMatrix';
 import FamousChartsBrowser from './components/FamousChartsBrowser';
 import ChatPanel from './components/ChatPanel';
+import SaveChartModal from './components/SaveChartModal';
+import ChartLibrary from './components/ChartLibrary';
 import { DateTime } from 'luxon';
 import { findAspect, getAngularDistance, calculateAspects } from '../shared/calculations/aspectsCalculator';
 import { calculateCompositeChart, calculateGeographicMidpoint } from '../shared/calculations/compositeCalculator';
 import { calculateSolarReturn, calculateLunarReturn } from '../shared/calculations/returnsCalculator';
 import { calculateSolarArcs, getSolarArcDefaultOrb } from '../shared/calculations/solarArcsCalculator';
+import { saveChart } from '../utils/db';
 
 function App() {
   const [chartData, setChartData] = useState(null);
@@ -48,6 +51,10 @@ function App() {
 
   // Chat panel state
   const [isChatOpen, setIsChatOpen] = useState(false);
+
+  // Chart library and save modal state
+  const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
+  const [isLibraryOpen, setIsLibraryOpen] = useState(false);
 
   // Relationship chart state
   const [relationshipChartType, setRelationshipChartType] = useState('synastry'); // 'synastry' or 'composite'
@@ -1981,6 +1988,68 @@ function App() {
     setActiveProgressionNatalAspectsB(newActiveAspects);
   };
 
+  // Chart library handlers
+  const handleSaveChart = async ({ name, notes }) => {
+    if (!chartData) {
+      throw new Error('No chart data to save');
+    }
+
+    // Determine chart type based on current view mode
+    let chartType = 'natal';
+    if (viewMode === 'relationship') {
+      chartType = relationshipChartType; // 'synastry' or 'composite'
+    } else if (viewMode === 'returns') {
+      chartType = returnType === 'solar' ? 'solar-return' : 'lunar-return';
+    }
+
+    const chartRecord = {
+      name,
+      notes,
+      chartType,
+      formData,
+      formDataB: viewMode === 'relationship' ? formDataB : null,
+      chartData,
+      chartDataB: viewMode === 'relationship' ? chartDataB : null,
+    };
+
+    const chartId = await saveChart(chartRecord);
+    console.log('Chart saved with ID:', chartId);
+    return chartId;
+  };
+
+  const handleLoadChart = (chart) => {
+    // Load the chart data into the appropriate form
+    if (chart.formData) {
+      setFormData(chart.formData);
+    }
+
+    if (chart.formDataB) {
+      setFormDataB(chart.formDataB);
+    }
+
+    // Set the view mode based on chart type
+    if (chart.chartType === 'synastry' || chart.chartType === 'composite') {
+      setViewMode('relationship');
+      setRelationshipChartType(chart.chartType);
+    } else if (chart.chartType === 'solar-return' || chart.chartType === 'lunar-return') {
+      setViewMode('returns');
+      setReturnType(chart.chartType === 'solar-return' ? 'solar' : 'lunar');
+    } else {
+      setViewMode('single');
+    }
+
+    // Load the chart data
+    if (chart.chartData) {
+      setChartData(chart.chartData);
+    }
+
+    if (chart.chartDataB) {
+      setChartDataB(chart.chartDataB);
+    }
+
+    console.log('Loaded chart:', chart.name);
+  };
+
   const searchLocation = async () => {
     if (!formData.location.trim()) {
       alert('Please enter a location to search');
@@ -2149,6 +2218,21 @@ function App() {
             title="AI Assistant"
           >
             🤖 AI Chat
+          </button>
+          <button
+            className="mode-btn"
+            onClick={() => setIsLibraryOpen(true)}
+            title="View and load saved charts"
+          >
+            📚 Library
+          </button>
+          <button
+            className="mode-btn"
+            onClick={() => setIsSaveModalOpen(true)}
+            disabled={!chartData}
+            title={chartData ? "Save current chart" : "Calculate a chart first"}
+          >
+            💾 Save Chart
           </button>
         </div>
       </header>
@@ -4598,6 +4682,19 @@ function App() {
         formDataB={formDataB}
         isOpen={isChatOpen}
         onToggle={() => setIsChatOpen(!isChatOpen)}
+      />
+
+      <SaveChartModal
+        isOpen={isSaveModalOpen}
+        onClose={() => setIsSaveModalOpen(false)}
+        onSave={handleSaveChart}
+        initialName={formData.name || ''}
+      />
+
+      <ChartLibrary
+        isOpen={isLibraryOpen}
+        onClose={() => setIsLibraryOpen(false)}
+        onLoadChart={handleLoadChart}
       />
     </div>
   );
