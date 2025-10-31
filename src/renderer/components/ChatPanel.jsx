@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './ChatPanel.css';
+import { getAllCharts } from '../../utils/db';
 
 function ChatPanel({ chartData, chartDataB, compositeChartData, returnChartData, returnType, viewMode, relationshipChartType, formData, formDataB, returnsFormData, isOpen, onToggle }) {
   const [messages, setMessages] = useState([]);
@@ -152,6 +153,19 @@ function ChatPanel({ chartData, chartDataB, compositeChartData, returnChartData,
     try {
       // Build chart context
       const chartContext = buildChartContext();
+
+      // Fetch user's saved charts from IndexedDB
+      let userCharts = [];
+      try {
+        userCharts = await getAllCharts();
+        console.log(`Fetched ${userCharts.length} user charts for AI context`);
+      } catch (error) {
+        console.error('Failed to fetch user charts:', error);
+        // Continue without user charts rather than failing entirely
+      }
+
+      // Add user charts to context
+      chartContext.userCharts = userCharts;
 
       // Call API via IPC
       const response = await window.astro.chatWithClaude({

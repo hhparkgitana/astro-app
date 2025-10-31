@@ -323,6 +323,9 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
 
 You must analyze astrological charts using ONLY the data provided. Never invent or assume aspects.
 
+USER CHART DATABASE:
+The user has a personal chart library where they save charts. You have access to search these charts and analyze them. When the user asks about "my charts", "saved charts", "my library", or similar, use the search_user_charts tool. For transit or eclipse impacts on saved charts, use user_database_impact query type.
+
 HOUSE PLACEMENTS:
 Each planet position includes its house placement (1-12). Houses represent different life areas and contexts for planetary expression. Always consider both sign and house when interpreting planetary placements.
 
@@ -473,6 +476,110 @@ Each planet, angle (Ascendant, Midheaven), and transit position includes its Sab
               }
             },
             {
+              name: "search_user_charts",
+              description: "Search through the user's saved charts database for charts matching astrological criteria. Use this tool when the user asks to find, show, or search for charts in their library/saved charts based on planetary positions, signs, houses, aspects, or other criteria. Supports both AND logic (all criteria must match) and threshold logic (at least N out of M criteria must match).",
+              input_schema: {
+                type: "object",
+                properties: {
+                  planetInSign: {
+                    type: "array",
+                    description: "Find charts with specific planets in specific signs",
+                    items: {
+                      type: "object",
+                      properties: {
+                        planet: {
+                          type: "string",
+                          enum: ["sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto", "north_node", "south_node"],
+                          description: "The planet to search for"
+                        },
+                        sign: {
+                          type: "string",
+                          enum: ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"],
+                          description: "The zodiac sign"
+                        }
+                      },
+                      required: ["planet", "sign"]
+                    }
+                  },
+                  planetInHouse: {
+                    type: "array",
+                    description: "Find charts with specific planets in specific houses",
+                    items: {
+                      type: "object",
+                      properties: {
+                        planet: {
+                          type: "string",
+                          enum: ["sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto"],
+                          description: "The planet to search for"
+                        },
+                        house: {
+                          type: "integer",
+                          minimum: 1,
+                          maximum: 12,
+                          description: "The house number (1-12)"
+                        }
+                      },
+                      required: ["planet", "house"]
+                    }
+                  },
+                  ascendantSign: {
+                    type: "string",
+                    enum: ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"],
+                    description: "Find charts with a specific ascendant (rising) sign"
+                  },
+                  aspects: {
+                    type: "array",
+                    description: "Find charts with specific aspects between planets",
+                    items: {
+                      type: "object",
+                      properties: {
+                        planet1: {
+                          type: "string",
+                          enum: ["sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto"],
+                          description: "First planet in the aspect"
+                        },
+                        planet2: {
+                          type: "string",
+                          enum: ["sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto"],
+                          description: "Second planet in the aspect"
+                        },
+                        aspect: {
+                          type: "string",
+                          enum: ["conjunction", "opposition", "square", "trine", "sextile"],
+                          description: "Type of aspect (optional - if omitted, finds any aspect between the planets)"
+                        },
+                        maxOrb: {
+                          type: "number",
+                          description: "Maximum orb in degrees (optional - filters to tighter orbs)"
+                        }
+                      },
+                      required: ["planet1", "planet2"]
+                    }
+                  },
+                  nameContains: {
+                    type: "string",
+                    description: "Filter by charts whose name contains this text (case-insensitive)"
+                  },
+                  chartType: {
+                    type: "string",
+                    enum: ["natal", "composite", "relationship", "solar-return", "lunar-return"],
+                    description: "Filter by chart type"
+                  },
+                  matchMode: {
+                    type: "string",
+                    enum: ["all", "threshold"],
+                    description: "How to match criteria: 'all' (default) requires all specified criteria to match (AND logic), 'threshold' requires at least minMatches criteria to match (OR logic with minimum threshold). Use 'threshold' when the user asks for 'at least N of' or '2 out of 3' type queries."
+                  },
+                  minMatches: {
+                    type: "integer",
+                    minimum: 1,
+                    description: "When matchMode is 'threshold', the minimum number of criteria that must match. For example, if user asks for '2 out of 3 placements', set minMatches to 2. Only used when matchMode is 'threshold'."
+                  }
+                },
+                additionalProperties: false
+              }
+            },
+            {
               name: "calculate_transits",
               description: "Calculate when transiting planets form exact aspects to natal positions, or find which charts in the database are affected by transits. Use for queries like 'When will Saturn conjunct my Venus?', 'When did Pluto square my Sun?', or 'Which charts will be affected by transiting Neptune?'",
               input_schema: {
@@ -480,8 +587,8 @@ Each planet, angle (Ascendant, Midheaven), and transit position includes its Sab
                 properties: {
                   queryType: {
                     type: "string",
-                    enum: ["future_timing", "historical_timing", "database_impact"],
-                    description: "Type of transit query: 'future_timing' for when a transit will happen in the future, 'historical_timing' for when it happened in the past, 'database_impact' for which charts are affected by a transit"
+                    enum: ["future_timing", "historical_timing", "database_impact", "user_database_impact"],
+                    description: "Type of transit query: 'future_timing' for when a transit will happen in the future, 'historical_timing' for when it happened in the past, 'database_impact' for which famous charts are affected by a transit, 'user_database_impact' for which of the user's saved charts are affected"
                   },
                   transitPlanet: {
                     type: "string",
@@ -531,8 +638,8 @@ Each planet, angle (Ascendant, Midheaven), and transit position includes its Sab
                 properties: {
                   queryType: {
                     type: "string",
-                    enum: ["upcoming", "list", "affecting_chart", "database_impact"],
-                    description: "'upcoming' or 'list' - find all eclipses in a date range, 'affecting_chart' - find eclipses affecting the current chart, 'database_impact' - find which charts in database are affected by eclipses"
+                    enum: ["upcoming", "list", "affecting_chart", "database_impact", "user_database_impact"],
+                    description: "'upcoming' or 'list' - find all eclipses in a date range, 'affecting_chart' - find eclipses affecting the current chart, 'database_impact' - find which famous charts are affected by eclipses, 'user_database_impact' - find which of the user's saved charts are affected"
                   },
                   startDate: {
                     type: "string",
@@ -657,6 +764,146 @@ Each planet, angle (Ascendant, Midheaven), and transit position includes its Sab
       };
     }
 
+    // Handle search_user_charts tool
+    if (toolUse && toolUse.name === 'search_user_charts') {
+      console.log('Claude used search_user_charts tool with criteria:', JSON.stringify(toolUse.input, null, 2));
+
+      // Get user charts from the chartContext (passed from renderer)
+      const userChartsRaw = (chartContext && chartContext.userCharts) || [];
+
+      if (userChartsRaw.length === 0) {
+        const noChartsMessage = `USER CHARTS DATABASE:\n\nNo saved charts found in user's library. The user needs to save some charts first before they can be searched.`;
+
+        // Return message to Claude
+        let finalResponse;
+        for (const model of models) {
+          try {
+            finalResponse = await anthropic.messages.create({
+              model: model,
+              max_tokens: 4096,
+              system: `You are an expert professional astrologer.`,
+              messages: [
+                { role: 'user', content: contextMessage },
+                { role: 'assistant', content: response.content },
+                {
+                  role: 'user',
+                  content: [{
+                    type: 'tool_result',
+                    tool_use_id: toolUse.id,
+                    content: noChartsMessage
+                  }]
+                }
+              ]
+            });
+            break;
+          } catch (err) {
+            console.log(`Model ${model} failed on follow-up:`, err.message);
+            continue;
+          }
+        }
+
+        const finalText = finalResponse?.content.find(block => block.type === 'text');
+        return {
+          success: true,
+          message: finalText ? finalText.text : noChartsMessage
+        };
+      }
+
+      // Transform user charts to match the format expected by searchCharts
+      // User charts have chartData with planets, houses, aspects
+      const userCharts = userChartsRaw.map(chart => {
+        const chartData = chart.chartData || {};
+        return {
+          id: chart.id?.toString() || 'unknown',
+          name: chart.name || 'Unnamed',
+          category: chart.chartType || 'natal',
+          date: chart.formData?.month && chart.formData?.day && chart.formData?.year
+            ? `${chart.formData.month}/${chart.formData.day}/${chart.formData.year}`
+            : 'Unknown',
+          time: chart.formData?.hour && chart.formData?.minute
+            ? `${chart.formData.hour}:${chart.formData.minute}`
+            : undefined,
+          location: chart.formData?.location || 'Unknown',
+          notes: chart.notes || '',
+          planets: chartData.planets || {},
+          houses: chartData.houses || [],
+          aspects: chartData.aspects || [],
+          ascendant: chartData.ascendant,
+          midheaven: chartData.midheaven
+        };
+      });
+
+      // Execute the search with options
+      const searchOptions = {};
+      if (toolUse.input.matchMode) {
+        searchOptions.matchMode = toolUse.input.matchMode;
+      }
+      if (toolUse.input.minMatches) {
+        searchOptions.minMatches = toolUse.input.minMatches;
+      }
+
+      const searchResults = searchCharts(userCharts, toolUse.input, searchOptions);
+      const formattedResults = formatSearchResults(searchResults, toolUse.input);
+
+      console.log(`User charts search found ${formattedResults.count} results out of ${userCharts.length} total charts`);
+
+      // Continue conversation with search results
+      const searchResultsMessage = `USER CHARTS SEARCH RESULTS:\n\nSearched ${userCharts.length} saved charts.\nFound ${formattedResults.count} charts matching the criteria.\n\n` +
+        formattedResults.results.map((chart, idx) => {
+          return `${idx + 1}. ${chart.name}\n` +
+                 `   ID: ${chart.id}\n` +
+                 `   Birth: ${chart.date}${chart.time ? ' at ' + chart.time : ''}\n` +
+                 `   Location: ${chart.location}\n` +
+                 `   Type: ${chart.category}\n` +
+                 `   Matched: ${chart.matchedCriteria.join(', ')}\n` +
+                 (chart.notes ? `   Notes: ${chart.notes.substring(0, 100)}${chart.notes.length > 100 ? '...' : ''}\n` : '');
+        }).join('\n');
+
+      // Make a second API call with the search results for Claude to format
+      let finalResponse;
+      for (const model of models) {
+        try {
+          finalResponse = await anthropic.messages.create({
+            model: model,
+            max_tokens: 4096,
+            system: `You are an expert professional astrologer.`,
+            messages: [
+              { role: 'user', content: contextMessage },
+              { role: 'assistant', content: response.content },
+              {
+                role: 'user',
+                content: [{
+                  type: 'tool_result',
+                  tool_use_id: toolUse.id,
+                  content: searchResultsMessage
+                }]
+              }
+            ]
+          });
+          break;
+        } catch (err) {
+          console.log(`Model ${model} failed on follow-up:`, err.message);
+          continue;
+        }
+      }
+
+      if (!finalResponse) {
+        // Fallback: just return the results directly
+        return {
+          success: true,
+          message: searchResultsMessage,
+          searchResults: formattedResults
+        };
+      }
+
+      const finalText = finalResponse.content.find(block => block.type === 'text');
+      return {
+        success: true,
+        message: finalText ? finalText.text : searchResultsMessage,
+        searchResults: formattedResults
+      };
+    }
+
     // Handle calculate_transits tool
     if (toolUse && toolUse.name === 'calculate_transits') {
       console.log('Claude used calculate_transits tool with input:', JSON.stringify(toolUse.input, null, 2));
@@ -666,7 +913,7 @@ Each planet, angle (Ascendant, Midheaven), and transit position includes its Sab
 
         let transitResults;
 
-        if (queryType === 'database_impact') {
+        if (queryType === 'database_impact' || queryType === 'user_database_impact') {
           // Database impact analysis
           if (!transitDate) {
             return {
@@ -675,18 +922,54 @@ Each planet, angle (Ascendant, Midheaven), and transit position includes its Sab
             };
           }
 
-          // Load the calculated charts database
-          const calculatedChartsPath = path.join(__dirname, '..', 'shared', 'data', 'famousChartsCalculated.json');
           let chartsDatabase;
-          try {
-            const data = fs.readFileSync(calculatedChartsPath, 'utf8');
-            chartsDatabase = JSON.parse(data);
-          } catch (error) {
-            console.error('Failed to load charts database:', error);
-            return {
-              success: false,
-              error: 'Failed to load charts database: ' + error.message
-            };
+
+          if (queryType === 'user_database_impact') {
+            // Use user's saved charts
+            const userChartsRaw = (chartContext && chartContext.userCharts) || [];
+
+            if (userChartsRaw.length === 0) {
+              return {
+                success: false,
+                error: 'No saved charts found in user library. Save some charts first to analyze transit impacts.'
+              };
+            }
+
+            // Transform user charts to match expected format
+            chartsDatabase = userChartsRaw.map(chart => {
+              const chartData = chart.chartData || {};
+              return {
+                id: chart.id?.toString() || 'unknown',
+                name: chart.name || 'Unnamed',
+                category: chart.chartType || 'natal',
+                date: chart.formData?.month && chart.formData?.day && chart.formData?.year
+                  ? `${chart.formData.month}/${chart.formData.day}/${chart.formData.year}`
+                  : 'Unknown',
+                time: chart.formData?.hour && chart.formData?.minute
+                  ? `${chart.formData.hour}:${chart.formData.minute}`
+                  : undefined,
+                location: chart.formData?.location || 'Unknown',
+                notes: chart.notes || '',
+                planets: chartData.planets || {},
+                houses: chartData.houses || [],
+                aspects: chartData.aspects || [],
+                ascendant: chartData.ascendant,
+                midheaven: chartData.midheaven
+              };
+            });
+          } else {
+            // Load the famous charts database
+            const calculatedChartsPath = path.join(__dirname, '..', 'shared', 'data', 'famousChartsCalculated.json');
+            try {
+              const data = fs.readFileSync(calculatedChartsPath, 'utf8');
+              chartsDatabase = JSON.parse(data);
+            } catch (error) {
+              console.error('Failed to load charts database:', error);
+              return {
+                success: false,
+                error: 'Failed to load charts database: ' + error.message
+              };
+            }
           }
 
           const date = new Date(transitDate + 'T12:00:00Z');
@@ -864,11 +1147,49 @@ Each planet, angle (Ascendant, Midheaven), and transit position includes its Sab
           // Use the first chart's data for eclipse impacts
           const chart = chartContext.charts[0];
           eclipses = findEclipsesAffectingChart(chart, start, end, searchOrb);
-        } else if (queryType === 'database_impact') {
-          // Load charts database
-          const calculatedChartsPath = path.join(__dirname, '..', 'shared', 'data', 'famousChartsCalculated.json');
-          const data = fs.readFileSync(calculatedChartsPath, 'utf8');
-          const chartsDatabase = JSON.parse(data);
+        } else if (queryType === 'database_impact' || queryType === 'user_database_impact') {
+          let chartsDatabase;
+
+          if (queryType === 'user_database_impact') {
+            // Use user's saved charts
+            const userChartsRaw = (chartContext && chartContext.userCharts) || [];
+
+            if (userChartsRaw.length === 0) {
+              return {
+                success: false,
+                error: 'No saved charts found in user library. Save some charts first to analyze eclipse impacts.'
+              };
+            }
+
+            // Transform user charts to match expected format
+            chartsDatabase = userChartsRaw.map(chart => {
+              const chartData = chart.chartData || {};
+              return {
+                id: chart.id?.toString() || 'unknown',
+                name: chart.name || 'Unnamed',
+                category: chart.chartType || 'natal',
+                date: chart.formData?.month && chart.formData?.day && chart.formData?.year
+                  ? `${chart.formData.month}/${chart.formData.day}/${chart.formData.year}`
+                  : 'Unknown',
+                time: chart.formData?.hour && chart.formData?.minute
+                  ? `${chart.formData.hour}:${chart.formData.minute}`
+                  : undefined,
+                location: chart.formData?.location || 'Unknown',
+                notes: chart.notes || '',
+                planets: chartData.planets || {},
+                houses: chartData.houses || [],
+                aspects: chartData.aspects || [],
+                ascendant: chartData.ascendant,
+                midheaven: chartData.midheaven
+              };
+            });
+          } else {
+            // Load famous charts database
+            const calculatedChartsPath = path.join(__dirname, '..', 'shared', 'data', 'famousChartsCalculated.json');
+            const data = fs.readFileSync(calculatedChartsPath, 'utf8');
+            chartsDatabase = JSON.parse(data);
+          }
+
           eclipses = findEclipsesDatabaseImpact(chartsDatabase, start, end, searchOrb);
         } else {
           // Just find eclipses in date range
