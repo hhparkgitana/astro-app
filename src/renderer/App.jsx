@@ -36,6 +36,8 @@ function App() {
   const [synastryOrb, setSynastryOrb] = useState(8);
   const [returnNatalOrb, setReturnNatalOrb] = useState(8);
   const [returnInternalOrb, setReturnInternalOrb] = useState(8);
+  const [solarArcNatalOrb, setSolarArcNatalOrb] = useState(1.5); // Tighter orb for Solar Arcs
+  const [solarArcInternalOrb, setSolarArcInternalOrb] = useState(8);
 
   // Famous charts browser
   const [isBrowserOpen, setIsBrowserOpen] = useState(false);
@@ -820,8 +822,8 @@ function App() {
           const solarArcData = calculateSolarArcs(result, natalDate, targetDate, 'standard');
           console.log('Solar Arcs calculated:', solarArcData);
 
-          // Calculate solar arc-to-natal aspects
-          const solarArcAspects = calculateTransitAspects(result.planets, solarArcData.planets, transitOrb);
+          // Calculate solar arc-to-natal aspects (using tighter orb for Solar Arcs)
+          const solarArcAspects = calculateTransitAspects(result.planets, solarArcData.planets, solarArcNatalOrb);
           console.log('Solar arc-to-natal aspects:', solarArcAspects);
 
           // Always store solar arc-natal aspects separately
