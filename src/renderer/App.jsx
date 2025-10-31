@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import './components/AspectTabs.css';
 import ChartWheel from './components/ChartWheel';
 import AspectTabs from './components/AspectTabs';
 import AspectMatrix from './components/AspectMatrix';
@@ -89,6 +90,7 @@ function App() {
   const [returnsReturnLocationResults, setReturnsReturnLocationResults] = useState([]);
   const [searchingReturnsBirthLocation, setSearchingReturnsBirthLocation] = useState(false);
   const [searchingReturnsReturnLocation, setSearchingReturnsReturnLocation] = useState(false);
+  const [activeReturnsAspectTab, setActiveReturnsAspectTab] = useState('natal');
 
   // Chart B states (for dual view)
   const [chartDataB, setChartDataB] = useState(null);
@@ -4359,44 +4361,54 @@ function App() {
                 </div>
 
                 {/* Aspect Matrices Section */}
-                <div style={{ marginTop: '2rem' }}>
-                  {/* Natal Chart Internal Aspects */}
-                  {returnChartData.natalChart && returnChartData.natalChart.aspects && returnChartData.natalChart.aspects.length > 0 && (
-                    <div style={{ marginBottom: '2rem' }}>
-                      <h4 style={{ marginTop: 0 }}>⭐ Natal Chart Aspects</h4>
+                <div className="aspect-tabs-container" style={{ marginTop: '2rem' }}>
+                  <div className="aspect-tabs-header">
+                    <button
+                      className={`aspect-tab ${activeReturnsAspectTab === 'natal' ? 'active' : ''}`}
+                      onClick={() => setActiveReturnsAspectTab('natal')}
+                    >
+                      ⭐ Natal Aspects
+                    </button>
+                    <button
+                      className={`aspect-tab ${activeReturnsAspectTab === 'return-natal' ? 'active' : ''}`}
+                      onClick={() => setActiveReturnsAspectTab('return-natal')}
+                    >
+                      {returnType === 'solar' ? '🌞' : '🌙'} Return-to-Natal Aspects
+                    </button>
+                    <button
+                      className={`aspect-tab ${activeReturnsAspectTab === 'return' ? 'active' : ''}`}
+                      onClick={() => setActiveReturnsAspectTab('return')}
+                    >
+                      {returnType === 'solar' ? '🌞' : '🌙'} Return Aspects
+                    </button>
+                  </div>
+
+                  <div className="aspect-tabs-content">
+                    {activeReturnsAspectTab === 'natal' && returnChartData.natalChart && returnChartData.natalChart.aspects && returnChartData.natalChart.aspects.length > 0 && (
                       <AspectMatrix
                         chartData={returnChartData.natalChart}
                         activeAspects={activeAspects}
                         onAspectToggle={handleAspectToggle}
                       />
-                    </div>
-                  )}
+                    )}
 
-                  {/* Return-to-Natal Aspects */}
-                  {returnChartData.returnToNatalAspects && returnChartData.returnToNatalAspects.length > 0 && (
-                    <div style={{ marginBottom: '2rem' }}>
+                    {activeReturnsAspectTab === 'return-natal' && returnChartData.returnToNatalAspects && returnChartData.returnToNatalAspects.length > 0 && (
                       <ReturnAspectMatrix
                         chartData={returnChartData}
                         activeReturnAspects={activeReturnAspects}
                         onReturnAspectToggle={handleReturnAspectToggle}
                         returnType={returnType}
                       />
-                    </div>
-                  )}
+                    )}
 
-                  {/* Return Chart Internal Aspects */}
-                  {returnChartData.aspects && returnChartData.aspects.length > 0 && (
-                    <div style={{ marginBottom: '2rem' }}>
-                      <h4 style={{ marginTop: 0 }}>
-                        {returnType === 'solar' ? '🌞' : '🌙'} {returnType === 'solar' ? 'Solar' : 'Lunar'} Return Chart Aspects
-                      </h4>
+                    {activeReturnsAspectTab === 'return' && returnChartData.aspects && returnChartData.aspects.length > 0 && (
                       <AspectMatrix
                         chartData={returnChartData}
                         activeAspects={activeReturnInternalAspects}
                         onAspectToggle={handleReturnInternalAspectToggle}
                       />
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               </div>
             )}
