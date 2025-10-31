@@ -31,11 +31,16 @@ function App() {
   const [isBrowserOpen, setIsBrowserOpen] = useState(false);
   const [activeChart, setActiveChart] = useState('A'); // Which chart the browser is loading into
 
-  // View mode: 'single' or 'dual'
+  // View mode: 'single', 'dual', or 'relationship'
   const [viewMode, setViewMode] = useState('single');
 
   // Chat panel state
   const [isChatOpen, setIsChatOpen] = useState(false);
+
+  // Relationship chart state
+  const [relationshipChartType, setRelationshipChartType] = useState('synastry'); // 'synastry' or 'composite'
+  const [relationshipLocation, setRelationshipLocation] = useState('midpoint'); // 'midpoint' or 'personA'
+  const [relationshipHouseMethod, setRelationshipHouseMethod] = useState('personA'); // 'personA' or 'midpoint'
 
   // Chart B states (for dual view)
   const [chartDataB, setChartDataB] = useState(null);
@@ -220,6 +225,54 @@ function App() {
     }
 
     return aspects;
+  };
+
+  // Calculate composite chart (midpoints between two charts)
+  const calculateCompositePlanets = (planetsA, planetsB) => {
+    const compositePlanets = {};
+
+    // Helper function to calculate midpoint between two longitudes
+    const calculateMidpoint = (long1, long2) => {
+      // Normalize both longitudes to 0-360
+      const normalize = (deg) => ((deg % 360) + 360) % 360;
+      const l1 = normalize(long1);
+      const l2 = normalize(long2);
+
+      // Calculate both possible distances
+      const directDistance = Math.abs(l2 - l1);
+      const wrapDistance = 360 - directDistance;
+
+      // Determine which path is shorter
+      let midpoint;
+      if (directDistance <= wrapDistance) {
+        // Direct path is shorter
+        midpoint = (l1 + l2) / 2;
+      } else {
+        // Wrap path is shorter
+        if (l1 < l2) {
+          midpoint = (l1 + 360 + l2) / 2;
+        } else {
+          midpoint = (l1 + l2 + 360) / 2;
+        }
+      }
+
+      return normalize(midpoint);
+    };
+
+    // Calculate midpoint for each planet
+    Object.keys(planetsA).forEach(key => {
+      if (planetsB[key]) {
+        const planetA = planetsA[key];
+        const planetB = planetsB[key];
+
+        compositePlanets[key] = {
+          ...planetA,
+          longitude: calculateMidpoint(planetA.longitude, planetB.longitude)
+        };
+      }
+    });
+
+    return compositePlanets;
   };
 
   // Calculate aspects between transit and progression planets
@@ -1524,6 +1577,13 @@ function App() {
             Compare Charts
           </button>
           <button
+            className={`mode-btn ${viewMode === 'relationship' ? 'active' : ''}`}
+            onClick={() => setViewMode('relationship')}
+            title="Synastry & Composite Charts"
+          >
+            💞 Relationship Chart
+          </button>
+          <button
             className={`mode-btn ${isChatOpen ? 'active' : ''}`}
             onClick={() => setIsChatOpen(!isChatOpen)}
             title="AI Assistant"
@@ -2063,7 +2123,7 @@ function App() {
           </div>
         )}
           </>
-        ) : (
+        ) : viewMode === 'dual' ? (
           <div className="dual-charts-container">
             <div className="chart-panel">
               <div className="chart-panel-header chart-a">
@@ -2716,6 +2776,557 @@ function App() {
                 </div>
               )}
             </div>
+          </div>
+        ) : (
+          <div className="relationship-container">
+            <h2>💞 Relationship Chart</h2>
+
+            <div className="relationship-options">
+              <div className="chart-type-selector">
+                <label>
+                  <input
+                    type="radio"
+                    name="relationshipChartType"
+                    value="synastry"
+                    checked={relationshipChartType === 'synastry'}
+                    onChange={(e) => setRelationshipChartType(e.target.value)}
+                  />
+                  <span>Synastry (Bi-Wheel)</span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="relationshipChartType"
+                    value="composite"
+                    checked={relationshipChartType === 'composite'}
+                    onChange={(e) => setRelationshipChartType(e.target.value)}
+                  />
+                  <span>Composite (Midpoint Chart)</span>
+                </label>
+              </div>
+
+              {relationshipChartType === 'composite' && (
+                <div className="composite-options">
+                  <div className="option-group">
+                    <label>Location for Composite Chart:</label>
+                    <select
+                      value={relationshipLocation}
+                      onChange={(e) => setRelationshipLocation(e.target.value)}
+                    >
+                      <option value="midpoint">Geographic Midpoint</option>
+                      <option value="personA">Person A's Location</option>
+                    </select>
+                  </div>
+
+                  <div className="option-group">
+                    <label>House/Time Calculation:</label>
+                    <select
+                      value={relationshipHouseMethod}
+                      onChange={(e) => setRelationshipHouseMethod(e.target.value)}
+                    >
+                      <option value="personA">Person A's Time</option>
+                      <option value="midpoint">Midpoint Time</option>
+                    </select>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="dual-charts-container">
+              <div className="chart-panel">
+                <div className="chart-panel-header chart-a">
+                  Person A: {formData.name || 'Unnamed'}
+                </div>
+                <div className="load-chart-section">
+                  <button
+                    className="load-chart-btn"
+                    onClick={() => { setActiveChart('A'); setIsBrowserOpen(true); }}
+                  >
+                    📚 Load Person A from Database
+                  </button>
+                </div>
+
+                <p style={{ fontSize: '0.9em', fontStyle: 'italic', color: '#666', marginBottom: '1rem' }}>
+                  Enter birth data for Person A (inner ring in synastry)
+                </p>
+
+                <div style={{ padding: '1rem', border: '2px solid #e0e0e0', borderRadius: '8px' }}>
+                  <div className="form-group" style={{ marginBottom: '0.75rem' }}>
+                    <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.9rem' }}>Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="Person A"
+                      style={{ width: '100%', padding: '6px', fontSize: '0.9rem' }}
+                    />
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Year *</label>
+                      <input
+                        type="number"
+                        name="year"
+                        value={formData.year}
+                        onChange={handleInputChange}
+                        required
+                        min="500"
+                        max="2100"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Month *</label>
+                      <input
+                        type="number"
+                        name="month"
+                        value={formData.month}
+                        onChange={handleInputChange}
+                        required
+                        min="1"
+                        max="12"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Day *</label>
+                      <input
+                        type="number"
+                        name="day"
+                        value={formData.day}
+                        onChange={handleInputChange}
+                        required
+                        min="1"
+                        max="31"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Hour (0-23)</label>
+                      <input
+                        type="number"
+                        name="hour"
+                        value={formData.hour}
+                        onChange={handleInputChange}
+                        min="0"
+                        max="23"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Minute</label>
+                      <input
+                        type="number"
+                        name="minute"
+                        value={formData.minute}
+                        onChange={handleInputChange}
+                        min="0"
+                        max="59"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-group" style={{ marginBottom: '0.75rem' }}>
+                    <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.9rem' }}>Location</label>
+                    <input
+                      type="text"
+                      name="location"
+                      value={formData.location}
+                      onChange={handleInputChange}
+                      placeholder="City, State/Country"
+                      style={{ width: '100%', padding: '6px', fontSize: '0.9rem' }}
+                    />
+                    <button
+                      type="button"
+                      onClick={searchLocation}
+                      disabled={searchingLocation}
+                      style={{ marginTop: '0.5rem', padding: '6px 12px', fontSize: '0.85rem' }}
+                    >
+                      {searchingLocation ? '🔍 Searching...' : '🔍 Search'}
+                    </button>
+                  </div>
+
+                  <div className="form-group" style={{ marginBottom: '0.75rem' }}>
+                    <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.9rem' }}>Timezone *</label>
+                    <select
+                      name="timezone"
+                      value={formData.timezone}
+                      onChange={handleInputChange}
+                      required
+                      style={{ width: '100%', padding: '6px', fontSize: '0.9rem' }}
+                    >
+                      <optgroup label="US Timezones">
+                        <option value="America/New_York">Eastern Time (ET)</option>
+                        <option value="America/Chicago">Central Time (CT)</option>
+                        <option value="America/Denver">Mountain Time (MT)</option>
+                        <option value="America/Phoenix">Arizona (no DST)</option>
+                        <option value="America/Los_Angeles">Pacific Time (PT)</option>
+                        <option value="America/Anchorage">Alaska Time (AKT)</option>
+                        <option value="Pacific/Honolulu">Hawaii Time (HST)</option>
+                      </optgroup>
+                      <optgroup label="Europe">
+                        <option value="Europe/London">London (GMT/BST)</option>
+                        <option value="Europe/Paris">Paris (CET/CEST)</option>
+                        <option value="Europe/Berlin">Berlin (CET/CEST)</option>
+                        <option value="Europe/Rome">Rome (CET/CEST)</option>
+                        <option value="Europe/Athens">Athens (EET/EEST)</option>
+                        <option value="Europe/Moscow">Moscow (MSK)</option>
+                      </optgroup>
+                      <optgroup label="Asia">
+                        <option value="Asia/Dubai">Dubai (GST)</option>
+                        <option value="Asia/Kolkata">India (IST)</option>
+                        <option value="Asia/Bangkok">Bangkok (ICT)</option>
+                        <option value="Asia/Singapore">Singapore (SGT)</option>
+                        <option value="Asia/Hong_Kong">Hong Kong (HKT)</option>
+                        <option value="Asia/Tokyo">Tokyo (JST)</option>
+                        <option value="Asia/Seoul">Seoul (KST)</option>
+                      </optgroup>
+                      <optgroup label="Australia & Pacific">
+                        <option value="Australia/Perth">Perth (AWST)</option>
+                        <option value="Australia/Adelaide">Adelaide (ACST/ACDT)</option>
+                        <option value="Australia/Sydney">Sydney (AEST/AEDT)</option>
+                        <option value="Pacific/Auckland">Auckland (NZST/NZDT)</option>
+                      </optgroup>
+                      <optgroup label="Americas">
+                        <option value="America/Toronto">Toronto (ET)</option>
+                        <option value="America/Vancouver">Vancouver (PT)</option>
+                        <option value="America/Mexico_City">Mexico City (CST)</option>
+                        <option value="America/Sao_Paulo">São Paulo (BRT)</option>
+                        <option value="America/Buenos_Aires">Buenos Aires (ART)</option>
+                      </optgroup>
+                      <optgroup label="Africa & Middle East">
+                        <option value="Africa/Cairo">Cairo (EET)</option>
+                        <option value="Africa/Johannesburg">Johannesburg (SAST)</option>
+                        <option value="Asia/Jerusalem">Jerusalem (IST)</option>
+                      </optgroup>
+                    </select>
+                  </div>
+
+                  <div className="form-group">
+                    <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.9rem' }}>House System</label>
+                    <select
+                      name="houseSystem"
+                      value={formData.houseSystem}
+                      onChange={handleInputChange}
+                      style={{ width: '100%', padding: '6px', fontSize: '0.9rem' }}
+                    >
+                      <option value="placidus">Placidus</option>
+                      <option value="koch">Koch</option>
+                      <option value="whole-sign">Whole Sign</option>
+                      <option value="equal-house">Equal House</option>
+                      <option value="campanus">Campanus</option>
+                      <option value="regiomontanus">Regiomontanus</option>
+                      <option value="topocentric">Topocentric</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button
+                  className="load-chart-btn"
+                  onClick={calculateChartA}
+                  disabled={loading}
+                  style={{ marginTop: '1rem' }}
+                >
+                  {loading ? '⏳ Calculating...' : '🔮 Calculate Person A'}
+                </button>
+                <button
+                  className="load-chart-btn"
+                  onClick={clearChartA}
+                  style={{ marginTop: '0.5rem', backgroundColor: '#dc3545', borderColor: '#dc3545' }}
+                >
+                  🗑️ Clear Person A
+                </button>
+              </div>
+
+              <div className="chart-panel">
+                <div className="chart-panel-header chart-b">
+                  Person B: {formDataB.name || 'Unnamed'}
+                </div>
+                <div className="load-chart-section">
+                  <button
+                    className="load-chart-btn"
+                    onClick={() => { setActiveChart('B'); setIsBrowserOpen(true); }}
+                  >
+                    📚 Load Person B from Database
+                  </button>
+                </div>
+
+                <p style={{ fontSize: '0.9em', fontStyle: 'italic', color: '#666', marginBottom: '1rem' }}>
+                  Enter birth data for Person B (outer ring in synastry)
+                </p>
+
+                <div style={{ padding: '1rem', border: '2px solid #e0e0e0', borderRadius: '8px' }}>
+                  <div className="form-group" style={{ marginBottom: '0.75rem' }}>
+                    <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.9rem' }}>Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formDataB.name}
+                      onChange={handleInputChangeB}
+                      placeholder="Person B"
+                      style={{ width: '100%', padding: '6px', fontSize: '0.9rem' }}
+                    />
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Year *</label>
+                      <input
+                        type="number"
+                        name="year"
+                        value={formDataB.year}
+                        onChange={handleInputChangeB}
+                        required
+                        min="500"
+                        max="2100"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Month *</label>
+                      <input
+                        type="number"
+                        name="month"
+                        value={formDataB.month}
+                        onChange={handleInputChangeB}
+                        required
+                        min="1"
+                        max="12"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Day *</label>
+                      <input
+                        type="number"
+                        name="day"
+                        value={formDataB.day}
+                        onChange={handleInputChangeB}
+                        required
+                        min="1"
+                        max="31"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Hour (0-23)</label>
+                      <input
+                        type="number"
+                        name="hour"
+                        value={formDataB.hour}
+                        onChange={handleInputChangeB}
+                        min="0"
+                        max="23"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.85rem' }}>Minute</label>
+                      <input
+                        type="number"
+                        name="minute"
+                        value={formDataB.minute}
+                        onChange={handleInputChangeB}
+                        min="0"
+                        max="59"
+                        style={{ width: '100%', padding: '6px', fontSize: '0.85rem' }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-group" style={{ marginBottom: '0.75rem' }}>
+                    <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.9rem' }}>Location</label>
+                    <input
+                      type="text"
+                      name="location"
+                      value={formDataB.location}
+                      onChange={handleInputChangeB}
+                      placeholder="City, State/Country"
+                      style={{ width: '100%', padding: '6px', fontSize: '0.9rem' }}
+                    />
+                    <button
+                      type="button"
+                      onClick={searchLocationB}
+                      disabled={searchingLocation}
+                      style={{ marginTop: '0.5rem', padding: '6px 12px', fontSize: '0.85rem' }}
+                    >
+                      {searchingLocation ? '🔍 Searching...' : '🔍 Search'}
+                    </button>
+                  </div>
+
+                  <div className="form-group" style={{ marginBottom: '0.75rem' }}>
+                    <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.9rem' }}>Timezone *</label>
+                    <select
+                      name="timezone"
+                      value={formDataB.timezone}
+                      onChange={handleInputChangeB}
+                      required
+                      style={{ width: '100%', padding: '6px', fontSize: '0.9rem' }}
+                    >
+                      <optgroup label="US Timezones">
+                        <option value="America/New_York">Eastern Time (ET)</option>
+                        <option value="America/Chicago">Central Time (CT)</option>
+                        <option value="America/Denver">Mountain Time (MT)</option>
+                        <option value="America/Phoenix">Arizona (no DST)</option>
+                        <option value="America/Los_Angeles">Pacific Time (PT)</option>
+                        <option value="America/Anchorage">Alaska Time (AKT)</option>
+                        <option value="Pacific/Honolulu">Hawaii Time (HST)</option>
+                      </optgroup>
+                      <optgroup label="Europe">
+                        <option value="Europe/London">London (GMT/BST)</option>
+                        <option value="Europe/Paris">Paris (CET/CEST)</option>
+                        <option value="Europe/Berlin">Berlin (CET/CEST)</option>
+                        <option value="Europe/Rome">Rome (CET/CEST)</option>
+                        <option value="Europe/Athens">Athens (EET/EEST)</option>
+                        <option value="Europe/Moscow">Moscow (MSK)</option>
+                      </optgroup>
+                      <optgroup label="Asia">
+                        <option value="Asia/Dubai">Dubai (GST)</option>
+                        <option value="Asia/Kolkata">India (IST)</option>
+                        <option value="Asia/Bangkok">Bangkok (ICT)</option>
+                        <option value="Asia/Singapore">Singapore (SGT)</option>
+                        <option value="Asia/Hong_Kong">Hong Kong (HKT)</option>
+                        <option value="Asia/Tokyo">Tokyo (JST)</option>
+                        <option value="Asia/Seoul">Seoul (KST)</option>
+                      </optgroup>
+                      <optgroup label="Australia & Pacific">
+                        <option value="Australia/Perth">Perth (AWST)</option>
+                        <option value="Australia/Adelaide">Adelaide (ACST/ACDT)</option>
+                        <option value="Australia/Sydney">Sydney (AEST/AEDT)</option>
+                        <option value="Pacific/Auckland">Auckland (NZST/NZDT)</option>
+                      </optgroup>
+                      <optgroup label="Americas">
+                        <option value="America/Toronto">Toronto (ET)</option>
+                        <option value="America/Vancouver">Vancouver (PT)</option>
+                        <option value="America/Mexico_City">Mexico City (CST)</option>
+                        <option value="America/Sao_Paulo">São Paulo (BRT)</option>
+                        <option value="America/Buenos_Aires">Buenos Aires (ART)</option>
+                      </optgroup>
+                      <optgroup label="Africa & Middle East">
+                        <option value="Africa/Cairo">Cairo (EET)</option>
+                        <option value="Africa/Johannesburg">Johannesburg (SAST)</option>
+                        <option value="Asia/Jerusalem">Jerusalem (IST)</option>
+                      </optgroup>
+                    </select>
+                  </div>
+
+                  <div className="form-group">
+                    <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.9rem' }}>House System</label>
+                    <select
+                      name="houseSystem"
+                      value={formDataB.houseSystem}
+                      onChange={handleInputChangeB}
+                      style={{ width: '100%', padding: '6px', fontSize: '0.9rem' }}
+                    >
+                      <option value="placidus">Placidus</option>
+                      <option value="koch">Koch</option>
+                      <option value="whole-sign">Whole Sign</option>
+                      <option value="equal-house">Equal House</option>
+                      <option value="campanus">Campanus</option>
+                      <option value="regiomontanus">Regiomontanus</option>
+                      <option value="topocentric">Topocentric</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button
+                  className="load-chart-btn"
+                  onClick={calculateChartB}
+                  disabled={loadingB}
+                  style={{ marginTop: '1rem' }}
+                >
+                  {loadingB ? '⏳ Calculating...' : '🔮 Calculate Person B'}
+                </button>
+                <button
+                  className="load-chart-btn"
+                  onClick={clearChartB}
+                  style={{ marginTop: '0.5rem', backgroundColor: '#dc3545', borderColor: '#dc3545' }}
+                >
+                  🗑️ Clear Person B
+                </button>
+              </div>
+            </div>
+
+            {/* Display relationship chart and aspects when both charts are calculated */}
+            {chartData && chartData.success && chartDataB && chartDataB.success && (
+              <div className="relationship-results">
+                <h3>{relationshipChartType === 'synastry' ? '💞 Synastry Chart' : '🔮 Composite Chart'}</h3>
+                <p style={{ fontSize: '0.9em', color: '#666', marginBottom: '1rem' }}>
+                  {relationshipChartType === 'synastry'
+                    ? 'Bi-wheel showing Person A (inner) and Person B (outer) with synastry aspects'
+                    : 'Composite chart calculated from midpoints of Person A and Person B'}
+                </p>
+
+                {relationshipChartType === 'synastry' ? (
+                  <div className="chart-display">
+                    <ChartWheel
+                      chartData={chartData}
+                      transitData={{ planets: chartDataB.planets }}
+                      activeAspects={activeAspects}
+                      onAspectToggle={handleAspectToggle}
+                      activeTransitAspects={activeSynastryAspects}
+                      onTransitAspectToggle={handleSynastryAspectToggle}
+                      activeProgressionNatalAspects={new Set()}
+                      onProgressionNatalAspectToggle={() => {}}
+                      activeTransitProgressionAspects={new Set()}
+                      onTransitProgressionAspectToggle={() => {}}
+                      showNatalAspects={showNatalAspects}
+                      setShowNatalAspects={setShowNatalAspects}
+                      natalOrb={natalOrb}
+                      onNatalOrbChange={handleNatalOrbChange}
+                      transitOrb={synastryOrb}
+                      onTransitOrbChange={handleSynastryOrbChange}
+                      progressionNatalOrb={8}
+                      onProgressionNatalOrbChange={() => {}}
+                      transitTransitOrb={8}
+                      onTransitTransitOrbChange={() => {}}
+                      transitProgressionOrb={8}
+                      onTransitProgressionOrbChange={() => {}}
+                      showProgressions={false}
+                    />
+                  </div>
+                ) : (
+                  <div style={{ padding: '2rem', textAlign: 'center', backgroundColor: '#f5f5f5', borderRadius: '8px', marginBottom: '1rem' }}>
+                    <p>Composite chart rendering - Coming soon</p>
+                    <p style={{ fontSize: '0.85em', color: '#666' }}>
+                      Will show composite chart calculated from midpoints
+                    </p>
+                  </div>
+                )}
+
+                {/* Aspect matrices */}
+                {relationshipChartType === 'synastry' && (
+                  <div className="synastry-aspect-matrices">
+                    <h4>Aspect Matrices</h4>
+
+                    <AspectTabs
+                      chartData={chartData}
+                      activeAspects={activeAspects}
+                      onAspectToggle={handleAspectToggle}
+                      activeTransitAspects={activeTransitAspects}
+                      onTransitAspectToggle={handleTransitAspectToggle}
+                      activeProgressionNatalAspects={activeProgressionNatalAspects}
+                      onProgressionNatalAspectToggle={handleProgressionNatalAspectToggle}
+                      activeTransitProgressionAspects={activeTransitProgressionAspects}
+                      onTransitProgressionAspectToggle={handleTransitProgressionAspectToggle}
+                      activeSynastryAspects={activeSynastryAspects}
+                      onSynastryAspectToggle={handleSynastryAspectToggle}
+                      showNatalAspects={showNatalAspects}
+                      showProgressions={false}
+                    />
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
       </main>
