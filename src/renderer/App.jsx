@@ -454,6 +454,29 @@ function App() {
     }
   };
 
+  // Solar Arc orb change handlers
+  const handleSolarArcNatalOrbChange = (newOrb) => {
+    setSolarArcNatalOrb(newOrb);
+    if (chartData && chartData.planets && chartData.progressions && chartData.progressions.planets) {
+      const newSolarArcAspects = calculateTransitAspects(chartData.planets, chartData.progressions.planets, newOrb);
+      setChartData({ ...chartData, progressionNatalAspects: newSolarArcAspects });
+      // Update active progression-natal aspects (reused for solar arcs)
+      const allSolarArcAspectKeys = new Set(
+        newSolarArcAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+      );
+      setActiveProgressionNatalAspects(allSolarArcAspectKeys);
+    }
+  };
+
+  const handleSolarArcInternalOrbChange = (newOrb) => {
+    setSolarArcInternalOrb(newOrb);
+    if (chartData && chartData.progressions && chartData.progressions.planets) {
+      const newSolarArcInternalAspects = calculateAspects(chartData.progressions.planets, { default: newOrb });
+      // Store in a new field for Solar Arc internal aspects
+      setChartData({ ...chartData, progressionInternalAspects: newSolarArcInternalAspects });
+    }
+  };
+
   // Chart B orb change handlers
   const handleNatalOrbChangeB = (newOrb) => {
     setNatalOrb(newOrb);
@@ -826,8 +849,15 @@ function App() {
           const solarArcAspects = calculateTransitAspects(result.planets, solarArcData.planets, solarArcNatalOrb);
           console.log('Solar arc-to-natal aspects:', solarArcAspects);
 
+          // Calculate solar arc internal aspects (Solar Arc-to-Solar Arc)
+          const solarArcInternalAspects = calculateAspects(solarArcData.planets, { default: solarArcInternalOrb });
+          console.log('Solar arc internal aspects:', solarArcInternalAspects);
+
           // Always store solar arc-natal aspects separately
           result.progressionNatalAspects = solarArcAspects;
+
+          // Store solar arc internal aspects
+          result.progressionInternalAspects = solarArcInternalAspects;
 
           // Only set as transitAspects if transits are not also enabled
           if (!formData.showTransits) {
@@ -840,7 +870,8 @@ function App() {
             setActiveTransitAspects(allSolarArcAspectKeys);
           }
 
-          // Store solar arc data separately
+          // Store solar arc data separately (with internal aspects included)
+          solarArcData.aspects = solarArcInternalAspects;
           progressionsData = solarArcData;
         } else {
           // Calculate Secondary Progressions
@@ -2622,6 +2653,11 @@ function App() {
               onTransitTransitOrbChange={handleTransitTransitOrbChange}
               transitProgressionOrb={transitProgressionOrb}
               onTransitProgressionOrbChange={handleTransitProgressionOrbChange}
+              solarArcNatalOrb={solarArcNatalOrb}
+              onSolarArcNatalOrbChange={handleSolarArcNatalOrbChange}
+              solarArcInternalOrb={solarArcInternalOrb}
+              onSolarArcInternalOrbChange={handleSolarArcInternalOrbChange}
+              directionType={formData.directionType}
               showProgressions={formData.showProgressions}
             />
 
@@ -2639,6 +2675,7 @@ function App() {
               onSynastryAspectToggle={handleSynastryAspectToggle}
               showNatalAspects={showNatalAspects}
               showProgressions={formData.showProgressions}
+              directionType={formData.directionType}
             />
 
             <div className="rising-sign">
@@ -2999,6 +3036,11 @@ function App() {
                       onTransitTransitOrbChange={handleTransitTransitOrbChange}
                       transitProgressionOrb={transitProgressionOrb}
                       onTransitProgressionOrbChange={handleTransitProgressionOrbChange}
+                      solarArcNatalOrb={solarArcNatalOrb}
+                      onSolarArcNatalOrbChange={handleSolarArcNatalOrbChange}
+                      solarArcInternalOrb={solarArcInternalOrb}
+                      onSolarArcInternalOrbChange={handleSolarArcInternalOrbChange}
+                      directionType={formData.directionType}
                       showProgressions={formData.showProgressions}
                     />
                   </div>
@@ -3017,6 +3059,7 @@ function App() {
                     onSynastryAspectToggle={handleSynastryAspectToggle}
                     showNatalAspects={showNatalAspects}
                     showProgressions={formData.showProgressions}
+                    directionType={formData.directionType}
                   />
                 </div>
               )}
@@ -3325,6 +3368,11 @@ function App() {
                       onTransitTransitOrbChange={handleTransitTransitOrbChangeB}
                       transitProgressionOrb={transitProgressionOrb}
                       onTransitProgressionOrbChange={handleTransitProgressionOrbChangeB}
+                      solarArcNatalOrb={solarArcNatalOrb}
+                      onSolarArcNatalOrbChange={handleSolarArcNatalOrbChange}
+                      solarArcInternalOrb={solarArcInternalOrb}
+                      onSolarArcInternalOrbChange={handleSolarArcInternalOrbChange}
+                      directionType={formDataB.directionType}
                       showProgressions={formDataB.showProgressions}
                     />
                   </div>
@@ -3343,6 +3391,7 @@ function App() {
                     onSynastryAspectToggle={handleSynastryAspectToggle}
                     showNatalAspects={showNatalAspectsB}
                     showProgressions={formDataB.showProgressions}
+                    directionType={formDataB.directionType}
                   />
                 </div>
               )}
@@ -4042,6 +4091,11 @@ function App() {
                       onTransitTransitOrbChange={() => {}}
                       transitProgressionOrb={8}
                       onTransitProgressionOrbChange={() => {}}
+                      solarArcNatalOrb={solarArcNatalOrb}
+                      onSolarArcNatalOrbChange={handleSolarArcNatalOrbChange}
+                      solarArcInternalOrb={solarArcInternalOrb}
+                      onSolarArcInternalOrbChange={handleSolarArcInternalOrbChange}
+                      directionType={formData.directionType}
                       showProgressions={false}
                       personAName={formData.name || 'Person A'}
                       personBName={formDataB.name || 'Person B'}
@@ -4077,6 +4131,11 @@ function App() {
                       onTransitTransitOrbChange={handleTransitTransitOrbChange}
                       transitProgressionOrb={8}
                       onTransitProgressionOrbChange={() => {}}
+                      solarArcNatalOrb={solarArcNatalOrb}
+                      onSolarArcNatalOrbChange={handleSolarArcNatalOrbChange}
+                      solarArcInternalOrb={solarArcInternalOrb}
+                      onSolarArcInternalOrbChange={handleSolarArcInternalOrbChange}
+                      directionType={formData.directionType}
                       showProgressions={false}
                     />
                     <AspectTabs
@@ -4094,6 +4153,7 @@ function App() {
                       onSynastryAspectToggle={() => {}}
                       showNatalAspects={showNatalAspects}
                       showProgressions={false}
+                      directionType={formData.directionType}
                     />
                   </div>
                 ) : (
@@ -4125,6 +4185,7 @@ function App() {
                       onSynastryAspectToggle={handleSynastryAspectToggle}
                       showNatalAspects={showNatalAspects}
                       showProgressions={false}
+                      directionType={formData.directionType}
                       formData={formData}
                       formDataB={formDataB}
                     />
@@ -4451,6 +4512,11 @@ function App() {
                     onTransitOrbChange={handleReturnNatalOrbChange}
                     returnInternalOrb={returnInternalOrb}
                     onReturnInternalOrbChange={handleReturnInternalOrbChange}
+                    solarArcNatalOrb={solarArcNatalOrb}
+                    onSolarArcNatalOrbChange={handleSolarArcNatalOrbChange}
+                    solarArcInternalOrb={solarArcInternalOrb}
+                    onSolarArcInternalOrbChange={handleSolarArcInternalOrbChange}
+                    directionType={formData.directionType}
                   />
                 </div>
 

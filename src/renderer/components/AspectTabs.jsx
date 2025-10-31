@@ -26,6 +26,7 @@ function AspectTabs({
   onSynastryAspectToggle,
   showNatalAspects, // from chart wheel visibility
   showProgressions = false,
+  directionType = 'progressions',
   formData,
   formDataB
 }) {
@@ -33,6 +34,7 @@ function AspectTabs({
 
   const hasTransits = chartData && chartData.transits && chartData.transitAspects;
   const hasProgressionNatalAspects = chartData && chartData.progressionNatalAspects;
+  const hasProgressionInternalAspects = chartData && chartData.progressionInternalAspects;
   const hasTransitTransitAspects = chartData && chartData.transitTransitAspects;
   const hasTransitProgressionAspects = chartData && chartData.transitProgressionAspects;
   const hasSynastryAspects = chartData && chartData.synastryAspects;
@@ -75,9 +77,19 @@ function AspectTabs({
           <button
             className={`aspect-tab ${activeTab === 'progression-natal' ? 'active' : ''}`}
             onClick={() => setActiveTab('progression-natal')}
-            title="View progression-natal aspects on tri-wheel"
+            title={`View ${directionType === 'solarArcs' ? 'solar arc-natal' : 'progression-natal'} aspects on tri-wheel`}
           >
-            Progression-Natal Aspects
+            {directionType === 'solarArcs' ? 'Solar Arc-Natal Aspects' : 'Progression-Natal Aspects'}
+          </button>
+        )}
+
+        {hasProgressionInternalAspects && (
+          <button
+            className={`aspect-tab ${activeTab === 'progression-internal' ? 'active' : ''}`}
+            onClick={() => setActiveTab('progression-internal')}
+            title={`View ${directionType === 'solarArcs' ? 'solar arc-solar arc' : 'progression-progression'} internal aspects`}
+          >
+            {directionType === 'solarArcs' ? 'Solar Arc-Solar Arc Aspects' : 'Progression-Progression Aspects'}
           </button>
         )}
 
@@ -95,9 +107,9 @@ function AspectTabs({
           <button
             className={`aspect-tab ${activeTab === 'transit-progression' ? 'active' : ''}`}
             onClick={() => setActiveTab('transit-progression')}
-            title="View transit-progression aspects on tri-wheel"
+            title={`View transit-${directionType === 'solarArcs' ? 'solar arc' : 'progression'} aspects on tri-wheel`}
           >
-            Transit-Progression Aspects (Tri-Wheel)
+            Transit-{directionType === 'solarArcs' ? 'Solar Arc' : 'Progression'} Aspects (Tri-Wheel)
           </button>
         )}
 
@@ -143,6 +155,19 @@ function AspectTabs({
             activeProgressionNatalAspects={activeProgressionNatalAspects}
             onProgressionNatalAspectToggle={onProgressionNatalAspectToggle}
           />
+        )}
+
+        {activeTab === 'progression-internal' && hasProgressionInternalAspects && (
+          <div>
+            <h4 style={{ marginTop: 0 }}>
+              {directionType === 'solarArcs' ? '🟠 Solar Arc-Solar Arc Aspects' : '🟣 Progression-Progression Aspects'}
+            </h4>
+            <AspectMatrix
+              chartData={{ ...chartData.progressions, aspects: chartData.progressionInternalAspects }}
+              activeAspects={new Set()}
+              onAspectToggle={() => {}}
+            />
+          </div>
         )}
 
         {activeTab === 'transit-transit' && hasTransitTransitAspects && (

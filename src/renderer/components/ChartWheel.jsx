@@ -46,6 +46,11 @@ function ChartWheel({
   onTransitTransitOrbChange,
   transitProgressionOrb = 8,
   onTransitProgressionOrbChange,
+  solarArcNatalOrb = 1.5,
+  onSolarArcNatalOrbChange,
+  solarArcInternalOrb = 8,
+  onSolarArcInternalOrbChange,
+  directionType = 'progressions',
   returnInternalOrb = 8,
   onReturnInternalOrbChange,
   showProgressions = false,
@@ -53,6 +58,9 @@ function ChartWheel({
   personBName = 'Person B'
 }) {
   const { size, center, radii, colors, glyphs } = CHART_CONFIG;
+
+  // Debug logging for Solar Arc sliders
+  console.log('ChartWheel render - transitData:', !!transitData, 'progressionsData:', !!progressionsData, 'directionType:', directionType);
 
   // Aspect visibility toggles (only transit-specific ones stay local)
   const [showTransitNatalAspects, setShowTransitNatalAspects] = useState(true);
@@ -867,30 +875,64 @@ function ChartWheel({
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
-              <input
-                type="checkbox"
-                checked={showTransitNatalAspects}
-                onChange={(e) => setShowTransitNatalAspects(e.target.checked)}
-              />
-              <span>Show {transitData ? 'Transit' : 'Progressed'}-{isComposite ? 'Composite' : 'Natal'} Aspects</span>
-            </label>
-            <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {transitOrb}°</label>
-              <input
-                type="range"
-                min="0"
-                max="10"
-                step="0.5"
-                value={transitOrb}
-                onChange={(e) => onTransitOrbChange && onTransitOrbChange(parseFloat(e.target.value))}
-                style={{ flex: 1 }}
-              />
+          {/* Transit-Natal Aspects (only show when transits exist) */}
+          {transitData && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={showTransitNatalAspects}
+                  onChange={(e) => setShowTransitNatalAspects(e.target.checked)}
+                />
+                <span>Show Transit-{isComposite ? 'Composite' : 'Natal'} Aspects</span>
+              </label>
+              <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {transitOrb}°</label>
+                <input
+                  type="range"
+                  min="0"
+                  max="10"
+                  step="0.5"
+                  value={transitOrb}
+                  onChange={(e) => onTransitOrbChange && onTransitOrbChange(parseFloat(e.target.value))}
+                  style={{ flex: 1 }}
+                />
+              </div>
             </div>
-          </div>
+          )}
 
-          {/* Progression-Natal Aspects (only in tri-wheel mode) */}
+          {/* Progression-Natal or Solar Arc-Natal Aspects (bi-wheel: progressions only, no transits) */}
+          {!transitData && progressionsData && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={showProgressionNatalAspects}
+                  onChange={(e) => setShowProgressionNatalAspects(e.target.checked)}
+                />
+                <span>Show {directionType === 'solarArcs' ? 'Solar Arc-Natal' : 'Progression-Natal'} Aspects</span>
+              </label>
+              <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <label style={{ fontSize: '13px', minWidth: '80px' }}>
+                  Orb: {directionType === 'solarArcs' ? solarArcNatalOrb : progressionNatalOrb}°
+                </label>
+                <input
+                  type="range"
+                  min="0"
+                  max="10"
+                  step="0.5"
+                  value={directionType === 'solarArcs' ? solarArcNatalOrb : progressionNatalOrb}
+                  onChange={(e) => {
+                    const handler = directionType === 'solarArcs' ? onSolarArcNatalOrbChange : onProgressionNatalOrbChange;
+                    handler && handler(parseFloat(e.target.value));
+                  }}
+                  style={{ flex: 1 }}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Progression-Natal or Solar Arc-Natal Aspects (tri-wheel mode: transits + progressions) */}
           {transitData && progressionsData && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
               <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
@@ -899,24 +941,29 @@ function ChartWheel({
                   checked={showProgressionNatalAspects}
                   onChange={(e) => setShowProgressionNatalAspects(e.target.checked)}
                 />
-                <span>Show Progression-Natal Aspects</span>
+                <span>Show {directionType === 'solarArcs' ? 'Solar Arc-Natal' : 'Progression-Natal'} Aspects</span>
               </label>
               <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {progressionNatalOrb}°</label>
+                <label style={{ fontSize: '13px', minWidth: '80px' }}>
+                  Orb: {directionType === 'solarArcs' ? solarArcNatalOrb : progressionNatalOrb}°
+                </label>
                 <input
                   type="range"
                   min="0"
                   max="10"
                   step="0.5"
-                  value={progressionNatalOrb}
-                  onChange={(e) => onProgressionNatalOrbChange && onProgressionNatalOrbChange(parseFloat(e.target.value))}
+                  value={directionType === 'solarArcs' ? solarArcNatalOrb : progressionNatalOrb}
+                  onChange={(e) => {
+                    const handler = directionType === 'solarArcs' ? onSolarArcNatalOrbChange : onProgressionNatalOrbChange;
+                    handler && handler(parseFloat(e.target.value));
+                  }}
                   style={{ flex: 1 }}
                 />
               </div>
             </div>
           )}
 
-          {/* Transit-Transit Aspects (hide in tri-wheel mode - user said too busy) */}
+          {/* Transit-Transit / Progressed-Progressed / Solar Arc-Solar Arc Aspects (hide in tri-wheel mode - user said too busy) */}
           {!(transitData && progressionsData) && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
               <label style={{
@@ -930,17 +977,24 @@ function ChartWheel({
                   checked={showTransitAspects}
                   onChange={(e) => setShowTransitAspects(e.target.checked)}
                 />
-                <span>Show {transitData ? 'Transit' : 'Progressed'}-{transitData ? 'Transit' : 'Progressed'} Aspects</span>
+                <span>
+                  Show {transitData ? 'Transit-Transit' : (directionType === 'solarArcs' ? 'Solar Arc-Solar Arc' : 'Progressed-Progressed')} Aspects
+                </span>
               </label>
               <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {transitTransitOrb}°</label>
+                <label style={{ fontSize: '13px', minWidth: '80px' }}>
+                  Orb: {directionType === 'solarArcs' && progressionsData ? solarArcInternalOrb : transitTransitOrb}°
+                </label>
                 <input
                   type="range"
                   min="0"
                   max="10"
                   step="0.5"
-                  value={transitTransitOrb}
-                  onChange={(e) => onTransitTransitOrbChange && onTransitTransitOrbChange(parseFloat(e.target.value))}
+                  value={directionType === 'solarArcs' && progressionsData ? solarArcInternalOrb : transitTransitOrb}
+                  onChange={(e) => {
+                    const handler = (directionType === 'solarArcs' && progressionsData) ? onSolarArcInternalOrbChange : onTransitTransitOrbChange;
+                    handler && handler(parseFloat(e.target.value));
+                  }}
                   style={{ flex: 1 }}
                 />
               </div>
@@ -960,7 +1014,7 @@ function ChartWheel({
                   checked={showTransitProgressionAspects}
                   onChange={(e) => setShowTransitProgressionAspects(e.target.checked)}
                 />
-                <span>Show Transit-Progression Aspects (Tri-Wheel)</span>
+                <span>Show Transit-{directionType === 'solarArcs' ? 'Solar Arc' : 'Progression'} Aspects (Tri-Wheel)</span>
               </label>
               <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {transitProgressionOrb}°</label>
@@ -1009,6 +1063,67 @@ function ChartWheel({
               />
             </div>
           </div>
+
+          {/* Solar Arc sliders when progressions/solar arcs exist */}
+          {progressionsData && (
+            <>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    checked={showProgressionNatalAspects}
+                    onChange={(e) => setShowProgressionNatalAspects(e.target.checked)}
+                  />
+                  <span>Show {directionType === 'solarArcs' ? 'Solar Arc-Natal' : 'Progression-Natal'} Aspects</span>
+                </label>
+                <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <label style={{ fontSize: '13px', minWidth: '80px' }}>
+                    Orb: {directionType === 'solarArcs' ? solarArcNatalOrb : progressionNatalOrb}°
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="10"
+                    step="0.5"
+                    value={directionType === 'solarArcs' ? solarArcNatalOrb : progressionNatalOrb}
+                    onChange={(e) => {
+                      const handler = directionType === 'solarArcs' ? onSolarArcNatalOrbChange : onProgressionNatalOrbChange;
+                      handler && handler(parseFloat(e.target.value));
+                    }}
+                    style={{ flex: 1 }}
+                  />
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    checked={showTransitAspects}
+                    onChange={(e) => setShowTransitAspects(e.target.checked)}
+                  />
+                  <span>Show {directionType === 'solarArcs' ? 'Solar Arc-Solar Arc' : 'Progression-Progression'} Aspects</span>
+                </label>
+                <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <label style={{ fontSize: '13px', minWidth: '80px' }}>
+                    Orb: {directionType === 'solarArcs' ? solarArcInternalOrb : transitTransitOrb}°
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="10"
+                    step="0.5"
+                    value={directionType === 'solarArcs' ? solarArcInternalOrb : transitTransitOrb}
+                    onChange={(e) => {
+                      const handler = directionType === 'solarArcs' ? onSolarArcInternalOrbChange : onTransitTransitOrbChange;
+                      handler && handler(parseFloat(e.target.value));
+                    }}
+                    style={{ flex: 1 }}
+                  />
+                </div>
+              </div>
+            </>
+          )}
         </div>
       )}
 
@@ -1034,7 +1149,11 @@ function ChartWheel({
         <g id="natal-planets">{renderPlanets(chartData.planets, radii.natal, '#000')}</g>
         {progressionsData && (
           <g id="progression-planets">
-            {renderPlanets(progressionsData.planets, radii.transit, '#9C27B0')}
+            {renderPlanets(
+              progressionsData.planets,
+              radii.transit,
+              directionType === 'solarArcs' ? '#FF8C00' : '#9C27B0'  // Orange for Solar Arcs, Purple for Progressions
+            )}
           </g>
         )}
         {transitData && (
