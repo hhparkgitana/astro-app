@@ -258,6 +258,44 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
       contextMessage += `\n---\n\n`;
     }
 
+    // Add composite chart if available
+    if (chartContext.compositeChart) {
+      const composite = chartContext.compositeChart;
+      contextMessage += `🔮 COMPOSITE CHART (Relationship Midpoints):\n`;
+      contextMessage += `This is a composite chart calculated from the midpoints of Chart A and Chart B's planets.\n`;
+      contextMessage += `It represents the relationship itself as a separate entity.\n\n`;
+
+      // Add composite planets
+      contextMessage += `COMPOSITE PLANETS:\n`;
+      Object.entries(composite.planets).forEach(([key, planet]) => {
+        const position = longitudeToZodiac(planet.longitude);
+        const house = planet.house || 'N/A';
+        const sabianSymbol = planet.sabianSymbol ? `${planet.sabianSymbol.symbol} (${planet.sabianSymbol.keynote})` : 'N/A';
+        contextMessage += `${planet.name}: ${position} (House ${house}) - Sabian: ${sabianSymbol}\n`;
+      });
+      contextMessage += `\n`;
+
+      // Add composite angles
+      if (composite.ascendant !== undefined) {
+        const ascPosition = longitudeToZodiac(composite.ascendant);
+        contextMessage += `COMPOSITE ASCENDANT: ${ascPosition}\n`;
+      }
+      if (composite.midheaven !== undefined) {
+        const mcPosition = longitudeToZodiac(composite.midheaven);
+        contextMessage += `COMPOSITE MIDHEAVEN: ${mcPosition}\n`;
+      }
+      contextMessage += `\n`;
+
+      // Add composite aspects
+      if (composite.aspects && composite.aspects.length > 0) {
+        contextMessage += `COMPOSITE ASPECTS:\n`;
+        composite.aspects.forEach(aspect => {
+          contextMessage += `${aspect.planet1} ${aspect.symbol} ${aspect.planet2} (orb: ${aspect.orb.toFixed(1)}°)\n`;
+        });
+      }
+      contextMessage += `\n---\n\n`;
+    }
+
     contextMessage += `USER QUESTION: ${message}`;
 
     console.log('=== CONTEXT MESSAGE BEING SENT TO CLAUDE ===');
@@ -290,6 +328,9 @@ Each planet position includes its house placement (1-12). Houses represent diffe
 
 SECONDARY PROGRESSIONS:
 This application supports secondary progressions using the day-for-a-year method. When Chart B shows progressed planets, interpret them as symbolic timing showing inner development and maturation. Progressed Sun moves ~1° per year, progressed Moon ~13° per year. Outer planets barely move in progressions.
+
+COMPOSITE CHARTS:
+This application supports composite charts calculated using the midpoint method. A composite chart represents the relationship itself as a separate entity. Each planet in the composite chart is positioned at the midpoint between the two individuals' natal planets. For example, if Person A's Sun is at 10° Aries and Person B's Sun is at 20° Aries, the composite Sun would be at 15° Aries. When planets are more than 180° apart, the midpoint is calculated "the short way around" the zodiac. The composite chart has its own houses, angles, and aspects, and should be interpreted as describing the nature and purpose of the relationship itself, not the individuals within it.
 
 SABIAN SYMBOLS:
 Each planet, angle (Ascendant, Midheaven), and transit position includes its Sabian Symbol - a symbolic image and keynote for that specific degree. The Sabian Symbols, channeled by Elsie Wheeler and interpreted by Marc Edmund Jones and Dane Rudhyar, provide rich symbolic meaning for the exact degree of each placement. When interpreting charts, you can reference these symbols to add depth and symbolic resonance to your analysis. The symbols are provided in the chart data for each planetary position and angle.`,

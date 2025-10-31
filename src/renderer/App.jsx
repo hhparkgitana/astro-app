@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import ChartWheel from './components/ChartWheel';
 import AspectTabs from './components/AspectTabs';
@@ -6,6 +6,7 @@ import FamousChartsBrowser from './components/FamousChartsBrowser';
 import ChatPanel from './components/ChatPanel';
 import { DateTime } from 'luxon';
 import { findAspect, getAngularDistance, calculateAspects } from '../shared/calculations/aspectsCalculator';
+import { calculateCompositeChart, calculateGeographicMidpoint } from '../shared/calculations/compositeCalculator';
 
 function App() {
   const [chartData, setChartData] = useState(null);
@@ -41,6 +42,16 @@ function App() {
   const [relationshipChartType, setRelationshipChartType] = useState('synastry'); // 'synastry' or 'composite'
   const [relationshipLocation, setRelationshipLocation] = useState('midpoint'); // 'midpoint' or 'personA'
   const [relationshipHouseMethod, setRelationshipHouseMethod] = useState('personA'); // 'personA' or 'midpoint'
+  const [compositeChartData, setCompositeChartData] = useState(null);
+  const [loadingComposite, setLoadingComposite] = useState(false);
+  const [showCompositeTransits, setShowCompositeTransits] = useState(false);
+  const [compositeTransitDate, setCompositeTransitDate] = useState({
+    year: new Date().getFullYear().toString(),
+    month: (new Date().getMonth() + 1).toString(),
+    day: new Date().getDate().toString(),
+    hour: new Date().getHours().toString(),
+    minute: new Date().getMinutes().toString()
+  });
 
   // Chart B states (for dual view)
   const [chartDataB, setChartDataB] = useState(null);
@@ -464,6 +475,145 @@ function App() {
       setActiveSynastryAspects(allSynastryAspectKeys);
     }
   };
+
+  // Calculate composite chart when both charts exist and composite mode is selected
+  useEffect(() => {
+    const calculateComposite = async () => {
+      if (!chartData || !chartData.success || !chartDataB || !chartDataB.success) {
+        setCompositeChartData(null);
+        return;
+      }
+
+      if (relationshipChartType !== 'composite') {
+        return;
+      }
+
+      setLoadingComposite(true);
+      try {
+        // Calculate composite planet positions (midpoints)
+        const compositeData = calculateCompositeChart(chartData, chartDataB);
+
+        // Determine location for house calculation
+        let compositeLocation;
+        if (relationshipLocation === 'midpoint') {
+          const midpoint = calculateGeographicMidpoint(
+            parseFloat(formData.latitude),
+            parseFloat(formData.longitude),
+            parseFloat(formDataB.latitude),
+            parseFloat(formDataB.longitude)
+          );
+          compositeLocation = {
+            latitude: midpoint.latitude,
+            longitude: midpoint.longitude
+          };
+        } else {
+          // Use Person A's location
+          compositeLocation = {
+            latitude: parseFloat(formData.latitude),
+            longitude: parseFloat(formData.longitude)
+          };
+        }
+
+        // Calculate midpoint date/time (for the composite chart concept)
+        const dateA = new Date(
+          parseInt(formData.year),
+          parseInt(formData.month) - 1,
+          parseInt(formData.day),
+          parseInt(formData.hour),
+          parseInt(formData.minute)
+        );
+        const dateB = new Date(
+          parseInt(formDataB.year),
+          parseInt(formDataB.month) - 1,
+          parseInt(formDataB.day),
+          parseInt(formDataB.hour),
+          parseInt(formDataB.minute)
+        );
+
+        // Call backend to calculate houses for the composite chart
+        const result = await window.astro.calculateChart({
+          year: dateA.getFullYear(), // Use date A for now (composite time is conceptual)
+          month: dateA.getMonth() + 1,
+          day: dateA.getDate(),
+          hour: dateA.getHours(),
+          minute: dateA.getMinutes(),
+          latitude: compositeLocation.latitude,
+          longitude: compositeLocation.longitude,
+          houseSystem: formData.houseSystem,
+        });
+
+        if (result.success) {
+          // Combine composite planets with calculated houses
+          const fullCompositeChart = {
+            ...compositeData,
+            ...result,
+            ascendant: result.ascendant,
+            midheaven: result.midheaven,
+            houses: result.houses,
+            planets: compositeData.planets, // Use our calculated composite planets
+          };
+
+          // Calculate aspects for the composite chart
+          const compositeAspects = calculateAspects(compositeData.planets, { default: natalOrb });
+          fullCompositeChart.aspects = compositeAspects;
+
+          // Set all composite aspects as active by default
+          const allAspectKeys = new Set(
+            compositeAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+          );
+          setActiveAspects(allAspectKeys);
+
+          // Calculate transits to composite if enabled
+          if (showCompositeTransits) {
+            const transitResult = await window.astro.calculateChart({
+              year: parseInt(compositeTransitDate.year),
+              month: parseInt(compositeTransitDate.month),
+              day: parseInt(compositeTransitDate.day),
+              hour: parseInt(compositeTransitDate.hour),
+              minute: parseInt(compositeTransitDate.minute),
+              latitude: compositeLocation.latitude,
+              longitude: compositeLocation.longitude,
+              houseSystem: formData.houseSystem,
+            });
+
+            if (transitResult.success) {
+              fullCompositeChart.transits = transitResult;
+
+              // Calculate transit-to-composite aspects
+              const transitAspects = calculateTransitAspects(
+                fullCompositeChart.planets,
+                transitResult.planets,
+                transitOrb
+              );
+              fullCompositeChart.transitAspects = transitAspects;
+
+              // Set all transit aspects as active by default
+              const allTransitAspectKeys = new Set(
+                transitAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+              );
+              setActiveTransitAspects(allTransitAspectKeys);
+
+              // Calculate transit-to-transit aspects
+              const transitTransitAspects = calculateTransitToTransitAspects(
+                transitResult.planets,
+                transitTransitOrb
+              );
+              fullCompositeChart.transitTransitAspects = transitTransitAspects;
+            }
+          }
+
+          setCompositeChartData(fullCompositeChart);
+        }
+      } catch (error) {
+        console.error('Error calculating composite chart:', error);
+        setCompositeChartData({ success: false, error: error.message });
+      } finally {
+        setLoadingComposite(false);
+      }
+    };
+
+    calculateComposite();
+  }, [chartData, chartDataB, relationshipChartType, relationshipLocation, formData, formDataB, natalOrb, showCompositeTransits, compositeTransitDate, transitOrb, transitTransitOrb]);
 
   const calculateChart = async (e) => {
     e.preventDefault();
@@ -2879,6 +3029,82 @@ function App() {
                       <option value="midpoint">Midpoint Time</option>
                     </select>
                   </div>
+
+                  <div className="option-group" style={{ marginTop: '1rem' }}>
+                    <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <input
+                        type="checkbox"
+                        checked={showCompositeTransits}
+                        onChange={(e) => setShowCompositeTransits(e.target.checked)}
+                      />
+                      <span>Show Transits to Composite (Bi-Wheel)</span>
+                    </label>
+                  </div>
+
+                  {showCompositeTransits && (
+                    <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: '#f5f5f5', borderRadius: '8px' }}>
+                      <h4 style={{ margin: '0 0 0.75rem 0', fontSize: '0.95rem' }}>Transit Date/Time</h4>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.5rem' }}>
+                        <div>
+                          <label style={{ fontSize: '0.85rem' }}>Month</label>
+                          <input
+                            type="number"
+                            min="1"
+                            max="12"
+                            value={compositeTransitDate.month}
+                            onChange={(e) => setCompositeTransitDate({...compositeTransitDate, month: e.target.value})}
+                            style={{ width: '100%' }}
+                          />
+                        </div>
+                        <div>
+                          <label style={{ fontSize: '0.85rem' }}>Day</label>
+                          <input
+                            type="number"
+                            min="1"
+                            max="31"
+                            value={compositeTransitDate.day}
+                            onChange={(e) => setCompositeTransitDate({...compositeTransitDate, day: e.target.value})}
+                            style={{ width: '100%' }}
+                          />
+                        </div>
+                        <div>
+                          <label style={{ fontSize: '0.85rem' }}>Year</label>
+                          <input
+                            type="number"
+                            min="1900"
+                            max="2100"
+                            value={compositeTransitDate.year}
+                            onChange={(e) => setCompositeTransitDate({...compositeTransitDate, year: e.target.value})}
+                            style={{ width: '100%' }}
+                          />
+                        </div>
+                      </div>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginTop: '0.5rem' }}>
+                        <div>
+                          <label style={{ fontSize: '0.85rem' }}>Hour (0-23)</label>
+                          <input
+                            type="number"
+                            min="0"
+                            max="23"
+                            value={compositeTransitDate.hour}
+                            onChange={(e) => setCompositeTransitDate({...compositeTransitDate, hour: e.target.value})}
+                            style={{ width: '100%' }}
+                          />
+                        </div>
+                        <div>
+                          <label style={{ fontSize: '0.85rem' }}>Minute</label>
+                          <input
+                            type="number"
+                            min="0"
+                            max="59"
+                            value={compositeTransitDate.minute}
+                            onChange={(e) => setCompositeTransitDate({...compositeTransitDate, minute: e.target.value})}
+                            style={{ width: '100%' }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -3451,12 +3677,58 @@ function App() {
                       personBName={formDataB.name || 'Person B'}
                     />
                   </div>
+                ) : loadingComposite ? (
+                  <div style={{ padding: '2rem', textAlign: 'center' }}>
+                    <p>⏳ Calculating composite chart...</p>
+                  </div>
+                ) : compositeChartData && compositeChartData.success ? (
+                  <div className="chart-display">
+                    <ChartWheel
+                      isComposite={true}
+                      chartData={compositeChartData}
+                      transitData={showCompositeTransits && compositeChartData.transits ? compositeChartData.transits : null}
+                      activeAspects={activeAspects}
+                      onAspectToggle={handleAspectToggle}
+                      activeTransitAspects={activeTransitAspects}
+                      onTransitAspectToggle={handleTransitAspectToggle}
+                      activeProgressionNatalAspects={new Set()}
+                      onProgressionNatalAspectToggle={() => {}}
+                      activeTransitProgressionAspects={new Set()}
+                      onTransitProgressionAspectToggle={() => {}}
+                      showNatalAspects={showNatalAspects}
+                      setShowNatalAspects={setShowNatalAspects}
+                      natalOrb={natalOrb}
+                      onNatalOrbChange={handleNatalOrbChange}
+                      transitOrb={transitOrb}
+                      onTransitOrbChange={handleTransitOrbChange}
+                      progressionNatalOrb={8}
+                      onProgressionNatalOrbChange={() => {}}
+                      transitTransitOrb={transitTransitOrb}
+                      onTransitTransitOrbChange={handleTransitTransitOrbChange}
+                      transitProgressionOrb={8}
+                      onTransitProgressionOrbChange={() => {}}
+                      showProgressions={false}
+                    />
+                    <AspectTabs
+                      isComposite={true}
+                      chartData={compositeChartData}
+                      activeAspects={activeAspects}
+                      onAspectToggle={handleAspectToggle}
+                      activeTransitAspects={activeTransitAspects}
+                      onTransitAspectToggle={handleTransitAspectToggle}
+                      activeProgressionNatalAspects={new Set()}
+                      onProgressionNatalAspectToggle={() => {}}
+                      activeTransitProgressionAspects={new Set()}
+                      onTransitProgressionAspectToggle={() => {}}
+                      activeSynastryAspects={new Set()}
+                      onSynastryAspectToggle={() => {}}
+                      showNatalAspects={showNatalAspects}
+                      showProgressions={false}
+                    />
+                  </div>
                 ) : (
-                  <div style={{ padding: '2rem', textAlign: 'center', backgroundColor: '#f5f5f5', borderRadius: '8px', marginBottom: '1rem' }}>
-                    <p>Composite chart rendering - Coming soon</p>
-                    <p style={{ fontSize: '0.85em', color: '#666' }}>
-                      Will show composite chart calculated from midpoints
-                    </p>
+                  <div style={{ padding: '2rem', textAlign: 'center', backgroundColor: '#f5f5f5', borderRadius: '8px' }}>
+                    <p>Calculate both Person A and Person B charts to see the composite chart</p>
                   </div>
                 )}
 
@@ -3503,6 +3775,7 @@ function App() {
       <ChatPanel
         chartData={chartData}
         chartDataB={chartDataB}
+        compositeChartData={compositeChartData}
         viewMode={viewMode}
         relationshipChartType={relationshipChartType}
         formData={formData}

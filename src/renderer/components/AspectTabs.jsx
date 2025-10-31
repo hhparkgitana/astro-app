@@ -9,6 +9,7 @@ import './AspectTabs.css';
 
 function AspectTabs({
   viewMode,
+  isComposite = false,
   chartData,
   chartDataB,
   activeAspects,
@@ -47,7 +48,7 @@ function AspectTabs({
           className={`aspect-tab ${activeTab === 'natal' ? 'active' : ''}`}
           onClick={() => setActiveTab('natal')}
         >
-          {isRelationshipMode ? `${personAName} Natal Aspects` : 'Natal-Natal Aspects'}
+          {isComposite ? 'Composite Aspects' : (isRelationshipMode ? `${personAName} Natal Aspects` : 'Natal-Natal Aspects')}
         </button>
 
         {isRelationshipMode && chartDataB && (
@@ -64,7 +65,9 @@ function AspectTabs({
             className={`aspect-tab ${activeTab === 'transit-natal' ? 'active' : ''}`}
             onClick={() => setActiveTab('transit-natal')}
           >
-            {chartData.transits ? 'Transit' : 'Progressed'}-Natal Aspects
+            {isComposite
+              ? `${chartData.transits ? 'Transit' : 'Progressed'}-Composite Aspects`
+              : `${chartData.transits ? 'Transit' : 'Progressed'}-Natal Aspects`}
           </button>
         )}
 

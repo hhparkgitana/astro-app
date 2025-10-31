@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './ChatPanel.css';
 
-function ChatPanel({ chartData, chartDataB, viewMode, relationshipChartType, formData, formDataB, isOpen, onToggle }) {
+function ChatPanel({ chartData, chartDataB, compositeChartData, viewMode, relationshipChartType, formData, formDataB, isOpen, onToggle }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -73,6 +73,17 @@ function ChatPanel({ chartData, chartDataB, viewMode, relationshipChartType, for
     if (viewMode === 'relationship' && chartData && chartData.synastryAspects) {
       context.relationshipType = relationshipChartType;
       context.synastryAspects = chartData.synastryAspects;
+    }
+
+    // Add composite chart information if available
+    if (viewMode === 'relationship' && relationshipChartType === 'composite' && compositeChartData && compositeChartData.success) {
+      context.compositeChart = {
+        planets: compositeChartData.planets,
+        houses: compositeChartData.houses,
+        aspects: compositeChartData.aspects,
+        ascendant: compositeChartData.ascendant,
+        midheaven: compositeChartData.midheaven
+      };
     }
 
     return context;

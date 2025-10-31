@@ -15,6 +15,7 @@ import {
  */
 function ChartWheel({
   isSynastry = false,
+  isComposite = false,
   chartData,
   chartDataB = null,
   transitData = null,
@@ -750,7 +751,7 @@ function ChartWheel({
             </div>
           </div>
         </div>
-      ) : transitData && (
+      ) : transitData ? (
         /* Regular transit/progression mode controls */
         <div style={{
           display: 'flex',
@@ -767,7 +768,7 @@ function ChartWheel({
                 checked={showNatalAspects}
                 onChange={(e) => setShowNatalAspects && setShowNatalAspects(e.target.checked)}
               />
-              <span>Show Natal Aspects</span>
+              <span>Show {isComposite ? 'Composite' : 'Natal'} Aspects</span>
             </label>
             <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
               <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {natalOrb}°</label>
@@ -790,7 +791,7 @@ function ChartWheel({
                 checked={showTransitNatalAspects}
                 onChange={(e) => setShowTransitNatalAspects(e.target.checked)}
               />
-              <span>Show {transitData ? 'Transit' : 'Progressed'}-Natal Aspects</span>
+              <span>Show {transitData ? 'Transit' : 'Progressed'}-{isComposite ? 'Composite' : 'Natal'} Aspects</span>
             </label>
             <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
               <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {transitOrb}°</label>
@@ -892,6 +893,39 @@ function ChartWheel({
               </div>
             </div>
           )}
+        </div>
+      ) : (
+        /* Simple natal/composite chart controls - just natal aspects */
+        <div style={{
+          display: 'flex',
+          gap: '20px',
+          marginBottom: '15px',
+          padding: '10px',
+          backgroundColor: '#f0f0f0',
+          borderRadius: '5px'
+        }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={showNatalAspects}
+                onChange={(e) => setShowNatalAspects && setShowNatalAspects(e.target.checked)}
+              />
+              <span>Show {isComposite ? 'Composite' : 'Natal'} Aspects</span>
+            </label>
+            <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {natalOrb}°</label>
+              <input
+                type="range"
+                min="0"
+                max="10"
+                step="0.5"
+                value={natalOrb}
+                onChange={(e) => onNatalOrbChange && onNatalOrbChange(parseFloat(e.target.value))}
+                style={{ flex: 1 }}
+              />
+            </div>
+          </div>
         </div>
       )}
 
