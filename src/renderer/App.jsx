@@ -11,6 +11,7 @@ import { DateTime } from 'luxon';
 import { findAspect, getAngularDistance, calculateAspects } from '../shared/calculations/aspectsCalculator';
 import { calculateCompositeChart, calculateGeographicMidpoint } from '../shared/calculations/compositeCalculator';
 import { calculateSolarReturn, calculateLunarReturn } from '../shared/calculations/returnsCalculator';
+import { calculateSolarArcs, getSolarArcDefaultOrb } from '../shared/calculations/solarArcsCalculator';
 
 function App() {
   const [chartData, setChartData] = useState(null);
@@ -793,72 +794,119 @@ function App() {
         }
       }
 
-      // Calculate progressions if enabled
+      // Calculate progressions or solar arcs if enabled
       if (formData.showProgressions && result.success) {
-        // Calculate age from natal date to progression date
-        const age = calculateAgeFromDates(
-          {
-            year: parseInt(formData.year),
-            month: parseInt(formData.month),
-            day: parseInt(formData.day),
-            hour: parseInt(formData.hour),
-            minute: parseInt(formData.minute)
-          },
-          {
-            year: parseInt(formData.progressionYear),
-            month: parseInt(formData.progressionMonth),
-            day: parseInt(formData.progressionDay),
-            hour: parseInt(formData.progressionHour),
-            minute: parseInt(formData.progressionMinute)
+        if (formData.directionType === 'solarArcs') {
+          // Calculate Solar Arc Directions
+          const natalDate = new Date(
+            parseInt(formData.year),
+            parseInt(formData.month) - 1,
+            parseInt(formData.day),
+            parseInt(formData.hour),
+            parseInt(formData.minute)
+          );
+          const targetDate = new Date(
+            parseInt(formData.progressionYear),
+            parseInt(formData.progressionMonth) - 1,
+            parseInt(formData.progressionDay)
+          );
+
+          if (targetDate <= natalDate) {
+            alert('Solar Arc date must be after natal date');
+            setLoading(false);
+            return;
           }
-        );
 
-        if (age <= 0) {
-          alert('Progression date must be after natal date');
-          setLoading(false);
-          return;
-        }
+          const solarArcData = calculateSolarArcs(result, natalDate, targetDate, 'standard');
+          console.log('Solar Arcs calculated:', solarArcData);
 
-        const progressionsResult = await window.astro.calculateProgressions({
-          natalData: {
-            year: parseInt(formData.year),
-            month: parseInt(formData.month),
-            day: parseInt(formData.day),
-            hour: parseInt(formData.hour),
-            minute: parseInt(formData.minute),
-            latitude: parseFloat(formData.latitude),
-            longitude: parseFloat(formData.longitude),
-            houseSystem: formData.houseSystem
-          },
-          target: {
-            age: age
-          }
-        });
+          // Calculate solar arc-to-natal aspects
+          const solarArcAspects = calculateTransitAspects(result.planets, solarArcData.planets, transitOrb);
+          console.log('Solar arc-to-natal aspects:', solarArcAspects);
 
-        if (progressionsResult.success && progressionsResult.data) {
-          const progressedData = progressionsResult.data;
-          console.log('Progressions calculated:', progressedData);
+          // Always store solar arc-natal aspects separately
+          result.progressionNatalAspects = solarArcAspects;
 
-          // Calculate progressed-to-natal aspects
-          const progressedAspects = calculateTransitAspects(result.planets, progressedData.planets, transitOrb);
-          console.log('Progressed-to-natal aspects:', progressedAspects);
-
-          // Always store progression-natal aspects separately
-          result.progressionNatalAspects = progressedAspects;
-
-          // Only set as transitAspects if transits are not also enabled (for backwards compatibility)
+          // Only set as transitAspects if transits are not also enabled
           if (!formData.showTransits) {
-            result.transitAspects = progressedAspects;
+            result.transitAspects = solarArcAspects;
 
-            // Set all progressed aspects as active by default
-            const allProgressedAspectKeys = new Set(
-              progressedAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+            // Set all solar arc aspects as active by default
+            const allSolarArcAspectKeys = new Set(
+              solarArcAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
             );
-            setActiveTransitAspects(allProgressedAspectKeys);
+            setActiveTransitAspects(allSolarArcAspectKeys);
           }
 
-          // Store progressed data separately
-          progressionsData = progressedData;
+          // Store solar arc data separately
+          progressionsData = solarArcData;
+        } else {
+          // Calculate Secondary Progressions
+          // Calculate age from natal date to progression date
+          const age = calculateAgeFromDates(
+            {
+              year: parseInt(formData.year),
+              month: parseInt(formData.month),
+              day: parseInt(formData.day),
+              hour: parseInt(formData.hour),
+              minute: parseInt(formData.minute)
+            },
+            {
+              year: parseInt(formData.progressionYear),
+              month: parseInt(formData.progressionMonth),
+              day: parseInt(formData.progressionDay),
+              hour: parseInt(formData.progressionHour),
+              minute: parseInt(formData.progressionMinute)
+            }
+          );
+
+          if (age <= 0) {
+            alert('Progression date must be after natal date');
+            setLoading(false);
+            return;
+          }
+
+          const progressionsResult = await window.astro.calculateProgressions({
+            natalData: {
+              year: parseInt(formData.year),
+              month: parseInt(formData.month),
+              day: parseInt(formData.day),
+              hour: parseInt(formData.hour),
+              minute: parseInt(formData.minute),
+              latitude: parseFloat(formData.latitude),
+              longitude: parseFloat(formData.longitude),
+              houseSystem: formData.houseSystem
+            },
+            target: {
+              age: age
+            }
+          });
+
+          if (progressionsResult.success && progressionsResult.data) {
+            const progressedData = progressionsResult.data;
+            console.log('Progressions calculated:', progressedData);
+
+            // Calculate progressed-to-natal aspects
+            const progressedAspects = calculateTransitAspects(result.planets, progressedData.planets, transitOrb);
+            console.log('Progressed-to-natal aspects:', progressedAspects);
+
+            // Always store progression-natal aspects separately
+            result.progressionNatalAspects = progressedAspects;
+
+            // Only set as transitAspects if transits are not also enabled (for backwards compatibility)
+            if (!formData.showTransits) {
+              result.transitAspects = progressedAspects;
+
+              // Set all progressed aspects as active by default
+              const allProgressedAspectKeys = new Set(
+                progressedAspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+              );
+              setActiveTransitAspects(allProgressedAspectKeys);
+            }
+
+            // Store progressed data separately
+            progressionsData = progressedData;
+          }
         }
       }
 
