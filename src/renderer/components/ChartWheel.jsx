@@ -14,11 +14,15 @@ import {
  * Renders astrological charts with full control over styling and layout
  */
 function ChartWheel({
+  isSynastry = false,
   chartData,
+  chartDataB = null,
   transitData = null,
   progressionsData = null,
   activeAspects = new Set(),
   onAspectToggle,
+  activeAspectsB = new Set(),
+  onAspectToggleB,
   activeTransitAspects = new Set(),
   onTransitAspectToggle,
   activeProgressionNatalAspects = new Set(),
@@ -27,6 +31,8 @@ function ChartWheel({
   onTransitProgressionAspectToggle,
   showNatalAspects = true,
   setShowNatalAspects,
+  showNatalAspectsB = true,
+  setShowNatalAspectsB,
   natalOrb = 8,
   onNatalOrbChange,
   transitOrb = 8,
@@ -37,7 +43,9 @@ function ChartWheel({
   onTransitTransitOrbChange,
   transitProgressionOrb = 8,
   onTransitProgressionOrbChange,
-  showProgressions = false
+  showProgressions = false,
+  personAName = 'Person A',
+  personBName = 'Person B'
 }) {
   const { size, center, radii, colors, glyphs } = CHART_CONFIG;
 
@@ -279,16 +287,73 @@ function ChartWheel({
   };
 
   /**
+   * Render Person B's natal-to-natal aspect lines (for synastry mode)
+   */
+  const renderAspectsB = () => {
+    if (!isSynastry || !chartDataB || !chartDataB.aspects || !showNatalAspectsB) return null;
+
+    const ascendant = chartData.ascendant; // Use Person A's ascendant for orientation
+
+    return chartDataB.aspects.map((aspect, index) => {
+      // Check if this aspect is active/visible
+      const aspectKey = `${aspect.planet1}-${aspect.planet2}`;
+      if (!activeAspectsB.has(aspectKey)) return null;
+
+      // Get planet positions from Person B's chart (outer ring)
+      const planet1 = chartDataB.planets[aspect.planet1Key];
+      const planet2 = chartDataB.planets[aspect.planet2Key];
+
+      if (!planet1 || !planet2) return null;
+
+      // Person B's planets are on the outer ring (transit radius in bi-wheel), so use that for aspect lines
+      const pos1 = pointOnCircle(center, center, radii.transit - 15, planet1.longitude, ascendant);
+      const pos2 = pointOnCircle(center, center, radii.transit - 15, planet2.longitude, ascendant);
+
+      // Calculate line style based on orb
+      const opacity = 1 - (aspect.orb / 8); // Tighter orb = more opaque
+      const strokeWidth = 3 - (aspect.orb / 4); // Tighter orb = thicker
+
+      // Format tooltip
+      const applyingSeparating = aspect.applying !== null
+        ? (aspect.applying ? 'Applying' : 'Separating')
+        : 'N/A';
+      const tooltipText = `${personBName}: ${aspect.planet1} ${glyphs.aspects[aspect.type]} ${aspect.planet2} • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+
+      return (
+        <line
+          key={`b-${index}`}
+          x1={pos1.x}
+          y1={pos1.y}
+          x2={pos2.x}
+          y2={pos2.y}
+          stroke={colors.aspects[aspect.type]}
+          strokeWidth={Math.max(0.5, strokeWidth)}
+          opacity={Math.max(0.2, opacity)}
+          strokeDasharray="4,4" // Dashed line to differentiate from Person A's aspects
+          style={{ cursor: 'pointer' }}
+          onClick={() => onAspectToggleB && onAspectToggleB(aspect)}
+          onMouseEnter={(e) => showTooltip(e, tooltipText)}
+          onMouseLeave={hideTooltip}
+        />
+      );
+    });
+  };
+
+  /**
    * Render natal-to-transit aspect lines (dotted circles)
+   * In synastry mode, this renders synastry aspects between Person A and Person B
    */
   const renderTransitNatalAspects = () => {
-    if (!chartData.transitAspects || !transitData || !showTransitNatalAspects) {
+    // In synastry mode, use synastryAspects; otherwise use transitAspects
+    const aspects = isSynastry ? chartData.synastryAspects : chartData.transitAspects;
+
+    if (!aspects || !transitData || !showTransitNatalAspects) {
       return null;
     }
 
     const ascendant = chartData.ascendant;
 
-    return chartData.transitAspects.map((aspect, index) => {
+    return aspects.map((aspect, index) => {
       // Check if this aspect is active/visible
       const aspectKey = `${aspect.planet1}-${aspect.planet2}`;
       if (!activeTransitAspects.has(aspectKey)) return null;
@@ -317,7 +382,9 @@ function ChartWheel({
       const applyingSeparating = aspect.applying !== null
         ? (aspect.applying ? 'Applying' : 'Separating')
         : 'N/A';
-      const tooltipText = `${aspect.planet1} (Natal) ${glyphs.aspects[aspect.type]} ${aspect.planet2} (Transit) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+      const label1 = isSynastry ? personAName : 'Natal';
+      const label2 = isSynastry ? personBName : 'Transit';
+      const tooltipText = `${aspect.planet1} (${label1}) ${glyphs.aspects[aspect.type]} ${aspect.planet2} (${label2}) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
 
       return (
         <g
@@ -604,7 +671,87 @@ function ChartWheel({
       <h4>🎯 Birth Chart Wheel</h4>
 
       {/* Aspect Toggle Controls */}
-      {transitData && (
+      {isSynastry ? (
+        /* Synastry mode controls */
+        <div style={{
+          display: 'flex',
+          gap: '20px',
+          marginBottom: '15px',
+          padding: '10px',
+          backgroundColor: '#f0f0f0',
+          borderRadius: '5px'
+        }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={showNatalAspects}
+                onChange={(e) => setShowNatalAspects && setShowNatalAspects(e.target.checked)}
+              />
+              <span>Show {personAName} Natal Aspects</span>
+            </label>
+            <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {natalOrb}°</label>
+              <input
+                type="range"
+                min="0"
+                max="10"
+                step="0.5"
+                value={natalOrb}
+                onChange={(e) => onNatalOrbChange && onNatalOrbChange(parseFloat(e.target.value))}
+                style={{ flex: 1 }}
+              />
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={showNatalAspectsB}
+                onChange={(e) => setShowNatalAspectsB && setShowNatalAspectsB(e.target.checked)}
+              />
+              <span>Show {personBName} Natal Aspects</span>
+            </label>
+            <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {natalOrb}°</label>
+              <input
+                type="range"
+                min="0"
+                max="10"
+                step="0.5"
+                value={natalOrb}
+                onChange={(e) => onNatalOrbChange && onNatalOrbChange(parseFloat(e.target.value))}
+                style={{ flex: 1 }}
+              />
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={showTransitNatalAspects}
+                onChange={(e) => setShowTransitNatalAspects(e.target.checked)}
+              />
+              <span>Show Synastry Aspects</span>
+            </label>
+            <div style={{ paddingLeft: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <label style={{ fontSize: '13px', minWidth: '80px' }}>Orb: {transitOrb}°</label>
+              <input
+                type="range"
+                min="0"
+                max="10"
+                step="0.5"
+                value={transitOrb}
+                onChange={(e) => onTransitOrbChange && onTransitOrbChange(parseFloat(e.target.value))}
+                style={{ flex: 1 }}
+              />
+            </div>
+          </div>
+        </div>
+      ) : transitData && (
+        /* Regular transit/progression mode controls */
         <div style={{
           display: 'flex',
           gap: '20px',
@@ -760,6 +907,7 @@ function ChartWheel({
 
         {/* Render layers from back to front */}
         <g id="natal-aspect-lines">{renderAspects()}</g>
+        <g id="natal-b-aspect-lines">{renderAspectsB()}</g>
         <g id="transit-natal-aspect-lines">{renderTransitNatalAspects()}</g>
         <g id="progression-natal-aspect-lines">{renderProgressionNatalAspects()}</g>
         <g id="transit-progression-aspect-lines">{renderTransitProgressionAspects()}</g>

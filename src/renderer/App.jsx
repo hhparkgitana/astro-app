@@ -108,7 +108,6 @@ function App() {
 
   const handleInputChange = (e) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    console.log('Person A input change:', e.target.name, '=', value);
 
     setFormData({
       ...formData,
@@ -118,7 +117,6 @@ function App() {
 
   const handleInputChangeB = (e) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    console.log('Person B input change:', e.target.name, '=', value);
 
     setFormDataB({
       ...formDataB,
@@ -3420,10 +3418,14 @@ function App() {
                 {relationshipChartType === 'synastry' ? (
                   <div className="chart-display">
                     <ChartWheel
+                      isSynastry={true}
                       chartData={chartData}
+                      chartDataB={chartDataB}
                       transitData={{ planets: chartDataB.planets }}
                       activeAspects={activeAspects}
                       onAspectToggle={handleAspectToggle}
+                      activeAspectsB={activeAspectsB}
+                      onAspectToggleB={handleAspectToggleB}
                       activeTransitAspects={activeSynastryAspects}
                       onTransitAspectToggle={handleSynastryAspectToggle}
                       activeProgressionNatalAspects={new Set()}
@@ -3432,6 +3434,8 @@ function App() {
                       onTransitProgressionAspectToggle={() => {}}
                       showNatalAspects={showNatalAspects}
                       setShowNatalAspects={setShowNatalAspects}
+                      showNatalAspectsB={showNatalAspectsB}
+                      setShowNatalAspectsB={setShowNatalAspectsB}
                       natalOrb={natalOrb}
                       onNatalOrbChange={handleNatalOrbChange}
                       transitOrb={synastryOrb}
@@ -3443,6 +3447,8 @@ function App() {
                       transitProgressionOrb={8}
                       onTransitProgressionOrbChange={() => {}}
                       showProgressions={false}
+                      personAName={formData.name || 'Person A'}
+                      personBName={formDataB.name || 'Person B'}
                     />
                   </div>
                 ) : (
@@ -3460,9 +3466,13 @@ function App() {
                     <h4>Aspect Matrices</h4>
 
                     <AspectTabs
+                      viewMode={viewMode}
                       chartData={chartData}
+                      chartDataB={chartDataB}
                       activeAspects={activeAspects}
                       onAspectToggle={handleAspectToggle}
+                      activeAspectsB={activeAspectsB}
+                      onAspectToggleB={handleAspectToggleB}
                       activeTransitAspects={activeTransitAspects}
                       onTransitAspectToggle={handleTransitAspectToggle}
                       activeProgressionNatalAspects={activeProgressionNatalAspects}
@@ -3473,6 +3483,8 @@ function App() {
                       onSynastryAspectToggle={handleSynastryAspectToggle}
                       showNatalAspects={showNatalAspects}
                       showProgressions={false}
+                      formData={formData}
+                      formDataB={formDataB}
                     />
                   </div>
                 )}
@@ -3492,6 +3504,7 @@ function App() {
         chartData={chartData}
         chartDataB={chartDataB}
         viewMode={viewMode}
+        relationshipChartType={relationshipChartType}
         formData={formData}
         formDataB={formDataB}
         isOpen={isChatOpen}

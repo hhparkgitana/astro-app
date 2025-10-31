@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './ChatPanel.css';
 
-function ChatPanel({ chartData, chartDataB, viewMode, formData, formDataB, isOpen, onToggle }) {
+function ChatPanel({ chartData, chartDataB, viewMode, relationshipChartType, formData, formDataB, isOpen, onToggle }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -45,8 +45,8 @@ function ChatPanel({ chartData, chartDataB, viewMode, formData, formDataB, isOpe
       });
     }
 
-    // Add Chart B if in dual mode and available
-    if (viewMode === 'dual' && chartDataB && chartDataB.success) {
+    // Add Chart B if in dual or relationship mode and available
+    if ((viewMode === 'dual' || viewMode === 'relationship') && chartDataB && chartDataB.success) {
       context.charts.push({
         label: 'Chart B',
         name: formDataB.name || 'Unnamed',
@@ -67,6 +67,12 @@ function ChatPanel({ chartData, chartDataB, viewMode, formData, formDataB, isOpe
           transitAspects: chartDataB.transitAspects
         } : null
       });
+    }
+
+    // Add synastry/relationship information if available
+    if (viewMode === 'relationship' && chartData && chartData.synastryAspects) {
+      context.relationshipType = relationshipChartType;
+      context.synastryAspects = chartData.synastryAspects;
     }
 
     return context;

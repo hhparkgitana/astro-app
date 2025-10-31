@@ -247,6 +247,17 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
         contextMessage += `\n---\n\n`;
       });
     }
+
+    // Add synastry aspects if available (relationship charts)
+    if (chartContext.synastryAspects && chartContext.synastryAspects.length > 0) {
+      contextMessage += `💞 SYNASTRY ASPECTS (Chart A ↔ Chart B):\n`;
+      contextMessage += `This is a relationship chart showing aspects between the two people's natal planets.\n\n`;
+      chartContext.synastryAspects.forEach(aspect => {
+        contextMessage += `${aspect.planet1} (Chart A) ${aspect.symbol} ${aspect.planet2} (Chart B) (orb: ${aspect.orb.toFixed(1)}°)\n`;
+      });
+      contextMessage += `\n---\n\n`;
+    }
+
     contextMessage += `USER QUESTION: ${message}`;
 
     console.log('=== CONTEXT MESSAGE BEING SENT TO CLAUDE ===');

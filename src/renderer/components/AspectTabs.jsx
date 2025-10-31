@@ -8,9 +8,13 @@ import SynastryAspectMatrix from './SynastryAspectMatrix';
 import './AspectTabs.css';
 
 function AspectTabs({
+  viewMode,
   chartData,
+  chartDataB,
   activeAspects,
   onAspectToggle,
+  activeAspectsB,
+  onAspectToggleB,
   activeTransitAspects,
   onTransitAspectToggle,
   activeProgressionNatalAspects,
@@ -20,7 +24,9 @@ function AspectTabs({
   activeSynastryAspects,
   onSynastryAspectToggle,
   showNatalAspects, // from chart wheel visibility
-  showProgressions = false
+  showProgressions = false,
+  formData,
+  formDataB
 }) {
   const [activeTab, setActiveTab] = useState('natal');
 
@@ -30,6 +36,10 @@ function AspectTabs({
   const hasTransitProgressionAspects = chartData && chartData.transitProgressionAspects;
   const hasSynastryAspects = chartData && chartData.synastryAspects;
 
+  const isRelationshipMode = viewMode === 'relationship';
+  const personAName = formData?.name || 'Person A';
+  const personBName = formDataB?.name || 'Person B';
+
   return (
     <div className="aspect-tabs-container">
       <div className="aspect-tabs-header">
@@ -37,8 +47,17 @@ function AspectTabs({
           className={`aspect-tab ${activeTab === 'natal' ? 'active' : ''}`}
           onClick={() => setActiveTab('natal')}
         >
-          Natal-Natal Aspects
+          {isRelationshipMode ? `${personAName} Natal Aspects` : 'Natal-Natal Aspects'}
         </button>
+
+        {isRelationshipMode && chartDataB && (
+          <button
+            className={`aspect-tab ${activeTab === 'natal-b' ? 'active' : ''}`}
+            onClick={() => setActiveTab('natal-b')}
+          >
+            {personBName} Natal Aspects
+          </button>
+        )}
 
         {hasTransits && (
           <button
@@ -96,6 +115,14 @@ function AspectTabs({
             chartData={chartData}
             activeAspects={activeAspects}
             onAspectToggle={onAspectToggle}
+          />
+        )}
+
+        {activeTab === 'natal-b' && chartDataB && (
+          <AspectMatrix
+            chartData={chartDataB}
+            activeAspects={activeAspectsB}
+            onAspectToggle={onAspectToggleB}
           />
         )}
 
