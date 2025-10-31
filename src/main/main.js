@@ -809,10 +809,33 @@ Each planet, angle (Ascendant, Midheaven), and transit position includes its Sab
         };
       }
 
+      // Helper function to convert longitude to zodiac sign
+      const getZodiacSign = (longitude) => {
+        if (longitude === null || longitude === undefined) return null;
+        const signs = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
+                       'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'];
+        const signIndex = Math.floor(longitude / 30);
+        return signs[signIndex % 12];
+      };
+
       // Transform user charts to match the format expected by searchCharts
       // User charts have chartData with planets, houses, aspects
       const userCharts = userChartsRaw.map(chart => {
         const chartData = chart.chartData || {};
+
+        // Transform planets to include sign property
+        const transformedPlanets = {};
+        if (chartData.planets) {
+          Object.keys(chartData.planets).forEach(planetKey => {
+            const planet = chartData.planets[planetKey];
+            transformedPlanets[planetKey] = {
+              ...planet,
+              sign: planet.sign || getZodiacSign(planet.longitude),
+              house: planet.house
+            };
+          });
+        }
+
         return {
           id: chart.id?.toString() || 'unknown',
           name: chart.name || 'Unnamed',
@@ -825,11 +848,21 @@ Each planet, angle (Ascendant, Midheaven), and transit position includes its Sab
             : undefined,
           location: chart.formData?.location || 'Unknown',
           notes: chart.notes || '',
-          planets: chartData.planets || {},
-          houses: chartData.houses || [],
-          aspects: chartData.aspects || [],
-          ascendant: chartData.ascendant,
-          midheaven: chartData.midheaven
+          calculated: {
+            planets: transformedPlanets,
+            houses: chartData.houses || [],
+            major_aspects: chartData.aspects || [],
+            angles: {
+              ascendant: {
+                longitude: chartData.ascendant,
+                sign: getZodiacSign(chartData.ascendant)
+              },
+              midheaven: {
+                longitude: chartData.midheaven,
+                sign: getZodiacSign(chartData.midheaven)
+              }
+            }
+          }
         };
       });
 
@@ -935,9 +968,32 @@ Each planet, angle (Ascendant, Midheaven), and transit position includes its Sab
               };
             }
 
+            // Helper function to convert longitude to zodiac sign
+            const getZodiacSign = (longitude) => {
+              if (longitude === null || longitude === undefined) return null;
+              const signs = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
+                             'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'];
+              const signIndex = Math.floor(longitude / 30);
+              return signs[signIndex % 12];
+            };
+
             // Transform user charts to match expected format
             chartsDatabase = userChartsRaw.map(chart => {
               const chartData = chart.chartData || {};
+
+              // Transform planets to include sign property
+              const transformedPlanets = {};
+              if (chartData.planets) {
+                Object.keys(chartData.planets).forEach(planetKey => {
+                  const planet = chartData.planets[planetKey];
+                  transformedPlanets[planetKey] = {
+                    ...planet,
+                    sign: planet.sign || getZodiacSign(planet.longitude),
+                    house: planet.house
+                  };
+                });
+              }
+
               return {
                 id: chart.id?.toString() || 'unknown',
                 name: chart.name || 'Unnamed',
@@ -950,11 +1006,21 @@ Each planet, angle (Ascendant, Midheaven), and transit position includes its Sab
                   : undefined,
                 location: chart.formData?.location || 'Unknown',
                 notes: chart.notes || '',
-                planets: chartData.planets || {},
-                houses: chartData.houses || [],
-                aspects: chartData.aspects || [],
-                ascendant: chartData.ascendant,
-                midheaven: chartData.midheaven
+                calculated: {
+                  planets: transformedPlanets,
+                  houses: chartData.houses || [],
+                  major_aspects: chartData.aspects || [],
+                  angles: {
+                    ascendant: {
+                      longitude: chartData.ascendant,
+                      sign: getZodiacSign(chartData.ascendant)
+                    },
+                    midheaven: {
+                      longitude: chartData.midheaven,
+                      sign: getZodiacSign(chartData.midheaven)
+                    }
+                  }
+                }
               };
             });
           } else {
@@ -1161,9 +1227,32 @@ Each planet, angle (Ascendant, Midheaven), and transit position includes its Sab
               };
             }
 
+            // Helper function to convert longitude to zodiac sign
+            const getZodiacSign = (longitude) => {
+              if (longitude === null || longitude === undefined) return null;
+              const signs = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
+                             'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'];
+              const signIndex = Math.floor(longitude / 30);
+              return signs[signIndex % 12];
+            };
+
             // Transform user charts to match expected format
             chartsDatabase = userChartsRaw.map(chart => {
               const chartData = chart.chartData || {};
+
+              // Transform planets to include sign property
+              const transformedPlanets = {};
+              if (chartData.planets) {
+                Object.keys(chartData.planets).forEach(planetKey => {
+                  const planet = chartData.planets[planetKey];
+                  transformedPlanets[planetKey] = {
+                    ...planet,
+                    sign: planet.sign || getZodiacSign(planet.longitude),
+                    house: planet.house
+                  };
+                });
+              }
+
               return {
                 id: chart.id?.toString() || 'unknown',
                 name: chart.name || 'Unnamed',
@@ -1176,11 +1265,21 @@ Each planet, angle (Ascendant, Midheaven), and transit position includes its Sab
                   : undefined,
                 location: chart.formData?.location || 'Unknown',
                 notes: chart.notes || '',
-                planets: chartData.planets || {},
-                houses: chartData.houses || [],
-                aspects: chartData.aspects || [],
-                ascendant: chartData.ascendant,
-                midheaven: chartData.midheaven
+                calculated: {
+                  planets: transformedPlanets,
+                  houses: chartData.houses || [],
+                  major_aspects: chartData.aspects || [],
+                  angles: {
+                    ascendant: {
+                      longitude: chartData.ascendant,
+                      sign: getZodiacSign(chartData.ascendant)
+                    },
+                    midheaven: {
+                      longitude: chartData.midheaven,
+                      sign: getZodiacSign(chartData.midheaven)
+                    }
+                  }
+                }
               };
             });
           } else {
