@@ -2319,9 +2319,49 @@ function App() {
                 onChange={handleInputChange}
                 style={{marginRight: '8px', width: '18px', height: '18px'}}
               />
-              <span style={{fontWeight: 'bold'}}>Show Progressions (Bi-Wheel)</span>
+              <span style={{fontWeight: 'bold'}}>Show Progressions/Directions (Bi-Wheel)</span>
             </label>
           </div>
+
+          {formData.showProgressions && (
+            <div style={{marginTop: '15px', padding: '15px', border: '2px solid #9C27B0', borderRadius: '4px', backgroundColor: '#f9f5ff'}}>
+              <h4 style={{marginTop: 0, color: '#9C27B0'}}>Choose Direction Type</h4>
+              <div style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
+                <label style={{display: 'flex', alignItems: 'center', cursor: 'pointer'}}>
+                  <input
+                    type="radio"
+                    name="directionType"
+                    value="progressions"
+                    checked={formData.directionType === 'progressions'}
+                    onChange={handleInputChange}
+                    style={{marginRight: '8px', width: '18px', height: '18px'}}
+                  />
+                  <span>
+                    <strong>Secondary Progressions</strong> (day-for-a-year)
+                    <small style={{display: 'block', color: '#666', marginLeft: '26px'}}>
+                      More psychological, inner development focus
+                    </small>
+                  </span>
+                </label>
+                <label style={{display: 'flex', alignItems: 'center', cursor: 'pointer'}}>
+                  <input
+                    type="radio"
+                    name="directionType"
+                    value="solarArcs"
+                    checked={formData.directionType === 'solarArcs'}
+                    onChange={handleInputChange}
+                    style={{marginRight: '8px', width: '18px', height: '18px'}}
+                  />
+                  <span>
+                    <strong>Solar Arc Directions</strong> (~1° per year)
+                    <small style={{display: 'block', color: '#666', marginLeft: '26px'}}>
+                      More event-oriented, outer world manifestations
+                    </small>
+                  </span>
+                </label>
+              </div>
+            </div>
+          )}
 
           {formData.showTransits && (
             <div style={{marginTop: '15px', padding: '15px', border: '2px solid #4CAF50', borderRadius: '4px'}}>
@@ -2399,7 +2439,9 @@ function App() {
 
           {formData.showProgressions && (
             <div style={{marginTop: '15px', padding: '15px', border: '2px solid #9C27B0', borderRadius: '4px'}}>
-              <h4 style={{marginTop: 0, color: '#9C27B0'}}>Progression Date & Time</h4>
+              <h4 style={{marginTop: 0, color: '#9C27B0'}}>
+                {formData.directionType === 'solarArcs' ? 'Solar Arc Date' : 'Progression Date & Time'}
+              </h4>
 
               <div className="form-row">
                 <div className="form-group">
