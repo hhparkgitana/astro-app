@@ -128,6 +128,38 @@ ipcMain.handle('find-eclipses', async (event, params) => {
   }
 });
 
+// Handle eclipse activations requests (using eclipse service)
+ipcMain.handle('find-eclipse-activations', async (event, params) => {
+  try {
+    const { natalChart, startDate, endDate, orb = 3 } = params;
+
+    if (!natalChart) {
+      throw new Error('Natal chart is required');
+    }
+
+    const eclipseService = require(path.join(__dirname, '..', 'shared', 'services', 'eclipseService.js'));
+
+    const start = startDate ? new Date(startDate) : new Date(new Date().getFullYear() - 10, 0, 1);
+    const end = endDate ? new Date(endDate) : new Date(new Date().getFullYear() + 10, 11, 31);
+
+    const activations = eclipseService.findActivations(natalChart, {
+      startDate: start,
+      endDate: end,
+      orb: orb
+    });
+
+    const stats = eclipseService.getActivationStats(activations);
+
+    return {
+      activations: activations,
+      stats: stats
+    };
+  } catch (error) {
+    console.error('Error finding eclipse activations:', error);
+    throw error;
+  }
+});
+
 // Helper function to convert longitude to zodiac sign format
 function longitudeToZodiac(longitude) {
   const signs = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
@@ -355,6 +387,20 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
 
 You must analyze astrological charts using ONLY the data provided. Never invent or assume aspects.
 
+ASPECT CALCULATION (CRITICAL):
+When identifying aspects between planets, transits, or eclipses, you MUST calculate zodiacal distances correctly:
+- Conjunction (0°): Same sign and degree area
+- Sextile (60°): Two signs apart (e.g., Pisces to Taurus, Capricorn to Pisces)
+- Square (90°): Three signs apart (e.g., Pisces to Sagittarius, Pisces to Gemini)
+- Trine (120°): Four signs apart (e.g., Pisces to Cancer, Pisces to Scorpio)
+- Opposition (180°): Six signs apart, opposite signs (e.g., Pisces to Virgo, Aries to Libra)
+
+Zodiac sign order: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces
+
+NEVER claim an aspect exists unless you have verified the correct zodiacal distance. For example:
+- Pisces to Sagittarius = 3 signs back = 90° = SQUARE (not opposition)
+- Pisces to Virgo = 6 signs = 180° = OPPOSITION
+
 USER CHART DATABASE:
 The user has a personal chart library where they save charts. You have access to search these charts and analyze them. When the user asks about "my charts", "saved charts", "my library", or similar, use the search_user_charts tool. For transit or eclipse impacts on saved charts, use user_database_impact query type.
 
@@ -368,7 +414,7 @@ COMPOSITE CHARTS:
 This application supports composite charts calculated using the midpoint method. A composite chart represents the relationship itself as a separate entity. Each planet in the composite chart is positioned at the midpoint between the two individuals' natal planets. For example, if Person A's Sun is at 10° Aries and Person B's Sun is at 20° Aries, the composite Sun would be at 15° Aries. When planets are more than 180° apart, the midpoint is calculated "the short way around" the zodiac. The composite chart has its own houses, angles, and aspects, and should be interpreted as describing the nature and purpose of the relationship itself, not the individuals within it.
 
 SABIAN SYMBOLS:
-Each planet, angle (Ascendant, Midheaven), and transit position includes its Sabian Symbol - a symbolic image and keynote for that specific degree. The Sabian Symbols, channeled by Elsie Wheeler and interpreted by Marc Edmund Jones and Dane Rudhyar, provide rich symbolic meaning for the exact degree of each placement. When interpreting charts, you can reference these symbols to add depth and symbolic resonance to your analysis. The symbols are provided in the chart data for each planetary position and angle.`,
+Each planet, angle (Ascendant, Midheaven), and transit position includes its Sabian Symbol - a symbolic image and keynote for that specific degree. The Sabian Symbols, channeled by Elsie Wheeler and interpreted by Marc Edmund Jones and Dane Rudhyar, provide rich symbolic meaning for the exact degree of each placement. When interpreting charts, you can reference these symbols to add depth and symbolic resonance to your analysis. The symbols are provided in the chart data for each planetary position and angle. When discussing Sabian symbols, ALWAYS include BOTH the full symbol description AND the keynote to provide complete symbolic meaning.`,
           messages: [{ role: 'user', content: contextMessage }],
           tools: [
             {
@@ -1340,6 +1386,13 @@ Each planet, angle (Ascendant, Midheaven), and transit position includes its Sab
           resultsMessage += `   Date: ${formatDate(eclipse.date)}\n`;
           resultsMessage += `   Position: ${eclipse.sign}\n`;
 
+          // Add Sabian Symbol for eclipse position
+          if (eclipse.longitude !== undefined) {
+            const sabianSymbol = getSabianSymbol(eclipse.longitude);
+            resultsMessage += `   Sabian Symbol: ${sabianSymbol.sign} ${sabianSymbol.degree}° - "${sabianSymbol.symbol}"\n`;
+            resultsMessage += `   Keynote: ${sabianSymbol.keynote}\n`;
+          }
+
           if (eclipse.house) {
             resultsMessage += `   House: ${eclipse.house}\n`;
           }
@@ -1366,7 +1419,24 @@ Each planet, angle (Ascendant, Midheaven), and transit position includes its Sab
             finalResponse = await anthropic.messages.create({
               model: model,
               max_tokens: 4096,
-              system: `You are an expert professional astrologer. Eclipses are major timing indicators that activate specific degrees in the zodiac. Solar eclipses (New Moons on steroids) are about new beginnings and external events. Lunar eclipses (Full Moons on steroids) are about endings, revelations, and emotional releases. Eclipse effects can last for months.`,
+              system: `You are an expert professional astrologer. Eclipses are major timing indicators that activate specific degrees in the zodiac. Solar eclipses (New Moons on steroids) are about new beginnings and external events. Lunar eclipses (Full Moons on steroids) are about endings, revelations, and emotional releases. Eclipse effects can last for months.
+
+ASPECT CALCULATION (CRITICAL):
+When identifying aspects between eclipse positions and natal planets, you MUST calculate zodiacal distances correctly:
+- Conjunction (0°): Same sign and degree area (e.g., 16° Pisces to 17° Pisces)
+- Sextile (60°): Two signs apart (e.g., Pisces to Taurus, Capricorn to Pisces)
+- Square (90°): Three signs apart (e.g., Pisces to Sagittarius, Pisces to Gemini)
+- Trine (120°): Four signs apart (e.g., Pisces to Cancer, Pisces to Scorpio)
+- Opposition (180°): Six signs apart, opposite signs (e.g., Pisces to Virgo, Aries to Libra)
+
+Zodiac sign order: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces
+
+NEVER claim an aspect exists unless you have verified the correct zodiacal distance. For example:
+- Pisces to Sagittarius = 3 signs back = 90° = SQUARE (not opposition)
+- Pisces to Virgo = 6 signs = 180° = OPPOSITION
+
+SABIAN SYMBOLS:
+Each eclipse includes its Sabian Symbol with both the symbolic image and keynote. When discussing Sabian symbols, ALWAYS include BOTH the full symbol description AND the keynote to provide complete symbolic meaning. Example: 'The Sabian Symbol is "A woman just risen from the sea. A seal is embracing her" with the keynote: Emergence of new forms and the fruitful interaction of the conscious and the unconscious.' Never provide only the keynote without the symbol.`,
               messages: [
                 { role: 'user', content: contextMessage },
                 { role: 'assistant', content: response.content },

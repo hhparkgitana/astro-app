@@ -9,6 +9,7 @@ import FamousChartsBrowser from './components/FamousChartsBrowser';
 import ChatPanel from './components/ChatPanel';
 import SaveChartModal from './components/SaveChartModal';
 import ChartLibrary from './components/ChartLibrary';
+import EclipseDashboard from './components/EclipseDashboard';
 import { DateTime } from 'luxon';
 import { findAspect, getAngularDistance, calculateAspects } from '../shared/calculations/aspectsCalculator';
 import { calculateCompositeChart, calculateGeographicMidpoint } from '../shared/calculations/compositeCalculator';
@@ -2238,6 +2239,13 @@ function App() {
             title="Cast Horary Chart for Current Moment"
           >
             🔮 Horary
+          </button>
+          <button
+            className={`mode-btn ${viewMode === 'eclipses' ? 'active' : ''}`}
+            onClick={() => setViewMode('eclipses')}
+            title="Track Eclipse Activations"
+          >
+            🌑 Eclipses
           </button>
           <button
             className={`mode-btn ${isChatOpen ? 'active' : ''}`}
@@ -4842,6 +4850,8 @@ function App() {
               </button>
             </form>
           </div>
+        ) : viewMode === 'eclipses' ? (
+          <EclipseDashboard chartData={chartData} />
         ) : null}
       </main>
 
