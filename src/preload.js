@@ -6,5 +6,6 @@ contextBridge.exposeInMainWorld('astro', {
   calculateProgressions: (params) => ipcRenderer.invoke('calculate-progressions', params),
   findEclipses: (params) => ipcRenderer.invoke('find-eclipses', params),
   findEclipseActivations: (params) => ipcRenderer.invoke('find-eclipse-activations', params),
+  calculateTransitTimeline: (params) => ipcRenderer.invoke('calculate-transit-timeline', params),
   chatWithClaude: (params) => ipcRenderer.invoke('chat-with-claude', params)
 });

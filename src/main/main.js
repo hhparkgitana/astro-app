@@ -160,6 +160,86 @@ ipcMain.handle('find-eclipse-activations', async (event, params) => {
   }
 });
 
+// Handle transit timeline calculation for aspect markers
+ipcMain.handle('calculate-transit-timeline', async (event, params) => {
+  try {
+    const { natalChart, startDate, endDate, interval = 'day' } = params;
+
+    if (!natalChart || !startDate || !endDate) {
+      throw new Error('Natal chart, start date, and end date are required');
+    }
+
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const samples = [];
+
+    // Calculate interval in milliseconds
+    const intervalMs = {
+      'hour': 60 * 60 * 1000,
+      'day': 24 * 60 * 60 * 1000,
+      'week': 7 * 24 * 60 * 60 * 1000
+    }[interval] || 24 * 60 * 60 * 1000;
+
+    // Sample transit positions at intervals
+    for (let time = start.getTime(); time <= end.getTime(); time += intervalMs) {
+      const sampleDate = new Date(time);
+
+      // Calculate just the transit positions (lightweight)
+      const year = sampleDate.getFullYear();
+      const month = sampleDate.getMonth() + 1;
+      const day = sampleDate.getDate();
+      const hour = sampleDate.getHours();
+      const minute = sampleDate.getMinutes();
+
+      try {
+        // Use Swiss Ephemeris to get planet positions
+        const {exec} = require('child_process');
+        const util = require('util');
+        const execPromise = util.promisify(exec);
+
+        // Call swetest to get positions
+        const cmd = `swetest -b${day}.${month}.${year} -ut${hour}:${minute} -p0123456789DAttt -fPl -g, -head`;
+        const { stdout } = await execPromise(cmd);
+
+        const lines = stdout.trim().split('\n');
+        const positions = {};
+
+        lines.forEach(line => {
+          const parts = line.split(',').map(p => p.trim());
+          if (parts.length >= 2) {
+            const planetName = parts[0];
+            const longitude = parseFloat(parts[1]);
+            if (!isNaN(longitude)) {
+              positions[planetName] = longitude;
+            }
+          }
+        });
+
+        samples.push({
+          date: sampleDate.toISOString(),
+          timestamp: time,
+          positions: positions
+        });
+      } catch (error) {
+        console.error(`Error calculating positions for ${sampleDate}:`, error.message);
+        // Continue with next sample
+      }
+    }
+
+    return {
+      success: true,
+      samples: samples,
+      sampleCount: samples.length
+    };
+  } catch (error) {
+    console.error('Error calculating transit timeline:', error);
+    return {
+      success: false,
+      error: error.message
+    };
+  }
+});
+
 // Helper function to convert longitude to zodiac sign format
 function longitudeToZodiac(longitude) {
   const signs = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',

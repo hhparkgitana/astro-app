@@ -289,50 +289,107 @@ function TimeSlider({
     setIsCalculatingMarkers(true);
 
     try {
-      const markers = [];
-      const totalMs = endDate.getTime() - startDate.getTime();
-      const dayMs = 24 * 60 * 60 * 1000;
+      // Call backend API to get transit positions across the date range
+      const result = await window.astro.calculateTransitTimeline({
+        natalChart: chartData,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        interval: 'day'
+      });
 
-      // Sample every day (adjust interval based on range size)
-      const sampleInterval = Math.max(dayMs, totalMs / 2000); // Max 2000 samples
+      if (!result.success || cancellationToken.cancelled) {
+        if (cancellationToken.cancelled) {
+          console.log('Aspect marker calculation cancelled');
+        }
+        return;
+      }
+
+      const markers = [];
+      const { samples } = result;
 
       // Major aspects to track
       const majorAspects = {
-        '0': { name: 'conjunction', symbol: '☌', orb: 8 },
-        '60': { name: 'sextile', symbol: '⚹', orb: 6 },
-        '90': { name: 'square', symbol: '□', orb: 8 },
-        '120': { name: 'trine', symbol: '△', orb: 8 },
-        '180': { name: 'opposition', symbol: '☍', orb: 8 }
+        0: { name: 'conjunction', orb: 8 },
+        60: { name: 'sextile', orb: 6 },
+        90: { name: 'square', orb: 8 },
+        120: { name: 'trine', orb: 8 },
+        180: { name: 'opposition', orb: 8 }
       };
 
-      // Track aspect formations (to find when they're exact)
+      // Transit planets to track
+      const transitPlanets = ['Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto'];
+
+      // Track when aspects are forming (to find exact points)
       const aspectTracking = new Map();
 
-      for (let time = startDate.getTime(); time <= endDate.getTime(); time += sampleInterval) {
-        // Check if calculation was cancelled
-        if (cancellationToken.cancelled) {
-          console.log('Aspect marker calculation cancelled');
-          return;
-        }
+      samples.forEach((sample, index) => {
+        if (cancellationToken.cancelled) return;
 
-        const date = new Date(time);
+        const { positions, timestamp } = sample;
 
-        // Calculate transit positions for this date
-        // This is a simplified calculation - in production you'd call the actual ephemeris
-        // For now, we'll mark this as a placeholder that needs backend support
+        // Check each transit planet against each natal planet
+        transitPlanets.forEach(transitPlanet => {
+          if (!positions[transitPlanet]) return;
 
-        // Note: We need to add a lightweight API call to calculate just planet positions
-        // without full chart calculation. For now, skip this feature.
+          chartData.planets.forEach(natalPlanet => {
+            const transitLong = positions[transitPlanet];
+            const natalLong = natalPlanet.longitude;
 
-        // TODO: Implement backend API for quick planet position calculation
-        // const transitPositions = await window.astro.calculatePlanetPositions(date);
+            // Calculate the angular distance
+            let diff = Math.abs(transitLong - natalLong);
+            if (diff > 180) diff = 360 - diff;
 
-        // For now, we'll just create a placeholder
-        // This feature requires backend support to be efficient
-      }
+            // Check if within orb of any major aspect
+            Object.entries(majorAspects).forEach(([angle, aspect]) => {
+              const aspectAngle = parseInt(angle);
+              const orb = aspectFilter === 'major' ? aspect.orb : 10;
+              const distanceFromExact = Math.abs(diff - aspectAngle);
 
-      // For now, return empty array
-      // Once backend support is added, this will populate with actual aspect markers
+              if (distanceFromExact <= orb) {
+                const key = `${transitPlanet}-${natalPlanet.name}-${aspectAngle}`;
+
+                if (!aspectTracking.has(key)) {
+                  aspectTracking.set(key, []);
+                }
+                aspectTracking.get(key).push({
+                  timestamp,
+                  orb: distanceFromExact,
+                  index
+                });
+              }
+            });
+          });
+        });
+      });
+
+      // Find the exact points (minimum orb) for each aspect
+      aspectTracking.forEach((occurrences, key) => {
+        if (occurrences.length === 0) return;
+
+        // Find the point with minimum orb (most exact)
+        const exactPoint = occurrences.reduce((min, curr) =>
+          curr.orb < min.orb ? curr : min
+        );
+
+        const [transitPlanet, natalPlanet, angle] = key.split('-');
+        const aspectAngle = parseInt(angle);
+
+        // Convert timestamp to slider position (0-100)
+        const totalMs = endDate.getTime() - startDate.getTime();
+        const offsetMs = exactPoint.timestamp - startDate.getTime();
+        const position = (offsetMs / totalMs) * 100;
+
+        markers.push({
+          position,
+          date: new Date(exactPoint.timestamp),
+          planet: transitPlanet,
+          natalPlanet,
+          aspectType: majorAspects[aspectAngle].name,
+          aspectSymbol: getAspectSymbol(aspectAngle),
+          orb: exactPoint.orb
+        });
+      });
+
       setAspectMarkers(markers);
 
     } catch (error) {
@@ -344,6 +401,18 @@ function TimeSlider({
       }
     }
   }, [chartData, startDate, endDate, showTransits, aspectFilter]);
+
+  // Helper function to get aspect symbol
+  const getAspectSymbol = (angle) => {
+    const symbols = {
+      0: '☌',
+      60: '⚹',
+      90: '□',
+      120: '△',
+      180: '☍'
+    };
+    return symbols[angle] || '';
+  };
 
   // Calculate aspect markers when date range or chart changes
   useEffect(() => {
@@ -399,14 +468,20 @@ function TimeSlider({
           {/* Aspect markers layer */}
           {showAspectMarkers && aspectMarkers.length > 0 && (
             <div className="aspect-markers-layer">
-              {aspectMarkers.map((marker, index) => (
-                <div
-                  key={index}
-                  className={`aspect-marker aspect-${marker.aspectType}`}
-                  style={{ left: `${marker.position}%` }}
-                  title={`${marker.planet} ${marker.aspectSymbol} ${marker.natalPlanet} - ${formatDate(marker.date)}`}
-                />
-              ))}
+              {aspectMarkers.map((marker, index) => {
+                // Find the sign of the natal planet for display
+                const natalPlanetData = chartData.planets.find(p => p.name === marker.natalPlanet);
+                const natalSign = natalPlanetData ? natalPlanetData.sign : '';
+
+                return (
+                  <div
+                    key={index}
+                    className={`aspect-marker aspect-${marker.aspectType}`}
+                    style={{ left: `${marker.position}%` }}
+                    title={`${marker.planet} ${marker.aspectSymbol} ${marker.natalPlanet} in ${natalSign} - ${formatDate(marker.date)}`}
+                  />
+                );
+              })}
             </div>
           )}
 
