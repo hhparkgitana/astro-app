@@ -17,6 +17,15 @@ const { calculateSecondaryProgressions, formatProgressionInfo } = require(path.j
 // Load eclipse calculator
 const { findEclipses, findEclipsesAffectingChart, findEclipsesDatabaseImpact, formatEclipseInfo } = require(path.join(__dirname, '..', 'shared', 'calculations', 'eclipseCalculator.js'));
 
+// Lazy-load RAG system for astrological texts (only when needed to avoid Electron compatibility issues)
+let rag = null;
+function getRag() {
+  if (!rag) {
+    rag = require(path.join(__dirname, 'rag', 'index.js'));
+  }
+  return rag;
+}
+
 // Load Sabian symbols utility
 const { getSabianSymbol } = require(path.join(__dirname, '..', 'shared', 'utils', 'sabianSymbols.js'));
 
@@ -294,6 +303,29 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
         });
       }
       contextMessage += `\n---\n\n`;
+    }
+
+    // Query RAG system for relevant classical texts
+    try {
+      const ragSystem = getRag();
+      if (await ragSystem.isReady()) {
+        const ragPassages = await ragSystem.queryTexts(message, { nResults: 3, minSimilarity: 0.5 });
+
+        if (ragPassages && ragPassages.length > 0) {
+          contextMessage += `\nASTROLOGICAL REFERENCE TEXTS:\n`;
+          contextMessage += `The following passages from classical astrology texts may be relevant to this question:\n\n`;
+
+          ragPassages.forEach((passage, index) => {
+            contextMessage += `[${index + 1}] From "${passage.title}" by ${passage.author} (${passage.year}):\n`;
+            contextMessage += `${passage.text}\n\n`;
+          });
+
+          contextMessage += `---\n\n`;
+        }
+      }
+    } catch (error) {
+      console.error('RAG query error:', error.message);
+      // Continue without RAG if it fails
     }
 
     contextMessage += `USER QUESTION: ${message}`;

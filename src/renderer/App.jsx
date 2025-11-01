@@ -56,6 +56,9 @@ function App() {
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [isLibraryOpen, setIsLibraryOpen] = useState(false);
 
+  // Horary chart state
+  const [horaryQuestion, setHoraryQuestion] = useState('');
+
   // Relationship chart state
   const [relationshipChartType, setRelationshipChartType] = useState('synastry'); // 'synastry' or 'composite'
   const [relationshipLocation, setRelationshipLocation] = useState('midpoint'); // 'midpoint' or 'personA'
@@ -717,42 +720,45 @@ function App() {
     calculateComposite();
   }, [chartData, chartDataB, relationshipChartType, relationshipLocation, formData, formDataB, natalOrb, showCompositeTransits, compositeTransitDate, transitOrb, transitTransitOrb]);
 
-  const calculateChart = async (e) => {
+  const calculateChart = async (e, overrideData = null) => {
     e.preventDefault();
     setLoading(true);
     try {
+      // Use override data if provided, otherwise use formData
+      const data = overrideData || formData;
+
       // Convert local time to UTC using timezone
       const localTime = DateTime.fromObject({
-        year: parseInt(formData.year),
-        month: parseInt(formData.month),
-        day: parseInt(formData.day),
-        hour: parseInt(formData.hour),
-        minute: parseInt(formData.minute),
-      }, { zone: formData.timezone });
+        year: parseInt(data.year),
+        month: parseInt(data.month),
+        day: parseInt(data.day),
+        hour: parseInt(data.hour),
+        minute: parseInt(data.minute),
+      }, { zone: data.timezone });
 
       const utcTime = localTime.toUTC();
 
       console.log('Local time:', localTime.toString());
       console.log('UTC time:', utcTime.toString());
-      console.log('Timezone:', formData.timezone);
+      console.log('Timezone:', data.timezone);
       console.log('DST offset:', localTime.offset / 60, 'hours');
 
       const result = await window.astro.calculateChart({
         // Send LOCAL time for house calculations
-        year: parseInt(formData.year),
-        month: parseInt(formData.month),
-        day: parseInt(formData.day),
-        hour: parseInt(formData.hour),
-        minute: parseInt(formData.minute),
+        year: parseInt(data.year),
+        month: parseInt(data.month),
+        day: parseInt(data.day),
+        hour: parseInt(data.hour),
+        minute: parseInt(data.minute),
         // Also send UTC time for planetary calculations
         utcYear: utcTime.year,
         utcMonth: utcTime.month,
         utcDay: utcTime.day,
         utcHour: utcTime.hour,
         utcMinute: utcTime.minute,
-        latitude: parseFloat(formData.latitude),
-        longitude: parseFloat(formData.longitude),
-        houseSystem: formData.houseSystem,
+        latitude: parseFloat(data.latitude),
+        longitude: parseFloat(data.longitude),
+        houseSystem: data.houseSystem,
       });
       
       console.log('Chart result:', result); // Debug
@@ -2227,6 +2233,13 @@ function App() {
             🔄 Returns
           </button>
           <button
+            className={`mode-btn ${viewMode === 'horary' ? 'active' : ''}`}
+            onClick={() => setViewMode('horary')}
+            title="Cast Horary Chart for Current Moment"
+          >
+            🔮 Horary
+          </button>
+          <button
             className={`mode-btn ${isChatOpen ? 'active' : ''}`}
             onClick={() => setIsChatOpen(!isChatOpen)}
             title="AI Assistant"
@@ -2697,7 +2710,7 @@ function App() {
           </button>
         </form>
 
-        <div style={{ textAlign: 'center', marginTop: '20px', paddingTop: '20px', borderTop: '1px solid #e0e0e0' }}>
+        <div style={{ textAlign: 'center', marginTop: '20px', paddingTop: '20px', borderTop: '1px solid #e0e0e0', display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <button
             type="button"
             onClick={() => setIsBrowserOpen(true)}
@@ -4704,6 +4717,130 @@ function App() {
                 <strong>Error:</strong> {returnChartData.error}
               </div>
             )}
+          </div>
+        ) : viewMode === 'horary' ? (
+          <div className="horary-mode">
+            <h2>🔮 Horary Astrology</h2>
+            <p style={{ fontSize: '0.9em', color: '#666', marginBottom: '1.5rem' }}>
+              Cast a chart for the exact moment a question is asked. The chart represents the question and contains the answer.
+              Based on the classical methods of William Lilly.
+            </p>
+
+            <form onSubmit={calculateChart} className="chart-form">
+              <div className="form-group">
+                <label>Your Question *</label>
+                <textarea
+                  value={horaryQuestion}
+                  onChange={(e) => setHoraryQuestion(e.target.value)}
+                  placeholder="Enter your horary question (be specific and sincere)"
+                  required
+                  rows="3"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    fontSize: '1rem',
+                    border: '2px solid #ddd',
+                    borderRadius: '8px',
+                    fontFamily: 'inherit'
+                  }}
+                />
+                <small style={{ display: 'block', marginTop: '0.5rem', color: '#666' }}>
+                  Ask a clear, specific question about a matter of genuine concern. Traditional horary works best with yes/no questions or "Will X happen?"
+                </small>
+              </div>
+
+              <div className="form-group">
+                <label>Location *</label>
+                <input
+                  type="text"
+                  value={formData.location}
+                  onChange={searchLocation}
+                  placeholder="Enter location where you are asking the question"
+                  required
+                />
+                {searchingLocation && <small>Searching...</small>}
+                {locationResults.length > 0 && (
+                  <div className="location-results">
+                    {locationResults.map((result, index) => (
+                      <div
+                        key={index}
+                        className="location-result-item"
+                        onClick={() => selectLocation(result)}
+                      >
+                        <div className="location-name">{result.display_name}</div>
+                        <div className="location-coords">
+                          Lat: {parseFloat(result.lat).toFixed(4)}, Lon: {parseFloat(result.lon).toFixed(4)}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {formData.latitude && formData.longitude && (
+                  <div style={{ fontSize: '0.85em', color: '#28a745', marginTop: '0.5rem' }}>
+                    ✓ Location set: {parseFloat(formData.latitude).toFixed(4)}°, {parseFloat(formData.longitude).toFixed(4)}°
+                  </div>
+                )}
+                <small style={{ display: 'block', marginTop: '0.25rem', color: '#666' }}>
+                  Use your current location at the moment the question arose
+                </small>
+              </div>
+
+              <div style={{
+                padding: '1rem',
+                backgroundColor: '#f0f8ff',
+                borderRadius: '8px',
+                marginBottom: '1.5rem',
+                border: '1px solid #9b59b6'
+              }}>
+                <p style={{ margin: 0, fontSize: '0.9em', color: '#333' }}>
+                  The chart will be cast for the current moment when you click "Cast Horary Chart" below.
+                  In classical horary, the moment of the question is the moment of the chart.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                disabled={loading || !horaryQuestion || !formData.latitude}
+                className="calculate-btn"
+                style={{ background: '#9b59b6' }}
+                onClick={async (e) => {
+                  e.preventDefault();
+                  const now = DateTime.now().setZone(formData.timezone || 'America/New_York');
+
+                  console.log('Casting horary chart for:', now.toString());
+
+                  // Create horary data
+                  const horaryFormData = {
+                    name: `Horary: ${horaryQuestion}`,
+                    year: now.year.toString(),
+                    month: now.month.toString(),
+                    day: now.day.toString(),
+                    hour: now.hour.toString(),
+                    minute: now.minute.toString(),
+                    location: formData.location,
+                    latitude: formData.latitude,
+                    longitude: formData.longitude,
+                    timezone: formData.timezone || 'America/New_York',
+                    houseSystem: formData.houseSystem || 'placidus'
+                  };
+
+                  // Update form data for display
+                  setFormData(horaryFormData);
+
+                  // Switch to single chart view to display the chart
+                  setViewMode('single');
+
+                  // Call calculateChart with override data
+                  const fakeEvent = {
+                    preventDefault: () => {}
+                  };
+
+                  await calculateChart(fakeEvent, horaryFormData);
+                }}
+              >
+                {loading ? 'Casting Chart...' : '🔮 Cast Horary Chart'}
+              </button>
+            </form>
           </div>
         ) : null}
       </main>
