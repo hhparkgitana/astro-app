@@ -1,0 +1,87 @@
+.app-header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  padding: 15px 40px;
+  border-bottom: 2px solid rgba(218, 165, 32, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.app-logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(218, 165, 32, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.app-logo:hover {
+  transform: scale(1.05);
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.app-title {
+  font-size: 2em;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, #daa520 0%, #ffd700 50%, #daa520 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 4px rgba(218, 165, 32, 0.3);
+}
+
+.app-subtitle {
+  font-size: 0.9em;
+  color: rgba(218, 165, 32, 0.8);
+  margin: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.header-navigation {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(218, 165, 32, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 15px 20px;
+  }
+
+  .header-content {
+    gap: 15px;
+  }
+
+  .app-logo {
+    height: 45px;
+  }
+
+  .app-title {
+    font-size: 1.5em;
+    letter-spacing: 2px;
+  }
+
+  .app-subtitle {
+    font-size: 0.75em;
+    letter-spacing: 1.5px;
+  }
+}

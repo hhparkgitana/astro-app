@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import './components/AspectTabs.css';
+import AppHeader from './components/AppHeader';
 import ChartWheel from './components/ChartWheel';
 import AspectTabs from './components/AspectTabs';
 import AspectMatrix from './components/AspectMatrix';
@@ -2207,8 +2208,7 @@ function App() {
 
   return (
     <div className="app">
-      <header className="app-header">
-        <h1>🌟 AstroApp</h1>
+      <AppHeader>
         <div className="view-mode-toggle">
           <button
             className={`mode-btn ${viewMode === 'single' ? 'active' : ''}`}
@@ -2273,7 +2273,7 @@ function App() {
             💾 Save Chart
           </button>
         </div>
-      </header>
+      </AppHeader>
       <main className={`app-main ${isChatOpen ? 'chat-open' : ''}`}>
         {viewMode === 'single' ? (
           <>
