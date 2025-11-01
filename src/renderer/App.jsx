@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import './components/AspectTabs.css';
+import LandingPage from './components/LandingPage';
 import AppHeader from './components/AppHeader';
 import ChartWheel from './components/ChartWheel';
 import AspectTabs from './components/AspectTabs';
@@ -20,6 +21,7 @@ import { calculateSolarArcs, getSolarArcDefaultOrb } from '../shared/calculation
 import { saveChart } from '../utils/db';
 
 function App() {
+  const [showLanding, setShowLanding] = useState(true);
   const [chartData, setChartData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [locationResults, setLocationResults] = useState([]);
@@ -2205,6 +2207,11 @@ function App() {
     const signIndex = Math.floor(longitude / 30);
     return signs[signIndex];
   };
+
+  // Show landing page on first load
+  if (showLanding) {
+    return <LandingPage onEnter={() => setShowLanding(false)} />;
+  }
 
   return (
     <div className="app">
