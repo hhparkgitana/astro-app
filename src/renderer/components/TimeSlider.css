@@ -41,6 +41,16 @@
   color: #666;
 }
 
+.current-aspect-info {
+  font-size: 0.95em;
+  color: #4a90e2;
+  font-weight: 500;
+  margin-top: 3px;
+  padding: 4px 8px;
+  background: rgba(74, 144, 226, 0.1);
+  border-radius: 4px;
+}
+
 /* Main slider control section */
 .slider-control-section {
   margin-bottom: 20px;

@@ -48,6 +48,7 @@ function TimeSlider({
   const lastUpdateRef = useRef(Date.now());
   const initializedRef = useRef(false);
   const markerCalculationRef = useRef(null); // Cancel token for marker calculation
+  const natalChartRef = useRef(null); // Store natal chart to detect when it changes
 
   // Initialize date range based on current date
   useEffect(() => {
@@ -170,41 +171,85 @@ function TimeSlider({
 
   // Handle increment buttons
   const incrementDate = useCallback((direction) => {
-    const date = new Date(currentDate);
+    let date = new Date(currentDate);
 
-    switch (increment) {
-      case 'day':
-        date.setDate(date.getDate() + direction);
-        break;
-      case 'week':
-        date.setDate(date.getDate() + (direction * 7));
-        break;
-      case 'month':
-        date.setMonth(date.getMonth() + direction);
-        break;
-      case 'year':
-        date.setFullYear(date.getFullYear() + direction);
-        break;
+    if (increment === 'aspect' && showAspectMarkers && aspectMarkers.length > 0) {
+      // Jump to next/previous aspect marker
+      const currentTime = date.getTime();
+
+      // Sort markers by date
+      const sortedMarkers = [...aspectMarkers].sort((a, b) =>
+        new Date(a.date).getTime() - new Date(b.date).getTime()
+      );
+
+      let targetMarker = null;
+
+      if (direction > 0) {
+        // Find next marker after current time
+        targetMarker = sortedMarkers.find(marker =>
+          new Date(marker.date).getTime() > currentTime
+        );
+        // Wrap around to first marker if at the end
+        if (!targetMarker) targetMarker = sortedMarkers[0];
+      } else {
+        // Find previous marker before current time
+        for (let i = sortedMarkers.length - 1; i >= 0; i--) {
+          if (new Date(sortedMarkers[i].date).getTime() < currentTime) {
+            targetMarker = sortedMarkers[i];
+            break;
+          }
+        }
+        // Wrap around to last marker if at the beginning
+        if (!targetMarker) targetMarker = sortedMarkers[sortedMarkers.length - 1];
+      }
+
+      if (targetMarker) {
+        date = new Date(targetMarker.date);
+      }
+    } else {
+      // Regular increment
+      switch (increment) {
+        case 'day':
+          date.setDate(date.getDate() + direction);
+          break;
+        case 'week':
+          date.setDate(date.getDate() + (direction * 7));
+          break;
+        case 'month':
+          date.setMonth(date.getMonth() + direction);
+          break;
+        case 'year':
+          date.setFullYear(date.getFullYear() + direction);
+          break;
+      }
+
+      // Clamp to range
+      if (date < startDate) date.setTime(startDate.getTime());
+      if (date > endDate) date.setTime(endDate.getTime());
     }
-
-    // Clamp to range
-    if (date < startDate) date.setTime(startDate.getTime());
-    if (date > endDate) date.setTime(endDate.getTime());
 
     setCurrentDate(date);
     setSliderPosition(dateToPosition(date));
-    const overrideData = updateFormData(date);
 
-    // Trigger chart recalculation immediately with the override data
-    if (onRecalculate && overrideData) {
-      onRecalculate(null, overrideData);
+    // Only update formData and recalculate if NOT in aspect marker mode
+    // In aspect marker mode, we're just viewing pre-calculated aspect times
+    if (increment !== 'aspect') {
+      const overrideData = updateFormData(date);
+
+      // Trigger chart recalculation immediately with the override data
+      if (onRecalculate && overrideData) {
+        onRecalculate(null, overrideData);
+      }
+    } else {
+      // In aspect marker mode, just update the form data without triggering recalculation
+      updateFormData(date);
     }
 
     // Optional date change callback
     if (onDateChange) {
       onDateChange(date);
     }
-  }, [currentDate, increment, startDate, endDate, dateToPosition, onDateChange, onRecalculate, updateFormData]);
+  }, [currentDate, increment, startDate, endDate, dateToPosition, onDateChange, onRecalculate, updateFormData, showAspectMarkers, aspectMarkers]);
 
   // Handle play/pause
   const togglePlay = useCallback(() => {
@@ -331,7 +376,8 @@ function TimeSlider({
         transitPlanets.forEach(transitPlanet => {
           if (!positions[transitPlanet]) return;
 
-          chartData.planets.forEach(natalPlanet => {
+          // Convert planets object to array
+          Object.values(chartData.planets).forEach(natalPlanet => {
             const transitLong = positions[transitPlanet];
             const natalLong = natalPlanet.longitude;
 
@@ -414,9 +460,31 @@ function TimeSlider({
     return symbols[angle] || '';
   };
 
-  // Calculate aspect markers when date range or chart changes
+  // Detect when natal chart changes (not just when transits update)
   useEffect(() => {
-    calculateAspectMarkers();
+    if (!chartData) return;
+
+    // Create a simple hash of the natal chart to detect real changes
+    const chartHash = JSON.stringify({
+      planets: Object.keys(chartData.planets).map(key => ({
+        name: chartData.planets[key].name,
+        longitude: chartData.planets[key].longitude
+      })),
+      ascendant: chartData.ascendant
+    });
+
+    // If the natal chart actually changed, update the ref and recalculate
+    if (natalChartRef.current !== chartHash) {
+      natalChartRef.current = chartHash;
+      calculateAspectMarkers();
+    }
+  }, [chartData, calculateAspectMarkers]);
+
+  // Recalculate aspect markers when date range, filter, or settings change
+  useEffect(() => {
+    if (natalChartRef.current) {
+      calculateAspectMarkers();
+    }
 
     // Cleanup on unmount
     return () => {
@@ -424,7 +492,7 @@ function TimeSlider({
         markerCalculationRef.current.cancelled = true;
       }
     };
-  }, [calculateAspectMarkers]);
+  }, [startDate, endDate, showTransits, aspectFilter, calculateAspectMarkers]);
 
   // Format date for display
   const formatDate = (date) => {
@@ -452,6 +520,31 @@ function TimeSlider({
     );
   }
 
+  // Find the closest aspect marker to current date (for display)
+  const getCurrentAspectMarker = () => {
+    if (increment !== 'aspect' || !aspectMarkers.length) return null;
+
+    const currentTime = currentDate.getTime();
+    let closestMarker = aspectMarkers[0];
+    let minDiff = Math.abs(new Date(aspectMarkers[0].date).getTime() - currentTime);
+
+    for (const marker of aspectMarkers) {
+      const diff = Math.abs(new Date(marker.date).getTime() - currentTime);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestMarker = marker;
+      }
+    }
+
+    // Only show if very close (within 1 hour)
+    if (minDiff < 60 * 60 * 1000) {
+      return closestMarker;
+    }
+    return null;
+  };
+
+  const currentAspect = getCurrentAspectMarker();
+
   return (
     <div className="time-slider">
       {/* Header with current date display */}
@@ -459,6 +552,11 @@ function TimeSlider({
         <div className="current-date-display">
           <div className="current-date-main">{formatDate(currentDate)}</div>
           <div className="current-date-time">{formatTime(currentDate)}</div>
+          {currentAspect && (
+            <div className="current-aspect-info">
+              Transiting {currentAspect.planet} {currentAspect.aspectSymbol} Natal {currentAspect.natalPlanet}
+            </div>
+          )}
         </div>
       </div>
 
@@ -470,7 +568,7 @@ function TimeSlider({
             <div className="aspect-markers-layer">
               {aspectMarkers.map((marker, index) => {
                 // Find the sign of the natal planet for display
-                const natalPlanetData = chartData.planets.find(p => p.name === marker.natalPlanet);
+                const natalPlanetData = Object.values(chartData.planets).find(p => p.name === marker.natalPlanet);
                 const natalSign = natalPlanetData ? natalPlanetData.sign : '';
 
                 return (
@@ -514,6 +612,9 @@ function TimeSlider({
             <option value="week">Week</option>
             <option value="month">Month</option>
             <option value="year">Year</option>
+            {showAspectMarkers && aspectMarkers.length > 0 && (
+              <option value="aspect">Next Aspect Marker</option>
+            )}
           </select>
         </div>
 
