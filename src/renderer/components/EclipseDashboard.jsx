@@ -14,6 +14,8 @@ function EclipseDashboard({ chartData }) {
   const [filter, setFilter] = useState('all'); // 'all', 'approaching', 'active', 'integrating'
   const [orb, setOrb] = useState(3);
   const [stats, setStats] = useState(null);
+  const timelineRef = React.useRef(null);
+  const currentEclipseRef = React.useRef(null);
 
   // Load eclipses when chart data changes
   useEffect(() => {
@@ -55,11 +57,28 @@ function EclipseDashboard({ chartData }) {
   };
 
   const getFilteredActivations = () => {
-    if (filter === 'all') {
-      return activations;
-    }
-    return activations.filter(a => a.status === filter);
+    let filtered = filter === 'all'
+      ? activations
+      : activations.filter(a => a.status === filter);
+
+    // Sort chronologically: past (oldest first) -> present -> future (soonest first)
+    return filtered.sort((a, b) => {
+      const dateA = new Date(a.dateString);
+      const dateB = new Date(b.dateString);
+      return dateA - dateB; // Simple chronological order
+    });
   };
+
+  // Auto-scroll to current/active eclipse on load
+  useEffect(() => {
+    if (!loading && activations.length > 0 && currentEclipseRef.current) {
+      // Scroll the current eclipse into view
+      currentEclipseRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }, [loading, activations]);
 
   const getStatusBadgeClass = (status) => {
     switch (status) {
@@ -198,9 +217,18 @@ function EclipseDashboard({ chartData }) {
       )}
 
       {!loading && !error && filteredActivations.length > 0 && (
-        <div className="eclipse-timeline">
-          {filteredActivations.map((activation, index) => (
-            <div key={index} className="eclipse-card">
+        <div className="eclipse-timeline" ref={timelineRef}>
+          {filteredActivations.map((activation, index) => {
+            // Attach ref to first active or approaching eclipse for auto-scroll
+            const isCurrentEclipse = (activation.status === 'active' || activation.status === 'approaching') &&
+              !filteredActivations.slice(0, index).some(e => e.status === 'active' || e.status === 'approaching');
+
+            return (
+            <div
+              key={index}
+              className="eclipse-card"
+              ref={isCurrentEclipse ? currentEclipseRef : null}
+            >
               <div className="eclipse-card-header">
                 <div className="eclipse-type">
                   <span className={`eclipse-icon ${activation.type}`}>
@@ -244,7 +272,8 @@ function EclipseDashboard({ chartData }) {
                 )}
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       )}
 
