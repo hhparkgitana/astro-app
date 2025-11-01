@@ -41,11 +41,13 @@ function TimeSlider({
 
   // Aspect markers state (will be populated with pre-calculated aspects)
   const [aspectMarkers, setAspectMarkers] = useState([]);
+  const [isCalculatingMarkers, setIsCalculatingMarkers] = useState(false);
 
   // Refs for animation
   const animationRef = useRef(null);
   const lastUpdateRef = useRef(Date.now());
   const initializedRef = useRef(false);
+  const markerCalculationRef = useRef(null); // Cancel token for marker calculation
 
   // Initialize date range based on current date
   useEffect(() => {
@@ -134,24 +136,36 @@ function TimeSlider({
     return overrideData;
   }, [setFormData, showTransits, showProgressions, showSolarArcs]);
 
-  // Handle slider change
+  // Throttle timer ref
+  const throttleTimerRef = useRef(null);
+
+  // Handle slider change with throttling
   const handleSliderChange = useCallback((e) => {
     const position = parseFloat(e.target.value);
     setSliderPosition(position);
 
     const newDate = positionToDate(position);
     setCurrentDate(newDate);
-    const overrideData = updateFormData(newDate);
 
-    // Trigger chart recalculation immediately with the override data
-    if (onRecalculate && overrideData) {
-      onRecalculate(null, overrideData);
+    // Clear any pending throttle
+    if (throttleTimerRef.current) {
+      clearTimeout(throttleTimerRef.current);
     }
 
-    // Optional date change callback
-    if (onDateChange) {
-      onDateChange(newDate);
-    }
+    // Throttle chart recalculation to avoid overwhelming the system
+    throttleTimerRef.current = setTimeout(() => {
+      const overrideData = updateFormData(newDate);
+
+      // Trigger chart recalculation with the override data
+      if (onRecalculate && overrideData) {
+        onRecalculate(null, overrideData);
+      }
+
+      // Optional date change callback
+      if (onDateChange) {
+        onDateChange(newDate);
+      }
+    }, 150); // 150ms throttle - smooth but not overwhelming
   }, [positionToDate, onDateChange, onRecalculate, updateFormData]);
 
   // Handle increment buttons
@@ -229,6 +243,15 @@ function TimeSlider({
     };
   }, [isPlaying, playSpeed, incrementDate]);
 
+  // Cleanup throttle timer on unmount
+  useEffect(() => {
+    return () => {
+      if (throttleTimerRef.current) {
+        clearTimeout(throttleTimerRef.current);
+      }
+    };
+  }, []);
+
   // Reset to now
   const resetToNow = useCallback(() => {
     const now = new Date();
@@ -247,6 +270,92 @@ function TimeSlider({
       onDateChange(now);
     }
   }, [dateToPosition, onDateChange, onRecalculate, updateFormData]);
+
+  // Calculate aspect markers throughout the date range
+  const calculateAspectMarkers = useCallback(async () => {
+    if (!chartData || !startDate || !endDate || !showTransits) {
+      setAspectMarkers([]);
+      return;
+    }
+
+    // Cancel any ongoing calculation
+    if (markerCalculationRef.current) {
+      markerCalculationRef.current.cancelled = true;
+    }
+
+    const cancellationToken = { cancelled: false };
+    markerCalculationRef.current = cancellationToken;
+
+    setIsCalculatingMarkers(true);
+
+    try {
+      const markers = [];
+      const totalMs = endDate.getTime() - startDate.getTime();
+      const dayMs = 24 * 60 * 60 * 1000;
+
+      // Sample every day (adjust interval based on range size)
+      const sampleInterval = Math.max(dayMs, totalMs / 2000); // Max 2000 samples
+
+      // Major aspects to track
+      const majorAspects = {
+        '0': { name: 'conjunction', symbol: '☌', orb: 8 },
+        '60': { name: 'sextile', symbol: '⚹', orb: 6 },
+        '90': { name: 'square', symbol: '□', orb: 8 },
+        '120': { name: 'trine', symbol: '△', orb: 8 },
+        '180': { name: 'opposition', symbol: '☍', orb: 8 }
+      };
+
+      // Track aspect formations (to find when they're exact)
+      const aspectTracking = new Map();
+
+      for (let time = startDate.getTime(); time <= endDate.getTime(); time += sampleInterval) {
+        // Check if calculation was cancelled
+        if (cancellationToken.cancelled) {
+          console.log('Aspect marker calculation cancelled');
+          return;
+        }
+
+        const date = new Date(time);
+
+        // Calculate transit positions for this date
+        // This is a simplified calculation - in production you'd call the actual ephemeris
+        // For now, we'll mark this as a placeholder that needs backend support
+
+        // Note: We need to add a lightweight API call to calculate just planet positions
+        // without full chart calculation. For now, skip this feature.
+
+        // TODO: Implement backend API for quick planet position calculation
+        // const transitPositions = await window.astro.calculatePlanetPositions(date);
+
+        // For now, we'll just create a placeholder
+        // This feature requires backend support to be efficient
+      }
+
+      // For now, return empty array
+      // Once backend support is added, this will populate with actual aspect markers
+      setAspectMarkers(markers);
+
+    } catch (error) {
+      console.error('Error calculating aspect markers:', error);
+      setAspectMarkers([]);
+    } finally {
+      if (!cancellationToken.cancelled) {
+        setIsCalculatingMarkers(false);
+      }
+    }
+  }, [chartData, startDate, endDate, showTransits, aspectFilter]);
+
+  // Calculate aspect markers when date range or chart changes
+  useEffect(() => {
+    calculateAspectMarkers();
+
+    // Cleanup on unmount
+    return () => {
+      if (markerCalculationRef.current) {
+        markerCalculationRef.current.cancelled = true;
+      }
+    };
+  }, [calculateAspectMarkers]);
 
   // Format date for display
   const formatDate = (date) => {
