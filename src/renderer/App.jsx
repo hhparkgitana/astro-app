@@ -10,6 +10,7 @@ import ChatPanel from './components/ChatPanel';
 import SaveChartModal from './components/SaveChartModal';
 import ChartLibrary from './components/ChartLibrary';
 import EclipseDashboard from './components/EclipseDashboard';
+import TimeSlider from './components/TimeSlider';
 import { DateTime } from 'luxon';
 import { findAspect, getAngularDistance, calculateAspects } from '../shared/calculations/aspectsCalculator';
 import { calculateCompositeChart, calculateGeographicMidpoint } from '../shared/calculations/compositeCalculator';
@@ -722,7 +723,9 @@ function App() {
   }, [chartData, chartDataB, relationshipChartType, relationshipLocation, formData, formDataB, natalOrb, showCompositeTransits, compositeTransitDate, transitOrb, transitTransitOrb]);
 
   const calculateChart = async (e, overrideData = null) => {
-    e.preventDefault();
+    if (e && e.preventDefault) {
+      e.preventDefault();
+    }
     setLoading(true);
     try {
       // Use override data if provided, otherwise use formData
@@ -776,14 +779,14 @@ function App() {
       // Calculate transit and progression positions if enabled
       let transitData = null;
       let progressionsData = null;
-      if (formData.showTransits && result.success) {
+      if (data.showTransits && result.success) {
         const transitLocalTime = DateTime.fromObject({
-          year: parseInt(formData.transitYear),
-          month: parseInt(formData.transitMonth),
-          day: parseInt(formData.transitDay),
-          hour: parseInt(formData.transitHour),
-          minute: parseInt(formData.transitMinute),
-        }, { zone: formData.timezone });
+          year: parseInt(data.transitYear),
+          month: parseInt(data.transitMonth),
+          day: parseInt(data.transitDay),
+          hour: parseInt(data.transitHour),
+          minute: parseInt(data.transitMinute),
+        }, { zone: data.timezone });
 
         const transitUtcTime = transitLocalTime.toUTC();
 
@@ -791,19 +794,19 @@ function App() {
         console.log('Transit UTC time:', transitUtcTime.toString());
 
         const transitResult = await window.astro.calculateChart({
-          year: parseInt(formData.transitYear),
-          month: parseInt(formData.transitMonth),
-          day: parseInt(formData.transitDay),
-          hour: parseInt(formData.transitHour),
-          minute: parseInt(formData.transitMinute),
+          year: parseInt(data.transitYear),
+          month: parseInt(data.transitMonth),
+          day: parseInt(data.transitDay),
+          hour: parseInt(data.transitHour),
+          minute: parseInt(data.transitMinute),
           utcYear: transitUtcTime.year,
           utcMonth: transitUtcTime.month,
           utcDay: transitUtcTime.day,
           utcHour: transitUtcTime.hour,
           utcMinute: transitUtcTime.minute,
-          latitude: parseFloat(formData.latitude),
-          longitude: parseFloat(formData.longitude),
-          houseSystem: formData.houseSystem,
+          latitude: parseFloat(data.latitude),
+          longitude: parseFloat(data.longitude),
+          houseSystem: data.houseSystem,
         });
 
         if (transitResult.success) {
@@ -834,20 +837,20 @@ function App() {
       }
 
       // Calculate progressions or solar arcs if enabled
-      if (formData.showProgressions && result.success) {
-        if (formData.directionType === 'solarArcs') {
+      if (data.showProgressions && result.success) {
+        if (data.directionType === 'solarArcs') {
           // Calculate Solar Arc Directions
           const natalDate = new Date(
-            parseInt(formData.year),
-            parseInt(formData.month) - 1,
-            parseInt(formData.day),
-            parseInt(formData.hour),
-            parseInt(formData.minute)
+            parseInt(data.year),
+            parseInt(data.month) - 1,
+            parseInt(data.day),
+            parseInt(data.hour),
+            parseInt(data.minute)
           );
           const targetDate = new Date(
-            parseInt(formData.progressionYear),
-            parseInt(formData.progressionMonth) - 1,
-            parseInt(formData.progressionDay)
+            parseInt(data.progressionYear),
+            parseInt(data.progressionMonth) - 1,
+            parseInt(data.progressionDay)
           );
 
           if (targetDate <= natalDate) {
@@ -874,7 +877,7 @@ function App() {
           result.progressionInternalAspects = solarArcInternalAspects;
 
           // Only set as transitAspects if transits are not also enabled
-          if (!formData.showTransits) {
+          if (!data.showTransits) {
             result.transitAspects = solarArcAspects;
 
             // Set all solar arc aspects as active by default
@@ -892,18 +895,18 @@ function App() {
           // Calculate age from natal date to progression date
           const age = calculateAgeFromDates(
             {
-              year: parseInt(formData.year),
-              month: parseInt(formData.month),
-              day: parseInt(formData.day),
-              hour: parseInt(formData.hour),
-              minute: parseInt(formData.minute)
+              year: parseInt(data.year),
+              month: parseInt(data.month),
+              day: parseInt(data.day),
+              hour: parseInt(data.hour),
+              minute: parseInt(data.minute)
             },
             {
-              year: parseInt(formData.progressionYear),
-              month: parseInt(formData.progressionMonth),
-              day: parseInt(formData.progressionDay),
-              hour: parseInt(formData.progressionHour),
-              minute: parseInt(formData.progressionMinute)
+              year: parseInt(data.progressionYear),
+              month: parseInt(data.progressionMonth),
+              day: parseInt(data.progressionDay),
+              hour: parseInt(data.progressionHour),
+              minute: parseInt(data.progressionMinute)
             }
           );
 
@@ -915,14 +918,14 @@ function App() {
 
           const progressionsResult = await window.astro.calculateProgressions({
             natalData: {
-              year: parseInt(formData.year),
-              month: parseInt(formData.month),
-              day: parseInt(formData.day),
-              hour: parseInt(formData.hour),
-              minute: parseInt(formData.minute),
-              latitude: parseFloat(formData.latitude),
-              longitude: parseFloat(formData.longitude),
-              houseSystem: formData.houseSystem
+              year: parseInt(data.year),
+              month: parseInt(data.month),
+              day: parseInt(data.day),
+              hour: parseInt(data.hour),
+              minute: parseInt(data.minute),
+              latitude: parseFloat(data.latitude),
+              longitude: parseFloat(data.longitude),
+              houseSystem: data.houseSystem
             },
             target: {
               age: age
@@ -941,7 +944,7 @@ function App() {
             result.progressionNatalAspects = progressedAspects;
 
             // Only set as transitAspects if transits are not also enabled (for backwards compatibility)
-            if (!formData.showTransits) {
+            if (!data.showTransits) {
               result.transitAspects = progressedAspects;
 
               // Set all progressed aspects as active by default
@@ -2780,6 +2783,16 @@ function App() {
               showProgressions={formData.showProgressions}
             />
 
+            {/* TimeSlider - only show when transits, progressions, or solar arcs are enabled */}
+            {(formData.showTransits || formData.showProgressions) && (
+              <TimeSlider
+                chartData={chartData}
+                formData={formData}
+                setFormData={setFormData}
+                onRecalculate={calculateChart}
+              />
+            )}
+
             <AspectTabs
               chartData={chartData}
               activeAspects={activeAspects}
@@ -3169,6 +3182,16 @@ function App() {
                       directionType={formData.directionType}
                       showProgressions={formData.showProgressions}
                     />
+
+                    {/* TimeSlider for Chart A - only show when transits, progressions, or solar arcs are enabled */}
+                    {(formData.showTransits || formData.showProgressions) && (
+                      <TimeSlider
+                        chartData={chartData}
+                        formData={formData}
+                        setFormData={setFormData}
+                        onRecalculate={calculateChart}
+                      />
+                    )}
                   </div>
 
                   <AspectTabs
@@ -3508,6 +3531,16 @@ function App() {
                       directionType={formDataB.directionType}
                       showProgressions={formDataB.showProgressions}
                     />
+
+                    {/* TimeSlider for Chart B - only show when transits, progressions, or solar arcs are enabled */}
+                    {(formDataB.showTransits || formDataB.showProgressions) && (
+                      <TimeSlider
+                        chartData={chartDataB}
+                        formData={formDataB}
+                        setFormData={setFormDataB}
+                        onRecalculate={(e) => calculateChartB()}
+                      />
+                    )}
                   </div>
 
                   <AspectTabs
