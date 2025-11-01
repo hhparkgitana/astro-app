@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
 const fs = require('fs');
 
@@ -163,6 +163,7 @@ ipcMain.handle('find-eclipse-activations', async (event, params) => {
 // Handle transit timeline calculation for aspect markers
 ipcMain.handle('calculate-transit-timeline', async (event, params) => {
   try {
+    const Astronomy = require('astronomy-engine');
     const { natalChart, startDate, endDate, interval = 'day' } = params;
 
     if (!natalChart || !startDate || !endDate) {
@@ -184,36 +185,35 @@ ipcMain.handle('calculate-transit-timeline', async (event, params) => {
     for (let time = start.getTime(); time <= end.getTime(); time += intervalMs) {
       const sampleDate = new Date(time);
 
-      // Calculate just the transit positions (lightweight)
-      const year = sampleDate.getFullYear();
-      const month = sampleDate.getMonth() + 1;
-      const day = sampleDate.getDate();
-      const hour = sampleDate.getHours();
-      const minute = sampleDate.getMinutes();
-
       try {
-        // Use Swiss Ephemeris to get planet positions
-        const {exec} = require('child_process');
-        const util = require('util');
-        const execPromise = util.promisify(exec);
-
-        // Call swetest to get positions
-        const cmd = `swetest -b${day}.${month}.${year} -ut${hour}:${minute} -p0123456789DAttt -fPl -g, -head`;
-        const { stdout } = await execPromise(cmd);
-
-        const lines = stdout.trim().split('\n');
         const positions = {};
 
-        lines.forEach(line => {
-          const parts = line.split(',').map(p => p.trim());
-          if (parts.length >= 2) {
-            const planetName = parts[0];
-            const longitude = parseFloat(parts[1]);
-            if (!isNaN(longitude)) {
-              positions[planetName] = longitude;
-            }
-          }
+        // Calculate Sun
+        const sun = Astronomy.Ecliptic(Astronomy.GeoVector('Sun', sampleDate, true));
+        positions['Sun'] = sun.elon;
+
+        // Calculate Moon
+        const moonVector = Astronomy.GeoMoon(sampleDate);
+        const moonEcliptic = Astronomy.Ecliptic(moonVector);
+        positions['Moon'] = moonEcliptic.elon;
+
+        // Calculate other planets
+        const bodies = ['Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto'];
+        bodies.forEach(body => {
+          const ecliptic = Astronomy.Ecliptic(Astronomy.GeoVector(body, sampleDate, true));
+          positions[body] = ecliptic.elon;
         });
+
+        // Calculate North Node
+        const j2000 = new Date('2000-01-01T12:00:00Z');
+        const yearsSince2000 = (sampleDate - j2000) / (365.25 * 24 * 60 * 60 * 1000);
+        const northNodeLon = (125.04 - 19.3413 * yearsSince2000) % 360;
+        const adjustedNorthNode = northNodeLon < 0 ? northNodeLon + 360 : northNodeLon;
+        positions['North Node'] = adjustedNorthNode;
+
+        // Calculate South Node
+        const southNodeLon = (adjustedNorthNode + 180) % 360;
+        positions['South Node'] = southNodeLon;
 
         samples.push({
           date: sampleDate.toISOString(),
@@ -1631,6 +1631,36 @@ Each eclipse includes its Sabian Symbol with both the symbolic image and keynote
       success: false,
       error: error.message || 'Failed to communicate with Claude API'
     };
+  }
+});
+
+// Handle chart image export
+ipcMain.handle('export-chart-image', async (event, params) => {
+  try {
+    const { imageBuffer, filename, format } = params;
+
+    // Convert array back to Buffer
+    const buffer = Buffer.from(imageBuffer);
+
+    // Show save dialog
+    const extension = format === 'png' ? 'png' : 'jpg';
+    const { filePath } = await dialog.showSaveDialog(mainWindow, {
+      title: `Export Chart as ${format.toUpperCase()}`,
+      defaultPath: filename || `chart.${extension}`,
+      filters: [
+        { name: `${format.toUpperCase()} Images`, extensions: [extension] }
+      ]
+    });
+
+    if (filePath) {
+      fs.writeFileSync(filePath, buffer);
+      return { success: true, path: filePath };
+    }
+
+    return { success: false, error: 'Export cancelled' };
+  } catch (error) {
+    console.error('Image export error:', error);
+    return { success: false, error: error.message };
   }
 });
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   pointOnCircle,
   createArcPath,
@@ -8,6 +8,7 @@ import {
   getCircleRadiusForOrb,
   CHART_CONFIG
 } from '../utils/chartMath';
+import ExportMenu from './ExportMenu';
 
 /**
  * Custom SVG-based Chart Wheel Component
@@ -55,9 +56,13 @@ function ChartWheel({
   onReturnInternalOrbChange,
   showProgressions = false,
   personAName = 'Person A',
-  personBName = 'Person B'
+  personBName = 'Person B',
+  formData = null
 }) {
   const { size, center, radii, colors, glyphs } = CHART_CONFIG;
+
+  // Ref for the SVG element (for exporting)
+  const svgRef = useRef(null);
 
   // Debug logging for Solar Arc sliders
   console.log('ChartWheel render - transitData:', !!transitData, 'progressionsData:', !!progressionsData, 'directionType:', directionType);
@@ -681,7 +686,10 @@ function ChartWheel({
 
   return (
     <div className="chart-wheel-container" style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
-      <h4>🎯 Birth Chart Wheel</h4>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '15px', gap: '20px' }}>
+        <h4 style={{ margin: 0 }}>🎯 Birth Chart Wheel</h4>
+        <ExportMenu svgRef={svgRef} formData={formData} />
+      </div>
 
       {/* Aspect Toggle Controls */}
       {isReturnChart ? (
@@ -1128,6 +1136,7 @@ function ChartWheel({
       )}
 
       <svg
+        ref={svgRef}
         viewBox={`0 0 ${size} ${size}`}
         style={{ width: '100%', height: 'auto', maxWidth: '800px', margin: '0 auto', display: 'block' }}
       >

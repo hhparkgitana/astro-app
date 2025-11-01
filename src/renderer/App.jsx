@@ -2781,6 +2781,8 @@ function App() {
               onSolarArcInternalOrbChange={handleSolarArcInternalOrbChange}
               directionType={formData.directionType}
               showProgressions={formData.showProgressions}
+              formData={formData}
+              formData={formData}
             />
 
             {/* TimeSlider - only show when transits, progressions, or solar arcs are enabled */}
@@ -2807,6 +2809,7 @@ function App() {
               onSynastryAspectToggle={handleSynastryAspectToggle}
               showNatalAspects={showNatalAspects}
               showProgressions={formData.showProgressions}
+              formData={formData}
               directionType={formData.directionType}
             />
 
@@ -3181,6 +3184,7 @@ function App() {
                       onSolarArcInternalOrbChange={handleSolarArcInternalOrbChange}
                       directionType={formData.directionType}
                       showProgressions={formData.showProgressions}
+              formData={formData}
                     />
 
                     {/* TimeSlider for Chart A - only show when transits, progressions, or solar arcs are enabled */}
@@ -3208,6 +3212,7 @@ function App() {
                     onSynastryAspectToggle={handleSynastryAspectToggle}
                     showNatalAspects={showNatalAspects}
                     showProgressions={formData.showProgressions}
+              formData={formData}
                     directionType={formData.directionType}
                   />
                 </div>
