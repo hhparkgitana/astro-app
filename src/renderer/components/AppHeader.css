@@ -11,7 +11,7 @@
 .header-content {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -26,6 +26,11 @@
 
 .app-logo:hover {
   transform: scale(1.05);
+}
+
+.header-settings {
+  display: flex;
+  align-items: center;
 }
 
 .header-text {

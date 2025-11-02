@@ -38,11 +38,14 @@ const PLANET_IDS = {
   PLUTO: constants.SE_PLUTO,       // 9
   MEAN_NODE: constants.SE_MEAN_NODE,     // 10 (Mean North Node)
   TRUE_NODE: constants.SE_TRUE_NODE,     // 11 (True North Node)
-  CHIRON: constants.SE_CHIRON,     // 15
-  CERES: constants.SE_CERES,       // 17
-  PALLAS: constants.SE_PALLAS,     // 18
-  JUNO: constants.SE_JUNO,         // 19
-  VESTA: constants.SE_VESTA        // 20
+  MEAN_LILITH: constants.SE_MEAN_APOG,   // 12 (Mean Lunar Apogee / Black Moon Lilith)
+  TRUE_LILITH: constants.SE_OSCU_APOG,   // 13 (True/Oscillating Black Moon Lilith)
+  CHIRON: constants.SE_CHIRON,     // 15 (Centaur)
+  PHOLUS: constants.SE_PHOLUS,     // 16 (Centaur)
+  CERES: constants.SE_CERES,       // 17 (Asteroid)
+  PALLAS: constants.SE_PALLAS,     // 18 (Asteroid)
+  JUNO: constants.SE_JUNO,         // 19 (Asteroid)
+  VESTA: constants.SE_VESTA        // 20 (Asteroid)
 };
 
 // House system codes
@@ -174,10 +177,60 @@ function calculateChart(params) {
       { key: 'PLUTO', id: PLANET_IDS.PLUTO, name: 'Pluto' }
     ];
 
+    // Centaurs
+    const centaurList = [
+      { key: 'CHIRON', id: PLANET_IDS.CHIRON, name: 'Chiron' },
+      { key: 'PHOLUS', id: PLANET_IDS.PHOLUS, name: 'Pholus' }
+    ];
+
+    // Asteroids
+    const asteroidList = [
+      { key: 'CERES', id: PLANET_IDS.CERES, name: 'Ceres' },
+      { key: 'PALLAS', id: PLANET_IDS.PALLAS, name: 'Pallas' },
+      { key: 'JUNO', id: PLANET_IDS.JUNO, name: 'Juno' },
+      { key: 'VESTA', id: PLANET_IDS.VESTA, name: 'Vesta' }
+    ];
+
+    // Calculated Points
+    const calculatedPointsList = [
+      { key: 'MEAN_LILITH', id: PLANET_IDS.MEAN_LILITH, name: 'Lilith (Mean)' },
+      { key: 'TRUE_LILITH', id: PLANET_IDS.TRUE_LILITH, name: 'Lilith (True)' }
+    ];
+
     for (const planet of planetList) {
       const position = calculateBody(jd, planet.id);
       planets[planet.key] = {
         name: planet.name,
+        longitude: position.longitude,
+        velocity: position.speedLongitude
+      };
+    }
+
+    // Calculate Centaurs
+    for (const centaur of centaurList) {
+      const position = calculateBody(jd, centaur.id);
+      planets[centaur.key] = {
+        name: centaur.name,
+        longitude: position.longitude,
+        velocity: position.speedLongitude
+      };
+    }
+
+    // Calculate Asteroids
+    for (const asteroid of asteroidList) {
+      const position = calculateBody(jd, asteroid.id);
+      planets[asteroid.key] = {
+        name: asteroid.name,
+        longitude: position.longitude,
+        velocity: position.speedLongitude
+      };
+    }
+
+    // Calculate Calculated Points (Lilith, etc.)
+    for (const point of calculatedPointsList) {
+      const position = calculateBody(jd, point.id);
+      planets[point.key] = {
+        name: point.name,
         longitude: position.longitude,
         velocity: position.speedLongitude
       };

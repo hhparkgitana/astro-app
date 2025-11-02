@@ -212,6 +212,7 @@ export const CHART_CONFIG = {
       'Pisces': '♓'
     },
     planets: {
+      // Traditional Planets (always displayed by default)
       'Sun': '☉',
       'Moon': '☽',
       'Mercury': '☿',
@@ -223,7 +224,21 @@ export const CHART_CONFIG = {
       'Neptune': '♆',
       'Pluto': '♇',
       'North Node': '☊',
-      'South Node': '☋'
+      'South Node': '☋',
+
+      // Centaurs (optional)
+      'Chiron': '⚷',
+      'Pholus': '⯛',
+
+      // Asteroids (optional)
+      'Ceres': '⚳',
+      'Pallas': '⚴',
+      'Juno': '⚵',
+      'Vesta': '⚶',
+
+      // Calculated Points (optional)
+      'Lilith (Mean)': '⚸',
+      'Lilith (True)': '⚸'
     },
     aspects: {
       'CONJUNCTION': '☌',
@@ -232,5 +247,66 @@ export const CHART_CONFIG = {
       'TRINE': '△',
       'OPPOSITION': '☍'
     }
+  },
+  // Body categorization for display settings
+  bodyCategories: {
+    traditional: [
+      'Sun', 'Moon', 'Mercury', 'Venus', 'Mars',
+      'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto',
+      'North Node', 'South Node'
+    ],
+    centaurs: ['Chiron', 'Pholus'],
+    asteroids: ['Ceres', 'Pallas', 'Juno', 'Vesta'],
+    calculatedPoints: ['Lilith (Mean)', 'Lilith (True)']
+  },
+  // Default display settings (which categories show by default)
+  defaultDisplay: {
+    traditional: true,
+    centaurs: false,
+    asteroids: false,
+    calculatedPoints: false
   }
 };
+
+/**
+ * Get the category that a planet belongs to
+ * @param {string} planetName - Name of the planet/body
+ * @returns {string|null} Category key or null if not found
+ */
+export function getPlanetCategory(planetName) {
+  for (const [category, bodies] of Object.entries(CHART_CONFIG.bodyCategories)) {
+    if (bodies.includes(planetName)) {
+      return category;
+    }
+  }
+  return null;
+}
+
+/**
+ * Check if a planet should be displayed based on display settings
+ * @param {string} planetName - Name of the planet/body
+ * @param {Object} displaySettings - User's display preferences
+ * @returns {boolean} True if planet should be displayed
+ */
+export function shouldDisplayPlanet(planetName, displaySettings = CHART_CONFIG.defaultDisplay) {
+  const category = getPlanetCategory(planetName);
+  if (!category) return false;
+  return displaySettings[category] !== false;
+}
+
+/**
+ * Filter planets object to only include bodies that should be displayed
+ * @param {Object} planets - Planets object from chart calculation
+ * @param {Object} displaySettings - User's display preferences
+ * @returns {Object} Filtered planets object
+ */
+export function filterDisplayedPlanets(planets, displaySettings = CHART_CONFIG.defaultDisplay) {
+  const filtered = {};
+  for (const [key, data] of Object.entries(planets)) {
+    const planetName = data.name;
+    if (shouldDisplayPlanet(planetName, displaySettings)) {
+      filtered[key] = data;
+    }
+  }
+  return filtered;
+}

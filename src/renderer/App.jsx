@@ -3,6 +3,7 @@ import './App.css';
 import './components/AspectTabs.css';
 import LandingPage from './components/LandingPage';
 import AppHeader from './components/AppHeader';
+import SettingsMenu from './components/SettingsMenu';
 import ChartWheel from './components/ChartWheel';
 import AspectTabs from './components/AspectTabs';
 import AspectMatrix from './components/AspectMatrix';
@@ -60,6 +61,14 @@ function App() {
   // Chart library and save modal state
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [isLibraryOpen, setIsLibraryOpen] = useState(false);
+
+  // Planet display settings (which bodies to show)
+  const [displaySettings, setDisplaySettings] = useState({
+    traditional: true,    // Main planets + nodes always visible by default
+    centaurs: false,      // Optional: Chiron, Pholus
+    asteroids: false,     // Optional: Ceres, Pallas, Juno, Vesta
+    calculatedPoints: false  // Optional: Lilith (Mean/True)
+  });
 
   // Horary chart state
   const [horaryQuestion, setHoraryQuestion] = useState('');
@@ -2215,7 +2224,14 @@ function App() {
 
   return (
     <div className="app">
-      <AppHeader>
+      <AppHeader
+        settingsMenu={
+          <SettingsMenu
+            displaySettings={displaySettings}
+            setDisplaySettings={setDisplaySettings}
+          />
+        }
+      >
         <div className="view-mode-toggle">
           <button
             className={`mode-btn ${viewMode === 'single' ? 'active' : ''}`}
@@ -2774,6 +2790,7 @@ function App() {
               setShowNatalAspects={setShowNatalAspects}
               natalOrb={natalOrb}
               onNatalOrbChange={handleNatalOrbChange}
+              displaySettings={displaySettings}
               transitOrb={transitOrb}
               onTransitOrbChange={handleTransitOrbChange}
               progressionNatalOrb={progressionNatalOrb}
@@ -3177,6 +3194,7 @@ function App() {
                       setShowNatalAspects={setShowNatalAspects}
                       natalOrb={natalOrb}
                       onNatalOrbChange={handleNatalOrbChange}
+                      displaySettings={displaySettings}
                       transitOrb={transitOrb}
                       onTransitOrbChange={handleTransitOrbChange}
                       progressionNatalOrb={progressionNatalOrb}
@@ -3528,6 +3546,7 @@ function App() {
                       setShowNatalAspects={setShowNatalAspectsB}
                       natalOrb={natalOrb}
                       onNatalOrbChange={handleNatalOrbChangeB}
+                      displaySettings={displaySettings}
                       transitOrb={transitOrb}
                       onTransitOrbChange={handleTransitOrbChangeB}
                       progressionNatalOrb={progressionNatalOrb}
@@ -4275,6 +4294,7 @@ function App() {
                       setShowNatalAspectsB={setShowNatalAspectsB}
                       natalOrb={natalOrb}
                       onNatalOrbChange={handleNatalOrbChange}
+                      displaySettings={displaySettings}
                       transitOrb={synastryOrb}
                       onTransitOrbChange={handleSynastryOrbChange}
                       progressionNatalOrb={8}
@@ -4315,6 +4335,7 @@ function App() {
                       setShowNatalAspects={setShowNatalAspects}
                       natalOrb={natalOrb}
                       onNatalOrbChange={handleNatalOrbChange}
+                      displaySettings={displaySettings}
                       transitOrb={transitOrb}
                       onTransitOrbChange={handleTransitOrbChange}
                       progressionNatalOrb={8}
@@ -4700,6 +4721,7 @@ function App() {
                     returnType={returnType}
                     natalOrb={natalOrb}
                     onNatalOrbChange={handleNatalOrbChange}
+                    displaySettings={displaySettings}
                     transitOrb={returnNatalOrb}
                     onTransitOrbChange={handleReturnNatalOrbChange}
                     returnInternalOrb={returnInternalOrb}

@@ -6,6 +6,7 @@ import {
   getZodiacSign,
   calculateCirclePointsAlongLine,
   getCircleRadiusForOrb,
+  filterDisplayedPlanets,
   CHART_CONFIG
 } from '../utils/chartMath';
 import ExportMenu from './ExportMenu';
@@ -57,7 +58,8 @@ function ChartWheel({
   showProgressions = false,
   personAName = 'Person A',
   personBName = 'Person B',
-  formData = null
+  formData = null,
+  displaySettings = CHART_CONFIG.defaultDisplay
 }) {
   const { size, center, radii, colors, glyphs } = CHART_CONFIG;
 
@@ -1155,11 +1157,11 @@ function ChartWheel({
         <g id="transit-transit-aspect-lines">{renderTransitTransitAspects()}</g>
         <g id="houses">{renderHouses()}</g>
         <g id="zodiac-ring">{renderZodiacRing()}</g>
-        <g id="natal-planets">{renderPlanets(chartData.planets, radii.natal, '#000')}</g>
+        <g id="natal-planets">{renderPlanets(filterDisplayedPlanets(chartData.planets, displaySettings), radii.natal, '#000')}</g>
         {progressionsData && (
           <g id="progression-planets">
             {renderPlanets(
-              progressionsData.planets,
+              filterDisplayedPlanets(progressionsData.planets, displaySettings),
               radii.transit,
               directionType === 'solarArcs' ? '#FF8C00' : '#9C27B0'  // Orange for Solar Arcs, Purple for Progressions
             )}
@@ -1168,7 +1170,7 @@ function ChartWheel({
         {transitData && (
           <g id="transit-planets">
             {renderPlanets(
-              transitData.planets,
+              filterDisplayedPlanets(transitData.planets, displaySettings),
               radii.transitOuter,
               isReturnChart
                 ? (returnType === 'solar' ? '#FFB347' : '#C0C0C0') // Solar: gold/amber, Lunar: silver

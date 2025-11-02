@@ -4,9 +4,9 @@ import astridLogo from '../assets/images/astrid-logo.png';
 
 /**
  * ASTRID Application Header
- * Displays the branded logo, application title, and navigation
+ * Displays the branded logo, application title, navigation, and settings
  */
-function AppHeader({ children }) {
+function AppHeader({ children, settingsMenu }) {
   return (
     <header className="app-header">
       <div className="header-content">
@@ -15,6 +15,11 @@ function AppHeader({ children }) {
           alt="ASTRID"
           className="app-logo"
         />
+        {settingsMenu && (
+          <div className="header-settings">
+            {settingsMenu}
+          </div>
+        )}
       </div>
       {children && (
         <div className="header-navigation">
