@@ -7,7 +7,7 @@
  * - Uses same location as natal chart (progressions don't relocate)
  */
 
-const { calculateChart } = require('./chartCalculator.js');
+const { calculateChart } = require('./swissEphemerisCalculator.js');
 
 /**
  * Calculate secondary progressions for a given target date or age

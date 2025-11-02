@@ -53,7 +53,7 @@ function createWindow() {
 // Handle chart calculation requests
 ipcMain.handle('calculate-chart', async (event, params) => {
   try {
-    const { calculateChart } = require(path.join(__dirname, '..', 'shared', 'calculations', 'chartCalculator.js'));
+    const { calculateChart } = require(path.join(__dirname, '..', 'shared', 'calculations', 'swissEphemerisCalculator.js'));
     const result = calculateChart(params);
     return result;
   } catch (error) {
