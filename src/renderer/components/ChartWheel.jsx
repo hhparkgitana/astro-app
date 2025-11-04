@@ -7,6 +7,7 @@ import {
   calculateCirclePointsAlongLine,
   getCircleRadiusForOrb,
   filterDisplayedPlanets,
+  shouldDisplayPlanet,
   CHART_CONFIG
 } from '../utils/chartMath';
 import ExportMenu from './ExportMenu';
@@ -273,6 +274,12 @@ function ChartWheel({
 
       if (!planet1 || !planet2) return null;
 
+      // Filter based on display settings - hide aspect if either planet is hidden
+      if (!shouldDisplayPlanet(aspect.planet1, displaySettings) ||
+          !shouldDisplayPlanet(aspect.planet2, displaySettings)) {
+        return null;
+      }
+
       // Keep aspect lines inside the innermost circle (don't overlap house numbers)
       const pos1 = pointOnCircle(center, center, radii.housesInner - 10, planet1.longitude, ascendant);
       const pos2 = pointOnCircle(center, center, radii.housesInner - 10, planet2.longitude, ascendant);
@@ -285,7 +292,7 @@ function ChartWheel({
       const applyingSeparating = aspect.applying !== null
         ? (aspect.applying ? 'Applying' : 'Separating')
         : 'N/A';
-      const tooltipText = `${aspect.planet1} ${glyphs.aspects[aspect.type]} ${aspect.planet2} • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+      const tooltipText = `${aspect.planet1} ${aspect.symbol} ${aspect.planet2} • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
 
       return (
         <line
@@ -325,6 +332,12 @@ function ChartWheel({
 
       if (!planet1 || !planet2) return null;
 
+      // Filter based on display settings - hide aspect if either planet is hidden
+      if (!shouldDisplayPlanet(aspect.planet1, displaySettings) ||
+          !shouldDisplayPlanet(aspect.planet2, displaySettings)) {
+        return null;
+      }
+
       // Person B's planets are on the outer ring (transit radius in bi-wheel), so use that for aspect lines
       const pos1 = pointOnCircle(center, center, radii.transit - 15, planet1.longitude, ascendant);
       const pos2 = pointOnCircle(center, center, radii.transit - 15, planet2.longitude, ascendant);
@@ -337,7 +350,7 @@ function ChartWheel({
       const applyingSeparating = aspect.applying !== null
         ? (aspect.applying ? 'Applying' : 'Separating')
         : 'N/A';
-      const tooltipText = `${personBName}: ${aspect.planet1} ${glyphs.aspects[aspect.type]} ${aspect.planet2} • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+      const tooltipText = `${personBName}: ${aspect.planet1} ${aspect.symbol} ${aspect.planet2} • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
 
       return (
         <line
@@ -378,15 +391,21 @@ function ChartWheel({
       const aspectKey = `${aspect.planet1}-${aspect.planet2}`;
       if (!activeTransitAspects.has(aspectKey)) return null;
 
-      // Get planet positions (one natal, one transit)
-      const natalPlanet = chartData.planets[aspect.planet1Key];
-      const transitPlanet = transitData.planets[aspect.planet2Key];
+      // Get planet positions (planet1 = transit, planet2 = natal)
+      const transitPlanet = transitData.planets[aspect.planet1Key];
+      const natalPlanet = chartData.planets[aspect.planet2Key];
 
       if (!natalPlanet || !transitPlanet) return null;
 
+      // Filter based on display settings - hide aspect if either planet is hidden
+      if (!shouldDisplayPlanet(aspect.planet1, displaySettings) ||
+          !shouldDisplayPlanet(aspect.planet2, displaySettings)) {
+        return null;
+      }
+
       // Get positions at their respective radii
-      const pos1 = pointOnCircle(center, center, radii.housesInner - 10, natalPlanet.longitude, ascendant);
-      const pos2 = pointOnCircle(center, center, radii.housesInner - 10, transitPlanet.longitude, ascendant);
+      const pos1 = pointOnCircle(center, center, radii.housesInner - 10, transitPlanet.longitude, ascendant);
+      const pos2 = pointOnCircle(center, center, radii.housesInner - 10, natalPlanet.longitude, ascendant);
 
       // Get circle size based on orb
       const circleRadius = getCircleRadiusForOrb(aspect.orb);
@@ -402,9 +421,9 @@ function ChartWheel({
       const applyingSeparating = aspect.applying !== null
         ? (aspect.applying ? 'Applying' : 'Separating')
         : 'N/A';
-      const label1 = isSynastry ? personAName : 'Natal';
-      const label2 = isSynastry ? personBName : 'Transit';
-      const tooltipText = `${aspect.planet1} (${label1}) ${glyphs.aspects[aspect.type]} ${aspect.planet2} (${label2}) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+      const label1 = isSynastry ? personAName : 'Transit';
+      const label2 = isSynastry ? personBName : 'Natal';
+      const tooltipText = `${aspect.planet1} (${label1}) ${aspect.symbol} ${aspect.planet2} (${label2}) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
 
       return (
         <g
@@ -450,6 +469,12 @@ function ChartWheel({
 
       if (!progressedPlanet || !natalPlanet) return null;
 
+      // Filter based on display settings - hide aspect if either planet is hidden
+      if (!shouldDisplayPlanet(aspect.planet1, displaySettings) ||
+          !shouldDisplayPlanet(aspect.planet2, displaySettings)) {
+        return null;
+      }
+
       // Get positions at their respective radii
       const pos1 = pointOnCircle(center, center, radii.housesInner - 10, progressedPlanet.longitude, ascendant);
       const pos2 = pointOnCircle(center, center, radii.housesInner - 10, natalPlanet.longitude, ascendant);
@@ -468,7 +493,7 @@ function ChartWheel({
       const applyingSeparating = aspect.applying !== null
         ? (aspect.applying ? 'Applying' : 'Separating')
         : 'N/A';
-      const tooltipText = `${aspect.planet1} (Progression) ${glyphs.aspects[aspect.type]} ${aspect.planet2} (Natal) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+      const tooltipText = `${aspect.planet1} (Progression) ${aspect.symbol} ${aspect.planet2} (Natal) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
 
       return (
         <g
@@ -508,6 +533,12 @@ function ChartWheel({
 
       if (!planet1 || !planet2) return null;
 
+      // Filter based on display settings - hide aspect if either planet is hidden
+      if (!shouldDisplayPlanet(aspect.planet1, displaySettings) ||
+          !shouldDisplayPlanet(aspect.planet2, displaySettings)) {
+        return null;
+      }
+
       // Draw aspect lines at the outer transit radius (for tri-wheel visualization)
       const aspectRadius = radii.transit + 20; // Place between transit and transitOuter
       const pos1 = pointOnCircle(center, center, aspectRadius, planet1.longitude, ascendant);
@@ -521,7 +552,7 @@ function ChartWheel({
       const applyingSeparating = aspect.applying !== null
         ? (aspect.applying ? 'Applying' : 'Separating')
         : 'N/A';
-      const tooltipText = `${aspect.planet1} (Transit) ${glyphs.aspects[aspect.type]} ${aspect.planet2} (Transit) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+      const tooltipText = `${aspect.planet1} (Transit) ${aspect.symbol} ${aspect.planet2} (Transit) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
 
       return (
         <line
@@ -562,6 +593,12 @@ function ChartWheel({
 
       if (!transitPlanet || !progressionPlanet) return null;
 
+      // Filter based on display settings - hide aspect if either planet is hidden
+      if (!shouldDisplayPlanet(aspect.planet1, displaySettings) ||
+          !shouldDisplayPlanet(aspect.planet2, displaySettings)) {
+        return null;
+      }
+
       // Get positions at their respective radii
       const pos1 = pointOnCircle(center, center, radii.housesInner - 10, transitPlanet.longitude, ascendant);
       const pos2 = pointOnCircle(center, center, radii.housesInner - 10, progressionPlanet.longitude, ascendant);
@@ -580,7 +617,7 @@ function ChartWheel({
       const applyingSeparating = aspect.applying !== null
         ? (aspect.applying ? 'Applying' : 'Separating')
         : 'N/A';
-      const tooltipText = `${aspect.planet1} (Transit) ${glyphs.aspects[aspect.type]} ${aspect.planet2} (Progression) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+      const tooltipText = `${aspect.planet1} (Transit) ${aspect.symbol} ${aspect.planet2} (Progression) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
 
       return (
         <g
