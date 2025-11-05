@@ -32,17 +32,27 @@ function getAngularDistance(long1, long2) {
 /**
  * Check if an angular distance matches an aspect within orb
  * @param {number} distance - Current angular distance
- * @param {number} orb - Maximum orb allowed
+ * @param {number} orb - Maximum orb allowed (user preference)
  * @param {number} velocity1 - Velocity of planet 1 (degrees per day)
  * @param {number} velocity2 - Velocity of planet 2 (degrees per day)
  * @param {number} long1 - Longitude of planet 1
  * @param {number} long2 - Longitude of planet 2
+ * @param {number} maxOrb - Maximum orb to check (default 10°)
+ * @returns {Object|null} Aspect object with inOrb flag, or null if no aspect found within maxOrb
  */
-function findAspect(distance, orb = 8, velocity1 = 0, velocity2 = 0, long1 = 0, long2 = 0) {
+function findAspect(distance, orb = 8, velocity1 = 0, velocity2 = 0, long1 = 0, long2 = 0, maxOrb = 10) {
   for (const [key, aspect] of Object.entries(ASPECT_TYPES)) {
     const diff = Math.abs(distance - aspect.angle);
 
-    if (diff <= orb) {
+    // Check against maximum orb to find ALL potential aspects
+    if (diff <= maxOrb) {
+      // Log when aspect is found
+      console.log(`    🎯 Aspect match: ${aspect.name} (${aspect.angle}°)`);
+      console.log(`       Distance: ${distance}°, Diff from exact: ${diff}°, User orb: ${orb}°, Max orb: ${maxOrb}°`);
+
+      // Determine if aspect is within user's preferred orb
+      const inOrb = diff <= orb;
+
       // Calculate if applying or separating
       let applying = null;
 
@@ -95,7 +105,8 @@ function findAspect(distance, orb = 8, velocity1 = 0, velocity2 = 0, long1 = 0, 
         exactAngle: aspect.angle,
         actualAngle: distance,
         orb: diff,
-        applying: applying
+        applying: applying,
+        inOrb: inOrb  // NEW: Flag indicating if aspect is within user's preferred orb
       };
     }
   }

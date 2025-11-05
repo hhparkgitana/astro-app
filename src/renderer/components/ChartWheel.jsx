@@ -284,15 +284,29 @@ function ChartWheel({
       const pos1 = pointOnCircle(center, center, radii.housesInner - 10, planet1.longitude, ascendant);
       const pos2 = pointOnCircle(center, center, radii.housesInner - 10, planet2.longitude, ascendant);
 
-      // Calculate line style based on orb
-      const opacity = 1 - (aspect.orb / 8); // Tighter orb = more opaque
-      const strokeWidth = 3 - (aspect.orb / 4); // Tighter orb = thicker
+      // Calculate line style based on whether aspect is in orb
+      let stroke, opacity, strokeWidth;
+
+      if (aspect.inOrb === false) {
+        // Out of orb: render in very faint grey
+        stroke = '#999999';
+        opacity = 0.12;
+        strokeWidth = 0.5;
+      } else {
+        // In orb: use normal colorful rendering with opacity based on orb
+        stroke = colors.aspects[aspect.type];
+        opacity = 1 - (aspect.orb / 8); // Tighter orb = more opaque
+        strokeWidth = 3 - (aspect.orb / 4); // Tighter orb = thicker
+        opacity = Math.max(0.2, opacity);
+        strokeWidth = Math.max(0.5, strokeWidth);
+      }
 
       // Format tooltip
       const applyingSeparating = aspect.applying !== null
         ? (aspect.applying ? 'Applying' : 'Separating')
         : 'N/A';
-      const tooltipText = `${aspect.planet1} ${aspect.symbol} ${aspect.planet2} • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+      const orbStatus = aspect.inOrb === false ? ' (Out of orb)' : '';
+      const tooltipText = `${aspect.planet1} ${aspect.symbol} ${aspect.planet2} • Orb: ${aspect.orb.toFixed(2)}°${orbStatus} • ${applyingSeparating}`;
 
       return (
         <line
@@ -301,9 +315,9 @@ function ChartWheel({
           y1={pos1.y}
           x2={pos2.x}
           y2={pos2.y}
-          stroke={colors.aspects[aspect.type]}
-          strokeWidth={Math.max(0.5, strokeWidth)}
-          opacity={Math.max(0.2, opacity)}
+          stroke={stroke}
+          strokeWidth={strokeWidth}
+          opacity={opacity}
           style={{ cursor: 'pointer' }}
           onClick={() => onAspectToggle && onAspectToggle(aspect)}
           onMouseEnter={(e) => showTooltip(e, tooltipText)}
@@ -342,15 +356,29 @@ function ChartWheel({
       const pos1 = pointOnCircle(center, center, radii.transit - 15, planet1.longitude, ascendant);
       const pos2 = pointOnCircle(center, center, radii.transit - 15, planet2.longitude, ascendant);
 
-      // Calculate line style based on orb
-      const opacity = 1 - (aspect.orb / 8); // Tighter orb = more opaque
-      const strokeWidth = 3 - (aspect.orb / 4); // Tighter orb = thicker
+      // Calculate line style based on whether aspect is in orb
+      let stroke, opacity, strokeWidth;
+
+      if (aspect.inOrb === false) {
+        // Out of orb: render in very faint grey
+        stroke = '#999999';
+        opacity = 0.12;
+        strokeWidth = 0.5;
+      } else {
+        // In orb: use normal colorful rendering with opacity based on orb
+        stroke = colors.aspects[aspect.type];
+        opacity = 1 - (aspect.orb / 8); // Tighter orb = more opaque
+        strokeWidth = 3 - (aspect.orb / 4); // Tighter orb = thicker
+        opacity = Math.max(0.2, opacity);
+        strokeWidth = Math.max(0.5, strokeWidth);
+      }
 
       // Format tooltip
       const applyingSeparating = aspect.applying !== null
         ? (aspect.applying ? 'Applying' : 'Separating')
         : 'N/A';
-      const tooltipText = `${personBName}: ${aspect.planet1} ${aspect.symbol} ${aspect.planet2} • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+      const orbStatus = aspect.inOrb === false ? ' (Out of orb)' : '';
+      const tooltipText = `${personBName}: ${aspect.planet1} ${aspect.symbol} ${aspect.planet2} • Orb: ${aspect.orb.toFixed(2)}°${orbStatus} • ${applyingSeparating}`;
 
       return (
         <line
@@ -359,9 +387,9 @@ function ChartWheel({
           y1={pos1.y}
           x2={pos2.x}
           y2={pos2.y}
-          stroke={colors.aspects[aspect.type]}
-          strokeWidth={Math.max(0.5, strokeWidth)}
-          opacity={Math.max(0.2, opacity)}
+          stroke={stroke}
+          strokeWidth={strokeWidth}
+          opacity={opacity}
           strokeDasharray="4,4" // Dashed line to differentiate from Person A's aspects
           style={{ cursor: 'pointer' }}
           onClick={() => onAspectToggleB && onAspectToggleB(aspect)}
@@ -413,9 +441,18 @@ function ChartWheel({
       // Calculate circle positions along the line
       const points = calculateCirclePointsAlongLine(pos1.x, pos1.y, pos2.x, pos2.y, circleRadius);
 
-      // Color and opacity
-      const color = colors.aspects[aspect.type];
-      const opacity = Math.max(0.3, 1 - (aspect.orb / 8));
+      // Color and opacity based on whether aspect is in orb
+      let color, opacity;
+
+      if (aspect.inOrb === false) {
+        // Out of orb: render in very faint grey
+        color = '#999999';
+        opacity = 0.12;
+      } else {
+        // In orb: use normal colorful rendering
+        color = colors.aspects[aspect.type];
+        opacity = Math.max(0.3, 1 - (aspect.orb / 8));
+      }
 
       // Format tooltip
       const applyingSeparating = aspect.applying !== null
@@ -423,7 +460,8 @@ function ChartWheel({
         : 'N/A';
       const label1 = isSynastry ? personAName : 'Transit';
       const label2 = isSynastry ? personBName : 'Natal';
-      const tooltipText = `${aspect.planet1} (${label1}) ${aspect.symbol} ${aspect.planet2} (${label2}) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+      const orbStatus = aspect.inOrb === false ? ' (Out of orb)' : '';
+      const tooltipText = `${aspect.planet1} (${label1}) ${aspect.symbol} ${aspect.planet2} (${label2}) • Orb: ${aspect.orb.toFixed(2)}°${orbStatus} • ${applyingSeparating}`;
 
       return (
         <g
@@ -485,15 +523,25 @@ function ChartWheel({
       // Calculate circle positions along the line
       const points = calculateCirclePointsAlongLine(pos1.x, pos1.y, pos2.x, pos2.y, circleRadius);
 
-      // Color and opacity
-      const color = colors.aspects[aspect.type];
-      const opacity = Math.max(0.3, 1 - (aspect.orb / 8));
+      // Color and opacity based on whether aspect is in orb
+      let color, opacity;
+
+      if (aspect.inOrb === false) {
+        // Out of orb: render in very faint grey
+        color = '#999999';
+        opacity = 0.12;
+      } else {
+        // In orb: use normal colorful rendering
+        color = colors.aspects[aspect.type];
+        opacity = Math.max(0.3, 1 - (aspect.orb / 8));
+      }
 
       // Format tooltip
       const applyingSeparating = aspect.applying !== null
         ? (aspect.applying ? 'Applying' : 'Separating')
         : 'N/A';
-      const tooltipText = `${aspect.planet1} (Progression) ${aspect.symbol} ${aspect.planet2} (Natal) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+      const orbStatus = aspect.inOrb === false ? ' (Out of orb)' : '';
+      const tooltipText = `${aspect.planet1} (Progression) ${aspect.symbol} ${aspect.planet2} (Natal) • Orb: ${aspect.orb.toFixed(2)}°${orbStatus} • ${applyingSeparating}`;
 
       return (
         <g
@@ -544,15 +592,29 @@ function ChartWheel({
       const pos1 = pointOnCircle(center, center, aspectRadius, planet1.longitude, ascendant);
       const pos2 = pointOnCircle(center, center, aspectRadius, planet2.longitude, ascendant);
 
-      // Calculate line style based on orb
-      const opacity = 1 - (aspect.orb / 8);
-      const strokeWidth = 3 - (aspect.orb / 4);
+      // Calculate line style based on whether aspect is in orb
+      let stroke, opacity, strokeWidth;
+
+      if (aspect.inOrb === false) {
+        // Out of orb: render in very faint grey
+        stroke = '#999999';
+        opacity = 0.12;
+        strokeWidth = 0.5;
+      } else {
+        // In orb: use normal colorful rendering with opacity based on orb
+        stroke = colors.aspects[aspect.type];
+        opacity = 1 - (aspect.orb / 8);
+        strokeWidth = 3 - (aspect.orb / 4);
+        opacity = Math.max(0.2, opacity);
+        strokeWidth = Math.max(0.5, strokeWidth);
+      }
 
       // Format tooltip
       const applyingSeparating = aspect.applying !== null
         ? (aspect.applying ? 'Applying' : 'Separating')
         : 'N/A';
-      const tooltipText = `${aspect.planet1} (Transit) ${aspect.symbol} ${aspect.planet2} (Transit) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+      const orbStatus = aspect.inOrb === false ? ' (Out of orb)' : '';
+      const tooltipText = `${aspect.planet1} (Transit) ${aspect.symbol} ${aspect.planet2} (Transit) • Orb: ${aspect.orb.toFixed(2)}°${orbStatus} • ${applyingSeparating}`;
 
       return (
         <line
@@ -561,9 +623,9 @@ function ChartWheel({
           y1={pos1.y}
           x2={pos2.x}
           y2={pos2.y}
-          stroke={colors.aspects[aspect.type]}
-          strokeWidth={Math.max(0.5, strokeWidth)}
-          opacity={Math.max(0.2, opacity)}
+          stroke={stroke}
+          strokeWidth={strokeWidth}
+          opacity={opacity}
           style={{ cursor: 'pointer' }}
           onMouseEnter={(e) => showTooltip(e, tooltipText)}
           onMouseLeave={hideTooltip}
@@ -609,15 +671,25 @@ function ChartWheel({
       // Calculate circle positions along the line
       const points = calculateCirclePointsAlongLine(pos1.x, pos1.y, pos2.x, pos2.y, circleRadius);
 
-      // Color and opacity
-      const color = colors.aspects[aspect.type];
-      const opacity = Math.max(0.3, 1 - (aspect.orb / 8));
+      // Color and opacity based on whether aspect is in orb
+      let color, opacity;
+
+      if (aspect.inOrb === false) {
+        // Out of orb: render in very faint grey
+        color = '#999999';
+        opacity = 0.12;
+      } else {
+        // In orb: use normal colorful rendering
+        color = colors.aspects[aspect.type];
+        opacity = Math.max(0.3, 1 - (aspect.orb / 8));
+      }
 
       // Format tooltip
       const applyingSeparating = aspect.applying !== null
         ? (aspect.applying ? 'Applying' : 'Separating')
         : 'N/A';
-      const tooltipText = `${aspect.planet1} (Transit) ${aspect.symbol} ${aspect.planet2} (Progression) • Orb: ${aspect.orb.toFixed(2)}° • ${applyingSeparating}`;
+      const orbStatus = aspect.inOrb === false ? ' (Out of orb)' : '';
+      const tooltipText = `${aspect.planet1} (Transit) ${aspect.symbol} ${aspect.planet2} (Progression) • Orb: ${aspect.orb.toFixed(2)}°${orbStatus} • ${applyingSeparating}`;
 
       return (
         <g
