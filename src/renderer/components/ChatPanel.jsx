@@ -16,6 +16,44 @@ function ChatPanel({ chartData, chartDataB, compositeChartData, returnChartData,
     scrollToBottom();
   }, [messages]);
 
+  // Calculate house rulerships based on sign on cusp
+  const calculateHouseRulerships = (houses) => {
+    if (!houses || houses.length !== 12) return null;
+
+    const signRulers = {
+      'Aries': { traditional: 'Mars', modern: 'Mars' },
+      'Taurus': { traditional: 'Venus', modern: 'Venus' },
+      'Gemini': { traditional: 'Mercury', modern: 'Mercury' },
+      'Cancer': { traditional: 'Moon', modern: 'Moon' },
+      'Leo': { traditional: 'Sun', modern: 'Sun' },
+      'Virgo': { traditional: 'Mercury', modern: 'Mercury' },
+      'Libra': { traditional: 'Venus', modern: 'Venus' },
+      'Scorpio': { traditional: 'Mars', modern: 'Pluto' },
+      'Sagittarius': { traditional: 'Jupiter', modern: 'Jupiter' },
+      'Capricorn': { traditional: 'Saturn', modern: 'Saturn' },
+      'Aquarius': { traditional: 'Saturn', modern: 'Uranus' },
+      'Pisces': { traditional: 'Jupiter', modern: 'Neptune' }
+    };
+
+    const signs = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
+                   'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'];
+
+    const rulerships = houses.map((cuspLongitude, index) => {
+      const signIndex = Math.floor(cuspLongitude / 30);
+      const signOnCusp = signs[signIndex];
+      const rulers = signRulers[signOnCusp];
+
+      return {
+        house: index + 1,
+        signOnCusp: signOnCusp,
+        traditionalRuler: rulers.traditional,
+        modernRuler: rulers.modern
+      };
+    });
+
+    return rulerships;
+  };
+
   const buildChartContext = () => {
     const context = {
       mode: viewMode,
@@ -35,6 +73,7 @@ function ChatPanel({ chartData, chartDataB, compositeChartData, returnChartData,
         midheaven: chartData.midheaven,
         planets: chartData.planets,
         houses: chartData.houses,
+        houseRulerships: calculateHouseRulerships(chartData.houses),
         aspects: chartData.aspects,
         hasTransits: !!chartData.transits,
         transits: chartData.transits ? {
@@ -59,6 +98,7 @@ function ChatPanel({ chartData, chartDataB, compositeChartData, returnChartData,
         midheaven: chartDataB.midheaven,
         planets: chartDataB.planets,
         houses: chartDataB.houses,
+        houseRulerships: calculateHouseRulerships(chartDataB.houses),
         aspects: chartDataB.aspects,
         hasTransits: !!chartDataB.transits,
         transits: chartDataB.transits ? {
@@ -81,6 +121,7 @@ function ChatPanel({ chartData, chartDataB, compositeChartData, returnChartData,
       context.compositeChart = {
         planets: compositeChartData.planets,
         houses: compositeChartData.houses,
+        houseRulerships: calculateHouseRulerships(compositeChartData.houses),
         aspects: compositeChartData.aspects,
         ascendant: compositeChartData.ascendant,
         midheaven: compositeChartData.midheaven
@@ -113,6 +154,7 @@ function ChatPanel({ chartData, chartDataB, compositeChartData, returnChartData,
         returnChart: {
           planets: returnChartData.planets,
           houses: returnChartData.houses,
+          houseRulerships: calculateHouseRulerships(returnChartData.houses),
           ascendant: returnChartData.ascendant,
           midheaven: returnChartData.midheaven,
           aspects: returnChartData.aspects
