@@ -134,6 +134,13 @@ function ChatPanel({ chartData, chartDataB, compositeChartData, returnChartData,
         progressionNatalAspects: chartData.progressionNatalAspects,
         progressionInternalAspects: chartData.progressionInternalAspects
       };
+
+      // If both transits AND progressions are loaded (tri-wheel mode), add transit-progression aspects
+      if (chartData.transits && chartData.transitProgressionAspects) {
+        context.charts[0].progressions.transitProgressionAspects = chartData.transitProgressionAspects;
+        context.charts[0].hasTransits = true;
+        context.charts[0].isTriWheel = true; // Flag to indicate both transits and progressions loaded
+      }
     }
 
     return context;
