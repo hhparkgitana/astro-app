@@ -19081,5 +19081,545 @@
       "cuban-crisis",
       "colorful"
     ]
+  },
+  {
+    "id": "parsons-jack",
+    "name": "Jack Parsons",
+    "category": "Esoteric & Occult",
+    "date": "1914-10-02",
+    "time": "21:30",
+    "location": "Los Angeles, California, USA",
+    "latitude": 34.0522,
+    "longitude": -118.2437,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "JPL rocket scientist, Thelema practitioner, Babalon Working with L. Ron Hubbard, explosion death 1952",
+    "tags": [
+      "thelema",
+      "rocket-science",
+      "magick",
+      "tragic"
+    ]
+  },
+  {
+    "id": "leary-timothy",
+    "name": "Timothy Leary",
+    "category": "Esoteric & Occult",
+    "date": "1920-10-22",
+    "time": "10:45",
+    "location": "Springfield, Massachusetts, USA",
+    "latitude": 42.1015,
+    "longitude": -72.5898,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Turn on tune in drop out, LSD pioneer, Harvard professor, psychedelic evangelist",
+    "tags": [
+      "psychedelics",
+      "lsd",
+      "counterculture",
+      "harvard"
+    ]
+  },
+  {
+    "id": "mckenna-terence",
+    "name": "Terence McKenna",
+    "category": "Esoteric & Occult",
+    "date": "1946-11-16",
+    "time": "12:00",
+    "location": "Paonia, Colorado, USA",
+    "latitude": 38.8681,
+    "longitude": -107.5919,
+    "timezone": "America/Denver",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Ethnobotanist, Timewave Zero, stoned ape theory, DMT, psychedelic philosopher, died 2000",
+    "tags": [
+      "psychedelics",
+      "ethnobotany",
+      "dmt",
+      "philosopher"
+    ]
+  },
+  {
+    "id": "hubbard-l-ron",
+    "name": "L. Ron Hubbard",
+    "category": "Esoteric & Occult",
+    "date": "1911-03-13",
+    "time": "02:01",
+    "location": "Tilden, Nebraska, USA",
+    "latitude": 42.0464,
+    "longitude": -97.8306,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Scientology founder, Dianetics, sci-fi writer, worked with Parsons, controversial, died 1986",
+    "tags": [
+      "scientology",
+      "dianetics",
+      "controversial",
+      "founder"
+    ]
+  },
+  {
+    "id": "cayce-edgar",
+    "name": "Edgar Cayce",
+    "category": "Esoteric & Occult",
+    "date": "1877-03-18",
+    "time": "15:00",
+    "location": "Hopkinsville, Kentucky, USA",
+    "latitude": 36.8656,
+    "longitude": -87.4886,
+    "timezone": "America/Chicago",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Sleeping Prophet, medical intuitive, readings while in trance, Atlantis, reincarnation",
+    "tags": [
+      "psychic",
+      "medical-intuitive",
+      "trance",
+      "readings"
+    ]
+  },
+  {
+    "id": "nostradamus",
+    "name": "Nostradamus",
+    "category": "Esoteric & Occult",
+    "date": "1503-12-14",
+    "time": "12:00",
+    "location": "Saint-Rémy-de-Provence, France",
+    "latitude": 43.7889,
+    "longitude": 4.8322,
+    "timezone": "Europe/Paris",
+    "roddenRating": "C",
+    "source": "Historical records (time uncertain)",
+    "notes": "French prophet, Les Prophéties, quatrains, plague doctor, astrologer",
+    "tags": [
+      "prophet",
+      "astrologer",
+      "french",
+      "quatrains"
+    ]
+  },
+  {
+    "id": "lenormand-marie-anne",
+    "name": "Marie Anne Lenormand",
+    "category": "Esoteric & Occult",
+    "date": "1772-05-27",
+    "time": "12:00",
+    "location": "Alençon, France",
+    "latitude": 48.4333,
+    "longitude": 0.0833,
+    "timezone": "Europe/Paris",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Napoleon's fortune teller, Lenormand cards named after her, famous cartomancer",
+    "tags": [
+      "cartomancy",
+      "fortune-teller",
+      "lenormand",
+      "napoleon"
+    ]
+  },
+  {
+    "id": "gurdjieff-george",
+    "name": "George Gurdjieff",
+    "category": "Esoteric & Occult",
+    "date": "1866-01-13",
+    "time": "12:00",
+    "location": "Alexandropol, Armenia",
+    "latitude": 40.7894,
+    "longitude": 43.8456,
+    "timezone": "Asia/Yerevan",
+    "roddenRating": "C",
+    "source": "Biography (date approximate, time uncertain)",
+    "notes": "Fourth Way teacher, mystic, Beelzebub's Tales, movements, self-remembering",
+    "tags": [
+      "fourth-way",
+      "mystic",
+      "teacher",
+      "movements"
+    ]
+  },
+  {
+    "id": "ouspensky-p-d",
+    "name": "P.D. Ouspensky",
+    "category": "Esoteric & Occult",
+    "date": "1878-03-05",
+    "time": "12:00",
+    "location": "Moscow, Russia",
+    "latitude": 55.7558,
+    "longitude": 37.6173,
+    "timezone": "Europe/Moscow",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Fourth Way, Tertium Organum, In Search of the Miraculous, Gurdjieff student",
+    "tags": [
+      "fourth-way",
+      "philosopher",
+      "esoteric",
+      "russian"
+    ]
+  },
+  {
+    "id": "hall-manly-p",
+    "name": "Manly P. Hall",
+    "category": "Esoteric & Occult",
+    "date": "1901-03-18",
+    "time": "12:00",
+    "location": "Peterborough, Ontario, Canada",
+    "latitude": 44.3091,
+    "longitude": -78.3197,
+    "timezone": "America/Toronto",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Secret Teachings of All Ages, Philosophical Research Society, mystic scholar",
+    "tags": [
+      "scholar",
+      "hermetic",
+      "masonic",
+      "philosopher"
+    ]
+  },
+  {
+    "id": "levi-eliphas",
+    "name": "Éliphas Lévi",
+    "category": "Esoteric & Occult",
+    "date": "1810-02-08",
+    "time": "12:00",
+    "location": "Paris, France",
+    "latitude": 48.8566,
+    "longitude": 2.3522,
+    "timezone": "Europe/Paris",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Occult revival pioneer, Baphomet image, Transcendental Magic, influenced Golden Dawn",
+    "tags": [
+      "occult",
+      "ceremonial-magic",
+      "french",
+      "revival"
+    ]
+  },
+  {
+    "id": "spare-austin-osman",
+    "name": "Austin Osman Spare",
+    "category": "Esoteric & Occult",
+    "date": "1886-12-30",
+    "time": "12:00",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Artist, chaos magic precursor, sigil magic, Zos Kia Cultus, influenced chaos magic",
+    "tags": [
+      "chaos-magic",
+      "sigils",
+      "artist",
+      "british"
+    ]
+  },
+  {
+    "id": "carroll-peter",
+    "name": "Peter Carroll",
+    "category": "Esoteric & Occult",
+    "date": "1953-01-08",
+    "time": "12:00",
+    "location": "England",
+    "latitude": 52.5,
+    "longitude": -1.5,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Chaos magic founder, Liber Null, Psychonaut, IOT, paradigm shifting",
+    "tags": [
+      "chaos-magic",
+      "founder",
+      "paradigm",
+      "british"
+    ]
+  },
+  {
+    "id": "valiente-doreen",
+    "name": "Doreen Valiente",
+    "category": "Esoteric & Occult",
+    "date": "1922-01-04",
+    "time": "12:00",
+    "location": "Mitcham, England",
+    "latitude": 51.4017,
+    "longitude": -0.155,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Mother of Modern Witchcraft, wrote Wiccan liturgy, Gardner's High Priestess",
+    "tags": [
+      "wicca",
+      "witchcraft",
+      "liturgy",
+      "british"
+    ]
+  },
+  {
+    "id": "buckland-raymond",
+    "name": "Raymond Buckland",
+    "category": "Esoteric & Occult",
+    "date": "1934-08-31",
+    "time": "12:00",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Brought Wicca to America, Buckland's Complete Book of Witchcraft, died 2017",
+    "tags": [
+      "wicca",
+      "american",
+      "educator",
+      "author"
+    ]
+  },
+  {
+    "id": "smith-pamela-colman",
+    "name": "Pamela Colman Smith",
+    "category": "Esoteric & Occult",
+    "date": "1878-02-16",
+    "time": "12:00",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Rider-Waite tarot illustrator, Golden Dawn member, artist, died in poverty",
+    "tags": [
+      "tarot",
+      "artist",
+      "golden-dawn",
+      "unrecognized"
+    ]
+  },
+  {
+    "id": "adams-evangeline",
+    "name": "Evangeline Adams",
+    "category": "Esoteric & Occult",
+    "date": "1868-02-08",
+    "time": "08:30",
+    "location": "Jersey City, New Jersey, USA",
+    "latitude": 40.7178,
+    "longitude": -74.0431,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Famous American astrologer, defended astrology in court, JP Morgan client",
+    "tags": [
+      "astrologer",
+      "famous",
+      "court-case",
+      "financial"
+    ]
+  },
+  {
+    "id": "leo-alan",
+    "name": "Alan Leo",
+    "category": "Esoteric & Occult",
+    "date": "1860-08-07",
+    "time": "05:49",
+    "location": "Westminster, England",
+    "latitude": 51.4975,
+    "longitude": -0.1357,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Father of modern astrology, Theosophist, simplified astrology for masses",
+    "tags": [
+      "astrologer",
+      "modern",
+      "theosophy",
+      "pioneer"
+    ]
+  },
+  {
+    "id": "jones-marc-edmund",
+    "name": "Marc Edmund Jones",
+    "category": "Esoteric & Occult",
+    "date": "1888-10-01",
+    "time": "08:37",
+    "location": "St. Louis, Missouri, USA",
+    "latitude": 38.627,
+    "longitude": -90.1994,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Sabian Symbols creator, astrologer, occultist, prolific writer",
+    "tags": [
+      "astrologer",
+      "sabian-symbols",
+      "occultist",
+      "american"
+    ]
+  },
+  {
+    "id": "tyl-noel",
+    "name": "Noel Tyl",
+    "category": "Esoteric & Occult",
+    "date": "1936-12-31",
+    "time": "05:08",
+    "location": "West Chester, Pennsylvania, USA",
+    "latitude": 39.9609,
+    "longitude": -75.6055,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Psychological astrology pioneer, 35+ books, opera singer, died 2019",
+    "tags": [
+      "astrologer",
+      "psychological",
+      "prolific",
+      "singer"
+    ]
+  },
+  {
+    "id": "ram-dass",
+    "name": "Ram Dass (Richard Alpert)",
+    "category": "Esoteric & Occult",
+    "date": "1931-04-06",
+    "time": "16:28",
+    "location": "Boston, Massachusetts, USA",
+    "latitude": 42.3601,
+    "longitude": -71.0589,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Be Here Now, Leary's Harvard colleague, guru, spiritual teacher, died 2019",
+    "tags": [
+      "spiritual",
+      "psychedelics",
+      "guru",
+      "teacher"
+    ]
+  },
+  {
+    "id": "castaneda-carlos",
+    "name": "Carlos Castaneda",
+    "category": "Esoteric & Occult",
+    "date": "1925-12-25",
+    "time": "12:00",
+    "location": "Cajamarca, Peru",
+    "latitude": -7.1631,
+    "longitude": -78.5126,
+    "timezone": "America/Lima",
+    "roddenRating": "C",
+    "source": "Biography (date disputed, time uncertain)",
+    "notes": "Don Juan books, Teachings, sorcery, controversial authenticity, died 1998",
+    "tags": [
+      "shamanism",
+      "sorcery",
+      "controversial",
+      "author"
+    ]
+  },
+  {
+    "id": "grof-stanislav",
+    "name": "Stanislav Grof",
+    "category": "Esoteric & Occult",
+    "date": "1931-07-01",
+    "time": "12:00",
+    "location": "Prague, Czechoslovakia",
+    "latitude": 50.0755,
+    "longitude": 14.4378,
+    "timezone": "Europe/Prague",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "LSD psychotherapy pioneer, transpersonal psychology, holotropic breathwork",
+    "tags": [
+      "psychedelics",
+      "psychology",
+      "transpersonal",
+      "breathwork"
+    ]
+  },
+  {
+    "id": "watts-alan",
+    "name": "Alan Watts",
+    "category": "Esoteric & Occult",
+    "date": "1915-01-06",
+    "time": "06:20",
+    "location": "Chislehurst, England",
+    "latitude": 51.4167,
+    "longitude": 0.0667,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Zen Buddhism popularizer, The Way of Zen, philosopher, died 1973",
+    "tags": [
+      "zen",
+      "philosopher",
+      "eastern",
+      "popularizer"
+    ]
+  },
+  {
+    "id": "ramana-maharshi",
+    "name": "Ramana Maharshi",
+    "category": "Esoteric & Occult",
+    "date": "1879-12-30",
+    "time": "01:00",
+    "location": "Tiruchuli, India",
+    "latitude": 9.4667,
+    "longitude": 77.8333,
+    "timezone": "Asia/Kolkata",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Advaita Vedanta sage, self-inquiry, Who am I, Arunachala, died 1950",
+    "tags": [
+      "advaita",
+      "sage",
+      "self-inquiry",
+      "indian"
+    ]
+  },
+  {
+    "id": "fortune-dion-extended",
+    "name": "William Butler Yeats",
+    "category": "Esoteric & Occult",
+    "date": "1865-06-13",
+    "time": "22:40",
+    "location": "Dublin, Ireland",
+    "latitude": 53.3498,
+    "longitude": -6.2603,
+    "timezone": "Europe/Dublin",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Poet, Nobel Prize, Golden Dawn member, Celtic mysticism, A Vision",
+    "tags": [
+      "poet",
+      "golden-dawn",
+      "nobel-prize",
+      "celtic"
+    ]
+  },
+  {
+    "id": "wilson-robert-anton",
+    "name": "Robert Anton Wilson",
+    "category": "Esoteric & Occult",
+    "date": "1932-01-18",
+    "time": "04:32",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Illuminatus! Trilogy, Cosmic Trigger, Discordianism, reality tunnels, died 2007",
+    "tags": [
+      "discordianism",
+      "author",
+      "reality-tunnels",
+      "fnord"
+    ]
   }
 ]
