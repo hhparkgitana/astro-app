@@ -10409,5 +10409,405 @@
       "chicano",
       "farmworkers"
     ]
+  },
+  {
+    "id": "bundy-ted",
+    "name": "Ted Bundy",
+    "category": "Villains",
+    "date": "1946-11-24",
+    "time": "22:35",
+    "location": "Burlington, Vermont, USA",
+    "latitude": 44.4759,
+    "longitude": -73.2121,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Serial killer, 30+ victims, executed 1989, charming psychopath",
+    "tags": [
+      "serial-killer",
+      "psychopath",
+      "crime",
+      "executed"
+    ]
+  },
+  {
+    "id": "dahmer-jeffrey",
+    "name": "Jeffrey Dahmer",
+    "category": "Villains",
+    "date": "1960-05-21",
+    "time": "16:04",
+    "location": "Milwaukee, Wisconsin, USA",
+    "latitude": 43.0389,
+    "longitude": -87.9065,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Serial killer, 17 victims, cannibalism, murdered in prison 1994",
+    "tags": [
+      "serial-killer",
+      "crime",
+      "psychopath",
+      "murdered"
+    ]
+  },
+  {
+    "id": "gacy-john-wayne",
+    "name": "John Wayne Gacy",
+    "category": "Villains",
+    "date": "1942-03-17",
+    "time": "00:30",
+    "location": "Chicago, Illinois, USA",
+    "latitude": 41.8781,
+    "longitude": -87.6298,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "'Killer Clown,' 33 victims, community leader by day, executed 1994",
+    "tags": [
+      "serial-killer",
+      "crime",
+      "executed",
+      "psychopath"
+    ]
+  },
+  {
+    "id": "manson-charles",
+    "name": "Charles Manson",
+    "category": "Villains",
+    "date": "1934-11-12",
+    "time": "16:40",
+    "location": "Cincinnati, Ohio, USA",
+    "latitude": 39.1031,
+    "longitude": -84.512,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Cult leader, Manson Family murders, Helter Skelter, died in prison 2017",
+    "tags": [
+      "cult-leader",
+      "murder",
+      "psychopath",
+      "manipulation"
+    ]
+  },
+  {
+    "id": "pol-pot",
+    "name": "Pol Pot",
+    "category": "Villains",
+    "date": "1925-05-19",
+    "time": "12:00",
+    "location": "Prek Sbauv, Cambodia",
+    "latitude": 11.5564,
+    "longitude": 104.9282,
+    "timezone": "Asia/Phnom_Penh",
+    "roddenRating": "C",
+    "source": "Historical records (time uncertain)",
+    "notes": "Khmer Rouge leader, Cambodian genocide, 1.5-2M deaths, died 1998",
+    "tags": [
+      "dictator",
+      "genocide",
+      "communist",
+      "cambodia"
+    ]
+  },
+  {
+    "id": "amin-idi",
+    "name": "Idi Amin",
+    "category": "Villains",
+    "date": "1925-05-17",
+    "time": "12:00",
+    "location": "Koboko, Uganda",
+    "latitude": 3.4133,
+    "longitude": 30.9667,
+    "timezone": "Africa/Kampala",
+    "roddenRating": "C",
+    "source": "Biography (date approximate, time uncertain)",
+    "notes": "Ugandan dictator, 'Butcher of Uganda,' 300k deaths, expelled Asians",
+    "tags": [
+      "dictator",
+      "genocide",
+      "uganda",
+      "brutal"
+    ]
+  },
+  {
+    "id": "hussein-saddam",
+    "name": "Saddam Hussein",
+    "category": "Villains",
+    "date": "1937-04-28",
+    "time": "12:00",
+    "location": "Al-Awja, Iraq",
+    "latitude": 34.3969,
+    "longitude": 43.6578,
+    "timezone": "Asia/Baghdad",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Iraqi dictator, Iran-Iraq War, Kurdish genocide, executed 2006",
+    "tags": [
+      "dictator",
+      "war-crimes",
+      "executed",
+      "iraq"
+    ]
+  },
+  {
+    "id": "franco-francisco",
+    "name": "Francisco Franco",
+    "category": "Villains",
+    "date": "1892-12-04",
+    "time": "00:30",
+    "location": "Ferrol, Spain",
+    "latitude": 43.4831,
+    "longitude": -8.2369,
+    "timezone": "Europe/Madrid",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Spanish dictator 1939-1975, Civil War victor, fascist regime, repression",
+    "tags": [
+      "dictator",
+      "fascist",
+      "spanish-civil-war",
+      "authoritarian"
+    ]
+  },
+  {
+    "id": "pinochet-augusto",
+    "name": "Augusto Pinochet",
+    "category": "Villains",
+    "date": "1915-11-25",
+    "time": "18:30",
+    "location": "Valparaíso, Chile",
+    "latitude": -33.0472,
+    "longitude": -71.6127,
+    "timezone": "America/Santiago",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Chilean dictator 1973-1990, CIA-backed coup, torture & disappearances",
+    "tags": [
+      "dictator",
+      "coup",
+      "torture",
+      "chile"
+    ]
+  },
+  {
+    "id": "himmler-heinrich",
+    "name": "Heinrich Himmler",
+    "category": "Villains",
+    "date": "1900-10-07",
+    "time": "16:30",
+    "location": "Munich, Germany",
+    "latitude": 48.1351,
+    "longitude": 11.582,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Nazi SS chief, Holocaust architect, concentration camps, suicide 1945",
+    "tags": [
+      "nazi",
+      "holocaust",
+      "war-crimes",
+      "genocide"
+    ]
+  },
+  {
+    "id": "goebbels-joseph",
+    "name": "Joseph Goebbels",
+    "category": "Villains",
+    "date": "1897-10-29",
+    "time": "19:00",
+    "location": "Rheydt, Germany",
+    "latitude": 51.1603,
+    "longitude": 6.4467,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Nazi propaganda minister, 'Big Lie' technique, suicide with family 1945",
+    "tags": [
+      "nazi",
+      "propaganda",
+      "war-crimes",
+      "manipulation"
+    ]
+  },
+  {
+    "id": "jones-jim",
+    "name": "Jim Jones",
+    "category": "Villains",
+    "date": "1931-05-13",
+    "time": "21:00",
+    "location": "Crete, Indiana, USA",
+    "latitude": 40.6181,
+    "longitude": -87.2656,
+    "timezone": "America/Indiana/Indianapolis",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Peoples Temple cult leader, Jonestown massacre 918 deaths, 1978",
+    "tags": [
+      "cult-leader",
+      "mass-murder",
+      "manipulation",
+      "jonestown"
+    ]
+  },
+  {
+    "id": "koresh-david",
+    "name": "David Koresh",
+    "category": "Villains",
+    "date": "1959-08-17",
+    "time": "20:21",
+    "location": "Houston, Texas, USA",
+    "latitude": 29.7604,
+    "longitude": -95.3698,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Branch Davidian cult leader, Waco siege 1993, 76 deaths including children",
+    "tags": [
+      "cult-leader",
+      "waco",
+      "manipulation",
+      "siege"
+    ]
+  },
+  {
+    "id": "capone-al",
+    "name": "Al Capone",
+    "category": "Villains",
+    "date": "1899-01-17",
+    "time": "09:30",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Chicago mob boss, Prohibition era, St. Valentine's Day Massacre, tax evasion",
+    "tags": [
+      "mobster",
+      "organized-crime",
+      "prohibition",
+      "chicago"
+    ]
+  },
+  {
+    "id": "escobar-pablo",
+    "name": "Pablo Escobar",
+    "category": "Villains",
+    "date": "1949-12-01",
+    "time": "11:45",
+    "location": "Rionegro, Colombia",
+    "latitude": 6.1556,
+    "longitude": -75.3739,
+    "timezone": "America/Bogota",
+    "roddenRating": "A",
+    "source": "Birth certificate",
+    "notes": "Medellín Cartel kingpin, cocaine trade, 4k+ murders, killed 1993",
+    "tags": [
+      "drug-lord",
+      "cartel",
+      "murder",
+      "colombia"
+    ]
+  },
+  {
+    "id": "gotti-john",
+    "name": "John Gotti",
+    "category": "Villains",
+    "date": "1940-10-27",
+    "time": "17:20",
+    "location": "Bronx, New York, USA",
+    "latitude": 40.8448,
+    "longitude": -73.8648,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "'Dapper Don,' Gambino crime family boss, media celebrity, died in prison 2002",
+    "tags": [
+      "mobster",
+      "mafia",
+      "organized-crime",
+      "new-york"
+    ]
+  },
+  {
+    "id": "rasputin-grigori",
+    "name": "Grigori Rasputin",
+    "category": "Villains",
+    "date": "1869-01-21",
+    "time": "12:00",
+    "location": "Pokrovskoye, Russia",
+    "latitude": 57.1167,
+    "longitude": 65.0167,
+    "timezone": "Asia/Yekaterinburg",
+    "roddenRating": "C",
+    "source": "Historical records (time uncertain)",
+    "notes": "Mystic, manipulated Romanov family, debauchery, assassination 1916",
+    "tags": [
+      "mystic",
+      "manipulation",
+      "romanov",
+      "assassination"
+    ]
+  },
+  {
+    "id": "wuornos-aileen",
+    "name": "Aileen Wuornos",
+    "category": "Villains",
+    "date": "1956-02-29",
+    "time": "21:09",
+    "location": "Rochester, Michigan, USA",
+    "latitude": 42.6806,
+    "longitude": -83.1338,
+    "timezone": "America/Detroit",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Female serial killer, 7 victims, prostitute, executed 2002, 'Monster' film",
+    "tags": [
+      "serial-killer",
+      "crime",
+      "executed",
+      "female"
+    ]
+  },
+  {
+    "id": "milosevic-slobodan",
+    "name": "Slobodan Milošević",
+    "category": "Villains",
+    "date": "1941-08-20",
+    "time": "12:00",
+    "location": "Požarevac, Serbia",
+    "latitude": 44.6197,
+    "longitude": 21.1847,
+    "timezone": "Europe/Belgrade",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Serbian leader, Yugoslav Wars, ethnic cleansing, war crimes trial, died 2006",
+    "tags": [
+      "dictator",
+      "war-crimes",
+      "ethnic-cleansing",
+      "balkans"
+    ]
+  },
+  {
+    "id": "ceausescu-nicolae",
+    "name": "Nicolae Ceaușescu",
+    "category": "Villains",
+    "date": "1918-01-26",
+    "time": "12:00",
+    "location": "Scornicești, Romania",
+    "latitude": 44.4167,
+    "longitude": 24.5333,
+    "timezone": "Europe/Bucharest",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Romanian dictator, brutal repression, personality cult, executed 1989",
+    "tags": [
+      "dictator",
+      "communist",
+      "executed",
+      "romania"
+    ]
   }
 ]
