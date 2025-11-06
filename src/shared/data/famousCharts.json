@@ -9989,5 +9989,425 @@
       "psychological",
       "existential"
     ]
+  },
+  {
+    "id": "gandhi-mahatma",
+    "name": "Mahatma Gandhi",
+    "category": "Revolutionaries",
+    "date": "1869-10-02",
+    "time": "07:11",
+    "location": "Porbandar, India",
+    "latitude": 21.6417,
+    "longitude": 69.6293,
+    "timezone": "Asia/Kolkata",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Nonviolent resistance leader, Indian independence, civil disobedience pioneer",
+    "tags": [
+      "nonviolence",
+      "independence",
+      "civil-disobedience",
+      "indian"
+    ]
+  },
+  {
+    "id": "king-martin-luther-jr",
+    "name": "Martin Luther King Jr.",
+    "category": "Revolutionaries",
+    "date": "1929-01-15",
+    "time": "12:00",
+    "location": "Atlanta, Georgia, USA",
+    "latitude": 33.749,
+    "longitude": -84.388,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Civil rights leader, 'I Have a Dream,' Nobel Peace Prize 1964, assassinated 1968",
+    "tags": [
+      "civil-rights",
+      "nonviolence",
+      "african-american",
+      "minister"
+    ]
+  },
+  {
+    "id": "louverture-toussaint",
+    "name": "Toussaint L'Ouverture",
+    "category": "Revolutionaries",
+    "date": "1743-05-20",
+    "time": "12:00",
+    "location": "Cap-Haïtien, Haiti",
+    "latitude": 19.7577,
+    "longitude": -72.2019,
+    "timezone": "America/Port-au-Prince",
+    "roddenRating": "C",
+    "source": "Historical records (date approximate, time uncertain)",
+    "notes": "Haitian Revolution leader, defeated Napoleon's forces, ended slavery in Haiti",
+    "tags": [
+      "haitian-revolution",
+      "anti-slavery",
+      "independence",
+      "caribbean"
+    ]
+  },
+  {
+    "id": "ho-chi-minh",
+    "name": "Ho Chi Minh",
+    "category": "Revolutionaries",
+    "date": "1890-05-19",
+    "time": "12:00",
+    "location": "Nghệ An, Vietnam",
+    "latitude": 19.2342,
+    "longitude": 104.92,
+    "timezone": "Asia/Ho_Chi_Minh",
+    "roddenRating": "C",
+    "source": "Historical records (date disputed, time uncertain)",
+    "notes": "Vietnamese revolutionary, defeated French & US forces, founded North Vietnam",
+    "tags": [
+      "vietnamese-independence",
+      "communism",
+      "anti-imperialism",
+      "guerrilla"
+    ]
+  },
+  {
+    "id": "sun-yat-sen",
+    "name": "Sun Yat-sen",
+    "category": "Revolutionaries",
+    "date": "1866-11-12",
+    "time": "12:00",
+    "location": "Cuiheng, China",
+    "latitude": 22.3193,
+    "longitude": 113.5439,
+    "timezone": "Asia/Shanghai",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Overthrew Qing Dynasty, founded Republic of China, 'Father of Modern China'",
+    "tags": [
+      "chinese-revolution",
+      "republic",
+      "modernization",
+      "nationalism"
+    ]
+  },
+  {
+    "id": "garibaldi-giuseppe",
+    "name": "Giuseppe Garibaldi",
+    "category": "Revolutionaries",
+    "date": "1807-07-04",
+    "time": "13:00",
+    "location": "Nice, France",
+    "latitude": 43.7102,
+    "longitude": 7.262,
+    "timezone": "Europe/Paris",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Italian unification hero, guerrilla warfare pioneer, 'Hero of Two Worlds'",
+    "tags": [
+      "italian-unification",
+      "nationalism",
+      "guerrilla",
+      "european"
+    ]
+  },
+  {
+    "id": "marx-karl",
+    "name": "Karl Marx",
+    "category": "Revolutionaries",
+    "date": "1818-05-05",
+    "time": "02:00",
+    "location": "Trier, Germany",
+    "latitude": 49.7596,
+    "longitude": 6.6441,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Communist Manifesto, Das Kapital, revolutionary theory architect",
+    "tags": [
+      "communism",
+      "theory",
+      "economics",
+      "philosopher"
+    ]
+  },
+  {
+    "id": "engels-friedrich",
+    "name": "Friedrich Engels",
+    "category": "Revolutionaries",
+    "date": "1820-11-28",
+    "time": "12:00",
+    "location": "Barmen, Germany",
+    "latitude": 51.2667,
+    "longitude": 7.2,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Communist Manifesto co-author, Marx's collaborator, industrialist turned theorist",
+    "tags": [
+      "communism",
+      "theory",
+      "labor-rights",
+      "philosopher"
+    ]
+  },
+  {
+    "id": "goldman-emma",
+    "name": "Emma Goldman",
+    "category": "Revolutionaries",
+    "date": "1869-06-27",
+    "time": "12:00",
+    "location": "Kaunas, Lithuania",
+    "latitude": 54.8985,
+    "longitude": 23.9036,
+    "timezone": "Europe/Vilnius",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Anarchist activist, 'Red Emma,' free speech & birth control advocate",
+    "tags": [
+      "anarchism",
+      "feminism",
+      "free-speech",
+      "labor"
+    ]
+  },
+  {
+    "id": "anthony-susan-b",
+    "name": "Susan B. Anthony",
+    "category": "Revolutionaries",
+    "date": "1820-02-15",
+    "time": "12:00",
+    "location": "Adams, Massachusetts, USA",
+    "latitude": 42.6243,
+    "longitude": -73.1174,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Women's suffrage pioneer, abolitionist, 19th Amendment advocate",
+    "tags": [
+      "suffrage",
+      "womens-rights",
+      "abolitionist",
+      "american"
+    ]
+  },
+  {
+    "id": "pankhurst-emmeline",
+    "name": "Emmeline Pankhurst",
+    "category": "Revolutionaries",
+    "date": "1858-07-15",
+    "time": "12:00",
+    "location": "Manchester, England",
+    "latitude": 53.4808,
+    "longitude": -2.2426,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "British suffragette leader, militant tactics, 'Deeds not words'",
+    "tags": [
+      "suffrage",
+      "womens-rights",
+      "militant",
+      "british"
+    ]
+  },
+  {
+    "id": "sankara-thomas",
+    "name": "Thomas Sankara",
+    "category": "Revolutionaries",
+    "date": "1949-12-21",
+    "time": "12:00",
+    "location": "Yako, Burkina Faso",
+    "latitude": 12.9589,
+    "longitude": -2.2608,
+    "timezone": "Africa/Ouagadougou",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Burkina Faso revolutionary, 'Africa's Che,' anti-imperialism, assassinated 1987",
+    "tags": [
+      "african-socialism",
+      "anti-imperialism",
+      "pan-africanism",
+      "burkina-faso"
+    ]
+  },
+  {
+    "id": "lumumba-patrice",
+    "name": "Patrice Lumumba",
+    "category": "Revolutionaries",
+    "date": "1925-07-02",
+    "time": "12:00",
+    "location": "Katakokombe, Congo",
+    "latitude": -3.9517,
+    "longitude": 21.7587,
+    "timezone": "Africa/Kinshasa",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "First PM of independent Congo, anti-colonial hero, assassinated 1961",
+    "tags": [
+      "independence",
+      "anti-colonial",
+      "pan-africanism",
+      "congolese"
+    ]
+  },
+  {
+    "id": "robespierre-maximilien",
+    "name": "Maximilien Robespierre",
+    "category": "Revolutionaries",
+    "date": "1758-05-06",
+    "time": "12:00",
+    "location": "Arras, France",
+    "latitude": 50.292,
+    "longitude": 2.78,
+    "timezone": "Europe/Paris",
+    "roddenRating": "C",
+    "source": "Birth records (time uncertain)",
+    "notes": "French Revolution leader, Reign of Terror architect, guillotined 1794",
+    "tags": [
+      "french-revolution",
+      "jacobin",
+      "terror",
+      "european"
+    ]
+  },
+  {
+    "id": "cromwell-oliver",
+    "name": "Oliver Cromwell",
+    "category": "Revolutionaries",
+    "date": "1599-04-25",
+    "time": "04:00",
+    "location": "Huntingdon, England",
+    "latitude": 52.331,
+    "longitude": -0.178,
+    "timezone": "Europe/London",
+    "roddenRating": "B",
+    "source": "Historical records",
+    "notes": "English Civil War leader, executed King Charles I, Lord Protector",
+    "tags": [
+      "english-civil-war",
+      "puritan",
+      "regicide",
+      "british"
+    ]
+  },
+  {
+    "id": "joan-of-arc",
+    "name": "Joan of Arc",
+    "category": "Revolutionaries",
+    "date": "1412-01-06",
+    "time": "12:00",
+    "location": "Domrémy, France",
+    "latitude": 48.4431,
+    "longitude": 5.6725,
+    "timezone": "Europe/Paris",
+    "roddenRating": "C",
+    "source": "Historical records (date approximate, time uncertain)",
+    "notes": "French military leader, mystic visions, burned at stake 1431, later sainted",
+    "tags": [
+      "medieval",
+      "military",
+      "mystic",
+      "french"
+    ]
+  },
+  {
+    "id": "sitting-bull",
+    "name": "Sitting Bull",
+    "category": "Revolutionaries",
+    "date": "1831-03-01",
+    "time": "12:00",
+    "location": "Grand River, South Dakota, USA",
+    "latitude": 45.9389,
+    "longitude": -100.8444,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Historical records (date approximate, time uncertain)",
+    "notes": "Lakota leader, Battle of Little Bighorn victory, resisted US expansion",
+    "tags": [
+      "native-american",
+      "resistance",
+      "lakota",
+      "indigenous"
+    ]
+  },
+  {
+    "id": "geronimo",
+    "name": "Geronimo",
+    "category": "Revolutionaries",
+    "date": "1829-06-16",
+    "time": "12:00",
+    "location": "Gila River, Arizona, USA",
+    "latitude": 33.0528,
+    "longitude": -110.7453,
+    "timezone": "America/Phoenix",
+    "roddenRating": "C",
+    "source": "Historical records (date approximate, time uncertain)",
+    "notes": "Apache leader, guerrilla warfare master, last to surrender to US (1886)",
+    "tags": [
+      "native-american",
+      "apache",
+      "guerrilla",
+      "resistance"
+    ]
+  },
+  {
+    "id": "davis-angela",
+    "name": "Angela Davis",
+    "category": "Revolutionaries",
+    "date": "1944-01-26",
+    "time": "22:23",
+    "location": "Birmingham, Alabama, USA",
+    "latitude": 33.5207,
+    "longitude": -86.8025,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Black Panther, Communist Party, prison abolition activist, scholar",
+    "tags": [
+      "civil-rights",
+      "communism",
+      "prison-abolition",
+      "african-american"
+    ]
+  },
+  {
+    "id": "hampton-fred",
+    "name": "Fred Hampton",
+    "category": "Revolutionaries",
+    "date": "1948-08-30",
+    "time": "12:00",
+    "location": "Chicago, Illinois, USA",
+    "latitude": 41.8781,
+    "longitude": -87.6298,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Black Panther leader, Rainbow Coalition founder, assassinated by FBI 1969",
+    "tags": [
+      "black-panther",
+      "civil-rights",
+      "assassination",
+      "chicago"
+    ]
+  },
+  {
+    "id": "chavez-cesar",
+    "name": "Cesar Chavez",
+    "category": "Revolutionaries",
+    "date": "1927-03-31",
+    "time": "12:00",
+    "location": "Yuma, Arizona, USA",
+    "latitude": 32.6927,
+    "longitude": -114.6277,
+    "timezone": "America/Phoenix",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Farm workers union organizer, UFW co-founder, nonviolent labor activist",
+    "tags": [
+      "labor-rights",
+      "nonviolence",
+      "chicano",
+      "farmworkers"
+    ]
   }
 ]
