@@ -85,6 +85,17 @@ function ChartWheel({
   const [showTransitAspects, setShowTransitAspects] = useState(false);
   const [showTransitProgressionAspects, setShowTransitProgressionAspects] = useState(false);
 
+  // Outer planet transit filter (default: true for cleaner default appearance)
+  const [showOnlyOuterPlanetTransits, setShowOnlyOuterPlanetTransits] = useState(true);
+
+  // Define outer planets (for filtering transit aspect lines)
+  const OUTER_PLANETS = ['Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto', 'Chiron'];
+
+  // Helper function to check if a planet is an outer planet
+  const isOuterPlanet = (planetName) => {
+    return OUTER_PLANETS.includes(planetName);
+  };
+
   // Custom tooltip state
   const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
 
@@ -496,6 +507,11 @@ function ChartWheel({
       const aspectKey = `${aspect.planet1}-${aspect.planet2}`;
       if (!activeTransitAspects.has(aspectKey)) return null;
 
+      // Apply outer planet filter (only show aspects where transit planet is an outer planet)
+      if (showOnlyOuterPlanetTransits && !isOuterPlanet(aspect.planet1)) {
+        return null;
+      }
+
       // Get planet positions (planet1 = transit, planet2 = natal)
       const transitPlanet = transitData.planets[aspect.planet1Key];
       const natalPlanet = chartData.planets[aspect.planet2Key];
@@ -732,6 +748,11 @@ function ChartWheel({
       // Check if this aspect is active/visible
       const aspectKey = `${aspect.planet1}-${aspect.planet2}`;
       if (!activeTransitProgressionAspects.has(aspectKey)) return null;
+
+      // Apply outer planet filter (only show aspects where transit planet is an outer planet)
+      if (showOnlyOuterPlanetTransits && !isOuterPlanet(aspect.planet1)) {
+        return null;
+      }
 
       // Get transit and progression planet positions
       const transitPlanet = transitData.planets[aspect.planet1Key];
@@ -1122,6 +1143,14 @@ function ChartWheel({
                   style={{ flex: 1 }}
                 />
               </div>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer', paddingLeft: '25px' }}>
+                <input
+                  type="checkbox"
+                  checked={showOnlyOuterPlanetTransits}
+                  onChange={(e) => setShowOnlyOuterPlanetTransits(e.target.checked)}
+                />
+                <span style={{ fontSize: '13px' }}>Show Only Outer Planet Transit Lines</span>
+              </label>
             </div>
           )}
 
