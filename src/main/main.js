@@ -64,6 +64,24 @@ ipcMain.handle('calculate-chart', async (event, params) => {
   }
 });
 
+// Handle debug log writing
+ipcMain.handle('write-debug-log', async (event, params) => {
+  try {
+    // Write to project directory instead
+    const logPath = path.join(__dirname, '..', '..', 'aspect-debug.log');
+    const timestamp = new Date().toISOString();
+    const logContent = `\n\n=== DEBUG LOG ${timestamp} ===\n${JSON.stringify(params, null, 2)}\n`;
+
+    fs.appendFileSync(logPath, logContent);
+    console.log('Debug log written to:', logPath);
+
+    return { success: true, path: logPath };
+  } catch (error) {
+    console.error('Error writing debug log:', error);
+    return { success: false, error: error.message };
+  }
+});
+
 // Handle secondary progressions calculation requests
 ipcMain.handle('calculate-progressions', async (event, params) => {
   try {
@@ -340,6 +358,52 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
           });
         }
 
+        // HOUSE RULERSHIPS if available
+        if (chart.houseRulerships && chart.houseRulerships.length === 12) {
+          contextMessage += `\nHOUSE RULERSHIPS:\n`;
+          chart.houseRulerships.forEach(rulership => {
+            contextMessage += `House ${rulership.house}: ${rulership.signOnCusp} on cusp - `;
+            contextMessage += `Ruled by ${rulership.traditionalRuler}`;
+            if (rulership.modernRuler !== rulership.traditionalRuler) {
+              contextMessage += ` (traditional) / ${rulership.modernRuler} (modern)`;
+            }
+            contextMessage += `\n`;
+          });
+        }
+
+        // PROGRESSIONS if available
+        if (chart.progressions) {
+          contextMessage += `\n🌙 ${chart.progressions.type.toUpperCase()} (${chart.progressions.date}):\n`;
+          if (chart.progressions.planets && chart.houses) {
+            Object.values(chart.progressions.planets).forEach(planet => {
+              const sabian = getSabianSymbol(planet.longitude);
+              const house = getPlanetHouse(planet.longitude, chart.houses);
+              contextMessage += `Progressed ${planet.name}: ${longitudeToZodiac(planet.longitude)} in House ${house}\n`;
+              contextMessage += `  Sabian Symbol: ${sabian.sign} ${sabian.degree}° - "${sabian.symbol}"\n`;
+            });
+          }
+
+          // Progression-to-Natal Aspects
+          if (chart.progressions.progressionNatalAspects && chart.progressions.progressionNatalAspects.length > 0) {
+            contextMessage += `\nPROGRESSED-TO-NATAL ASPECTS:\n`;
+            chart.progressions.progressionNatalAspects.forEach(aspect => {
+              contextMessage += `Progressed ${aspect.planet1} ${aspect.symbol} Natal ${aspect.planet2} (orb: ${aspect.orb.toFixed(1)}°)`;
+              if (aspect.applying !== null) {
+                contextMessage += ` [${aspect.applying ? 'applying' : 'separating'}]`;
+              }
+              contextMessage += `\n`;
+            });
+          }
+
+          // Internal Progression Aspects
+          if (chart.progressions.progressionInternalAspects && chart.progressions.progressionInternalAspects.length > 0) {
+            contextMessage += `\nINTERNAL PROGRESSED ASPECTS:\n`;
+            chart.progressions.progressionInternalAspects.forEach(aspect => {
+              contextMessage += `Progressed ${aspect.planet1} ${aspect.symbol} Progressed ${aspect.planet2} (orb: ${aspect.orb.toFixed(1)}°)\n`;
+            });
+          }
+        }
+
         // TRANSITS if available
         if (chart.hasTransits && chart.transits) {
           contextMessage += `\n⭐ CURRENT TRANSITS (${chart.transits.date} at ${chart.transits.time}):\n`;
@@ -357,6 +421,18 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
             contextMessage += `\nTRANSIT-TO-NATAL ASPECTS:\n`;
             chart.transits.transitAspects.forEach(aspect => {
               contextMessage += `Transit ${aspect.planet1} ${aspect.symbol} Natal ${aspect.planet2} (orb: ${aspect.orb.toFixed(1)}°)`;
+              if (aspect.applying !== null) {
+                contextMessage += ` [${aspect.applying ? 'applying' : 'separating'}]`;
+              }
+              contextMessage += `\n`;
+            });
+          }
+
+          // TRI-WHEEL MODE: Transit-to-Progression Aspects (if both transits and progressions are loaded)
+          if (chart.isTriWheel && chart.progressions && chart.progressions.transitProgressionAspects && chart.progressions.transitProgressionAspects.length > 0) {
+            contextMessage += `\n🔮 TRI-WHEEL: TRANSIT-TO-PROGRESSED ASPECTS:\n`;
+            chart.progressions.transitProgressionAspects.forEach(aspect => {
+              contextMessage += `Transit ${aspect.planet1} ${aspect.symbol} Progressed ${aspect.planet2} (orb: ${aspect.orb.toFixed(1)}°)`;
               if (aspect.applying !== null) {
                 contextMessage += ` [${aspect.applying ? 'applying' : 'separating'}]`;
               }
