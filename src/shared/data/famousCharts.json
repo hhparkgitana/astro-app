@@ -12229,5 +12229,545 @@
       "jazz-age",
       "tragedy"
     ]
+  },
+  {
+    "id": "fellini-federico",
+    "name": "Federico Fellini",
+    "category": "Filmmakers",
+    "date": "1920-01-20",
+    "time": "14:30",
+    "location": "Rimini, Italy",
+    "latitude": 44.0678,
+    "longitude": 12.5695,
+    "timezone": "Europe/Rome",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Italian master, La Dolce Vita, 8½, 5 Oscars, surreal dreamlike style",
+    "tags": [
+      "director",
+      "italian",
+      "surreal",
+      "oscar-winner"
+    ]
+  },
+  {
+    "id": "bergman-ingmar",
+    "name": "Ingmar Bergman",
+    "category": "Filmmakers",
+    "date": "1918-07-14",
+    "time": "02:00",
+    "location": "Uppsala, Sweden",
+    "latitude": 59.8586,
+    "longitude": 17.6389,
+    "timezone": "Europe/Stockholm",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Swedish master, The Seventh Seal, Persona, existential themes, 3 Oscars",
+    "tags": [
+      "director",
+      "swedish",
+      "existential",
+      "auteur"
+    ]
+  },
+  {
+    "id": "godard-jean-luc",
+    "name": "Jean-Luc Godard",
+    "category": "Filmmakers",
+    "date": "1930-12-03",
+    "time": "12:00",
+    "location": "Paris, France",
+    "latitude": 48.8566,
+    "longitude": 2.3522,
+    "timezone": "Europe/Paris",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "French New Wave pioneer, Breathless, radical cinema, died 2022",
+    "tags": [
+      "director",
+      "french-new-wave",
+      "radical",
+      "avant-garde"
+    ]
+  },
+  {
+    "id": "truffaut-francois",
+    "name": "François Truffaut",
+    "category": "Filmmakers",
+    "date": "1932-02-06",
+    "time": "18:15",
+    "location": "Paris, France",
+    "latitude": 48.8566,
+    "longitude": 2.3522,
+    "timezone": "Europe/Paris",
+    "roddenRating": "A",
+    "source": "Birth certificate",
+    "notes": "French New Wave, The 400 Blows, Day for Night Oscar, auteur theory",
+    "tags": [
+      "director",
+      "french-new-wave",
+      "oscar-winner",
+      "auteur"
+    ]
+  },
+  {
+    "id": "bunuel-luis",
+    "name": "Luis Buñuel",
+    "category": "Filmmakers",
+    "date": "1900-02-22",
+    "time": "07:00",
+    "location": "Calanda, Spain",
+    "latitude": 41.0333,
+    "longitude": -0.2333,
+    "timezone": "Europe/Madrid",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Surrealist master, Un Chien Andalou, The Discreet Charm of the Bourgeoisie",
+    "tags": [
+      "director",
+      "surrealist",
+      "spanish",
+      "avant-garde"
+    ]
+  },
+  {
+    "id": "antonioni-michelangelo",
+    "name": "Michelangelo Antonioni",
+    "category": "Filmmakers",
+    "date": "1912-09-29",
+    "time": "12:00",
+    "location": "Ferrara, Italy",
+    "latitude": 44.8381,
+    "longitude": 11.6198,
+    "timezone": "Europe/Rome",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Italian modernist, Blow-Up, L'Avventura, alienation themes, visual poetry",
+    "tags": [
+      "director",
+      "italian",
+      "modernist",
+      "auteur"
+    ]
+  },
+  {
+    "id": "tarkovsky-andrei",
+    "name": "Andrei Tarkovsky",
+    "category": "Filmmakers",
+    "date": "1932-04-04",
+    "time": "11:00",
+    "location": "Zavrazhye, Russia",
+    "latitude": 57.5667,
+    "longitude": 37.7333,
+    "timezone": "Europe/Moscow",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Soviet master, Solaris, Stalker, spiritual cinema, long takes, poetic",
+    "tags": [
+      "director",
+      "soviet",
+      "spiritual",
+      "poet"
+    ]
+  },
+  {
+    "id": "eisenstein-sergei",
+    "name": "Sergei Eisenstein",
+    "category": "Filmmakers",
+    "date": "1898-01-23",
+    "time": "12:00",
+    "location": "Riga, Latvia",
+    "latitude": 56.9496,
+    "longitude": 24.1052,
+    "timezone": "Europe/Riga",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Soviet pioneer, Battleship Potemkin, montage theory, revolutionary cinema",
+    "tags": [
+      "director",
+      "soviet",
+      "montage",
+      "revolutionary"
+    ]
+  },
+  {
+    "id": "lynch-david",
+    "name": "David Lynch",
+    "category": "Filmmakers",
+    "date": "1946-01-20",
+    "time": "03:00",
+    "location": "Missoula, Montana, USA",
+    "latitude": 46.8721,
+    "longitude": -113.994,
+    "timezone": "America/Denver",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Surrealist visionary, Twin Peaks, Mulholland Drive, Blue Velvet, dreamlike horror",
+    "tags": [
+      "director",
+      "surrealist",
+      "twin-peaks",
+      "visionary"
+    ]
+  },
+  {
+    "id": "anderson-paul-thomas",
+    "name": "Paul Thomas Anderson",
+    "category": "Filmmakers",
+    "date": "1970-06-26",
+    "time": "12:00",
+    "location": "Los Angeles, California, USA",
+    "latitude": 34.0522,
+    "longitude": -118.2437,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Modern master, There Will Be Blood, Boogie Nights, Phantom Thread",
+    "tags": [
+      "director",
+      "modern",
+      "auteur",
+      "american"
+    ]
+  },
+  {
+    "id": "anderson-wes",
+    "name": "Wes Anderson",
+    "category": "Filmmakers",
+    "date": "1969-05-01",
+    "time": "12:00",
+    "location": "Houston, Texas, USA",
+    "latitude": 29.7604,
+    "longitude": -95.3698,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Distinctive visual style, The Grand Budapest Hotel, Moonrise Kingdom, symmetry",
+    "tags": [
+      "director",
+      "visual-stylist",
+      "quirky",
+      "american"
+    ]
+  },
+  {
+    "id": "nolan-christopher",
+    "name": "Christopher Nolan",
+    "category": "Filmmakers",
+    "date": "1970-07-30",
+    "time": "12:00",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "The Dark Knight, Inception, Oppenheimer Oscar, complex narratives, IMAX",
+    "tags": [
+      "director",
+      "blockbuster",
+      "complex",
+      "british"
+    ]
+  },
+  {
+    "id": "fincher-david",
+    "name": "David Fincher",
+    "category": "Filmmakers",
+    "date": "1962-08-28",
+    "time": "12:00",
+    "location": "Denver, Colorado, USA",
+    "latitude": 39.7392,
+    "longitude": -104.9903,
+    "timezone": "America/Denver",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Fight Club, Se7en, The Social Network, dark psychological thrillers, perfectionist",
+    "tags": [
+      "director",
+      "thriller",
+      "dark",
+      "perfectionist"
+    ]
+  },
+  {
+    "id": "lee-spike",
+    "name": "Spike Lee",
+    "category": "Filmmakers",
+    "date": "1957-03-20",
+    "time": "02:28",
+    "location": "Atlanta, Georgia, USA",
+    "latitude": 33.749,
+    "longitude": -84.388,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Do the Right Thing, Malcolm X, BlacKkKlansman Oscar, social commentary",
+    "tags": [
+      "director",
+      "social-commentary",
+      "african-american",
+      "activist"
+    ]
+  },
+  {
+    "id": "allen-woody",
+    "name": "Woody Allen",
+    "category": "Filmmakers",
+    "date": "1935-12-01",
+    "time": "22:55",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Annie Hall, Manhattan, neurotic comedy, prolific, 4 Oscars, controversial",
+    "tags": [
+      "director",
+      "comedy",
+      "neurotic",
+      "prolific"
+    ]
+  },
+  {
+    "id": "coen-joel",
+    "name": "Joel Coen",
+    "category": "Filmmakers",
+    "date": "1954-11-29",
+    "time": "12:00",
+    "location": "Minneapolis, Minnesota, USA",
+    "latitude": 44.9778,
+    "longitude": -93.265,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Coen Brothers, Fargo, No Country for Old Men, The Big Lebowski, 4 Oscars",
+    "tags": [
+      "director",
+      "coen-brothers",
+      "quirky",
+      "oscar-winner"
+    ]
+  },
+  {
+    "id": "coen-ethan",
+    "name": "Ethan Coen",
+    "category": "Filmmakers",
+    "date": "1957-09-21",
+    "time": "12:00",
+    "location": "Minneapolis, Minnesota, USA",
+    "latitude": 44.9778,
+    "longitude": -93.265,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Coen Brothers, Fargo, No Country for Old Men, The Big Lebowski, 4 Oscars",
+    "tags": [
+      "director",
+      "coen-brothers",
+      "quirky",
+      "oscar-winner"
+    ]
+  },
+  {
+    "id": "campion-jane",
+    "name": "Jane Campion",
+    "category": "Filmmakers",
+    "date": "1954-04-30",
+    "time": "12:00",
+    "location": "Wellington, New Zealand",
+    "latitude": -41.2865,
+    "longitude": 174.7762,
+    "timezone": "Pacific/Auckland",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "The Piano, The Power of the Dog, 2 Oscars, feminist perspective, New Zealand",
+    "tags": [
+      "director",
+      "feminist",
+      "new-zealand",
+      "oscar-winner"
+    ]
+  },
+  {
+    "id": "bigelow-kathryn",
+    "name": "Kathryn Bigelow",
+    "category": "Filmmakers",
+    "date": "1951-11-27",
+    "time": "12:00",
+    "location": "San Carlos, California, USA",
+    "latitude": 37.5072,
+    "longitude": -122.2605,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "The Hurt Locker, first woman to win Best Director Oscar, action films",
+    "tags": [
+      "director",
+      "oscar-winner",
+      "action",
+      "first-woman"
+    ]
+  },
+  {
+    "id": "scott-ridley",
+    "name": "Ridley Scott",
+    "category": "Filmmakers",
+    "date": "1937-11-30",
+    "time": "14:00",
+    "location": "South Shields, England",
+    "latitude": 54.9959,
+    "longitude": -1.4323,
+    "timezone": "Europe/London",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Alien, Blade Runner, Gladiator Oscar, visual master, science fiction",
+    "tags": [
+      "director",
+      "sci-fi",
+      "visual-master",
+      "british"
+    ]
+  },
+  {
+    "id": "cameron-james",
+    "name": "James Cameron",
+    "category": "Filmmakers",
+    "date": "1954-08-16",
+    "time": "17:16",
+    "location": "Kapuskasing, Ontario, Canada",
+    "latitude": 49.4167,
+    "longitude": -82.4333,
+    "timezone": "America/Toronto",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Titanic, Avatar, Terminator, 3 Oscars, highest-grossing films, tech innovator",
+    "tags": [
+      "director",
+      "blockbuster",
+      "oscar-winner",
+      "tech-innovator"
+    ]
+  },
+  {
+    "id": "lucas-george",
+    "name": "George Lucas",
+    "category": "Filmmakers",
+    "date": "1944-05-14",
+    "time": "05:40",
+    "location": "Modesto, California, USA",
+    "latitude": 37.6391,
+    "longitude": -120.9969,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Star Wars creator, Indiana Jones, ILM founder, changed filmmaking forever",
+    "tags": [
+      "director",
+      "star-wars",
+      "innovator",
+      "franchise"
+    ]
+  },
+  {
+    "id": "zemeckis-robert",
+    "name": "Robert Zemeckis",
+    "category": "Filmmakers",
+    "date": "1952-05-14",
+    "time": "12:00",
+    "location": "Chicago, Illinois, USA",
+    "latitude": 41.8781,
+    "longitude": -87.6298,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Back to the Future, Forrest Gump Oscar, technical innovation, storytelling",
+    "tags": [
+      "director",
+      "blockbuster",
+      "oscar-winner",
+      "innovator"
+    ]
+  },
+  {
+    "id": "jackson-peter",
+    "name": "Peter Jackson",
+    "category": "Filmmakers",
+    "date": "1961-10-31",
+    "time": "12:00",
+    "location": "Wellington, New Zealand",
+    "latitude": -41.2865,
+    "longitude": 174.7762,
+    "timezone": "Pacific/Auckland",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Lord of the Rings trilogy, 3 Oscars for Return of the King, epic fantasy",
+    "tags": [
+      "director",
+      "fantasy",
+      "oscar-winner",
+      "epic"
+    ]
+  },
+  {
+    "id": "lee-ang",
+    "name": "Ang Lee",
+    "category": "Filmmakers",
+    "date": "1954-10-23",
+    "time": "12:00",
+    "location": "Pingtung, Taiwan",
+    "latitude": 22.675,
+    "longitude": 120.4911,
+    "timezone": "Asia/Taipei",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Crouching Tiger, Brokeback Mountain, Life of Pi, 2 Best Director Oscars",
+    "tags": [
+      "director",
+      "oscar-winner",
+      "taiwanese",
+      "versatile"
+    ]
+  },
+  {
+    "id": "del-toro-guillermo",
+    "name": "Guillermo del Toro",
+    "category": "Filmmakers",
+    "date": "1964-10-09",
+    "time": "12:00",
+    "location": "Guadalajara, Mexico",
+    "latitude": 20.6597,
+    "longitude": -103.3496,
+    "timezone": "America/Mexico_City",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Pan's Labyrinth, The Shape of Water Oscar, gothic fantasy, monster lover",
+    "tags": [
+      "director",
+      "fantasy",
+      "oscar-winner",
+      "mexican"
+    ]
+  },
+  {
+    "id": "almodovar-pedro",
+    "name": "Pedro Almodóvar",
+    "category": "Filmmakers",
+    "date": "1949-09-25",
+    "time": "12:00",
+    "location": "Calzada de Calatrava, Spain",
+    "latitude": 38.6167,
+    "longitude": -3.7833,
+    "timezone": "Europe/Madrid",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Women on the Verge, Talk to Her Oscar, colorful melodrama, LGBTQ themes",
+    "tags": [
+      "director",
+      "melodrama",
+      "spanish",
+      "lgbtq"
+    ]
   }
 ]
