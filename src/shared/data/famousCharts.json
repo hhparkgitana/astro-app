@@ -14909,5 +14909,465 @@
       "siberia",
       "meteor"
     ]
+  },
+  {
+    "id": "july-26-movement",
+    "name": "Castro's Cuban Revolution Victory",
+    "category": "Coups & Revolutions",
+    "date": "1959-01-01",
+    "time": "00:01",
+    "location": "Havana, Cuba",
+    "latitude": 23.1136,
+    "longitude": -82.3666,
+    "timezone": "America/Havana",
+    "roddenRating": "AA",
+    "source": "Historical records",
+    "notes": "Castro enters Havana, Batista flees, communist Cuba begins",
+    "tags": [
+      "revolution",
+      "cuba",
+      "castro",
+      "communist"
+    ]
+  },
+  {
+    "id": "pinochet-coup",
+    "name": "Pinochet Coup in Chile",
+    "category": "Coups & Revolutions",
+    "date": "1973-09-11",
+    "time": "06:20",
+    "location": "Santiago, Chile",
+    "latitude": -33.4489,
+    "longitude": -70.6693,
+    "timezone": "America/Santiago",
+    "roddenRating": "AA",
+    "source": "Military records",
+    "notes": "Military coup, Allende dies, CIA-backed, 17-year dictatorship begins",
+    "tags": [
+      "coup",
+      "chile",
+      "cia",
+      "dictatorship"
+    ]
+  },
+  {
+    "id": "iranian-revolution",
+    "name": "Iranian Revolution (Shah Flees)",
+    "category": "Coups & Revolutions",
+    "date": "1979-01-16",
+    "time": "12:30",
+    "location": "Tehran, Iran",
+    "latitude": 35.6892,
+    "longitude": 51.389,
+    "timezone": "Asia/Tehran",
+    "roddenRating": "AA",
+    "source": "Historical records",
+    "notes": "Shah leaves Iran, Khomeini returns Feb 1, Islamic Republic established",
+    "tags": [
+      "revolution",
+      "iran",
+      "islamic",
+      "khomeini"
+    ]
+  },
+  {
+    "id": "october-revolution",
+    "name": "October Revolution (Bolshevik)",
+    "category": "Coups & Revolutions",
+    "date": "1917-11-07",
+    "time": "21:40",
+    "location": "Petrograd, Russia",
+    "latitude": 59.9343,
+    "longitude": 30.3351,
+    "timezone": "Europe/Moscow",
+    "roddenRating": "AA",
+    "source": "Historical records (Winter Palace stormed)",
+    "notes": "Bolsheviks storm Winter Palace, Lenin seizes power, Soviet Union born",
+    "tags": [
+      "revolution",
+      "bolshevik",
+      "lenin",
+      "soviet"
+    ]
+  },
+  {
+    "id": "napoleon-18-brumaire",
+    "name": "Napoleon's 18 Brumaire Coup",
+    "category": "Coups & Revolutions",
+    "date": "1799-11-09",
+    "time": "14:00",
+    "location": "Paris, France",
+    "latitude": 48.8566,
+    "longitude": 2.3522,
+    "timezone": "Europe/Paris",
+    "roddenRating": "A",
+    "source": "Historical records",
+    "notes": "Napoleon overthrows Directory, becomes First Consul, path to Emperor",
+    "tags": [
+      "coup",
+      "napoleon",
+      "french",
+      "consulate"
+    ]
+  },
+  {
+    "id": "ides-of-march",
+    "name": "Assassination of Julius Caesar",
+    "category": "Coups & Revolutions",
+    "date": "-0044-03-15",
+    "time": "12:00",
+    "location": "Rome, Italy",
+    "latitude": 41.9028,
+    "longitude": 12.4964,
+    "timezone": "Europe/Rome",
+    "roddenRating": "B",
+    "source": "Historical records (time approximate)",
+    "notes": "Caesar stabbed 23 times by senators, 'Et tu, Brute?', Republic ends",
+    "tags": [
+      "assassination",
+      "caesar",
+      "roman",
+      "ides"
+    ]
+  },
+  {
+    "id": "nasser-coup",
+    "name": "Egyptian Free Officers Revolution",
+    "category": "Coups & Revolutions",
+    "date": "1952-07-23",
+    "time": "00:30",
+    "location": "Cairo, Egypt",
+    "latitude": 30.0444,
+    "longitude": 31.2357,
+    "timezone": "Africa/Cairo",
+    "roddenRating": "AA",
+    "source": "Military records",
+    "notes": "Nasser & Free Officers overthrow King Farouk, Egyptian Republic born",
+    "tags": [
+      "coup",
+      "egypt",
+      "nasser",
+      "pan-arab"
+    ]
+  },
+  {
+    "id": "gaddafi-coup",
+    "name": "Gaddafi's Libyan Coup",
+    "category": "Coups & Revolutions",
+    "date": "1969-09-01",
+    "time": "02:30",
+    "location": "Tripoli, Libya",
+    "latitude": 32.8872,
+    "longitude": 13.1913,
+    "timezone": "Africa/Tripoli",
+    "roddenRating": "AA",
+    "source": "Military records",
+    "notes": "27-year-old Gaddafi overthrows King Idris, 42-year rule begins",
+    "tags": [
+      "coup",
+      "libya",
+      "gaddafi",
+      "military"
+    ]
+  },
+  {
+    "id": "park-chung-hee-coup",
+    "name": "Park Chung-hee Coup (South Korea)",
+    "category": "Coups & Revolutions",
+    "date": "1961-05-16",
+    "time": "03:00",
+    "location": "Seoul, South Korea",
+    "latitude": 37.5665,
+    "longitude": 126.978,
+    "timezone": "Asia/Seoul",
+    "roddenRating": "AA",
+    "source": "Military records",
+    "notes": "Military coup, Park becomes dictator, South Korean modernization",
+    "tags": [
+      "coup",
+      "south-korea",
+      "military",
+      "modernization"
+    ]
+  },
+  {
+    "id": "greek-junta",
+    "name": "Greek Military Junta Coup",
+    "category": "Coups & Revolutions",
+    "date": "1967-04-21",
+    "time": "02:00",
+    "location": "Athens, Greece",
+    "latitude": 37.9838,
+    "longitude": 23.7275,
+    "timezone": "Europe/Athens",
+    "roddenRating": "AA",
+    "source": "Military records",
+    "notes": "Colonels' coup, 7-year military dictatorship, torture, censorship",
+    "tags": [
+      "coup",
+      "greece",
+      "junta",
+      "dictatorship"
+    ]
+  },
+  {
+    "id": "carnation-revolution",
+    "name": "Portuguese Carnation Revolution",
+    "category": "Coups & Revolutions",
+    "date": "1974-04-25",
+    "time": "00:20",
+    "location": "Lisbon, Portugal",
+    "latitude": 38.7223,
+    "longitude": -9.1393,
+    "timezone": "Europe/Lisbon",
+    "roddenRating": "AA",
+    "source": "Military records (radio signal)",
+    "notes": "Bloodless coup, ends 48-year dictatorship, red carnations symbol",
+    "tags": [
+      "coup",
+      "portugal",
+      "bloodless",
+      "democracy"
+    ]
+  },
+  {
+    "id": "amin-coup",
+    "name": "Idi Amin Coup (Uganda)",
+    "category": "Coups & Revolutions",
+    "date": "1971-01-25",
+    "time": "01:30",
+    "location": "Kampala, Uganda",
+    "latitude": 0.3476,
+    "longitude": 32.5825,
+    "timezone": "Africa/Kampala",
+    "roddenRating": "AA",
+    "source": "Military records",
+    "notes": "Amin overthrows Obote while he's abroad, 8-year reign of terror",
+    "tags": [
+      "coup",
+      "uganda",
+      "amin",
+      "brutal"
+    ]
+  },
+  {
+    "id": "soviet-coup-attempt",
+    "name": "Soviet Coup Attempt (Failed)",
+    "category": "Coups & Revolutions",
+    "date": "1991-08-19",
+    "time": "06:00",
+    "location": "Moscow, Russia",
+    "latitude": 55.7558,
+    "longitude": 37.6173,
+    "timezone": "Europe/Moscow",
+    "roddenRating": "AA",
+    "source": "News reports",
+    "notes": "Hardliners try to preserve USSR, Yeltsin resists, coup fails, USSR dissolves",
+    "tags": [
+      "coup-attempt",
+      "failed",
+      "soviet",
+      "yeltsin"
+    ]
+  },
+  {
+    "id": "myanmar-coup-2021",
+    "name": "Myanmar Military Coup",
+    "category": "Coups & Revolutions",
+    "date": "2021-02-01",
+    "time": "03:00",
+    "location": "Naypyidaw, Myanmar",
+    "latitude": 19.7633,
+    "longitude": 96.0785,
+    "timezone": "Asia/Yangon",
+    "roddenRating": "AA",
+    "source": "News reports",
+    "notes": "Military arrests Aung San Suu Kyi, overthrows elected government",
+    "tags": [
+      "coup",
+      "myanmar",
+      "military",
+      "contemporary"
+    ]
+  },
+  {
+    "id": "turkey-coup-attempt",
+    "name": "Turkey Coup Attempt (Failed)",
+    "category": "Coups & Revolutions",
+    "date": "2016-07-15",
+    "time": "22:00",
+    "location": "Ankara, Turkey",
+    "latitude": 39.9334,
+    "longitude": 32.8597,
+    "timezone": "Europe/Istanbul",
+    "roddenRating": "AA",
+    "source": "News reports",
+    "notes": "Military faction tries to overthrow Erdogan, fails, massive purge follows",
+    "tags": [
+      "coup-attempt",
+      "failed",
+      "turkey",
+      "erdogan"
+    ]
+  },
+  {
+    "id": "beer-hall-putsch",
+    "name": "Hitler's Beer Hall Putsch (Failed)",
+    "category": "Coups & Revolutions",
+    "date": "1923-11-08",
+    "time": "20:30",
+    "location": "Munich, Germany",
+    "latitude": 48.1351,
+    "longitude": 11.582,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "AA",
+    "source": "Historical records",
+    "notes": "Hitler's failed coup attempt, 16 Nazis killed, Hitler imprisoned, wrote Mein Kampf",
+    "tags": [
+      "coup-attempt",
+      "failed",
+      "nazi",
+      "munich"
+    ]
+  },
+  {
+    "id": "spanish-civil-war",
+    "name": "Spanish Civil War Begins (Franco)",
+    "category": "Coups & Revolutions",
+    "date": "1936-07-17",
+    "time": "17:00",
+    "location": "Melilla, Spanish Morocco",
+    "latitude": 35.2923,
+    "longitude": -2.9381,
+    "timezone": "Africa/Ceuta",
+    "roddenRating": "AA",
+    "source": "Historical records",
+    "notes": "Franco's military uprising against Republic, 3-year civil war, fascist victory",
+    "tags": [
+      "coup",
+      "spain",
+      "franco",
+      "civil-war"
+    ]
+  },
+  {
+    "id": "algerian-coup",
+    "name": "Algerian Military Coup",
+    "category": "Coups & Revolutions",
+    "date": "1992-01-11",
+    "time": "12:00",
+    "location": "Algiers, Algeria",
+    "latitude": 36.7538,
+    "longitude": 3.0588,
+    "timezone": "Africa/Algiers",
+    "roddenRating": "AA",
+    "source": "News reports",
+    "notes": "Military cancels elections Islamists were winning, decade of civil war",
+    "tags": [
+      "coup",
+      "algeria",
+      "military",
+      "islamist"
+    ]
+  },
+  {
+    "id": "thai-coup-2014",
+    "name": "Thai Military Coup",
+    "category": "Coups & Revolutions",
+    "date": "2014-05-22",
+    "time": "16:30",
+    "location": "Bangkok, Thailand",
+    "latitude": 13.7563,
+    "longitude": 100.5018,
+    "timezone": "Asia/Bangkok",
+    "roddenRating": "AA",
+    "source": "News reports",
+    "notes": "Military overthrows Shinawatra government, Thailand's 12th coup since 1932",
+    "tags": [
+      "coup",
+      "thailand",
+      "military",
+      "frequent"
+    ]
+  },
+  {
+    "id": "argentine-coup-1976",
+    "name": "Argentine Military Coup",
+    "category": "Coups & Revolutions",
+    "date": "1976-03-24",
+    "time": "03:00",
+    "location": "Buenos Aires, Argentina",
+    "latitude": -34.6037,
+    "longitude": -58.3816,
+    "timezone": "America/Argentina/Buenos_Aires",
+    "roddenRating": "AA",
+    "source": "Military records",
+    "notes": "Military junta overthrows Perón, Dirty War begins, 30k disappeared",
+    "tags": [
+      "coup",
+      "argentina",
+      "dirty-war",
+      "disappeared"
+    ]
+  },
+  {
+    "id": "brazilian-coup-1964",
+    "name": "Brazilian Military Coup",
+    "category": "Coups & Revolutions",
+    "date": "1964-03-31",
+    "time": "23:00",
+    "location": "Brasília, Brazil",
+    "latitude": -15.8267,
+    "longitude": -47.9218,
+    "timezone": "America/Sao_Paulo",
+    "roddenRating": "AA",
+    "source": "Military records",
+    "notes": "Military overthrows Goulart, CIA-backed, 21-year dictatorship",
+    "tags": [
+      "coup",
+      "brazil",
+      "military",
+      "cia"
+    ]
+  },
+  {
+    "id": "indonesia-coup-1965",
+    "name": "Indonesian Communist Purge",
+    "category": "Coups & Revolutions",
+    "date": "1965-10-01",
+    "time": "03:30",
+    "location": "Jakarta, Indonesia",
+    "latitude": -6.2088,
+    "longitude": 106.8456,
+    "timezone": "Asia/Jakarta",
+    "roddenRating": "AA",
+    "source": "Historical records",
+    "notes": "Failed communist coup attempt, Suharto counter-coup, 500k-3M killed",
+    "tags": [
+      "coup",
+      "indonesia",
+      "suharto",
+      "massacre"
+    ]
+  },
+  {
+    "id": "guatemala-coup-1954",
+    "name": "Guatemalan Coup (CIA)",
+    "category": "Coups & Revolutions",
+    "date": "1954-06-18",
+    "time": "08:00",
+    "location": "Guatemala City, Guatemala",
+    "latitude": 14.6349,
+    "longitude": -90.5069,
+    "timezone": "America/Guatemala",
+    "roddenRating": "AA",
+    "source": "CIA records",
+    "notes": "CIA Operation PBSUCCESS, overthrows Árbenz, United Fruit interests",
+    "tags": [
+      "coup",
+      "guatemala",
+      "cia",
+      "banana-republic"
+    ]
   }
 ]
