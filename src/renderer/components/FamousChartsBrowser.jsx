@@ -25,8 +25,8 @@ function FamousChartsBrowser({ isOpen, onClose, onSelectChart }) {
       return matchesSearch && matchesCategory;
     });
 
-    // Sort by category first, then by name
-    return filtered.sort((a, b) => {
+    // Sort by category first, then by name (create new array to avoid mutation)
+    return [...filtered].sort((a, b) => {
       if (a.category !== b.category) {
         return a.category.localeCompare(b.category);
       }
@@ -73,7 +73,7 @@ function FamousChartsBrowser({ isOpen, onClose, onSelectChart }) {
           {`Showing ${filteredCharts.length} of ${famousChartsData.length} charts`}
         </div>
 
-        <div className="famous-charts-grid">
+        <div className="famous-charts-grid" key={`${selectedCategory}-${searchTerm}`}>
           {filteredCharts.map(chart => (
             <div
               key={chart.id}

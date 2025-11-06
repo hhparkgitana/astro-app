@@ -18561,5 +18561,525 @@
       "icon",
       "drummer"
     ]
+  },
+  {
+    "id": "blair-tony",
+    "name": "Tony Blair",
+    "category": "International Leaders",
+    "date": "1953-05-06",
+    "time": "06:10",
+    "location": "Edinburgh, Scotland",
+    "latitude": 55.9533,
+    "longitude": -3.1883,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "UK PM 1997-2007, New Labour, Iraq War, Good Friday Agreement",
+    "tags": [
+      "uk",
+      "labour",
+      "iraq-war",
+      "modern"
+    ]
+  },
+  {
+    "id": "degaulle-charles",
+    "name": "Charles de Gaulle",
+    "category": "International Leaders",
+    "date": "1890-11-22",
+    "time": "04:00",
+    "location": "Lille, France",
+    "latitude": 50.6292,
+    "longitude": 3.0573,
+    "timezone": "Europe/Paris",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "French Resistance leader WWII, President 1959-1969, Fifth Republic founder",
+    "tags": [
+      "france",
+      "wwii",
+      "resistance",
+      "founder"
+    ]
+  },
+  {
+    "id": "mitterrand-francois",
+    "name": "François Mitterrand",
+    "category": "International Leaders",
+    "date": "1916-10-26",
+    "time": "04:00",
+    "location": "Jarnac, France",
+    "latitude": 45.6833,
+    "longitude": -0.1667,
+    "timezone": "Europe/Paris",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "French President 1981-1995, longest-serving, Socialist, Vichy past",
+    "tags": [
+      "france",
+      "socialist",
+      "controversial",
+      "longest"
+    ]
+  },
+  {
+    "id": "kohl-helmut",
+    "name": "Helmut Kohl",
+    "category": "International Leaders",
+    "date": "1930-04-03",
+    "time": "06:30",
+    "location": "Ludwigshafen, Germany",
+    "latitude": 49.481,
+    "longitude": 8.4353,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "German reunification Chancellor 1982-1998, Euro architect, died 2017",
+    "tags": [
+      "germany",
+      "reunification",
+      "euro",
+      "architect"
+    ]
+  },
+  {
+    "id": "adenauer-konrad",
+    "name": "Konrad Adenauer",
+    "category": "International Leaders",
+    "date": "1876-01-05",
+    "time": "03:00",
+    "location": "Cologne, Germany",
+    "latitude": 50.9375,
+    "longitude": 6.9603,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "West Germany first Chancellor 1949-1963, post-war reconstruction",
+    "tags": [
+      "germany",
+      "post-war",
+      "reconstruction",
+      "founder"
+    ]
+  },
+  {
+    "id": "nehru-jawaharlal",
+    "name": "Jawaharlal Nehru",
+    "category": "International Leaders",
+    "date": "1889-11-14",
+    "time": "23:30",
+    "location": "Allahabad, India",
+    "latitude": 25.4358,
+    "longitude": 81.8463,
+    "timezone": "Asia/Kolkata",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "First Indian PM 1947-1964, independence leader, Gandhi's protégé, modern India",
+    "tags": [
+      "india",
+      "independence",
+      "first-pm",
+      "modern"
+    ]
+  },
+  {
+    "id": "gandhi-indira",
+    "name": "Indira Gandhi",
+    "category": "International Leaders",
+    "date": "1917-11-19",
+    "time": "23:11",
+    "location": "Allahabad, India",
+    "latitude": 25.4358,
+    "longitude": 81.8463,
+    "timezone": "Asia/Kolkata",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Indian PM 1966-77, 1980-84, Nehru's daughter, Emergency, assassinated",
+    "tags": [
+      "india",
+      "pm",
+      "assassinated",
+      "iron-lady"
+    ]
+  },
+  {
+    "id": "rabin-yitzhak",
+    "name": "Yitzhak Rabin",
+    "category": "International Leaders",
+    "date": "1922-03-01",
+    "time": "05:00",
+    "location": "Jerusalem, Palestine",
+    "latitude": 31.7683,
+    "longitude": 35.2137,
+    "timezone": "Asia/Jerusalem",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Israeli PM, Oslo Accords, Nobel Peace Prize 1994, assassinated 1995",
+    "tags": [
+      "israel",
+      "peace",
+      "nobel-prize",
+      "assassinated"
+    ]
+  },
+  {
+    "id": "sadat-anwar",
+    "name": "Anwar Sadat",
+    "category": "International Leaders",
+    "date": "1918-12-25",
+    "time": "12:00",
+    "location": "Mit Abu al-Kum, Egypt",
+    "latitude": 30.6667,
+    "longitude": 30.7667,
+    "timezone": "Africa/Cairo",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Egyptian President 1970-1981, Camp David, Nobel Peace Prize 1978, assassinated",
+    "tags": [
+      "egypt",
+      "peace",
+      "nobel-prize",
+      "assassinated"
+    ]
+  },
+  {
+    "id": "kenyatta-jomo",
+    "name": "Jomo Kenyatta",
+    "category": "International Leaders",
+    "date": "1891-10-20",
+    "time": "12:00",
+    "location": "Kiambu, Kenya",
+    "latitude": -1.1714,
+    "longitude": 36.8356,
+    "timezone": "Africa/Nairobi",
+    "roddenRating": "C",
+    "source": "Biography (date approximate, time uncertain)",
+    "notes": "First Kenyan President 1964-1978, independence leader, Mau Mau",
+    "tags": [
+      "kenya",
+      "independence",
+      "first-president",
+      "african"
+    ]
+  },
+  {
+    "id": "nkrumah-kwame",
+    "name": "Kwame Nkrumah",
+    "category": "International Leaders",
+    "date": "1909-09-21",
+    "time": "12:00",
+    "location": "Nkroful, Gold Coast",
+    "latitude": 4.95,
+    "longitude": -2.0167,
+    "timezone": "Africa/Accra",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "First Ghanaian President 1960-1966, pan-Africanism, independence pioneer",
+    "tags": [
+      "ghana",
+      "independence",
+      "pan-africanism",
+      "pioneer"
+    ]
+  },
+  {
+    "id": "nyerere-julius",
+    "name": "Julius Nyerere",
+    "category": "International Leaders",
+    "date": "1922-04-13",
+    "time": "12:00",
+    "location": "Butiama, Tanganyika",
+    "latitude": -1.7833,
+    "longitude": 33.9833,
+    "timezone": "Africa/Dar_es_Salaam",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Tanzanian President 1964-1985, Ujamaa socialism, African liberation, teacher",
+    "tags": [
+      "tanzania",
+      "socialism",
+      "pan-africanism",
+      "teacher"
+    ]
+  },
+  {
+    "id": "tito-josip-broz",
+    "name": "Josip Broz Tito",
+    "category": "International Leaders",
+    "date": "1892-05-07",
+    "time": "12:00",
+    "location": "Kumrovec, Croatia",
+    "latitude": 46,
+    "longitude": 15.6667,
+    "timezone": "Europe/Zagreb",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Yugoslav leader 1945-1980, Tito-Stalin Split, Non-Aligned Movement, held Yugoslavia together",
+    "tags": [
+      "yugoslavia",
+      "communist",
+      "non-aligned",
+      "strongman"
+    ]
+  },
+  {
+    "id": "peron-juan",
+    "name": "Juan Perón",
+    "category": "International Leaders",
+    "date": "1895-10-08",
+    "time": "21:00",
+    "location": "Lobos, Argentina",
+    "latitude": -35.1833,
+    "longitude": -59.1,
+    "timezone": "America/Argentina/Buenos_Aires",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Argentine President 1946-55, 1973-74, Peronism, populist, Eva Perón's husband",
+    "tags": [
+      "argentina",
+      "populist",
+      "peronism",
+      "controversial"
+    ]
+  },
+  {
+    "id": "peron-eva",
+    "name": "Eva Perón (Evita)",
+    "category": "International Leaders",
+    "date": "1919-05-07",
+    "time": "05:00",
+    "location": "Los Toldos, Argentina",
+    "latitude": -35.25,
+    "longitude": -61.0167,
+    "timezone": "America/Argentina/Buenos_Aires",
+    "roddenRating": "A",
+    "source": "Birth certificate",
+    "notes": "First Lady of Argentina, spiritual leader of Peronism, died at 33, saint-like status",
+    "tags": [
+      "argentina",
+      "first-lady",
+      "icon",
+      "evita"
+    ]
+  },
+  {
+    "id": "allende-salvador",
+    "name": "Salvador Allende",
+    "category": "International Leaders",
+    "date": "1908-06-26",
+    "time": "00:05",
+    "location": "Valparaíso, Chile",
+    "latitude": -33.0472,
+    "longitude": -71.6127,
+    "timezone": "America/Santiago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Chilean President 1970-1973, socialist, overthrown by Pinochet, suicide/murdered",
+    "tags": [
+      "chile",
+      "socialist",
+      "coup-victim",
+      "martyred"
+    ]
+  },
+  {
+    "id": "cardenas-lazaro",
+    "name": "Lázaro Cárdenas",
+    "category": "International Leaders",
+    "date": "1895-05-21",
+    "time": "12:00",
+    "location": "Jiquilpan, Mexico",
+    "latitude": 20.1333,
+    "longitude": -102.7167,
+    "timezone": "America/Mexico_City",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Mexican President 1934-1940, oil nationalization, land reform, progressive icon",
+    "tags": [
+      "mexico",
+      "progressive",
+      "nationalization",
+      "reform"
+    ]
+  },
+  {
+    "id": "trudeau-pierre",
+    "name": "Pierre Trudeau",
+    "category": "International Leaders",
+    "date": "1919-10-18",
+    "time": "04:00",
+    "location": "Montreal, Quebec, Canada",
+    "latitude": 45.5017,
+    "longitude": -73.5673,
+    "timezone": "America/Toronto",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Canadian PM 1968-79, 1980-84, Trudeaumania, bilingualism, Justin's father",
+    "tags": [
+      "canada",
+      "liberal",
+      "bilingualism",
+      "charismatic"
+    ]
+  },
+  {
+    "id": "aquino-corazon",
+    "name": "Corazon Aquino",
+    "category": "International Leaders",
+    "date": "1933-01-25",
+    "time": "12:00",
+    "location": "Tarlac, Philippines",
+    "latitude": 15.4833,
+    "longitude": 120.5833,
+    "timezone": "Asia/Manila",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Philippine President 1986-1992, People Power Revolution, democracy restored, died 2009",
+    "tags": [
+      "philippines",
+      "democracy",
+      "people-power",
+      "widow"
+    ]
+  },
+  {
+    "id": "sukarno",
+    "name": "Sukarno",
+    "category": "International Leaders",
+    "date": "1901-06-06",
+    "time": "06:00",
+    "location": "Surabaya, Indonesia",
+    "latitude": -7.2575,
+    "longitude": 112.7521,
+    "timezone": "Asia/Jakarta",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "First Indonesian President 1945-1967, independence leader, overthrown",
+    "tags": [
+      "indonesia",
+      "independence",
+      "first-president",
+      "overthrown"
+    ]
+  },
+  {
+    "id": "marcos-ferdinand",
+    "name": "Ferdinand Marcos",
+    "category": "International Leaders",
+    "date": "1917-09-11",
+    "time": "04:00",
+    "location": "Sarrat, Philippines",
+    "latitude": 18.1667,
+    "longitude": 120.6333,
+    "timezone": "Asia/Manila",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Philippine President 1965-1986, martial law, kleptocracy, Imelda's shoes, overthrown",
+    "tags": [
+      "philippines",
+      "dictator",
+      "kleptocracy",
+      "overthrown"
+    ]
+  },
+  {
+    "id": "lee-kuan-yew",
+    "name": "Lee Kuan Yew",
+    "category": "International Leaders",
+    "date": "1923-09-16",
+    "time": "04:18",
+    "location": "Singapore",
+    "latitude": 1.3521,
+    "longitude": 103.8198,
+    "timezone": "Asia/Singapore",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Singapore PM 1959-1990, transformed city-state, authoritarian but effective, died 2015",
+    "tags": [
+      "singapore",
+      "authoritarian",
+      "transformation",
+      "effective"
+    ]
+  },
+  {
+    "id": "thant-u",
+    "name": "U Thant",
+    "category": "International Leaders",
+    "date": "1909-01-22",
+    "time": "12:00",
+    "location": "Pantanaw, Burma",
+    "latitude": 16.9667,
+    "longitude": 95.4167,
+    "timezone": "Asia/Yangon",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "UN Secretary-General 1961-1971, Burmese, Cuban Missile Crisis mediator",
+    "tags": [
+      "un",
+      "burma",
+      "mediator",
+      "international"
+    ]
+  },
+  {
+    "id": "kofi-annan",
+    "name": "Kofi Annan",
+    "category": "International Leaders",
+    "date": "1938-04-08",
+    "time": "12:00",
+    "location": "Kumasi, Gold Coast",
+    "latitude": 6.6885,
+    "longitude": -1.6244,
+    "timezone": "Africa/Accra",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "UN Secretary-General 1997-2006, Nobel Peace Prize 2001, Ghanaian, died 2018",
+    "tags": [
+      "un",
+      "ghana",
+      "nobel-prize",
+      "international"
+    ]
+  },
+  {
+    "id": "yeltsin-boris",
+    "name": "Boris Yeltsin",
+    "category": "International Leaders",
+    "date": "1931-02-01",
+    "time": "12:00",
+    "location": "Butka, USSR",
+    "latitude": 57.35,
+    "longitude": 59.5667,
+    "timezone": "Asia/Yekaterinburg",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "First Russian President 1991-1999, Soviet collapse, chose Putin successor, alcoholic, died 2007",
+    "tags": [
+      "russia",
+      "first-president",
+      "collapse",
+      "alcoholic"
+    ]
+  },
+  {
+    "id": "khrushchev-nikita",
+    "name": "Nikita Khrushchev",
+    "category": "International Leaders",
+    "date": "1894-04-15",
+    "time": "12:00",
+    "location": "Kalinovka, Russian Empire",
+    "latitude": 51.3,
+    "longitude": 35.2667,
+    "timezone": "Europe/Moscow",
+    "roddenRating": "C",
+    "source": "Biography (date approximate, time uncertain)",
+    "notes": "Soviet leader 1953-1964, de-Stalinization, Cuban Missile Crisis, shoe-banging",
+    "tags": [
+      "soviet",
+      "de-stalinization",
+      "cuban-crisis",
+      "colorful"
+    ]
   }
 ]
