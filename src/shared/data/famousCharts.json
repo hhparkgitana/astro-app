@@ -15369,5 +15369,465 @@
       "cia",
       "banana-republic"
     ]
+  },
+  {
+    "id": "printing-press",
+    "name": "Gutenberg Printing Press",
+    "category": "Inventions",
+    "date": "1440-01-01",
+    "time": "12:00",
+    "location": "Mainz, Germany",
+    "latitude": 50,
+    "longitude": 8.2711,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "C",
+    "source": "Historical estimate (year approximate)",
+    "notes": "Movable type printing, revolutionized information spread, Renaissance catalyst",
+    "tags": [
+      "printing",
+      "information",
+      "renaissance",
+      "gutenberg"
+    ]
+  },
+  {
+    "id": "telephone-patent",
+    "name": "Telephone Patent (Bell)",
+    "category": "Inventions",
+    "date": "1876-03-07",
+    "time": "12:00",
+    "location": "Washington, D.C., USA",
+    "latitude": 38.9072,
+    "longitude": -77.0369,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Patent filing",
+    "notes": "Alexander Graham Bell patents telephone, communication revolution",
+    "tags": [
+      "communication",
+      "telephone",
+      "bell",
+      "patent"
+    ]
+  },
+  {
+    "id": "light-bulb",
+    "name": "Light Bulb (Edison)",
+    "category": "Inventions",
+    "date": "1879-10-21",
+    "time": "13:30",
+    "location": "Menlo Park, New Jersey, USA",
+    "latitude": 40.4115,
+    "longitude": -74.326,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Lab records",
+    "notes": "Edison's successful 13.5-hour bulb test, practical electric lighting",
+    "tags": [
+      "electricity",
+      "lighting",
+      "edison",
+      "innovation"
+    ]
+  },
+  {
+    "id": "airplane-first-flight",
+    "name": "First Airplane Flight",
+    "category": "Inventions",
+    "date": "1903-12-17",
+    "time": "10:35",
+    "location": "Kitty Hawk, North Carolina, USA",
+    "latitude": 36.0626,
+    "longitude": -75.7095,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Wright Brothers records",
+    "notes": "Wright Brothers' first powered flight, 12 seconds, 120 feet",
+    "tags": [
+      "aviation",
+      "wright-brothers",
+      "flight",
+      "breakthrough"
+    ]
+  },
+  {
+    "id": "transistor",
+    "name": "Transistor Invention",
+    "category": "Inventions",
+    "date": "1947-12-16",
+    "time": "14:00",
+    "location": "Murray Hill, New Jersey, USA",
+    "latitude": 40.6851,
+    "longitude": -74.4038,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Bell Labs records",
+    "notes": "Bardeen, Brattain, Shockley demonstrate transistor, computing revolution",
+    "tags": [
+      "electronics",
+      "computing",
+      "bell-labs",
+      "semiconductor"
+    ]
+  },
+  {
+    "id": "integrated-circuit",
+    "name": "Integrated Circuit (Microchip)",
+    "category": "Inventions",
+    "date": "1958-09-12",
+    "time": "12:00",
+    "location": "Dallas, Texas, USA",
+    "latitude": 32.7767,
+    "longitude": -96.797,
+    "timezone": "America/Chicago",
+    "roddenRating": "A",
+    "source": "Texas Instruments records",
+    "notes": "Jack Kilby demonstrates first IC, modern electronics foundation",
+    "tags": [
+      "electronics",
+      "microchip",
+      "computing",
+      "kilby"
+    ]
+  },
+  {
+    "id": "television-first-demo",
+    "name": "Television First Demonstration",
+    "category": "Inventions",
+    "date": "1927-01-07",
+    "time": "15:00",
+    "location": "San Francisco, California, USA",
+    "latitude": 37.7749,
+    "longitude": -122.4194,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Public demonstration",
+    "notes": "Philo Farnsworth transmits first TV image, electronic television born",
+    "tags": [
+      "television",
+      "broadcasting",
+      "farnsworth",
+      "media"
+    ]
+  },
+  {
+    "id": "radio-first-transmission",
+    "name": "Radio First Transmission",
+    "category": "Inventions",
+    "date": "1895-12-12",
+    "time": "11:30",
+    "location": "Bologna, Italy",
+    "latitude": 44.4949,
+    "longitude": 11.3426,
+    "timezone": "Europe/Rome",
+    "roddenRating": "A",
+    "source": "Marconi's records",
+    "notes": "Marconi transmits radio signals 1.5 miles, wireless communication begins",
+    "tags": [
+      "radio",
+      "wireless",
+      "marconi",
+      "communication"
+    ]
+  },
+  {
+    "id": "steam-engine-watt",
+    "name": "Watt Steam Engine Patent",
+    "category": "Inventions",
+    "date": "1769-01-05",
+    "time": "12:00",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Patent records",
+    "notes": "James Watt patents improved steam engine, Industrial Revolution catalyst",
+    "tags": [
+      "steam-engine",
+      "industrial-revolution",
+      "watt",
+      "power"
+    ]
+  },
+  {
+    "id": "photography-daguerreotype",
+    "name": "Photography (Daguerreotype)",
+    "category": "Inventions",
+    "date": "1839-01-09",
+    "time": "14:00",
+    "location": "Paris, France",
+    "latitude": 48.8566,
+    "longitude": 2.3522,
+    "timezone": "Europe/Paris",
+    "roddenRating": "AA",
+    "source": "Public announcement",
+    "notes": "Daguerre announces photographic process to French Academy, photography born",
+    "tags": [
+      "photography",
+      "daguerreotype",
+      "imaging",
+      "french"
+    ]
+  },
+  {
+    "id": "vaccine-first",
+    "name": "First Vaccination (Smallpox)",
+    "category": "Inventions",
+    "date": "1796-05-14",
+    "time": "12:00",
+    "location": "Berkeley, England",
+    "latitude": 51.6899,
+    "longitude": -2.4594,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Jenner's records",
+    "notes": "Edward Jenner vaccinates James Phipps, immunology founded",
+    "tags": [
+      "medicine",
+      "vaccine",
+      "jenner",
+      "smallpox"
+    ]
+  },
+  {
+    "id": "anesthesia-first",
+    "name": "Anesthesia First Public Demonstration",
+    "category": "Inventions",
+    "date": "1846-10-16",
+    "time": "10:15",
+    "location": "Boston, Massachusetts, USA",
+    "latitude": 42.3601,
+    "longitude": -71.0589,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Hospital records",
+    "notes": "Morton demonstrates ether anesthesia, painless surgery revolution",
+    "tags": [
+      "medicine",
+      "anesthesia",
+      "surgery",
+      "ether"
+    ]
+  },
+  {
+    "id": "x-ray-discovery",
+    "name": "X-Ray Discovery",
+    "category": "Inventions",
+    "date": "1895-11-08",
+    "time": "17:00",
+    "location": "Würzburg, Germany",
+    "latitude": 49.7913,
+    "longitude": 9.9534,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "AA",
+    "source": "Röntgen's lab notes",
+    "notes": "Röntgen discovers X-rays, medical imaging revolution, Nobel Prize 1901",
+    "tags": [
+      "medicine",
+      "x-ray",
+      "roentgen",
+      "imaging"
+    ]
+  },
+  {
+    "id": "laser-first",
+    "name": "First Working Laser",
+    "category": "Inventions",
+    "date": "1960-05-16",
+    "time": "14:00",
+    "location": "Malibu, California, USA",
+    "latitude": 34.0259,
+    "longitude": -118.7798,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Hughes Research labs",
+    "notes": "Theodore Maiman operates first laser, optics revolution",
+    "tags": [
+      "optics",
+      "laser",
+      "physics",
+      "maiman"
+    ]
+  },
+  {
+    "id": "polymerase-chain-reaction",
+    "name": "PCR Invention",
+    "category": "Inventions",
+    "date": "1983-04-01",
+    "time": "12:00",
+    "location": "Emeryville, California, USA",
+    "latitude": 37.8314,
+    "longitude": -122.2851,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "B",
+    "source": "Cetus Corporation",
+    "notes": "Kary Mullis invents PCR, DNA amplification, biotechnology revolution",
+    "tags": [
+      "biotechnology",
+      "pcr",
+      "dna",
+      "mullis"
+    ]
+  },
+  {
+    "id": "contraceptive-pill",
+    "name": "Birth Control Pill FDA Approval",
+    "category": "Inventions",
+    "date": "1960-05-09",
+    "time": "12:00",
+    "location": "Washington, D.C., USA",
+    "latitude": 38.9072,
+    "longitude": -77.0369,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "FDA records",
+    "notes": "FDA approves Enovid, sexual revolution, women's liberation catalyst",
+    "tags": [
+      "medicine",
+      "contraception",
+      "womens-rights",
+      "revolution"
+    ]
+  },
+  {
+    "id": "atomic-bomb-test",
+    "name": "Trinity Test (First Nuclear Weapon)",
+    "category": "Inventions",
+    "date": "1945-07-16",
+    "time": "05:29",
+    "location": "Alamogordo, New Mexico, USA",
+    "latitude": 33.6773,
+    "longitude": -106.4754,
+    "timezone": "America/Denver",
+    "roddenRating": "AA",
+    "source": "Manhattan Project records",
+    "notes": "First nuclear explosion, 'Now I am become Death,' atomic age begins",
+    "tags": [
+      "nuclear",
+      "weapon",
+      "manhattan-project",
+      "atomic-age"
+    ]
+  },
+  {
+    "id": "satellites-sputnik",
+    "name": "Sputnik 1 Launch",
+    "category": "Inventions",
+    "date": "1957-10-04",
+    "time": "19:28",
+    "location": "Baikonur, Kazakhstan",
+    "latitude": 45.965,
+    "longitude": 63.305,
+    "timezone": "Asia/Qyzylorda",
+    "roddenRating": "AA",
+    "source": "Soviet records",
+    "notes": "First artificial satellite, space age begins, shocked USA",
+    "tags": [
+      "space",
+      "satellite",
+      "soviet",
+      "sputnik"
+    ]
+  },
+  {
+    "id": "artificial-intelligence",
+    "name": "Dartmouth AI Conference",
+    "category": "Inventions",
+    "date": "1956-07-01",
+    "time": "09:00",
+    "location": "Hanover, New Hampshire, USA",
+    "latitude": 43.7022,
+    "longitude": -72.2896,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Conference records",
+    "notes": "McCarthy coins 'Artificial Intelligence,' field officially founded",
+    "tags": [
+      "ai",
+      "computing",
+      "mccarthy",
+      "dartmouth"
+    ]
+  },
+  {
+    "id": "credit-card",
+    "name": "Credit Card (Diners Club)",
+    "category": "Inventions",
+    "date": "1950-02-08",
+    "time": "12:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Company records",
+    "notes": "Frank McNamara introduces Diners Club card, cashless society begins",
+    "tags": [
+      "finance",
+      "credit-card",
+      "payment",
+      "innovation"
+    ]
+  },
+  {
+    "id": "barcode-patent",
+    "name": "Barcode Patent",
+    "category": "Inventions",
+    "date": "1952-10-07",
+    "time": "12:00",
+    "location": "Washington, D.C., USA",
+    "latitude": 38.9072,
+    "longitude": -77.0369,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Patent filing",
+    "notes": "Woodland & Silver patent barcode, retail revolution, universal product code",
+    "tags": [
+      "retail",
+      "barcode",
+      "automation",
+      "patent"
+    ]
+  },
+  {
+    "id": "microwave-oven",
+    "name": "Microwave Oven Patent",
+    "category": "Inventions",
+    "date": "1945-10-08",
+    "time": "12:00",
+    "location": "Washington, D.C., USA",
+    "latitude": 38.9072,
+    "longitude": -77.0369,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Patent filing",
+    "notes": "Percy Spencer patents microwave cooking, accidental discovery from radar",
+    "tags": [
+      "appliance",
+      "cooking",
+      "microwave",
+      "accidental"
+    ]
+  },
+  {
+    "id": "velcro-patent",
+    "name": "Velcro Patent",
+    "category": "Inventions",
+    "date": "1955-05-13",
+    "time": "12:00",
+    "location": "Bern, Switzerland",
+    "latitude": 46.948,
+    "longitude": 7.4474,
+    "timezone": "Europe/Zurich",
+    "roddenRating": "A",
+    "source": "Patent records",
+    "notes": "George de Mestral patents hook-and-loop fastener, inspired by burrs",
+    "tags": [
+      "fastener",
+      "velcro",
+      "innovation",
+      "biomimicry"
+    ]
   }
 ]
