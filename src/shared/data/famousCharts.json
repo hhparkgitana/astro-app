@@ -13269,5 +13269,485 @@
       "dark",
       "goth"
     ]
+  },
+  {
+    "id": "fischer-bobby",
+    "name": "Bobby Fischer",
+    "category": "Geniuses & Prodigies",
+    "date": "1943-03-09",
+    "time": "14:39",
+    "location": "Chicago, Illinois, USA",
+    "latitude": 41.8781,
+    "longitude": -87.6298,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Chess grandmaster, world champion 1972, IQ 180, eccentric genius, died 2008",
+    "tags": [
+      "chess",
+      "genius",
+      "prodigy",
+      "world-champion"
+    ]
+  },
+  {
+    "id": "kasparov-garry",
+    "name": "Garry Kasparov",
+    "category": "Geniuses & Prodigies",
+    "date": "1963-04-13",
+    "time": "14:05",
+    "location": "Baku, Azerbaijan",
+    "latitude": 40.4093,
+    "longitude": 49.8671,
+    "timezone": "Asia/Baku",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Chess world champion 1985-2000, youngest ever at 22, Deep Blue opponent, activist",
+    "tags": [
+      "chess",
+      "genius",
+      "world-champion",
+      "activist"
+    ]
+  },
+  {
+    "id": "carlsen-magnus",
+    "name": "Magnus Carlsen",
+    "category": "Geniuses & Prodigies",
+    "date": "1990-11-30",
+    "time": "23:00",
+    "location": "Tønsberg, Norway",
+    "latitude": 59.2675,
+    "longitude": 10.407,
+    "timezone": "Europe/Oslo",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Chess world champion 2013-2023, highest rating ever (2882), Norwegian prodigy",
+    "tags": [
+      "chess",
+      "genius",
+      "world-champion",
+      "prodigy"
+    ]
+  },
+  {
+    "id": "polgar-judit",
+    "name": "Judit Polgár",
+    "category": "Geniuses & Prodigies",
+    "date": "1976-07-23",
+    "time": "23:10",
+    "location": "Budapest, Hungary",
+    "latitude": 47.4979,
+    "longitude": 19.0402,
+    "timezone": "Europe/Budapest",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Strongest female chess player ever, grandmaster at 15, beat Kasparov & Karpov",
+    "tags": [
+      "chess",
+      "genius",
+      "prodigy",
+      "female"
+    ]
+  },
+  {
+    "id": "ramanujan-srinivasa",
+    "name": "Srinivasa Ramanujan",
+    "category": "Geniuses & Prodigies",
+    "date": "1887-12-22",
+    "time": "18:30",
+    "location": "Erode, India",
+    "latitude": 11.341,
+    "longitude": 77.7172,
+    "timezone": "Asia/Kolkata",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Mathematical genius, self-taught, 3,900 results, collaboration with Hardy, died age 32",
+    "tags": [
+      "mathematics",
+      "genius",
+      "prodigy",
+      "indian"
+    ]
+  },
+  {
+    "id": "gauss-carl-friedrich",
+    "name": "Carl Friedrich Gauss",
+    "category": "Geniuses & Prodigies",
+    "date": "1777-04-30",
+    "time": "11:30",
+    "location": "Brunswick, Germany",
+    "latitude": 52.2689,
+    "longitude": 10.5268,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Prince of Mathematicians, contributions to number theory, astronomy, statistics",
+    "tags": [
+      "mathematics",
+      "genius",
+      "astronomer",
+      "german"
+    ]
+  },
+  {
+    "id": "neumann-john-von",
+    "name": "John von Neumann",
+    "category": "Geniuses & Prodigies",
+    "date": "1903-12-28",
+    "time": "12:00",
+    "location": "Budapest, Hungary",
+    "latitude": 47.4979,
+    "longitude": 19.0402,
+    "timezone": "Europe/Budapest",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Polymath, quantum mechanics, game theory, computer architecture, Manhattan Project",
+    "tags": [
+      "mathematics",
+      "genius",
+      "polymath",
+      "physicist"
+    ]
+  },
+  {
+    "id": "turing-alan",
+    "name": "Alan Turing",
+    "category": "Geniuses & Prodigies",
+    "date": "1912-06-23",
+    "time": "02:15",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Birth certificate",
+    "notes": "Computer science father, Enigma codebreaker, AI pioneer, persecuted for homosexuality",
+    "tags": [
+      "computer-science",
+      "genius",
+      "codebreaker",
+      "tragic"
+    ]
+  },
+  {
+    "id": "feynman-richard",
+    "name": "Richard Feynman",
+    "category": "Geniuses & Prodigies",
+    "date": "1918-05-11",
+    "time": "12:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Quantum physicist, Nobel Prize 1965, Manhattan Project, bongo-playing character",
+    "tags": [
+      "physics",
+      "genius",
+      "nobel-prize",
+      "character"
+    ]
+  },
+  {
+    "id": "oppenheimer-robert",
+    "name": "J. Robert Oppenheimer",
+    "category": "Geniuses & Prodigies",
+    "date": "1904-04-22",
+    "time": "08:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Manhattan Project director, 'father of atomic bomb,' security clearance revoked, tragic",
+    "tags": [
+      "physics",
+      "genius",
+      "manhattan-project",
+      "tragic"
+    ]
+  },
+  {
+    "id": "mozart-wolfgang-amadeus",
+    "name": "Wolfgang Amadeus Mozart",
+    "category": "Geniuses & Prodigies",
+    "date": "1756-01-27",
+    "time": "20:00",
+    "location": "Salzburg, Austria",
+    "latitude": 47.8095,
+    "longitude": 13.055,
+    "timezone": "Europe/Vienna",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Musical prodigy, composed from age 5, 600+ works, died age 35, universal genius",
+    "tags": [
+      "music",
+      "prodigy",
+      "genius",
+      "composer"
+    ]
+  },
+  {
+    "id": "da-vinci-leonardo",
+    "name": "Leonardo da Vinci",
+    "category": "Geniuses & Prodigies",
+    "date": "1452-04-15",
+    "time": "21:40",
+    "location": "Vinci, Italy",
+    "latitude": 43.781,
+    "longitude": 10.9233,
+    "timezone": "Europe/Rome",
+    "roddenRating": "B",
+    "source": "Historical records",
+    "notes": "Ultimate polymath, Mona Lisa, inventor, scientist, artist, engineer, visionary",
+    "tags": [
+      "polymath",
+      "genius",
+      "artist",
+      "inventor"
+    ]
+  },
+  {
+    "id": "franklin-benjamin",
+    "name": "Benjamin Franklin",
+    "category": "Geniuses & Prodigies",
+    "date": "1706-01-17",
+    "time": "10:30",
+    "location": "Boston, Massachusetts, USA",
+    "latitude": 42.3601,
+    "longitude": -71.0589,
+    "timezone": "America/New_York",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Polymath, Founding Father, scientist, inventor, diplomat, writer, printer",
+    "tags": [
+      "polymath",
+      "genius",
+      "founding-father",
+      "inventor"
+    ]
+  },
+  {
+    "id": "pascal-blaise",
+    "name": "Blaise Pascal",
+    "category": "Geniuses & Prodigies",
+    "date": "1623-06-19",
+    "time": "12:00",
+    "location": "Clermont-Ferrand, France",
+    "latitude": 45.7772,
+    "longitude": 3.087,
+    "timezone": "Europe/Paris",
+    "roddenRating": "C",
+    "source": "Historical records (time uncertain)",
+    "notes": "Child prodigy, mathematics, physics, philosophy, Pascal's triangle, died age 39",
+    "tags": [
+      "mathematics",
+      "prodigy",
+      "genius",
+      "philosopher"
+    ]
+  },
+  {
+    "id": "newton-isaac",
+    "name": "Isaac Newton",
+    "category": "Geniuses & Prodigies",
+    "date": "1643-01-04",
+    "time": "01:38",
+    "location": "Woolsthorpe, England",
+    "latitude": 52.8125,
+    "longitude": -0.6394,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Laws of motion, gravity, calculus inventor, Principia, scientific revolution",
+    "tags": [
+      "physics",
+      "genius",
+      "mathematics",
+      "revolutionary"
+    ]
+  },
+  {
+    "id": "euler-leonhard",
+    "name": "Leonhard Euler",
+    "category": "Geniuses & Prodigies",
+    "date": "1707-04-15",
+    "time": "12:00",
+    "location": "Basel, Switzerland",
+    "latitude": 47.5596,
+    "longitude": 7.5886,
+    "timezone": "Europe/Zurich",
+    "roddenRating": "C",
+    "source": "Historical records (time uncertain)",
+    "notes": "Most prolific mathematician ever, 866 publications, continued work while blind",
+    "tags": [
+      "mathematics",
+      "genius",
+      "prolific",
+      "swiss"
+    ]
+  },
+  {
+    "id": "witten-edward",
+    "name": "Edward Witten",
+    "category": "Geniuses & Prodigies",
+    "date": "1951-08-26",
+    "time": "12:00",
+    "location": "Baltimore, Maryland, USA",
+    "latitude": 39.2904,
+    "longitude": -76.6122,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "String theory pioneer, Fields Medal (mathematician's Nobel), theoretical physicist",
+    "tags": [
+      "physics",
+      "genius",
+      "string-theory",
+      "contemporary"
+    ]
+  },
+  {
+    "id": "tao-terence",
+    "name": "Terence Tao",
+    "category": "Geniuses & Prodigies",
+    "date": "1975-07-17",
+    "time": "12:00",
+    "location": "Adelaide, Australia",
+    "latitude": -34.9285,
+    "longitude": 138.6007,
+    "timezone": "Australia/Adelaide",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Child prodigy, Fields Medal 2006, IQ 220-230, youngest IMO gold medalist at 13",
+    "tags": [
+      "mathematics",
+      "genius",
+      "prodigy",
+      "australian"
+    ]
+  },
+  {
+    "id": "wiener-norbert",
+    "name": "Norbert Wiener",
+    "category": "Geniuses & Prodigies",
+    "date": "1894-11-26",
+    "time": "12:00",
+    "location": "Columbia, Missouri, USA",
+    "latitude": 38.9517,
+    "longitude": -92.3341,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Child prodigy, entered college at 11, PhD at 18, cybernetics founder",
+    "tags": [
+      "mathematics",
+      "genius",
+      "prodigy",
+      "cybernetics"
+    ]
+  },
+  {
+    "id": "sidis-william-james",
+    "name": "William James Sidis",
+    "category": "Geniuses & Prodigies",
+    "date": "1898-04-01",
+    "time": "12:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Child prodigy, IQ 250-300 estimated, Harvard at 11, reclusive adult, died age 46",
+    "tags": [
+      "prodigy",
+      "genius",
+      "tragic",
+      "reclusive"
+    ]
+  },
+  {
+    "id": "kim-ung-yong",
+    "name": "Kim Ung-yong",
+    "category": "Geniuses & Prodigies",
+    "date": "1962-03-08",
+    "time": "12:00",
+    "location": "Seoul, South Korea",
+    "latitude": 37.5665,
+    "longitude": 126.978,
+    "timezone": "Asia/Seoul",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Guinness highest IQ (210), spoke 4 languages by age 2, NASA at age 8, PhD at 15",
+    "tags": [
+      "prodigy",
+      "genius",
+      "iq",
+      "korean"
+    ]
+  },
+  {
+    "id": "savant-marilyn-vos",
+    "name": "Marilyn vos Savant",
+    "category": "Geniuses & Prodigies",
+    "date": "1946-08-11",
+    "time": "12:00",
+    "location": "St. Louis, Missouri, USA",
+    "latitude": 38.627,
+    "longitude": -90.1994,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Guinness highest IQ record (228), Parade magazine columnist, Monty Hall problem",
+    "tags": [
+      "genius",
+      "iq",
+      "writer",
+      "logician"
+    ]
+  },
+  {
+    "id": "sagan-carl",
+    "name": "Carl Sagan",
+    "category": "Geniuses & Prodigies",
+    "date": "1934-11-09",
+    "time": "20:05",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Astronomer, Cosmos, science communicator, SETI, 'billions and billions'",
+    "tags": [
+      "astronomy",
+      "genius",
+      "science-communicator",
+      "cosmos"
+    ]
+  },
+  {
+    "id": "chomsky-noam",
+    "name": "Noam Chomsky",
+    "category": "Geniuses & Prodigies",
+    "date": "1928-12-07",
+    "time": "12:15",
+    "location": "Philadelphia, Pennsylvania, USA",
+    "latitude": 39.9526,
+    "longitude": -75.1652,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Linguist, revolutionized linguistics, cognitive science, political activist",
+    "tags": [
+      "linguistics",
+      "genius",
+      "cognitive-science",
+      "activist"
+    ]
   }
 ]
