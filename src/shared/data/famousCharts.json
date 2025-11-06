@@ -12769,5 +12769,505 @@
       "spanish",
       "lgbtq"
     ]
+  },
+  {
+    "id": "dior-christian",
+    "name": "Christian Dior",
+    "category": "Fashion Designers",
+    "date": "1905-01-21",
+    "time": "01:30",
+    "location": "Granville, France",
+    "latitude": 48.8378,
+    "longitude": -1.5989,
+    "timezone": "Europe/Paris",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "New Look 1947, revolutionized post-war fashion, French luxury icon",
+    "tags": [
+      "fashion",
+      "french",
+      "new-look",
+      "luxury"
+    ]
+  },
+  {
+    "id": "lagerfeld-karl",
+    "name": "Karl Lagerfeld",
+    "category": "Fashion Designers",
+    "date": "1933-09-10",
+    "time": "12:00",
+    "location": "Hamburg, Germany",
+    "latitude": 53.5511,
+    "longitude": 9.9937,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "C",
+    "source": "Biography (date disputed, time uncertain)",
+    "notes": "Chanel creative director 36 years, Fendi, prolific genius, died 2019",
+    "tags": [
+      "fashion",
+      "chanel",
+      "prolific",
+      "icon"
+    ]
+  },
+  {
+    "id": "versace-gianni",
+    "name": "Gianni Versace",
+    "category": "Fashion Designers",
+    "date": "1946-12-02",
+    "time": "08:30",
+    "location": "Reggio Calabria, Italy",
+    "latitude": 38.108,
+    "longitude": 15.6435,
+    "timezone": "Europe/Rome",
+    "roddenRating": "A",
+    "source": "Birth certificate",
+    "notes": "Bold prints, luxury brand, murdered 1997, celebrity favorite",
+    "tags": [
+      "fashion",
+      "italian",
+      "luxury",
+      "tragedy"
+    ]
+  },
+  {
+    "id": "versace-donatella",
+    "name": "Donatella Versace",
+    "category": "Fashion Designers",
+    "date": "1955-05-02",
+    "time": "12:00",
+    "location": "Reggio Calabria, Italy",
+    "latitude": 38.108,
+    "longitude": 15.6435,
+    "timezone": "Europe/Rome",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Versace creative director after Gianni's death, platinum blonde icon",
+    "tags": [
+      "fashion",
+      "italian",
+      "luxury",
+      "icon"
+    ]
+  },
+  {
+    "id": "armani-giorgio",
+    "name": "Giorgio Armani",
+    "category": "Fashion Designers",
+    "date": "1934-07-11",
+    "time": "21:15",
+    "location": "Piacenza, Italy",
+    "latitude": 45.0522,
+    "longitude": 9.6925,
+    "timezone": "Europe/Rome",
+    "roddenRating": "A",
+    "source": "Birth certificate",
+    "notes": "Italian elegance, power suits, minimalist luxury, billionaire",
+    "tags": [
+      "fashion",
+      "italian",
+      "minimalist",
+      "luxury"
+    ]
+  },
+  {
+    "id": "valentino-garavani",
+    "name": "Valentino Garavani",
+    "category": "Fashion Designers",
+    "date": "1932-05-11",
+    "time": "06:00",
+    "location": "Voghera, Italy",
+    "latitude": 44.9933,
+    "longitude": 9.0092,
+    "timezone": "Europe/Rome",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Valentino red, haute couture master, dressed Jackie Kennedy, Italian icon",
+    "tags": [
+      "fashion",
+      "italian",
+      "haute-couture",
+      "red"
+    ]
+  },
+  {
+    "id": "lauren-ralph",
+    "name": "Ralph Lauren",
+    "category": "Fashion Designers",
+    "date": "1939-10-14",
+    "time": "23:15",
+    "location": "Bronx, New York, USA",
+    "latitude": 40.8448,
+    "longitude": -73.8648,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Polo Ralph Lauren, American preppy style, lifestyle brand, billionaire",
+    "tags": [
+      "fashion",
+      "american",
+      "preppy",
+      "lifestyle"
+    ]
+  },
+  {
+    "id": "klein-calvin",
+    "name": "Calvin Klein",
+    "category": "Fashion Designers",
+    "date": "1942-11-19",
+    "time": "23:15",
+    "location": "Bronx, New York, USA",
+    "latitude": 40.8448,
+    "longitude": -73.8648,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Minimalist American fashion, provocative advertising, CK brand, cultural icon",
+    "tags": [
+      "fashion",
+      "american",
+      "minimalist",
+      "provocative"
+    ]
+  },
+  {
+    "id": "ford-tom",
+    "name": "Tom Ford",
+    "category": "Fashion Designers",
+    "date": "1961-08-27",
+    "time": "20:00",
+    "location": "Austin, Texas, USA",
+    "latitude": 30.2672,
+    "longitude": -97.7431,
+    "timezone": "America/Chicago",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Revived Gucci, film director, sexy glamorous aesthetic, entrepreneur",
+    "tags": [
+      "fashion",
+      "gucci",
+      "glamorous",
+      "director"
+    ]
+  },
+  {
+    "id": "jacobs-marc",
+    "name": "Marc Jacobs",
+    "category": "Fashion Designers",
+    "date": "1963-04-09",
+    "time": "14:05",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Louis Vuitton creative director, grunge collection, American designer",
+    "tags": [
+      "fashion",
+      "louis-vuitton",
+      "american",
+      "innovative"
+    ]
+  },
+  {
+    "id": "prada-miuccia",
+    "name": "Miuccia Prada",
+    "category": "Fashion Designers",
+    "date": "1949-05-10",
+    "time": "12:00",
+    "location": "Milan, Italy",
+    "latitude": 45.4642,
+    "longitude": 9.19,
+    "timezone": "Europe/Rome",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Prada creative director, intellectual fashion, feminist, PhD in Political Science",
+    "tags": [
+      "fashion",
+      "italian",
+      "intellectual",
+      "prada"
+    ]
+  },
+  {
+    "id": "givenchy-hubert",
+    "name": "Hubert de Givenchy",
+    "category": "Fashion Designers",
+    "date": "1927-02-20",
+    "time": "23:00",
+    "location": "Beauvais, France",
+    "latitude": 49.4295,
+    "longitude": 2.0807,
+    "timezone": "Europe/Paris",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Dressed Audrey Hepburn, elegant haute couture, French aristocratic style",
+    "tags": [
+      "fashion",
+      "french",
+      "haute-couture",
+      "elegance"
+    ]
+  },
+  {
+    "id": "balenciaga-cristobal",
+    "name": "Cristóbal Balenciaga",
+    "category": "Fashion Designers",
+    "date": "1895-01-21",
+    "time": "12:00",
+    "location": "Getaria, Spain",
+    "latitude": 43.3056,
+    "longitude": -2.2042,
+    "timezone": "Europe/Madrid",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Master of haute couture, sculptural designs, 'couturier's couturier'",
+    "tags": [
+      "fashion",
+      "spanish",
+      "haute-couture",
+      "master"
+    ]
+  },
+  {
+    "id": "karan-donna",
+    "name": "Donna Karan",
+    "category": "Fashion Designers",
+    "date": "1948-10-02",
+    "time": "20:30",
+    "location": "Forest Hills, New York, USA",
+    "latitude": 40.7181,
+    "longitude": -73.8448,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "DKNY founder, Seven Easy Pieces, working woman's wardrobe, American",
+    "tags": [
+      "fashion",
+      "american",
+      "dkny",
+      "practical"
+    ]
+  },
+  {
+    "id": "halston",
+    "name": "Halston (Roy Halston Frowick)",
+    "category": "Fashion Designers",
+    "date": "1932-04-23",
+    "time": "19:00",
+    "location": "Des Moines, Iowa, USA",
+    "latitude": 41.5868,
+    "longitude": -93.625,
+    "timezone": "America/Chicago",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "1970s American fashion icon, Studio 54 regular, minimalist glamour, died of AIDS 1990",
+    "tags": [
+      "fashion",
+      "american",
+      "70s",
+      "minimalist"
+    ]
+  },
+  {
+    "id": "von-furstenberg-diane",
+    "name": "Diane von Fürstenberg",
+    "category": "Fashion Designers",
+    "date": "1946-12-31",
+    "time": "18:57",
+    "location": "Brussels, Belgium",
+    "latitude": 50.8503,
+    "longitude": 4.3517,
+    "timezone": "Europe/Brussels",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Wrap dress icon, feminist fashion, businesswoman, DVF brand",
+    "tags": [
+      "fashion",
+      "feminist",
+      "wrap-dress",
+      "entrepreneur"
+    ]
+  },
+  {
+    "id": "wang-vera",
+    "name": "Vera Wang",
+    "category": "Fashion Designers",
+    "date": "1949-06-27",
+    "time": "12:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Bridal fashion queen, figure skating connection, American designer",
+    "tags": [
+      "fashion",
+      "bridal",
+      "american",
+      "luxury"
+    ]
+  },
+  {
+    "id": "herrera-carolina",
+    "name": "Carolina Herrera",
+    "category": "Fashion Designers",
+    "date": "1939-01-08",
+    "time": "12:00",
+    "location": "Caracas, Venezuela",
+    "latitude": 10.4806,
+    "longitude": -66.9036,
+    "timezone": "America/Caracas",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Venezuelan-American designer, elegant sophistication, dressed First Ladies",
+    "tags": [
+      "fashion",
+      "venezuelan",
+      "elegant",
+      "sophistication"
+    ]
+  },
+  {
+    "id": "de-la-renta-oscar",
+    "name": "Oscar de la Renta",
+    "category": "Fashion Designers",
+    "date": "1932-07-22",
+    "time": "12:00",
+    "location": "Santo Domingo, Dominican Republic",
+    "latitude": 18.4861,
+    "longitude": -69.9312,
+    "timezone": "America/Santo_Domingo",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Dominican-American designer, romantic elegance, society favorite, died 2014",
+    "tags": [
+      "fashion",
+      "dominican",
+      "romantic",
+      "elegance"
+    ]
+  },
+  {
+    "id": "cardin-pierre",
+    "name": "Pierre Cardin",
+    "category": "Fashion Designers",
+    "date": "1922-07-02",
+    "time": "12:00",
+    "location": "San Biagio di Callalta, Italy",
+    "latitude": 45.6667,
+    "longitude": 12.3833,
+    "timezone": "Europe/Rome",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Futuristic designs, Space Age fashion, licensing pioneer, died 2020",
+    "tags": [
+      "fashion",
+      "futuristic",
+      "space-age",
+      "italian-french"
+    ]
+  },
+  {
+    "id": "kawakubo-rei",
+    "name": "Rei Kawakubo",
+    "category": "Fashion Designers",
+    "date": "1942-10-11",
+    "time": "12:00",
+    "location": "Tokyo, Japan",
+    "latitude": 35.6762,
+    "longitude": 139.6503,
+    "timezone": "Asia/Tokyo",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Comme des Garçons founder, avant-garde, deconstruction, revolutionary",
+    "tags": [
+      "fashion",
+      "japanese",
+      "avant-garde",
+      "revolutionary"
+    ]
+  },
+  {
+    "id": "yamamoto-yohji",
+    "name": "Yohji Yamamoto",
+    "category": "Fashion Designers",
+    "date": "1943-10-03",
+    "time": "12:00",
+    "location": "Tokyo, Japan",
+    "latitude": 35.6762,
+    "longitude": 139.6503,
+    "timezone": "Asia/Tokyo",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Black clothing master, avant-garde Japanese designer, Y-3 collaboration",
+    "tags": [
+      "fashion",
+      "japanese",
+      "avant-garde",
+      "black"
+    ]
+  },
+  {
+    "id": "miyake-issey",
+    "name": "Issey Miyake",
+    "category": "Fashion Designers",
+    "date": "1938-04-22",
+    "time": "12:00",
+    "location": "Hiroshima, Japan",
+    "latitude": 34.3853,
+    "longitude": 132.4553,
+    "timezone": "Asia/Tokyo",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Pleats Please, technology meets fashion, Hiroshima survivor, died 2022",
+    "tags": [
+      "fashion",
+      "japanese",
+      "innovative",
+      "technology"
+    ]
+  },
+  {
+    "id": "wang-alexander",
+    "name": "Alexander Wang",
+    "category": "Fashion Designers",
+    "date": "1983-12-26",
+    "time": "12:00",
+    "location": "San Francisco, California, USA",
+    "latitude": 37.7749,
+    "longitude": -122.4194,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Urban sportswear, Balenciaga creative director 2012-2015, Gen Y designer",
+    "tags": [
+      "fashion",
+      "american",
+      "urban",
+      "contemporary"
+    ]
+  },
+  {
+    "id": "owens-rick",
+    "name": "Rick Owens",
+    "category": "Fashion Designers",
+    "date": "1962-11-18",
+    "time": "12:00",
+    "location": "Porterville, California, USA",
+    "latitude": 36.0652,
+    "longitude": -119.0168,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Dark avant-garde aesthetic, grunge luxury, goth fashion, cult following",
+    "tags": [
+      "fashion",
+      "avant-garde",
+      "dark",
+      "goth"
+    ]
   }
 ]
