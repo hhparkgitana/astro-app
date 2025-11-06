@@ -14649,5 +14649,265 @@
       "polka",
       "polish"
     ]
+  },
+  {
+    "id": "earhart-amelia",
+    "name": "Amelia Earhart",
+    "category": "Unsolved Mysteries",
+    "date": "1897-07-24",
+    "time": "23:30",
+    "location": "Atchison, Kansas, USA",
+    "latitude": 39.5631,
+    "longitude": -95.1218,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Aviation pioneer, disappeared July 2, 1937 over Pacific during world flight",
+    "tags": [
+      "disappearance",
+      "aviation",
+      "pioneer",
+      "pacific"
+    ]
+  },
+  {
+    "id": "malaysia-mh370",
+    "name": "Malaysia Airlines Flight 370",
+    "category": "Unsolved Mysteries",
+    "date": "2014-03-08",
+    "time": "00:41",
+    "location": "Kuala Lumpur, Malaysia",
+    "latitude": 3.139,
+    "longitude": 101.6869,
+    "timezone": "Asia/Kuala_Lumpur",
+    "roddenRating": "AA",
+    "source": "Flight departure",
+    "notes": "239 people vanished, last contact 01:19, Indian Ocean search failed",
+    "tags": [
+      "disappearance",
+      "aviation",
+      "modern",
+      "unsolved"
+    ]
+  },
+  {
+    "id": "hoffa-jimmy",
+    "name": "Jimmy Hoffa",
+    "category": "Unsolved Mysteries",
+    "date": "1913-02-14",
+    "time": "06:52",
+    "location": "Brazil, Indiana, USA",
+    "latitude": 39.5237,
+    "longitude": -87.125,
+    "timezone": "America/Indiana/Indianapolis",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Teamsters leader, disappeared July 30, 1975 Detroit, presumed mob hit",
+    "tags": [
+      "disappearance",
+      "mob",
+      "labor",
+      "detroit"
+    ]
+  },
+  {
+    "id": "db-cooper",
+    "name": "D.B. Cooper Hijacking",
+    "category": "Unsolved Mysteries",
+    "date": "1971-11-24",
+    "time": "14:50",
+    "location": "Portland, Oregon, USA",
+    "latitude": 45.5897,
+    "longitude": -122.5951,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Flight departure",
+    "notes": "Hijacked plane, parachuted with $200k ransom, never found",
+    "tags": [
+      "hijacking",
+      "disappearance",
+      "parachute",
+      "legend"
+    ]
+  },
+  {
+    "id": "ramsey-jonbenet",
+    "name": "JonBenét Ramsey",
+    "category": "Unsolved Mysteries",
+    "date": "1990-08-06",
+    "time": "13:46",
+    "location": "Atlanta, Georgia, USA",
+    "latitude": 33.749,
+    "longitude": -84.388,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Child beauty queen, murdered Dec 26 1996 Boulder home, unsolved",
+    "tags": [
+      "murder",
+      "unsolved",
+      "child",
+      "pageant"
+    ]
+  },
+  {
+    "id": "black-dahlia",
+    "name": "Black Dahlia (Elizabeth Short)",
+    "category": "Unsolved Mysteries",
+    "date": "1924-07-29",
+    "time": "12:00",
+    "location": "Hyde Park, Massachusetts, USA",
+    "latitude": 42.2552,
+    "longitude": -71.1247,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Murdered Jan 15 1947 LA, body severed, famous unsolved case",
+    "tags": [
+      "murder",
+      "unsolved",
+      "los-angeles",
+      "1940s"
+    ]
+  },
+  {
+    "id": "zodiac-killer-first",
+    "name": "Zodiac Killer First Attack",
+    "category": "Unsolved Mysteries",
+    "date": "1968-12-20",
+    "time": "23:15",
+    "location": "Benicia, California, USA",
+    "latitude": 38.0494,
+    "longitude": -122.1586,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Police reports",
+    "notes": "Serial killer, cryptic letters, 5 confirmed kills, never identified",
+    "tags": [
+      "serial-killer",
+      "unsolved",
+      "zodiac",
+      "cryptic"
+    ]
+  },
+  {
+    "id": "jack-the-ripper",
+    "name": "Jack the Ripper First Murder",
+    "category": "Unsolved Mysteries",
+    "date": "1888-08-31",
+    "time": "03:40",
+    "location": "Whitechapel, London, England",
+    "latitude": 51.5177,
+    "longitude": -0.0605,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Police reports",
+    "notes": "Mary Ann Nichols murder, 5 victims, identity never found",
+    "tags": [
+      "serial-killer",
+      "unsolved",
+      "victorian",
+      "london"
+    ]
+  },
+  {
+    "id": "mccann-madeleine",
+    "name": "Madeleine McCann",
+    "category": "Unsolved Mysteries",
+    "date": "2003-05-12",
+    "time": "17:56",
+    "location": "Leicester, England",
+    "latitude": 52.6369,
+    "longitude": -1.1398,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Disappeared May 3 2007 age 3 Portugal resort, massive search",
+    "tags": [
+      "disappearance",
+      "child",
+      "portugal",
+      "international"
+    ]
+  },
+  {
+    "id": "anastasia-romanov",
+    "name": "Grand Duchess Anastasia",
+    "category": "Unsolved Mysteries",
+    "date": "1901-06-18",
+    "time": "06:00",
+    "location": "Peterhof, Russia",
+    "latitude": 59.8844,
+    "longitude": 29.9086,
+    "timezone": "Europe/Moscow",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Romanov execution 1918, survival rumors, impostors, DNA proved death",
+    "tags": [
+      "royalty",
+      "mystery",
+      "execution",
+      "impostors"
+    ]
+  },
+  {
+    "id": "roanoke-colony",
+    "name": "Roanoke Colony Disappearance",
+    "category": "Unsolved Mysteries",
+    "date": "1587-07-22",
+    "time": "12:00",
+    "location": "Roanoke Island, North Carolina, USA",
+    "latitude": 35.8793,
+    "longitude": -75.6774,
+    "timezone": "America/New_York",
+    "roddenRating": "B",
+    "source": "Historical records",
+    "notes": "Lost Colony, 115 settlers vanished by 1590, only 'CROATOAN' carved",
+    "tags": [
+      "disappearance",
+      "colony",
+      "historical",
+      "croatoan"
+    ]
+  },
+  {
+    "id": "bermuda-triangle-flight19",
+    "name": "Flight 19 Disappearance",
+    "category": "Unsolved Mysteries",
+    "date": "1945-12-05",
+    "time": "14:10",
+    "location": "Fort Lauderdale, Florida, USA",
+    "latitude": 26.1224,
+    "longitude": -80.1373,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Military records",
+    "notes": "5 Navy bombers vanished Bermuda Triangle, 14 crew, rescue plane also lost",
+    "tags": [
+      "disappearance",
+      "bermuda-triangle",
+      "aviation",
+      "military"
+    ]
+  },
+  {
+    "id": "tunguska-event",
+    "name": "Tunguska Event",
+    "category": "Unsolved Mysteries",
+    "date": "1908-06-30",
+    "time": "07:17",
+    "location": "Tunguska, Russia",
+    "latitude": 60.8861,
+    "longitude": 101.8944,
+    "timezone": "Asia/Krasnoyarsk",
+    "roddenRating": "AA",
+    "source": "Eyewitness reports",
+    "notes": "Massive explosion flattened 2000 sq km forest, likely meteor, no crater",
+    "tags": [
+      "explosion",
+      "mystery",
+      "siberia",
+      "meteor"
+    ]
   }
 ]
