@@ -15829,5 +15829,485 @@
       "innovation",
       "biomimicry"
     ]
+  },
+  {
+    "id": "child-julia",
+    "name": "Julia Child",
+    "category": "Famous Foodies",
+    "date": "1912-08-15",
+    "time": "21:30",
+    "location": "Pasadena, California, USA",
+    "latitude": 34.1478,
+    "longitude": -118.1445,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "French Chef TV show, Mastering the Art of French Cooking, American culinary icon",
+    "tags": [
+      "chef",
+      "tv-personality",
+      "french-cuisine",
+      "icon"
+    ]
+  },
+  {
+    "id": "bourdain-anthony",
+    "name": "Anthony Bourdain",
+    "category": "Famous Foodies",
+    "date": "1956-06-25",
+    "time": "12:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Kitchen Confidential, Parts Unknown, chef-writer-traveler, suicide 2018",
+    "tags": [
+      "chef",
+      "writer",
+      "tv-personality",
+      "tragic"
+    ]
+  },
+  {
+    "id": "ramsay-gordon",
+    "name": "Gordon Ramsay",
+    "category": "Famous Foodies",
+    "date": "1966-11-08",
+    "time": "12:00",
+    "location": "Johnstone, Scotland",
+    "latitude": 55.8353,
+    "longitude": -4.5053,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "16 Michelin stars, Hell's Kitchen, fiery temper, global restaurant empire",
+    "tags": [
+      "chef",
+      "michelin",
+      "tv-personality",
+      "scottish"
+    ]
+  },
+  {
+    "id": "oliver-jamie",
+    "name": "Jamie Oliver",
+    "category": "Famous Foodies",
+    "date": "1975-05-27",
+    "time": "12:00",
+    "location": "Clavering, England",
+    "latitude": 51.9667,
+    "longitude": 0.1667,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Naked Chef, school dinners campaign, accessible cooking, British icon",
+    "tags": [
+      "chef",
+      "tv-personality",
+      "activist",
+      "british"
+    ]
+  },
+  {
+    "id": "beard-james",
+    "name": "James Beard",
+    "category": "Famous Foodies",
+    "date": "1903-05-05",
+    "time": "12:00",
+    "location": "Portland, Oregon, USA",
+    "latitude": 45.5152,
+    "longitude": -122.6784,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Dean of American cookery, James Beard Awards namesake, culinary pioneer",
+    "tags": [
+      "chef",
+      "writer",
+      "american-cuisine",
+      "pioneer"
+    ]
+  },
+  {
+    "id": "waters-alice",
+    "name": "Alice Waters",
+    "category": "Famous Foodies",
+    "date": "1944-04-28",
+    "time": "12:00",
+    "location": "Chatham, New Jersey, USA",
+    "latitude": 40.7407,
+    "longitude": -74.3838,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Chez Panisse founder, farm-to-table pioneer, California cuisine, slow food",
+    "tags": [
+      "chef",
+      "restaurateur",
+      "farm-to-table",
+      "california"
+    ]
+  },
+  {
+    "id": "pepin-jacques",
+    "name": "Jacques Pépin",
+    "category": "Famous Foodies",
+    "date": "1935-12-18",
+    "time": "12:00",
+    "location": "Bourg-en-Bresse, France",
+    "latitude": 46.2056,
+    "longitude": 5.2258,
+    "timezone": "Europe/Paris",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "French chef, PBS shows, technique master, Julia Child's friend",
+    "tags": [
+      "chef",
+      "french",
+      "tv-personality",
+      "technique"
+    ]
+  },
+  {
+    "id": "lagasse-emeril",
+    "name": "Emeril Lagasse",
+    "category": "Famous Foodies",
+    "date": "1959-10-15",
+    "time": "12:00",
+    "location": "Fall River, Massachusetts, USA",
+    "latitude": 41.7015,
+    "longitude": -71.155,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "BAM catchphrase, Food Network star, Creole cuisine, New Orleans",
+    "tags": [
+      "chef",
+      "tv-personality",
+      "creole",
+      "catchphrase"
+    ]
+  },
+  {
+    "id": "flay-bobby",
+    "name": "Bobby Flay",
+    "category": "Famous Foodies",
+    "date": "1964-12-10",
+    "time": "12:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Iron Chef, southwestern cuisine, multiple restaurants, Food Network",
+    "tags": [
+      "chef",
+      "tv-personality",
+      "southwestern",
+      "iron-chef"
+    ]
+  },
+  {
+    "id": "garten-ina",
+    "name": "Ina Garten",
+    "category": "Famous Foodies",
+    "date": "1948-02-02",
+    "time": "12:00",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Barefoot Contessa, elegant simplicity, Hamptons, comfort food",
+    "tags": [
+      "chef",
+      "tv-personality",
+      "author",
+      "comfort-food"
+    ]
+  },
+  {
+    "id": "lawson-nigella",
+    "name": "Nigella Lawson",
+    "category": "Famous Foodies",
+    "date": "1960-01-06",
+    "time": "12:00",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Food writer, sensual cooking style, comfort food, British icon",
+    "tags": [
+      "writer",
+      "tv-personality",
+      "british",
+      "sensual"
+    ]
+  },
+  {
+    "id": "escoffier-auguste",
+    "name": "Auguste Escoffier",
+    "category": "Famous Foodies",
+    "date": "1846-10-28",
+    "time": "12:00",
+    "location": "Villeneuve-Loubet, France",
+    "latitude": 43.6583,
+    "longitude": 7.1217,
+    "timezone": "Europe/Paris",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "King of chefs, modernized French cuisine, Le Guide Culinaire, brigade",
+    "tags": [
+      "chef",
+      "french",
+      "classical",
+      "pioneer"
+    ]
+  },
+  {
+    "id": "white-marco-pierre",
+    "name": "Marco Pierre White",
+    "category": "Famous Foodies",
+    "date": "1961-12-11",
+    "time": "12:00",
+    "location": "Leeds, England",
+    "latitude": 53.8008,
+    "longitude": -1.5491,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Youngest 3-Michelin star chef, trained Ramsay, returned stars",
+    "tags": [
+      "chef",
+      "michelin",
+      "british",
+      "mentor"
+    ]
+  },
+  {
+    "id": "keller-thomas",
+    "name": "Thomas Keller",
+    "category": "Famous Foodies",
+    "date": "1955-10-14",
+    "time": "12:00",
+    "location": "Oceanside, California, USA",
+    "latitude": 33.1959,
+    "longitude": -117.3795,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "French Laundry, Per Se, perfectionist, 2 3-Michelin star restaurants",
+    "tags": [
+      "chef",
+      "michelin",
+      "perfectionist",
+      "american"
+    ]
+  },
+  {
+    "id": "adria-ferran",
+    "name": "Ferran Adrià",
+    "category": "Famous Foodies",
+    "date": "1962-05-14",
+    "time": "12:00",
+    "location": "L'Hospitalet de Llobregat, Spain",
+    "latitude": 41.3598,
+    "longitude": 2.1001,
+    "timezone": "Europe/Madrid",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "El Bulli, molecular gastronomy pioneer, deconstructed cuisine",
+    "tags": [
+      "chef",
+      "molecular-gastronomy",
+      "spanish",
+      "innovator"
+    ]
+  },
+  {
+    "id": "ducasse-alain",
+    "name": "Alain Ducasse",
+    "category": "Famous Foodies",
+    "date": "1956-09-13",
+    "time": "12:00",
+    "location": "Orthez, France",
+    "latitude": 43.4889,
+    "longitude": -0.7731,
+    "timezone": "Europe/Paris",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "21 Michelin stars total, global restaurant empire, French haute cuisine",
+    "tags": [
+      "chef",
+      "michelin",
+      "french",
+      "empire"
+    ]
+  },
+  {
+    "id": "robuchon-joel",
+    "name": "Joël Robuchon",
+    "category": "Famous Foodies",
+    "date": "1945-04-07",
+    "time": "12:00",
+    "location": "Poitiers, France",
+    "latitude": 46.5802,
+    "longitude": 0.3404,
+    "timezone": "Europe/Paris",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Most Michelin stars ever (32), mashed potatoes master, died 2018",
+    "tags": [
+      "chef",
+      "michelin",
+      "french",
+      "legend"
+    ]
+  },
+  {
+    "id": "batali-mario",
+    "name": "Mario Batali",
+    "category": "Famous Foodies",
+    "date": "1960-09-19",
+    "time": "12:00",
+    "location": "Seattle, Washington, USA",
+    "latitude": 47.6062,
+    "longitude": -122.3321,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Iron Chef, Italian cuisine, orange clogs, metoo scandal ended career",
+    "tags": [
+      "chef",
+      "italian",
+      "scandal",
+      "tv-personality"
+    ]
+  },
+  {
+    "id": "puck-wolfgang",
+    "name": "Wolfgang Puck",
+    "category": "Famous Foodies",
+    "date": "1949-07-08",
+    "time": "12:00",
+    "location": "Sankt Veit an der Glan, Austria",
+    "latitude": 46.7667,
+    "longitude": 14.3667,
+    "timezone": "Europe/Vienna",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Spago, celebrity chef pioneer, California cuisine, Oscars caterer",
+    "tags": [
+      "chef",
+      "austrian",
+      "california-cuisine",
+      "celebrity"
+    ]
+  },
+  {
+    "id": "ray-rachael",
+    "name": "Rachael Ray",
+    "category": "Famous Foodies",
+    "date": "1968-08-25",
+    "time": "12:00",
+    "location": "Glens Falls, New York, USA",
+    "latitude": 43.3095,
+    "longitude": -73.644,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "30 Minute Meals, EVOO, accessible cooking, daytime TV personality",
+    "tags": [
+      "tv-personality",
+      "quick-meals",
+      "accessible",
+      "author"
+    ]
+  },
+  {
+    "id": "deen-paula",
+    "name": "Paula Deen",
+    "category": "Famous Foodies",
+    "date": "1947-01-19",
+    "time": "12:00",
+    "location": "Albany, Georgia, USA",
+    "latitude": 31.5785,
+    "longitude": -84.1557,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Southern cooking, butter advocate, Food Network, racial controversy",
+    "tags": [
+      "chef",
+      "southern",
+      "butter",
+      "controversial"
+    ]
+  },
+  {
+    "id": "chang-david",
+    "name": "David Chang",
+    "category": "Famous Foodies",
+    "date": "1977-08-05",
+    "time": "12:00",
+    "location": "Arlington, Virginia, USA",
+    "latitude": 38.8816,
+    "longitude": -77.1045,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Momofuku empire, Ugly Delicious, Asian-American fusion, pork buns",
+    "tags": [
+      "chef",
+      "fusion",
+      "asian-american",
+      "innovator"
+    ]
+  },
+  {
+    "id": "guarnaschelli-alex",
+    "name": "Alex Guarnaschelli",
+    "category": "Famous Foodies",
+    "date": "1972-06-20",
+    "time": "12:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Iron Chef, Butter restaurant, Chopped judge, daughter of food editor",
+    "tags": [
+      "chef",
+      "iron-chef",
+      "judge",
+      "new-york"
+    ]
+  },
+  {
+    "id": "brown-alton",
+    "name": "Alton Brown",
+    "category": "Famous Foodies",
+    "date": "1962-07-30",
+    "time": "12:00",
+    "location": "Los Angeles, California, USA",
+    "latitude": 34.0522,
+    "longitude": -118.2437,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Good Eats, food science, Iron Chef America host, culinary educator",
+    "tags": [
+      "tv-personality",
+      "food-science",
+      "educator",
+      "host"
+    ]
   }
 ]
