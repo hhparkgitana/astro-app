@@ -28,7 +28,8 @@ function AspectTabs({
   showProgressions = false,
   directionType = 'progressions',
   formData,
-  formDataB
+  formDataB,
+  displaySettings // Planet display settings
 }) {
   const [activeTab, setActiveTab] = useState('natal');
 
@@ -130,6 +131,7 @@ function AspectTabs({
             chartData={chartData}
             activeAspects={activeAspects}
             onAspectToggle={onAspectToggle}
+            displaySettings={displaySettings}
           />
         )}
 
@@ -146,6 +148,7 @@ function AspectTabs({
             chartData={chartData}
             activeTransitAspects={activeTransitAspects}
             onTransitAspectToggle={onTransitAspectToggle}
+            displaySettings={displaySettings}
           />
         )}
 
@@ -154,6 +157,7 @@ function AspectTabs({
             chartData={chartData}
             activeProgressionNatalAspects={activeProgressionNatalAspects}
             onProgressionNatalAspectToggle={onProgressionNatalAspectToggle}
+            displaySettings={displaySettings}
           />
         )}
 
@@ -171,7 +175,10 @@ function AspectTabs({
         )}
 
         {activeTab === 'transit-transit' && hasTransitTransitAspects && (
-          <TransitTransitAspectMatrix chartData={chartData} />
+          <TransitTransitAspectMatrix
+            chartData={chartData}
+            displaySettings={displaySettings}
+          />
         )}
 
         {activeTab === 'transit-progression' && hasTransitProgressionAspects && (
@@ -179,6 +186,7 @@ function AspectTabs({
             chartData={chartData}
             activeTransitProgressionAspects={activeTransitProgressionAspects}
             onTransitProgressionAspectToggle={onTransitProgressionAspectToggle}
+            displaySettings={displaySettings}
           />
         )}
 
@@ -187,6 +195,7 @@ function AspectTabs({
             chartData={chartData}
             activeSynastryAspects={activeSynastryAspects}
             onSynastryAspectToggle={onSynastryAspectToggle}
+            displaySettings={displaySettings}
           />
         )}
       </div>

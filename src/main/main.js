@@ -375,6 +375,8 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
         if (chart.progressions) {
           contextMessage += `\n🌙 ${chart.progressions.type.toUpperCase()} (${chart.progressions.date}):\n`;
           if (chart.progressions.planets && chart.houses) {
+            console.log('🔍 DEBUG: chart.progressions.planets keys:', Object.keys(chart.progressions.planets));
+            console.log('🔍 DEBUG: chart.progressions.planets values:', Object.values(chart.progressions.planets).map(p => p.name));
             Object.values(chart.progressions.planets).forEach(planet => {
               const sabian = getSabianSymbol(planet.longitude);
               const house = getPlanetHouse(planet.longitude, chart.houses);

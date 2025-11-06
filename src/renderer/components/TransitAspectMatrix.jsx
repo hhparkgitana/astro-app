@@ -1,7 +1,8 @@
 import React from 'react';
 import './AspectMatrix.css';
+import { CHART_CONFIG, filterPlanetOrder, filterAspectsByDisplaySettings } from '../utils/chartMath';
 
-// Planet glyphs in Unicode
+// Planet glyphs in Unicode (including optional bodies)
 const PLANET_GLYPHS = {
   'Sun': '☉',
   'Moon': '☽',
@@ -14,34 +15,45 @@ const PLANET_GLYPHS = {
   'Neptune': '♆',
   'Pluto': '♇',
   'North Node': '☊',
-  'South Node': '☋'
+  'South Node': '☋',
+  'Chiron': '⚷',
+  'Pholus': '⯛',
+  'Ceres': '⚳',
+  'Pallas': '⚴',
+  'Juno': '⚵',
+  'Vesta': '⚶',
+  'Lilith (Mean)': '⚸',
+  'Lilith (True)': '⚸'
 };
 
 // Aspect colors and symbols
 const ASPECT_CONFIG = {
   'CONJUNCTION': { symbol: '☌', color: '#8B00FF', name: 'Conjunction' },
+  'SEMISEXTILE': { symbol: '⚺', color: '#32CD32', name: 'Semi-Sextile' },
   'SEXTILE': { symbol: '⚹', color: '#4169E1', name: 'Sextile' },
   'SQUARE': { symbol: '□', color: '#DC143C', name: 'Square' },
   'TRINE': { symbol: '△', color: '#0000FF', name: 'Trine' },
+  'QUINCUNX': { symbol: '⚻', color: '#228B22', name: 'Quincunx' },
   'OPPOSITION': { symbol: '☍', color: '#FF4500', name: 'Opposition' }
 };
 
-function TransitAspectMatrix({ chartData, activeTransitAspects, onTransitAspectToggle }) {
-  // Define planet order (Sun → Pluto → Nodes)
-  const planetOrder = [
+function TransitAspectMatrix({ chartData, activeTransitAspects, onTransitAspectToggle, displaySettings = CHART_CONFIG.defaultDisplay }) {
+  // Define full planet order (including optional bodies)
+  const fullPlanetOrder = [
     'Sun', 'Moon', 'Mercury', 'Venus', 'Mars',
     'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto',
-    'North Node', 'South Node'
+    'North Node', 'South Node',
+    'Chiron', 'Pholus',
+    'Ceres', 'Pallas', 'Juno', 'Vesta',
+    'Lilith (Mean)', 'Lilith (True)'
   ];
+
+  // Filter planet order based on display settings
+  const planetOrder = filterPlanetOrder(fullPlanetOrder, displaySettings);
 
   // Build a lookup map for aspects by planet pair
   const aspectMap = {};
   if (chartData && chartData.transitAspects) {
-    console.log('TransitAspectMatrix - Total transit aspects:', chartData.transitAspects.length);
-    console.log('TransitAspectMatrix - activeTransitAspects:', activeTransitAspects);
-    console.log('TransitAspectMatrix - activeTransitAspects size:', activeTransitAspects.size);
-    console.log('TransitAspectMatrix - activeTransitAspects contents:', Array.from(activeTransitAspects));
-
     chartData.transitAspects.forEach(aspect => {
       const key = `${aspect.planet1}-${aspect.planet2}`;
       aspectMap[key] = aspect;
@@ -62,7 +74,6 @@ function TransitAspectMatrix({ chartData, activeTransitAspects, onTransitAspectT
 
     // If activeTransitAspects is empty, default to showing all aspects
     if (activeTransitAspects.size === 0) {
-      console.log('activeTransitAspects is empty, defaulting aspect to active:', key);
       return true;
     }
 
@@ -73,8 +84,6 @@ function TransitAspectMatrix({ chartData, activeTransitAspects, onTransitAspectT
   // Handle cell click
   const handleCellClick = (aspect) => {
     if (!aspect) return;
-    console.log('Transit aspect cell clicked:', aspect);
-    console.log('Calling onTransitAspectToggle with:', aspect);
     onTransitAspectToggle(aspect);
   };
 
@@ -85,11 +94,11 @@ function TransitAspectMatrix({ chartData, activeTransitAspects, onTransitAspectT
     // Find all aspects involving this planet
     const planetAspects = chartData.transitAspects.filter(aspect => {
       if (isTransit) {
-        // Transit planet (columns) - match planet2
-        return aspect.planet2 === planet;
-      } else {
-        // Natal planet (rows) - match planet1
+        // Transit planet (columns) - planet1 is transit
         return aspect.planet1 === planet;
+      } else {
+        // Natal planet (rows) - planet2 is natal
+        return aspect.planet2 === planet;
       }
     });
 
@@ -127,11 +136,11 @@ function TransitAspectMatrix({ chartData, activeTransitAspects, onTransitAspectT
 
     const planetAspects = chartData.transitAspects.filter(aspect => {
       if (isTransit) {
-        // Transit planet (columns) - match planet2
-        return aspect.planet2 === planet;
-      } else {
-        // Natal planet (rows) - match planet1
+        // Transit planet (columns) - planet1 is transit
         return aspect.planet1 === planet;
+      } else {
+        // Natal planet (rows) - planet2 is natal
+        return aspect.planet2 === planet;
       }
     });
 
@@ -233,9 +242,11 @@ function TransitAspectMatrix({ chartData, activeTransitAspects, onTransitAspectT
       </div>
       <div className="aspect-legend">
         <div><span style={{ color: ASPECT_CONFIG.CONJUNCTION.color }}>☌</span> Conjunction</div>
+        <div><span style={{ color: ASPECT_CONFIG.SEMISEXTILE.color }}>⚺</span> Semi-Sextile</div>
         <div><span style={{ color: ASPECT_CONFIG.SEXTILE.color }}>⚹</span> Sextile</div>
         <div><span style={{ color: ASPECT_CONFIG.SQUARE.color }}>□</span> Square</div>
         <div><span style={{ color: ASPECT_CONFIG.TRINE.color }}>△</span> Trine</div>
+        <div><span style={{ color: ASPECT_CONFIG.QUINCUNX.color }}>⚻</span> Quincunx</div>
         <div><span style={{ color: ASPECT_CONFIG.OPPOSITION.color }}>☍</span> Opposition</div>
       </div>
     </div>

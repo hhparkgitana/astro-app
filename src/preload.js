@@ -8,5 +8,6 @@ contextBridge.exposeInMainWorld('astro', {
   findEclipseActivations: (params) => ipcRenderer.invoke('find-eclipse-activations', params),
   calculateTransitTimeline: (params) => ipcRenderer.invoke('calculate-transit-timeline', params),
   chatWithClaude: (params) => ipcRenderer.invoke('chat-with-claude', params),
-  exportChartImage: (params) => ipcRenderer.invoke('export-chart-image', params)
+  exportChartImage: (params) => ipcRenderer.invoke('export-chart-image', params),
+  writeDebugLog: (params) => ipcRenderer.invoke('write-debug-log', params)
 });

@@ -157,21 +157,60 @@ export function getCircleRadiusForOrb(orb) {
 }
 
 /**
+ * Calculate radial zones for chart wheel based on configuration type
+ * @param {number} totalRadius - Total available radius (e.g., 400 for 800px chart)
+ * @param {string} wheelType - 'single', 'bi', or 'tri'
+ * @returns {Object} Zone definitions with innerRadius and outerRadius
+ */
+export function calculateChartZones(totalRadius, wheelType = 'single') {
+  const R = totalRadius;
+
+  if (wheelType === 'single') {
+    return {
+      aspectLines: { innerRadius: 0, outerRadius: R * 0.35 },  // Increased from 0.25
+      houseNumbers: { innerRadius: R * 0.38, outerRadius: R * 0.46, center: R * 0.42 },  // Adjusted
+      natalPlanets: { innerRadius: R * 0.48, outerRadius: R * 0.85, center: R * 0.65 },
+      zodiacWheel: { innerRadius: R * 0.85, outerRadius: R * 1.0 },
+      // Circumscribed boundary circles
+      boundaryCircles: [R * 0.35, R * 0.47]
+    };
+  } else if (wheelType === 'bi') {
+    return {
+      aspectLines: { innerRadius: 0, outerRadius: R * 0.30 },  // Increased from 0.20
+      houseNumbers: { innerRadius: R * 0.31, outerRadius: R * 0.35, center: R * 0.33 },  // Adjusted
+      natalPlanets: { innerRadius: R * 0.37, outerRadius: R * 0.51, center: R * 0.44 },  // Adjusted
+      transitPlanets: { innerRadius: R * 0.54, outerRadius: R * 0.78, center: R * 0.66 },
+      zodiacWheel: { innerRadius: R * 0.80, outerRadius: R * 1.0 },
+      // Circumscribed boundary circles
+      boundaryCircles: [R * 0.30, R * 0.36, R * 0.52]
+    };
+  } else if (wheelType === 'tri') {
+    return {
+      aspectLines: { innerRadius: 0, outerRadius: R * 0.32 },  // INCREASED from 0.25 for more breathing room
+      houseNumbers: { innerRadius: R * 0.33, outerRadius: R * 0.38, center: R * 0.355 },  // Adjusted for larger aspect circle
+      natalPlanets: { innerRadius: R * 0.40, outerRadius: R * 0.47, center: R * 0.435 },  // Adjusted
+      progressionPlanets: { innerRadius: R * 0.50, outerRadius: R * 0.64, center: R * 0.57 },  // Adjusted
+      transitPlanets: { innerRadius: R * 0.67, outerRadius: R * 0.85, center: R * 0.76 },  // Adjusted - extends to zodiac
+      zodiacWheel: { innerRadius: R * 0.86, outerRadius: R * 1.0 },  // Adjusted to 0.86
+      // Circumscribed boundary circles
+      boundaryCircles: [R * 0.32, R * 0.39, R * 0.48, R * 0.65]
+    };
+  }
+
+  // Default to single wheel
+  return calculateChartZones(totalRadius, 'single');
+}
+
+/**
  * Constants for chart dimensions
  */
 export const CHART_CONFIG = {
   size: 800,
   center: 400,
+  // Legacy radii - will be replaced by calculateChartZones
   radii: {
-    zodiac: 380,        // Outer zodiac ring
-    zodiacInner: 340,   // Inner edge of zodiac ring
-    transitOuter: 330,  // Outer transit planet ring (for tri-wheel transit-transit aspects)
-    transit: 300,       // Transit planet ring (middle)
-    natal: 260,         // Natal planet ring
-    houses: 240,        // House cusp lines extend to here
-    housesInner: 180,   // House numbers placed here
-    aspectOuter: 240,   // Aspect lines drawn within this
-    aspectInner: 0      // Aspect lines can go to center
+    zodiac: 380,
+    zodiacInner: 340
   },
   colors: {
     signs: {
@@ -190,9 +229,11 @@ export const CHART_CONFIG = {
     },
     aspects: {
       CONJUNCTION: '#9B59B6',
+      SEMISEXTILE: '#95A5A6',
       SEXTILE: '#3498DB',
       SQUARE: '#E74C3C',
       TRINE: '#2ECC71',
+      QUINCUNX: '#8E7CC3',
       OPPOSITION: '#E67E22'
     }
   },
@@ -309,4 +350,88 @@ export function filterDisplayedPlanets(planets, displaySettings = CHART_CONFIG.d
     }
   }
   return filtered;
+}
+
+/**
+ * Detect planet collision groups (planets within 5° of each other)
+ * @param {Object} planets - Planets object from chart calculation
+ * @param {number} threshold - Collision threshold in degrees (default 5°)
+ * @returns {Array} Array of collision groups, each containing planet keys and positions
+ */
+export function detectPlanetCollisions(planets, threshold = 5) {
+  const planetArray = Object.entries(planets).map(([key, planet]) => ({
+    key,
+    name: planet.name,
+    longitude: planet.longitude
+  }));
+
+  // Sort by longitude for easier grouping
+  planetArray.sort((a, b) => a.longitude - b.longitude);
+
+  const groups = [];
+  const used = new Set();
+
+  for (let i = 0; i < planetArray.length; i++) {
+    if (used.has(planetArray[i].key)) continue;
+
+    const group = [planetArray[i]];
+    used.add(planetArray[i].key);
+
+    // Check subsequent planets for collisions
+    for (let j = i + 1; j < planetArray.length; j++) {
+      if (used.has(planetArray[j].key)) continue;
+
+      const distance = Math.abs(planetArray[j].longitude - group[0].longitude);
+
+      // Handle wraparound at 0°/360°
+      const wrappedDistance = Math.min(distance, 360 - distance);
+
+      if (wrappedDistance <= threshold) {
+        group.push(planetArray[j]);
+        used.add(planetArray[j].key);
+      } else {
+        // Since array is sorted, no more collisions possible
+        break;
+      }
+    }
+
+    groups.push({
+      planets: group,
+      hasCollision: group.length > 1,
+      centerLongitude: group.reduce((sum, p) => sum + p.longitude, 0) / group.length
+    });
+  }
+
+  return groups;
+}
+
+/**
+ * Filter aspects to only include those involving displayed planets
+ * @param {Array} aspects - Array of aspect objects
+ * @param {Object} planets - Planets object (to get planet names)
+ * @param {Object} displaySettings - User's display preferences
+ * @returns {Array} Filtered aspects array
+ */
+export function filterAspectsByDisplaySettings(aspects, planets, displaySettings = CHART_CONFIG.defaultDisplay) {
+  if (!aspects || !planets) return [];
+
+  return aspects.filter(aspect => {
+    // Get planet names from the aspect
+    const planet1Name = aspect.planet1; // Aspect already has planet names
+    const planet2Name = aspect.planet2;
+
+    // Both planets must be visible
+    return shouldDisplayPlanet(planet1Name, displaySettings) &&
+           shouldDisplayPlanet(planet2Name, displaySettings);
+  });
+}
+
+/**
+ * Build filtered planet order array based on display settings
+ * @param {Array} fullPlanetOrder - Full array of planet names
+ * @param {Object} displaySettings - User's display preferences
+ * @returns {Array} Filtered planet order array
+ */
+export function filterPlanetOrder(fullPlanetOrder, displaySettings = CHART_CONFIG.defaultDisplay) {
+  return fullPlanetOrder.filter(planetName => shouldDisplayPlanet(planetName, displaySettings));
 }

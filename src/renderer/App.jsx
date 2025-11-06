@@ -239,10 +239,35 @@ function App() {
       velocity: planet.velocity !== undefined ? planet.velocity : 0
     }));
 
+    console.log('=== CALCULATING TRANSIT ASPECTS ===');
+    console.log('Natal planets:', natalArray);
+    console.log('Transit planets:', transitArray);
+
+    // Write debug log to file
+    window.astro.writeDebugLog({
+      section: 'TRANSIT ASPECTS CALCULATION',
+      natalPlanets: natalArray,
+      transitPlanets: transitArray,
+      orb: orb
+    }).then(result => {
+      if (result.success) {
+        console.log('Debug log written to:', result.path);
+      }
+    }).catch(err => console.error('Failed to write debug log:', err));
+
     // Calculate aspects between each natal planet and each transit planet
     for (const natalPlanet of natalArray) {
       for (const transitPlanet of transitArray) {
         const distance = getAngularDistance(natalPlanet.longitude, transitPlanet.longitude);
+
+        // Log calculation for Saturn-Uranus specifically
+        if ((transitPlanet.name === 'Saturn' && natalPlanet.name === 'Uranus') ||
+            (transitPlanet.name === 'Uranus' && natalPlanet.name === 'Saturn')) {
+          console.log(`\n🔍 ${transitPlanet.name}-${natalPlanet.name}:`);
+          console.log(`  Transit ${transitPlanet.name} longitude: ${transitPlanet.longitude}°`);
+          console.log(`  Natal ${natalPlanet.name} longitude: ${natalPlanet.longitude}°`);
+          console.log(`  Angular distance: ${distance}°`);
+        }
 
         const aspect = findAspect(
           distance,
@@ -254,6 +279,12 @@ function App() {
         );
 
         if (aspect) {
+          // Log found aspect for Saturn-Uranus
+          if ((transitPlanet.name === 'Saturn' && natalPlanet.name === 'Uranus') ||
+              (transitPlanet.name === 'Uranus' && natalPlanet.name === 'Saturn')) {
+            console.log(`  ✅ Found aspect:`, aspect);
+          }
+
           aspects.push({
             planet1: transitPlanet.name,  // Transit planet first
             planet1Key: transitPlanet.key,
@@ -265,6 +296,8 @@ function App() {
       }
     }
 
+    console.log('=== TRANSIT ASPECTS CALCULATED ===');
+    console.log(`Total aspects found: ${aspects.length}`);
     return aspects;
   };
 
@@ -2835,6 +2868,7 @@ function App() {
               showProgressions={formData.showProgressions}
               formData={formData}
               directionType={formData.directionType}
+              displaySettings={displaySettings}
             />
 
             <div className="rising-sign">
@@ -3239,6 +3273,7 @@ function App() {
                     showProgressions={formData.showProgressions}
               formData={formData}
                     directionType={formData.directionType}
+                    displaySettings={displaySettings}
                   />
                 </div>
               )}
@@ -3589,6 +3624,7 @@ function App() {
                     showNatalAspects={showNatalAspectsB}
                     showProgressions={formDataB.showProgressions}
                     directionType={formDataB.directionType}
+                    displaySettings={displaySettings}
                   />
                 </div>
               )}
@@ -4367,6 +4403,7 @@ function App() {
                       showNatalAspects={showNatalAspects}
                       showProgressions={false}
                       directionType={formData.directionType}
+                      displaySettings={displaySettings}
                     />
                   </div>
                 ) : (
@@ -4401,6 +4438,7 @@ function App() {
                       directionType={formData.directionType}
                       formData={formData}
                       formDataB={formDataB}
+                      displaySettings={displaySettings}
                     />
                   </div>
                 )}

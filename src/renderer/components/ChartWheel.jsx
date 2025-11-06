@@ -8,6 +8,8 @@ import {
   getCircleRadiusForOrb,
   filterDisplayedPlanets,
   shouldDisplayPlanet,
+  detectPlanetCollisions,
+  calculateChartZones,
   CHART_CONFIG
 } from '../utils/chartMath';
 import ExportMenu from './ExportMenu';
@@ -64,11 +66,18 @@ function ChartWheel({
 }) {
   const { size, center, radii, colors, glyphs } = CHART_CONFIG;
 
+  // Determine wheel type and calculate zones
+  const wheelType = (transitData && progressionsData) ? 'tri' :
+                     (transitData || progressionsData) ? 'bi' :
+                     'single';
+  const zones = calculateChartZones(400, wheelType); // 400 = radius for 800px chart
+
   // Ref for the SVG element (for exporting)
   const svgRef = useRef(null);
 
   // Debug logging for Solar Arc sliders
   console.log('ChartWheel render - transitData:', !!transitData, 'progressionsData:', !!progressionsData, 'directionType:', directionType);
+  console.log('Wheel type:', wheelType, 'Zones:', zones);
 
   // Aspect visibility toggles (only transit-specific ones stay local)
   const [showTransitNatalAspects, setShowTransitNatalAspects] = useState(true);
@@ -116,8 +125,8 @@ function ChartWheel({
       const path = createArcPath(
         center,
         center,
-        radii.zodiacInner,
-        radii.zodiac,
+        zones.zodiacWheel.innerRadius,
+        zones.zodiacWheel.outerRadius,
         startLongitude,
         endLongitude,
         ascendant
@@ -125,7 +134,7 @@ function ChartWheel({
 
       // Calculate position for sign glyph (middle of section)
       const midLongitude = startLongitude + 15;
-      const glyphRadius = (radii.zodiac + radii.zodiacInner) / 2;
+      const glyphRadius = (zones.zodiacWheel.innerRadius + zones.zodiacWheel.outerRadius) / 2;
       const glyphPos = pointOnCircle(center, center, glyphRadius, midLongitude, ascendant);
 
       return (
@@ -163,11 +172,11 @@ function ChartWheel({
     const ascendant = chartData.ascendant;
 
     return chartData.houses.map((houseCusp, index) => {
-      // Line from inner to outer zodiac circle (so transits are clearly in houses)
-      const innerPoint = pointOnCircle(center, center, radii.housesInner, houseCusp, ascendant);
-      const outerPoint = pointOnCircle(center, center, radii.zodiacInner, houseCusp, ascendant);
+      // House cusp lines extend from center to inner edge of zodiac wheel
+      const innerPoint = pointOnCircle(center, center, 0, houseCusp, ascendant);
+      const outerPoint = pointOnCircle(center, center, zones.zodiacWheel.innerRadius, houseCusp, ascendant);
 
-      // House number position (between cusps)
+      // House number position (between cusps, in center area)
       const nextCusp = chartData.houses[(index + 1) % 12];
       let midLongitude = (houseCusp + nextCusp) / 2;
 
@@ -176,7 +185,7 @@ function ChartWheel({
         midLongitude = ((houseCusp + nextCusp + 360) / 2) % 360;
       }
 
-      const numberPos = pointOnCircle(center, center, radii.housesInner + 30, midLongitude, ascendant);
+      const numberPos = pointOnCircle(center, center, zones.houseNumbers.center, midLongitude, ascendant);
 
       return (
         <g key={index}>
@@ -219,40 +228,103 @@ function ChartWheel({
   };
 
   /**
-   * Render planets at a specific radius
+   * Render planets at a specific radius with collision detection
    * @param {Object} planets - Planet data
    * @param {number} radius - Radius to place planets
    * @param {string} color - Color for planet glyphs
    */
   const renderPlanets = (planets, radius, color = '#000') => {
     const ascendant = chartData.ascendant;
-    return Object.entries(planets).map(([key, planet]) => {
-      const pos = pointOnCircle(center, center, radius, planet.longitude, ascendant);
-      const glyph = glyphs.planets[planet.name];
+    const collisionGroups = detectPlanetCollisions(planets);
+    const elements = [];
 
-      // Format tooltip: "Planet Name: 15°32' Sign"
-      const degreeStr = formatDegreeMinute(planet.longitude);
-      const sign = getZodiacSign(planet.longitude);
-      const tooltipText = `${planet.name}: ${degreeStr} ${sign}`;
+    collisionGroups.forEach((group, groupIndex) => {
+      if (!group.hasCollision) {
+        // No collision - render normally
+        group.planets.forEach(planet => {
+          const fullPlanet = planets[planet.key];
+          const pos = pointOnCircle(center, center, radius, fullPlanet.longitude, ascendant);
+          const glyph = glyphs.planets[fullPlanet.name];
 
-      return (
-        <text
-          key={key}
-          x={pos.x}
-          y={pos.y}
-          textAnchor="middle"
-          dominantBaseline="middle"
-          fontSize="20"
-          fill={color}
-          fontWeight="bold"
-          style={{ cursor: 'pointer' }}
-          onMouseEnter={(e) => showTooltip(e, tooltipText)}
-          onMouseLeave={hideTooltip}
-        >
-          {glyph}
-        </text>
-      );
+          // Format tooltip: "Planet Name: 15°32' Sign"
+          const degreeStr = formatDegreeMinute(fullPlanet.longitude);
+          const sign = getZodiacSign(fullPlanet.longitude);
+          const tooltipText = `${fullPlanet.name}: ${degreeStr} ${sign}`;
+
+          elements.push(
+            <text
+              key={planet.key}
+              x={pos.x}
+              y={pos.y}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fontSize="36"
+              fill={color}
+              fontWeight="400"
+              style={{ cursor: 'pointer' }}
+              onMouseEnter={(e) => showTooltip(e, tooltipText)}
+              onMouseLeave={hideTooltip}
+            >
+              {glyph}
+            </text>
+          );
+        });
+      } else {
+        // Collision detected - stack vertically
+        const centerPos = pointOnCircle(center, center, radius, group.centerLongitude, ascendant);
+        const verticalSpacing = 28; // Spacing between stacked planets
+        const groupHeight = (group.planets.length - 1) * verticalSpacing;
+        const startY = centerPos.y - groupHeight / 2;
+
+        group.planets.forEach((planet, index) => {
+          const fullPlanet = planets[planet.key];
+          const actualPos = pointOnCircle(center, center, radius, fullPlanet.longitude, ascendant);
+          const stackedY = startY + index * verticalSpacing;
+          const glyph = glyphs.planets[fullPlanet.name];
+
+          // Format tooltip: "Planet Name: 15°32' Sign"
+          const degreeStr = formatDegreeMinute(fullPlanet.longitude);
+          const sign = getZodiacSign(fullPlanet.longitude);
+          const tooltipText = `${fullPlanet.name}: ${degreeStr} ${sign}`;
+
+          // Render connector line from stacked position to actual position
+          elements.push(
+            <line
+              key={`connector-${planet.key}`}
+              x1={centerPos.x}
+              y1={stackedY}
+              x2={actualPos.x}
+              y2={actualPos.y}
+              stroke={color}
+              strokeWidth="0.5"
+              opacity="0.3"
+              strokeDasharray="2,2"
+            />
+          );
+
+          // Render planet at stacked position
+          elements.push(
+            <text
+              key={planet.key}
+              x={centerPos.x}
+              y={stackedY}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fontSize="36"
+              fill={color}
+              fontWeight="400"
+              style={{ cursor: 'pointer' }}
+              onMouseEnter={(e) => showTooltip(e, tooltipText)}
+              onMouseLeave={hideTooltip}
+            >
+              {glyph}
+            </text>
+          );
+        });
+      }
     });
+
+    return elements;
   };
 
   /**
@@ -280,9 +352,9 @@ function ChartWheel({
         return null;
       }
 
-      // Keep aspect lines inside the innermost circle (don't overlap house numbers)
-      const pos1 = pointOnCircle(center, center, radii.housesInner - 10, planet1.longitude, ascendant);
-      const pos2 = pointOnCircle(center, center, radii.housesInner - 10, planet2.longitude, ascendant);
+      // Keep aspect lines inside house numbers
+      const pos1 = pointOnCircle(center, center, zones.aspectLines.outerRadius, planet1.longitude, ascendant);
+      const pos2 = pointOnCircle(center, center, zones.aspectLines.outerRadius, planet2.longitude, ascendant);
 
       // Calculate line style based on whether aspect is in orb
       let stroke, opacity, strokeWidth;
@@ -295,9 +367,11 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering with opacity based on orb
         stroke = colors.aspects[aspect.type];
-        opacity = 1 - (aspect.orb / 8); // Tighter orb = more opaque
+        // Quincunx: max 25% opacity; semi-sextile: max 20%; other aspects: max 50%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.20 : aspect.type === 'QUINCUNX' ? 0.25 : 0.5;
+        opacity = maxOpacity * (1 - (aspect.orb / 8)); // Tighter orb = more opaque
         strokeWidth = 3 - (aspect.orb / 4); // Tighter orb = thicker
-        opacity = Math.max(0.2, opacity);
+        opacity = Math.max(0.10, opacity);
         strokeWidth = Math.max(0.5, strokeWidth);
       }
 
@@ -318,6 +392,7 @@ function ChartWheel({
           stroke={stroke}
           strokeWidth={strokeWidth}
           opacity={opacity}
+          strokeDasharray={(aspect.type === 'SEMISEXTILE' || aspect.type === 'QUINCUNX') ? '2,4' : undefined}
           style={{ cursor: 'pointer' }}
           onClick={() => onAspectToggle && onAspectToggle(aspect)}
           onMouseEnter={(e) => showTooltip(e, tooltipText)}
@@ -352,9 +427,9 @@ function ChartWheel({
         return null;
       }
 
-      // Person B's planets are on the outer ring (transit radius in bi-wheel), so use that for aspect lines
-      const pos1 = pointOnCircle(center, center, radii.transit - 15, planet1.longitude, ascendant);
-      const pos2 = pointOnCircle(center, center, radii.transit - 15, planet2.longitude, ascendant);
+      // Person B's aspect lines also stay within aspect boundary
+      const pos1 = pointOnCircle(center, center, zones.aspectLines.outerRadius, planet1.longitude, ascendant);
+      const pos2 = pointOnCircle(center, center, zones.aspectLines.outerRadius, planet2.longitude, ascendant);
 
       // Calculate line style based on whether aspect is in orb
       let stroke, opacity, strokeWidth;
@@ -367,9 +442,11 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering with opacity based on orb
         stroke = colors.aspects[aspect.type];
-        opacity = 1 - (aspect.orb / 8); // Tighter orb = more opaque
+        // Quincunx: max 25% opacity; semi-sextile: max 20%; other aspects: max 50%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.20 : aspect.type === 'QUINCUNX' ? 0.25 : 0.5;
+        opacity = maxOpacity * (1 - (aspect.orb / 8)); // Tighter orb = more opaque
         strokeWidth = 3 - (aspect.orb / 4); // Tighter orb = thicker
-        opacity = Math.max(0.2, opacity);
+        opacity = Math.max(0.10, opacity);
         strokeWidth = Math.max(0.5, strokeWidth);
       }
 
@@ -390,7 +467,7 @@ function ChartWheel({
           stroke={stroke}
           strokeWidth={strokeWidth}
           opacity={opacity}
-          strokeDasharray="4,4" // Dashed line to differentiate from Person A's aspects
+          strokeDasharray={(aspect.type === 'SEMISEXTILE' || aspect.type === 'QUINCUNX') ? '2,4' : '4,4'}  // Dotted for minor aspects, dashed for others
           style={{ cursor: 'pointer' }}
           onClick={() => onAspectToggleB && onAspectToggleB(aspect)}
           onMouseEnter={(e) => showTooltip(e, tooltipText)}
@@ -431,9 +508,9 @@ function ChartWheel({
         return null;
       }
 
-      // Get positions at their respective radii
-      const pos1 = pointOnCircle(center, center, radii.housesInner - 10, transitPlanet.longitude, ascendant);
-      const pos2 = pointOnCircle(center, center, radii.housesInner - 10, natalPlanet.longitude, ascendant);
+      // Get positions at aspect boundary
+      const pos1 = pointOnCircle(center, center, zones.aspectLines.outerRadius, transitPlanet.longitude, ascendant);
+      const pos2 = pointOnCircle(center, center, zones.aspectLines.outerRadius, natalPlanet.longitude, ascendant);
 
       // Get circle size based on orb
       const circleRadius = getCircleRadiusForOrb(aspect.orb);
@@ -451,7 +528,9 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering
         color = colors.aspects[aspect.type];
-        opacity = Math.max(0.3, 1 - (aspect.orb / 8));
+        // Quincunx: max 25% opacity; semi-sextile: max 20%; other aspects: max 50%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.20 : aspect.type === 'QUINCUNX' ? 0.25 : 0.5;
+        opacity = Math.max(0.10, maxOpacity * (1 - (aspect.orb / 8)));
       }
 
       // Format tooltip
@@ -513,9 +592,9 @@ function ChartWheel({
         return null;
       }
 
-      // Get positions at their respective radii
-      const pos1 = pointOnCircle(center, center, radii.housesInner - 10, progressedPlanet.longitude, ascendant);
-      const pos2 = pointOnCircle(center, center, radii.housesInner - 10, natalPlanet.longitude, ascendant);
+      // Get positions at aspect boundary
+      const pos1 = pointOnCircle(center, center, zones.aspectLines.outerRadius, progressedPlanet.longitude, ascendant);
+      const pos2 = pointOnCircle(center, center, zones.aspectLines.outerRadius, natalPlanet.longitude, ascendant);
 
       // Get circle size based on orb
       const circleRadius = getCircleRadiusForOrb(aspect.orb);
@@ -533,7 +612,9 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering
         color = colors.aspects[aspect.type];
-        opacity = Math.max(0.3, 1 - (aspect.orb / 8));
+        // Quincunx: max 25% opacity; semi-sextile: max 20%; other aspects: max 50%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.20 : aspect.type === 'QUINCUNX' ? 0.25 : 0.5;
+        opacity = Math.max(0.10, maxOpacity * (1 - (aspect.orb / 8)));
       }
 
       // Format tooltip
@@ -603,9 +684,11 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering with opacity based on orb
         stroke = colors.aspects[aspect.type];
-        opacity = 1 - (aspect.orb / 8);
+        // Quincunx: max 25% opacity; semi-sextile: max 20%; other aspects: max 50%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.20 : aspect.type === 'QUINCUNX' ? 0.25 : 0.5;
+        opacity = maxOpacity * (1 - (aspect.orb / 8));
         strokeWidth = 3 - (aspect.orb / 4);
-        opacity = Math.max(0.2, opacity);
+        opacity = Math.max(0.10, opacity);
         strokeWidth = Math.max(0.5, strokeWidth);
       }
 
@@ -626,6 +709,7 @@ function ChartWheel({
           stroke={stroke}
           strokeWidth={strokeWidth}
           opacity={opacity}
+          strokeDasharray={(aspect.type === 'SEMISEXTILE' || aspect.type === 'QUINCUNX') ? '2,4' : undefined}
           style={{ cursor: 'pointer' }}
           onMouseEnter={(e) => showTooltip(e, tooltipText)}
           onMouseLeave={hideTooltip}
@@ -661,9 +745,9 @@ function ChartWheel({
         return null;
       }
 
-      // Get positions at their respective radii
-      const pos1 = pointOnCircle(center, center, radii.housesInner - 10, transitPlanet.longitude, ascendant);
-      const pos2 = pointOnCircle(center, center, radii.housesInner - 10, progressionPlanet.longitude, ascendant);
+      // Get positions at aspect boundary
+      const pos1 = pointOnCircle(center, center, zones.aspectLines.outerRadius, transitPlanet.longitude, ascendant);
+      const pos2 = pointOnCircle(center, center, zones.aspectLines.outerRadius, progressionPlanet.longitude, ascendant);
 
       // Get circle size based on orb
       const circleRadius = getCircleRadiusForOrb(aspect.orb);
@@ -681,7 +765,9 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering
         color = colors.aspects[aspect.type];
-        opacity = Math.max(0.3, 1 - (aspect.orb / 8));
+        // Quincunx: max 25% opacity; semi-sextile: max 20%; other aspects: max 50%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.20 : aspect.type === 'QUINCUNX' ? 0.25 : 0.5;
+        opacity = Math.max(0.10, maxOpacity * (1 - (aspect.orb / 8)));
       }
 
       // Format tooltip
@@ -712,6 +798,25 @@ function ChartWheel({
         </g>
       );
     });
+  };
+
+  /**
+   * Render circumscribed boundary circles for visual organization
+   */
+  const renderBoundaryCircles = () => {
+    if (!zones.boundaryCircles) return null;
+
+    return zones.boundaryCircles.map((radius, index) => (
+      <circle
+        key={`boundary-${index}`}
+        cx={center}
+        cy={center}
+        r={radius}
+        fill="none"
+        stroke="#D3D3D3"
+        strokeWidth="1"
+      />
+    ));
   };
 
   /**
@@ -769,10 +874,10 @@ function ChartWheel({
   const renderAngleLabels = () => {
     const ascendant = chartData.ascendant;
     const labels = [
-      { text: 'As', longitude: chartData.ascendant, radius: radii.zodiac + 12 },
-      { text: 'Ds', longitude: chartData.descendant, radius: radii.zodiac + 12 },
-      { text: 'Mc', longitude: chartData.midheaven, radius: radii.zodiac + 12 },
-      { text: 'Ic', longitude: chartData.ic, radius: radii.zodiac + 12 }
+      { text: 'As', longitude: chartData.ascendant, radius: zones.zodiacWheel.outerRadius + 12 },
+      { text: 'Ds', longitude: chartData.descendant, radius: zones.zodiacWheel.outerRadius + 12 },
+      { text: 'Mc', longitude: chartData.midheaven, radius: zones.zodiacWheel.outerRadius + 12 },
+      { text: 'Ic', longitude: chartData.ic, radius: zones.zodiacWheel.outerRadius + 12 }
     ];
 
     return labels.map(({ text, longitude, radius }) => {
@@ -1254,9 +1359,6 @@ function ChartWheel({
         {/* Background */}
         <rect width={size} height={size} fill="#f5f5f5" />
 
-        {/* Guide circles */}
-        <g id="guide-circles">{renderGuideCircles()}</g>
-
         {/* Render layers from back to front */}
         <g id="natal-aspect-lines">{renderAspects()}</g>
         <g id="natal-b-aspect-lines">{renderAspectsB()}</g>
@@ -1265,13 +1367,14 @@ function ChartWheel({
         <g id="transit-progression-aspect-lines">{renderTransitProgressionAspects()}</g>
         <g id="transit-transit-aspect-lines">{renderTransitTransitAspects()}</g>
         <g id="houses">{renderHouses()}</g>
+        <g id="boundary-circles">{renderBoundaryCircles()}</g>
         <g id="zodiac-ring">{renderZodiacRing()}</g>
-        <g id="natal-planets">{renderPlanets(filterDisplayedPlanets(chartData.planets, displaySettings), radii.natal, '#000')}</g>
+        <g id="natal-planets">{renderPlanets(filterDisplayedPlanets(chartData.planets, displaySettings), zones.natalPlanets.center, '#000')}</g>
         {progressionsData && (
           <g id="progression-planets">
             {renderPlanets(
               filterDisplayedPlanets(progressionsData.planets, displaySettings),
-              radii.transit,
+              zones.progressionPlanets ? zones.progressionPlanets.center : zones.transitPlanets.center,  // Tri-wheel: progression zone, Bi-wheel: transit zone
               directionType === 'solarArcs' ? '#FF8C00' : '#9C27B0'  // Orange for Solar Arcs, Purple for Progressions
             )}
           </g>
@@ -1280,10 +1383,10 @@ function ChartWheel({
           <g id="transit-planets">
             {renderPlanets(
               filterDisplayedPlanets(transitData.planets, displaySettings),
-              radii.transitOuter,
+              zones.transitPlanets.center,
               isReturnChart
                 ? (returnType === 'solar' ? '#FFB347' : '#C0C0C0') // Solar: gold/amber, Lunar: silver
-                : '#3498db' // Default: blue for regular transits
+                : '#4169E1' // Default: Royal Blue for regular transits (darker, more readable)
             )}
           </g>
         )}

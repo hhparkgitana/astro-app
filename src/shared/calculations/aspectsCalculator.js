@@ -8,9 +8,11 @@
 
 const ASPECT_TYPES = {
   CONJUNCTION: { angle: 0, symbol: '☌', name: 'Conjunction' },
+  SEMISEXTILE: { angle: 30, symbol: '⚺', name: 'Semi-Sextile' },
   SEXTILE: { angle: 60, symbol: '⚹', name: 'Sextile' },
   SQUARE: { angle: 90, symbol: '□', name: 'Square' },
   TRINE: { angle: 120, symbol: '△', name: 'Trine' },
+  QUINCUNX: { angle: 150, symbol: '⚻', name: 'Quincunx' },
   OPPOSITION: { angle: 180, symbol: '☍', name: 'Opposition' }
 };
 

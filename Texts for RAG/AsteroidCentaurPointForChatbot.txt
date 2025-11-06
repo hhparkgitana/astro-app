@@ -1,0 +1,533 @@
+ASTEROID/CENTAUR/POINT INTERPRETATION GUIDE FOR CHATBOT
+Purpose
+Provide the astrology chatbot with interpretation keywords, themes, and context for asteroids, centaurs, calculated points, and fixed stars so it can offer meaningful insights when users ask about them.
+Format for Each Object
+For each object, provide:
+
+Name & Number/Type
+Keywords (3-5 core themes)
+Mythology/Origin (brief context)
+Natal Chart Meaning (psychological/archetypal themes)
+Transit Interpretation (what it means when transiting)
+House Themes (how it manifests in different houses)
+Sign Expression (optional - key sign placements)
+Aspect Interpretation (how it combines with planets)
+
+
+CHIRON (2060) - The Wounded Healer
+Keywords: Wound, healing, teaching, bridge, outsider
+Mythology: Centaur who was wounded by a poisoned arrow but couldn't die (being immortal). Became the greatest healer and teacher. Eventually gave up immortality to end his suffering.
+Natal Meaning:
+
+Shows where we carry a core wound that never fully heals
+Our deepest vulnerability becomes our greatest teaching
+The bridge between the personal (Saturn) and transpersonal (Uranus)
+Where we feel "different" or don't quite fit in
+Our healing journey and what we can teach others through our pain
+
+By House:
+
+1st: Identity wound, physical body issues, learning to be yourself
+2nd: Self-worth wound, resource issues, healing relationship with money/values
+3rd: Communication wound, sibling issues, learning difficulties
+4th: Family wound, belonging issues, ancestral healing
+5th: Creative wound, child-related pain, healing through self-expression
+6th: Health wound, service issues, healing through daily practice
+7th: Relationship wound, partnership pain, healing through others
+8th: Intimacy wound, trauma, healing through transformation
+9th: Belief wound, meaning crisis, healing through philosophy
+10th: Authority wound, career pain, healing through vocation
+11th: Belonging wound, friendship issues, healing through community
+12th: Spiritual wound, hidden pain, healing through transcendence
+
+Transit Interpretation:
+
+Brings up old wounds for healing
+Opportunities to teach what we've learned through pain
+Times when we feel especially vulnerable or raw
+Healing breakthroughs and teaching moments
+Major transits correlate with health issues or healing journeys
+
+Aspect Meanings:
+
+Chiron-Sun: Wound to identity/ego, healing through self-expression
+Chiron-Moon: Emotional/mother wound, healing through nurturing
+Chiron-Mercury: Communication wound, learning disabilities, healing through teaching
+Chiron-Venus: Love/beauty wound, healing through relationships/art
+Chiron-Mars: Action/anger wound, healing through assertion
+Chiron-Jupiter: Faith/meaning wound, healing through expansion
+Chiron-Saturn: Authority wound, healing through structure
+Chiron-Uranus: Uniqueness wound, healing through authenticity
+Chiron-Neptune: Spiritual wound, healing through transcendence
+Chiron-Pluto: Power/trauma wound, deep transformational healing
+
+
+CERES (1) - The Great Mother
+Keywords: Nurturing, food, motherhood, loss, seasons, cycles
+Mythology: Roman goddess of agriculture and grain. Lost her daughter Persephone to Hades, causing winter. Teaches about loss, grief, and letting go.
+Natal Meaning:
+
+How we nurture and need to be nurtured
+Relationship with food and physical nourishment
+Mothering style (especially for women)
+Loss, grief, and what we must release
+Unconditional love and care
+Environmental concerns, connection to Earth
+
+By House:
+
+1st: Nurtures self, mothering presence, food/body focus
+2nd: Nurtures through resources, food security important
+3rd: Nurtures through communication, caretaking of siblings
+4th: Traditional mothering, home as nurturing space
+5th: Nurtures children, creative nurturing
+6th: Daily caretaking, nutrition focus, service through nurturing
+7th: Nurtures partners, seeks nurturing in relationships
+8th: Nurtures through transformation, deep emotional caretaking
+9th: Nurtures through teaching, philosophical mothering
+10th: Public caretaking, mother as authority figure
+11th: Nurtures community, collective mothering
+12th: Hidden nurturing, spiritual mothering
+
+Transit Interpretation:
+
+Issues of nurturing come to forefront
+Mother-related themes activated
+Times of loss or letting go (especially children leaving)
+Food/eating patterns shift
+Environmental awareness heightened
+
+Aspect Meanings:
+
+Ceres-Moon: Double nurturing emphasis, mother-daughter themes
+Ceres-Venus: Nurturing through beauty/love, food and pleasure
+Ceres-Saturn: Controlled nurturing, duty-bound caretaking
+Ceres-Pluto: Intense loss themes, transformative mothering
+
+
+PALLAS ATHENA (2) - Warrior Wisdom
+Keywords: Strategy, wisdom, patterns, creative intelligence, justice, crafts
+Mythology: Greek goddess born from Zeus's head, fully formed. Goddess of wisdom, war strategy, and crafts. The "thinking warrior."
+Natal Meaning:
+
+Strategic intelligence and pattern recognition
+Creative problem-solving ability
+Relationship with father/masculine authority
+Capacity for cool-headed action
+Artistic/craft skills
+Political awareness and social justice
+How we fight battles (mentally rather than physically)
+
+By House:
+
+1st: Strategic identity, warrior presence, intelligent action
+2nd: Strategic resources, skilled with money
+3rd: Strategic communication, teaching strategy
+4th: Strategic home, patterns in family
+5th: Creative strategy, pattern-based art
+6th: Strategic work, skill in daily tasks
+7th: Strategic partnerships, patterns in relationships
+8th: Strategic transformation, pattern recognition in crisis
+9th: Strategic philosophy, wisdom teaching
+10th: Strategic career, public problem-solving
+11th: Strategic networking, pattern-based change
+12th: Hidden strategy, intuitive pattern recognition
+
+Transit Interpretation:
+
+Times requiring strategic thinking
+Pattern recognition heightened
+Political/justice issues activated
+Creative problem-solving opportunities
+Father themes emerge
+
+Aspect Meanings:
+
+Pallas-Mercury: Brilliant strategic mind, pattern-based communication
+Pallas-Mars: Strategic warrior, planned action
+Pallas-Jupiter: Strategic expansion, wise judgment
+Pallas-Sun: Identity through wisdom, strategic self-expression
+
+
+JUNO (3) - The Divine Consort
+Keywords: Marriage, commitment, partnership, jealousy, equality, contracts
+Mythology: Queen of the gods, wife of Zeus/Jupiter. Known for commitment to marriage despite infidelity. Represents the marriage bond itself.
+Natal Meaning:
+
+What we need in committed partnership
+Marriage themes and patterns
+Capacity for commitment and loyalty
+Jealousy and betrayal issues
+Power dynamics in relationships
+Contract and agreement themes
+The "type" we marry (by sign)
+
+By Sign (especially important for Juno):
+
+Aries: Needs independent partner, competitive marriage
+Taurus: Needs stable/sensual partnership, values security
+Gemini: Needs communicative partner, variety in relationship
+Cancer: Needs nurturing partnership, emotional security
+Leo: Needs admiring partner, dramatic relationship
+Virgo: Needs helpful partner, service-oriented marriage
+Libra: Needs equal partner, balanced relationship (exalted)
+Scorpio: Needs intense partnership, transformative marriage
+Sagittarius: Needs adventurous partner, freedom in commitment
+Capricorn: Needs reliable partner, traditional marriage structure
+Aquarius: Needs friendship in marriage, unconventional partnership
+Pisces: Needs spiritual connection, compassionate partnership
+
+Transit Interpretation:
+
+Commitment issues surface
+Marriage/partnership themes activated
+Time to formalize relationships (or end them)
+Jealousy or power struggles in partnerships
+Contract negotiations
+
+Aspect Meanings:
+
+Juno-Venus: Love and commitment intertwined, what we desire vs. what we commit to
+Juno-Mars: Sexual commitment, power in partnership
+Juno-Saturn: Serious commitment, karmic partnerships
+Juno-Pluto: Intense partnership, transformation through marriage
+
+
+VESTA (4) - Sacred Flame
+Keywords: Devotion, focus, sacrifice, sexuality, service, dedication, ritual
+Mythology: Roman goddess of the hearth. Virgin priestesses tended her sacred flame. Represents focused dedication.
+Natal Meaning:
+
+What we're devoted to
+Capacity for focus and dedication
+Sexual energy (integration vs. sublimation)
+Service and sacrifice themes
+Work as sacred practice
+Where we need space and boundaries
+Ritual and discipline
+
+By House:
+
+1st: Devoted to self, sacred identity
+2nd: Devoted to resources, sacred relationship with money
+3rd: Devoted to learning, sacred communication
+4th: Devoted to family, home as temple
+5th: Devoted to creativity, sacred self-expression
+6th: Devoted to service, work as sacred (strong placement)
+7th: Devoted to partnership, but may need independence
+8th: Sacred sexuality, devoted to transformation
+9th: Devoted to philosophy, sacred journey
+10th: Devoted to career, public service
+11th: Devoted to cause, sacred community
+12th: Devoted to spirituality, sacred solitude
+
+Transit Interpretation:
+
+Times requiring focused dedication
+Sexual/celibacy themes emerge
+Need for space and boundaries
+Work becomes all-consuming
+Spiritual practice intensifies
+
+Aspect Meanings:
+
+Vesta-Sun: Devoted identity, focused self-expression
+Vesta-Moon: Emotional focus, devotion to family
+Vesta-Venus: Sacred relationship, integration of love and devotion
+Vesta-Mars: Focused action, sexual energy channeling
+Vesta-Saturn: Disciplined devotion, structured practice
+
+
+EROS (433) - Divine Desire
+Keywords: Erotic love, passion, life force, creative energy, desire, attraction
+Mythology: Primordial god of erotic love. Not cute Cupid, but powerful creative force that brings cosmos into being.
+Natal Meaning:
+
+What truly turns us on (beyond Venus)
+Erotic nature and sexual preferences
+Creative life force
+What we're passionate about
+Soul-level desire and longing
+Erotic compatibility (in synastry)
+
+By House:
+
+1st: Erotic identity, passionate presence
+2nd: Sensual desires, pleasure through physical world
+3rd: Intellectual turn-ons, erotic communication
+4th: Passionate about home/family, private desires
+5th: Playful eroticism, passionate creativity (strong placement)
+6th: Passionate about work, erotic ritual
+7th: Desires in partnership, erotic projection
+8th: Intense eroticism, transformative desire (strong placement)
+9th: Philosophical passion, exotic desires
+10th: Public passion, career as turn-on
+11th: Unconventional desires, passionate ideals
+12th: Hidden desires, spiritual eroticism
+
+Transit Interpretation:
+
+Sexual awakening or intensification
+Passionate pursuits activated
+New desires emerge
+Creative life force heightened
+Erotic encounters likely
+
+Aspect Meanings:
+
+Eros-Venus: Erotic love combined, sensual passion
+Eros-Mars: Sexual intensity, raw desire
+Eros-Pluto: Obsessive desire, transformative eroticism
+Eros-Neptune: Spiritual eroticism, fantasy-based desire
+
+
+PSYCHE (16) - The Soul
+Keywords: Soul, psychology, mind-body connection, trials, soulmate, integration
+Mythology: Mortal woman who married Eros. Underwent trials set by Venus. Represents the soul's journey to wholeness.
+Natal Meaning:
+
+Psychological patterns and depth
+Soul's journey and lessons
+Mind-body-spirit integration
+Capacity for psychological insight
+Soulmate indicators (especially with Eros)
+Trials that lead to growth
+Self-awareness and reflection
+
+Transit Interpretation:
+
+Deep psychological work periods
+Soul lessons emerge
+Integration of shadow material
+Therapy or self-exploration deepens
+Soulmate encounters (especially with Eros transit)
+
+Aspect Meanings:
+
+Psyche-Eros: Soulmate connection, soul-level passion (critical in synastry!)
+Psyche-Moon: Emotional psychology, soul-feeling connection
+Psyche-Mercury: Psychological insight, mental-spiritual bridge
+Psyche-Neptune: Spiritual psychology, transcendent soul work
+Psyche-Pluto: Deep transformation, shadow integration
+
+
+LILITH (Black Moon) - The Dark Feminine
+Keywords: Shadow self, repressed sexuality, rage, independence, taboo, wildness
+Mythology: Adam's first wife who refused submission. Cast out of Eden. Represents the untamed feminine.
+Natal Meaning:
+
+Where we're exiled or rejected
+Repressed desires and rage
+Sexual shadow and taboos
+Wild, untamable part of self
+Where we refuse to conform
+Deep feminine power (for all genders)
+Where we're demonized or scapegoated
+
+By House:
+
+1st: Rejected identity, wild self-expression
+2nd: Shame around resources/body, wild desires
+3rd: Silenced voice, taboo communication
+4th: Family exile, wild roots
+5th: Rejected creativity, taboo sexuality
+6th: Workplace exile, wild body
+7th: Relationship shadow, projection of wildness
+8th: Sexual taboos, transformative rage (powerful placement)
+9th: Rejected beliefs, wild philosophy
+10th: Public exile, untamable career
+11th: Community rejection, wild ideals
+12th: Hidden wildness, spiritual exile
+
+Transit Interpretation:
+
+Shadow material emerges powerfully
+Rage and repressed emotions surface
+Sexual taboos confronted
+Times of feeling exiled or rejected
+Reclaiming wild, authentic self
+Feminist themes activated
+
+Aspect Meanings:
+
+Lilith-Sun: Shadow identity, rejected ego
+Lilith-Moon: Emotional shadow, mother wound
+Lilith-Venus: Sexual shadow, rejected femininity
+Lilith-Mars: Raw rage, sexual power
+Lilith-Pluto: Deep shadow work, transformative rage
+
+
+PHOLUS (5145) - Small Cause, Big Effect
+Keywords: Catalyst, turning point, chain reactions, uncorking, generations, responsibility
+Mythology: Centaur who accidentally uncorked wine leading to battle and his death. Small action, huge consequences.
+Natal Meaning:
+
+Where small actions have huge consequences
+Catalytic moments in life
+Generational karma and patterns
+What we can't control once started
+Sudden turning points
+Multi-generational themes
+Responsibility for ripple effects
+
+Transit Interpretation:
+
+Major turning points and catalysts
+Small events with large consequences
+Generational themes activated
+Things "uncork" and can't be stopped
+Time to be aware of ripple effects
+Often correlates with life-changing events
+
+Aspect Meanings:
+
+Pholus-Sun: Catalytic identity shifts
+Pholus-Moon: Emotional chain reactions
+Pholus-Pluto: Massive transformative catalysts
+Pholus-Nodes: Karmic/generational turning points
+
+
+NESSUS (7066) - Karmic Abuse
+Keywords: Abuse, karma, consequences, poison, ancestral patterns, dark legacy
+Mythology: Centaur who tried to abduct Hercules' wife. His poisoned blood later killed Hercules. Represents abuse and its lasting effects.
+Natal Meaning:
+
+Abuse patterns (victim, perpetrator, or both)
+Karmic consequences of actions
+Ancestral trauma and patterns
+Poison that lasts generations
+Where we must break cycles
+Power misuse and its effects
+Healing from violation
+
+Transit Interpretation:
+
+Abuse patterns surface (personal or collective)
+Karmic reckoning times
+Confronting dark family patterns
+Breaking ancestral cycles
+Accountability moments
+#MeToo and abuse revelations often correlate with Nessus transits
+
+Aspect Meanings:
+
+Nessus-Pluto: Deep abuse patterns, power misuse
+Nessus-Saturn: Karmic abuse, authority violations
+Nessus-Chiron: Wound meets karma, healing abuse patterns
+Nessus-Venus: Relationship abuse patterns
+
+Important Note: Nessus doesn't mean someone IS an abuser. It shows where abuse patterns exist that need healing/breaking.
+
+ERIS (136199) - Divine Discord
+Keywords: Discord, rivalry, feminine rage, marginalization, truth-telling, chaos
+Mythology: Goddess not invited to wedding. Threw golden apple inscribed "to the fairest," causing Trojan War. Represents excluded feminine.
+Natal Meaning:
+
+Where we're excluded or marginalized
+Competitive streaks and rivalries
+Truth that disrupts harmony
+Feminine rage at exclusion
+Where we stir things up
+Shadow of Libran harmony
+What we compete for
+
+Transit Interpretation:
+
+Disruptions to false harmony
+Rivalries surface
+Truth-telling that causes chaos
+Feminine rage activated (collectively)
+Marginalized voices demand inclusion
+Competitive situations arise
+
+Aspect Meanings:
+
+Eris-Pluto: Transformative discord, power struggles
+Eris-Uranus: Revolutionary disruption
+Eris-Mars: Competitive rage, fighting for inclusion
+Eris-Venus: Relationship discord, jealousy
+
+
+SEDNA (90377) - Survival & Betrayal
+Keywords: Betrayal, survival, cold isolation, sacrifice, victimhood, resourcefulness
+Mythology: Inuit goddess thrown into icy ocean by her father. Became goddess of sea mammals. Represents ultimate betrayal and survival.
+Natal Meaning:
+
+Deep betrayal patterns (especially by authority/family)
+Survival instincts and resourcefulness
+Cold isolation and exile
+Where we must survive against all odds
+Victimization themes
+Deep ocean of unconscious
+Environmental themes (ocean/climate)
+
+Transit Interpretation:
+
+Betrayal themes emerge (especially by authority)
+Survival mode activated
+Isolation periods
+Environmental crises
+Having to rely on self alone
+Collective sacrifice themes
+
+Aspect Meanings:
+
+Sedna-Saturn: Authority betrayal, cold survival
+Sedna-Pluto: Deep betrayal, survival transformation
+Sedna-Neptune: Spiritual isolation, oceanic depths
+Sedna-Moon: Mother betrayal, emotional survival
+
+
+FIXED STARS - Brief Keywords
+ALGOL (β Persei) - The Demon Star:
+
+Keywords: Intensity, transformation, beheading, facing fears, Medusa energy
+Meaning: Confronting what we find monstrous, transformation through intensity
+Often misunderstood as purely negative - actually about facing shadow
+
+REGULUS (α Leonis) - Heart of the Lion:
+
+Keywords: Royalty, success, leadership, magnanimity, fame, nobility
+Meaning: Natural authority and leadership, success through integrity
+"Success if revenge is avoided" (traditional)
+
+SPICA (α Virginis) - The Wheat Ear:
+
+Keywords: Gifts, talents, protection, blessings, prosperity, artistry
+Meaning: Natural gifts and talents, artistic ability, protected success
+Traditionally very fortunate
+
+ANTARES (α Scorpii) - Heart of the Scorpion:
+
+Keywords: Warrior spirit, obsession, intensity, courage, danger, passion
+Meaning: Intense focus and drive, warrior nature, obsessive pursuit
+Mars-like nature, rivalry with Aldebaran
+
+ALDEBARAN (α Tauri) - Eye of the Bull:
+
+Keywords: Integrity, success through right action, eloquence, honor
+Meaning: Success through integrity, noble character, leadership
+"Integrity brings success" - opposite of Antares energy
+
+SIRIUS (α Canis Majoris) - The Dog Star:
+
+Keywords: Ambition, honor, fame, passion, idealism, heat
+Meaning: Passionate ambition, potential for fame/success, dog-like loyalty
+Brightest star - prominent placement brings prominence
+
+
+HOW THE CHATBOT SHOULD USE THIS INFORMATION:
+When user asks about an asteroid in their chart:
+
+Identify sign, house, and aspects
+Synthesize the interpretation using relevant keywords
+Speak naturally, not robotically listing themes
+Connect to user's life circumstances when possible
+Offer both challenges and growth opportunities
+
+Example response format:
+"With Chiron in your 4th house in Cancer, you likely carry a core wound around belonging and family. This placement suggests emotional vulnerability tied to your roots and home life. However, this same wound becomes your superpower - you have a natural ability to help others feel at home and to create nurturing spaces. The healing journey with this placement involves accepting that the feeling of 'not quite belonging' can coexist with deep family love."
+For transits:
+"Transiting Pholus is approaching your natal Venus. This is a catalytic time for relationships - small interactions or decisions could have unexpectedly large consequences. Be mindful of what you're 'uncorking' in your love life. This isn't about being afraid, but about being aware that small choices now can create significant ripples."
+For aspects in famous charts or synastry:
+"The Eros-Psyche conjunction in this chart suggests someone whose erotic nature is deeply integrated with their soul's journey. Passion and psychological depth are inseparable for them."

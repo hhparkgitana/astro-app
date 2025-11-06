@@ -1,7 +1,8 @@
 import React from 'react';
 import './AspectMatrix.css';
+import { CHART_CONFIG, filterPlanetOrder } from '../utils/chartMath';
 
-// Planet glyphs in Unicode
+// Planet glyphs in Unicode (including optional bodies)
 const PLANET_GLYPHS = {
   'Sun': '☉',
   'Moon': '☽',
@@ -14,7 +15,15 @@ const PLANET_GLYPHS = {
   'Neptune': '♆',
   'Pluto': '♇',
   'North Node': '☊',
-  'South Node': '☋'
+  'South Node': '☋',
+  'Chiron': '⚷',
+  'Pholus': '⯛',
+  'Ceres': '⚳',
+  'Pallas': '⚴',
+  'Juno': '⚵',
+  'Vesta': '⚶',
+  'Lilith (Mean)': '⚸',
+  'Lilith (True)': '⚸'
 };
 
 // Aspect colors and symbols
@@ -26,13 +35,19 @@ const ASPECT_CONFIG = {
   'OPPOSITION': { symbol: '☍', color: '#FF4500', name: 'Opposition' }
 };
 
-function SynastryAspectMatrix({ chartData, activeSynastryAspects, onSynastryAspectToggle }) {
-  // Define planet order (Sun → Pluto → Nodes)
-  const planetOrder = [
+function SynastryAspectMatrix({ chartData, activeSynastryAspects, onSynastryAspectToggle, displaySettings = CHART_CONFIG.defaultDisplay }) {
+  // Define full planet order (including optional bodies)
+  const fullPlanetOrder = [
     'Sun', 'Moon', 'Mercury', 'Venus', 'Mars',
     'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto',
-    'North Node', 'South Node'
+    'North Node', 'South Node',
+    'Chiron', 'Pholus',
+    'Ceres', 'Pallas', 'Juno', 'Vesta',
+    'Lilith (Mean)', 'Lilith (True)'
   ];
+
+  // Filter planet order based on display settings
+  const planetOrder = filterPlanetOrder(fullPlanetOrder, displaySettings);
 
   // Build a lookup map for aspects by planet pair
   const aspectMap = {};
