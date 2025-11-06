@@ -9189,5 +9189,405 @@
       "assembly-line",
       "innovation"
     ]
+  },
+  {
+    "id": "first-website",
+    "name": "First Website Goes Live",
+    "category": "Tech & Internet Milestones",
+    "date": "1991-08-06",
+    "time": "14:56",
+    "location": "Geneva, Switzerland",
+    "latitude": 46.2044,
+    "longitude": 6.1432,
+    "timezone": "Europe/Zurich",
+    "roddenRating": "AA",
+    "source": "CERN server logs",
+    "notes": "Tim Berners-Lee publishes first website at CERN, World Wide Web born",
+    "tags": [
+      "tech",
+      "internet",
+      "www",
+      "innovation"
+    ]
+  },
+  {
+    "id": "first-email",
+    "name": "First Email Sent",
+    "category": "Tech & Internet Milestones",
+    "date": "1971-10-01",
+    "time": "22:00",
+    "location": "Cambridge, Massachusetts, USA",
+    "latitude": 42.3736,
+    "longitude": -71.1097,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Ray Tomlinson's test message",
+    "notes": "Ray Tomlinson sends first network email using @ symbol",
+    "tags": [
+      "tech",
+      "internet",
+      "email",
+      "communication"
+    ]
+  },
+  {
+    "id": "iphone-launch",
+    "name": "iPhone Launch",
+    "category": "Tech & Internet Milestones",
+    "date": "2007-06-29",
+    "time": "18:00",
+    "location": "Cupertino, California, USA",
+    "latitude": 37.323,
+    "longitude": -122.0322,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Store opening time",
+    "notes": "First iPhone goes on sale, smartphone revolution begins",
+    "tags": [
+      "tech",
+      "apple",
+      "mobile",
+      "innovation"
+    ]
+  },
+  {
+    "id": "windows-95-launch",
+    "name": "Windows 95 Launch",
+    "category": "Tech & Internet Milestones",
+    "date": "1995-08-24",
+    "time": "00:01",
+    "location": "Redmond, Washington, USA",
+    "latitude": 47.674,
+    "longitude": -122.1215,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Midnight launch",
+    "notes": "Windows 95 release, 'Start Me Up,' mainstream computing revolution",
+    "tags": [
+      "tech",
+      "microsoft",
+      "software",
+      "pc"
+    ]
+  },
+  {
+    "id": "google-founded",
+    "name": "Google Incorporated",
+    "category": "Tech & Internet Milestones",
+    "date": "1998-09-04",
+    "time": "09:00",
+    "location": "Menlo Park, California, USA",
+    "latitude": 37.453,
+    "longitude": -122.1817,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "A",
+    "source": "Incorporation filing",
+    "notes": "Google Inc. founded by Page & Brin, search engine dominance begins",
+    "tags": [
+      "tech",
+      "google",
+      "internet",
+      "search"
+    ]
+  },
+  {
+    "id": "facebook-launch",
+    "name": "Facebook Launch",
+    "category": "Tech & Internet Milestones",
+    "date": "2004-02-04",
+    "time": "12:00",
+    "location": "Cambridge, Massachusetts, USA",
+    "latitude": 42.3736,
+    "longitude": -71.1097,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "TheFacebook.com goes live",
+    "notes": "Zuckerberg launches Facebook from Harvard dorm, social media era begins",
+    "tags": [
+      "tech",
+      "social-media",
+      "facebook",
+      "internet"
+    ]
+  },
+  {
+    "id": "youtube-launch",
+    "name": "YouTube Launch",
+    "category": "Tech & Internet Milestones",
+    "date": "2005-02-14",
+    "time": "21:27",
+    "location": "San Mateo, California, USA",
+    "latitude": 37.563,
+    "longitude": -122.3255,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Domain registration timestamp",
+    "notes": "YouTube domain registered, video sharing revolution begins",
+    "tags": [
+      "tech",
+      "social-media",
+      "video",
+      "internet"
+    ]
+  },
+  {
+    "id": "twitter-first-tweet",
+    "name": "First Tweet",
+    "category": "Tech & Internet Milestones",
+    "date": "2006-03-21",
+    "time": "12:50",
+    "location": "San Francisco, California, USA",
+    "latitude": 37.7749,
+    "longitude": -122.4194,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Jack Dorsey's first tweet timestamp",
+    "notes": "Jack Dorsey tweets 'just setting up my twttr,' microblogging born",
+    "tags": [
+      "tech",
+      "social-media",
+      "twitter",
+      "internet"
+    ]
+  },
+  {
+    "id": "wikipedia-launch",
+    "name": "Wikipedia Launch",
+    "category": "Tech & Internet Milestones",
+    "date": "2001-01-15",
+    "time": "00:00",
+    "location": "San Diego, California, USA",
+    "latitude": 32.7157,
+    "longitude": -117.1611,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "A",
+    "source": "Wikipedia.com goes live",
+    "notes": "Jimmy Wales & Larry Sanger launch Wikipedia, crowdsourced knowledge",
+    "tags": [
+      "tech",
+      "internet",
+      "wiki",
+      "knowledge"
+    ]
+  },
+  {
+    "id": "netscape-ipo",
+    "name": "Netscape IPO",
+    "category": "Tech & Internet Milestones",
+    "date": "1995-08-09",
+    "time": "09:30",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Market opening bell",
+    "notes": "Netscape IPO ignites dot-com boom, stock doubles first day",
+    "tags": [
+      "tech",
+      "internet",
+      "ipo",
+      "boom"
+    ]
+  },
+  {
+    "id": "internet-opened-commercial",
+    "name": "Internet Opened to Commerce",
+    "category": "Tech & Internet Milestones",
+    "date": "1991-08-06",
+    "time": "12:00",
+    "location": "Washington, D.C., USA",
+    "latitude": 38.9072,
+    "longitude": -77.0369,
+    "timezone": "America/New_York",
+    "roddenRating": "B",
+    "source": "NSF policy change announcement",
+    "notes": "NSF lifts commercial restrictions on internet, e-commerce era begins",
+    "tags": [
+      "tech",
+      "internet",
+      "commerce",
+      "policy"
+    ]
+  },
+  {
+    "id": "apple-macintosh",
+    "name": "Macintosh Launch",
+    "category": "Tech & Internet Milestones",
+    "date": "1984-01-24",
+    "time": "10:00",
+    "location": "Cupertino, California, USA",
+    "latitude": 37.323,
+    "longitude": -122.0322,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Product unveiling",
+    "notes": "Apple launches Macintosh, '1984' Super Bowl ad, GUI revolution",
+    "tags": [
+      "tech",
+      "apple",
+      "personal-computer",
+      "innovation"
+    ]
+  },
+  {
+    "id": "ibm-pc",
+    "name": "IBM PC Launch",
+    "category": "Tech & Internet Milestones",
+    "date": "1981-08-12",
+    "time": "10:00",
+    "location": "Boca Raton, Florida, USA",
+    "latitude": 26.3683,
+    "longitude": -80.1289,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Product announcement",
+    "notes": "IBM PC Model 5150 announced, legitimizes personal computing",
+    "tags": [
+      "tech",
+      "ibm",
+      "personal-computer",
+      "industry"
+    ]
+  },
+  {
+    "id": "android-launch",
+    "name": "Android Launch",
+    "category": "Tech & Internet Milestones",
+    "date": "2008-09-23",
+    "time": "00:01",
+    "location": "Mountain View, California, USA",
+    "latitude": 37.3861,
+    "longitude": -122.0839,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "A",
+    "source": "T-Mobile G1 release date",
+    "notes": "First Android phone (T-Mobile G1) released, open-source mobile OS",
+    "tags": [
+      "tech",
+      "google",
+      "mobile",
+      "android"
+    ]
+  },
+  {
+    "id": "ipod-launch",
+    "name": "iPod Launch",
+    "category": "Tech & Internet Milestones",
+    "date": "2001-10-23",
+    "time": "10:00",
+    "location": "Cupertino, California, USA",
+    "latitude": 37.323,
+    "longitude": -122.0322,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Product unveiling",
+    "notes": "Steve Jobs unveils iPod, '1000 songs in your pocket,' music revolution",
+    "tags": [
+      "tech",
+      "apple",
+      "music",
+      "innovation"
+    ]
+  },
+  {
+    "id": "playstation-launch",
+    "name": "PlayStation Launch",
+    "category": "Tech & Internet Milestones",
+    "date": "1994-12-03",
+    "time": "00:01",
+    "location": "Tokyo, Japan",
+    "latitude": 35.6762,
+    "longitude": 139.6503,
+    "timezone": "Asia/Tokyo",
+    "roddenRating": "AA",
+    "source": "Japan release date",
+    "notes": "Sony PlayStation launches in Japan, gaming industry transformed",
+    "tags": [
+      "tech",
+      "gaming",
+      "playstation",
+      "sony"
+    ]
+  },
+  {
+    "id": "amazon-website-launch",
+    "name": "Amazon.com Launch",
+    "category": "Tech & Internet Milestones",
+    "date": "1995-07-16",
+    "time": "00:01",
+    "location": "Seattle, Washington, USA",
+    "latitude": 47.6062,
+    "longitude": -122.3321,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "A",
+    "source": "Website goes live",
+    "notes": "Jeff Bezos launches Amazon.com as online bookstore, e-commerce giant born",
+    "tags": [
+      "tech",
+      "amazon",
+      "e-commerce",
+      "internet"
+    ]
+  },
+  {
+    "id": "napster-launch",
+    "name": "Napster Launch",
+    "category": "Tech & Internet Milestones",
+    "date": "1999-06-01",
+    "time": "12:00",
+    "location": "Boston, Massachusetts, USA",
+    "latitude": 42.3601,
+    "longitude": -71.0589,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Service goes live",
+    "notes": "Napster launches peer-to-peer music sharing, disrupts music industry",
+    "tags": [
+      "tech",
+      "music",
+      "file-sharing",
+      "disruption"
+    ]
+  },
+  {
+    "id": "kindle-launch",
+    "name": "Amazon Kindle Launch",
+    "category": "Tech & Internet Milestones",
+    "date": "2007-11-19",
+    "time": "09:00",
+    "location": "Seattle, Washington, USA",
+    "latitude": 47.6062,
+    "longitude": -122.3321,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Product release",
+    "notes": "Amazon Kindle launches, sells out in 5.5 hours, e-reading revolution",
+    "tags": [
+      "tech",
+      "amazon",
+      "ebook",
+      "publishing"
+    ]
+  },
+  {
+    "id": "netflix-streaming",
+    "name": "Netflix Streaming Launch",
+    "category": "Tech & Internet Milestones",
+    "date": "2007-01-15",
+    "time": "00:01",
+    "location": "Los Gatos, California, USA",
+    "latitude": 37.2358,
+    "longitude": -121.9623,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "A",
+    "source": "Service launch date",
+    "notes": "Netflix launches streaming service, disrupts TV/film distribution",
+    "tags": [
+      "tech",
+      "streaming",
+      "entertainment",
+      "disruption"
+    ]
   }
 ]
