@@ -11229,5 +11229,345 @@
       "nobel-prize",
       "french"
     ]
+  },
+  {
+    "id": "brando-marlon",
+    "name": "Marlon Brando",
+    "category": "Actors & Actresses",
+    "date": "1924-04-03",
+    "time": "23:00",
+    "location": "Omaha, Nebraska, USA",
+    "latitude": 41.2565,
+    "longitude": -95.9345,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Method acting pioneer, The Godfather, On the Waterfront, 2 Oscars",
+    "tags": [
+      "actor",
+      "method-acting",
+      "hollywood",
+      "legend"
+    ]
+  },
+  {
+    "id": "hepburn-katharine",
+    "name": "Katharine Hepburn",
+    "category": "Actors & Actresses",
+    "date": "1907-05-12",
+    "time": "17:47",
+    "location": "Hartford, Connecticut, USA",
+    "latitude": 41.7658,
+    "longitude": -72.6734,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "4 Oscars (record), independent spirit, The African Queen, On Golden Pond",
+    "tags": [
+      "actress",
+      "oscar-winner",
+      "hollywood",
+      "icon"
+    ]
+  },
+  {
+    "id": "dean-james",
+    "name": "James Dean",
+    "category": "Actors & Actresses",
+    "date": "1931-02-08",
+    "time": "09:00",
+    "location": "Marion, Indiana, USA",
+    "latitude": 40.5581,
+    "longitude": -85.6591,
+    "timezone": "America/Indiana/Indianapolis",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Rebel Without a Cause, cultural icon, died age 24 in car crash",
+    "tags": [
+      "actor",
+      "icon",
+      "rebel",
+      "tragedy"
+    ]
+  },
+  {
+    "id": "streep-meryl",
+    "name": "Meryl Streep",
+    "category": "Actors & Actresses",
+    "date": "1949-06-22",
+    "time": "08:05",
+    "location": "Summit, New Jersey, USA",
+    "latitude": 40.7151,
+    "longitude": -74.3649,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "3 Oscars, 21 nominations (record), Sophie's Choice, versatile legend",
+    "tags": [
+      "actress",
+      "oscar-winner",
+      "versatile",
+      "legend"
+    ]
+  },
+  {
+    "id": "deniro-robert",
+    "name": "Robert De Niro",
+    "category": "Actors & Actresses",
+    "date": "1943-08-17",
+    "time": "03:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Taxi Driver, Raging Bull, Godfather II, 2 Oscars, method actor",
+    "tags": [
+      "actor",
+      "oscar-winner",
+      "method-acting",
+      "scorsese"
+    ]
+  },
+  {
+    "id": "pacino-al",
+    "name": "Al Pacino",
+    "category": "Actors & Actresses",
+    "date": "1940-04-25",
+    "time": "11:02",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Godfather, Scarface, Scent of a Woman Oscar, intense performances",
+    "tags": [
+      "actor",
+      "oscar-winner",
+      "intense",
+      "icon"
+    ]
+  },
+  {
+    "id": "nicholson-jack",
+    "name": "Jack Nicholson",
+    "category": "Actors & Actresses",
+    "date": "1937-04-22",
+    "time": "11:00",
+    "location": "Neptune City, New Jersey, USA",
+    "latitude": 40.1993,
+    "longitude": -74.0285,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "3 Oscars, One Flew Over the Cuckoo's Nest, The Shining, Joker",
+    "tags": [
+      "actor",
+      "oscar-winner",
+      "versatile",
+      "icon"
+    ]
+  },
+  {
+    "id": "washington-denzel",
+    "name": "Denzel Washington",
+    "category": "Actors & Actresses",
+    "date": "1954-12-28",
+    "time": "01:56",
+    "location": "Mount Vernon, New York, USA",
+    "latitude": 40.9126,
+    "longitude": -73.837,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "2 Oscars, Training Day, Malcolm X, powerful dramatic performances",
+    "tags": [
+      "actor",
+      "oscar-winner",
+      "drama",
+      "leading-man"
+    ]
+  },
+  {
+    "id": "hopkins-anthony",
+    "name": "Anthony Hopkins",
+    "category": "Actors & Actresses",
+    "date": "1937-12-31",
+    "time": "09:15",
+    "location": "Port Talbot, Wales",
+    "latitude": 51.5882,
+    "longitude": -3.7957,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Oscar for Silence of the Lambs, Hannibal Lecter, knighted, Welsh legend",
+    "tags": [
+      "actor",
+      "oscar-winner",
+      "british",
+      "intense"
+    ]
+  },
+  {
+    "id": "davis-bette",
+    "name": "Bette Davis",
+    "category": "Actors & Actresses",
+    "date": "1908-04-05",
+    "time": "19:00",
+    "location": "Lowell, Massachusetts, USA",
+    "latitude": 42.6334,
+    "longitude": -71.3162,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "2 Oscars, All About Eve, fierce independence, 'Bette Davis eyes'",
+    "tags": [
+      "actress",
+      "oscar-winner",
+      "icon",
+      "fierce"
+    ]
+  },
+  {
+    "id": "olivier-laurence",
+    "name": "Laurence Olivier",
+    "category": "Actors & Actresses",
+    "date": "1907-05-22",
+    "time": "05:00",
+    "location": "Dorking, England",
+    "latitude": 51.2333,
+    "longitude": -0.3333,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Oscar winner, Shakespeare master, Hamlet, theater & film legend",
+    "tags": [
+      "actor",
+      "oscar-winner",
+      "shakespeare",
+      "british"
+    ]
+  },
+  {
+    "id": "grant-cary",
+    "name": "Cary Grant",
+    "category": "Actors & Actresses",
+    "date": "1904-01-18",
+    "time": "01:07",
+    "location": "Bristol, England",
+    "latitude": 51.4545,
+    "longitude": -2.5879,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Suave leading man, North by Northwest, Hitchcock favorite, timeless charm",
+    "tags": [
+      "actor",
+      "leading-man",
+      "hitchcock",
+      "charm"
+    ]
+  },
+  {
+    "id": "stewart-james",
+    "name": "James Stewart",
+    "category": "Actors & Actresses",
+    "date": "1908-05-20",
+    "time": "15:00",
+    "location": "Indiana, Pennsylvania, USA",
+    "latitude": 40.6215,
+    "longitude": -79.1525,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Oscar winner, It's a Wonderful Life, Vertigo, everyman persona, WWII hero",
+    "tags": [
+      "actor",
+      "oscar-winner",
+      "everyman",
+      "war-hero"
+    ]
+  },
+  {
+    "id": "leigh-vivien",
+    "name": "Vivien Leigh",
+    "category": "Actors & Actresses",
+    "date": "1913-11-05",
+    "time": "14:35",
+    "location": "Darjeeling, India",
+    "latitude": 27.036,
+    "longitude": 88.2627,
+    "timezone": "Asia/Kolkata",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "2 Oscars, Gone with the Wind (Scarlett O'Hara), A Streetcar Named Desire",
+    "tags": [
+      "actress",
+      "oscar-winner",
+      "icon",
+      "tragic"
+    ]
+  },
+  {
+    "id": "ledger-heath",
+    "name": "Heath Ledger",
+    "category": "Actors & Actresses",
+    "date": "1979-04-04",
+    "time": "12:40",
+    "location": "Perth, Australia",
+    "latitude": -31.9505,
+    "longitude": 115.8605,
+    "timezone": "Australia/Perth",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Posthumous Oscar for The Dark Knight Joker, Brokeback Mountain, died 2008",
+    "tags": [
+      "actor",
+      "oscar-winner",
+      "australian",
+      "tragedy"
+    ]
+  },
+  {
+    "id": "winslet-kate",
+    "name": "Kate Winslet",
+    "category": "Actors & Actresses",
+    "date": "1975-10-05",
+    "time": "07:15",
+    "location": "Reading, England",
+    "latitude": 51.4543,
+    "longitude": -0.9781,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Oscar for The Reader, Titanic, versatile British actress",
+    "tags": [
+      "actress",
+      "oscar-winner",
+      "british",
+      "versatile"
+    ]
+  },
+  {
+    "id": "phoenix-joaquin",
+    "name": "Joaquin Phoenix",
+    "category": "Actors & Actresses",
+    "date": "1974-10-28",
+    "time": "09:45",
+    "location": "San Juan, Puerto Rico",
+    "latitude": 18.4655,
+    "longitude": -66.1057,
+    "timezone": "America/Puerto_Rico",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Oscar for Joker, intense method actor, Walk the Line, Gladiator",
+    "tags": [
+      "actor",
+      "oscar-winner",
+      "method-acting",
+      "intense"
+    ]
   }
 ]
