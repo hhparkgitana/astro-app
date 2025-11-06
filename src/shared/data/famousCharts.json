@@ -11569,5 +11569,665 @@
       "method-acting",
       "intense"
     ]
+  },
+  {
+    "id": "bono-sonny",
+    "name": "Sonny Bono",
+    "category": "Famous Couples",
+    "date": "1935-02-16",
+    "time": "13:00",
+    "location": "Detroit, Michigan, USA",
+    "latitude": 42.3314,
+    "longitude": -83.0458,
+    "timezone": "America/Detroit",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Sonny & Cher duo, musician turned politician, skiing accident death 1998",
+    "tags": [
+      "musician",
+      "couple",
+      "politician",
+      "tragedy"
+    ]
+  },
+  {
+    "id": "cher",
+    "name": "Cher",
+    "category": "Famous Couples",
+    "date": "1946-05-20",
+    "time": "07:31",
+    "location": "El Centro, California, USA",
+    "latitude": 32.792,
+    "longitude": -115.5631,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Sonny & Cher duo, Oscar winner, 'Goddess of Pop,' cultural icon",
+    "tags": [
+      "musician",
+      "actress",
+      "couple",
+      "icon"
+    ]
+  },
+  {
+    "id": "cobain-kurt",
+    "name": "Kurt Cobain",
+    "category": "Famous Couples",
+    "date": "1967-02-20",
+    "time": "19:38",
+    "location": "Aberdeen, Washington, USA",
+    "latitude": 46.9754,
+    "longitude": -123.8157,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Nirvana frontman, grunge icon, married Courtney Love, suicide 1994",
+    "tags": [
+      "musician",
+      "grunge",
+      "couple",
+      "tragedy"
+    ]
+  },
+  {
+    "id": "love-courtney",
+    "name": "Courtney Love",
+    "category": "Famous Couples",
+    "date": "1964-07-09",
+    "time": "12:24",
+    "location": "San Francisco, California, USA",
+    "latitude": 37.7749,
+    "longitude": -122.4194,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Hole frontwoman, married Kurt Cobain, controversial figure, actress",
+    "tags": [
+      "musician",
+      "grunge",
+      "couple",
+      "controversial"
+    ]
+  },
+  {
+    "id": "knowles-beyonce",
+    "name": "Beyoncé Knowles-Carter",
+    "category": "Famous Couples",
+    "date": "1981-09-04",
+    "time": "10:00",
+    "location": "Houston, Texas, USA",
+    "latitude": 29.7604,
+    "longitude": -95.3698,
+    "timezone": "America/Chicago",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "R&B superstar, married Jay-Z, power couple, cultural icon",
+    "tags": [
+      "musician",
+      "rnb",
+      "couple",
+      "power-couple"
+    ]
+  },
+  {
+    "id": "carter-jay-z",
+    "name": "Jay-Z (Shawn Carter)",
+    "category": "Famous Couples",
+    "date": "1969-12-04",
+    "time": "00:00",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Rapper, entrepreneur, married Beyoncé, billionaire, hip-hop mogul",
+    "tags": [
+      "musician",
+      "hip-hop",
+      "couple",
+      "mogul"
+    ]
+  },
+  {
+    "id": "bowie-iman",
+    "name": "Iman",
+    "category": "Famous Couples",
+    "date": "1955-07-25",
+    "time": "12:00",
+    "location": "Mogadishu, Somalia",
+    "latitude": 2.0469,
+    "longitude": 45.3182,
+    "timezone": "Africa/Mogadishu",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Supermodel, married David Bowie 1992-2016, entrepreneur, beauty icon",
+    "tags": [
+      "model",
+      "couple",
+      "entrepreneur",
+      "icon"
+    ]
+  },
+  {
+    "id": "kahlo-rivera-diego",
+    "name": "Diego Rivera",
+    "category": "Famous Couples",
+    "date": "1886-12-08",
+    "time": "21:00",
+    "location": "Guanajuato, Mexico",
+    "latitude": 21.019,
+    "longitude": -101.2574,
+    "timezone": "America/Mexico_City",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Mexican muralist, married Frida Kahlo, communist, artistic giant",
+    "tags": [
+      "artist",
+      "muralist",
+      "couple",
+      "mexican"
+    ]
+  },
+  {
+    "id": "napoleon-bonaparte",
+    "name": "Napoleon Bonaparte",
+    "category": "Famous Couples",
+    "date": "1769-08-15",
+    "time": "11:00",
+    "location": "Ajaccio, Corsica",
+    "latitude": 41.9267,
+    "longitude": 8.7369,
+    "timezone": "Europe/Paris",
+    "roddenRating": "B",
+    "source": "Historical records",
+    "notes": "French Emperor, married Josephine, military genius, exiled to Elba & St. Helena",
+    "tags": [
+      "emperor",
+      "military",
+      "couple",
+      "french"
+    ]
+  },
+  {
+    "id": "beauharnais-josephine",
+    "name": "Josephine de Beauharnais",
+    "category": "Famous Couples",
+    "date": "1763-06-23",
+    "time": "12:00",
+    "location": "Les Trois-Îlets, Martinique",
+    "latitude": 14.54,
+    "longitude": -61.04,
+    "timezone": "America/Martinique",
+    "roddenRating": "C",
+    "source": "Historical records (time uncertain)",
+    "notes": "French Empress, married Napoleon, previous marriage, divorced 1810",
+    "tags": [
+      "empress",
+      "couple",
+      "french",
+      "royalty"
+    ]
+  },
+  {
+    "id": "windsor-edward-viii",
+    "name": "Edward VIII",
+    "category": "Famous Couples",
+    "date": "1894-06-23",
+    "time": "21:55",
+    "location": "Richmond, England",
+    "latitude": 51.4613,
+    "longitude": -0.3037,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth records",
+    "notes": "British King, abdicated throne for Wallis Simpson 1936, Duke of Windsor",
+    "tags": [
+      "royalty",
+      "abdication",
+      "couple",
+      "scandal"
+    ]
+  },
+  {
+    "id": "simpson-wallis",
+    "name": "Wallis Simpson",
+    "category": "Famous Couples",
+    "date": "1896-06-19",
+    "time": "12:00",
+    "location": "Blue Ridge Summit, Pennsylvania, USA",
+    "latitude": 39.7289,
+    "longitude": -77.4781,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Duchess of Windsor, Edward VIII abdicated throne for her, twice-divorced American",
+    "tags": [
+      "royalty",
+      "scandal",
+      "couple",
+      "duchess"
+    ]
+  },
+  {
+    "id": "kelly-grace",
+    "name": "Grace Kelly",
+    "category": "Famous Couples",
+    "date": "1929-11-12",
+    "time": "05:31",
+    "location": "Philadelphia, Pennsylvania, USA",
+    "latitude": 39.9526,
+    "longitude": -75.1652,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Oscar-winning actress, became Princess of Monaco, married Prince Rainier, died in car crash 1982",
+    "tags": [
+      "actress",
+      "royalty",
+      "couple",
+      "tragedy"
+    ]
+  },
+  {
+    "id": "grimaldi-rainier-iii",
+    "name": "Prince Rainier III",
+    "category": "Famous Couples",
+    "date": "1923-05-31",
+    "time": "06:00",
+    "location": "Monaco",
+    "latitude": 43.7384,
+    "longitude": 7.4246,
+    "timezone": "Europe/Monaco",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Prince of Monaco, married Grace Kelly 1956, modernized Monaco, ruled 56 years",
+    "tags": [
+      "royalty",
+      "couple",
+      "monaco",
+      "prince"
+    ]
+  },
+  {
+    "id": "kennedy-jacqueline",
+    "name": "Jacqueline Kennedy Onassis",
+    "category": "Famous Couples",
+    "date": "1929-07-28",
+    "time": "14:30",
+    "location": "Southampton, New York, USA",
+    "latitude": 40.8843,
+    "longitude": -72.3895,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "First Lady, married JFK then Aristotle Onassis, style icon, book editor",
+    "tags": [
+      "first-lady",
+      "couple",
+      "icon",
+      "editor"
+    ]
+  },
+  {
+    "id": "onassis-aristotle",
+    "name": "Aristotle Onassis",
+    "category": "Famous Couples",
+    "date": "1906-01-15",
+    "time": "05:00",
+    "location": "Smyrna, Turkey",
+    "latitude": 38.4237,
+    "longitude": 27.1428,
+    "timezone": "Europe/Istanbul",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Greek shipping magnate, married Jackie Kennedy 1968, billionaire, died 1975",
+    "tags": [
+      "business",
+      "couple",
+      "shipping",
+      "billionaire"
+    ]
+  },
+  {
+    "id": "presley-priscilla",
+    "name": "Priscilla Presley",
+    "category": "Famous Couples",
+    "date": "1945-05-24",
+    "time": "22:00",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Married Elvis 1967-1973, actress, businesswoman, managed Elvis estate",
+    "tags": [
+      "actress",
+      "couple",
+      "business",
+      "legacy"
+    ]
+  },
+  {
+    "id": "vicious-sid",
+    "name": "Sid Vicious",
+    "category": "Famous Couples",
+    "date": "1957-05-10",
+    "time": "04:00",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Sex Pistols bassist, punk icon, Nancy Spungen's boyfriend, overdose 1979",
+    "tags": [
+      "musician",
+      "punk",
+      "couple",
+      "tragedy"
+    ]
+  },
+  {
+    "id": "spungen-nancy",
+    "name": "Nancy Spungen",
+    "category": "Famous Couples",
+    "date": "1958-02-27",
+    "time": "12:00",
+    "location": "Philadelphia, Pennsylvania, USA",
+    "latitude": 39.9526,
+    "longitude": -75.1652,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Groupie, Sid Vicious girlfriend, murdered 1978, punk tragedy",
+    "tags": [
+      "groupie",
+      "punk",
+      "couple",
+      "murder"
+    ]
+  },
+  {
+    "id": "ball-lucille",
+    "name": "Lucille Ball",
+    "category": "Famous Couples",
+    "date": "1911-08-06",
+    "time": "17:00",
+    "location": "Jamestown, New York, USA",
+    "latitude": 42.097,
+    "longitude": -79.2353,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "I Love Lucy star, married Desi Arnaz, comedy legend, TV pioneer",
+    "tags": [
+      "actress",
+      "comedian",
+      "couple",
+      "tv-pioneer"
+    ]
+  },
+  {
+    "id": "arnaz-desi",
+    "name": "Desi Arnaz",
+    "category": "Famous Couples",
+    "date": "1917-03-02",
+    "time": "08:00",
+    "location": "Santiago de Cuba, Cuba",
+    "latitude": 20.0247,
+    "longitude": -75.8219,
+    "timezone": "America/Havana",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "I Love Lucy star, married Lucille Ball, Cuban bandleader, Desilu Productions",
+    "tags": [
+      "actor",
+      "musician",
+      "couple",
+      "producer"
+    ]
+  },
+  {
+    "id": "spencer-diana",
+    "name": "Princess Diana",
+    "category": "Famous Couples",
+    "date": "1961-07-01",
+    "time": "19:45",
+    "location": "Sandringham, England",
+    "latitude": 52.8311,
+    "longitude": 0.5136,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Princess of Wales, married Charles, humanitarian, died in Paris crash 1997",
+    "tags": [
+      "royalty",
+      "couple",
+      "humanitarian",
+      "tragedy"
+    ]
+  },
+  {
+    "id": "windsor-charles",
+    "name": "Prince Charles",
+    "category": "Famous Couples",
+    "date": "1948-11-14",
+    "time": "21:14",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth announcement",
+    "notes": "King Charles III, married Diana then Camilla, environmentalist, longest-serving heir",
+    "tags": [
+      "royalty",
+      "couple",
+      "king",
+      "environmentalist"
+    ]
+  },
+  {
+    "id": "middleton-catherine",
+    "name": "Catherine Middleton",
+    "category": "Famous Couples",
+    "date": "1982-01-09",
+    "time": "18:00",
+    "location": "Reading, England",
+    "latitude": 51.4543,
+    "longitude": -0.9781,
+    "timezone": "Europe/London",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Princess of Wales, married Prince William 2011, fashion icon, mother of three",
+    "tags": [
+      "royalty",
+      "couple",
+      "princess",
+      "icon"
+    ]
+  },
+  {
+    "id": "windsor-william",
+    "name": "Prince William",
+    "category": "Famous Couples",
+    "date": "1982-06-21",
+    "time": "21:03",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth announcement",
+    "notes": "Prince of Wales, married Kate Middleton, Diana's son, future king",
+    "tags": [
+      "royalty",
+      "couple",
+      "prince",
+      "heir"
+    ]
+  },
+  {
+    "id": "beckham-victoria",
+    "name": "Victoria Beckham",
+    "category": "Famous Couples",
+    "date": "1974-04-17",
+    "time": "07:07",
+    "location": "Harlow, England",
+    "latitude": 51.7787,
+    "longitude": 0.1028,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Posh Spice, fashion designer, married David Beckham, power couple",
+    "tags": [
+      "musician",
+      "fashion",
+      "couple",
+      "spice-girls"
+    ]
+  },
+  {
+    "id": "beckham-david",
+    "name": "David Beckham",
+    "category": "Famous Couples",
+    "date": "1975-05-02",
+    "time": "06:17",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Football legend, married Victoria, Manchester United icon, global brand",
+    "tags": [
+      "athlete",
+      "football",
+      "couple",
+      "icon"
+    ]
+  },
+  {
+    "id": "clooney-george",
+    "name": "George Clooney",
+    "category": "Famous Couples",
+    "date": "1961-05-06",
+    "time": "02:58",
+    "location": "Lexington, Kentucky, USA",
+    "latitude": 38.0406,
+    "longitude": -84.5037,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Oscar winner, married Amal Alamuddin, activist, charming leading man",
+    "tags": [
+      "actor",
+      "couple",
+      "activist",
+      "director"
+    ]
+  },
+  {
+    "id": "clooney-amal",
+    "name": "Amal Clooney",
+    "category": "Famous Couples",
+    "date": "1978-02-03",
+    "time": "12:00",
+    "location": "Beirut, Lebanon",
+    "latitude": 33.8886,
+    "longitude": 35.4955,
+    "timezone": "Asia/Beirut",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Human rights lawyer, married George Clooney 2014, Oxford education, activist",
+    "tags": [
+      "lawyer",
+      "couple",
+      "activist",
+      "human-rights"
+    ]
+  },
+  {
+    "id": "miller-arthur",
+    "name": "Arthur Miller",
+    "category": "Famous Couples",
+    "date": "1915-10-17",
+    "time": "05:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Playwright, Death of a Salesman, married Marilyn Monroe 1956-1961, The Crucible",
+    "tags": [
+      "playwright",
+      "couple",
+      "writer",
+      "american"
+    ]
+  },
+  {
+    "id": "dimaggio-joe",
+    "name": "Joe DiMaggio",
+    "category": "Famous Couples",
+    "date": "1914-11-25",
+    "time": "12:00",
+    "location": "Martinez, California, USA",
+    "latitude": 38.0194,
+    "longitude": -122.1341,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Yankees legend, married Marilyn Monroe 1954, 56-game hitting streak, icon",
+    "tags": [
+      "athlete",
+      "baseball",
+      "couple",
+      "legend"
+    ]
+  },
+  {
+    "id": "hughes-ted",
+    "name": "Ted Hughes",
+    "category": "Famous Couples",
+    "date": "1930-08-17",
+    "time": "01:12",
+    "location": "Mytholmroyd, England",
+    "latitude": 53.7333,
+    "longitude": -1.9833,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Poet Laureate, married Sylvia Plath, controversial figure after her suicide",
+    "tags": [
+      "poet",
+      "couple",
+      "british",
+      "controversial"
+    ]
+  },
+  {
+    "id": "fitzgerald-zelda",
+    "name": "Zelda Fitzgerald",
+    "category": "Famous Couples",
+    "date": "1900-07-24",
+    "time": "17:30",
+    "location": "Montgomery, Alabama, USA",
+    "latitude": 32.3792,
+    "longitude": -86.3077,
+    "timezone": "America/Chicago",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Writer, artist, married F. Scott Fitzgerald, Jazz Age icon, mental illness, died in fire",
+    "tags": [
+      "writer",
+      "couple",
+      "jazz-age",
+      "tragedy"
+    ]
   }
 ]
