@@ -16309,5 +16309,665 @@
       "educator",
       "host"
     ]
+  },
+  {
+    "id": "ruth-babe",
+    "name": "Babe Ruth",
+    "category": "Athletes",
+    "date": "1895-02-06",
+    "time": "19:00",
+    "location": "Baltimore, Maryland, USA",
+    "latitude": 39.2904,
+    "longitude": -76.6122,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Baseball legend, 714 home runs, Sultan of Swat, Yankees icon, changed the game",
+    "tags": [
+      "baseball",
+      "legend",
+      "yankees",
+      "american"
+    ]
+  },
+  {
+    "id": "ito-midori",
+    "name": "Midori Ito",
+    "category": "Athletes",
+    "date": "1969-08-13",
+    "time": "12:00",
+    "location": "Nagoya, Japan",
+    "latitude": 35.1815,
+    "longitude": 136.9066,
+    "timezone": "Asia/Tokyo",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Figure skating pioneer, first woman to land triple axel in competition, 1992 Olympic silver",
+    "tags": [
+      "figure-skating",
+      "pioneer",
+      "japanese",
+      "olympics"
+    ]
+  },
+  {
+    "id": "jordan-michael",
+    "name": "Michael Jordan",
+    "category": "Athletes",
+    "date": "1963-02-17",
+    "time": "12:46",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "6 NBA championships, Bulls dynasty, greatest basketball player ever, global icon",
+    "tags": [
+      "basketball",
+      "nba",
+      "goat",
+      "chicago"
+    ]
+  },
+  {
+    "id": "ali-muhammad",
+    "name": "Muhammad Ali",
+    "category": "Athletes",
+    "date": "1942-01-17",
+    "time": "18:35",
+    "location": "Louisville, Kentucky, USA",
+    "latitude": 38.2527,
+    "longitude": -85.7585,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "The Greatest, heavyweight champion, Vietnam War resister, poet, activist",
+    "tags": [
+      "boxing",
+      "heavyweight",
+      "activist",
+      "legend"
+    ]
+  },
+  {
+    "id": "pele",
+    "name": "Pelé",
+    "category": "Athletes",
+    "date": "1940-10-23",
+    "time": "03:00",
+    "location": "Três Corações, Brazil",
+    "latitude": -21.6958,
+    "longitude": -45.2528,
+    "timezone": "America/Sao_Paulo",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "3 World Cups, 1000+ goals, greatest footballer ever debate, Brazilian icon",
+    "tags": [
+      "soccer",
+      "football",
+      "brazilian",
+      "world-cup"
+    ]
+  },
+  {
+    "id": "maradona-diego",
+    "name": "Diego Maradona",
+    "category": "Athletes",
+    "date": "1960-10-30",
+    "time": "07:05",
+    "location": "Lanús, Argentina",
+    "latitude": -34.7,
+    "longitude": -58.3897,
+    "timezone": "America/Argentina/Buenos_Aires",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Hand of God, 1986 World Cup, football genius, controversial life, died 2020",
+    "tags": [
+      "soccer",
+      "football",
+      "argentine",
+      "genius"
+    ]
+  },
+  {
+    "id": "messi-lionel",
+    "name": "Lionel Messi",
+    "category": "Athletes",
+    "date": "1987-06-24",
+    "time": "10:55",
+    "location": "Rosario, Argentina",
+    "latitude": -32.9442,
+    "longitude": -60.6505,
+    "timezone": "America/Argentina/Buenos_Aires",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "8 Ballon d'Or, Barcelona legend, 2022 World Cup, GOAT debate, Inter Miami",
+    "tags": [
+      "soccer",
+      "football",
+      "argentine",
+      "goat"
+    ]
+  },
+  {
+    "id": "ronaldo-cristiano",
+    "name": "Cristiano Ronaldo",
+    "category": "Athletes",
+    "date": "1985-02-05",
+    "time": "05:25",
+    "location": "Funchal, Madeira, Portugal",
+    "latitude": 32.6669,
+    "longitude": -16.9241,
+    "timezone": "Atlantic/Madeira",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "5 Ballon d'Or, 800+ goals, Man United/Real Madrid legend, GOAT debate",
+    "tags": [
+      "soccer",
+      "football",
+      "portuguese",
+      "goat"
+    ]
+  },
+  {
+    "id": "williams-serena",
+    "name": "Serena Williams",
+    "category": "Athletes",
+    "date": "1981-09-26",
+    "time": "20:28",
+    "location": "Saginaw, Michigan, USA",
+    "latitude": 43.4195,
+    "longitude": -83.9508,
+    "timezone": "America/Detroit",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "23 Grand Slams, dominated women's tennis 20+ years, cultural icon, advocate",
+    "tags": [
+      "tennis",
+      "grand-slam",
+      "dominant",
+      "icon"
+    ]
+  },
+  {
+    "id": "federer-roger",
+    "name": "Roger Federer",
+    "category": "Athletes",
+    "date": "1981-08-08",
+    "time": "08:40",
+    "location": "Basel, Switzerland",
+    "latitude": 47.5596,
+    "longitude": 7.5886,
+    "timezone": "Europe/Zurich",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "20 Grand Slams, elegant style, tennis GOAT debate, Swiss maestro",
+    "tags": [
+      "tennis",
+      "grand-slam",
+      "elegant",
+      "swiss"
+    ]
+  },
+  {
+    "id": "bolt-usain",
+    "name": "Usain Bolt",
+    "category": "Athletes",
+    "date": "1986-08-21",
+    "time": "12:00",
+    "location": "Sherwood Content, Jamaica",
+    "latitude": 18.45,
+    "longitude": -77.4833,
+    "timezone": "America/Jamaica",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Fastest human ever, 9.58s 100m, 8 Olympic golds, Lightning Bolt celebration",
+    "tags": [
+      "track",
+      "sprinter",
+      "jamaican",
+      "fastest"
+    ]
+  },
+  {
+    "id": "owens-jesse",
+    "name": "Jesse Owens",
+    "category": "Athletes",
+    "date": "1913-09-12",
+    "time": "15:00",
+    "location": "Oakville, Alabama, USA",
+    "latitude": 34.5431,
+    "longitude": -87.3186,
+    "timezone": "America/Chicago",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "4 golds 1936 Berlin Olympics, defied Hitler, broke racial barriers",
+    "tags": [
+      "track",
+      "olympics",
+      "barrier-breaker",
+      "hero"
+    ]
+  },
+  {
+    "id": "phelps-michael",
+    "name": "Michael Phelps",
+    "category": "Athletes",
+    "date": "1985-06-30",
+    "time": "19:52",
+    "location": "Baltimore, Maryland, USA",
+    "latitude": 39.2904,
+    "longitude": -76.6122,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "23 Olympic gold medals, most decorated Olympian ever, swimming GOAT",
+    "tags": [
+      "swimming",
+      "olympics",
+      "goat",
+      "decorated"
+    ]
+  },
+  {
+    "id": "biles-simone",
+    "name": "Simone Biles",
+    "category": "Athletes",
+    "date": "1997-03-14",
+    "time": "12:00",
+    "location": "Columbus, Ohio, USA",
+    "latitude": 39.9612,
+    "longitude": -82.9988,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Most decorated gymnast, 7 Olympic medals, GOAT, mental health advocate",
+    "tags": [
+      "gymnastics",
+      "olympics",
+      "goat",
+      "advocate"
+    ]
+  },
+  {
+    "id": "gretzky-wayne",
+    "name": "Wayne Gretzky",
+    "category": "Athletes",
+    "date": "1961-01-26",
+    "time": "19:00",
+    "location": "Brantford, Ontario, Canada",
+    "latitude": 43.1394,
+    "longitude": -80.2644,
+    "timezone": "America/Toronto",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "The Great One, hockey GOAT, 2857 points, 4 Stanley Cups, unbreakable records",
+    "tags": [
+      "hockey",
+      "nhl",
+      "goat",
+      "canadian"
+    ]
+  },
+  {
+    "id": "woods-tiger",
+    "name": "Tiger Woods",
+    "category": "Athletes",
+    "date": "1975-12-30",
+    "time": "22:50",
+    "location": "Long Beach, California, USA",
+    "latitude": 33.7701,
+    "longitude": -118.1937,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "15 majors, transformed golf, dominant 2000s, comeback 2019 Masters",
+    "tags": [
+      "golf",
+      "majors",
+      "dominant",
+      "comeback"
+    ]
+  },
+  {
+    "id": "robinson-jackie",
+    "name": "Jackie Robinson",
+    "category": "Athletes",
+    "date": "1919-01-31",
+    "time": "12:00",
+    "location": "Cairo, Georgia, USA",
+    "latitude": 30.8779,
+    "longitude": -84.2024,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Broke MLB color barrier 1947, Brooklyn Dodgers, civil rights hero",
+    "tags": [
+      "baseball",
+      "barrier-breaker",
+      "hero",
+      "civil-rights"
+    ]
+  },
+  {
+    "id": "tyson-mike",
+    "name": "Mike Tyson",
+    "category": "Athletes",
+    "date": "1966-06-30",
+    "time": "03:00",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Youngest heavyweight champion age 20, Iron Mike, ferocious puncher, troubled life",
+    "tags": [
+      "boxing",
+      "heavyweight",
+      "youngest",
+      "fierce"
+    ]
+  },
+  {
+    "id": "joyner-kersee-jackie",
+    "name": "Jackie Joyner-Kersee",
+    "category": "Athletes",
+    "date": "1962-03-03",
+    "time": "12:00",
+    "location": "East St. Louis, Illinois, USA",
+    "latitude": 38.6247,
+    "longitude": -90.1504,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Heptathlon/long jump legend, 3 Olympic golds, greatest female athlete debate",
+    "tags": [
+      "track",
+      "heptathlon",
+      "olympics",
+      "goat"
+    ]
+  },
+  {
+    "id": "navratilova-martina",
+    "name": "Martina Navratilova",
+    "category": "Athletes",
+    "date": "1956-10-18",
+    "time": "13:40",
+    "location": "Prague, Czechoslovakia",
+    "latitude": 50.0755,
+    "longitude": 14.4378,
+    "timezone": "Europe/Prague",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "18 Grand Slam singles, 59 total majors, LGBTQ pioneer, defected to USA",
+    "tags": [
+      "tennis",
+      "grand-slam",
+      "lgbtq",
+      "pioneer"
+    ]
+  },
+  {
+    "id": "senna-ayrton",
+    "name": "Ayrton Senna",
+    "category": "Athletes",
+    "date": "1960-03-21",
+    "time": "02:35",
+    "location": "São Paulo, Brazil",
+    "latitude": -23.5505,
+    "longitude": -46.6333,
+    "timezone": "America/Sao_Paulo",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "3 F1 world titles, rain master, died racing Imola 1994, Brazilian legend",
+    "tags": [
+      "formula-1",
+      "champion",
+      "tragic",
+      "brazilian"
+    ]
+  },
+  {
+    "id": "schumacher-michael",
+    "name": "Michael Schumacher",
+    "category": "Athletes",
+    "date": "1969-01-03",
+    "time": "11:53",
+    "location": "Hürth, Germany",
+    "latitude": 50.8667,
+    "longitude": 6.8667,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "7 F1 world titles, 91 wins, Ferrari legend, skiing accident 2013",
+    "tags": [
+      "formula-1",
+      "champion",
+      "ferrari",
+      "german"
+    ]
+  },
+  {
+    "id": "james-lebron",
+    "name": "LeBron James",
+    "category": "Athletes",
+    "date": "1984-12-30",
+    "time": "12:00",
+    "location": "Akron, Ohio, USA",
+    "latitude": 41.0814,
+    "longitude": -81.519,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "4 NBA titles, all-time leading scorer, The Decision, GOAT debate, Lakers",
+    "tags": [
+      "basketball",
+      "nba",
+      "goat",
+      "scorer"
+    ]
+  },
+  {
+    "id": "curry-stephen",
+    "name": "Stephen Curry",
+    "category": "Athletes",
+    "date": "1988-03-14",
+    "time": "12:00",
+    "location": "Akron, Ohio, USA",
+    "latitude": 41.0814,
+    "longitude": -81.519,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "4 NBA titles, revolutionized 3-point shooting, Warriors dynasty, 2 MVPs",
+    "tags": [
+      "basketball",
+      "nba",
+      "3-point",
+      "revolutionary"
+    ]
+  },
+  {
+    "id": "ham-mia",
+    "name": "Mia Hamm",
+    "category": "Athletes",
+    "date": "1972-03-17",
+    "time": "12:00",
+    "location": "Selma, Alabama, USA",
+    "latitude": 32.4074,
+    "longitude": -87.0211,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "2 World Cups, 2 Olympics, women's soccer pioneer, 158 international goals",
+    "tags": [
+      "soccer",
+      "womens",
+      "pioneer",
+      "world-cup"
+    ]
+  },
+  {
+    "id": "rapinoe-megan",
+    "name": "Megan Rapinoe",
+    "category": "Athletes",
+    "date": "1985-07-05",
+    "time": "12:00",
+    "location": "Redding, California, USA",
+    "latitude": 40.5865,
+    "longitude": -122.3917,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "2 World Cups, Olympic gold, LGBTQ activist, equal pay advocate, pink hair",
+    "tags": [
+      "soccer",
+      "womens",
+      "activist",
+      "lgbtq"
+    ]
+  },
+  {
+    "id": "kwan-michelle",
+    "name": "Michelle Kwan",
+    "category": "Athletes",
+    "date": "1980-07-07",
+    "time": "12:00",
+    "location": "Torrance, California, USA",
+    "latitude": 33.8358,
+    "longitude": -118.3406,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "5 world championships, 2 Olympic medals, figure skating icon, elegant",
+    "tags": [
+      "figure-skating",
+      "world-champion",
+      "olympics",
+      "elegant"
+    ]
+  },
+  {
+    "id": "yamaguchi-kristi",
+    "name": "Kristi Yamaguchi",
+    "category": "Athletes",
+    "date": "1971-07-12",
+    "time": "12:00",
+    "location": "Hayward, California, USA",
+    "latitude": 37.6688,
+    "longitude": -122.0808,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "1992 Olympic gold, world champion, Japanese-American pioneer",
+    "tags": [
+      "figure-skating",
+      "olympics",
+      "world-champion",
+      "pioneer"
+    ]
+  },
+  {
+    "id": "kim-yuna",
+    "name": "Kim Yuna",
+    "category": "Athletes",
+    "date": "1990-09-05",
+    "time": "12:00",
+    "location": "Bucheon, South Korea",
+    "latitude": 37.4989,
+    "longitude": 126.7831,
+    "timezone": "Asia/Seoul",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "2010 Olympic gold, world records, Queen Yuna, South Korean icon",
+    "tags": [
+      "figure-skating",
+      "olympics",
+      "korean",
+      "icon"
+    ]
+  },
+  {
+    "id": "thorpe-ian",
+    "name": "Ian Thorpe",
+    "category": "Athletes",
+    "date": "1982-10-13",
+    "time": "12:00",
+    "location": "Sydney, Australia",
+    "latitude": -33.8688,
+    "longitude": 151.2093,
+    "timezone": "Australia/Sydney",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "5 Olympic golds, Thorpedo, Australian swimming legend, size 17 feet",
+    "tags": [
+      "swimming",
+      "olympics",
+      "australian",
+      "legend"
+    ]
+  },
+  {
+    "id": "armstrong-lance",
+    "name": "Lance Armstrong",
+    "category": "Athletes",
+    "date": "1971-09-18",
+    "time": "08:11",
+    "location": "Plano, Texas, USA",
+    "latitude": 33.0198,
+    "longitude": -96.6989,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "7 Tour de France titles stripped, doping scandal, cancer survivor",
+    "tags": [
+      "cycling",
+      "scandal",
+      "stripped",
+      "fallen"
+    ]
+  },
+  {
+    "id": "lewis-carl",
+    "name": "Carl Lewis",
+    "category": "Athletes",
+    "date": "1961-07-01",
+    "time": "12:00",
+    "location": "Birmingham, Alabama, USA",
+    "latitude": 33.5207,
+    "longitude": -86.8025,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "9 Olympic golds, long jump & sprint legend, matched Jesse Owens 1984",
+    "tags": [
+      "track",
+      "olympics",
+      "sprinter",
+      "long-jump"
+    ]
+  },
+  {
+    "id": "zaharias-babe-didrikson",
+    "name": "Babe Didrikson Zaharias",
+    "category": "Athletes",
+    "date": "1911-06-26",
+    "time": "12:00",
+    "location": "Port Arthur, Texas, USA",
+    "latitude": 29.885,
+    "longitude": -93.94,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Multi-sport athlete, Olympic track golds, LPGA golf founder, greatest female athlete",
+    "tags": [
+      "multi-sport",
+      "olympics",
+      "golf",
+      "pioneer"
+    ]
   }
 ]
