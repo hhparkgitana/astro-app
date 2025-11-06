@@ -378,8 +378,8 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering with opacity based on orb
         stroke = colors.aspects[aspect.type];
-        // Quincunx: max 25% opacity; semi-sextile: max 20%; other aspects: max 50%
-        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.20 : aspect.type === 'QUINCUNX' ? 0.25 : 0.5;
+        // Quincunx: max 38% opacity; semi-sextile: max 30%; other aspects: max 75%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.30 : aspect.type === 'QUINCUNX' ? 0.38 : 0.75;
         opacity = maxOpacity * (1 - (aspect.orb / 8)); // Tighter orb = more opaque
         strokeWidth = 3 - (aspect.orb / 4); // Tighter orb = thicker
         opacity = Math.max(0.10, opacity);
@@ -453,8 +453,8 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering with opacity based on orb
         stroke = colors.aspects[aspect.type];
-        // Quincunx: max 25% opacity; semi-sextile: max 20%; other aspects: max 50%
-        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.20 : aspect.type === 'QUINCUNX' ? 0.25 : 0.5;
+        // Quincunx: max 38% opacity; semi-sextile: max 30%; other aspects: max 75%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.30 : aspect.type === 'QUINCUNX' ? 0.38 : 0.75;
         opacity = maxOpacity * (1 - (aspect.orb / 8)); // Tighter orb = more opaque
         strokeWidth = 3 - (aspect.orb / 4); // Tighter orb = thicker
         opacity = Math.max(0.10, opacity);
@@ -544,8 +544,8 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering
         color = colors.aspects[aspect.type];
-        // Quincunx: max 25% opacity; semi-sextile: max 20%; other aspects: max 50%
-        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.20 : aspect.type === 'QUINCUNX' ? 0.25 : 0.5;
+        // Quincunx: max 38% opacity; semi-sextile: max 30%; other aspects: max 75%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.30 : aspect.type === 'QUINCUNX' ? 0.38 : 0.75;
         opacity = Math.max(0.10, maxOpacity * (1 - (aspect.orb / 8)));
       }
 
@@ -628,8 +628,8 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering
         color = colors.aspects[aspect.type];
-        // Quincunx: max 25% opacity; semi-sextile: max 20%; other aspects: max 50%
-        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.20 : aspect.type === 'QUINCUNX' ? 0.25 : 0.5;
+        // Quincunx: max 38% opacity; semi-sextile: max 30%; other aspects: max 75%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.30 : aspect.type === 'QUINCUNX' ? 0.38 : 0.75;
         opacity = Math.max(0.10, maxOpacity * (1 - (aspect.orb / 8)));
       }
 
@@ -700,8 +700,8 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering with opacity based on orb
         stroke = colors.aspects[aspect.type];
-        // Quincunx: max 25% opacity; semi-sextile: max 20%; other aspects: max 50%
-        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.20 : aspect.type === 'QUINCUNX' ? 0.25 : 0.5;
+        // Quincunx: max 38% opacity; semi-sextile: max 30%; other aspects: max 75%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.30 : aspect.type === 'QUINCUNX' ? 0.38 : 0.75;
         opacity = maxOpacity * (1 - (aspect.orb / 8));
         strokeWidth = 3 - (aspect.orb / 4);
         opacity = Math.max(0.10, opacity);
@@ -786,8 +786,8 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering
         color = colors.aspects[aspect.type];
-        // Quincunx: max 25% opacity; semi-sextile: max 20%; other aspects: max 50%
-        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.20 : aspect.type === 'QUINCUNX' ? 0.25 : 0.5;
+        // Quincunx: max 38% opacity; semi-sextile: max 30%; other aspects: max 75%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.30 : aspect.type === 'QUINCUNX' ? 0.38 : 0.75;
         opacity = Math.max(0.10, maxOpacity * (1 - (aspect.orb / 8)));
       }
 
