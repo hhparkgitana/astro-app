@@ -9589,5 +9589,405 @@
       "entertainment",
       "disruption"
     ]
+  },
+  {
+    "id": "garcia-marquez-gabriel",
+    "name": "Gabriel García Márquez",
+    "category": "Writers",
+    "date": "1927-03-06",
+    "time": "09:00",
+    "location": "Aracataca, Colombia",
+    "latitude": 10.5897,
+    "longitude": -74.1842,
+    "timezone": "America/Bogota",
+    "roddenRating": "B",
+    "source": "Biography (time approximate)",
+    "notes": "Nobel Prize 1982, magical realism master, 'One Hundred Years of Solitude'",
+    "tags": [
+      "literature",
+      "nobel-prize",
+      "magical-realism",
+      "colombian"
+    ]
+  },
+  {
+    "id": "austen-jane",
+    "name": "Jane Austen",
+    "category": "Writers",
+    "date": "1775-12-16",
+    "time": "23:45",
+    "location": "Steventon, England",
+    "latitude": 51.1833,
+    "longitude": -1.1833,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Family records",
+    "notes": "Regency era novelist, 'Pride and Prejudice,' social commentary genius",
+    "tags": [
+      "literature",
+      "regency",
+      "romance",
+      "english"
+    ]
+  },
+  {
+    "id": "dickens-charles",
+    "name": "Charles Dickens",
+    "category": "Writers",
+    "date": "1812-02-07",
+    "time": "13:15",
+    "location": "Portsmouth, England",
+    "latitude": 50.8198,
+    "longitude": -1.088,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Birth certificate",
+    "notes": "Victorian novelist, 'Great Expectations,' social reform advocate",
+    "tags": [
+      "literature",
+      "victorian",
+      "social-justice",
+      "english"
+    ]
+  },
+  {
+    "id": "tolstoy-leo",
+    "name": "Leo Tolstoy",
+    "category": "Writers",
+    "date": "1828-09-09",
+    "time": "12:00",
+    "location": "Yasnaya Polyana, Russia",
+    "latitude": 54.0667,
+    "longitude": 37.5167,
+    "timezone": "Europe/Moscow",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Russian master, 'War and Peace,' 'Anna Karenina,' philosophical depth",
+    "tags": [
+      "literature",
+      "russian",
+      "philosophy",
+      "epic"
+    ]
+  },
+  {
+    "id": "dickinson-emily",
+    "name": "Emily Dickinson",
+    "category": "Writers",
+    "date": "1830-12-10",
+    "time": "05:00",
+    "location": "Amherst, Massachusetts, USA",
+    "latitude": 42.3732,
+    "longitude": -72.5199,
+    "timezone": "America/New_York",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Reclusive poet, innovative form, 1,800 poems published posthumously",
+    "tags": [
+      "poetry",
+      "american",
+      "modernist",
+      "reclusive"
+    ]
+  },
+  {
+    "id": "whitman-walt",
+    "name": "Walt Whitman",
+    "category": "Writers",
+    "date": "1819-05-31",
+    "time": "12:00",
+    "location": "West Hills, New York, USA",
+    "latitude": 40.8151,
+    "longitude": -73.4301,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "American poet, 'Leaves of Grass,' free verse pioneer, Civil War nurse",
+    "tags": [
+      "poetry",
+      "american",
+      "free-verse",
+      "transcendental"
+    ]
+  },
+  {
+    "id": "twain-mark",
+    "name": "Mark Twain",
+    "category": "Writers",
+    "date": "1835-11-30",
+    "time": "05:00",
+    "location": "Florida, Missouri, USA",
+    "latitude": 39.4803,
+    "longitude": -91.7882,
+    "timezone": "America/Chicago",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Samuel Clemens, 'Huckleberry Finn,' American humor, social satire",
+    "tags": [
+      "literature",
+      "american",
+      "satire",
+      "humor"
+    ]
+  },
+  {
+    "id": "wilde-oscar",
+    "name": "Oscar Wilde",
+    "category": "Writers",
+    "date": "1854-10-16",
+    "time": "03:00",
+    "location": "Dublin, Ireland",
+    "latitude": 53.3498,
+    "longitude": -6.2603,
+    "timezone": "Europe/Dublin",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Playwright, wit, 'The Picture of Dorian Gray,' aesthetic movement",
+    "tags": [
+      "literature",
+      "drama",
+      "irish",
+      "wit"
+    ]
+  },
+  {
+    "id": "poe-edgar-allan",
+    "name": "Edgar Allan Poe",
+    "category": "Writers",
+    "date": "1809-01-19",
+    "time": "01:00",
+    "location": "Boston, Massachusetts, USA",
+    "latitude": 42.3601,
+    "longitude": -71.0589,
+    "timezone": "America/New_York",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Gothic master, 'The Raven,' detective fiction pioneer, macabre genius",
+    "tags": [
+      "poetry",
+      "gothic",
+      "horror",
+      "american"
+    ]
+  },
+  {
+    "id": "hughes-langston",
+    "name": "Langston Hughes",
+    "category": "Writers",
+    "date": "1901-02-01",
+    "time": "14:00",
+    "location": "Joplin, Missouri, USA",
+    "latitude": 37.0842,
+    "longitude": -94.5133,
+    "timezone": "America/Chicago",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Harlem Renaissance leader, jazz poetry, 'The Weary Blues,' social justice",
+    "tags": [
+      "poetry",
+      "harlem-renaissance",
+      "jazz",
+      "african-american"
+    ]
+  },
+  {
+    "id": "hurston-zora-neale",
+    "name": "Zora Neale Hurston",
+    "category": "Writers",
+    "date": "1891-01-07",
+    "time": "12:00",
+    "location": "Notasulga, Alabama, USA",
+    "latitude": 32.5596,
+    "longitude": -85.6719,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (date disputed, time uncertain)",
+    "notes": "Harlem Renaissance, 'Their Eyes Were Watching God,' anthropologist",
+    "tags": [
+      "literature",
+      "harlem-renaissance",
+      "anthropology",
+      "african-american"
+    ]
+  },
+  {
+    "id": "baldwin-james",
+    "name": "James Baldwin",
+    "category": "Writers",
+    "date": "1924-08-02",
+    "time": "05:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.8078,
+    "longitude": -73.9464,
+    "timezone": "America/New_York",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Essayist, novelist, 'The Fire Next Time,' civil rights intellectual",
+    "tags": [
+      "literature",
+      "essays",
+      "civil-rights",
+      "african-american"
+    ]
+  },
+  {
+    "id": "atwood-margaret",
+    "name": "Margaret Atwood",
+    "category": "Writers",
+    "date": "1939-11-18",
+    "time": "09:00",
+    "location": "Ottawa, Ontario, Canada",
+    "latitude": 45.4215,
+    "longitude": -75.6972,
+    "timezone": "America/Toronto",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Canadian novelist, 'The Handmaid's Tale,' dystopian fiction, feminist icon",
+    "tags": [
+      "literature",
+      "dystopian",
+      "feminist",
+      "canadian"
+    ]
+  },
+  {
+    "id": "vonnegut-kurt",
+    "name": "Kurt Vonnegut",
+    "category": "Writers",
+    "date": "1922-11-11",
+    "time": "12:00",
+    "location": "Indianapolis, Indiana, USA",
+    "latitude": 39.7684,
+    "longitude": -86.1581,
+    "timezone": "America/Indiana/Indianapolis",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Satirist, 'Slaughterhouse-Five,' black humor, WWII survivor",
+    "tags": [
+      "literature",
+      "satire",
+      "science-fiction",
+      "american"
+    ]
+  },
+  {
+    "id": "bradbury-ray",
+    "name": "Ray Bradbury",
+    "category": "Writers",
+    "date": "1920-08-22",
+    "time": "09:00",
+    "location": "Waukegan, Illinois, USA",
+    "latitude": 42.3636,
+    "longitude": -87.8448,
+    "timezone": "America/Chicago",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Science fiction master, 'Fahrenheit 451,' 'Martian Chronicles,' visionary",
+    "tags": [
+      "science-fiction",
+      "dystopian",
+      "american",
+      "visionary"
+    ]
+  },
+  {
+    "id": "le-guin-ursula",
+    "name": "Ursula K. Le Guin",
+    "category": "Writers",
+    "date": "1929-10-21",
+    "time": "19:00",
+    "location": "Berkeley, California, USA",
+    "latitude": 37.8715,
+    "longitude": -122.273,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "A",
+    "source": "Astrodatabank",
+    "notes": "Science fiction/fantasy, 'The Left Hand of Darkness,' feminist SF pioneer",
+    "tags": [
+      "science-fiction",
+      "fantasy",
+      "feminist",
+      "american"
+    ]
+  },
+  {
+    "id": "butler-octavia",
+    "name": "Octavia Butler",
+    "category": "Writers",
+    "date": "1947-06-22",
+    "time": "18:00",
+    "location": "Pasadena, California, USA",
+    "latitude": 34.1478,
+    "longitude": -118.1445,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Science fiction pioneer, 'Kindred,' MacArthur Fellow, Afrofuturism",
+    "tags": [
+      "science-fiction",
+      "afrofuturism",
+      "african-american",
+      "visionary"
+    ]
+  },
+  {
+    "id": "camus-albert",
+    "name": "Albert Camus",
+    "category": "Writers",
+    "date": "1913-11-07",
+    "time": "02:00",
+    "location": "Mondovi, Algeria",
+    "latitude": 36.5,
+    "longitude": 6.5833,
+    "timezone": "Africa/Algiers",
+    "roddenRating": "A",
+    "source": "Birth certificate",
+    "notes": "Nobel Prize 1957, existentialist, 'The Stranger,' absurdism philosopher",
+    "tags": [
+      "literature",
+      "nobel-prize",
+      "existentialism",
+      "french"
+    ]
+  },
+  {
+    "id": "kafka-franz",
+    "name": "Franz Kafka",
+    "category": "Writers",
+    "date": "1883-07-03",
+    "time": "05:00",
+    "location": "Prague, Czech Republic",
+    "latitude": 50.0755,
+    "longitude": 14.4378,
+    "timezone": "Europe/Prague",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Modernist master, 'The Metamorphosis,' existential alienation, Kafkaesque",
+    "tags": [
+      "literature",
+      "modernist",
+      "existential",
+      "czech"
+    ]
+  },
+  {
+    "id": "dostoevsky-fyodor",
+    "name": "Fyodor Dostoevsky",
+    "category": "Writers",
+    "date": "1821-11-11",
+    "time": "22:30",
+    "location": "Moscow, Russia",
+    "latitude": 55.7558,
+    "longitude": 37.6173,
+    "timezone": "Europe/Moscow",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Russian novelist, 'Crime and Punishment,' psychological depth, existentialist",
+    "tags": [
+      "literature",
+      "russian",
+      "psychological",
+      "existential"
+    ]
   }
 ]
