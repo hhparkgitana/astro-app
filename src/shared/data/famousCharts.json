@@ -17989,5 +17989,577 @@
       "nsa",
       "exile"
     ]
+  },
+  {
+    "id": "madonna",
+    "name": "Madonna",
+    "category": "Musicians",
+    "date": "1958-08-16",
+    "time": "07:05",
+    "location": "Bay City, Michigan, USA",
+    "latitude": 43.5945,
+    "longitude": -83.8889,
+    "timezone": "America/Detroit",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Queen of Pop, cultural icon, record-breaking artist",
+    "tags": [
+      "pop",
+      "icon",
+      "1980s",
+      "performer"
+    ]
+  },
+  {
+    "id": "jagger-mick",
+    "name": "Mick Jagger",
+    "category": "Musicians",
+    "date": "1943-07-26",
+    "time": "02:30",
+    "location": "Dartford, England",
+    "latitude": 51.4467,
+    "longitude": 0.2173,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Rolling Stones frontman, rock legend",
+    "tags": [
+      "rock",
+      "rolling-stones",
+      "singer",
+      "icon"
+    ]
+  },
+  {
+    "id": "richards-keith",
+    "name": "Keith Richards",
+    "category": "Musicians",
+    "date": "1943-12-18",
+    "time": "06:15",
+    "location": "Dartford, England",
+    "latitude": 51.4467,
+    "longitude": 0.2173,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Rolling Stones guitarist, rock legend",
+    "tags": [
+      "rock",
+      "rolling-stones",
+      "guitarist",
+      "icon"
+    ]
+  },
+  {
+    "id": "led-zeppelin-plant",
+    "name": "Robert Plant",
+    "category": "Musicians",
+    "date": "1948-08-20",
+    "time": "21:30",
+    "location": "West Bromwich, England",
+    "latitude": 52.5189,
+    "longitude": -1.995,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Led Zeppelin vocalist, rock icon",
+    "tags": [
+      "rock",
+      "led-zeppelin",
+      "singer",
+      "icon"
+    ]
+  },
+  {
+    "id": "page-jimmy",
+    "name": "Jimmy Page",
+    "category": "Musicians",
+    "date": "1944-01-09",
+    "time": "23:58",
+    "location": "Heston, England",
+    "latitude": 51.4833,
+    "longitude": -0.3667,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Led Zeppelin guitarist, rock legend",
+    "tags": [
+      "rock",
+      "led-zeppelin",
+      "guitarist",
+      "icon"
+    ]
+  },
+  {
+    "id": "cobain-kurt-musician",
+    "name": "Kurt Cobain",
+    "category": "Musicians",
+    "date": "1967-02-20",
+    "time": "19:38",
+    "location": "Aberdeen, Washington, USA",
+    "latitude": 46.9754,
+    "longitude": -123.8157,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Nirvana frontman, grunge icon",
+    "tags": [
+      "rock",
+      "grunge",
+      "nirvana",
+      "icon"
+    ]
+  },
+  {
+    "id": "springsteen-bruce",
+    "name": "Bruce Springsteen",
+    "category": "Musicians",
+    "date": "1949-09-23",
+    "time": "22:50",
+    "location": "Long Branch, New Jersey, USA",
+    "latitude": 40.3043,
+    "longitude": -73.9924,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "The Boss, rock legend, working-class icon",
+    "tags": [
+      "rock",
+      "icon",
+      "singer-songwriter"
+    ]
+  },
+  {
+    "id": "clapton-eric",
+    "name": "Eric Clapton",
+    "category": "Musicians",
+    "date": "1945-03-30",
+    "time": "15:25",
+    "location": "Ripley, England",
+    "latitude": 51.3,
+    "longitude": 0.45,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Guitar legend, blues-rock icon",
+    "tags": [
+      "rock",
+      "blues",
+      "guitarist",
+      "icon"
+    ]
+  },
+  {
+    "id": "hendrix-jimi-extended",
+    "name": "Stevie Wonder",
+    "category": "Musicians",
+    "date": "1950-05-13",
+    "time": "04:15",
+    "location": "Saginaw, Michigan, USA",
+    "latitude": 43.4195,
+    "longitude": -83.9508,
+    "timezone": "America/Detroit",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Soul/R&B legend, multi-instrumentalist, activist",
+    "tags": [
+      "soul",
+      "r&b",
+      "motown",
+      "icon"
+    ]
+  },
+  {
+    "id": "jackson-janet",
+    "name": "Janet Jackson",
+    "category": "Musicians",
+    "date": "1966-05-16",
+    "time": "21:31",
+    "location": "Gary, Indiana, USA",
+    "latitude": 41.5934,
+    "longitude": -87.3464,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Pop/R&B icon, performer, actress",
+    "tags": [
+      "pop",
+      "r&b",
+      "performer",
+      "icon"
+    ]
+  },
+  {
+    "id": "turner-tina",
+    "name": "Tina Turner",
+    "category": "Musicians",
+    "date": "1939-11-26",
+    "time": "22:10",
+    "location": "Nutbush, Tennessee, USA",
+    "latitude": 35.6995,
+    "longitude": -89.2506,
+    "timezone": "America/Chicago",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Queen of Rock and Roll, soul icon",
+    "tags": [
+      "rock",
+      "soul",
+      "icon",
+      "performer"
+    ]
+  },
+  {
+    "id": "ross-diana",
+    "name": "Diana Ross",
+    "category": "Musicians",
+    "date": "1944-03-26",
+    "time": "23:46",
+    "location": "Detroit, Michigan, USA",
+    "latitude": 42.3314,
+    "longitude": -83.0458,
+    "timezone": "America/Detroit",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Motown legend, Supremes frontwoman",
+    "tags": [
+      "soul",
+      "motown",
+      "supremes",
+      "icon"
+    ]
+  },
+  {
+    "id": "sinatra-frank",
+    "name": "Frank Sinatra",
+    "category": "Musicians",
+    "date": "1915-12-12",
+    "time": "03:00",
+    "location": "Hoboken, New Jersey, USA",
+    "latitude": 40.7439,
+    "longitude": -74.0324,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Legendary vocalist, Rat Pack icon",
+    "tags": [
+      "jazz",
+      "pop",
+      "icon",
+      "rat-pack"
+    ]
+  },
+  {
+    "id": "fitzgerald-ella",
+    "name": "Ella Fitzgerald",
+    "category": "Musicians",
+    "date": "1917-04-25",
+    "time": "00:00",
+    "location": "Newport News, Virginia, USA",
+    "latitude": 37.0871,
+    "longitude": -76.473,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "First Lady of Song, jazz legend",
+    "tags": [
+      "jazz",
+      "singer",
+      "icon"
+    ]
+  },
+  {
+    "id": "holiday-billie",
+    "name": "Billie Holiday",
+    "category": "Musicians",
+    "date": "1915-04-07",
+    "time": "02:30",
+    "location": "Philadelphia, Pennsylvania, USA",
+    "latitude": 39.9526,
+    "longitude": -75.1652,
+    "timezone": "America/New_York",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Jazz legend, influential vocalist",
+    "tags": [
+      "jazz",
+      "blues",
+      "singer",
+      "icon"
+    ]
+  },
+  {
+    "id": "armstrong-louis",
+    "name": "Louis Armstrong",
+    "category": "Musicians",
+    "date": "1901-08-04",
+    "time": "00:00",
+    "location": "New Orleans, Louisiana, USA",
+    "latitude": 29.9511,
+    "longitude": -90.0715,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Jazz legend, trumpeter, vocalist",
+    "tags": [
+      "jazz",
+      "trumpet",
+      "singer",
+      "icon"
+    ]
+  },
+  {
+    "id": "eminem",
+    "name": "Eminem",
+    "category": "Musicians",
+    "date": "1972-10-17",
+    "time": "02:00",
+    "location": "St. Joseph, Missouri, USA",
+    "latitude": 39.7675,
+    "longitude": -94.8467,
+    "timezone": "America/Chicago",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Hip-hop legend, best-selling rapper",
+    "tags": [
+      "hip-hop",
+      "rap",
+      "icon"
+    ]
+  },
+  {
+    "id": "tupac",
+    "name": "Tupac Shakur",
+    "category": "Musicians",
+    "date": "1971-06-16",
+    "time": "03:21",
+    "location": "New York, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Hip-hop icon, poet, actor",
+    "tags": [
+      "hip-hop",
+      "rap",
+      "icon",
+      "activist"
+    ]
+  },
+  {
+    "id": "notorious-big",
+    "name": "The Notorious B.I.G.",
+    "category": "Musicians",
+    "date": "1972-05-21",
+    "time": "10:26",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Hip-hop legend, influential rapper",
+    "tags": [
+      "hip-hop",
+      "rap",
+      "icon"
+    ]
+  },
+  {
+    "id": "jay-z-musician",
+    "name": "Jay-Z",
+    "category": "Musicians",
+    "date": "1969-12-04",
+    "time": "00:00",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Hip-hop mogul, entrepreneur, cultural icon",
+    "tags": [
+      "hip-hop",
+      "rap",
+      "entrepreneur",
+      "icon"
+    ]
+  },
+  {
+    "id": "parton-dolly",
+    "name": "Dolly Parton",
+    "category": "Musicians",
+    "date": "1946-01-19",
+    "time": "20:35",
+    "location": "Sevierville, Tennessee, USA",
+    "latitude": 35.8681,
+    "longitude": -83.5618,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Country music legend, philanthropist",
+    "tags": [
+      "country",
+      "icon",
+      "singer-songwriter"
+    ]
+  },
+  {
+    "id": "williams-hank",
+    "name": "Hank Williams",
+    "category": "Musicians",
+    "date": "1923-09-17",
+    "time": "11:00",
+    "location": "Mount Olive, Alabama, USA",
+    "latitude": 31.6632,
+    "longitude": -86.8397,
+    "timezone": "America/Chicago",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Country music legend, influential songwriter",
+    "tags": [
+      "country",
+      "singer-songwriter",
+      "icon"
+    ]
+  },
+  {
+    "id": "nelson-willie",
+    "name": "Willie Nelson",
+    "category": "Musicians",
+    "date": "1933-04-29",
+    "time": "18:00",
+    "location": "Abbott, Texas, USA",
+    "latitude": 31.8832,
+    "longitude": -97.0711,
+    "timezone": "America/Chicago",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Country music icon, activist",
+    "tags": [
+      "country",
+      "singer-songwriter",
+      "icon",
+      "activist"
+    ]
+  },
+  {
+    "id": "waits-tom",
+    "name": "Tom Waits",
+    "category": "Musicians",
+    "date": "1949-12-07",
+    "time": "20:18",
+    "location": "Pomona, California, USA",
+    "latitude": 34.0551,
+    "longitude": -117.75,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Experimental artist, singer-songwriter",
+    "tags": [
+      "experimental",
+      "singer-songwriter",
+      "icon"
+    ]
+  },
+  {
+    "id": "garfunkel-art",
+    "name": "Art Garfunkel",
+    "category": "Musicians",
+    "date": "1941-11-05",
+    "time": "07:53",
+    "location": "Queens, New York, USA",
+    "latitude": 40.7282,
+    "longitude": -73.7949,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Simon & Garfunkel, folk-rock icon",
+    "tags": [
+      "folk",
+      "rock",
+      "simon-and-garfunkel"
+    ]
+  },
+  {
+    "id": "fleetwood-mac-nicks",
+    "name": "Stevie Nicks",
+    "category": "Musicians",
+    "date": "1948-05-26",
+    "time": "03:02",
+    "location": "Phoenix, Arizona, USA",
+    "latitude": 33.4484,
+    "longitude": -112.074,
+    "timezone": "America/Phoenix",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Fleetwood Mac icon, solo artist",
+    "tags": [
+      "rock",
+      "fleetwood-mac",
+      "singer-songwriter",
+      "icon"
+    ]
+  },
+  {
+    "id": "mccartney-paul",
+    "name": "Paul McCartney",
+    "category": "Musicians",
+    "date": "1942-06-18",
+    "time": "14:00",
+    "location": "Liverpool, England",
+    "latitude": 53.4084,
+    "longitude": -2.9916,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "The Beatles, legendary bassist and songwriter",
+    "tags": [
+      "rock",
+      "beatles",
+      "icon",
+      "singer-songwriter"
+    ]
+  },
+  {
+    "id": "harrison-george",
+    "name": "George Harrison",
+    "category": "Musicians",
+    "date": "1943-02-25",
+    "time": "00:05",
+    "location": "Liverpool, England",
+    "latitude": 53.4084,
+    "longitude": -2.9916,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "The Beatles, legendary guitarist and songwriter",
+    "tags": [
+      "rock",
+      "beatles",
+      "icon",
+      "guitarist"
+    ]
+  },
+  {
+    "id": "starr-ringo",
+    "name": "Ringo Starr",
+    "category": "Musicians",
+    "date": "1940-07-07",
+    "time": "00:05",
+    "location": "Liverpool, England",
+    "latitude": 53.4084,
+    "longitude": -2.9916,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "The Beatles, legendary drummer",
+    "tags": [
+      "rock",
+      "beatles",
+      "icon",
+      "drummer"
+    ]
   }
 ]
