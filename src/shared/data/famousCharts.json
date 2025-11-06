@@ -10809,5 +10809,425 @@
       "executed",
       "romania"
     ]
+  },
+  {
+    "id": "plato",
+    "name": "Plato",
+    "category": "Philosophers",
+    "date": "-0428-05-21",
+    "time": "12:00",
+    "location": "Athens, Greece",
+    "latitude": 37.9838,
+    "longitude": 23.7275,
+    "timezone": "Europe/Athens",
+    "roddenRating": "C",
+    "source": "Historical estimate (highly uncertain)",
+    "notes": "Ancient Greek philosopher, The Republic, Theory of Forms, Academy founder",
+    "tags": [
+      "ancient-philosophy",
+      "idealism",
+      "greek",
+      "political-philosophy"
+    ]
+  },
+  {
+    "id": "aristotle",
+    "name": "Aristotle",
+    "category": "Philosophers",
+    "date": "-0384-01-01",
+    "time": "12:00",
+    "location": "Stagira, Greece",
+    "latitude": 40.5333,
+    "longitude": 23.75,
+    "timezone": "Europe/Athens",
+    "roddenRating": "C",
+    "source": "Historical estimate (highly uncertain)",
+    "notes": "Ancient Greek philosopher, Logic, Ethics, Metaphysics, Alexander's tutor",
+    "tags": [
+      "ancient-philosophy",
+      "logic",
+      "ethics",
+      "greek"
+    ]
+  },
+  {
+    "id": "socrates",
+    "name": "Socrates",
+    "category": "Philosophers",
+    "date": "-0470-06-04",
+    "time": "12:00",
+    "location": "Athens, Greece",
+    "latitude": 37.9838,
+    "longitude": 23.7275,
+    "timezone": "Europe/Athens",
+    "roddenRating": "C",
+    "source": "Historical estimate (highly uncertain)",
+    "notes": "Ancient Greek philosopher, Socratic method, 'Know thyself,' hemlock execution",
+    "tags": [
+      "ancient-philosophy",
+      "ethics",
+      "greek",
+      "dialectic"
+    ]
+  },
+  {
+    "id": "kant-immanuel",
+    "name": "Immanuel Kant",
+    "category": "Philosophers",
+    "date": "1724-04-22",
+    "time": "05:00",
+    "location": "Königsberg, Prussia",
+    "latitude": 54.7104,
+    "longitude": 20.4522,
+    "timezone": "Europe/Kaliningrad",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Enlightenment philosopher, Critique of Pure Reason, categorical imperative",
+    "tags": [
+      "enlightenment",
+      "epistemology",
+      "ethics",
+      "german"
+    ]
+  },
+  {
+    "id": "descartes-rene",
+    "name": "René Descartes",
+    "category": "Philosophers",
+    "date": "1596-03-31",
+    "time": "01:00",
+    "location": "La Haye, France",
+    "latitude": 46.95,
+    "longitude": 0.6833,
+    "timezone": "Europe/Paris",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "'I think therefore I am,' Cartesian dualism, rationalism, mathematics",
+    "tags": [
+      "rationalism",
+      "dualism",
+      "mathematics",
+      "french"
+    ]
+  },
+  {
+    "id": "spinoza-baruch",
+    "name": "Baruch Spinoza",
+    "category": "Philosophers",
+    "date": "1632-11-24",
+    "time": "12:00",
+    "location": "Amsterdam, Netherlands",
+    "latitude": 52.3676,
+    "longitude": 4.9041,
+    "timezone": "Europe/Amsterdam",
+    "roddenRating": "C",
+    "source": "Birth records (time uncertain)",
+    "notes": "Dutch philosopher, Ethics, pantheism, excommunicated from Judaism, lens grinder",
+    "tags": [
+      "rationalism",
+      "pantheism",
+      "ethics",
+      "dutch"
+    ]
+  },
+  {
+    "id": "locke-john",
+    "name": "John Locke",
+    "category": "Philosophers",
+    "date": "1632-08-29",
+    "time": "12:00",
+    "location": "Wrington, England",
+    "latitude": 51.35,
+    "longitude": -2.7667,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Birth records (time uncertain)",
+    "notes": "Enlightenment thinker, empiricism, natural rights, social contract, tabula rasa",
+    "tags": [
+      "enlightenment",
+      "empiricism",
+      "political-philosophy",
+      "english"
+    ]
+  },
+  {
+    "id": "hume-david",
+    "name": "David Hume",
+    "category": "Philosophers",
+    "date": "1711-05-07",
+    "time": "12:00",
+    "location": "Edinburgh, Scotland",
+    "latitude": 55.9533,
+    "longitude": -3.1883,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Birth records (time uncertain)",
+    "notes": "Scottish Enlightenment, empiricism, skepticism, Treatise of Human Nature",
+    "tags": [
+      "enlightenment",
+      "empiricism",
+      "skepticism",
+      "scottish"
+    ]
+  },
+  {
+    "id": "hegel-georg",
+    "name": "Georg Wilhelm Friedrich Hegel",
+    "category": "Philosophers",
+    "date": "1770-08-27",
+    "time": "13:00",
+    "location": "Stuttgart, Germany",
+    "latitude": 48.7758,
+    "longitude": 9.1829,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "B",
+    "source": "Birth records",
+    "notes": "German idealism, dialectics, Phenomenology of Spirit, master-slave dialectic",
+    "tags": [
+      "german-idealism",
+      "dialectics",
+      "metaphysics",
+      "german"
+    ]
+  },
+  {
+    "id": "schopenhauer-arthur",
+    "name": "Arthur Schopenhauer",
+    "category": "Philosophers",
+    "date": "1788-02-22",
+    "time": "12:00",
+    "location": "Danzig, Prussia",
+    "latitude": 54.352,
+    "longitude": 18.6466,
+    "timezone": "Europe/Warsaw",
+    "roddenRating": "C",
+    "source": "Birth records (time uncertain)",
+    "notes": "Pessimism, Will as fundamental reality, influenced Wagner & Nietzsche",
+    "tags": [
+      "pessimism",
+      "metaphysics",
+      "eastern-influence",
+      "german"
+    ]
+  },
+  {
+    "id": "kierkegaard-soren",
+    "name": "Søren Kierkegaard",
+    "category": "Philosophers",
+    "date": "1813-05-05",
+    "time": "19:30",
+    "location": "Copenhagen, Denmark",
+    "latitude": 55.6761,
+    "longitude": 12.5683,
+    "timezone": "Europe/Copenhagen",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Father of existentialism, leap of faith, Either/Or, subjectivity is truth",
+    "tags": [
+      "existentialism",
+      "christianity",
+      "danish",
+      "psychology"
+    ]
+  },
+  {
+    "id": "wittgenstein-ludwig",
+    "name": "Ludwig Wittgenstein",
+    "category": "Philosophers",
+    "date": "1889-04-26",
+    "time": "20:30",
+    "location": "Vienna, Austria",
+    "latitude": 48.2082,
+    "longitude": 16.3738,
+    "timezone": "Europe/Vienna",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Tractatus, Philosophical Investigations, language games, analytic philosophy",
+    "tags": [
+      "analytic-philosophy",
+      "language",
+      "logic",
+      "austrian"
+    ]
+  },
+  {
+    "id": "russell-bertrand",
+    "name": "Bertrand Russell",
+    "category": "Philosophers",
+    "date": "1872-05-18",
+    "time": "17:45",
+    "location": "Trellech, Wales",
+    "latitude": 51.75,
+    "longitude": -2.7167,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Birth certificate",
+    "notes": "Logician, Principia Mathematica, pacifist, Nobel Prize Literature 1950",
+    "tags": [
+      "logic",
+      "mathematics",
+      "analytic-philosophy",
+      "pacifism"
+    ]
+  },
+  {
+    "id": "arendt-hannah",
+    "name": "Hannah Arendt",
+    "category": "Philosophers",
+    "date": "1906-10-14",
+    "time": "21:00",
+    "location": "Hanover, Germany",
+    "latitude": 52.3759,
+    "longitude": 9.732,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "A",
+    "source": "Birth certificate",
+    "notes": "Political theorist, 'banality of evil,' totalitarianism, The Human Condition",
+    "tags": [
+      "political-philosophy",
+      "totalitarianism",
+      "phenomenology",
+      "german"
+    ]
+  },
+  {
+    "id": "aquinas-thomas",
+    "name": "Thomas Aquinas",
+    "category": "Philosophers",
+    "date": "1225-01-28",
+    "time": "12:00",
+    "location": "Roccasecca, Italy",
+    "latitude": 41.55,
+    "longitude": 13.6667,
+    "timezone": "Europe/Rome",
+    "roddenRating": "C",
+    "source": "Historical records (highly uncertain)",
+    "notes": "Medieval theologian-philosopher, Summa Theologica, natural law, sainthood",
+    "tags": [
+      "medieval",
+      "theology",
+      "scholasticism",
+      "catholic"
+    ]
+  },
+  {
+    "id": "augustine",
+    "name": "Augustine of Hippo",
+    "category": "Philosophers",
+    "date": "0354-11-13",
+    "time": "12:00",
+    "location": "Thagaste, Algeria",
+    "latitude": 36.2667,
+    "longitude": 7.7667,
+    "timezone": "Africa/Algiers",
+    "roddenRating": "C",
+    "source": "Historical records (highly uncertain)",
+    "notes": "Church Father, Confessions, City of God, original sin, free will",
+    "tags": [
+      "ancient-philosophy",
+      "theology",
+      "christianity",
+      "african"
+    ]
+  },
+  {
+    "id": "confucius",
+    "name": "Confucius",
+    "category": "Philosophers",
+    "date": "-0551-09-28",
+    "time": "12:00",
+    "location": "Qufu, China",
+    "latitude": 35.6,
+    "longitude": 116.9833,
+    "timezone": "Asia/Shanghai",
+    "roddenRating": "C",
+    "source": "Historical estimate (highly uncertain)",
+    "notes": "Ancient Chinese philosopher, Analects, Confucianism, social ethics, ritual",
+    "tags": [
+      "eastern-philosophy",
+      "ethics",
+      "chinese",
+      "confucianism"
+    ]
+  },
+  {
+    "id": "lao-tzu",
+    "name": "Lao Tzu",
+    "category": "Philosophers",
+    "date": "-0604-01-01",
+    "time": "12:00",
+    "location": "Henan, China",
+    "latitude": 34.76,
+    "longitude": 113.62,
+    "timezone": "Asia/Shanghai",
+    "roddenRating": "C",
+    "source": "Legendary (highly uncertain, existence debated)",
+    "notes": "Tao Te Ching, Taoism founder, wu wei, the Way, mysticism",
+    "tags": [
+      "eastern-philosophy",
+      "taoism",
+      "mysticism",
+      "chinese"
+    ]
+  },
+  {
+    "id": "derrida-jacques",
+    "name": "Jacques Derrida",
+    "category": "Philosophers",
+    "date": "1930-07-15",
+    "time": "12:00",
+    "location": "El Biar, Algeria",
+    "latitude": 36.7833,
+    "longitude": 3.05,
+    "timezone": "Africa/Algiers",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Deconstruction, post-structuralism, différance, Of Grammatology",
+    "tags": [
+      "postmodernism",
+      "deconstruction",
+      "continental",
+      "french"
+    ]
+  },
+  {
+    "id": "deleuze-gilles",
+    "name": "Gilles Deleuze",
+    "category": "Philosophers",
+    "date": "1925-01-18",
+    "time": "12:00",
+    "location": "Paris, France",
+    "latitude": 48.8566,
+    "longitude": 2.3522,
+    "timezone": "Europe/Paris",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Post-structuralism, Capitalism and Schizophrenia, rhizome, multiplicity",
+    "tags": [
+      "postmodernism",
+      "continental",
+      "metaphysics",
+      "french"
+    ]
+  },
+  {
+    "id": "camus-albert-philosopher",
+    "name": "Albert Camus",
+    "category": "Philosophers",
+    "date": "1913-11-07",
+    "time": "02:00",
+    "location": "Mondovi, Algeria",
+    "latitude": 36.5,
+    "longitude": 6.5833,
+    "timezone": "Africa/Algiers",
+    "roddenRating": "A",
+    "source": "Birth certificate",
+    "notes": "Absurdism, The Myth of Sisyphus, Nobel Prize 1957, existentialism",
+    "tags": [
+      "existentialism",
+      "absurdism",
+      "nobel-prize",
+      "french"
+    ]
   }
 ]
