@@ -14,15 +14,23 @@ function FamousChartsBrowser({ isOpen, onClose, onSelectChart }) {
     return cats.sort();
   }, []);
 
-  // Filter charts based on search and category
+  // Filter and sort charts based on search and category
   const filteredCharts = useMemo(() => {
     if (!famousChartsData.length) return [];
-    return famousChartsData.filter(chart => {
+    const filtered = famousChartsData.filter(chart => {
       const matchesSearch = chart.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            chart.notes?.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            chart.tags?.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
       const matchesCategory = selectedCategory === 'All' || chart.category === selectedCategory;
       return matchesSearch && matchesCategory;
+    });
+
+    // Sort by category first, then by name
+    return filtered.sort((a, b) => {
+      if (a.category !== b.category) {
+        return a.category.localeCompare(b.category);
+      }
+      return a.name.localeCompare(b.name);
     });
   }, [searchTerm, selectedCategory]);
 
