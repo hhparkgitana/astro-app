@@ -8784,5 +8784,410 @@
       "light",
       "atmospheric"
     ]
+  },
+  {
+    "id": "woodstock-festival",
+    "name": "Woodstock Festival",
+    "category": "Cultural Movements",
+    "date": "1969-08-15",
+    "time": "17:00",
+    "location": "Bethel, New York, USA",
+    "latitude": 41.7012,
+    "longitude": -74.8795,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Festival opening time",
+    "notes": "3 days of peace & music, counterculture defining moment, 400k attendees",
+    "tags": [
+      "culture",
+      "music",
+      "counterculture",
+      "60s"
+    ]
+  },
+  {
+    "id": "stonewall-riots",
+    "name": "Stonewall Riots",
+    "category": "Cultural Movements",
+    "date": "1969-06-28",
+    "time": "01:20",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7339,
+    "longitude": -74.0027,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Police raid start time",
+    "notes": "LGBTQ+ rights uprising at Stonewall Inn, birth of Pride movement",
+    "tags": [
+      "culture",
+      "lgbtq",
+      "rights",
+      "uprising"
+    ]
+  },
+  {
+    "id": "beatlemania-ed-sullivan",
+    "name": "Beatles on Ed Sullivan",
+    "category": "Cultural Movements",
+    "date": "1964-02-09",
+    "time": "20:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7614,
+    "longitude": -73.9776,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Live broadcast time",
+    "notes": "73M viewers, British Invasion begins, cultural earthquake",
+    "tags": [
+      "culture",
+      "music",
+      "beatles",
+      "television"
+    ]
+  },
+  {
+    "id": "summer-of-love",
+    "name": "Summer of Love",
+    "category": "Cultural Movements",
+    "date": "1967-06-21",
+    "time": "12:00",
+    "location": "San Francisco, California, USA",
+    "latitude": 37.7749,
+    "longitude": -122.4194,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "B",
+    "source": "Solstice/symbolic start",
+    "notes": "100k youth gather in Haight-Ashbury, hippie movement peak",
+    "tags": [
+      "culture",
+      "counterculture",
+      "60s",
+      "hippie"
+    ]
+  },
+  {
+    "id": "live-aid",
+    "name": "Live Aid Concert",
+    "category": "Cultural Movements",
+    "date": "1985-07-13",
+    "time": "12:00",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Concert start time (Wembley)",
+    "notes": "Global benefit concert, 1.9B viewers, Queen's legendary performance",
+    "tags": [
+      "culture",
+      "music",
+      "charity",
+      "global"
+    ]
+  },
+  {
+    "id": "berlin-wall-fall",
+    "name": "Fall of Berlin Wall",
+    "category": "Cultural Movements",
+    "date": "1989-11-09",
+    "time": "18:57",
+    "location": "Berlin, Germany",
+    "latitude": 52.52,
+    "longitude": 13.405,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "AA",
+    "source": "Border opening announcement",
+    "notes": "Cold War ends, East Germans flood checkpoints, reunification begins",
+    "tags": [
+      "culture",
+      "history",
+      "cold-war",
+      "freedom"
+    ]
+  },
+  {
+    "id": "monterey-pop-festival",
+    "name": "Monterey Pop Festival",
+    "category": "Cultural Movements",
+    "date": "1967-06-16",
+    "time": "19:00",
+    "location": "Monterey, California, USA",
+    "latitude": 36.6002,
+    "longitude": -121.8947,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "A",
+    "source": "Festival opening",
+    "notes": "First major rock festival, launched Hendrix & Joplin, template for Woodstock",
+    "tags": [
+      "culture",
+      "music",
+      "60s",
+      "festival"
+    ]
+  },
+  {
+    "id": "hip-hop-birth",
+    "name": "Hip-Hop Birth (1520 Sedgwick)",
+    "category": "Cultural Movements",
+    "date": "1973-08-11",
+    "time": "21:00",
+    "location": "Bronx, New York, USA",
+    "latitude": 40.8448,
+    "longitude": -73.9246,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "DJ Kool Herc's party",
+    "notes": "DJ Kool Herc's back-to-school party, hip-hop culture begins",
+    "tags": [
+      "culture",
+      "music",
+      "hip-hop",
+      "bronx"
+    ]
+  },
+  {
+    "id": "mtv-launch",
+    "name": "MTV Launches",
+    "category": "Cultural Movements",
+    "date": "1981-08-01",
+    "time": "00:01",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7614,
+    "longitude": -73.9776,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "First broadcast",
+    "notes": "Music Television launches, 'Video Killed the Radio Star' first video",
+    "tags": [
+      "culture",
+      "music",
+      "television",
+      "80s"
+    ]
+  },
+  {
+    "id": "altamont-free-concert",
+    "name": "Altamont Free Concert",
+    "category": "Cultural Movements",
+    "date": "1969-12-06",
+    "time": "15:00",
+    "location": "Livermore, California, USA",
+    "latitude": 37.6819,
+    "longitude": -121.768,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "AA",
+    "source": "Concert start time",
+    "notes": "Death at Rolling Stones concert, 'end of the 60s,' violence vs peace",
+    "tags": [
+      "culture",
+      "music",
+      "tragedy",
+      "60s"
+    ]
+  },
+  {
+    "id": "grunge-nirvana-nevermind",
+    "name": "Nirvana Nevermind Release",
+    "category": "Cultural Movements",
+    "date": "1991-09-24",
+    "time": "00:01",
+    "location": "Seattle, Washington, USA",
+    "latitude": 47.6062,
+    "longitude": -122.3321,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "A",
+    "source": "Album release date",
+    "notes": "Grunge explodes mainstream, Gen X anthem, unseats Michael Jackson",
+    "tags": [
+      "culture",
+      "music",
+      "grunge",
+      "90s"
+    ]
+  },
+  {
+    "id": "womens-march-2017",
+    "name": "Women's March 2017",
+    "category": "Cultural Movements",
+    "date": "2017-01-21",
+    "time": "10:00",
+    "location": "Washington, D.C., USA",
+    "latitude": 38.9072,
+    "longitude": -77.0369,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "March start time",
+    "notes": "Largest single-day protest in US history, 4-5M worldwide, Trump resistance",
+    "tags": [
+      "culture",
+      "protest",
+      "womens-rights",
+      "activism"
+    ]
+  },
+  {
+    "id": "disco-demolition-night",
+    "name": "Disco Demolition Night",
+    "category": "Cultural Movements",
+    "date": "1979-07-12",
+    "time": "20:00",
+    "location": "Chicago, Illinois, USA",
+    "latitude": 41.8781,
+    "longitude": -87.6298,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Event start time",
+    "notes": "Anti-disco rally turns into riot, symbolic 'death of disco,' cultural backlash",
+    "tags": [
+      "culture",
+      "music",
+      "disco",
+      "backlash"
+    ]
+  },
+  {
+    "id": "occupy-wall-street",
+    "name": "Occupy Wall Street",
+    "category": "Cultural Movements",
+    "date": "2011-09-17",
+    "time": "09:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7074,
+    "longitude": -74.0113,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Occupation begins",
+    "notes": "Zuccotti Park occupation, '99% vs 1%,' wealth inequality protest",
+    "tags": [
+      "culture",
+      "protest",
+      "activism",
+      "economics"
+    ]
+  },
+  {
+    "id": "woodstock-99",
+    "name": "Woodstock '99",
+    "category": "Cultural Movements",
+    "date": "1999-07-23",
+    "time": "16:00",
+    "location": "Rome, New York, USA",
+    "latitude": 43.2128,
+    "longitude": -75.4557,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Festival opening",
+    "notes": "Festival descends into riots and fires, dark mirror of original Woodstock",
+    "tags": [
+      "culture",
+      "music",
+      "festival",
+      "tragedy"
+    ]
+  },
+  {
+    "id": "buffett-warren",
+    "name": "Warren Buffett",
+    "category": "Business",
+    "date": "1930-08-30",
+    "time": "15:00",
+    "location": "Omaha, Nebraska, USA",
+    "latitude": 41.2667,
+    "longitude": -95.9333,
+    "timezone": "America/Chicago",
+    "roddenRating": "A",
+    "source": "Paul Hewitt collection; source obtained data from Buffett himself",
+    "notes": "Investor, chairman/CEO of Berkshire Hathaway, Oracle of Omaha, value investing",
+    "tags": [
+      "investor",
+      "business",
+      "billionaire",
+      "berkshire-hathaway",
+      "value-investing"
+    ]
+  },
+  {
+    "id": "bezos-jeff",
+    "name": "Jeff Bezos",
+    "category": "Business",
+    "date": "1964-01-12",
+    "time": "12:00",
+    "location": "Albuquerque, New Mexico, USA",
+    "latitude": 35.0844,
+    "longitude": -106.6504,
+    "timezone": "America/Denver",
+    "roddenRating": "X",
+    "source": "Birth date from newspaper notices, no time available",
+    "notes": "Founder of Amazon, e-commerce pioneer, Blue Origin, Washington Post owner",
+    "tags": [
+      "entrepreneur",
+      "amazon",
+      "e-commerce",
+      "billionaire",
+      "tech"
+    ]
+  },
+  {
+    "id": "winfrey-oprah",
+    "name": "Oprah Winfrey",
+    "category": "Business",
+    "date": "1954-01-29",
+    "time": "04:30",
+    "location": "Kosciusko, Mississippi, USA",
+    "latitude": 33.05,
+    "longitude": -89.5833,
+    "timezone": "America/Chicago",
+    "roddenRating": "A",
+    "source": "Astrologer Bob Marks obtained from Oprah's producer, confirmed with Oprah",
+    "notes": "Media mogul, talk show host, actress, philanthropist, OWN network, first Black female billionaire",
+    "tags": [
+      "media",
+      "television",
+      "philanthropist",
+      "billionaire",
+      "entrepreneur"
+    ]
+  },
+  {
+    "id": "branson-richard",
+    "name": "Richard Branson",
+    "category": "Business",
+    "date": "1950-07-18",
+    "time": "07:00",
+    "location": "Blackheath, London, England",
+    "latitude": 51.4667,
+    "longitude": 0.0167,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Birth notice in newspaper (Frank Clifford)",
+    "notes": "Founder of Virgin Group, entrepreneur, adventurer, Virgin Records/Atlantic/Galactic",
+    "tags": [
+      "entrepreneur",
+      "virgin",
+      "adventurer",
+      "billionaire",
+      "british"
+    ]
+  },
+  {
+    "id": "ford-henry",
+    "name": "Henry Ford",
+    "category": "Business",
+    "date": "1863-07-30",
+    "time": "07:00",
+    "location": "Dearborn, Michigan, USA",
+    "latitude": 42.3167,
+    "longitude": -83.1833,
+    "timezone": "America/Detroit",
+    "roddenRating": "B",
+    "source": "Biography 'Young Henry Ford' by Sidney Olson",
+    "notes": "Founder of Ford Motor Company, Model T, assembly line, mass production innovator",
+    "tags": [
+      "industrialist",
+      "automotive",
+      "ford",
+      "assembly-line",
+      "innovation"
+    ]
   }
 ]
