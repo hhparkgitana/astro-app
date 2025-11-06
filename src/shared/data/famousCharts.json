@@ -17469,5 +17469,525 @@
       "compassion",
       "british"
     ]
+  },
+  {
+    "id": "thunberg-greta",
+    "name": "Greta Thunberg",
+    "category": "Activists",
+    "date": "2003-01-03",
+    "time": "12:00",
+    "location": "Stockholm, Sweden",
+    "latitude": 59.3293,
+    "longitude": 18.0686,
+    "timezone": "Europe/Stockholm",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Climate activist, School Strike for Climate, How dare you speech",
+    "tags": [
+      "climate",
+      "youth",
+      "swedish",
+      "contemporary"
+    ]
+  },
+  {
+    "id": "douglass-frederick",
+    "name": "Frederick Douglass",
+    "category": "Activists",
+    "date": "1818-02-01",
+    "time": "12:00",
+    "location": "Talbot County, Maryland, USA",
+    "latitude": 38.7743,
+    "longitude": -76.0719,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (date approximate, time uncertain)",
+    "notes": "Escaped slave, abolitionist, orator, writer, Lincoln advisor",
+    "tags": [
+      "abolition",
+      "civil-rights",
+      "orator",
+      "writer"
+    ]
+  },
+  {
+    "id": "carson-rachel",
+    "name": "Rachel Carson",
+    "category": "Activists",
+    "date": "1907-05-27",
+    "time": "13:00",
+    "location": "Springdale, Pennsylvania, USA",
+    "latitude": 40.5403,
+    "longitude": -79.785,
+    "timezone": "America/New_York",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Silent Spring 1962, environmental movement founder, DDT ban",
+    "tags": [
+      "environment",
+      "writer",
+      "pesticides",
+      "pioneer"
+    ]
+  },
+  {
+    "id": "steinem-gloria",
+    "name": "Gloria Steinem",
+    "category": "Activists",
+    "date": "1934-03-25",
+    "time": "22:00",
+    "location": "Toledo, Ohio, USA",
+    "latitude": 41.6528,
+    "longitude": -83.5379,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Feminist icon, Ms. Magazine founder, women's liberation",
+    "tags": [
+      "feminism",
+      "womens-rights",
+      "journalist",
+      "icon"
+    ]
+  },
+  {
+    "id": "friedan-betty",
+    "name": "Betty Friedan",
+    "category": "Activists",
+    "date": "1921-02-04",
+    "time": "12:00",
+    "location": "Peoria, Illinois, USA",
+    "latitude": 40.6936,
+    "longitude": -89.589,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "The Feminine Mystique 1963, NOW founder, second-wave feminism",
+    "tags": [
+      "feminism",
+      "womens-rights",
+      "writer",
+      "founder"
+    ]
+  },
+  {
+    "id": "milk-harvey",
+    "name": "Harvey Milk",
+    "category": "Activists",
+    "date": "1930-05-22",
+    "time": "03:50",
+    "location": "Woodmere, New York, USA",
+    "latitude": 40.632,
+    "longitude": -73.7126,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "First openly gay elected official California, assassinated 1978",
+    "tags": [
+      "lgbtq",
+      "politician",
+      "assassinated",
+      "pioneer"
+    ]
+  },
+  {
+    "id": "johnson-marsha-p",
+    "name": "Marsha P. Johnson",
+    "category": "Activists",
+    "date": "1945-08-24",
+    "time": "12:00",
+    "location": "Elizabeth, New Jersey, USA",
+    "latitude": 40.664,
+    "longitude": -74.2107,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Stonewall veteran, trans rights pioneer, STAR co-founder, died 1992",
+    "tags": [
+      "lgbtq",
+      "trans",
+      "stonewall",
+      "pioneer"
+    ]
+  },
+  {
+    "id": "yousafzai-malala",
+    "name": "Malala Yousafzai",
+    "category": "Activists",
+    "date": "1997-07-12",
+    "time": "12:00",
+    "location": "Mingora, Pakistan",
+    "latitude": 34.7797,
+    "longitude": 72.3597,
+    "timezone": "Asia/Karachi",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Education activist, shot by Taliban 2012, youngest Nobel Prize 2014",
+    "tags": [
+      "education",
+      "nobel-prize",
+      "youth",
+      "pakistani"
+    ]
+  },
+  {
+    "id": "tutu-desmond",
+    "name": "Desmond Tutu",
+    "category": "Activists",
+    "date": "1931-10-07",
+    "time": "12:00",
+    "location": "Klerksdorp, South Africa",
+    "latitude": -26.85,
+    "longitude": 26.6667,
+    "timezone": "Africa/Johannesburg",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Anti-apartheid, Archbishop, Nobel Peace Prize 1984, died 2021",
+    "tags": [
+      "anti-apartheid",
+      "nobel-prize",
+      "archbishop",
+      "south-african"
+    ]
+  },
+  {
+    "id": "huerta-dolores",
+    "name": "Dolores Huerta",
+    "category": "Activists",
+    "date": "1930-04-10",
+    "time": "12:00",
+    "location": "Dawson, New Mexico, USA",
+    "latitude": 36.7,
+    "longitude": -104.75,
+    "timezone": "America/Denver",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "UFW co-founder, Si se puede slogan, farmworkers rights",
+    "tags": [
+      "labor",
+      "farmworkers",
+      "chicana",
+      "co-founder"
+    ]
+  },
+  {
+    "id": "keller-helen",
+    "name": "Helen Keller",
+    "category": "Activists",
+    "date": "1880-06-27",
+    "time": "16:00",
+    "location": "Tuscumbia, Alabama, USA",
+    "latitude": 34.7304,
+    "longitude": -87.7025,
+    "timezone": "America/Chicago",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Deaf-blind activist, author, disability rights pioneer",
+    "tags": [
+      "disability",
+      "deaf-blind",
+      "pioneer",
+      "author"
+    ]
+  },
+  {
+    "id": "means-russell",
+    "name": "Russell Means",
+    "category": "Activists",
+    "date": "1939-11-10",
+    "time": "12:00",
+    "location": "Pine Ridge, South Dakota, USA",
+    "latitude": 43.0264,
+    "longitude": -102.556,
+    "timezone": "America/Denver",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "AIM leader, Wounded Knee occupation 1973, Native American rights",
+    "tags": [
+      "native-american",
+      "aim",
+      "wounded-knee",
+      "lakota"
+    ]
+  },
+  {
+    "id": "maathai-wangari",
+    "name": "Wangari Maathai",
+    "category": "Activists",
+    "date": "1940-04-01",
+    "time": "12:00",
+    "location": "Nyeri, Kenya",
+    "latitude": -0.4167,
+    "longitude": 36.95,
+    "timezone": "Africa/Nairobi",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Green Belt Movement, 51M trees, Nobel Peace Prize 2004",
+    "tags": [
+      "environment",
+      "nobel-prize",
+      "trees",
+      "kenyan"
+    ]
+  },
+  {
+    "id": "nader-ralph",
+    "name": "Ralph Nader",
+    "category": "Activists",
+    "date": "1934-02-27",
+    "time": "04:04",
+    "location": "Winsted, Connecticut, USA",
+    "latitude": 41.9209,
+    "longitude": -73.0601,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Consumer advocate, Unsafe at Any Speed, corporate critic",
+    "tags": [
+      "consumer",
+      "safety",
+      "corporate",
+      "presidential"
+    ]
+  },
+  {
+    "id": "addams-jane",
+    "name": "Jane Addams",
+    "category": "Activists",
+    "date": "1860-09-06",
+    "time": "12:00",
+    "location": "Cedarville, Illinois, USA",
+    "latitude": 42.3736,
+    "longitude": -89.6276,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Hull House founder, social work pioneer, Nobel Peace Prize 1931",
+    "tags": [
+      "social-work",
+      "nobel-prize",
+      "settlement-house",
+      "suffrage"
+    ]
+  },
+  {
+    "id": "truth-sojourner",
+    "name": "Sojourner Truth",
+    "category": "Activists",
+    "date": "1797-01-01",
+    "time": "12:00",
+    "location": "Swartekill, New York, USA",
+    "latitude": 41.92,
+    "longitude": -74,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (date approximate, time uncertain)",
+    "notes": "Ain't I a Woman speech, abolitionist, women's rights, escaped slave",
+    "tags": [
+      "abolition",
+      "womens-rights",
+      "orator",
+      "escaped-slave"
+    ]
+  },
+  {
+    "id": "stanton-elizabeth-cady",
+    "name": "Elizabeth Cady Stanton",
+    "category": "Activists",
+    "date": "1815-11-12",
+    "time": "12:00",
+    "location": "Johnstown, New York, USA",
+    "latitude": 43.0067,
+    "longitude": -74.3707,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Seneca Falls Convention 1848, suffragist, women's rights leader",
+    "tags": [
+      "suffrage",
+      "womens-rights",
+      "seneca-falls",
+      "abolitionist"
+    ]
+  },
+  {
+    "id": "wiesel-elie",
+    "name": "Elie Wiesel",
+    "category": "Activists",
+    "date": "1928-09-30",
+    "time": "12:00",
+    "location": "Sighet, Romania",
+    "latitude": 47.9333,
+    "longitude": 23.8833,
+    "timezone": "Europe/Bucharest",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Holocaust survivor, Night author, Nobel Peace Prize 1986, died 2016",
+    "tags": [
+      "holocaust",
+      "nobel-prize",
+      "writer",
+      "survivor"
+    ]
+  },
+  {
+    "id": "xiaobo-liu",
+    "name": "Liu Xiaobo",
+    "category": "Activists",
+    "date": "1955-12-28",
+    "time": "12:00",
+    "location": "Changchun, China",
+    "latitude": 43.88,
+    "longitude": 125.3228,
+    "timezone": "Asia/Shanghai",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Democracy activist, Nobel Peace Prize 2010 in prison, died 2017",
+    "tags": [
+      "democracy",
+      "nobel-prize",
+      "imprisoned",
+      "chinese"
+    ]
+  },
+  {
+    "id": "aung-san-suu-kyi",
+    "name": "Aung San Suu Kyi",
+    "category": "Activists",
+    "date": "1945-06-19",
+    "time": "12:00",
+    "location": "Rangoon, Burma",
+    "latitude": 16.8661,
+    "longitude": 96.1951,
+    "timezone": "Asia/Yangon",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Democracy activist, Nobel Peace Prize 1991, house arrest 15 years",
+    "tags": [
+      "democracy",
+      "nobel-prize",
+      "myanmar",
+      "controversial"
+    ]
+  },
+  {
+    "id": "newton-huey",
+    "name": "Huey Newton",
+    "category": "Activists",
+    "date": "1942-02-17",
+    "time": "12:00",
+    "location": "Monroe, Louisiana, USA",
+    "latitude": 32.5093,
+    "longitude": -92.1193,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Black Panther Party co-founder, revolutionary, murdered 1989",
+    "tags": [
+      "black-panther",
+      "revolutionary",
+      "murdered",
+      "militant"
+    ]
+  },
+  {
+    "id": "shabazz-betty",
+    "name": "Betty Shabazz",
+    "category": "Activists",
+    "date": "1934-05-28",
+    "time": "12:00",
+    "location": "Detroit, Michigan, USA",
+    "latitude": 42.3314,
+    "longitude": -83.0458,
+    "timezone": "America/Detroit",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Malcolm X's widow, educator, civil rights, died in fire 1997",
+    "tags": [
+      "civil-rights",
+      "educator",
+      "widow",
+      "tragic"
+    ]
+  },
+  {
+    "id": "baker-ella",
+    "name": "Ella Baker",
+    "category": "Activists",
+    "date": "1903-12-13",
+    "time": "12:00",
+    "location": "Norfolk, Virginia, USA",
+    "latitude": 36.8508,
+    "longitude": -76.2859,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Civil rights organizer, SNCC founder, behind-the-scenes leader, grassroots",
+    "tags": [
+      "civil-rights",
+      "organizer",
+      "sncc",
+      "grassroots"
+    ]
+  },
+  {
+    "id": "hamer-fannie-lou",
+    "name": "Fannie Lou Hamer",
+    "category": "Activists",
+    "date": "1917-10-06",
+    "time": "12:00",
+    "location": "Montgomery County, Mississippi, USA",
+    "latitude": 33.5096,
+    "longitude": -89.5868,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Voting rights, I'm sick and tired speech, sharecropper, Democratic Convention",
+    "tags": [
+      "voting-rights",
+      "civil-rights",
+      "orator",
+      "mississippi"
+    ]
+  },
+  {
+    "id": "assange-julian",
+    "name": "Julian Assange",
+    "category": "Activists",
+    "date": "1971-07-03",
+    "time": "14:05",
+    "location": "Townsville, Australia",
+    "latitude": -19.259,
+    "longitude": 146.8169,
+    "timezone": "Australia/Brisbane",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "WikiLeaks founder, transparency activist, asylum then imprisoned",
+    "tags": [
+      "transparency",
+      "wikileaks",
+      "whistleblower",
+      "controversial"
+    ]
+  },
+  {
+    "id": "snowden-edward",
+    "name": "Edward Snowden",
+    "category": "Activists",
+    "date": "1983-06-21",
+    "time": "04:42",
+    "location": "Elizabeth City, North Carolina, USA",
+    "latitude": 36.2946,
+    "longitude": -76.251,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "NSA whistleblower, mass surveillance revelations, exile in Russia",
+    "tags": [
+      "whistleblower",
+      "surveillance",
+      "nsa",
+      "exile"
+    ]
   }
 ]
