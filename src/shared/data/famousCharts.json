@@ -13749,5 +13749,445 @@
       "cognitive-science",
       "activist"
     ]
+  },
+  {
+    "id": "john-of-the-cross",
+    "name": "John of the Cross",
+    "category": "Saints",
+    "date": "1542-06-24",
+    "time": "12:00",
+    "location": "Fontiveros, Spain",
+    "latitude": 41.0167,
+    "longitude": -5.1167,
+    "timezone": "Europe/Madrid",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Mystic poet, Doctor of the Church, Dark Night of the Soul, Carmelite reformer",
+    "tags": [
+      "mystic",
+      "poet",
+      "doctor-of-church",
+      "spanish"
+    ]
+  },
+  {
+    "id": "clare-of-assisi",
+    "name": "Clare of Assisi",
+    "category": "Saints",
+    "date": "1194-07-16",
+    "time": "12:00",
+    "location": "Assisi, Italy",
+    "latitude": 43.0703,
+    "longitude": 12.6167,
+    "timezone": "Europe/Rome",
+    "roddenRating": "C",
+    "source": "Historical records (time uncertain)",
+    "notes": "Poor Clares founder, Francis of Assisi's follower, poverty and contemplation",
+    "tags": [
+      "poverty",
+      "contemplative",
+      "italian",
+      "female"
+    ]
+  },
+  {
+    "id": "ignatius-of-loyola",
+    "name": "Ignatius of Loyola",
+    "category": "Saints",
+    "date": "1491-10-23",
+    "time": "12:00",
+    "location": "Azpeitia, Spain",
+    "latitude": 43.1833,
+    "longitude": -2.2667,
+    "timezone": "Europe/Madrid",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Jesuit Order founder, Spiritual Exercises, soldier turned mystic, education advocate",
+    "tags": [
+      "jesuits",
+      "spiritual-exercises",
+      "spanish",
+      "reformer"
+    ]
+  },
+  {
+    "id": "therese-of-lisieux",
+    "name": "Thérèse of Lisieux",
+    "category": "Saints",
+    "date": "1873-01-02",
+    "time": "23:30",
+    "location": "Alençon, France",
+    "latitude": 48.4333,
+    "longitude": 0.0833,
+    "timezone": "Europe/Paris",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Little Flower, Doctor of the Church, Little Way, died age 24 of tuberculosis",
+    "tags": [
+      "mystic",
+      "doctor-of-church",
+      "french",
+      "little-way"
+    ]
+  },
+  {
+    "id": "bernadette-soubirous",
+    "name": "Bernadette Soubirous",
+    "category": "Saints",
+    "date": "1844-01-07",
+    "time": "14:00",
+    "location": "Lourdes, France",
+    "latitude": 43.0933,
+    "longitude": -0.0483,
+    "timezone": "Europe/Paris",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Lourdes visions, Our Lady of Lourdes, peasant girl, miracles, died age 35",
+    "tags": [
+      "visionary",
+      "lourdes",
+      "french",
+      "miracles"
+    ]
+  },
+  {
+    "id": "faustina-kowalska",
+    "name": "Faustina Kowalska",
+    "category": "Saints",
+    "date": "1905-08-25",
+    "time": "16:00",
+    "location": "Głogowiec, Poland",
+    "latitude": 52.1167,
+    "longitude": 19.35,
+    "timezone": "Europe/Warsaw",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Divine Mercy mystic, visions of Jesus, diary, died age 33, canonized 2000",
+    "tags": [
+      "mystic",
+      "visionary",
+      "polish",
+      "divine-mercy"
+    ]
+  },
+  {
+    "id": "padre-pio",
+    "name": "Padre Pio",
+    "category": "Saints",
+    "date": "1887-05-25",
+    "time": "17:00",
+    "location": "Pietrelcina, Italy",
+    "latitude": 41.25,
+    "longitude": 14.85,
+    "timezone": "Europe/Rome",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Stigmata 50 years, bilocation, miracles, mystic, Capuchin friar, died 1968",
+    "tags": [
+      "mystic",
+      "stigmata",
+      "miracles",
+      "italian"
+    ]
+  },
+  {
+    "id": "anthony-of-padua",
+    "name": "Anthony of Padua",
+    "category": "Saints",
+    "date": "1195-08-15",
+    "time": "12:00",
+    "location": "Lisbon, Portugal",
+    "latitude": 38.7223,
+    "longitude": -9.1393,
+    "timezone": "Europe/Lisbon",
+    "roddenRating": "C",
+    "source": "Historical records (time uncertain)",
+    "notes": "Franciscan preacher, Doctor of the Church, patron of lost things, miracle worker",
+    "tags": [
+      "preacher",
+      "doctor-of-church",
+      "portuguese",
+      "miracles"
+    ]
+  },
+  {
+    "id": "catherine-of-siena",
+    "name": "Catherine of Siena",
+    "category": "Saints",
+    "date": "1347-03-25",
+    "time": "12:00",
+    "location": "Siena, Italy",
+    "latitude": 43.3188,
+    "longitude": 11.3308,
+    "timezone": "Europe/Rome",
+    "roddenRating": "C",
+    "source": "Historical records (time uncertain)",
+    "notes": "Mystic, Doctor of the Church, stigmata, papal advisor, died age 33",
+    "tags": [
+      "mystic",
+      "doctor-of-church",
+      "stigmata",
+      "italian"
+    ]
+  },
+  {
+    "id": "thomas-more",
+    "name": "Thomas More",
+    "category": "Saints",
+    "date": "1478-02-07",
+    "time": "12:00",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Historical records (time uncertain)",
+    "notes": "Martyr, Utopia author, Lord Chancellor, beheaded by Henry VIII 1535",
+    "tags": [
+      "martyr",
+      "scholar",
+      "politician",
+      "english"
+    ]
+  },
+  {
+    "id": "maximilian-kolbe",
+    "name": "Maximilian Kolbe",
+    "category": "Saints",
+    "date": "1894-01-08",
+    "time": "12:00",
+    "location": "Zduńska Wola, Poland",
+    "latitude": 51.6,
+    "longitude": 18.9333,
+    "timezone": "Europe/Warsaw",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Auschwitz martyr, volunteered to die in place of stranger, Franciscan priest",
+    "tags": [
+      "martyr",
+      "holocaust",
+      "sacrifice",
+      "polish"
+    ]
+  },
+  {
+    "id": "edith-stein",
+    "name": "Edith Stein (Teresa Benedicta)",
+    "category": "Saints",
+    "date": "1891-10-12",
+    "time": "12:00",
+    "location": "Breslau, Germany",
+    "latitude": 51.1079,
+    "longitude": 17.0385,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Jewish convert, philosopher, Carmelite nun, Auschwitz martyr 1942, co-patron of Europe",
+    "tags": [
+      "martyr",
+      "philosopher",
+      "holocaust",
+      "convert"
+    ]
+  },
+  {
+    "id": "patrick-of-ireland",
+    "name": "Patrick of Ireland",
+    "category": "Saints",
+    "date": "0385-03-17",
+    "time": "12:00",
+    "location": "Bannavem Taburniae, Britain",
+    "latitude": 52,
+    "longitude": -2,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Legendary (highly uncertain)",
+    "notes": "Ireland's patron saint, enslaved then missionary, shamrock legend, died ~461",
+    "tags": [
+      "missionary",
+      "patron-saint",
+      "irish",
+      "legendary"
+    ]
+  },
+  {
+    "id": "benedict-of-nursia",
+    "name": "Benedict of Nursia",
+    "category": "Saints",
+    "date": "0480-03-21",
+    "time": "12:00",
+    "location": "Nursia, Italy",
+    "latitude": 42.95,
+    "longitude": 13.1167,
+    "timezone": "Europe/Rome",
+    "roddenRating": "C",
+    "source": "Historical estimate (highly uncertain)",
+    "notes": "Benedictine Order founder, Rule of St. Benedict, Western monasticism father",
+    "tags": [
+      "monastic",
+      "founder",
+      "italian",
+      "rule"
+    ]
+  },
+  {
+    "id": "hildegard-of-bingen",
+    "name": "Hildegard of Bingen",
+    "category": "Saints",
+    "date": "1098-09-16",
+    "time": "12:00",
+    "location": "Bermersheim, Germany",
+    "latitude": 49.8167,
+    "longitude": 8.0833,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "C",
+    "source": "Historical records (time uncertain)",
+    "notes": "Mystic, composer, healer, Doctor of the Church, visionary, polymath, abbess",
+    "tags": [
+      "mystic",
+      "composer",
+      "doctor-of-church",
+      "visionary"
+    ]
+  },
+  {
+    "id": "francis-xavier",
+    "name": "Francis Xavier",
+    "category": "Saints",
+    "date": "1506-04-07",
+    "time": "12:00",
+    "location": "Javier, Spain",
+    "latitude": 42.5833,
+    "longitude": -1.2,
+    "timezone": "Europe/Madrid",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Jesuit missionary, evangelized Asia, India, Japan, patron of missions",
+    "tags": [
+      "missionary",
+      "jesuit",
+      "spanish",
+      "asia"
+    ]
+  },
+  {
+    "id": "dominic-de-guzman",
+    "name": "Dominic de Guzmán",
+    "category": "Saints",
+    "date": "1170-08-08",
+    "time": "12:00",
+    "location": "Caleruega, Spain",
+    "latitude": 41.7667,
+    "longitude": -3.4833,
+    "timezone": "Europe/Madrid",
+    "roddenRating": "C",
+    "source": "Historical records (time uncertain)",
+    "notes": "Dominican Order founder, preacher, rosary devotion, fought heresies",
+    "tags": [
+      "founder",
+      "preacher",
+      "spanish",
+      "dominican"
+    ]
+  },
+  {
+    "id": "sebastian",
+    "name": "Sebastian",
+    "category": "Saints",
+    "date": "0256-01-20",
+    "time": "12:00",
+    "location": "Narbonne, France",
+    "latitude": 43.1839,
+    "longitude": 3.0044,
+    "timezone": "Europe/Paris",
+    "roddenRating": "C",
+    "source": "Legendary (highly uncertain)",
+    "notes": "Early Christian martyr, Roman soldier, shot with arrows, patron of athletes",
+    "tags": [
+      "martyr",
+      "roman",
+      "arrows",
+      "athlete-patron"
+    ]
+  },
+  {
+    "id": "cecilia",
+    "name": "Cecilia",
+    "category": "Saints",
+    "date": "0200-11-22",
+    "time": "12:00",
+    "location": "Rome, Italy",
+    "latitude": 41.9028,
+    "longitude": 12.4964,
+    "timezone": "Europe/Rome",
+    "roddenRating": "C",
+    "source": "Legendary (highly uncertain)",
+    "notes": "Virgin martyr, patron saint of musicians, sang to God during martyrdom",
+    "tags": [
+      "martyr",
+      "virgin",
+      "music-patron",
+      "roman"
+    ]
+  },
+  {
+    "id": "martin-of-tours",
+    "name": "Martin of Tours",
+    "category": "Saints",
+    "date": "0316-11-11",
+    "time": "12:00",
+    "location": "Savaria, Hungary",
+    "latitude": 47.2333,
+    "longitude": 16.6167,
+    "timezone": "Europe/Budapest",
+    "roddenRating": "C",
+    "source": "Historical estimate (highly uncertain)",
+    "notes": "Roman soldier, shared cloak with beggar, bishop, patron of soldiers and beggars",
+    "tags": [
+      "bishop",
+      "soldier",
+      "charity",
+      "french"
+    ]
+  },
+  {
+    "id": "lucy-of-syracuse",
+    "name": "Lucy of Syracuse",
+    "category": "Saints",
+    "date": "0283-12-13",
+    "time": "12:00",
+    "location": "Syracuse, Sicily",
+    "latitude": 37.0755,
+    "longitude": 15.2866,
+    "timezone": "Europe/Rome",
+    "roddenRating": "C",
+    "source": "Legendary (highly uncertain)",
+    "notes": "Virgin martyr, eyes legend, light bearer, Swedish St. Lucia Day tradition",
+    "tags": [
+      "martyr",
+      "virgin",
+      "light",
+      "sicilian"
+    ]
+  },
+  {
+    "id": "john-paul-ii",
+    "name": "John Paul II",
+    "category": "Saints",
+    "date": "1920-05-18",
+    "time": "17:30",
+    "location": "Wadowice, Poland",
+    "latitude": 49.8833,
+    "longitude": 19.4833,
+    "timezone": "Europe/Warsaw",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Pope 1978-2005, survived assassination, traveled world, canonized 2014, Polish",
+    "tags": [
+      "pope",
+      "modern",
+      "polish",
+      "traveled"
+    ]
   }
 ]
