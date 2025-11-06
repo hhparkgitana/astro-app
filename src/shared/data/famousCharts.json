@@ -16969,5 +16969,505 @@
       "golf",
       "pioneer"
     ]
+  },
+  {
+    "id": "hippocrates",
+    "name": "Hippocrates",
+    "category": "Medical Pioneers",
+    "date": "-0460-01-01",
+    "time": "12:00",
+    "location": "Kos, Greece",
+    "latitude": 36.8931,
+    "longitude": 27.2878,
+    "timezone": "Europe/Athens",
+    "roddenRating": "C",
+    "source": "Historical estimate (highly uncertain)",
+    "notes": "Father of Medicine, Hippocratic Oath, rational approach to disease",
+    "tags": [
+      "ancient",
+      "greek",
+      "oath",
+      "founder"
+    ]
+  },
+  {
+    "id": "nightingale-florence",
+    "name": "Florence Nightingale",
+    "category": "Medical Pioneers",
+    "date": "1820-05-12",
+    "time": "14:00",
+    "location": "Florence, Italy",
+    "latitude": 43.7696,
+    "longitude": 11.2558,
+    "timezone": "Europe/Rome",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Nursing founder, Crimean War, Lady with the Lamp, sanitation",
+    "tags": [
+      "nursing",
+      "pioneer",
+      "sanitation",
+      "statistics"
+    ]
+  },
+  {
+    "id": "pasteur-louis",
+    "name": "Louis Pasteur",
+    "category": "Medical Pioneers",
+    "date": "1822-12-27",
+    "time": "02:00",
+    "location": "Dole, France",
+    "latitude": 47.0958,
+    "longitude": 5.4914,
+    "timezone": "Europe/Paris",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Germ theory, pasteurization, rabies vaccine, saved lives",
+    "tags": [
+      "microbiology",
+      "vaccine",
+      "french",
+      "germ-theory"
+    ]
+  },
+  {
+    "id": "lister-joseph",
+    "name": "Joseph Lister",
+    "category": "Medical Pioneers",
+    "date": "1827-04-05",
+    "time": "12:00",
+    "location": "Upton, England",
+    "latitude": 51.55,
+    "longitude": -0.0167,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Antiseptic surgery, carbolic acid, reduced infections",
+    "tags": [
+      "surgery",
+      "antiseptic",
+      "british",
+      "infection-control"
+    ]
+  },
+  {
+    "id": "salk-jonas",
+    "name": "Jonas Salk",
+    "category": "Medical Pioneers",
+    "date": "1914-10-28",
+    "time": "06:35",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Polio vaccine 1955, refused patent for humanity, hero",
+    "tags": [
+      "vaccine",
+      "polio",
+      "hero",
+      "humanitarian"
+    ]
+  },
+  {
+    "id": "sabin-albert",
+    "name": "Albert Sabin",
+    "category": "Medical Pioneers",
+    "date": "1906-08-26",
+    "time": "12:00",
+    "location": "Białystok, Poland",
+    "latitude": 53.1325,
+    "longitude": 23.1688,
+    "timezone": "Europe/Warsaw",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Oral polio vaccine, easier to administer, global immunization",
+    "tags": [
+      "vaccine",
+      "polio",
+      "oral",
+      "global"
+    ]
+  },
+  {
+    "id": "blackwell-elizabeth",
+    "name": "Elizabeth Blackwell",
+    "category": "Medical Pioneers",
+    "date": "1821-02-03",
+    "time": "12:00",
+    "location": "Bristol, England",
+    "latitude": 51.4545,
+    "longitude": -2.5879,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "First woman MD in USA 1849, barrier breaker, educator",
+    "tags": [
+      "first-woman",
+      "barrier-breaker",
+      "pioneer",
+      "educator"
+    ]
+  },
+  {
+    "id": "barnard-christiaan",
+    "name": "Christiaan Barnard",
+    "category": "Medical Pioneers",
+    "date": "1922-11-08",
+    "time": "12:00",
+    "location": "Beaufort West, South Africa",
+    "latitude": -32.35,
+    "longitude": 22.5833,
+    "timezone": "Africa/Johannesburg",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "First human heart transplant Dec 3 1967, milestone",
+    "tags": [
+      "surgery",
+      "transplant",
+      "heart",
+      "milestone"
+    ]
+  },
+  {
+    "id": "freud-sigmund",
+    "name": "Sigmund Freud",
+    "category": "Medical Pioneers",
+    "date": "1856-05-06",
+    "time": "18:30",
+    "location": "Freiberg, Moravia",
+    "latitude": 49.5975,
+    "longitude": 17.5789,
+    "timezone": "Europe/Prague",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "Psychoanalysis founder, unconscious, id/ego/superego",
+    "tags": [
+      "psychiatry",
+      "psychoanalysis",
+      "founder",
+      "austrian"
+    ]
+  },
+  {
+    "id": "jung-carl",
+    "name": "Carl Jung",
+    "category": "Medical Pioneers",
+    "date": "1875-07-26",
+    "time": "19:20",
+    "location": "Kesswil, Switzerland",
+    "latitude": 47.6,
+    "longitude": 9.3167,
+    "timezone": "Europe/Zurich",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Analytical psychology, archetypes, collective unconscious",
+    "tags": [
+      "psychiatry",
+      "analytical",
+      "archetypes",
+      "swiss"
+    ]
+  },
+  {
+    "id": "watson-james",
+    "name": "James Watson",
+    "category": "Medical Pioneers",
+    "date": "1928-04-06",
+    "time": "12:00",
+    "location": "Chicago, Illinois, USA",
+    "latitude": 41.8781,
+    "longitude": -87.6298,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "DNA double helix 1953 with Crick, Nobel Prize",
+    "tags": [
+      "genetics",
+      "dna",
+      "nobel-prize",
+      "controversial"
+    ]
+  },
+  {
+    "id": "crick-francis",
+    "name": "Francis Crick",
+    "category": "Medical Pioneers",
+    "date": "1916-06-08",
+    "time": "08:30",
+    "location": "Northampton, England",
+    "latitude": 52.2405,
+    "longitude": -0.9027,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "DNA double helix 1953 with Watson, Nobel Prize",
+    "tags": [
+      "genetics",
+      "dna",
+      "nobel-prize",
+      "british"
+    ]
+  },
+  {
+    "id": "franklin-rosalind",
+    "name": "Rosalind Franklin",
+    "category": "Medical Pioneers",
+    "date": "1920-07-25",
+    "time": "12:00",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Photo 51 of DNA, X-ray crystallography, unrecognized",
+    "tags": [
+      "genetics",
+      "x-ray",
+      "unrecognized",
+      "tragic"
+    ]
+  },
+  {
+    "id": "harvey-william",
+    "name": "William Harvey",
+    "category": "Medical Pioneers",
+    "date": "1578-04-01",
+    "time": "12:00",
+    "location": "Folkestone, England",
+    "latitude": 51.0814,
+    "longitude": 1.1698,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Historical records (time uncertain)",
+    "notes": "Discovered blood circulation 1628, revolutionary",
+    "tags": [
+      "circulation",
+      "heart",
+      "discovery",
+      "english"
+    ]
+  },
+  {
+    "id": "osler-william",
+    "name": "William Osler",
+    "category": "Medical Pioneers",
+    "date": "1849-07-12",
+    "time": "12:00",
+    "location": "Bond Head, Ontario, Canada",
+    "latitude": 44.05,
+    "longitude": -79.6,
+    "timezone": "America/Toronto",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Father of modern medicine, bedside teaching, Johns Hopkins",
+    "tags": [
+      "education",
+      "bedside",
+      "canadian",
+      "modern"
+    ]
+  },
+  {
+    "id": "semmelweis-ignaz",
+    "name": "Ignaz Semmelweis",
+    "category": "Medical Pioneers",
+    "date": "1818-07-01",
+    "time": "12:00",
+    "location": "Buda, Hungary",
+    "latitude": 47.4979,
+    "longitude": 19.0402,
+    "timezone": "Europe/Budapest",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Handwashing pioneer, reduced deaths, rejected then vindicated",
+    "tags": [
+      "hygiene",
+      "handwashing",
+      "rejected",
+      "vindicated"
+    ]
+  },
+  {
+    "id": "koch-robert",
+    "name": "Robert Koch",
+    "category": "Medical Pioneers",
+    "date": "1843-12-11",
+    "time": "12:00",
+    "location": "Clausthal, Germany",
+    "latitude": 51.8089,
+    "longitude": 10.3378,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "TB bacillus, Koch's postulates, Nobel Prize 1905, bacteriology",
+    "tags": [
+      "microbiology",
+      "tuberculosis",
+      "nobel-prize",
+      "german"
+    ]
+  },
+  {
+    "id": "banting-frederick",
+    "name": "Frederick Banting",
+    "category": "Medical Pioneers",
+    "date": "1891-11-14",
+    "time": "12:00",
+    "location": "Alliston, Ontario, Canada",
+    "latitude": 44.15,
+    "longitude": -79.8667,
+    "timezone": "America/Toronto",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Discovered insulin 1921, Nobel Prize 1923, saved diabetics",
+    "tags": [
+      "diabetes",
+      "insulin",
+      "nobel-prize",
+      "canadian"
+    ]
+  },
+  {
+    "id": "yalow-rosalyn",
+    "name": "Rosalyn Yalow",
+    "category": "Medical Pioneers",
+    "date": "1921-07-19",
+    "time": "12:00",
+    "location": "Bronx, New York, USA",
+    "latitude": 40.8448,
+    "longitude": -73.8648,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Radioimmunoassay, Nobel Prize 1977, hormone measurement",
+    "tags": [
+      "biochemistry",
+      "nobel-prize",
+      "female",
+      "hormone"
+    ]
+  },
+  {
+    "id": "elion-gertrude",
+    "name": "Gertrude Elion",
+    "category": "Medical Pioneers",
+    "date": "1918-01-23",
+    "time": "12:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Drug development, Nobel Prize 1988, leukemia drugs, no PhD",
+    "tags": [
+      "pharmacology",
+      "nobel-prize",
+      "female",
+      "drugs"
+    ]
+  },
+  {
+    "id": "tu-youyou",
+    "name": "Tu Youyou",
+    "category": "Medical Pioneers",
+    "date": "1930-12-30",
+    "time": "12:00",
+    "location": "Ningbo, China",
+    "latitude": 29.8683,
+    "longitude": 121.544,
+    "timezone": "Asia/Shanghai",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Artemisinin for malaria, Nobel Prize 2015, saved millions",
+    "tags": [
+      "pharmacology",
+      "nobel-prize",
+      "malaria",
+      "chinese"
+    ]
+  },
+  {
+    "id": "devi-shakuntala",
+    "name": "Virginia Apgar",
+    "category": "Medical Pioneers",
+    "date": "1909-06-07",
+    "time": "12:00",
+    "location": "Westfield, New Jersey, USA",
+    "latitude": 40.659,
+    "longitude": -74.3474,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Apgar Score for newborn health, anesthesiologist, saved babies",
+    "tags": [
+      "pediatrics",
+      "neonatology",
+      "score",
+      "female"
+    ]
+  },
+  {
+    "id": "carrel-alexis",
+    "name": "Alexis Carrel",
+    "category": "Medical Pioneers",
+    "date": "1873-06-28",
+    "time": "12:00",
+    "location": "Sainte-Foy-lès-Lyon, France",
+    "latitude": 45.7356,
+    "longitude": 4.8069,
+    "timezone": "Europe/Paris",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Vascular suture technique, Nobel Prize 1912, transplant pioneer",
+    "tags": [
+      "surgery",
+      "vascular",
+      "nobel-prize",
+      "french"
+    ]
+  },
+  {
+    "id": "drew-charles",
+    "name": "Charles Drew",
+    "category": "Medical Pioneers",
+    "date": "1904-06-03",
+    "time": "12:00",
+    "location": "Washington, D.C., USA",
+    "latitude": 38.9072,
+    "longitude": -77.0369,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Blood bank pioneer, plasma storage, WWII blood programs, African-American",
+    "tags": [
+      "blood-bank",
+      "transfusion",
+      "african-american",
+      "pioneer"
+    ]
+  },
+  {
+    "id": "sacks-oliver",
+    "name": "Oliver Sacks",
+    "category": "Medical Pioneers",
+    "date": "1933-07-09",
+    "time": "12:00",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Neurologist, Awakenings, The Man Who Mistook His Wife for a Hat, writer",
+    "tags": [
+      "neurology",
+      "writer",
+      "compassion",
+      "british"
+    ]
   }
 ]
