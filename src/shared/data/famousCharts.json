@@ -14189,5 +14189,465 @@
       "polish",
       "traveled"
     ]
+  },
+  {
+    "id": "abagnale-frank",
+    "name": "Frank Abagnale",
+    "category": "Con Artists & Fraudsters",
+    "date": "1948-04-27",
+    "time": "12:00",
+    "location": "Bronxville, New York, USA",
+    "latitude": 40.9382,
+    "longitude": -73.8318,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Catch Me If You Can, impersonated pilot/doctor/lawyer, master forger, now security consultant",
+    "tags": [
+      "impostor",
+      "forger",
+      "reformed",
+      "famous"
+    ]
+  },
+  {
+    "id": "ponzi-charles",
+    "name": "Charles Ponzi",
+    "category": "Con Artists & Fraudsters",
+    "date": "1882-03-03",
+    "time": "12:00",
+    "location": "Lugo, Italy",
+    "latitude": 44.4056,
+    "longitude": 11.9086,
+    "timezone": "Europe/Rome",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Ponzi scheme namesake, promised 50% returns in 45 days, $20M fraud 1920",
+    "tags": [
+      "ponzi-scheme",
+      "fraud",
+      "namesake",
+      "italian"
+    ]
+  },
+  {
+    "id": "madoff-bernie",
+    "name": "Bernie Madoff",
+    "category": "Con Artists & Fraudsters",
+    "date": "1938-04-29",
+    "time": "16:00",
+    "location": "Queens, New York, USA",
+    "latitude": 40.7282,
+    "longitude": -73.7949,
+    "timezone": "America/New_York",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Largest Ponzi scheme ever, $65B fraud, 150 years prison, died 2021",
+    "tags": [
+      "ponzi-scheme",
+      "wall-street",
+      "fraud",
+      "massive"
+    ]
+  },
+  {
+    "id": "holmes-elizabeth",
+    "name": "Elizabeth Holmes",
+    "category": "Con Artists & Fraudsters",
+    "date": "1984-02-03",
+    "time": "12:00",
+    "location": "Washington, D.C., USA",
+    "latitude": 38.9072,
+    "longitude": -77.0369,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Theranos fraud, fake blood testing tech, $9B valuation collapsed, 11 years prison",
+    "tags": [
+      "tech-fraud",
+      "theranos",
+      "silicon-valley",
+      "contemporary"
+    ]
+  },
+  {
+    "id": "sorokin-anna",
+    "name": "Anna Sorokin (Anna Delvey)",
+    "category": "Con Artists & Fraudsters",
+    "date": "1991-01-23",
+    "time": "12:00",
+    "location": "Domodedovo, Russia",
+    "latitude": 55.4333,
+    "longitude": 37.9,
+    "timezone": "Europe/Moscow",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Fake German heiress, scammed NYC elite $275k, Netflix series, Instagram famous",
+    "tags": [
+      "impostor",
+      "socialite",
+      "instagram",
+      "contemporary"
+    ]
+  },
+  {
+    "id": "lustig-victor",
+    "name": "Victor Lustig",
+    "category": "Con Artists & Fraudsters",
+    "date": "1890-01-04",
+    "time": "12:00",
+    "location": "Hostinné, Czech Republic",
+    "latitude": 50.5333,
+    "longitude": 15.7167,
+    "timezone": "Europe/Prague",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Sold Eiffel Tower twice, conned Al Capone, master con artist, died in Alcatraz",
+    "tags": [
+      "legendary",
+      "eiffel-tower",
+      "charming",
+      "czech"
+    ]
+  },
+  {
+    "id": "belfort-jordan",
+    "name": "Jordan Belfort",
+    "category": "Con Artists & Fraudsters",
+    "date": "1962-07-09",
+    "time": "12:00",
+    "location": "Bronx, New York, USA",
+    "latitude": 40.8448,
+    "longitude": -73.8648,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Wolf of Wall Street, stock fraud, $200M scheme, motivational speaker now",
+    "tags": [
+      "wall-street",
+      "fraud",
+      "reformed",
+      "famous"
+    ]
+  },
+  {
+    "id": "mcfarland-billy",
+    "name": "Billy McFarland",
+    "category": "Con Artists & Fraudsters",
+    "date": "1991-12-11",
+    "time": "12:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Fyre Festival disaster, luxury festival scam, social media fraud, 6 years prison",
+    "tags": [
+      "fyre-festival",
+      "social-media",
+      "fraud",
+      "millennial"
+    ]
+  },
+  {
+    "id": "demara-ferdinand",
+    "name": "Ferdinand Demara",
+    "category": "Con Artists & Fraudsters",
+    "date": "1921-12-21",
+    "time": "12:00",
+    "location": "Lawrence, Massachusetts, USA",
+    "latitude": 42.707,
+    "longitude": -71.1631,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Great Impostor, impersonated surgeon/monk/teacher/prison warden, performed surgery successfully",
+    "tags": [
+      "impostor",
+      "surgeon",
+      "legendary",
+      "multiple-identities"
+    ]
+  },
+  {
+    "id": "rockefeller-clark",
+    "name": "Christian Gerhartsreiter (Clark Rockefeller)",
+    "category": "Con Artists & Fraudsters",
+    "date": "1961-02-21",
+    "time": "12:00",
+    "location": "Bergen, Germany",
+    "latitude": 47.8167,
+    "longitude": 7.85,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Fake Rockefeller heir, multiple identities, kidnapped daughter, convicted murderer",
+    "tags": [
+      "impostor",
+      "socialite",
+      "murderer",
+      "german"
+    ]
+  },
+  {
+    "id": "milken-michael",
+    "name": "Michael Milken",
+    "category": "Con Artists & Fraudsters",
+    "date": "1946-07-04",
+    "time": "12:00",
+    "location": "Encino, California, USA",
+    "latitude": 34.1517,
+    "longitude": -118.5053,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Junk bond king, insider trading, $600M fine, 22 months prison, later pardoned",
+    "tags": [
+      "wall-street",
+      "junk-bonds",
+      "insider-trading",
+      "pardoned"
+    ]
+  },
+  {
+    "id": "keating-charles",
+    "name": "Charles Keating",
+    "category": "Con Artists & Fraudsters",
+    "date": "1923-12-04",
+    "time": "12:00",
+    "location": "Cincinnati, Ohio, USA",
+    "latitude": 39.1031,
+    "longitude": -84.512,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "S&L crisis architect, Lincoln Savings collapse, Keating Five scandal, billions lost",
+    "tags": [
+      "savings-and-loan",
+      "fraud",
+      "scandal",
+      "80s"
+    ]
+  },
+  {
+    "id": "shkreli-martin",
+    "name": "Martin Shkreli",
+    "category": "Con Artists & Fraudsters",
+    "date": "1983-04-01",
+    "time": "12:00",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Pharma bro, raised drug prices 5000%, securities fraud, Wu-Tang album buyer, 7 years prison",
+    "tags": [
+      "pharma",
+      "fraud",
+      "internet-villain",
+      "contemporary"
+    ]
+  },
+  {
+    "id": "skilling-jeffrey",
+    "name": "Jeffrey Skilling",
+    "category": "Con Artists & Fraudsters",
+    "date": "1953-11-25",
+    "time": "12:00",
+    "location": "Pittsburgh, Pennsylvania, USA",
+    "latitude": 40.4406,
+    "longitude": -79.9959,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Enron CEO, accounting fraud, collapsed energy giant, 12 years prison",
+    "tags": [
+      "enron",
+      "corporate-fraud",
+      "scandal",
+      "ceo"
+    ]
+  },
+  {
+    "id": "lay-kenneth",
+    "name": "Kenneth Lay",
+    "category": "Con Artists & Fraudsters",
+    "date": "1942-04-15",
+    "time": "12:00",
+    "location": "Tyrone, Missouri, USA",
+    "latitude": 36.9153,
+    "longitude": -92.0779,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Enron founder, massive fraud, died before sentencing 2006, convictions vacated",
+    "tags": [
+      "enron",
+      "corporate-fraud",
+      "founder",
+      "died"
+    ]
+  },
+  {
+    "id": "stanford-allen",
+    "name": "Allen Stanford",
+    "category": "Con Artists & Fraudsters",
+    "date": "1950-03-24",
+    "time": "12:00",
+    "location": "Mexia, Texas, USA",
+    "latitude": 31.6799,
+    "longitude": -96.4822,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Stanford Financial fraud, $7B Ponzi scheme, 110 years prison, fake knighthood",
+    "tags": [
+      "ponzi-scheme",
+      "fraud",
+      "texas",
+      "fake-knight"
+    ]
+  },
+  {
+    "id": "kozlowski-dennis",
+    "name": "Dennis Kozlowski",
+    "category": "Con Artists & Fraudsters",
+    "date": "1946-11-16",
+    "time": "12:00",
+    "location": "Newark, New Jersey, USA",
+    "latitude": 40.7357,
+    "longitude": -74.1724,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Tyco CEO, corporate looting, $600M fraud, $6000 shower curtain, 8 years prison",
+    "tags": [
+      "corporate-fraud",
+      "ceo",
+      "excess",
+      "tyco"
+    ]
+  },
+  {
+    "id": "minkow-barry",
+    "name": "Barry Minkow",
+    "category": "Con Artists & Fraudsters",
+    "date": "1966-03-22",
+    "time": "12:00",
+    "location": "Inglewood, California, USA",
+    "latitude": 33.9617,
+    "longitude": -118.3531,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "ZZZZ Best fraud at age 20, became pastor, reoffended with fraud, serial con artist",
+    "tags": [
+      "teen-fraudster",
+      "pastor",
+      "repeat-offender",
+      "serial"
+    ]
+  },
+  {
+    "id": "ebbers-bernie",
+    "name": "Bernie Ebbers",
+    "category": "Con Artists & Fraudsters",
+    "date": "1941-08-27",
+    "time": "12:00",
+    "location": "Edmonton, Alberta, Canada",
+    "latitude": 53.5461,
+    "longitude": -113.4938,
+    "timezone": "America/Edmonton",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "WorldCom CEO, $11B accounting fraud, largest bankruptcy at time, 25 years prison, died 2020",
+    "tags": [
+      "worldcom",
+      "corporate-fraud",
+      "telecom",
+      "canadian"
+    ]
+  },
+  {
+    "id": "low-jho",
+    "name": "Jho Low",
+    "category": "Con Artists & Fraudsters",
+    "date": "1981-11-04",
+    "time": "12:00",
+    "location": "George Town, Malaysia",
+    "latitude": 5.4141,
+    "longitude": 100.3288,
+    "timezone": "Asia/Kuala_Lumpur",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "1MDB scandal, $4.5B stolen from Malaysian fund, Wolf of Wall Street funding, fugitive",
+    "tags": [
+      "international",
+      "fugitive",
+      "malaysia",
+      "billions"
+    ]
+  },
+  {
+    "id": "levine-dennis",
+    "name": "Dennis Levine",
+    "category": "Con Artists & Fraudsters",
+    "date": "1952-08-21",
+    "time": "12:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "1980s insider trading, triggered Boesky & Milken investigations, Wall Street scandal",
+    "tags": [
+      "insider-trading",
+      "wall-street",
+      "80s",
+      "scandal"
+    ]
+  },
+  {
+    "id": "israel-sam",
+    "name": "Sam Israel III",
+    "category": "Con Artists & Fraudsters",
+    "date": "1959-08-23",
+    "time": "12:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Bayou hedge fund fraud, $450M Ponzi, faked suicide with 'Suicide is Painless' note",
+    "tags": [
+      "hedge-fund",
+      "ponzi-scheme",
+      "faked-death",
+      "dramatic"
+    ]
+  },
+  {
+    "id": "lewan-jan",
+    "name": "Jan Lewan",
+    "category": "Con Artists & Fraudsters",
+    "date": "1941-01-29",
+    "time": "12:00",
+    "location": "Brody, Poland",
+    "latitude": 50.0833,
+    "longitude": 25.15,
+    "timezone": "Europe/Warsaw",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Polka King, Polish immigrant, $5M Ponzi scheme targeting elderly, inspired movie",
+    "tags": [
+      "ponzi-scheme",
+      "musician",
+      "polka",
+      "polish"
+    ]
   }
 ]
