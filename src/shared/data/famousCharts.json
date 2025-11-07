@@ -20201,5 +20201,505 @@
       "introspective",
       "cancelled"
     ]
+  },
+  {
+    "id": "rockefeller-john-d",
+    "name": "John D. Rockefeller",
+    "category": "Business Titans",
+    "date": "1839-07-08",
+    "time": "12:00",
+    "location": "Richford, New York, USA",
+    "latitude": 42.3581,
+    "longitude": -76.1972,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Standard Oil, first billionaire, ruthless monopolist, Baptist, philanthropist",
+    "tags": [
+      "oil",
+      "monopolist",
+      "gilded-age",
+      "philanthropist"
+    ]
+  },
+  {
+    "id": "carnegie-andrew",
+    "name": "Andrew Carnegie",
+    "category": "Business Titans",
+    "date": "1835-11-25",
+    "time": "12:00",
+    "location": "Dunfermline, Scotland",
+    "latitude": 56.0719,
+    "longitude": -3.4393,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Steel empire, Gospel of Wealth, libraries, rags to riches, philanthropist",
+    "tags": [
+      "steel",
+      "philanthropist",
+      "gilded-age",
+      "scottish"
+    ]
+  },
+  {
+    "id": "vanderbilt-cornelius",
+    "name": "Cornelius Vanderbilt",
+    "category": "Business Titans",
+    "date": "1794-05-27",
+    "time": "12:00",
+    "location": "Staten Island, New York, USA",
+    "latitude": 40.5795,
+    "longitude": -74.1502,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Railroads and shipping, The Commodore, Vanderbilt University, dynasty founder",
+    "tags": [
+      "railroads",
+      "shipping",
+      "commodore",
+      "dynasty"
+    ]
+  },
+  {
+    "id": "morgan-jp",
+    "name": "J.P. Morgan",
+    "category": "Business Titans",
+    "date": "1837-04-17",
+    "time": "05:00",
+    "location": "Hartford, Connecticut, USA",
+    "latitude": 41.7658,
+    "longitude": -72.6734,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Banking titan, bailed out US government, art collector, nose, financial power",
+    "tags": [
+      "banking",
+      "finance",
+      "gilded-age",
+      "power"
+    ]
+  },
+  {
+    "id": "getty-j-paul",
+    "name": "J. Paul Getty",
+    "category": "Business Titans",
+    "date": "1892-12-15",
+    "time": "08:43",
+    "location": "Minneapolis, Minnesota, USA",
+    "latitude": 44.9778,
+    "longitude": -93.265,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Oil tycoon, richest man in world, kidnapping ransom, art collector, miser",
+    "tags": [
+      "oil",
+      "richest",
+      "miser",
+      "art-collector"
+    ]
+  },
+  {
+    "id": "hughes-howard",
+    "name": "Howard Hughes",
+    "category": "Business Titans",
+    "date": "1905-12-24",
+    "time": "00:10",
+    "location": "Houston, Texas, USA",
+    "latitude": 29.7604,
+    "longitude": -95.3698,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Aviator, filmmaker, eccentric recluse, OCD, died mysteriously 1976",
+    "tags": [
+      "aviation",
+      "film",
+      "eccentric",
+      "recluse"
+    ]
+  },
+  {
+    "id": "walton-sam",
+    "name": "Sam Walton",
+    "category": "Business Titans",
+    "date": "1918-03-29",
+    "time": "12:00",
+    "location": "Kingfisher, Oklahoma, USA",
+    "latitude": 35.8612,
+    "longitude": -97.9314,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Walmart founder, retail revolution, richest man, frugal, died 1992",
+    "tags": [
+      "retail",
+      "walmart",
+      "frugal",
+      "revolutionary"
+    ]
+  },
+  {
+    "id": "hearst-william-randolph",
+    "name": "William Randolph Hearst",
+    "category": "Business Titans",
+    "date": "1863-04-29",
+    "time": "11:00",
+    "location": "San Francisco, California, USA",
+    "latitude": 37.7749,
+    "longitude": -122.4194,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Media empire, yellow journalism, Citizen Kane inspiration, San Simeon castle",
+    "tags": [
+      "media",
+      "newspapers",
+      "yellow-journalism",
+      "castle"
+    ]
+  },
+  {
+    "id": "murdoch-rupert",
+    "name": "Rupert Murdoch",
+    "category": "Business Titans",
+    "date": "1931-03-11",
+    "time": "23:15",
+    "location": "Melbourne, Australia",
+    "latitude": -37.8136,
+    "longitude": 144.9631,
+    "timezone": "Australia/Melbourne",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "News Corp, Fox News, media empire, political influence, controversial",
+    "tags": [
+      "media",
+      "news",
+      "political",
+      "controversial"
+    ]
+  },
+  {
+    "id": "turner-ted",
+    "name": "Ted Turner",
+    "category": "Business Titans",
+    "date": "1938-11-19",
+    "time": "08:50",
+    "location": "Cincinnati, Ohio, USA",
+    "latitude": 39.1031,
+    "longitude": -84.512,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "CNN founder, 24-hour news, Atlanta Braves, bison rancher, Jane Fonda ex",
+    "tags": [
+      "media",
+      "cnn",
+      "24-hour-news",
+      "colorful"
+    ]
+  },
+  {
+    "id": "astor-john-jacob",
+    "name": "John Jacob Astor",
+    "category": "Business Titans",
+    "date": "1763-07-17",
+    "time": "12:00",
+    "location": "Walldorf, Germany",
+    "latitude": 49.3042,
+    "longitude": 8.6444,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Fur trade, real estate, first multi-millionaire in America, Astor dynasty",
+    "tags": [
+      "fur-trade",
+      "real-estate",
+      "first-millionaire",
+      "dynasty"
+    ]
+  },
+  {
+    "id": "woolworth-frank",
+    "name": "Frank Woolworth",
+    "category": "Business Titans",
+    "date": "1852-04-13",
+    "time": "12:00",
+    "location": "Rodman, New York, USA",
+    "latitude": 43.85,
+    "longitude": -75.9333,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Five-and-dime stores, retail pioneer, Woolworth Building, died 1919",
+    "tags": [
+      "retail",
+      "five-and-dime",
+      "pioneer",
+      "building"
+    ]
+  },
+  {
+    "id": "lauder-estee",
+    "name": "Estée Lauder",
+    "category": "Business Titans",
+    "date": "1908-07-01",
+    "time": "12:00",
+    "location": "Queens, New York, USA",
+    "latitude": 40.7282,
+    "longitude": -73.7949,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Cosmetics empire, self-made billionaire, gift with purchase, beauty icon",
+    "tags": [
+      "cosmetics",
+      "self-made",
+      "female",
+      "beauty"
+    ]
+  },
+  {
+    "id": "stewart-martha",
+    "name": "Martha Stewart",
+    "category": "Business Titans",
+    "date": "1941-08-03",
+    "time": "13:33",
+    "location": "Jersey City, New Jersey, USA",
+    "latitude": 40.7178,
+    "longitude": -74.0431,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Lifestyle empire, insider trading prison, comeback, perfectionist, Snoop Dogg friend",
+    "tags": [
+      "lifestyle",
+      "prison",
+      "comeback",
+      "perfectionist"
+    ]
+  },
+  {
+    "id": "soros-george",
+    "name": "George Soros",
+    "category": "Business Titans",
+    "date": "1930-08-12",
+    "time": "06:00",
+    "location": "Budapest, Hungary",
+    "latitude": 47.4979,
+    "longitude": 19.0402,
+    "timezone": "Europe/Budapest",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Hedge fund titan, broke Bank of England, Open Society, philanthropist, villain to right",
+    "tags": [
+      "finance",
+      "hedge-fund",
+      "philanthropist",
+      "controversial"
+    ]
+  },
+  {
+    "id": "icahn-carl",
+    "name": "Carl Icahn",
+    "category": "Business Titans",
+    "date": "1936-02-16",
+    "time": "12:00",
+    "location": "Queens, New York, USA",
+    "latitude": 40.7282,
+    "longitude": -73.7949,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Corporate raider, activist investor, TWA takeover, billionaire, ruthless",
+    "tags": [
+      "finance",
+      "activist-investor",
+      "raider",
+      "ruthless"
+    ]
+  },
+  {
+    "id": "bloomberg-michael",
+    "name": "Michael Bloomberg",
+    "category": "Business Titans",
+    "date": "1942-02-14",
+    "time": "15:23",
+    "location": "Boston, Massachusetts, USA",
+    "latitude": 42.3601,
+    "longitude": -71.0589,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Bloomberg terminals, NYC mayor, presidential run, billionaire, philanthropist",
+    "tags": [
+      "finance",
+      "terminals",
+      "mayor",
+      "presidential"
+    ]
+  },
+  {
+    "id": "koch-charles",
+    "name": "Charles Koch",
+    "category": "Business Titans",
+    "date": "1935-11-01",
+    "time": "12:00",
+    "location": "Wichita, Kansas, USA",
+    "latitude": 37.6872,
+    "longitude": -97.3301,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Koch Industries, libertarian, political donor, brother David died 2019",
+    "tags": [
+      "oil",
+      "libertarian",
+      "political",
+      "brothers"
+    ]
+  },
+  {
+    "id": "trump-fred",
+    "name": "Fred Trump",
+    "category": "Business Titans",
+    "date": "1905-10-11",
+    "time": "12:00",
+    "location": "Bronx, New York, USA",
+    "latitude": 40.8448,
+    "longitude": -73.8648,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Real estate developer, Donald's father, Queens/Brooklyn, racist housing practices",
+    "tags": [
+      "real-estate",
+      "racist",
+      "father",
+      "queens"
+    ]
+  },
+  {
+    "id": "hilton-conrad",
+    "name": "Conrad Hilton",
+    "category": "Business Titans",
+    "date": "1887-12-25",
+    "time": "12:00",
+    "location": "San Antonio, New Mexico, USA",
+    "latitude": 33.917,
+    "longitude": -106.8472,
+    "timezone": "America/Denver",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Hilton Hotels founder, Zsa Zsa Gabor ex, Paris Hilton grandfather",
+    "tags": [
+      "hotels",
+      "hospitality",
+      "founder",
+      "dynasty"
+    ]
+  },
+  {
+    "id": "marriott-j-willard",
+    "name": "J. Willard Marriott",
+    "category": "Business Titans",
+    "date": "1900-09-17",
+    "time": "12:00",
+    "location": "Marriott, Utah, USA",
+    "latitude": 41.25,
+    "longitude": -112.0333,
+    "timezone": "America/Denver",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Marriott Hotels founder, Mormon, root beer stand to empire, family business",
+    "tags": [
+      "hotels",
+      "hospitality",
+      "mormon",
+      "founder"
+    ]
+  },
+  {
+    "id": "rothschild-mayer-amschel",
+    "name": "Mayer Amschel Rothschild",
+    "category": "Business Titans",
+    "date": "1744-02-23",
+    "time": "12:00",
+    "location": "Frankfurt, Germany",
+    "latitude": 50.1109,
+    "longitude": 8.6821,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Banking dynasty founder, five sons across Europe, Rothschild banking empire",
+    "tags": [
+      "banking",
+      "dynasty",
+      "european",
+      "founder"
+    ]
+  },
+  {
+    "id": "guggenheim-meyer",
+    "name": "Meyer Guggenheim",
+    "category": "Business Titans",
+    "date": "1828-02-01",
+    "time": "12:00",
+    "location": "Lengnau, Switzerland",
+    "latitude": 47.5167,
+    "longitude": 8.3167,
+    "timezone": "Europe/Zurich",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Mining and smelting, Guggenheim dynasty, museum benefactors, seven sons",
+    "tags": [
+      "mining",
+      "smelting",
+      "dynasty",
+      "philanthropist"
+    ]
+  },
+  {
+    "id": "mellon-andrew",
+    "name": "Andrew Mellon",
+    "category": "Business Titans",
+    "date": "1855-03-24",
+    "time": "12:00",
+    "location": "Pittsburgh, Pennsylvania, USA",
+    "latitude": 40.4406,
+    "longitude": -79.9959,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Banking, Treasury Secretary, art collector, National Gallery donor, Prohibition",
+    "tags": [
+      "banking",
+      "treasury",
+      "art-collector",
+      "philanthropist"
+    ]
+  },
+  {
+    "id": "tata-jamsetji",
+    "name": "Jamsetji Tata",
+    "category": "Business Titans",
+    "date": "1839-03-03",
+    "time": "12:00",
+    "location": "Navsari, India",
+    "latitude": 20.95,
+    "longitude": 72.9167,
+    "timezone": "Asia/Kolkata",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Tata Group founder, Indian industry pioneer, steel, hotels, nation-builder",
+    "tags": [
+      "conglomerate",
+      "indian",
+      "founder",
+      "pioneer"
+    ]
   }
 ]
