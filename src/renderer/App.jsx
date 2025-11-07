@@ -2839,7 +2839,6 @@ function App() {
               directionType={formData.directionType}
               showProgressions={formData.showProgressions}
               formData={formData}
-              formData={formData}
             />
 
             {/* TimeSlider - only show when transits, progressions, or solar arcs are enabled */}
