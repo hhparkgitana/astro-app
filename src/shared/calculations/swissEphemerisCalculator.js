@@ -293,11 +293,13 @@ function calculateChart(params) {
 // ============================================================================
 
 const ASPECT_TYPES = {
-  CONJUNCTION: { angle: 0, symbol: '☌', name: 'Conjunction' },
-  SEXTILE: { angle: 60, symbol: '⚹', name: 'Sextile' },
-  SQUARE: { angle: 90, symbol: '□', name: 'Square' },
-  TRINE: { angle: 120, symbol: '△', name: 'Trine' },
-  OPPOSITION: { angle: 180, symbol: '☍', name: 'Opposition' }
+  CONJUNCTION: { angle: 0, symbol: '☌', name: 'Conjunction', isMajor: true },
+  SEMISEXTILE: { angle: 30, symbol: '⚺', name: 'Semi-Sextile', isMajor: false },
+  SEXTILE: { angle: 60, symbol: '⚹', name: 'Sextile', isMajor: true },
+  SQUARE: { angle: 90, symbol: '□', name: 'Square', isMajor: true },
+  TRINE: { angle: 120, symbol: '△', name: 'Trine', isMajor: true },
+  QUINCUNX: { angle: 150, symbol: '⚻', name: 'Quincunx', isMajor: false },
+  OPPOSITION: { angle: 180, symbol: '☍', name: 'Opposition', isMajor: true }
 };
 
 function getAngularDistance(long1, long2) {
@@ -310,8 +312,10 @@ function getAngularDistance(long1, long2) {
 
 function findAspect(distance, orb = 8, velocity1 = 0, velocity2 = 0, long1 = 0, long2 = 0) {
   for (const [key, aspect] of Object.entries(ASPECT_TYPES)) {
+    // Use tighter orb (3°) for minor aspects, standard orb for major aspects
+    const aspectOrb = aspect.isMajor ? orb : 3;
     const diff = Math.abs(distance - aspect.angle);
-    if (diff <= orb) {
+    if (diff <= aspectOrb) {
       let applying = null;
       if ((velocity1 !== undefined && velocity2 !== undefined) && (velocity1 !== 0 || velocity2 !== 0)) {
         let separation = (long2 - long1 + 360) % 360;
@@ -339,7 +343,8 @@ function findAspect(distance, orb = 8, velocity1 = 0, velocity2 = 0, long1 = 0, 
         exactAngle: aspect.angle,
         actualAngle: distance,
         orb: diff,
-        applying: applying
+        applying: applying,
+        isMajor: aspect.isMajor
       };
     }
   }
