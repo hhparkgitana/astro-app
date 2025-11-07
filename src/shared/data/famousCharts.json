@@ -19621,5 +19621,585 @@
       "reality-tunnels",
       "fnord"
     ]
+  },
+  {
+    "id": "carlin-george",
+    "name": "George Carlin",
+    "category": "Comedians",
+    "date": "1937-05-12",
+    "time": "13:30",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Seven Words, counterculture icon, social critic, dark philosopher, died 2008",
+    "tags": [
+      "stand-up",
+      "counterculture",
+      "social-critic",
+      "dark"
+    ]
+  },
+  {
+    "id": "pryor-richard",
+    "name": "Richard Pryor",
+    "category": "Comedians",
+    "date": "1940-12-01",
+    "time": "15:37",
+    "location": "Peoria, Illinois, USA",
+    "latitude": 40.6936,
+    "longitude": -89.589,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Revolutionary comedian, raw honesty, tragic life, multiple sclerosis, died 2005",
+    "tags": [
+      "stand-up",
+      "revolutionary",
+      "raw",
+      "tragic"
+    ]
+  },
+  {
+    "id": "williams-robin",
+    "name": "Robin Williams",
+    "category": "Comedians",
+    "date": "1951-07-21",
+    "time": "13:34",
+    "location": "Chicago, Illinois, USA",
+    "latitude": 41.8781,
+    "longitude": -87.6298,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Manic genius, improvisation master, Mrs. Doubtfire, Good Will Hunting, suicide 2014",
+    "tags": [
+      "stand-up",
+      "actor",
+      "manic",
+      "tragic"
+    ]
+  },
+  {
+    "id": "murphy-eddie",
+    "name": "Eddie Murphy",
+    "category": "Comedians",
+    "date": "1961-04-03",
+    "time": "16:45",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "SNL star, Raw, Beverly Hills Cop, characters, comeback, comedy legend",
+    "tags": [
+      "stand-up",
+      "snl",
+      "actor",
+      "characters"
+    ]
+  },
+  {
+    "id": "chaplin-charlie",
+    "name": "Charlie Chaplin",
+    "category": "Comedians",
+    "date": "1889-04-16",
+    "time": "20:00",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Silent film genius, The Tramp, physical comedy master, pathos, exiled from USA",
+    "tags": [
+      "silent-film",
+      "physical",
+      "genius",
+      "tramp"
+    ]
+  },
+  {
+    "id": "keaton-buster",
+    "name": "Buster Keaton",
+    "category": "Comedians",
+    "date": "1895-10-04",
+    "time": "06:00",
+    "location": "Piqua, Kansas, USA",
+    "latitude": 37.9197,
+    "longitude": -95.5569,
+    "timezone": "America/Chicago",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Silent film, The Great Stone Face, physical stunts, deadpan, tragic alcoholism",
+    "tags": [
+      "silent-film",
+      "physical",
+      "deadpan",
+      "stunts"
+    ]
+  },
+  {
+    "id": "rivers-joan",
+    "name": "Joan Rivers",
+    "category": "Comedians",
+    "date": "1933-06-08",
+    "time": "02:00",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Can we talk, pioneering female comic, E! Fashion Police, plastic surgery, died 2014",
+    "tags": [
+      "stand-up",
+      "pioneer",
+      "fashion",
+      "female"
+    ]
+  },
+  {
+    "id": "radner-gilda",
+    "name": "Gilda Radner",
+    "category": "Comedians",
+    "date": "1946-06-28",
+    "time": "20:30",
+    "location": "Detroit, Michigan, USA",
+    "latitude": 42.3314,
+    "longitude": -83.0458,
+    "timezone": "America/Detroit",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "SNL original, Roseanne Roseannadanna, sweet vulnerability, cancer death 1989",
+    "tags": [
+      "snl",
+      "characters",
+      "vulnerable",
+      "tragic"
+    ]
+  },
+  {
+    "id": "belushi-john",
+    "name": "John Belushi",
+    "category": "Comedians",
+    "date": "1949-01-24",
+    "time": "12:00",
+    "location": "Chicago, Illinois, USA",
+    "latitude": 41.8781,
+    "longitude": -87.6298,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "SNL, Blues Brothers, Animal House, wild energy, overdose death 1982",
+    "tags": [
+      "snl",
+      "blues-brothers",
+      "wild",
+      "tragic"
+    ]
+  },
+  {
+    "id": "farley-chris",
+    "name": "Chris Farley",
+    "category": "Comedians",
+    "date": "1964-02-15",
+    "time": "12:00",
+    "location": "Madison, Wisconsin, USA",
+    "latitude": 43.0731,
+    "longitude": -89.4012,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "SNL, Tommy Boy, physical comedy, van down by the river, overdose death 1997",
+    "tags": [
+      "snl",
+      "physical",
+      "lovable",
+      "tragic"
+    ]
+  },
+  {
+    "id": "hedberg-mitch",
+    "name": "Mitch Hedberg",
+    "category": "Comedians",
+    "date": "1968-02-24",
+    "time": "12:00",
+    "location": "Saint Paul, Minnesota, USA",
+    "latitude": 44.9537,
+    "longitude": -93.09,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "One-liners, surreal humor, sunglasses, I used to..., overdose death 2005",
+    "tags": [
+      "stand-up",
+      "one-liners",
+      "surreal",
+      "tragic"
+    ]
+  },
+  {
+    "id": "hicks-bill",
+    "name": "Bill Hicks",
+    "category": "Comedians",
+    "date": "1961-12-16",
+    "time": "11:05",
+    "location": "Valdosta, Georgia, USA",
+    "latitude": 30.8327,
+    "longitude": -83.2785,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Dark social critic, conspiracy theories, rage, cancer death 1994 age 32",
+    "tags": [
+      "stand-up",
+      "dark",
+      "social-critic",
+      "tragic"
+    ]
+  },
+  {
+    "id": "bruce-lenny",
+    "name": "Lenny Bruce",
+    "category": "Comedians",
+    "date": "1925-10-13",
+    "time": "21:00",
+    "location": "Mineola, New York, USA",
+    "latitude": 40.7493,
+    "longitude": -73.6404,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Pioneering satirist, obscenity arrests, free speech martyr, overdose death 1966",
+    "tags": [
+      "stand-up",
+      "satirist",
+      "pioneer",
+      "martyr"
+    ]
+  },
+  {
+    "id": "rock-chris",
+    "name": "Chris Rock",
+    "category": "Comedians",
+    "date": "1965-02-07",
+    "time": "19:00",
+    "location": "Andrews, South Carolina, USA",
+    "latitude": 33.4507,
+    "longitude": -79.5614,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Bring the Pain, sharp social commentary, slap incident, SNL alum",
+    "tags": [
+      "stand-up",
+      "social-commentary",
+      "sharp",
+      "snl"
+    ]
+  },
+  {
+    "id": "chappelle-dave",
+    "name": "Dave Chappelle",
+    "category": "Comedians",
+    "date": "1973-08-24",
+    "time": "00:43",
+    "location": "Washington, D.C., USA",
+    "latitude": 38.9072,
+    "longitude": -77.0369,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Chappelle's Show, walked away at peak, racial comedy, controversial genius",
+    "tags": [
+      "stand-up",
+      "sketch",
+      "racial",
+      "controversial"
+    ]
+  },
+  {
+    "id": "seinfeld-jerry",
+    "name": "Jerry Seinfeld",
+    "category": "Comedians",
+    "date": "1954-04-29",
+    "time": "10:20",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Seinfeld show about nothing, observational comedy, Comedians in Cars, billionaire",
+    "tags": [
+      "stand-up",
+      "sitcom",
+      "observational",
+      "billionaire"
+    ]
+  },
+  {
+    "id": "david-larry",
+    "name": "Larry David",
+    "category": "Comedians",
+    "date": "1947-07-02",
+    "time": "23:37",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Seinfeld co-creator, Curb Your Enthusiasm, neurotic, curmudgeon genius",
+    "tags": [
+      "stand-up",
+      "writer",
+      "neurotic",
+      "genius"
+    ]
+  },
+  {
+    "id": "martin-steve",
+    "name": "Steve Martin",
+    "category": "Comedians",
+    "date": "1945-08-14",
+    "time": "13:05",
+    "location": "Waco, Texas, USA",
+    "latitude": 31.5493,
+    "longitude": -97.1467,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Wild and crazy guy, banjo player, actor, art collector, playwright, intellectual",
+    "tags": [
+      "stand-up",
+      "actor",
+      "intellectual",
+      "banjo"
+    ]
+  },
+  {
+    "id": "fey-tina",
+    "name": "Tina Fey",
+    "category": "Comedians",
+    "date": "1970-05-18",
+    "time": "02:00",
+    "location": "Upper Darby, Pennsylvania, USA",
+    "latitude": 39.9543,
+    "longitude": -75.2602,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "SNL head writer, 30 Rock, Sarah Palin impression, Mean Girls, smart comedy",
+    "tags": [
+      "snl",
+      "writer",
+      "actress",
+      "smart"
+    ]
+  },
+  {
+    "id": "poehler-amy",
+    "name": "Amy Poehler",
+    "category": "Comedians",
+    "date": "1971-09-16",
+    "time": "10:48",
+    "location": "Newton, Massachusetts, USA",
+    "latitude": 42.337,
+    "longitude": -71.2092,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "SNL, Parks and Recreation, UCB, Yes Please, positive energy, feminist",
+    "tags": [
+      "snl",
+      "sitcom",
+      "feminist",
+      "positive"
+    ]
+  },
+  {
+    "id": "wiig-kristen",
+    "name": "Kristen Wiig",
+    "category": "Comedians",
+    "date": "1973-08-22",
+    "time": "12:00",
+    "location": "Canandaigua, New York, USA",
+    "latitude": 42.8873,
+    "longitude": -77.2881,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "SNL, Bridesmaids, character actress, Target Lady, quirky genius",
+    "tags": [
+      "snl",
+      "characters",
+      "quirky",
+      "actress"
+    ]
+  },
+  {
+    "id": "cleese-john",
+    "name": "John Cleese",
+    "category": "Comedians",
+    "date": "1939-10-27",
+    "time": "03:15",
+    "location": "Weston-super-Mare, England",
+    "latitude": 51.35,
+    "longitude": -2.9833,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Monty Python, Fawlty Towers, Ministry of Silly Walks, British comedy legend",
+    "tags": [
+      "monty-python",
+      "british",
+      "absurd",
+      "legend"
+    ]
+  },
+  {
+    "id": "idle-eric",
+    "name": "Eric Idle",
+    "category": "Comedians",
+    "date": "1943-03-29",
+    "time": "12:00",
+    "location": "South Shields, England",
+    "latitude": 54.9959,
+    "longitude": -1.4323,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Monty Python, Always Look on the Bright Side, Spamalot, songwriter",
+    "tags": [
+      "monty-python",
+      "british",
+      "songwriter",
+      "optimistic"
+    ]
+  },
+  {
+    "id": "gervais-ricky",
+    "name": "Ricky Gervais",
+    "category": "Comedians",
+    "date": "1961-06-25",
+    "time": "12:00",
+    "location": "Reading, England",
+    "latitude": 51.4543,
+    "longitude": -0.9781,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "The Office creator, cringe comedy, atheist, Golden Globes host, provocateur",
+    "tags": [
+      "british",
+      "cringe",
+      "provocateur",
+      "atheist"
+    ]
+  },
+  {
+    "id": "hart-kevin",
+    "name": "Kevin Hart",
+    "category": "Comedians",
+    "date": "1979-07-06",
+    "time": "12:00",
+    "location": "Philadelphia, Pennsylvania, USA",
+    "latitude": 39.9526,
+    "longitude": -75.1652,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Height jokes, energetic, arena tours, social media king, actor, producer",
+    "tags": [
+      "stand-up",
+      "energetic",
+      "arena",
+      "social-media"
+    ]
+  },
+  {
+    "id": "schumer-amy",
+    "name": "Amy Schumer",
+    "category": "Comedians",
+    "date": "1981-06-01",
+    "time": "12:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Sexual humor, feminist, Inside Amy Schumer, Trainwreck, body positivity",
+    "tags": [
+      "stand-up",
+      "feminist",
+      "sexual",
+      "body-positive"
+    ]
+  },
+  {
+    "id": "izzard-eddie",
+    "name": "Eddie Izzard",
+    "category": "Comedians",
+    "date": "1962-02-07",
+    "time": "12:00",
+    "location": "Aden, Yemen",
+    "latitude": 12.7855,
+    "longitude": 45.0187,
+    "timezone": "Asia/Aden",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Transvestite comedian, historical tangents, runner, multilingual, gender-fluid",
+    "tags": [
+      "british",
+      "transvestite",
+      "historical",
+      "runner"
+    ]
+  },
+  {
+    "id": "oswalt-patton",
+    "name": "Patton Oswalt",
+    "category": "Comedians",
+    "date": "1969-01-27",
+    "time": "12:00",
+    "location": "Portsmouth, Virginia, USA",
+    "latitude": 36.8354,
+    "longitude": -76.2983,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Nerd comedian, wife's murder unsolved then solved, resilient, voice actor",
+    "tags": [
+      "stand-up",
+      "nerd",
+      "tragic",
+      "resilient"
+    ]
+  },
+  {
+    "id": "c-k-louis",
+    "name": "Louis C.K.",
+    "category": "Comedians",
+    "date": "1967-09-12",
+    "time": "12:00",
+    "location": "Washington, D.C., USA",
+    "latitude": 38.9072,
+    "longitude": -77.0369,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Dark introspective comedy, FX show, cancelled for misconduct, comeback attempted",
+    "tags": [
+      "stand-up",
+      "dark",
+      "introspective",
+      "cancelled"
+    ]
   }
 ]
