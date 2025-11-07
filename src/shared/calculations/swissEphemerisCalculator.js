@@ -312,10 +312,9 @@ function getAngularDistance(long1, long2) {
 
 function findAspect(distance, orb = 8, velocity1 = 0, velocity2 = 0, long1 = 0, long2 = 0) {
   for (const [key, aspect] of Object.entries(ASPECT_TYPES)) {
-    // Use tighter orb (3°) for minor aspects, standard orb for major aspects
-    const aspectOrb = aspect.isMajor ? orb : 3;
+    // Use the same orb for all aspects (controlled by slider)
     const diff = Math.abs(distance - aspect.angle);
-    if (diff <= aspectOrb) {
+    if (diff <= orb) {
       let applying = null;
       if ((velocity1 !== undefined && velocity2 !== undefined) && (velocity1 !== 0 || velocity2 !== 0)) {
         let separation = (long2 - long1 + 360) % 360;
