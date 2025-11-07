@@ -378,8 +378,14 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering with opacity based on orb
         stroke = colors.aspects[aspect.type];
-        // Quincunx: max 38% opacity; semi-sextile: max 30%; other aspects: max 75%
-        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.30 : aspect.type === 'QUINCUNX' ? 0.38 : 0.75;
+        // DEBUG: Log if color is undefined for minor aspects
+        if (!stroke && (aspect.type === 'SEMISEXTILE' || aspect.type === 'QUINCUNX')) {
+          console.log(`WARNING: No color defined for aspect type: ${aspect.type}`);
+          console.log('Available colors:', Object.keys(colors.aspects));
+          stroke = '#999999'; // Fallback color
+        }
+        // Quincunx: max 60% opacity; semi-sextile: max 50%; other aspects: max 75%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.50 : aspect.type === 'QUINCUNX' ? 0.60 : 0.75;
         opacity = maxOpacity * (1 - (aspect.orb / 8)); // Tighter orb = more opaque
         strokeWidth = 3 - (aspect.orb / 4); // Tighter orb = thicker
         opacity = Math.max(0.10, opacity);
@@ -403,7 +409,7 @@ function ChartWheel({
           stroke={stroke}
           strokeWidth={strokeWidth}
           opacity={opacity}
-          strokeDasharray={(aspect.type === 'SEMISEXTILE' || aspect.type === 'QUINCUNX') ? '2,4' : undefined}
+          strokeDasharray={undefined}
           style={{ cursor: 'pointer' }}
           onClick={() => onAspectToggle && onAspectToggle(aspect)}
           onMouseEnter={(e) => showTooltip(e, tooltipText)}
@@ -453,8 +459,14 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering with opacity based on orb
         stroke = colors.aspects[aspect.type];
-        // Quincunx: max 38% opacity; semi-sextile: max 30%; other aspects: max 75%
-        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.30 : aspect.type === 'QUINCUNX' ? 0.38 : 0.75;
+        // DEBUG: Log if color is undefined for minor aspects
+        if (!stroke && (aspect.type === 'SEMISEXTILE' || aspect.type === 'QUINCUNX')) {
+          console.log(`WARNING: No color defined for aspect type: ${aspect.type}`);
+          console.log('Available colors:', Object.keys(colors.aspects));
+          stroke = '#999999'; // Fallback color
+        }
+        // Quincunx: max 60% opacity; semi-sextile: max 50%; other aspects: max 75%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.50 : aspect.type === 'QUINCUNX' ? 0.60 : 0.75;
         opacity = maxOpacity * (1 - (aspect.orb / 8)); // Tighter orb = more opaque
         strokeWidth = 3 - (aspect.orb / 4); // Tighter orb = thicker
         opacity = Math.max(0.10, opacity);
@@ -544,8 +556,8 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering
         color = colors.aspects[aspect.type];
-        // Quincunx: max 38% opacity; semi-sextile: max 30%; other aspects: max 75%
-        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.30 : aspect.type === 'QUINCUNX' ? 0.38 : 0.75;
+        // Quincunx: max 60% opacity; semi-sextile: max 50%; other aspects: max 75%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.50 : aspect.type === 'QUINCUNX' ? 0.60 : 0.75;
         opacity = Math.max(0.10, maxOpacity * (1 - (aspect.orb / 8)));
       }
 
@@ -628,8 +640,8 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering
         color = colors.aspects[aspect.type];
-        // Quincunx: max 38% opacity; semi-sextile: max 30%; other aspects: max 75%
-        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.30 : aspect.type === 'QUINCUNX' ? 0.38 : 0.75;
+        // Quincunx: max 60% opacity; semi-sextile: max 50%; other aspects: max 75%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.50 : aspect.type === 'QUINCUNX' ? 0.60 : 0.75;
         opacity = Math.max(0.10, maxOpacity * (1 - (aspect.orb / 8)));
       }
 
@@ -700,8 +712,8 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering with opacity based on orb
         stroke = colors.aspects[aspect.type];
-        // Quincunx: max 38% opacity; semi-sextile: max 30%; other aspects: max 75%
-        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.30 : aspect.type === 'QUINCUNX' ? 0.38 : 0.75;
+        // Quincunx: max 60% opacity; semi-sextile: max 50%; other aspects: max 75%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.50 : aspect.type === 'QUINCUNX' ? 0.60 : 0.75;
         opacity = maxOpacity * (1 - (aspect.orb / 8));
         strokeWidth = 3 - (aspect.orb / 4);
         opacity = Math.max(0.10, opacity);
@@ -725,7 +737,7 @@ function ChartWheel({
           stroke={stroke}
           strokeWidth={strokeWidth}
           opacity={opacity}
-          strokeDasharray={(aspect.type === 'SEMISEXTILE' || aspect.type === 'QUINCUNX') ? '2,4' : undefined}
+          strokeDasharray={undefined}
           style={{ cursor: 'pointer' }}
           onMouseEnter={(e) => showTooltip(e, tooltipText)}
           onMouseLeave={hideTooltip}
@@ -786,8 +798,8 @@ function ChartWheel({
       } else {
         // In orb: use normal colorful rendering
         color = colors.aspects[aspect.type];
-        // Quincunx: max 38% opacity; semi-sextile: max 30%; other aspects: max 75%
-        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.30 : aspect.type === 'QUINCUNX' ? 0.38 : 0.75;
+        // Quincunx: max 60% opacity; semi-sextile: max 50%; other aspects: max 75%
+        const maxOpacity = aspect.type === 'SEMISEXTILE' ? 0.50 : aspect.type === 'QUINCUNX' ? 0.60 : 0.75;
         opacity = Math.max(0.10, maxOpacity * (1 - (aspect.orb / 8)));
       }
 

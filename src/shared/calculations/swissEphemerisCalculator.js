@@ -311,10 +311,17 @@ function getAngularDistance(long1, long2) {
 }
 
 function findAspect(distance, orb = 8, velocity1 = 0, velocity2 = 0, long1 = 0, long2 = 0) {
+  // Find the CLOSEST aspect match, not just the first one
+  let bestMatch = null;
+  let smallestOrb = Infinity;
+
   for (const [key, aspect] of Object.entries(ASPECT_TYPES)) {
     // Use the same orb for all aspects (controlled by slider)
     const diff = Math.abs(distance - aspect.angle);
-    if (diff <= orb) {
+    if (diff <= orb && diff < smallestOrb) {
+      // This is a closer match than what we've found so far
+      smallestOrb = diff;
+
       let applying = null;
       if ((velocity1 !== undefined && velocity2 !== undefined) && (velocity1 !== 0 || velocity2 !== 0)) {
         let separation = (long2 - long1 + 360) % 360;
@@ -335,7 +342,8 @@ function findAspect(distance, orb = 8, velocity1 = 0, velocity2 = 0, long1 = 0, 
           applying = distanceChangeRate < 0;
         }
       }
-      return {
+
+      bestMatch = {
         type: key,
         symbol: aspect.symbol,
         name: aspect.name,
@@ -347,7 +355,7 @@ function findAspect(distance, orb = 8, velocity1 = 0, velocity2 = 0, long1 = 0, 
       };
     }
   }
-  return null;
+  return bestMatch;
 }
 
 function calculateAspects(planets, orbSettings = {}) {
@@ -359,6 +367,8 @@ function calculateAspects(planets, orbSettings = {}) {
     longitude: planet.longitude,
     velocity: planet.velocity || 0
   }));
+  console.log('calculateAspects called with orb:', defaultOrb);
+  console.log('Planet list:', planetArray.map(p => p.name));
   for (let i = 0; i < planetArray.length; i++) {
     for (let j = i + 1; j < planetArray.length; j++) {
       const planet1 = planetArray[i];
@@ -366,10 +376,20 @@ function calculateAspects(planets, orbSettings = {}) {
       // Skip North Node - South Node aspects (they're always opposite)
       if ((planet1.name === 'North Node' && planet2.name === 'South Node') ||
           (planet1.name === 'South Node' && planet2.name === 'North Node')) {
+        console.log(`SKIPPING: ${planet1.name} - ${planet2.name} (nodes are always opposite)`);
         continue;
       }
       const distance = getAngularDistance(planet1.longitude, planet2.longitude);
       const aspect = findAspect(distance, defaultOrb, planet1.velocity, planet2.velocity, planet1.longitude, planet2.longitude);
+
+      // DEBUG: Log Pluto-South Node specifically
+      if ((planet1.name === 'Pluto' && planet2.name === 'South Node') ||
+          (planet1.name === 'South Node' && planet2.name === 'Pluto')) {
+        console.log(`DEBUG PLUTO-SOUTH NODE: ${planet1.name} (${planet1.longitude.toFixed(2)}°) - ${planet2.name} (${planet2.longitude.toFixed(2)}°)`);
+        console.log(`  Distance: ${distance.toFixed(2)}°`);
+        console.log(`  Aspect found:`, aspect);
+      }
+
       if (aspect) {
         aspects.push({
           planet1: planet1.name,
@@ -381,6 +401,8 @@ function calculateAspects(planets, orbSettings = {}) {
       }
     }
   }
+  console.log(`Total aspects found: ${aspects.length}`);
+  console.log('Aspect types:', aspects.map(a => `${a.planet1}-${a.planet2}: ${a.type}`));
   return aspects;
 }
 

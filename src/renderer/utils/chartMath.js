@@ -283,9 +283,11 @@ export const CHART_CONFIG = {
     },
     aspects: {
       'CONJUNCTION': '☌',
+      'SEMISEXTILE': '⚺',
       'SEXTILE': '⚹',
       'SQUARE': '□',
       'TRINE': '△',
+      'QUINCUNX': '⚻',
       'OPPOSITION': '☍'
     }
   },
