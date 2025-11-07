@@ -138,3 +138,15 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 node_modules/
+
+# Electron build output
+dist-electron/
+release/
+*.dmg
+*.exe
+*.AppImage
+*.deb
+*.rpm
+*.snap
+builder-effective-config.yaml
+builder-debug.yml

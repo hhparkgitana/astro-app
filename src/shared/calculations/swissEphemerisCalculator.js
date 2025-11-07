@@ -14,14 +14,24 @@
 
 const sweph = require('sweph');
 const path = require('path');
+const { app } = require('electron');
 
 // Load Swiss Ephemeris constants
 const constants = require(path.join(require.resolve('sweph').replace('index.js', ''), 'constants.js'));
 
-// Set ephemeris data path (relative to this file)
-const ephePath = path.join(__dirname, '..', 'ephe');
-sweph.set_ephe_path(ephePath);
+// Set ephemeris data path
+// In development: use relative path from this file
+// In production: use extraResources folder
+let ephePath;
+if (app && app.isPackaged) {
+  // Production: ephemeris files are in Resources/ephe (outside the asar)
+  ephePath = path.join(process.resourcesPath, 'ephe');
+} else {
+  // Development: relative to this file
+  ephePath = path.join(__dirname, '..', 'ephe');
+}
 
+sweph.set_ephe_path(ephePath);
 console.log('Swiss Ephemeris initialized with data path:', ephePath);
 
 // Planet ID mappings (Swiss Ephemeris constants)

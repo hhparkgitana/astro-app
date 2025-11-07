@@ -1,4 +1,5 @@
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const { autoUpdater } = require('electron-updater');
 const path = require('path');
 const fs = require('fs');
 
@@ -30,6 +31,83 @@ function getRag() {
 const { getSabianSymbol } = require(path.join(__dirname, '..', 'shared', 'utils', 'sabianSymbols.js'));
 
 let mainWindow;
+
+// =============================================================================
+// AUTO-UPDATER CONFIGURATION
+// =============================================================================
+
+// Configure auto-updater
+function setupAutoUpdater() {
+  // Only check for updates in production
+  if (!app.isPackaged) {
+    console.log('Development mode - skipping update checks');
+    return;
+  }
+
+  // Configure auto-updater
+  autoUpdater.autoDownload = true;
+  autoUpdater.autoInstallOnAppQuit = true;
+
+  // Log update events
+  autoUpdater.on('checking-for-update', () => {
+    console.log('Checking for updates...');
+  });
+
+  autoUpdater.on('update-available', (info) => {
+    console.log('Update available:', info.version);
+    if (mainWindow) {
+      mainWindow.webContents.send('update-available', info);
+    }
+  });
+
+  autoUpdater.on('update-not-available', (info) => {
+    console.log('Update not available. Current version:', info.version);
+  });
+
+  autoUpdater.on('error', (err) => {
+    console.error('Update error:', err);
+  });
+
+  autoUpdater.on('download-progress', (progressObj) => {
+    const logMessage = `Download speed: ${progressObj.bytesPerSecond} - Downloaded ${progressObj.percent}%`;
+    console.log(logMessage);
+    if (mainWindow) {
+      mainWindow.webContents.send('download-progress', progressObj);
+    }
+  });
+
+  autoUpdater.on('update-downloaded', (info) => {
+    console.log('Update downloaded:', info.version);
+
+    // Notify user that update is ready
+    if (mainWindow) {
+      dialog.showMessageBox(mainWindow, {
+        type: 'info',
+        title: 'Update Ready',
+        message: 'A new version has been downloaded',
+        detail: `Version ${info.version} is ready to install. The app will restart to apply the update when you quit.`,
+        buttons: ['Restart Now', 'Later']
+      }).then((result) => {
+        if (result.response === 0) {
+          // Restart now
+          autoUpdater.quitAndInstall(false, true);
+        }
+      });
+    }
+  });
+
+  // Check for updates on app start (after a short delay)
+  setTimeout(() => {
+    autoUpdater.checkForUpdates();
+  }, 3000);
+
+  // Check for updates every 4 hours
+  setInterval(() => {
+    autoUpdater.checkForUpdates();
+  }, 4 * 60 * 60 * 1000);
+}
+
+// =============================================================================
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -1743,7 +1821,10 @@ ipcMain.handle('export-chart-image', async (event, params) => {
   }
 });
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+  createWindow();
+  setupAutoUpdater();
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
