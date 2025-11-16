@@ -93,7 +93,9 @@ function consolidateIntoDateRanges(results, maxGapHours = 72) {
     startTimestamp: results[0].timestamp,
     endTimestamp: results[0].timestamp,
     startPositions: results[0].positions,
-    endPositions: results[0].positions
+    endPositions: results[0].positions,
+    startData: results[0],  // Keep full data for eclipse results
+    endData: results[0]
   };
 
   for (let i = 1; i < results.length; i++) {
@@ -105,6 +107,7 @@ function consolidateIntoDateRanges(results, maxGapHours = 72) {
       currentRange.endDate = results[i].datetime;
       currentRange.endTimestamp = results[i].timestamp;
       currentRange.endPositions = results[i].positions;
+      currentRange.endData = results[i];
     } else {
       // Save current range and start new one
       ranges.push(currentRange);
@@ -114,7 +117,9 @@ function consolidateIntoDateRanges(results, maxGapHours = 72) {
         startTimestamp: results[i].timestamp,
         endTimestamp: results[i].timestamp,
         startPositions: results[i].positions,
-        endPositions: results[i].positions
+        endPositions: results[i].positions,
+        startData: results[i],
+        endData: results[i]
       };
     }
   }
@@ -145,6 +150,11 @@ function consolidateIntoDateRanges(results, maxGapHours = 72) {
  *   ],
  *   retrograde: [
  *     { planet: 'mercury', isRetrograde: true }
+ *   ],
+ *   eclipses: [
+ *     { type: 'solar' },  // any solar eclipse
+ *     { type: 'lunar', sign: 'aries' },  // lunar eclipse in Aries
+ *     { type: 'solar', sign: 'leo', minDegree: 0, maxDegree: 10 }  // solar eclipse in 0-10° Leo
  *   ]
  * }
  */
@@ -343,6 +353,92 @@ function searchPlanetInSign(planet, sign, startDate, endDate, dbPath) {
 }
 
 /**
+ * Search for eclipses in ephemeris database
+ *
+ * @param {Object} criteria - Eclipse search criteria
+ * @param {Date} startDate - Start of search period
+ * @param {Date} endDate - End of search period
+ * @param {string} dbPath - Path to ephemeris database
+ * @returns {Object} Object with eclipse ranges and counts
+ *
+ * Criteria format:
+ * {
+ *   type: 'solar' or 'lunar' (optional - if omitted, returns both)
+ *   sign: 'aries' (optional - zodiac sign name)
+ *   minDegree: 0 (optional - minimum degree within sign, 0-29)
+ *   maxDegree: 10 (optional - maximum degree within sign, 0-29)
+ * }
+ */
+function searchEclipses(criteria, startDate, endDate, dbPath) {
+  const db = new Database(dbPath, { readonly: true });
+
+  try {
+    const whereClauses = [];
+    const params = {
+      startTime: startDate.getTime(),
+      endTime: endDate.getTime()
+    };
+
+    // Date range is always required
+    whereClauses.push('datetime >= @startTime AND datetime <= @endTime');
+
+    // Filter by eclipse type
+    if (criteria.type) {
+      whereClauses.push(`type = '${criteria.type}'`);
+    }
+
+    // Filter by sign
+    if (criteria.sign) {
+      const signIndex = ZODIAC_SIGNS[criteria.sign.toLowerCase()];
+      whereClauses.push(`sign_index = ${signIndex}`);
+
+      // Optional degree range within sign
+      if (criteria.minDegree !== undefined || criteria.maxDegree !== undefined) {
+        const minDeg = criteria.minDegree !== undefined ? criteria.minDegree : 0;
+        const maxDeg = criteria.maxDegree !== undefined ? criteria.maxDegree : 30;
+        whereClauses.push(`degree_in_sign >= ${minDeg} AND degree_in_sign <= ${maxDeg}`);
+      }
+    }
+
+    const whereClause = whereClauses.join(' AND ');
+    const query = `SELECT * FROM eclipses WHERE ${whereClause} ORDER BY datetime`;
+
+    const stmt = db.prepare(query);
+    const results = stmt.all(params);
+
+    // Format results
+    const formattedResults = results.map(row => {
+      const datetime = new Date(row.datetime);
+      const signs = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
+                     'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'];
+
+      return {
+        datetime: datetime,
+        timestamp: row.datetime,
+        type: row.type,
+        kind: row.kind,
+        longitude: row.longitude,
+        sign: signs[row.sign_index],
+        degreeInSign: parseFloat(row.degree_in_sign.toFixed(2)),
+        positions: {} // Empty positions object for consistency with other searches
+      };
+    });
+
+    // Consolidate consecutive eclipses into date ranges
+    const dateRanges = consolidateIntoDateRanges(formattedResults, 24); // 24 hour gap for eclipses
+
+    return {
+      ranges: dateRanges,
+      totalMatches: formattedResults.length,
+      rangeCount: dateRanges.length
+    };
+
+  } finally {
+    db.close();
+  }
+}
+
+/**
  * Get database metadata
  */
 function getDatabaseMetadata(dbPath) {
@@ -367,6 +463,7 @@ module.exports = {
   searchPlanetaryConfigurations,
   searchAspect,
   searchPlanetInSign,
+  searchEclipses,
   getDatabaseMetadata,
   ASPECT_ANGLES,
   ZODIAC_SIGNS

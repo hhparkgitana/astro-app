@@ -9,6 +9,8 @@ contextBridge.exposeInMainWorld('astro', {
   calculateTransitTimeline: (params) => ipcRenderer.invoke('calculate-transit-timeline', params),
   searchPlanetaryConfigurations: (criteria, startDate, endDate) =>
     ipcRenderer.invoke('search-planetary-configurations', { criteria, startDate, endDate }),
+  searchEclipses: (criteria, startDate, endDate) =>
+    ipcRenderer.invoke('search-eclipses', { criteria, startDate, endDate }),
   getEphemerisMetadata: () => ipcRenderer.invoke('get-ephemeris-metadata'),
   chatWithClaude: (params) => ipcRenderer.invoke('chat-with-claude', params),
   exportChartImage: (params) => ipcRenderer.invoke('export-chart-image', params),

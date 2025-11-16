@@ -17,6 +17,7 @@
     "rebuild": "electron-rebuild -f -w swisseph",
     "calculate-database": "node scripts/calculate-database.js",
     "calculate-database:all": "node scripts/calculate-database.js --all",
+    "generate-ephemeris": "electron scripts/generate-ephemeris.js",
     "dist": "npm run build && electron-builder",
     "dist:mac": "npm run build && electron-builder --mac",
     "dist:win": "npm run build && electron-builder --win",

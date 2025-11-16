@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PlanetDisplaySettings from './PlanetDisplaySettings';
+import ApiKeySettings from './ApiKeySettings';
 
 /**
  * Settings Menu Component
@@ -54,6 +55,9 @@ function SettingsMenu({ displaySettings, setDisplaySettings }) {
           </div>
 
           <div style={styles.dropdownContent}>
+            {/* API Key Settings Section */}
+            <ApiKeySettings />
+
             {/* Planet Display Settings Section */}
             <PlanetDisplaySettings
               displaySettings={displaySettings}

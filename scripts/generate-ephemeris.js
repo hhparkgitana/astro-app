@@ -19,6 +19,7 @@ const fs = require('fs');
 const path = require('path');
 const Database = require('better-sqlite3');
 const sweph = require('sweph');
+const Astronomy = require('astronomy-engine');
 
 // Load Swiss Ephemeris constants
 const constants = require(path.join(require.resolve('sweph').replace('index.js', ''), 'constants.js'));
@@ -133,6 +134,21 @@ db.exec(`
     key TEXT PRIMARY KEY,
     value TEXT
   );
+
+  -- Eclipses table
+  CREATE TABLE eclipses (
+    datetime INTEGER PRIMARY KEY,  -- Unix timestamp in milliseconds
+    type TEXT NOT NULL,  -- 'solar' or 'lunar'
+    kind TEXT NOT NULL,  -- 'partial', 'total', 'annular', 'penumbral', 'hybrid'
+    longitude REAL NOT NULL,  -- Ecliptic longitude
+    sign_index INTEGER NOT NULL,  -- 0-11 for Aries-Pisces
+    degree_in_sign REAL NOT NULL  -- 0-29.99
+  );
+
+  -- Create index for fast eclipse queries
+  CREATE INDEX idx_eclipse_type ON eclipses(type);
+  CREATE INDEX idx_eclipse_sign ON eclipses(sign_index);
+  CREATE INDEX idx_eclipse_datetime ON eclipses(datetime);
 `);
 
 console.log('Schema created successfully');
@@ -152,12 +168,15 @@ function dateToJulianDay(date) {
 
 /**
  * Calculate position of a celestial body using Swiss Ephemeris
+ * Falls back to Moshier ephemeris if Swiss Ephemeris files not found
  */
 function calculateBody(jd, bodyId) {
   const flags = constants.SEFLG_SPEED | constants.SEFLG_SWIEPH;
   const result = sweph.calc_ut(jd, bodyId, flags);
 
-  if (result.error) {
+  // Swiss Ephemeris warnings about missing files are OK - it falls back to Moshier
+  // Only throw if there's an actual calculation error (not just a file warning)
+  if (result.error && !result.error.includes('using Moshier eph')) {
     throw new Error(`Swiss Ephemeris error for body ${bodyId}: ${result.error}`);
   }
 
@@ -304,12 +323,85 @@ if (batch.length > 0) {
 
 console.log('\n');
 
+// Generate eclipse data
+console.log('Generating eclipse data...');
+
+/**
+ * Normalize angle to 0-360 range
+ */
+function normalizeAngle(angle) {
+  while (angle < 0) angle += 360;
+  while (angle >= 360) angle -= 360;
+  return angle;
+}
+
+/**
+ * Calculate ecliptic position at a specific time
+ */
+function calculateEclipticPosition(body, date) {
+  let ecliptic;
+  if (body === 'Sun') {
+    ecliptic = Astronomy.Ecliptic(Astronomy.GeoVector('Sun', date, true));
+  } else if (body === 'Moon') {
+    ecliptic = Astronomy.Ecliptic(Astronomy.GeoMoon(date));
+  }
+  const longitude = normalizeAngle(ecliptic.elon);
+  const signIndex = Math.floor(longitude / 30);
+  const degreeInSign = longitude % 30;
+  return { longitude, signIndex, degreeInSign };
+}
+
+const eclipses = [];
+
+// Find solar eclipses
+let solarSearch = Astronomy.SearchGlobalSolarEclipse(startDate);
+while (solarSearch && solarSearch.peak && solarSearch.peak.date < endDate) {
+  const position = calculateEclipticPosition('Sun', solarSearch.peak.date);
+  eclipses.push({
+    datetime: solarSearch.peak.date.getTime(),
+    type: 'solar',
+    kind: solarSearch.kind,
+    longitude: position.longitude,
+    sign_index: position.signIndex,
+    degree_in_sign: position.degreeInSign
+  });
+  solarSearch = Astronomy.NextGlobalSolarEclipse(solarSearch.peak.date);
+}
+
+// Find lunar eclipses
+let lunarSearch = Astronomy.SearchLunarEclipse(startDate);
+while (lunarSearch && lunarSearch.peak && lunarSearch.peak.date < endDate) {
+  const position = calculateEclipticPosition('Moon', lunarSearch.peak.date);
+  eclipses.push({
+    datetime: lunarSearch.peak.date.getTime(),
+    type: 'lunar',
+    kind: lunarSearch.kind,
+    longitude: position.longitude,
+    sign_index: position.signIndex,
+    degree_in_sign: position.degreeInSign
+  });
+  lunarSearch = Astronomy.NextLunarEclipse(lunarSearch.peak.date);
+}
+
+// Insert eclipses
+const eclipseStmt = db.prepare(`
+  INSERT INTO eclipses (datetime, type, kind, longitude, sign_index, degree_in_sign)
+  VALUES (@datetime, @type, @kind, @longitude, @sign_index, @degree_in_sign)
+`);
+
+eclipses.forEach(eclipse => {
+  eclipseStmt.run(eclipse);
+});
+
+console.log(`  Total eclipses: ${eclipses.length}`);
+
 // Store metadata
 const metadataStmt = db.prepare('INSERT INTO metadata (key, value) VALUES (?, ?)');
 metadataStmt.run('start_date', options.startDate);
 metadataStmt.run('end_date', endDate.toISOString().split('T')[0]);
 metadataStmt.run('interval_minutes', options.interval.toString());
 metadataStmt.run('total_points', count.toString());
+metadataStmt.run('total_eclipses', eclipses.length.toString());
 metadataStmt.run('generated_at', new Date().toISOString());
 
 const endTime = Date.now();

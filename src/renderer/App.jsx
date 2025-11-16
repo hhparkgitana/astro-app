@@ -2088,6 +2088,7 @@ function App() {
       }
 
       // Set the view mode based on chart type (only when loading into Chart A)
+      // BUT don't switch away from relationship/returns/dual views unless the chart explicitly requires it
       if (chart.chartType === 'synastry' || chart.chartType === 'composite') {
         setViewMode('relationship');
         setRelationshipChartType(chart.chartType);
@@ -2101,7 +2102,8 @@ function App() {
       } else if (chart.chartType === 'solar-return' || chart.chartType === 'lunar-return') {
         setViewMode('returns');
         setReturnType(chart.chartType === 'solar-return' ? 'solar' : 'lunar');
-      } else {
+      } else if (viewMode !== 'relationship' && viewMode !== 'returns' && viewMode !== 'dual') {
+        // Only switch to single view if we're not already in a multi-chart mode
         setViewMode('single');
       }
 

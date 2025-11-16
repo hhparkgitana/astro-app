@@ -21,6 +21,9 @@ const ConfigurationSearch = () => {
   // Retrograde criteria
   const [retrogradeCriteria, setRetrogradeCriteria] = useState([]);
 
+  // Eclipse criteria
+  const [eclipseCriteria, setEclipseCriteria] = useState([]);
+
   // Search results
   const [searchResults, setSearchResults] = useState([]);
   const [searching, setSearching] = useState(false);
@@ -104,6 +107,29 @@ const ConfigurationSearch = () => {
   // Update retrograde criterion
   const updateRetrogradeCriterion = (id, field, value) => {
     setRetrogradeCriteria(retrogradeCriteria.map(c =>
+      c.id === id ? { ...c, [field]: value } : c
+    ));
+  };
+
+  // Add eclipse criterion
+  const addEclipseCriterion = () => {
+    setEclipseCriteria([...eclipseCriteria, {
+      id: Date.now(),
+      type: 'any', // 'any', 'solar', 'lunar'
+      sign: '',
+      minDegree: '',
+      maxDegree: ''
+    }]);
+  };
+
+  // Remove eclipse criterion
+  const removeEclipseCriterion = (id) => {
+    setEclipseCriteria(eclipseCriteria.filter(c => c.id !== id));
+  };
+
+  // Update eclipse criterion
+  const updateEclipseCriterion = (id, field, value) => {
+    setEclipseCriteria(eclipseCriteria.map(c =>
       c.id === id ? { ...c, [field]: value } : c
     ));
   };
@@ -200,15 +226,46 @@ const ConfigurationSearch = () => {
         parseInt(dateRange.endDay)
       );
 
-      // Call IPC to search
-      const response = await window.astro.searchPlanetaryConfigurations(
-        criteria,
-        startDate.toISOString(),
-        endDate.toISOString()
-      );
+      // Handle eclipse-only search separately
+      if (eclipseCriteria.length > 0 &&
+          aspectCriteria.length === 0 &&
+          placementCriteria.length === 0 &&
+          retrogradeCriteria.length === 0) {
 
-      setSearchResults(response.ranges || []);
-      setResultCount(response.rangeCount || 0);
+        // Eclipse-only search (can only search for one eclipse criterion at a time for now)
+        const eclipseCriterion = eclipseCriteria[0];
+        const eclipseSearchCriteria = {
+          type: eclipseCriterion.type === 'any' ? undefined : eclipseCriterion.type
+        };
+
+        if (eclipseCriterion.sign) {
+          eclipseSearchCriteria.sign = eclipseCriterion.sign;
+
+          if (eclipseCriterion.minDegree !== '' || eclipseCriterion.maxDegree !== '') {
+            eclipseSearchCriteria.minDegree = eclipseCriterion.minDegree !== '' ? parseFloat(eclipseCriterion.minDegree) : 0;
+            eclipseSearchCriteria.maxDegree = eclipseCriterion.maxDegree !== '' ? parseFloat(eclipseCriterion.maxDegree) : 29;
+          }
+        }
+
+        const response = await window.astro.searchEclipses(
+          eclipseSearchCriteria,
+          startDate.toISOString(),
+          endDate.toISOString()
+        );
+
+        setSearchResults(response.ranges || []);
+        setResultCount(response.rangeCount || 0);
+      } else {
+        // Regular planetary configuration search
+        const response = await window.astro.searchPlanetaryConfigurations(
+          criteria,
+          startDate.toISOString(),
+          endDate.toISOString()
+        );
+
+        setSearchResults(response.ranges || []);
+        setResultCount(response.rangeCount || 0);
+      }
 
     } catch (error) {
       console.error('Search error:', error);
@@ -428,6 +485,59 @@ const ConfigurationSearch = () => {
           <button onClick={addRetrogradeCriterion} className="add-btn">+ Add Retrograde Criterion</button>
         </div>
 
+        {/* Eclipse Criteria */}
+        <div className="criteria-section">
+          <h3>Eclipses</h3>
+          {eclipseCriteria.map((criterion) => (
+            <div key={criterion.id} className="criterion-row">
+              <select value={criterion.type}
+                onChange={(e) => updateEclipseCriterion(criterion.id, 'type', e.target.value)}>
+                <option value="any">Any Eclipse</option>
+                <option value="solar">Solar Eclipse</option>
+                <option value="lunar">Lunar Eclipse</option>
+              </select>
+
+              {/* Optional sign filter */}
+              <span>in</span>
+              <select value={criterion.sign}
+                onChange={(e) => updateEclipseCriterion(criterion.id, 'sign', e.target.value)}>
+                <option value="">Any Sign</option>
+                {signs.map(s => <option key={s} value={s.toLowerCase()}>{s}</option>)}
+              </select>
+
+              {/* Optional degree range within sign */}
+              {criterion.sign && (
+                <>
+                  <span>between</span>
+                  <input
+                    type="number"
+                    value={criterion.minDegree}
+                    min="0"
+                    max="29"
+                    placeholder="0"
+                    style={{width: '60px'}}
+                    onChange={(e) => updateEclipseCriterion(criterion.id, 'minDegree', e.target.value)}
+                  />
+                  <span>° and</span>
+                  <input
+                    type="number"
+                    value={criterion.maxDegree}
+                    min="0"
+                    max="29"
+                    placeholder="29"
+                    style={{width: '60px'}}
+                    onChange={(e) => updateEclipseCriterion(criterion.id, 'maxDegree', e.target.value)}
+                  />
+                  <span>°</span>
+                </>
+              )}
+
+              <button onClick={() => removeEclipseCriterion(criterion.id)} className="remove-btn">✕</button>
+            </div>
+          ))}
+          <button onClick={addEclipseCriterion} className="add-btn">+ Add Eclipse Criterion</button>
+        </div>
+
         {/* Search Button */}
         <div className="search-actions">
           <button onClick={executeSearch} disabled={searching} className="search-btn">
@@ -449,26 +559,41 @@ const ConfigurationSearch = () => {
                   <br />
                   <strong>To:</strong> {formatDate(range.endDate)}
                 </div>
-                <div className="result-positions">
-                  <div style={{marginBottom: '5px'}}>
-                    <em>Start positions:</em>
-                    {Object.entries(range.startPositions).map(([planet, data]) => (
-                      <span key={planet} className="planet-position">
-                        {planet.charAt(0).toUpperCase() + planet.slice(1)}: {data.degreeInSign}° {data.sign}
-                        {data.isRetrograde && ' ℞'}
+
+                {/* Check if this is an eclipse result */}
+                {range.startData && (range.startData.type || range.startData.kind) ? (
+                  <div className="result-positions">
+                    <div style={{marginBottom: '5px'}}>
+                      <span className="planet-position">
+                        <strong>{range.startData.type === 'solar' ? 'Solar' : 'Lunar'} Eclipse</strong>
+                        {' '}({range.startData.kind})
+                        {' at '}
+                        {range.startData.degreeInSign}° {range.startData.sign}
                       </span>
-                    ))}
+                    </div>
                   </div>
-                  <div>
-                    <em>End positions:</em>
-                    {Object.entries(range.endPositions).map(([planet, data]) => (
-                      <span key={planet} className="planet-position">
-                        {planet.charAt(0).toUpperCase() + planet.slice(1)}: {data.degreeInSign}° {data.sign}
-                        {data.isRetrograde && ' ℞'}
-                      </span>
-                    ))}
+                ) : (
+                  <div className="result-positions">
+                    <div style={{marginBottom: '5px'}}>
+                      <em>Start positions:</em>
+                      {Object.entries(range.startPositions).map(([planet, data]) => (
+                        <span key={planet} className="planet-position">
+                          {planet.charAt(0).toUpperCase() + planet.slice(1)}: {data.degreeInSign}° {data.sign}
+                          {data.isRetrograde && ' ℞'}
+                        </span>
+                      ))}
+                    </div>
+                    <div>
+                      <em>End positions:</em>
+                      {Object.entries(range.endPositions).map(([planet, data]) => (
+                        <span key={planet} className="planet-position">
+                          {planet.charAt(0).toUpperCase() + planet.slice(1)}: {data.degreeInSign}° {data.sign}
+                          {data.isRetrograde && ' ℞'}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             ))}
             {resultCount > 100 && (

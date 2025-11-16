@@ -33,7 +33,7 @@ const { calculateSecondaryProgressions, formatProgressionInfo } = require(path.j
 const { findEclipses, findEclipsesAffectingChart, findEclipsesDatabaseImpact, formatEclipseInfo } = require(path.join(__dirname, '..', 'shared', 'calculations', 'eclipseCalculator.js'));
 
 // Load configuration search calculator
-const { searchPlanetaryConfigurations, getDatabaseMetadata } = require(path.join(__dirname, '..', 'shared', 'calculations', 'configurationSearchCalculator.js'));
+const { searchPlanetaryConfigurations, searchEclipses, getDatabaseMetadata } = require(path.join(__dirname, '..', 'shared', 'calculations', 'configurationSearchCalculator.js'));
 
 // Lazy-load RAG system for astrological texts (only when needed to avoid Electron compatibility issues)
 let rag = null;
@@ -337,6 +337,39 @@ ipcMain.handle('search-planetary-configurations', async (event, params) => {
     return results;
   } catch (error) {
     console.error('Error searching planetary configurations:', error);
+    throw error;
+  }
+});
+
+// Handle eclipse search
+ipcMain.handle('search-eclipses', async (event, params) => {
+  try {
+    const { criteria, startDate, endDate } = params;
+
+    if (!startDate || !endDate) {
+      throw new Error('Start date and end date are required');
+    }
+
+    // Get database path
+    const dbPath = app.isPackaged
+      ? path.join(process.resourcesPath, 'app.asar.unpacked', 'src', 'shared', 'data', 'ephemeris.db')
+      : path.join(__dirname, '..', 'shared', 'data', 'ephemeris.db');
+
+    // Check if database exists
+    if (!fs.existsSync(dbPath)) {
+      throw new Error('Ephemeris database not found. Please generate it first using: npm run generate-ephemeris');
+    }
+
+    // Convert ISO date strings to Date objects
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    // Execute search
+    const results = searchEclipses(criteria, start, end, dbPath);
+
+    return results;
+  } catch (error) {
+    console.error('Error searching eclipses:', error);
     throw error;
   }
 });

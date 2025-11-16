@@ -18564,5 +18564,2145 @@ export const famousChartsData = [
       "icon",
       "drummer"
     ]
+  },
+  {
+    "id": "blair-tony",
+    "name": "Tony Blair",
+    "category": "International Leaders",
+    "date": "1953-05-06",
+    "time": "06:10",
+    "location": "Edinburgh, Scotland",
+    "latitude": 55.9533,
+    "longitude": -3.1883,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "UK PM 1997-2007, New Labour, Iraq War, Good Friday Agreement",
+    "tags": [
+      "uk",
+      "labour",
+      "iraq-war",
+      "modern"
+    ]
+  },
+  {
+    "id": "degaulle-charles",
+    "name": "Charles de Gaulle",
+    "category": "International Leaders",
+    "date": "1890-11-22",
+    "time": "04:00",
+    "location": "Lille, France",
+    "latitude": 50.6292,
+    "longitude": 3.0573,
+    "timezone": "Europe/Paris",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "French Resistance leader WWII, President 1959-1969, Fifth Republic founder",
+    "tags": [
+      "france",
+      "wwii",
+      "resistance",
+      "founder"
+    ]
+  },
+  {
+    "id": "mitterrand-francois",
+    "name": "François Mitterrand",
+    "category": "International Leaders",
+    "date": "1916-10-26",
+    "time": "04:00",
+    "location": "Jarnac, France",
+    "latitude": 45.6833,
+    "longitude": -0.1667,
+    "timezone": "Europe/Paris",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "French President 1981-1995, longest-serving, Socialist, Vichy past",
+    "tags": [
+      "france",
+      "socialist",
+      "controversial",
+      "longest"
+    ]
+  },
+  {
+    "id": "kohl-helmut",
+    "name": "Helmut Kohl",
+    "category": "International Leaders",
+    "date": "1930-04-03",
+    "time": "06:30",
+    "location": "Ludwigshafen, Germany",
+    "latitude": 49.481,
+    "longitude": 8.4353,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "German reunification Chancellor 1982-1998, Euro architect, died 2017",
+    "tags": [
+      "germany",
+      "reunification",
+      "euro",
+      "architect"
+    ]
+  },
+  {
+    "id": "adenauer-konrad",
+    "name": "Konrad Adenauer",
+    "category": "International Leaders",
+    "date": "1876-01-05",
+    "time": "03:00",
+    "location": "Cologne, Germany",
+    "latitude": 50.9375,
+    "longitude": 6.9603,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "A",
+    "source": "Birth records",
+    "notes": "West Germany first Chancellor 1949-1963, post-war reconstruction",
+    "tags": [
+      "germany",
+      "post-war",
+      "reconstruction",
+      "founder"
+    ]
+  },
+  {
+    "id": "nehru-jawaharlal",
+    "name": "Jawaharlal Nehru",
+    "category": "International Leaders",
+    "date": "1889-11-14",
+    "time": "23:30",
+    "location": "Allahabad, India",
+    "latitude": 25.4358,
+    "longitude": 81.8463,
+    "timezone": "Asia/Kolkata",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "First Indian PM 1947-1964, independence leader, Gandhi's protégé, modern India",
+    "tags": [
+      "india",
+      "independence",
+      "first-pm",
+      "modern"
+    ]
+  },
+  {
+    "id": "gandhi-indira",
+    "name": "Indira Gandhi",
+    "category": "International Leaders",
+    "date": "1917-11-19",
+    "time": "23:11",
+    "location": "Allahabad, India",
+    "latitude": 25.4358,
+    "longitude": 81.8463,
+    "timezone": "Asia/Kolkata",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Indian PM 1966-77, 1980-84, Nehru's daughter, Emergency, assassinated",
+    "tags": [
+      "india",
+      "pm",
+      "assassinated",
+      "iron-lady"
+    ]
+  },
+  {
+    "id": "rabin-yitzhak",
+    "name": "Yitzhak Rabin",
+    "category": "International Leaders",
+    "date": "1922-03-01",
+    "time": "05:00",
+    "location": "Jerusalem, Palestine",
+    "latitude": 31.7683,
+    "longitude": 35.2137,
+    "timezone": "Asia/Jerusalem",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Israeli PM, Oslo Accords, Nobel Peace Prize 1994, assassinated 1995",
+    "tags": [
+      "israel",
+      "peace",
+      "nobel-prize",
+      "assassinated"
+    ]
+  },
+  {
+    "id": "sadat-anwar",
+    "name": "Anwar Sadat",
+    "category": "International Leaders",
+    "date": "1918-12-25",
+    "time": "12:00",
+    "location": "Mit Abu al-Kum, Egypt",
+    "latitude": 30.6667,
+    "longitude": 30.7667,
+    "timezone": "Africa/Cairo",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Egyptian President 1970-1981, Camp David, Nobel Peace Prize 1978, assassinated",
+    "tags": [
+      "egypt",
+      "peace",
+      "nobel-prize",
+      "assassinated"
+    ]
+  },
+  {
+    "id": "kenyatta-jomo",
+    "name": "Jomo Kenyatta",
+    "category": "International Leaders",
+    "date": "1891-10-20",
+    "time": "12:00",
+    "location": "Kiambu, Kenya",
+    "latitude": -1.1714,
+    "longitude": 36.8356,
+    "timezone": "Africa/Nairobi",
+    "roddenRating": "C",
+    "source": "Biography (date approximate, time uncertain)",
+    "notes": "First Kenyan President 1964-1978, independence leader, Mau Mau",
+    "tags": [
+      "kenya",
+      "independence",
+      "first-president",
+      "african"
+    ]
+  },
+  {
+    "id": "nkrumah-kwame",
+    "name": "Kwame Nkrumah",
+    "category": "International Leaders",
+    "date": "1909-09-21",
+    "time": "12:00",
+    "location": "Nkroful, Gold Coast",
+    "latitude": 4.95,
+    "longitude": -2.0167,
+    "timezone": "Africa/Accra",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "First Ghanaian President 1960-1966, pan-Africanism, independence pioneer",
+    "tags": [
+      "ghana",
+      "independence",
+      "pan-africanism",
+      "pioneer"
+    ]
+  },
+  {
+    "id": "nyerere-julius",
+    "name": "Julius Nyerere",
+    "category": "International Leaders",
+    "date": "1922-04-13",
+    "time": "12:00",
+    "location": "Butiama, Tanganyika",
+    "latitude": -1.7833,
+    "longitude": 33.9833,
+    "timezone": "Africa/Dar_es_Salaam",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Tanzanian President 1964-1985, Ujamaa socialism, African liberation, teacher",
+    "tags": [
+      "tanzania",
+      "socialism",
+      "pan-africanism",
+      "teacher"
+    ]
+  },
+  {
+    "id": "tito-josip-broz",
+    "name": "Josip Broz Tito",
+    "category": "International Leaders",
+    "date": "1892-05-07",
+    "time": "12:00",
+    "location": "Kumrovec, Croatia",
+    "latitude": 46,
+    "longitude": 15.6667,
+    "timezone": "Europe/Zagreb",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Yugoslav leader 1945-1980, Tito-Stalin Split, Non-Aligned Movement, held Yugoslavia together",
+    "tags": [
+      "yugoslavia",
+      "communist",
+      "non-aligned",
+      "strongman"
+    ]
+  },
+  {
+    "id": "peron-juan",
+    "name": "Juan Perón",
+    "category": "International Leaders",
+    "date": "1895-10-08",
+    "time": "21:00",
+    "location": "Lobos, Argentina",
+    "latitude": -35.1833,
+    "longitude": -59.1,
+    "timezone": "America/Argentina/Buenos_Aires",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Argentine President 1946-55, 1973-74, Peronism, populist, Eva Perón's husband",
+    "tags": [
+      "argentina",
+      "populist",
+      "peronism",
+      "controversial"
+    ]
+  },
+  {
+    "id": "peron-eva",
+    "name": "Eva Perón (Evita)",
+    "category": "International Leaders",
+    "date": "1919-05-07",
+    "time": "05:00",
+    "location": "Los Toldos, Argentina",
+    "latitude": -35.25,
+    "longitude": -61.0167,
+    "timezone": "America/Argentina/Buenos_Aires",
+    "roddenRating": "A",
+    "source": "Birth certificate",
+    "notes": "First Lady of Argentina, spiritual leader of Peronism, died at 33, saint-like status",
+    "tags": [
+      "argentina",
+      "first-lady",
+      "icon",
+      "evita"
+    ]
+  },
+  {
+    "id": "allende-salvador",
+    "name": "Salvador Allende",
+    "category": "International Leaders",
+    "date": "1908-06-26",
+    "time": "00:05",
+    "location": "Valparaíso, Chile",
+    "latitude": -33.0472,
+    "longitude": -71.6127,
+    "timezone": "America/Santiago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Chilean President 1970-1973, socialist, overthrown by Pinochet, suicide/murdered",
+    "tags": [
+      "chile",
+      "socialist",
+      "coup-victim",
+      "martyred"
+    ]
+  },
+  {
+    "id": "cardenas-lazaro",
+    "name": "Lázaro Cárdenas",
+    "category": "International Leaders",
+    "date": "1895-05-21",
+    "time": "12:00",
+    "location": "Jiquilpan, Mexico",
+    "latitude": 20.1333,
+    "longitude": -102.7167,
+    "timezone": "America/Mexico_City",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Mexican President 1934-1940, oil nationalization, land reform, progressive icon",
+    "tags": [
+      "mexico",
+      "progressive",
+      "nationalization",
+      "reform"
+    ]
+  },
+  {
+    "id": "trudeau-pierre",
+    "name": "Pierre Trudeau",
+    "category": "International Leaders",
+    "date": "1919-10-18",
+    "time": "04:00",
+    "location": "Montreal, Quebec, Canada",
+    "latitude": 45.5017,
+    "longitude": -73.5673,
+    "timezone": "America/Toronto",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Canadian PM 1968-79, 1980-84, Trudeaumania, bilingualism, Justin's father",
+    "tags": [
+      "canada",
+      "liberal",
+      "bilingualism",
+      "charismatic"
+    ]
+  },
+  {
+    "id": "aquino-corazon",
+    "name": "Corazon Aquino",
+    "category": "International Leaders",
+    "date": "1933-01-25",
+    "time": "12:00",
+    "location": "Tarlac, Philippines",
+    "latitude": 15.4833,
+    "longitude": 120.5833,
+    "timezone": "Asia/Manila",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Philippine President 1986-1992, People Power Revolution, democracy restored, died 2009",
+    "tags": [
+      "philippines",
+      "democracy",
+      "people-power",
+      "widow"
+    ]
+  },
+  {
+    "id": "sukarno",
+    "name": "Sukarno",
+    "category": "International Leaders",
+    "date": "1901-06-06",
+    "time": "06:00",
+    "location": "Surabaya, Indonesia",
+    "latitude": -7.2575,
+    "longitude": 112.7521,
+    "timezone": "Asia/Jakarta",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "First Indonesian President 1945-1967, independence leader, overthrown",
+    "tags": [
+      "indonesia",
+      "independence",
+      "first-president",
+      "overthrown"
+    ]
+  },
+  {
+    "id": "marcos-ferdinand",
+    "name": "Ferdinand Marcos",
+    "category": "International Leaders",
+    "date": "1917-09-11",
+    "time": "04:00",
+    "location": "Sarrat, Philippines",
+    "latitude": 18.1667,
+    "longitude": 120.6333,
+    "timezone": "Asia/Manila",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Philippine President 1965-1986, martial law, kleptocracy, Imelda's shoes, overthrown",
+    "tags": [
+      "philippines",
+      "dictator",
+      "kleptocracy",
+      "overthrown"
+    ]
+  },
+  {
+    "id": "lee-kuan-yew",
+    "name": "Lee Kuan Yew",
+    "category": "International Leaders",
+    "date": "1923-09-16",
+    "time": "04:18",
+    "location": "Singapore",
+    "latitude": 1.3521,
+    "longitude": 103.8198,
+    "timezone": "Asia/Singapore",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Singapore PM 1959-1990, transformed city-state, authoritarian but effective, died 2015",
+    "tags": [
+      "singapore",
+      "authoritarian",
+      "transformation",
+      "effective"
+    ]
+  },
+  {
+    "id": "thant-u",
+    "name": "U Thant",
+    "category": "International Leaders",
+    "date": "1909-01-22",
+    "time": "12:00",
+    "location": "Pantanaw, Burma",
+    "latitude": 16.9667,
+    "longitude": 95.4167,
+    "timezone": "Asia/Yangon",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "UN Secretary-General 1961-1971, Burmese, Cuban Missile Crisis mediator",
+    "tags": [
+      "un",
+      "burma",
+      "mediator",
+      "international"
+    ]
+  },
+  {
+    "id": "kofi-annan",
+    "name": "Kofi Annan",
+    "category": "International Leaders",
+    "date": "1938-04-08",
+    "time": "12:00",
+    "location": "Kumasi, Gold Coast",
+    "latitude": 6.6885,
+    "longitude": -1.6244,
+    "timezone": "Africa/Accra",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "UN Secretary-General 1997-2006, Nobel Peace Prize 2001, Ghanaian, died 2018",
+    "tags": [
+      "un",
+      "ghana",
+      "nobel-prize",
+      "international"
+    ]
+  },
+  {
+    "id": "yeltsin-boris",
+    "name": "Boris Yeltsin",
+    "category": "International Leaders",
+    "date": "1931-02-01",
+    "time": "12:00",
+    "location": "Butka, USSR",
+    "latitude": 57.35,
+    "longitude": 59.5667,
+    "timezone": "Asia/Yekaterinburg",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "First Russian President 1991-1999, Soviet collapse, chose Putin successor, alcoholic, died 2007",
+    "tags": [
+      "russia",
+      "first-president",
+      "collapse",
+      "alcoholic"
+    ]
+  },
+  {
+    "id": "khrushchev-nikita",
+    "name": "Nikita Khrushchev",
+    "category": "International Leaders",
+    "date": "1894-04-15",
+    "time": "12:00",
+    "location": "Kalinovka, Russian Empire",
+    "latitude": 51.3,
+    "longitude": 35.2667,
+    "timezone": "Europe/Moscow",
+    "roddenRating": "C",
+    "source": "Biography (date approximate, time uncertain)",
+    "notes": "Soviet leader 1953-1964, de-Stalinization, Cuban Missile Crisis, shoe-banging",
+    "tags": [
+      "soviet",
+      "de-stalinization",
+      "cuban-crisis",
+      "colorful"
+    ]
+  },
+  {
+    "id": "parsons-jack",
+    "name": "Jack Parsons",
+    "category": "Esoteric & Occult",
+    "date": "1914-10-02",
+    "time": "21:30",
+    "location": "Los Angeles, California, USA",
+    "latitude": 34.0522,
+    "longitude": -118.2437,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "JPL rocket scientist, Thelema practitioner, Babalon Working with L. Ron Hubbard, explosion death 1952",
+    "tags": [
+      "thelema",
+      "rocket-science",
+      "magick",
+      "tragic"
+    ]
+  },
+  {
+    "id": "leary-timothy",
+    "name": "Timothy Leary",
+    "category": "Esoteric & Occult",
+    "date": "1920-10-22",
+    "time": "10:45",
+    "location": "Springfield, Massachusetts, USA",
+    "latitude": 42.1015,
+    "longitude": -72.5898,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Turn on tune in drop out, LSD pioneer, Harvard professor, psychedelic evangelist",
+    "tags": [
+      "psychedelics",
+      "lsd",
+      "counterculture",
+      "harvard"
+    ]
+  },
+  {
+    "id": "mckenna-terence",
+    "name": "Terence McKenna",
+    "category": "Esoteric & Occult",
+    "date": "1946-11-16",
+    "time": "12:00",
+    "location": "Paonia, Colorado, USA",
+    "latitude": 38.8681,
+    "longitude": -107.5919,
+    "timezone": "America/Denver",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Ethnobotanist, Timewave Zero, stoned ape theory, DMT, psychedelic philosopher, died 2000",
+    "tags": [
+      "psychedelics",
+      "ethnobotany",
+      "dmt",
+      "philosopher"
+    ]
+  },
+  {
+    "id": "hubbard-l-ron",
+    "name": "L. Ron Hubbard",
+    "category": "Esoteric & Occult",
+    "date": "1911-03-13",
+    "time": "02:01",
+    "location": "Tilden, Nebraska, USA",
+    "latitude": 42.0464,
+    "longitude": -97.8306,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Scientology founder, Dianetics, sci-fi writer, worked with Parsons, controversial, died 1986",
+    "tags": [
+      "scientology",
+      "dianetics",
+      "controversial",
+      "founder"
+    ]
+  },
+  {
+    "id": "cayce-edgar",
+    "name": "Edgar Cayce",
+    "category": "Esoteric & Occult",
+    "date": "1877-03-18",
+    "time": "15:00",
+    "location": "Hopkinsville, Kentucky, USA",
+    "latitude": 36.8656,
+    "longitude": -87.4886,
+    "timezone": "America/Chicago",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Sleeping Prophet, medical intuitive, readings while in trance, Atlantis, reincarnation",
+    "tags": [
+      "psychic",
+      "medical-intuitive",
+      "trance",
+      "readings"
+    ]
+  },
+  {
+    "id": "nostradamus",
+    "name": "Nostradamus",
+    "category": "Esoteric & Occult",
+    "date": "1503-12-14",
+    "time": "12:00",
+    "location": "Saint-Rémy-de-Provence, France",
+    "latitude": 43.7889,
+    "longitude": 4.8322,
+    "timezone": "Europe/Paris",
+    "roddenRating": "C",
+    "source": "Historical records (time uncertain)",
+    "notes": "French prophet, Les Prophéties, quatrains, plague doctor, astrologer",
+    "tags": [
+      "prophet",
+      "astrologer",
+      "french",
+      "quatrains"
+    ]
+  },
+  {
+    "id": "lenormand-marie-anne",
+    "name": "Marie Anne Lenormand",
+    "category": "Esoteric & Occult",
+    "date": "1772-05-27",
+    "time": "12:00",
+    "location": "Alençon, France",
+    "latitude": 48.4333,
+    "longitude": 0.0833,
+    "timezone": "Europe/Paris",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Napoleon's fortune teller, Lenormand cards named after her, famous cartomancer",
+    "tags": [
+      "cartomancy",
+      "fortune-teller",
+      "lenormand",
+      "napoleon"
+    ]
+  },
+  {
+    "id": "gurdjieff-george",
+    "name": "George Gurdjieff",
+    "category": "Esoteric & Occult",
+    "date": "1866-01-13",
+    "time": "12:00",
+    "location": "Alexandropol, Armenia",
+    "latitude": 40.7894,
+    "longitude": 43.8456,
+    "timezone": "Asia/Yerevan",
+    "roddenRating": "C",
+    "source": "Biography (date approximate, time uncertain)",
+    "notes": "Fourth Way teacher, mystic, Beelzebub's Tales, movements, self-remembering",
+    "tags": [
+      "fourth-way",
+      "mystic",
+      "teacher",
+      "movements"
+    ]
+  },
+  {
+    "id": "ouspensky-p-d",
+    "name": "P.D. Ouspensky",
+    "category": "Esoteric & Occult",
+    "date": "1878-03-05",
+    "time": "12:00",
+    "location": "Moscow, Russia",
+    "latitude": 55.7558,
+    "longitude": 37.6173,
+    "timezone": "Europe/Moscow",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Fourth Way, Tertium Organum, In Search of the Miraculous, Gurdjieff student",
+    "tags": [
+      "fourth-way",
+      "philosopher",
+      "esoteric",
+      "russian"
+    ]
+  },
+  {
+    "id": "hall-manly-p",
+    "name": "Manly P. Hall",
+    "category": "Esoteric & Occult",
+    "date": "1901-03-18",
+    "time": "12:00",
+    "location": "Peterborough, Ontario, Canada",
+    "latitude": 44.3091,
+    "longitude": -78.3197,
+    "timezone": "America/Toronto",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Secret Teachings of All Ages, Philosophical Research Society, mystic scholar",
+    "tags": [
+      "scholar",
+      "hermetic",
+      "masonic",
+      "philosopher"
+    ]
+  },
+  {
+    "id": "levi-eliphas",
+    "name": "Éliphas Lévi",
+    "category": "Esoteric & Occult",
+    "date": "1810-02-08",
+    "time": "12:00",
+    "location": "Paris, France",
+    "latitude": 48.8566,
+    "longitude": 2.3522,
+    "timezone": "Europe/Paris",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Occult revival pioneer, Baphomet image, Transcendental Magic, influenced Golden Dawn",
+    "tags": [
+      "occult",
+      "ceremonial-magic",
+      "french",
+      "revival"
+    ]
+  },
+  {
+    "id": "spare-austin-osman",
+    "name": "Austin Osman Spare",
+    "category": "Esoteric & Occult",
+    "date": "1886-12-30",
+    "time": "12:00",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Artist, chaos magic precursor, sigil magic, Zos Kia Cultus, influenced chaos magic",
+    "tags": [
+      "chaos-magic",
+      "sigils",
+      "artist",
+      "british"
+    ]
+  },
+  {
+    "id": "carroll-peter",
+    "name": "Peter Carroll",
+    "category": "Esoteric & Occult",
+    "date": "1953-01-08",
+    "time": "12:00",
+    "location": "England",
+    "latitude": 52.5,
+    "longitude": -1.5,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Chaos magic founder, Liber Null, Psychonaut, IOT, paradigm shifting",
+    "tags": [
+      "chaos-magic",
+      "founder",
+      "paradigm",
+      "british"
+    ]
+  },
+  {
+    "id": "valiente-doreen",
+    "name": "Doreen Valiente",
+    "category": "Esoteric & Occult",
+    "date": "1922-01-04",
+    "time": "12:00",
+    "location": "Mitcham, England",
+    "latitude": 51.4017,
+    "longitude": -0.155,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Mother of Modern Witchcraft, wrote Wiccan liturgy, Gardner's High Priestess",
+    "tags": [
+      "wicca",
+      "witchcraft",
+      "liturgy",
+      "british"
+    ]
+  },
+  {
+    "id": "buckland-raymond",
+    "name": "Raymond Buckland",
+    "category": "Esoteric & Occult",
+    "date": "1934-08-31",
+    "time": "12:00",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Brought Wicca to America, Buckland's Complete Book of Witchcraft, died 2017",
+    "tags": [
+      "wicca",
+      "american",
+      "educator",
+      "author"
+    ]
+  },
+  {
+    "id": "smith-pamela-colman",
+    "name": "Pamela Colman Smith",
+    "category": "Esoteric & Occult",
+    "date": "1878-02-16",
+    "time": "12:00",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Rider-Waite tarot illustrator, Golden Dawn member, artist, died in poverty",
+    "tags": [
+      "tarot",
+      "artist",
+      "golden-dawn",
+      "unrecognized"
+    ]
+  },
+  {
+    "id": "adams-evangeline",
+    "name": "Evangeline Adams",
+    "category": "Esoteric & Occult",
+    "date": "1868-02-08",
+    "time": "08:30",
+    "location": "Jersey City, New Jersey, USA",
+    "latitude": 40.7178,
+    "longitude": -74.0431,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Famous American astrologer, defended astrology in court, JP Morgan client",
+    "tags": [
+      "astrologer",
+      "famous",
+      "court-case",
+      "financial"
+    ]
+  },
+  {
+    "id": "leo-alan",
+    "name": "Alan Leo",
+    "category": "Esoteric & Occult",
+    "date": "1860-08-07",
+    "time": "05:49",
+    "location": "Westminster, England",
+    "latitude": 51.4975,
+    "longitude": -0.1357,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Father of modern astrology, Theosophist, simplified astrology for masses",
+    "tags": [
+      "astrologer",
+      "modern",
+      "theosophy",
+      "pioneer"
+    ]
+  },
+  {
+    "id": "jones-marc-edmund",
+    "name": "Marc Edmund Jones",
+    "category": "Esoteric & Occult",
+    "date": "1888-10-01",
+    "time": "08:37",
+    "location": "St. Louis, Missouri, USA",
+    "latitude": 38.627,
+    "longitude": -90.1994,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Sabian Symbols creator, astrologer, occultist, prolific writer",
+    "tags": [
+      "astrologer",
+      "sabian-symbols",
+      "occultist",
+      "american"
+    ]
+  },
+  {
+    "id": "tyl-noel",
+    "name": "Noel Tyl",
+    "category": "Esoteric & Occult",
+    "date": "1936-12-31",
+    "time": "05:08",
+    "location": "West Chester, Pennsylvania, USA",
+    "latitude": 39.9609,
+    "longitude": -75.6055,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Psychological astrology pioneer, 35+ books, opera singer, died 2019",
+    "tags": [
+      "astrologer",
+      "psychological",
+      "prolific",
+      "singer"
+    ]
+  },
+  {
+    "id": "ram-dass",
+    "name": "Ram Dass (Richard Alpert)",
+    "category": "Esoteric & Occult",
+    "date": "1931-04-06",
+    "time": "16:28",
+    "location": "Boston, Massachusetts, USA",
+    "latitude": 42.3601,
+    "longitude": -71.0589,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Be Here Now, Leary's Harvard colleague, guru, spiritual teacher, died 2019",
+    "tags": [
+      "spiritual",
+      "psychedelics",
+      "guru",
+      "teacher"
+    ]
+  },
+  {
+    "id": "castaneda-carlos",
+    "name": "Carlos Castaneda",
+    "category": "Esoteric & Occult",
+    "date": "1925-12-25",
+    "time": "12:00",
+    "location": "Cajamarca, Peru",
+    "latitude": -7.1631,
+    "longitude": -78.5126,
+    "timezone": "America/Lima",
+    "roddenRating": "C",
+    "source": "Biography (date disputed, time uncertain)",
+    "notes": "Don Juan books, Teachings, sorcery, controversial authenticity, died 1998",
+    "tags": [
+      "shamanism",
+      "sorcery",
+      "controversial",
+      "author"
+    ]
+  },
+  {
+    "id": "grof-stanislav",
+    "name": "Stanislav Grof",
+    "category": "Esoteric & Occult",
+    "date": "1931-07-01",
+    "time": "12:00",
+    "location": "Prague, Czechoslovakia",
+    "latitude": 50.0755,
+    "longitude": 14.4378,
+    "timezone": "Europe/Prague",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "LSD psychotherapy pioneer, transpersonal psychology, holotropic breathwork",
+    "tags": [
+      "psychedelics",
+      "psychology",
+      "transpersonal",
+      "breathwork"
+    ]
+  },
+  {
+    "id": "watts-alan",
+    "name": "Alan Watts",
+    "category": "Esoteric & Occult",
+    "date": "1915-01-06",
+    "time": "06:20",
+    "location": "Chislehurst, England",
+    "latitude": 51.4167,
+    "longitude": 0.0667,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Zen Buddhism popularizer, The Way of Zen, philosopher, died 1973",
+    "tags": [
+      "zen",
+      "philosopher",
+      "eastern",
+      "popularizer"
+    ]
+  },
+  {
+    "id": "ramana-maharshi",
+    "name": "Ramana Maharshi",
+    "category": "Esoteric & Occult",
+    "date": "1879-12-30",
+    "time": "01:00",
+    "location": "Tiruchuli, India",
+    "latitude": 9.4667,
+    "longitude": 77.8333,
+    "timezone": "Asia/Kolkata",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Advaita Vedanta sage, self-inquiry, Who am I, Arunachala, died 1950",
+    "tags": [
+      "advaita",
+      "sage",
+      "self-inquiry",
+      "indian"
+    ]
+  },
+  {
+    "id": "fortune-dion-extended",
+    "name": "William Butler Yeats",
+    "category": "Esoteric & Occult",
+    "date": "1865-06-13",
+    "time": "22:40",
+    "location": "Dublin, Ireland",
+    "latitude": 53.3498,
+    "longitude": -6.2603,
+    "timezone": "Europe/Dublin",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Poet, Nobel Prize, Golden Dawn member, Celtic mysticism, A Vision",
+    "tags": [
+      "poet",
+      "golden-dawn",
+      "nobel-prize",
+      "celtic"
+    ]
+  },
+  {
+    "id": "wilson-robert-anton",
+    "name": "Robert Anton Wilson",
+    "category": "Esoteric & Occult",
+    "date": "1932-01-18",
+    "time": "04:32",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Illuminatus! Trilogy, Cosmic Trigger, Discordianism, reality tunnels, died 2007",
+    "tags": [
+      "discordianism",
+      "author",
+      "reality-tunnels",
+      "fnord"
+    ]
+  },
+  {
+    "id": "carlin-george",
+    "name": "George Carlin",
+    "category": "Comedians",
+    "date": "1937-05-12",
+    "time": "13:30",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Seven Words, counterculture icon, social critic, dark philosopher, died 2008",
+    "tags": [
+      "stand-up",
+      "counterculture",
+      "social-critic",
+      "dark"
+    ]
+  },
+  {
+    "id": "pryor-richard",
+    "name": "Richard Pryor",
+    "category": "Comedians",
+    "date": "1940-12-01",
+    "time": "15:37",
+    "location": "Peoria, Illinois, USA",
+    "latitude": 40.6936,
+    "longitude": -89.589,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Revolutionary comedian, raw honesty, tragic life, multiple sclerosis, died 2005",
+    "tags": [
+      "stand-up",
+      "revolutionary",
+      "raw",
+      "tragic"
+    ]
+  },
+  {
+    "id": "williams-robin",
+    "name": "Robin Williams",
+    "category": "Comedians",
+    "date": "1951-07-21",
+    "time": "13:34",
+    "location": "Chicago, Illinois, USA",
+    "latitude": 41.8781,
+    "longitude": -87.6298,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Manic genius, improvisation master, Mrs. Doubtfire, Good Will Hunting, suicide 2014",
+    "tags": [
+      "stand-up",
+      "actor",
+      "manic",
+      "tragic"
+    ]
+  },
+  {
+    "id": "murphy-eddie",
+    "name": "Eddie Murphy",
+    "category": "Comedians",
+    "date": "1961-04-03",
+    "time": "16:45",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "SNL star, Raw, Beverly Hills Cop, characters, comeback, comedy legend",
+    "tags": [
+      "stand-up",
+      "snl",
+      "actor",
+      "characters"
+    ]
+  },
+  {
+    "id": "chaplin-charlie",
+    "name": "Charlie Chaplin",
+    "category": "Comedians",
+    "date": "1889-04-16",
+    "time": "20:00",
+    "location": "London, England",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Silent film genius, The Tramp, physical comedy master, pathos, exiled from USA",
+    "tags": [
+      "silent-film",
+      "physical",
+      "genius",
+      "tramp"
+    ]
+  },
+  {
+    "id": "keaton-buster",
+    "name": "Buster Keaton",
+    "category": "Comedians",
+    "date": "1895-10-04",
+    "time": "06:00",
+    "location": "Piqua, Kansas, USA",
+    "latitude": 37.9197,
+    "longitude": -95.5569,
+    "timezone": "America/Chicago",
+    "roddenRating": "B",
+    "source": "Biography",
+    "notes": "Silent film, The Great Stone Face, physical stunts, deadpan, tragic alcoholism",
+    "tags": [
+      "silent-film",
+      "physical",
+      "deadpan",
+      "stunts"
+    ]
+  },
+  {
+    "id": "rivers-joan",
+    "name": "Joan Rivers",
+    "category": "Comedians",
+    "date": "1933-06-08",
+    "time": "02:00",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Can we talk, pioneering female comic, E! Fashion Police, plastic surgery, died 2014",
+    "tags": [
+      "stand-up",
+      "pioneer",
+      "fashion",
+      "female"
+    ]
+  },
+  {
+    "id": "radner-gilda",
+    "name": "Gilda Radner",
+    "category": "Comedians",
+    "date": "1946-06-28",
+    "time": "20:30",
+    "location": "Detroit, Michigan, USA",
+    "latitude": 42.3314,
+    "longitude": -83.0458,
+    "timezone": "America/Detroit",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "SNL original, Roseanne Roseannadanna, sweet vulnerability, cancer death 1989",
+    "tags": [
+      "snl",
+      "characters",
+      "vulnerable",
+      "tragic"
+    ]
+  },
+  {
+    "id": "belushi-john",
+    "name": "John Belushi",
+    "category": "Comedians",
+    "date": "1949-01-24",
+    "time": "12:00",
+    "location": "Chicago, Illinois, USA",
+    "latitude": 41.8781,
+    "longitude": -87.6298,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "SNL, Blues Brothers, Animal House, wild energy, overdose death 1982",
+    "tags": [
+      "snl",
+      "blues-brothers",
+      "wild",
+      "tragic"
+    ]
+  },
+  {
+    "id": "farley-chris",
+    "name": "Chris Farley",
+    "category": "Comedians",
+    "date": "1964-02-15",
+    "time": "12:00",
+    "location": "Madison, Wisconsin, USA",
+    "latitude": 43.0731,
+    "longitude": -89.4012,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "SNL, Tommy Boy, physical comedy, van down by the river, overdose death 1997",
+    "tags": [
+      "snl",
+      "physical",
+      "lovable",
+      "tragic"
+    ]
+  },
+  {
+    "id": "hedberg-mitch",
+    "name": "Mitch Hedberg",
+    "category": "Comedians",
+    "date": "1968-02-24",
+    "time": "12:00",
+    "location": "Saint Paul, Minnesota, USA",
+    "latitude": 44.9537,
+    "longitude": -93.09,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "One-liners, surreal humor, sunglasses, I used to..., overdose death 2005",
+    "tags": [
+      "stand-up",
+      "one-liners",
+      "surreal",
+      "tragic"
+    ]
+  },
+  {
+    "id": "hicks-bill",
+    "name": "Bill Hicks",
+    "category": "Comedians",
+    "date": "1961-12-16",
+    "time": "11:05",
+    "location": "Valdosta, Georgia, USA",
+    "latitude": 30.8327,
+    "longitude": -83.2785,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Dark social critic, conspiracy theories, rage, cancer death 1994 age 32",
+    "tags": [
+      "stand-up",
+      "dark",
+      "social-critic",
+      "tragic"
+    ]
+  },
+  {
+    "id": "bruce-lenny",
+    "name": "Lenny Bruce",
+    "category": "Comedians",
+    "date": "1925-10-13",
+    "time": "21:00",
+    "location": "Mineola, New York, USA",
+    "latitude": 40.7493,
+    "longitude": -73.6404,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Pioneering satirist, obscenity arrests, free speech martyr, overdose death 1966",
+    "tags": [
+      "stand-up",
+      "satirist",
+      "pioneer",
+      "martyr"
+    ]
+  },
+  {
+    "id": "rock-chris",
+    "name": "Chris Rock",
+    "category": "Comedians",
+    "date": "1965-02-07",
+    "time": "19:00",
+    "location": "Andrews, South Carolina, USA",
+    "latitude": 33.4507,
+    "longitude": -79.5614,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Bring the Pain, sharp social commentary, slap incident, SNL alum",
+    "tags": [
+      "stand-up",
+      "social-commentary",
+      "sharp",
+      "snl"
+    ]
+  },
+  {
+    "id": "chappelle-dave",
+    "name": "Dave Chappelle",
+    "category": "Comedians",
+    "date": "1973-08-24",
+    "time": "00:43",
+    "location": "Washington, D.C., USA",
+    "latitude": 38.9072,
+    "longitude": -77.0369,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Chappelle's Show, walked away at peak, racial comedy, controversial genius",
+    "tags": [
+      "stand-up",
+      "sketch",
+      "racial",
+      "controversial"
+    ]
+  },
+  {
+    "id": "seinfeld-jerry",
+    "name": "Jerry Seinfeld",
+    "category": "Comedians",
+    "date": "1954-04-29",
+    "time": "10:20",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Seinfeld show about nothing, observational comedy, Comedians in Cars, billionaire",
+    "tags": [
+      "stand-up",
+      "sitcom",
+      "observational",
+      "billionaire"
+    ]
+  },
+  {
+    "id": "david-larry",
+    "name": "Larry David",
+    "category": "Comedians",
+    "date": "1947-07-02",
+    "time": "23:37",
+    "location": "Brooklyn, New York, USA",
+    "latitude": 40.6782,
+    "longitude": -73.9442,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Seinfeld co-creator, Curb Your Enthusiasm, neurotic, curmudgeon genius",
+    "tags": [
+      "stand-up",
+      "writer",
+      "neurotic",
+      "genius"
+    ]
+  },
+  {
+    "id": "martin-steve",
+    "name": "Steve Martin",
+    "category": "Comedians",
+    "date": "1945-08-14",
+    "time": "13:05",
+    "location": "Waco, Texas, USA",
+    "latitude": 31.5493,
+    "longitude": -97.1467,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Wild and crazy guy, banjo player, actor, art collector, playwright, intellectual",
+    "tags": [
+      "stand-up",
+      "actor",
+      "intellectual",
+      "banjo"
+    ]
+  },
+  {
+    "id": "fey-tina",
+    "name": "Tina Fey",
+    "category": "Comedians",
+    "date": "1970-05-18",
+    "time": "02:00",
+    "location": "Upper Darby, Pennsylvania, USA",
+    "latitude": 39.9543,
+    "longitude": -75.2602,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "SNL head writer, 30 Rock, Sarah Palin impression, Mean Girls, smart comedy",
+    "tags": [
+      "snl",
+      "writer",
+      "actress",
+      "smart"
+    ]
+  },
+  {
+    "id": "poehler-amy",
+    "name": "Amy Poehler",
+    "category": "Comedians",
+    "date": "1971-09-16",
+    "time": "10:48",
+    "location": "Newton, Massachusetts, USA",
+    "latitude": 42.337,
+    "longitude": -71.2092,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "SNL, Parks and Recreation, UCB, Yes Please, positive energy, feminist",
+    "tags": [
+      "snl",
+      "sitcom",
+      "feminist",
+      "positive"
+    ]
+  },
+  {
+    "id": "wiig-kristen",
+    "name": "Kristen Wiig",
+    "category": "Comedians",
+    "date": "1973-08-22",
+    "time": "12:00",
+    "location": "Canandaigua, New York, USA",
+    "latitude": 42.8873,
+    "longitude": -77.2881,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "SNL, Bridesmaids, character actress, Target Lady, quirky genius",
+    "tags": [
+      "snl",
+      "characters",
+      "quirky",
+      "actress"
+    ]
+  },
+  {
+    "id": "cleese-john",
+    "name": "John Cleese",
+    "category": "Comedians",
+    "date": "1939-10-27",
+    "time": "03:15",
+    "location": "Weston-super-Mare, England",
+    "latitude": 51.35,
+    "longitude": -2.9833,
+    "timezone": "Europe/London",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Monty Python, Fawlty Towers, Ministry of Silly Walks, British comedy legend",
+    "tags": [
+      "monty-python",
+      "british",
+      "absurd",
+      "legend"
+    ]
+  },
+  {
+    "id": "idle-eric",
+    "name": "Eric Idle",
+    "category": "Comedians",
+    "date": "1943-03-29",
+    "time": "12:00",
+    "location": "South Shields, England",
+    "latitude": 54.9959,
+    "longitude": -1.4323,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Monty Python, Always Look on the Bright Side, Spamalot, songwriter",
+    "tags": [
+      "monty-python",
+      "british",
+      "songwriter",
+      "optimistic"
+    ]
+  },
+  {
+    "id": "gervais-ricky",
+    "name": "Ricky Gervais",
+    "category": "Comedians",
+    "date": "1961-06-25",
+    "time": "12:00",
+    "location": "Reading, England",
+    "latitude": 51.4543,
+    "longitude": -0.9781,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "The Office creator, cringe comedy, atheist, Golden Globes host, provocateur",
+    "tags": [
+      "british",
+      "cringe",
+      "provocateur",
+      "atheist"
+    ]
+  },
+  {
+    "id": "hart-kevin",
+    "name": "Kevin Hart",
+    "category": "Comedians",
+    "date": "1979-07-06",
+    "time": "12:00",
+    "location": "Philadelphia, Pennsylvania, USA",
+    "latitude": 39.9526,
+    "longitude": -75.1652,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Height jokes, energetic, arena tours, social media king, actor, producer",
+    "tags": [
+      "stand-up",
+      "energetic",
+      "arena",
+      "social-media"
+    ]
+  },
+  {
+    "id": "schumer-amy",
+    "name": "Amy Schumer",
+    "category": "Comedians",
+    "date": "1981-06-01",
+    "time": "12:00",
+    "location": "New York City, New York, USA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Sexual humor, feminist, Inside Amy Schumer, Trainwreck, body positivity",
+    "tags": [
+      "stand-up",
+      "feminist",
+      "sexual",
+      "body-positive"
+    ]
+  },
+  {
+    "id": "izzard-eddie",
+    "name": "Eddie Izzard",
+    "category": "Comedians",
+    "date": "1962-02-07",
+    "time": "12:00",
+    "location": "Aden, Yemen",
+    "latitude": 12.7855,
+    "longitude": 45.0187,
+    "timezone": "Asia/Aden",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Transvestite comedian, historical tangents, runner, multilingual, gender-fluid",
+    "tags": [
+      "british",
+      "transvestite",
+      "historical",
+      "runner"
+    ]
+  },
+  {
+    "id": "oswalt-patton",
+    "name": "Patton Oswalt",
+    "category": "Comedians",
+    "date": "1969-01-27",
+    "time": "12:00",
+    "location": "Portsmouth, Virginia, USA",
+    "latitude": 36.8354,
+    "longitude": -76.2983,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Nerd comedian, wife's murder unsolved then solved, resilient, voice actor",
+    "tags": [
+      "stand-up",
+      "nerd",
+      "tragic",
+      "resilient"
+    ]
+  },
+  {
+    "id": "c-k-louis",
+    "name": "Louis C.K.",
+    "category": "Comedians",
+    "date": "1967-09-12",
+    "time": "12:00",
+    "location": "Washington, D.C., USA",
+    "latitude": 38.9072,
+    "longitude": -77.0369,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Dark introspective comedy, FX show, cancelled for misconduct, comeback attempted",
+    "tags": [
+      "stand-up",
+      "dark",
+      "introspective",
+      "cancelled"
+    ]
+  },
+  {
+    "id": "rockefeller-john-d",
+    "name": "John D. Rockefeller",
+    "category": "Business Titans",
+    "date": "1839-07-08",
+    "time": "12:00",
+    "location": "Richford, New York, USA",
+    "latitude": 42.3581,
+    "longitude": -76.1972,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Standard Oil, first billionaire, ruthless monopolist, Baptist, philanthropist",
+    "tags": [
+      "oil",
+      "monopolist",
+      "gilded-age",
+      "philanthropist"
+    ]
+  },
+  {
+    "id": "carnegie-andrew",
+    "name": "Andrew Carnegie",
+    "category": "Business Titans",
+    "date": "1835-11-25",
+    "time": "12:00",
+    "location": "Dunfermline, Scotland",
+    "latitude": 56.0719,
+    "longitude": -3.4393,
+    "timezone": "Europe/London",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Steel empire, Gospel of Wealth, libraries, rags to riches, philanthropist",
+    "tags": [
+      "steel",
+      "philanthropist",
+      "gilded-age",
+      "scottish"
+    ]
+  },
+  {
+    "id": "vanderbilt-cornelius",
+    "name": "Cornelius Vanderbilt",
+    "category": "Business Titans",
+    "date": "1794-05-27",
+    "time": "12:00",
+    "location": "Staten Island, New York, USA",
+    "latitude": 40.5795,
+    "longitude": -74.1502,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Railroads and shipping, The Commodore, Vanderbilt University, dynasty founder",
+    "tags": [
+      "railroads",
+      "shipping",
+      "commodore",
+      "dynasty"
+    ]
+  },
+  {
+    "id": "morgan-jp",
+    "name": "J.P. Morgan",
+    "category": "Business Titans",
+    "date": "1837-04-17",
+    "time": "05:00",
+    "location": "Hartford, Connecticut, USA",
+    "latitude": 41.7658,
+    "longitude": -72.6734,
+    "timezone": "America/New_York",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Banking titan, bailed out US government, art collector, nose, financial power",
+    "tags": [
+      "banking",
+      "finance",
+      "gilded-age",
+      "power"
+    ]
+  },
+  {
+    "id": "getty-j-paul",
+    "name": "J. Paul Getty",
+    "category": "Business Titans",
+    "date": "1892-12-15",
+    "time": "08:43",
+    "location": "Minneapolis, Minnesota, USA",
+    "latitude": 44.9778,
+    "longitude": -93.265,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Oil tycoon, richest man in world, kidnapping ransom, art collector, miser",
+    "tags": [
+      "oil",
+      "richest",
+      "miser",
+      "art-collector"
+    ]
+  },
+  {
+    "id": "hughes-howard",
+    "name": "Howard Hughes",
+    "category": "Business Titans",
+    "date": "1905-12-24",
+    "time": "00:10",
+    "location": "Houston, Texas, USA",
+    "latitude": 29.7604,
+    "longitude": -95.3698,
+    "timezone": "America/Chicago",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Aviator, filmmaker, eccentric recluse, OCD, died mysteriously 1976",
+    "tags": [
+      "aviation",
+      "film",
+      "eccentric",
+      "recluse"
+    ]
+  },
+  {
+    "id": "walton-sam",
+    "name": "Sam Walton",
+    "category": "Business Titans",
+    "date": "1918-03-29",
+    "time": "12:00",
+    "location": "Kingfisher, Oklahoma, USA",
+    "latitude": 35.8612,
+    "longitude": -97.9314,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Walmart founder, retail revolution, richest man, frugal, died 1992",
+    "tags": [
+      "retail",
+      "walmart",
+      "frugal",
+      "revolutionary"
+    ]
+  },
+  {
+    "id": "hearst-william-randolph",
+    "name": "William Randolph Hearst",
+    "category": "Business Titans",
+    "date": "1863-04-29",
+    "time": "11:00",
+    "location": "San Francisco, California, USA",
+    "latitude": 37.7749,
+    "longitude": -122.4194,
+    "timezone": "America/Los_Angeles",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Media empire, yellow journalism, Citizen Kane inspiration, San Simeon castle",
+    "tags": [
+      "media",
+      "newspapers",
+      "yellow-journalism",
+      "castle"
+    ]
+  },
+  {
+    "id": "murdoch-rupert",
+    "name": "Rupert Murdoch",
+    "category": "Business Titans",
+    "date": "1931-03-11",
+    "time": "23:15",
+    "location": "Melbourne, Australia",
+    "latitude": -37.8136,
+    "longitude": 144.9631,
+    "timezone": "Australia/Melbourne",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "News Corp, Fox News, media empire, political influence, controversial",
+    "tags": [
+      "media",
+      "news",
+      "political",
+      "controversial"
+    ]
+  },
+  {
+    "id": "turner-ted",
+    "name": "Ted Turner",
+    "category": "Business Titans",
+    "date": "1938-11-19",
+    "time": "08:50",
+    "location": "Cincinnati, Ohio, USA",
+    "latitude": 39.1031,
+    "longitude": -84.512,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "CNN founder, 24-hour news, Atlanta Braves, bison rancher, Jane Fonda ex",
+    "tags": [
+      "media",
+      "cnn",
+      "24-hour-news",
+      "colorful"
+    ]
+  },
+  {
+    "id": "astor-john-jacob",
+    "name": "John Jacob Astor",
+    "category": "Business Titans",
+    "date": "1763-07-17",
+    "time": "12:00",
+    "location": "Walldorf, Germany",
+    "latitude": 49.3042,
+    "longitude": 8.6444,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Fur trade, real estate, first multi-millionaire in America, Astor dynasty",
+    "tags": [
+      "fur-trade",
+      "real-estate",
+      "first-millionaire",
+      "dynasty"
+    ]
+  },
+  {
+    "id": "woolworth-frank",
+    "name": "Frank Woolworth",
+    "category": "Business Titans",
+    "date": "1852-04-13",
+    "time": "12:00",
+    "location": "Rodman, New York, USA",
+    "latitude": 43.85,
+    "longitude": -75.9333,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Five-and-dime stores, retail pioneer, Woolworth Building, died 1919",
+    "tags": [
+      "retail",
+      "five-and-dime",
+      "pioneer",
+      "building"
+    ]
+  },
+  {
+    "id": "lauder-estee",
+    "name": "Estée Lauder",
+    "category": "Business Titans",
+    "date": "1908-07-01",
+    "time": "12:00",
+    "location": "Queens, New York, USA",
+    "latitude": 40.7282,
+    "longitude": -73.7949,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Cosmetics empire, self-made billionaire, gift with purchase, beauty icon",
+    "tags": [
+      "cosmetics",
+      "self-made",
+      "female",
+      "beauty"
+    ]
+  },
+  {
+    "id": "stewart-martha",
+    "name": "Martha Stewart",
+    "category": "Business Titans",
+    "date": "1941-08-03",
+    "time": "13:33",
+    "location": "Jersey City, New Jersey, USA",
+    "latitude": 40.7178,
+    "longitude": -74.0431,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Lifestyle empire, insider trading prison, comeback, perfectionist, Snoop Dogg friend",
+    "tags": [
+      "lifestyle",
+      "prison",
+      "comeback",
+      "perfectionist"
+    ]
+  },
+  {
+    "id": "soros-george",
+    "name": "George Soros",
+    "category": "Business Titans",
+    "date": "1930-08-12",
+    "time": "06:00",
+    "location": "Budapest, Hungary",
+    "latitude": 47.4979,
+    "longitude": 19.0402,
+    "timezone": "Europe/Budapest",
+    "roddenRating": "A",
+    "source": "Biography",
+    "notes": "Hedge fund titan, broke Bank of England, Open Society, philanthropist, villain to right",
+    "tags": [
+      "finance",
+      "hedge-fund",
+      "philanthropist",
+      "controversial"
+    ]
+  },
+  {
+    "id": "icahn-carl",
+    "name": "Carl Icahn",
+    "category": "Business Titans",
+    "date": "1936-02-16",
+    "time": "12:00",
+    "location": "Queens, New York, USA",
+    "latitude": 40.7282,
+    "longitude": -73.7949,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Corporate raider, activist investor, TWA takeover, billionaire, ruthless",
+    "tags": [
+      "finance",
+      "activist-investor",
+      "raider",
+      "ruthless"
+    ]
+  },
+  {
+    "id": "bloomberg-michael",
+    "name": "Michael Bloomberg",
+    "category": "Business Titans",
+    "date": "1942-02-14",
+    "time": "15:23",
+    "location": "Boston, Massachusetts, USA",
+    "latitude": 42.3601,
+    "longitude": -71.0589,
+    "timezone": "America/New_York",
+    "roddenRating": "AA",
+    "source": "Birth certificate",
+    "notes": "Bloomberg terminals, NYC mayor, presidential run, billionaire, philanthropist",
+    "tags": [
+      "finance",
+      "terminals",
+      "mayor",
+      "presidential"
+    ]
+  },
+  {
+    "id": "koch-charles",
+    "name": "Charles Koch",
+    "category": "Business Titans",
+    "date": "1935-11-01",
+    "time": "12:00",
+    "location": "Wichita, Kansas, USA",
+    "latitude": 37.6872,
+    "longitude": -97.3301,
+    "timezone": "America/Chicago",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Koch Industries, libertarian, political donor, brother David died 2019",
+    "tags": [
+      "oil",
+      "libertarian",
+      "political",
+      "brothers"
+    ]
+  },
+  {
+    "id": "trump-fred",
+    "name": "Fred Trump",
+    "category": "Business Titans",
+    "date": "1905-10-11",
+    "time": "12:00",
+    "location": "Bronx, New York, USA",
+    "latitude": 40.8448,
+    "longitude": -73.8648,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Real estate developer, Donald's father, Queens/Brooklyn, racist housing practices",
+    "tags": [
+      "real-estate",
+      "racist",
+      "father",
+      "queens"
+    ]
+  },
+  {
+    "id": "hilton-conrad",
+    "name": "Conrad Hilton",
+    "category": "Business Titans",
+    "date": "1887-12-25",
+    "time": "12:00",
+    "location": "San Antonio, New Mexico, USA",
+    "latitude": 33.917,
+    "longitude": -106.8472,
+    "timezone": "America/Denver",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Hilton Hotels founder, Zsa Zsa Gabor ex, Paris Hilton grandfather",
+    "tags": [
+      "hotels",
+      "hospitality",
+      "founder",
+      "dynasty"
+    ]
+  },
+  {
+    "id": "marriott-j-willard",
+    "name": "J. Willard Marriott",
+    "category": "Business Titans",
+    "date": "1900-09-17",
+    "time": "12:00",
+    "location": "Marriott, Utah, USA",
+    "latitude": 41.25,
+    "longitude": -112.0333,
+    "timezone": "America/Denver",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Marriott Hotels founder, Mormon, root beer stand to empire, family business",
+    "tags": [
+      "hotels",
+      "hospitality",
+      "mormon",
+      "founder"
+    ]
+  },
+  {
+    "id": "rothschild-mayer-amschel",
+    "name": "Mayer Amschel Rothschild",
+    "category": "Business Titans",
+    "date": "1744-02-23",
+    "time": "12:00",
+    "location": "Frankfurt, Germany",
+    "latitude": 50.1109,
+    "longitude": 8.6821,
+    "timezone": "Europe/Berlin",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Banking dynasty founder, five sons across Europe, Rothschild banking empire",
+    "tags": [
+      "banking",
+      "dynasty",
+      "european",
+      "founder"
+    ]
+  },
+  {
+    "id": "guggenheim-meyer",
+    "name": "Meyer Guggenheim",
+    "category": "Business Titans",
+    "date": "1828-02-01",
+    "time": "12:00",
+    "location": "Lengnau, Switzerland",
+    "latitude": 47.5167,
+    "longitude": 8.3167,
+    "timezone": "Europe/Zurich",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Mining and smelting, Guggenheim dynasty, museum benefactors, seven sons",
+    "tags": [
+      "mining",
+      "smelting",
+      "dynasty",
+      "philanthropist"
+    ]
+  },
+  {
+    "id": "mellon-andrew",
+    "name": "Andrew Mellon",
+    "category": "Business Titans",
+    "date": "1855-03-24",
+    "time": "12:00",
+    "location": "Pittsburgh, Pennsylvania, USA",
+    "latitude": 40.4406,
+    "longitude": -79.9959,
+    "timezone": "America/New_York",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Banking, Treasury Secretary, art collector, National Gallery donor, Prohibition",
+    "tags": [
+      "banking",
+      "treasury",
+      "art-collector",
+      "philanthropist"
+    ]
+  },
+  {
+    "id": "tata-jamsetji",
+    "name": "Jamsetji Tata",
+    "category": "Business Titans",
+    "date": "1839-03-03",
+    "time": "12:00",
+    "location": "Navsari, India",
+    "latitude": 20.95,
+    "longitude": 72.9167,
+    "timezone": "Asia/Kolkata",
+    "roddenRating": "C",
+    "source": "Biography (time uncertain)",
+    "notes": "Tata Group founder, Indian industry pioneer, steel, hotels, nation-builder",
+    "tags": [
+      "conglomerate",
+      "indian",
+      "founder",
+      "pioneer"
+    ]
   }
 ];

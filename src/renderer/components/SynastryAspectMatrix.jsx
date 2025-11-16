@@ -32,10 +32,15 @@ const ASPECT_CONFIG = {
   'SEXTILE': { symbol: '⚹', color: '#4169E1', name: 'Sextile' },
   'SQUARE': { symbol: '□', color: '#DC143C', name: 'Square' },
   'TRINE': { symbol: '△', color: '#0000FF', name: 'Trine' },
-  'OPPOSITION': { symbol: '☍', color: '#FF4500', name: 'Opposition' }
+  'OPPOSITION': { symbol: '☍', color: '#FF4500', name: 'Opposition' },
+  'SEMISEXTILE': { symbol: '⚺', color: '#32CD32', name: 'Semi-Sextile' },
+  'QUINCUNX': { symbol: '⚻', color: '#228B22', name: 'Quincunx' }
 };
 
-function SynastryAspectMatrix({ chartData, activeSynastryAspects, onSynastryAspectToggle, displaySettings = CHART_CONFIG.defaultDisplay }) {
+function SynastryAspectMatrix({ chartData, activeSynastryAspects: activeSynastryAspectsProp = new Set(), onSynastryAspectToggle, displaySettings = CHART_CONFIG.defaultDisplay }) {
+  // Use default parameter to ensure we always have a Set
+  const activeSynastryAspects = activeSynastryAspectsProp instanceof Set ? activeSynastryAspectsProp : new Set();
+
   // Define full planet order (including optional bodies)
   const fullPlanetOrder = [
     'Sun', 'Moon', 'Mercury', 'Venus', 'Mars',
@@ -68,6 +73,7 @@ function SynastryAspectMatrix({ chartData, activeSynastryAspects, onSynastryAspe
   // Check if aspect is active
   const isAspectActive = (aspect) => {
     if (!aspect) return false;
+    if (!activeSynastryAspects || typeof activeSynastryAspects.has !== 'function') return true;
     const key = `${aspect.planet1}-${aspect.planet2}`;
 
     // If activeSynastryAspects is empty, default to showing all aspects
@@ -88,9 +94,11 @@ function SynastryAspectMatrix({ chartData, activeSynastryAspects, onSynastryAspe
   // Handle planet header click - toggle all aspects for that planet
   const handlePlanetClick = (planet, isChartB) => {
     if (!chartData || !chartData.synastryAspects) return;
+    if (!onSynastryAspectToggle) return;
 
     // Find all aspects involving this planet
     const planetAspects = chartData.synastryAspects.filter(aspect => {
+      if (!aspect || !aspect.planet1 || !aspect.planet2) return false;
       if (isChartB) {
         // Chart B planet (columns) - match planet2
         return aspect.planet2 === planet;
@@ -104,12 +112,14 @@ function SynastryAspectMatrix({ chartData, activeSynastryAspects, onSynastryAspe
 
     // Check if ANY aspects for this planet are currently active
     const anyActive = planetAspects.some(aspect => {
+      if (!activeSynastryAspects || typeof activeSynastryAspects.has !== 'function') return false;
       const key = `${aspect.planet1}-${aspect.planet2}`;
       return activeSynastryAspects.has(key);
     });
 
     // Determine which aspects to toggle
     const aspectsToToggle = planetAspects.filter(aspect => {
+      if (!activeSynastryAspects || typeof activeSynastryAspects.has !== 'function') return false;
       const key = `${aspect.planet1}-${aspect.planet2}`;
       const isCurrentlyActive = activeSynastryAspects.has(key);
 
@@ -130,25 +140,31 @@ function SynastryAspectMatrix({ chartData, activeSynastryAspects, onSynastryAspe
 
   // Check if all aspects for a planet are inactive
   const isPlanetInactive = (planet, isChartB) => {
-    if (!chartData || !chartData.synastryAspects) return false;
+    try {
+      if (!chartData || !chartData.synastryAspects) return false;
+      if (!activeSynastryAspects || typeof activeSynastryAspects.has !== 'function') return false;
 
-    const planetAspects = chartData.synastryAspects.filter(aspect => {
-      if (isChartB) {
-        // Chart B planet (columns) - match planet2
-        return aspect.planet2 === planet;
-      } else {
-        // Chart A planet (rows) - match planet1
-        return aspect.planet1 === planet;
-      }
-    });
+      const planetAspects = chartData.synastryAspects.filter(aspect => {
+        if (isChartB) {
+          // Chart B planet (columns) - match planet2
+          return aspect.planet2 === planet;
+        } else {
+          // Chart A planet (rows) - match planet1
+          return aspect.planet1 === planet;
+        }
+      });
 
-    if (planetAspects.length === 0) return false;
+      if (planetAspects.length === 0) return false;
 
-    // Return true if ALL aspects are inactive
-    return planetAspects.every(aspect => {
-      const key = `${aspect.planet1}-${aspect.planet2}`;
-      return !activeSynastryAspects.has(key);
-    });
+      // Return true if ALL aspects are inactive
+      return planetAspects.every(aspect => {
+        const key = `${aspect.planet1}-${aspect.planet2}`;
+        return !activeSynastryAspects.has(key);
+      });
+    } catch (error) {
+      console.error('[isPlanetInactive] Error:', error);
+      return false;
+    }
   };
 
   // Get cell size based on orb (tighter orb = larger symbol)
@@ -172,7 +188,6 @@ function SynastryAspectMatrix({ chartData, activeSynastryAspects, onSynastryAspe
 
   return (
     <div className="aspect-matrix-container">
-      <h4>💞 Synastry Aspect Matrix</h4>
       <p style={{ fontSize: '0.9em', marginBottom: '10px', color: '#666' }}>
         <strong>Rows:</strong> Chart A planets • <strong>Columns:</strong> Chart B planets
       </p>
@@ -244,6 +259,8 @@ function SynastryAspectMatrix({ chartData, activeSynastryAspects, onSynastryAspe
         <div><span style={{ color: ASPECT_CONFIG.SQUARE.color }}>□</span> Square</div>
         <div><span style={{ color: ASPECT_CONFIG.TRINE.color }}>△</span> Trine</div>
         <div><span style={{ color: ASPECT_CONFIG.OPPOSITION.color }}>☍</span> Opposition</div>
+        <div><span style={{ color: ASPECT_CONFIG.SEMISEXTILE.color }}>⚺</span> Semi-Sextile</div>
+        <div><span style={{ color: ASPECT_CONFIG.QUINCUNX.color }}>⚻</span> Quincunx</div>
       </div>
     </div>
   );
