@@ -33,7 +33,9 @@ export const PLANET_GLYPHS = {
 
   // Centaurs (optional)
   'Chiron': '⚷',
-  'Pholus': '⯛',  // Note: Pholus has no official Unicode glyph, using approximation
+  'Pholus': 'ϕ',  // Greek letter phi - commonly used for Pholus
+  'Nessus': 'ν',  // Greek letter nu - commonly used for Nessus
+  'Chariklo': 'χ',  // Greek letter chi - commonly used for Chariklo
 
   // Asteroids (optional)
   'Ceres': '⚳',
@@ -62,7 +64,7 @@ export const BODY_CATEGORIES = {
     'North Node', 'South Node'
   ],
   centaurs: [
-    'Chiron', 'Pholus'
+    'Chiron', 'Pholus', 'Nessus', 'Chariklo'
   ],
   asteroids: [
     'Ceres', 'Pallas', 'Juno', 'Vesta'

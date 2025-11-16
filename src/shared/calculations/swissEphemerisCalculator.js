@@ -52,6 +52,8 @@ const PLANET_IDS = {
   TRUE_LILITH: constants.SE_OSCU_APOG,   // 13 (True/Oscillating Black Moon Lilith)
   CHIRON: constants.SE_CHIRON,     // 15 (Centaur)
   PHOLUS: constants.SE_PHOLUS,     // 16 (Centaur)
+  NESSUS: constants.SE_AST_OFFSET + 7066,  // Nessus (Centaur) - asteroid number 7066
+  CHARIKLO: constants.SE_AST_OFFSET + 10199,  // Chariklo (Centaur) - asteroid number 10199
   CERES: constants.SE_CERES,       // 17 (Asteroid)
   PALLAS: constants.SE_PALLAS,     // 18 (Asteroid)
   JUNO: constants.SE_JUNO,         // 19 (Asteroid)
@@ -191,6 +193,9 @@ function calculateChart(params) {
     const centaurList = [
       { key: 'CHIRON', id: PLANET_IDS.CHIRON, name: 'Chiron' },
       { key: 'PHOLUS', id: PLANET_IDS.PHOLUS, name: 'Pholus' }
+      // TODO: Re-enable when ephemeris files are available
+      // { key: 'NESSUS', id: PLANET_IDS.NESSUS, name: 'Nessus' },
+      // { key: 'CHARIKLO', id: PLANET_IDS.CHARIKLO, name: 'Chariklo' }
     ];
 
     // Asteroids

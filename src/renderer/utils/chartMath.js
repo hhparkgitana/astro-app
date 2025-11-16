@@ -269,7 +269,9 @@ export const CHART_CONFIG = {
 
       // Centaurs (optional)
       'Chiron': '⚷',
-      'Pholus': '⯛',
+      'Pholus': 'ϕ',
+      'Nessus': 'ν',
+      'Chariklo': 'χ',
 
       // Asteroids (optional)
       'Ceres': '⚳',
@@ -298,7 +300,7 @@ export const CHART_CONFIG = {
       'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto',
       'North Node', 'South Node'
     ],
-    centaurs: ['Chiron', 'Pholus'],
+    centaurs: ['Chiron', 'Pholus', 'Nessus', 'Chariklo'],
     asteroids: ['Ceres', 'Pallas', 'Juno', 'Vesta'],
     calculatedPoints: ['Lilith (Mean)', 'Lilith (True)']
   },
