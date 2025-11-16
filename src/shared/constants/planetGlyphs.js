@@ -44,8 +44,8 @@ export const PLANET_GLYPHS = {
   'Vesta': '⚶',
 
   // Calculated Points (optional)
-  'Lilith (Mean)': '⚸',
-  'Lilith (True)': '⚸',
+  'Lilith (Mean)': '⚸',  // Black Moon Lilith (Mean)
+  'Lilith (True)': '⚸⃰',  // Black Moon Lilith (True/Oscillating) - with combining asterisk to distinguish
 
   // Angles (always displayed)
   'Ascendant': 'AC',
