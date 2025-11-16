@@ -29,6 +29,9 @@ const { findTransitExactitude, findDatabaseImpact, formatDate, getZodiacSign } =
 // Load progressions calculator
 const { calculateSecondaryProgressions, formatProgressionInfo } = require(path.join(__dirname, '..', 'shared', 'calculations', 'progressionsCalculator.js'));
 
+// Load aspect pattern detection
+const { detectAspectPatterns } = require(path.join(__dirname, '..', 'shared', 'calculations', 'aspectsCalculator.node.js'));
+
 // Load eclipse calculator
 const { findEclipses, findEclipsesAffectingChart, findEclipsesDatabaseImpact, formatEclipseInfo } = require(path.join(__dirname, '..', 'shared', 'calculations', 'eclipseCalculator.js'));
 
@@ -719,6 +722,47 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
         composite.aspects.forEach(aspect => {
           contextMessage += `${aspect.planet1} ${aspect.symbol} ${aspect.planet2} (orb: ${aspect.orb.toFixed(1)}°)\n`;
         });
+
+        // Detect and add aspect patterns
+        const patterns = detectAspectPatterns(composite.aspects, composite.planets);
+
+        // Add detected patterns
+        if (patterns.yods.length > 0 || patterns.tSquares.length > 0 ||
+            patterns.grandTrines.length > 0 || patterns.grandCrosses.length > 0 ||
+            patterns.kites.length > 0) {
+          contextMessage += `\nCOMPOSITE ASPECT PATTERNS:\n`;
+
+          patterns.yods.forEach((yod, idx) => {
+            contextMessage += `YOD ${idx + 1}: ${yod.description}\n`;
+            contextMessage += `  Base: ${yod.base1} ⚹ ${yod.base2} (sextile, orb: ${yod.sextile.orb.toFixed(1)}°)\n`;
+            contextMessage += `  Apex: ${yod.apex} (quincunx to both base planets)\n`;
+            contextMessage += `  ${yod.base1} ⚻ ${yod.apex} (orb: ${yod.quincunx1.orb.toFixed(1)}°)\n`;
+            contextMessage += `  ${yod.base2} ⚻ ${yod.apex} (orb: ${yod.quincunx2.orb.toFixed(1)}°)\n`;
+          });
+
+          patterns.tSquares.forEach((tsq, idx) => {
+            contextMessage += `T-SQUARE ${idx + 1}: ${tsq.description}\n`;
+            contextMessage += `  Opposition: ${tsq.opposition1} ☍ ${tsq.opposition2} (orb: ${tsq.oppositionAspect.orb.toFixed(1)}°)\n`;
+            contextMessage += `  Apex: ${tsq.apex} (squares both)\n`;
+          });
+
+          patterns.grandTrines.forEach((gt, idx) => {
+            contextMessage += `GRAND TRINE ${idx + 1}: ${gt.description}\n`;
+            contextMessage += `  ${gt.planet1} △ ${gt.planet2} △ ${gt.planet3}\n`;
+          });
+
+          patterns.grandCrosses.forEach((gc, idx) => {
+            contextMessage += `GRAND CROSS ${idx + 1}: ${gc.description}\n`;
+            contextMessage += `  ${gc.planet1} ☍ ${gc.planet3}, ${gc.planet2} ☍ ${gc.planet4}\n`;
+            contextMessage += `  All planets square each other\n`;
+          });
+
+          patterns.kites.forEach((kite, idx) => {
+            contextMessage += `KITE ${idx + 1}: ${kite.description}\n`;
+            contextMessage += `  Grand Trine: ${kite.grandTrine.planet1}, ${kite.grandTrine.planet2}, ${kite.grandTrine.planet3}\n`;
+            contextMessage += `  Apex: ${kite.apex} (opposes one trine planet, sextiles the others)\n`;
+          });
+        }
       }
       contextMessage += `\n---\n\n`;
     }
@@ -773,6 +817,14 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
 
 You must analyze astrological charts using ONLY the data provided. Never invent or assume aspects.
 
+⚠️ MOST CRITICAL RULE - READ THIS FIRST ⚠️
+When analyzing a COMPOSITE CHART:
+- ONLY look at aspects under the heading "COMPOSITE ASPECTS:"
+- These aspects do NOT contain "(Chart A)" or "(Chart B)" in their text
+- If an aspect says "(Chart A)" or "(Chart B)", it is SYNASTRY, not composite
+- Composite aspects look like: "Sun ⚻ Saturn (orb: 1.1°)" - NO mention of Chart A or Chart B
+- Synastry aspects look like: "Sun (Chart A) △ Saturn (Chart B) (orb: 4.2°)" - WITH Chart A and Chart B
+
 ASPECT SYMBOLS AND MEANINGS (CRITICAL):
 The chart data uses these EXACT Unicode symbols for aspects:
 - ☌ = Conjunction (0°)
@@ -812,6 +864,35 @@ This application supports secondary progressions using the day-for-a-year method
 
 COMPOSITE CHARTS:
 This application supports composite charts calculated using the midpoint method. A composite chart represents the relationship itself as a separate entity. Each planet in the composite chart is positioned at the midpoint between the two individuals' natal planets. For example, if Person A's Sun is at 10° Aries and Person B's Sun is at 20° Aries, the composite Sun would be at 15° Aries. When planets are more than 180° apart, the midpoint is calculated "the short way around" the zodiac. The composite chart has its own houses, angles, and aspects, and should be interpreted as describing the nature and purpose of the relationship itself, not the individuals within it.
+
+CRITICAL - DISTINGUISHING CHART TYPES:
+When analyzing aspects, you MUST distinguish between three different types of aspect data:
+
+1. NATAL ASPECTS: Aspects within a single person's birth chart
+   - Format: "Sun ☌ Moon (orb: 3.5°)"
+   - Found under each person's chart section (e.g., "📊 DONALD TRUMP (NATAL CHART)")
+   - These are aspects between planets in ONE person's chart
+
+2. SYNASTRY ASPECTS: Aspects between two different people's charts
+   - Format: "Sun (Chart A) ☌ Moon (Chart B) (orb: 3.5°)"
+   - Found under section labeled "💞 SYNASTRY ASPECTS (Chart A ↔ Chart B)"
+   - These show how one person's planets aspect another person's planets
+   - ALWAYS includes "(Chart A)" and "(Chart B)" in the aspect description
+
+3. COMPOSITE ASPECTS: Aspects within the composite (midpoint) chart
+   - Format: "Sun ☌ Moon (orb: 3.5°)"
+   - Found under section labeled "🔮 COMPOSITE CHART (Relationship Midpoints)" in the "COMPOSITE ASPECTS:" subsection
+   - These are aspects between COMPOSITE PLANETS (the midpoints), NOT between two people
+   - Does NOT include "(Chart A)" or "(Chart B)" in the aspect description
+   - The composite chart is treated as a single entity representing the relationship
+
+CRITICAL RULE: When the user asks about "the composite chart", "this composite", or refers to composite aspects/patterns:
+- You MUST ONLY read aspects from the "COMPOSITE ASPECTS:" section
+- You MUST COMPLETELY IGNORE the "SYNASTRY ASPECTS" section
+- You MUST COMPLETELY IGNORE the individual natal chart sections
+- If you reference an aspect that includes "(Chart A)" or "(Chart B)", YOU ARE WRONG - that is synastry, not composite
+
+Similarly, when asked about synastry, look ONLY at the "SYNASTRY ASPECTS" section (which will have "(Chart A)" and "(Chart B)" labels).
 
 SABIAN SYMBOLS:
 Each planet, angle (Ascendant, Midheaven), and transit position includes its Sabian Symbol - a symbolic image and keynote for that specific degree. The Sabian Symbols, channeled by Elsie Wheeler and interpreted by Marc Edmund Jones and Dane Rudhyar, provide rich symbolic meaning for the exact degree of each placement. When interpreting charts, you can reference these symbols to add depth and symbolic resonance to your analysis. The symbols are provided in the chart data for each planetary position and angle. When discussing Sabian symbols, ALWAYS include BOTH the full symbol description AND the keynote to provide complete symbolic meaning.
