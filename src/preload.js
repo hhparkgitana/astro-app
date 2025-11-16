@@ -7,7 +7,12 @@ contextBridge.exposeInMainWorld('astro', {
   findEclipses: (params) => ipcRenderer.invoke('find-eclipses', params),
   findEclipseActivations: (params) => ipcRenderer.invoke('find-eclipse-activations', params),
   calculateTransitTimeline: (params) => ipcRenderer.invoke('calculate-transit-timeline', params),
+  searchPlanetaryConfigurations: (criteria, startDate, endDate) =>
+    ipcRenderer.invoke('search-planetary-configurations', { criteria, startDate, endDate }),
+  getEphemerisMetadata: () => ipcRenderer.invoke('get-ephemeris-metadata'),
   chatWithClaude: (params) => ipcRenderer.invoke('chat-with-claude', params),
   exportChartImage: (params) => ipcRenderer.invoke('export-chart-image', params),
-  writeDebugLog: (params) => ipcRenderer.invoke('write-debug-log', params)
+  writeDebugLog: (params) => ipcRenderer.invoke('write-debug-log', params),
+  getApiKey: () => ipcRenderer.invoke('get-api-key'),
+  setApiKey: (apiKey) => ipcRenderer.invoke('set-api-key', apiKey)
 });

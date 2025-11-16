@@ -5,9 +5,15 @@ export default defineConfig({
   plugins: [react()],
   base: './',
   build: {
-    outDir: 'dist',
+    outDir: 'build/renderer',
+    rollupOptions: {
+      external: ['better-sqlite3', 'electron']
+    }
   },
   server: {
     port: 3456,  // Changed from 3000!
   },
+  optimizeDeps: {
+    exclude: ['better-sqlite3']
+  }
 });

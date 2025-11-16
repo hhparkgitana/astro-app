@@ -13,6 +13,7 @@ import ChatPanel from './components/ChatPanel';
 import SaveChartModal from './components/SaveChartModal';
 import ChartLibrary from './components/ChartLibrary';
 import EclipseDashboard from './components/EclipseDashboard';
+import ConfigurationSearch from './components/ConfigurationSearch';
 import TimeSlider from './components/TimeSlider';
 import { DateTime } from 'luxon';
 import { findAspect, getAngularDistance, calculateAspects } from '../shared/calculations/aspectsCalculator';
@@ -2305,6 +2306,13 @@ function App() {
             title="Track Eclipse Activations"
           >
             🌑 Eclipses
+          </button>
+          <button
+            className={`mode-btn ${viewMode === 'configSearch' ? 'active' : ''}`}
+            onClick={() => setViewMode('configSearch')}
+            title="Search for Planetary Configurations"
+          >
+            🔍 Configuration Search
           </button>
           <button
             className={`mode-btn ${isChatOpen ? 'active' : ''}`}
@@ -4956,6 +4964,8 @@ function App() {
           </div>
         ) : viewMode === 'eclipses' ? (
           <EclipseDashboard chartData={chartData} />
+        ) : viewMode === 'configSearch' ? (
+          <ConfigurationSearch />
         ) : null}
       </main>
 

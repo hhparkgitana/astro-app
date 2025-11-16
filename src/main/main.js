@@ -3,6 +3,20 @@ const { autoUpdater } = require('electron-updater');
 const path = require('path');
 const fs = require('fs');
 
+// Store will be initialized asynchronously
+let store = null;
+
+// Initialize electron-store asynchronously (ES module)
+async function initializeStore() {
+  if (!store) {
+    const { default: Store } = await import('electron-store');
+    store = new Store({
+      encryptionKey: 'astrid-secure-storage-key-v1'
+    });
+  }
+  return store;
+}
+
 // Load environment variables
 require('dotenv').config();
 
@@ -17,6 +31,9 @@ const { calculateSecondaryProgressions, formatProgressionInfo } = require(path.j
 
 // Load eclipse calculator
 const { findEclipses, findEclipsesAffectingChart, findEclipsesDatabaseImpact, formatEclipseInfo } = require(path.join(__dirname, '..', 'shared', 'calculations', 'eclipseCalculator.js'));
+
+// Load configuration search calculator
+const { searchPlanetaryConfigurations, getDatabaseMetadata } = require(path.join(__dirname, '..', 'shared', 'calculations', 'configurationSearchCalculator.js'));
 
 // Lazy-load RAG system for astrological texts (only when needed to avoid Electron compatibility issues)
 let rag = null;
@@ -121,8 +138,14 @@ function createWindow() {
     }
   });
 
-  mainWindow.loadURL('http://localhost:3456');  // Changed from 3000!
-  mainWindow.webContents.openDevTools();
+  // In development, load from Vite dev server
+  // In production, load from built files
+  if (app.isPackaged) {
+    mainWindow.loadFile(path.join(__dirname, '..', '..', 'build', 'renderer', 'index.html'));
+  } else {
+    mainWindow.loadURL('http://localhost:3456');
+    mainWindow.webContents.openDevTools();
+  }
 
   mainWindow.on('closed', () => {
     mainWindow = null;
@@ -140,6 +163,34 @@ ipcMain.handle('calculate-chart', async (event, params) => {
       success: false,
       error: error.message,
     };
+  }
+});
+
+// Handle API key get requests
+ipcMain.handle('get-api-key', async () => {
+  try {
+    const storeInstance = await initializeStore();
+    const apiKey = storeInstance.get('anthropicApiKey', '');
+    return apiKey;
+  } catch (error) {
+    console.error('Error getting API key:', error);
+    return '';
+  }
+});
+
+// Handle API key set requests
+ipcMain.handle('set-api-key', async (event, apiKey) => {
+  try {
+    const storeInstance = await initializeStore();
+    if (apiKey && apiKey.trim() !== '') {
+      storeInstance.set('anthropicApiKey', apiKey.trim());
+    } else {
+      storeInstance.delete('anthropicApiKey');
+    }
+    return { success: true };
+  } catch (error) {
+    console.error('Error setting API key:', error);
+    return { success: false, error: error.message };
   }
 });
 
@@ -257,10 +308,62 @@ ipcMain.handle('find-eclipse-activations', async (event, params) => {
   }
 });
 
+// Handle planetary configuration search
+ipcMain.handle('search-planetary-configurations', async (event, params) => {
+  try {
+    const { criteria, startDate, endDate } = params;
+
+    if (!startDate || !endDate) {
+      throw new Error('Start date and end date are required');
+    }
+
+    // Get database path
+    const dbPath = app.isPackaged
+      ? path.join(process.resourcesPath, 'app.asar.unpacked', 'src', 'shared', 'data', 'ephemeris.db')
+      : path.join(__dirname, '..', 'shared', 'data', 'ephemeris.db');
+
+    // Check if database exists
+    if (!fs.existsSync(dbPath)) {
+      throw new Error('Ephemeris database not found. Please generate it first using: npm run generate-ephemeris');
+    }
+
+    // Convert ISO date strings to Date objects
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    // Execute search
+    const results = searchPlanetaryConfigurations(criteria, start, end, dbPath);
+
+    return results;
+  } catch (error) {
+    console.error('Error searching planetary configurations:', error);
+    throw error;
+  }
+});
+
+// Get ephemeris database metadata
+ipcMain.handle('get-ephemeris-metadata', async () => {
+  try {
+    const dbPath = app.isPackaged
+      ? path.join(process.resourcesPath, 'app.asar.unpacked', 'src', 'shared', 'data', 'ephemeris.db')
+      : path.join(__dirname, '..', 'shared', 'data', 'ephemeris.db');
+
+    if (!fs.existsSync(dbPath)) {
+      return null;
+    }
+
+    const metadata = getDatabaseMetadata(dbPath);
+    return metadata;
+  } catch (error) {
+    console.error('Error getting ephemeris metadata:', error);
+    return null;
+  }
+});
+
 // Handle transit timeline calculation for aspect markers
 ipcMain.handle('calculate-transit-timeline', async (event, params) => {
   try {
-    const Astronomy = require('astronomy-engine');
+    const swissCalc = require(path.join(__dirname, '..', 'shared', 'calculations', 'swissEphemerisCalculator.js'));
     const { natalChart, startDate, endDate, interval = 'day' } = params;
 
     if (!natalChart || !startDate || !endDate) {
@@ -285,32 +388,39 @@ ipcMain.handle('calculate-transit-timeline', async (event, params) => {
       try {
         const positions = {};
 
-        // Calculate Sun
-        const sun = Astronomy.Ecliptic(Astronomy.GeoVector('Sun', sampleDate, true));
-        positions['Sun'] = sun.elon;
+        // Convert date to Julian Day for Swiss Ephemeris
+        const year = sampleDate.getUTCFullYear();
+        const month = sampleDate.getUTCMonth() + 1;
+        const day = sampleDate.getUTCDate();
+        const hour = sampleDate.getUTCHours();
+        const minute = sampleDate.getUTCMinutes();
+        const jd = swissCalc.dateToJulianDay(year, month, day, hour, minute);
 
-        // Calculate Moon
-        const moonVector = Astronomy.GeoMoon(sampleDate);
-        const moonEcliptic = Astronomy.Ecliptic(moonVector);
-        positions['Moon'] = moonEcliptic.elon;
+        // Calculate planetary positions using Swiss Ephemeris
+        const planetList = [
+          { key: 'Sun', id: swissCalc.PLANET_IDS.SUN },
+          { key: 'Moon', id: swissCalc.PLANET_IDS.MOON },
+          { key: 'Mercury', id: swissCalc.PLANET_IDS.MERCURY },
+          { key: 'Venus', id: swissCalc.PLANET_IDS.VENUS },
+          { key: 'Mars', id: swissCalc.PLANET_IDS.MARS },
+          { key: 'Jupiter', id: swissCalc.PLANET_IDS.JUPITER },
+          { key: 'Saturn', id: swissCalc.PLANET_IDS.SATURN },
+          { key: 'Uranus', id: swissCalc.PLANET_IDS.URANUS },
+          { key: 'Neptune', id: swissCalc.PLANET_IDS.NEPTUNE },
+          { key: 'Pluto', id: swissCalc.PLANET_IDS.PLUTO }
+        ];
 
-        // Calculate other planets
-        const bodies = ['Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto'];
-        bodies.forEach(body => {
-          const ecliptic = Astronomy.Ecliptic(Astronomy.GeoVector(body, sampleDate, true));
-          positions[body] = ecliptic.elon;
+        planetList.forEach(planet => {
+          const pos = swissCalc.calculateBody(jd, planet.id);
+          positions[planet.key] = pos.longitude;
         });
 
         // Calculate North Node
-        const j2000 = new Date('2000-01-01T12:00:00Z');
-        const yearsSince2000 = (sampleDate - j2000) / (365.25 * 24 * 60 * 60 * 1000);
-        const northNodeLon = (125.04 - 19.3413 * yearsSince2000) % 360;
-        const adjustedNorthNode = northNodeLon < 0 ? northNodeLon + 360 : northNodeLon;
-        positions['North Node'] = adjustedNorthNode;
+        const nodePos = swissCalc.calculateBody(jd, swissCalc.PLANET_IDS.TRUE_NODE);
+        positions['North Node'] = nodePos.longitude;
 
         // Calculate South Node
-        const southNodeLon = (adjustedNorthNode + 180) % 360;
-        positions['South Node'] = southNodeLon;
+        positions['South Node'] = (nodePos.longitude + 180) % 360;
 
         samples.push({
           date: sampleDate.toISOString(),
@@ -378,11 +488,17 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
     // Use dynamic import for ES6 module
     const { default: Anthropic } = await import('@anthropic-ai/sdk');
 
-    const apiKey = process.env.ANTHROPIC_API_KEY;
+    // Check stored API key first, then fall back to environment variable
+    const storeInstance = await initializeStore();
+    let apiKey = storeInstance.get('anthropicApiKey', '');
+    if (!apiKey || apiKey.trim() === '') {
+      apiKey = process.env.ANTHROPIC_API_KEY;
+    }
+
     if (!apiKey) {
       return {
         success: false,
-        error: 'ANTHROPIC_API_KEY not found. Please add it to your .env file.'
+        error: 'Anthropic API key not configured. Please add your API key in Settings (gear icon in the top-right corner) or add ANTHROPIC_API_KEY to your .env file.'
       };
     }
 
