@@ -2790,10 +2790,17 @@ function App() {
         <div style={{ textAlign: 'center', marginTop: '20px', paddingTop: '20px', borderTop: '1px solid #e0e0e0', display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <button
             type="button"
-            onClick={() => setIsBrowserOpen(true)}
+            onClick={() => { setActiveChart('A'); setIsBrowserOpen(true); }}
             className="famous-charts-btn"
           >
             📚 Browse Famous Charts Database
+          </button>
+          <button
+            type="button"
+            onClick={startNewChart}
+            className="secondary-btn"
+          >
+            Clear Form
           </button>
         </div>
 

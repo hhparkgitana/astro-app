@@ -587,6 +587,62 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
             }
             contextMessage += `\n`;
           });
+
+          // Detect and add aspect patterns for natal chart
+          if (chart.planets) {
+            // Transform planets object to use planet names as keys (for pattern detection)
+            const planetsForPatternDetection = {};
+            Object.entries(chart.planets).forEach(([key, planet]) => {
+              planetsForPatternDetection[planet.name] = planet;
+            });
+
+            const patterns = detectAspectPatterns(chart.aspects, planetsForPatternDetection);
+
+            // Add detected patterns
+            if (patterns.yods.length > 0 || patterns.tSquares.length > 0 ||
+                patterns.grandTrines.length > 0 || patterns.grandCrosses.length > 0 ||
+                patterns.kites.length > 0) {
+              contextMessage += `\nNATAL ASPECT PATTERNS:\n`;
+
+              if (patterns.yods.length > 0) {
+                contextMessage += `\nYODS (Finger of God):\n`;
+                patterns.yods.forEach((yod, idx) => {
+                  contextMessage += `YOD ${idx + 1}: ${yod.base1} and ${yod.base2} in sextile, both quincunx ${yod.apex}\n`;
+                  contextMessage += `  - ${yod.base1} ${yod.sextile.symbol} ${yod.base2} (orb: ${yod.sextile.orb.toFixed(1)}°)\n`;
+                  contextMessage += `  - ${yod.quincunx1.planet1} ${yod.quincunx1.symbol} ${yod.quincunx1.planet2} (orb: ${yod.quincunx1.orb.toFixed(1)}°)\n`;
+                  contextMessage += `  - ${yod.quincunx2.planet1} ${yod.quincunx2.symbol} ${yod.quincunx2.planet2} (orb: ${yod.quincunx2.orb.toFixed(1)}°)\n`;
+                });
+              }
+
+              if (patterns.tSquares.length > 0) {
+                contextMessage += `\nT-SQUARES:\n`;
+                patterns.tSquares.forEach((tsq, idx) => {
+                  contextMessage += `T-SQUARE ${idx + 1}: ${tsq.opposition1} opposite ${tsq.opposition2}, both square ${tsq.apex}\n`;
+                });
+              }
+
+              if (patterns.grandTrines.length > 0) {
+                contextMessage += `\nGRAND TRINES:\n`;
+                patterns.grandTrines.forEach((gt, idx) => {
+                  contextMessage += `GRAND TRINE ${idx + 1}: ${gt.planet1}, ${gt.planet2}, and ${gt.planet3}\n`;
+                });
+              }
+
+              if (patterns.grandCrosses.length > 0) {
+                contextMessage += `\nGRAND CROSSES:\n`;
+                patterns.grandCrosses.forEach((gc, idx) => {
+                  contextMessage += `GRAND CROSS ${idx + 1}: ${gc.planet1}, ${gc.planet2}, ${gc.planet3}, and ${gc.planet4}\n`;
+                });
+              }
+
+              if (patterns.kites.length > 0) {
+                contextMessage += `\nKITES:\n`;
+                patterns.kites.forEach((kite, idx) => {
+                  contextMessage += `KITE ${idx + 1}: Grand Trine (${kite.grandTrine.planet1}, ${kite.grandTrine.planet2}, ${kite.grandTrine.planet3}) with ${kite.apex} as apex\n`;
+                });
+              }
+            }
+          }
         }
 
         // HOUSE RULERSHIPS if available
