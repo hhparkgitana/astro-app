@@ -1,7 +1,7 @@
 {
   "name": "astrid",
   "productName": "Astrid",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Professional astrology software for Mac and Windows",
   "author": "Hilary Park",
   "main": "src/main/main.js",
@@ -30,10 +30,11 @@
     "copyright": "Copyright © 2024 ${author}",
     "directories": {
       "output": "dist",
-      "buildResources": "build"
+      "buildResources": "resources"
     },
     "files": [
       "src/**/*",
+      "build/**/*",
       "index.html",
       "vite.config.js",
       "package.json",
@@ -44,12 +45,16 @@
       {
         "from": "src/shared/ephe",
         "to": "ephe",
-        "filter": ["**/*"]
+        "filter": [
+          "**/*"
+        ]
       },
       {
         "from": "Texts for RAG",
         "to": "texts",
-        "filter": ["**/*"]
+        "filter": [
+          "**/*"
+        ]
       }
     ],
     "asarUnpack": [
@@ -61,18 +66,24 @@
       "target": [
         {
           "target": "dmg",
-          "arch": ["x64", "arm64"]
+          "arch": [
+            "x64",
+            "arm64"
+          ]
         },
         {
           "target": "zip",
-          "arch": ["x64", "arm64"]
+          "arch": [
+            "x64",
+            "arm64"
+          ]
         }
       ],
-      "icon": "build/icon.icns",
+      "icon": "resources/icon.icns",
       "hardenedRuntime": true,
       "gatekeeperAssess": false,
-      "entitlements": "build/entitlements.mac.plist",
-      "entitlementsInherit": "build/entitlements.mac.plist",
+      "entitlements": "resources/entitlements.mac.plist",
+      "entitlementsInherit": "resources/entitlements.mac.plist",
       "extendInfo": {
         "NSCameraUsageDescription": "This app does not use the camera.",
         "NSMicrophoneUsageDescription": "This app does not use the microphone."
@@ -98,23 +109,28 @@
       "target": [
         {
           "target": "nsis",
-          "arch": ["x64", "ia32"]
+          "arch": [
+            "x64",
+            "ia32"
+          ]
         },
         {
           "target": "portable",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         }
       ],
-      "icon": "build/icon.ico",
+      "icon": "resources/icon.ico",
       "verifyUpdateCodeSignature": false
     },
     "nsis": {
       "oneClick": false,
       "perMachine": false,
       "allowToChangeInstallationDirectory": true,
-      "installerIcon": "build/icon.ico",
-      "uninstallerIcon": "build/icon.ico",
-      "installerHeaderIcon": "build/icon.ico",
+      "installerIcon": "resources/icon.ico",
+      "uninstallerIcon": "resources/icon.ico",
+      "installerHeaderIcon": "resources/icon.ico",
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "${productName}",
@@ -126,7 +142,7 @@
         "deb",
         "rpm"
       ],
-      "icon": "build/icons",
+      "icon": "resources/icons",
       "category": "Education",
       "synopsis": "Professional astrology software",
       "description": "Astrid is a professional astrology software application for calculating and analyzing natal charts, transits, progressions, and more."
@@ -145,8 +161,8 @@
     "better-sqlite3": "^9.2.2",
     "cheerio": "^1.1.2",
     "chromadb": "^3.1.0",
-    "circular-natal-horoscope-js": "^1.1.0",
     "dotenv": "^17.2.3",
+    "electron-store": "^11.0.2",
     "electron-updater": "^6.6.2",
     "luxon": "^3.7.2",
     "openai": "^6.7.0",

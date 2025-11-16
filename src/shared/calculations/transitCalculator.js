@@ -3,22 +3,24 @@
  *
  * Calculates when transiting planets form exact aspects to natal positions.
  * Handles retrograde periods and finds multiple exact hits.
+ *
+ * NOW USING SWISS EPHEMERIS for professional-grade accuracy.
  */
 
-const Astronomy = require('astronomy-engine');
+const swissCalc = require('./swissEphemerisCalculator');
 
-// Planet name to Astronomy Engine body mapping
-const PLANET_BODIES = {
-  sun: 'Sun',
-  moon: 'Moon',
-  mercury: 'Mercury',
-  venus: 'Venus',
-  mars: 'Mars',
-  jupiter: 'Jupiter',
-  saturn: 'Saturn',
-  uranus: 'Uranus',
-  neptune: 'Neptune',
-  pluto: 'Pluto'
+// Planet name to Swiss Ephemeris ID mapping
+const PLANET_IDS = {
+  sun: swissCalc.PLANET_IDS.SUN,
+  moon: swissCalc.PLANET_IDS.MOON,
+  mercury: swissCalc.PLANET_IDS.MERCURY,
+  venus: swissCalc.PLANET_IDS.VENUS,
+  mars: swissCalc.PLANET_IDS.MARS,
+  jupiter: swissCalc.PLANET_IDS.JUPITER,
+  saturn: swissCalc.PLANET_IDS.SATURN,
+  uranus: swissCalc.PLANET_IDS.URANUS,
+  neptune: swissCalc.PLANET_IDS.NEPTUNE,
+  pluto: swissCalc.PLANET_IDS.PLUTO
 };
 
 // Aspect angles
@@ -31,43 +33,29 @@ const ASPECT_ANGLES = {
 };
 
 /**
- * Calculate planet position using astronomy-engine
+ * Calculate planet position using Swiss Ephemeris
  */
 function getPlanetPosition(planetName, date) {
-  const bodyName = PLANET_BODIES[planetName.toLowerCase()];
-  if (!bodyName) {
+  const planetId = PLANET_IDS[planetName.toLowerCase()];
+  if (planetId === undefined) {
     throw new Error(`Unknown planet: ${planetName}`);
   }
 
-  // Get ecliptic coordinates
-  // Moon uses GeoMoon, other bodies use GeoVector
-  let ecliptic, nextEcliptic;
+  // Convert JavaScript Date to Julian Day
+  const year = date.getUTCFullYear();
+  const month = date.getUTCMonth() + 1; // JS months are 0-indexed
+  const day = date.getUTCDate();
+  const hour = date.getUTCHours();
+  const minute = date.getUTCMinutes();
 
-  if (bodyName === 'Moon') {
-    ecliptic = Astronomy.Ecliptic(Astronomy.GeoMoon(date));
-  } else {
-    ecliptic = Astronomy.Ecliptic(Astronomy.GeoVector(bodyName, date, true));
-  }
+  const jd = swissCalc.dateToJulianDay(year, month, day, hour, minute);
 
-  // Calculate speed by checking position 1 hour later
-  const nextDate = new Date(date.getTime() + 3600000); // +1 hour
-
-  if (bodyName === 'Moon') {
-    nextEcliptic = Astronomy.Ecliptic(Astronomy.GeoMoon(nextDate));
-  } else {
-    nextEcliptic = Astronomy.Ecliptic(Astronomy.GeoVector(bodyName, nextDate, true));
-  }
-
-  // Speed in degrees per day
-  let speed = (nextEcliptic.elon - ecliptic.elon) * 24;
-
-  // Handle 360° wraparound
-  if (speed > 180) speed -= 360;
-  if (speed < -180) speed += 360;
+  // Calculate position using Swiss Ephemeris
+  const position = swissCalc.calculateBody(jd, planetId);
 
   return {
-    longitude: normalizeAngle(ecliptic.elon),
-    speed: speed
+    longitude: normalizeAngle(position.longitude),
+    speed: position.speedLongitude // Swiss Ephemeris returns speed directly
   };
 }
 
@@ -284,6 +272,6 @@ module.exports = {
   findDatabaseImpact,
   formatDate,
   getZodiacSign,
-  PLANET_BODIES,
+  PLANET_IDS,
   ASPECT_ANGLES
 };

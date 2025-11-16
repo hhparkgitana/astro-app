@@ -1,8 +1,11 @@
 /**
  * Eclipse Calculator
  *
- * Uses astronomy-engine to find solar and lunar eclipses
- * and analyze their impact on natal charts.
+ * Uses astronomy-engine for eclipse calculations (excellent built-in eclipse functions)
+ * while the rest of the app uses Swiss Ephemeris for planetary positions.
+ *
+ * Note: Swiss Ephemeris has eclipse functions but they are not exposed in the
+ * Node.js wrapper (sweph package), so we use astronomy-engine for this specific feature.
  */
 
 const Astronomy = require('astronomy-engine');
