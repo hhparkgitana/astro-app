@@ -210,6 +210,7 @@ function calculateChart(params) {
     const calculatedPointsList = [
       { key: 'MEAN_LILITH', id: PLANET_IDS.MEAN_LILITH, name: 'Lilith (Mean)' },
       { key: 'TRUE_LILITH', id: PLANET_IDS.TRUE_LILITH, name: 'Lilith (True)' }
+      // Part of Fortune is calculated separately below using Sun, Moon, and Ascendant
     ];
 
     for (const planet of planetList) {
@@ -267,6 +268,25 @@ function calculateChart(params) {
 
     // Calculate houses and angles
     const houseData = calculateHouses(jd, latitude, longitude, houseSystem);
+
+    // Calculate Part of Fortune
+    // Formula: Ascendant + Moon - Sun (for day charts)
+    // For night charts: Ascendant + Sun - Moon
+    // We'll use the day formula as default (most common)
+    const sunLongitude = planets.SUN.longitude;
+    const moonLongitude = planets.MOON.longitude;
+    const ascendantLongitude = houseData.ascendant;
+
+    let partOfFortune = ascendantLongitude + moonLongitude - sunLongitude;
+    // Normalize to 0-360 range
+    while (partOfFortune < 0) partOfFortune += 360;
+    while (partOfFortune >= 360) partOfFortune -= 360;
+
+    planets.PART_OF_FORTUNE = {
+      name: 'Part of Fortune',
+      longitude: partOfFortune,
+      velocity: 0  // Part of Fortune doesn't have velocity as it's calculated from other points
+    };
 
     // Calculate aspects (reuse existing aspect calculation logic)
     const aspects = calculateAspects(planets);

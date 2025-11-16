@@ -46,6 +46,7 @@ export const PLANET_GLYPHS = {
   // Calculated Points (optional)
   'Lilith (Mean)': '⚸',  // Black Moon Lilith (Mean)
   'Lilith (True)': '⚸⃰',  // Black Moon Lilith (True/Oscillating) - with combining asterisk to distinguish
+  'Part of Fortune': '⊕',  // Part of Fortune (Fortuna)
 
   // Angles (always displayed)
   'Ascendant': 'AC',
@@ -70,7 +71,7 @@ export const BODY_CATEGORIES = {
     'Ceres', 'Pallas', 'Juno', 'Vesta'
   ],
   calculatedPoints: [
-    'Lilith (Mean)', 'Lilith (True)'
+    'Lilith (Mean)', 'Lilith (True)', 'Part of Fortune'
   ],
   angles: [
     'Ascendant', 'Midheaven', 'Descendant', 'IC'

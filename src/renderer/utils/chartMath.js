@@ -281,7 +281,8 @@ export const CHART_CONFIG = {
 
       // Calculated Points (optional)
       'Lilith (Mean)': '⚸',  // Black Moon Lilith (Mean)
-      'Lilith (True)': '⚸⃰'  // Black Moon Lilith (True/Oscillating) - with combining asterisk to distinguish
+      'Lilith (True)': '⚸⃰',  // Black Moon Lilith (True/Oscillating) - with combining asterisk to distinguish
+      'Part of Fortune': '⊕'  // Part of Fortune (Fortuna)
     },
     aspects: {
       'CONJUNCTION': '☌',
@@ -302,7 +303,7 @@ export const CHART_CONFIG = {
     ],
     centaurs: ['Chiron', 'Pholus', 'Nessus', 'Chariklo'],
     asteroids: ['Ceres', 'Pallas', 'Juno', 'Vesta'],
-    calculatedPoints: ['Lilith (Mean)', 'Lilith (True)']
+    calculatedPoints: ['Lilith (Mean)', 'Lilith (True)', 'Part of Fortune']
   },
   // Default display settings (which categories show by default)
   defaultDisplay: {
