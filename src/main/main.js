@@ -724,7 +724,13 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
         });
 
         // Detect and add aspect patterns
-        const patterns = detectAspectPatterns(composite.aspects, composite.planets);
+        // Transform planets object to use planet names as keys (for pattern detection)
+        const planetsForPatternDetection = {};
+        Object.entries(composite.planets).forEach(([key, planet]) => {
+          planetsForPatternDetection[planet.name] = planet;
+        });
+
+        const patterns = detectAspectPatterns(composite.aspects, planetsForPatternDetection);
 
         // Add detected patterns
         if (patterns.yods.length > 0 || patterns.tSquares.length > 0 ||
