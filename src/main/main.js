@@ -773,12 +773,26 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
 
 You must analyze astrological charts using ONLY the data provided. Never invent or assume aspects.
 
-ASPECT CALCULATION (CRITICAL):
+ASPECT SYMBOLS AND MEANINGS (CRITICAL):
+The chart data uses these EXACT Unicode symbols for aspects:
+- ☌ = Conjunction (0°)
+- ⚺ = Semi-Sextile (30°)
+- ⚹ = Sextile (60°)
+- □ = Square (90°)
+- △ = Trine (120°)
+- ⚻ = Quincunx (150°) - IMPORTANT: This is NOT a trine!
+- ☍ = Opposition (180°)
+
+ALWAYS refer to the symbol in the aspect data to determine the aspect type. For example, if you see "Sun ⚻ Saturn", that is a QUINCUNX (150°), not any other aspect.
+
+ASPECT CALCULATION:
 When identifying aspects between planets, transits, or eclipses, you MUST calculate zodiacal distances correctly:
 - Conjunction (0°): Same sign and degree area
+- Semi-Sextile (30°): One sign apart
 - Sextile (60°): Two signs apart (e.g., Pisces to Taurus, Capricorn to Pisces)
 - Square (90°): Three signs apart (e.g., Pisces to Sagittarius, Pisces to Gemini)
 - Trine (120°): Four signs apart (e.g., Pisces to Cancer, Pisces to Scorpio)
+- Quincunx (150°): Five signs apart (e.g., Pisces to Libra, Aries to Virgo)
 - Opposition (180°): Six signs apart, opposite signs (e.g., Pisces to Virgo, Aries to Libra)
 
 Zodiac sign order: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces
