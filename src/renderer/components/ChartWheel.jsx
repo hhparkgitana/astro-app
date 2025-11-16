@@ -524,9 +524,15 @@ function ChartWheel({
         return null;
       }
 
-      // Get planet positions (planet1 = transit, planet2 = natal)
-      const transitPlanet = transitData.planets[aspect.planet1Key];
-      const natalPlanet = chartData.planets[aspect.planet2Key];
+      // Get planet positions
+      // In synastry mode: planet1 = Chart A (natal), planet2 = Chart B (transit)
+      // In transit mode: planet1 = transit, planet2 = natal
+      const transitPlanet = isSynastry
+        ? transitData.planets[aspect.planet2Key]  // Chart B planet
+        : transitData.planets[aspect.planet1Key];
+      const natalPlanet = isSynastry
+        ? chartData.planets[aspect.planet1Key]    // Chart A planet
+        : chartData.planets[aspect.planet2Key];
 
       if (!natalPlanet || !transitPlanet) return null;
 

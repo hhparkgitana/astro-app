@@ -287,10 +287,10 @@ function App() {
           }
 
           aspects.push({
-            planet1: transitPlanet.name,  // Transit planet first
-            planet1Key: transitPlanet.key,
-            planet2: natalPlanet.name,    // Natal planet second
-            planet2Key: natalPlanet.key,
+            planet1: natalPlanet.name,    // Natal planet first (Chart A in synastry)
+            planet1Key: natalPlanet.key,
+            planet2: transitPlanet.name,  // Transit planet second (Chart B in synastry)
+            planet2Key: transitPlanet.key,
             ...aspect
           });
         }
