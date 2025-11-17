@@ -517,10 +517,13 @@ function ChartWheel({
     return aspects.map((aspect, index) => {
       // Check if this aspect is active/visible
       const aspectKey = `${aspect.planet1}-${aspect.planet2}`;
-      if (!activeTransitAspects.has(aspectKey)) return null;
+      if (!activeTransitAspects.has(aspectKey)) {
+        return null;
+      }
 
       // Apply outer planet filter (only show aspects where transit planet is an outer planet)
-      if (showOnlyOuterPlanetTransits && !isOuterPlanet(aspect.planet1)) {
+      // Don't apply this filter in synastry mode
+      if (!isSynastry && showOnlyOuterPlanetTransits && !isOuterPlanet(aspect.planet1)) {
         return null;
       }
 
@@ -534,7 +537,9 @@ function ChartWheel({
         ? chartData.planets[aspect.planet1Key]    // Chart A planet
         : chartData.planets[aspect.planet2Key];
 
-      if (!natalPlanet || !transitPlanet) return null;
+      if (!natalPlanet || !transitPlanet) {
+        return null;
+      }
 
       // Filter based on display settings - hide aspect if either planet is hidden
       if (!shouldDisplayPlanet(aspect.planet1, displaySettings) ||
