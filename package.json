@@ -1,7 +1,7 @@
 {
   "name": "astrid",
   "productName": "Astrid",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Professional astrology software for Mac and Windows",
   "author": "Hilary Park",
   "main": "src/main/main.js",
