@@ -101,7 +101,7 @@ const styles = {
   dropdown: {
     position: 'absolute',
     top: 'calc(100% + 8px)',
-    right: 0,
+    left: 0,
     minWidth: '320px',
     maxWidth: '400px',
     backgroundColor: '#1a1a2e',
