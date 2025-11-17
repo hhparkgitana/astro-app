@@ -15,11 +15,13 @@ import ChartLibrary from './components/ChartLibrary';
 import EclipseDashboard from './components/EclipseDashboard';
 import ConfigurationSearch from './components/ConfigurationSearch';
 import TimeSlider from './components/TimeSlider';
+import HoraryAnalysis from './components/HoraryAnalysis';
 import { DateTime } from 'luxon';
 import { findAspect, getAngularDistance, calculateAspects } from '../shared/calculations/aspectsCalculator';
 import { calculateCompositeChart, calculateGeographicMidpoint } from '../shared/calculations/compositeCalculator';
 import { calculateSolarReturn, calculateLunarReturn } from '../shared/calculations/returnsCalculator';
 import { calculateSolarArcs, getSolarArcDefaultOrb } from '../shared/calculations/solarArcsCalculator';
+import { analyzeHoraryChart } from '../shared/calculations/horaryCalculator';
 import { saveChart } from '../utils/db';
 
 function App() {
@@ -73,6 +75,7 @@ function App() {
 
   // Horary chart state
   const [horaryQuestion, setHoraryQuestion] = useState('');
+  const [horaryAnalysis, setHoraryAnalysis] = useState(null);
 
   // Relationship chart state
   const [relationshipChartType, setRelationshipChartType] = useState('synastry'); // 'synastry' or 'composite'
@@ -1023,6 +1026,22 @@ function App() {
       }
 
       setChartData({ ...result, transits: transitData, progressions: progressionsData });
+
+      // Analyze horary chart if it's a horary question
+      const chartFormData = overrideData || formData;
+      if (chartFormData.name && chartFormData.name.startsWith('Horary:') && result.success) {
+        try {
+          const analysis = analyzeHoraryChart(result);
+          console.log('Horary analysis:', analysis);
+          setHoraryAnalysis(analysis);
+        } catch (error) {
+          console.error('Error analyzing horary chart:', error);
+          setHoraryAnalysis(null);
+        }
+      } else {
+        // Clear horary analysis if not a horary chart
+        setHoraryAnalysis(null);
+      }
     } catch (error) {
       console.error('Error:', error);
       setChartData({ success: false, error: error.message });
@@ -2889,6 +2908,9 @@ function App() {
               directionType={formData.directionType}
               displaySettings={displaySettings}
             />
+
+            {/* Horary Analysis - only show for horary charts */}
+            {horaryAnalysis && <HoraryAnalysis analysis={horaryAnalysis} />}
 
             <div className="rising-sign">
               <h4>🌅 Rising Sign: {getSignName(chartData.ascendant)}</h4>
