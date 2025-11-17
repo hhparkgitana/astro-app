@@ -259,10 +259,11 @@ function App() {
       }
     }).catch(err => console.error('Failed to write debug log:', err));
 
-    // Calculate aspects between each natal planet and each transit planet
-    for (const natalPlanet of natalArray) {
-      for (const transitPlanet of transitArray) {
-        const distance = getAngularDistance(natalPlanet.longitude, transitPlanet.longitude);
+    // Calculate aspects between each transit planet and each natal planet
+    // Put transit planet as planet1 so it appears first in aspect table
+    for (const transitPlanet of transitArray) {
+      for (const natalPlanet of natalArray) {
+        const distance = getAngularDistance(transitPlanet.longitude, natalPlanet.longitude);
 
         // Log calculation for Saturn-Uranus specifically
         if ((transitPlanet.name === 'Saturn' && natalPlanet.name === 'Uranus') ||
@@ -290,10 +291,10 @@ function App() {
           }
 
           aspects.push({
-            planet1: natalPlanet.name,    // Natal planet first (Chart A in synastry)
-            planet1Key: natalPlanet.key,
-            planet2: transitPlanet.name,  // Transit planet second (Chart B in synastry)
-            planet2Key: transitPlanet.key,
+            planet1: transitPlanet.name,  // Transit planet first
+            planet1Key: transitPlanet.key,
+            planet2: natalPlanet.name,    // Natal planet second
+            planet2Key: natalPlanet.key,
             ...aspect
           });
         }
