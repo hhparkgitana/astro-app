@@ -2286,7 +2286,7 @@ function App() {
             onClick={() => setViewMode('relationship')}
             title="Synastry & Composite Charts"
           >
-            💞 Relationship Chart
+            Relationship Chart
           </button>
           <button
             className={`mode-btn ${viewMode === 'returns' ? 'active' : ''}`}
@@ -2569,28 +2569,31 @@ function App() {
             </div>
           </div>
 
-          <div className="form-group" style={{marginTop: '20px', padding: '15px', backgroundColor: '#f5f5f5', borderRadius: '4px'}}>
-            <label style={{display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '10px'}}>
-              <input
-                type="checkbox"
-                name="showTransits"
-                checked={formData.showTransits}
-                onChange={handleInputChange}
-                style={{marginRight: '8px', width: '18px', height: '18px'}}
-              />
-              <span style={{fontWeight: 'bold'}}>Show Transits (Bi-Wheel)</span>
-            </label>
-            <label style={{display: 'flex', alignItems: 'center', cursor: 'pointer'}}>
-              <input
-                type="checkbox"
-                name="showProgressions"
-                checked={formData.showProgressions}
-                onChange={handleInputChange}
-                style={{marginRight: '8px', width: '18px', height: '18px'}}
-              />
-              <span style={{fontWeight: 'bold'}}>Show Progressions/Directions (Bi-Wheel)</span>
-            </label>
-          </div>
+          {/* Hide transit/progression options for horary charts */}
+          {!formData.name?.startsWith('Horary:') && (
+            <div className="form-group" style={{marginTop: '20px', padding: '15px', backgroundColor: '#f5f5f5', borderRadius: '4px'}}>
+              <label style={{display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '10px'}}>
+                <input
+                  type="checkbox"
+                  name="showTransits"
+                  checked={formData.showTransits}
+                  onChange={handleInputChange}
+                  style={{marginRight: '8px', width: '18px', height: '18px'}}
+                />
+                <span style={{fontWeight: 'bold'}}>Show Transits (Bi-Wheel)</span>
+              </label>
+              <label style={{display: 'flex', alignItems: 'center', cursor: 'pointer'}}>
+                <input
+                  type="checkbox"
+                  name="showProgressions"
+                  checked={formData.showProgressions}
+                  onChange={handleInputChange}
+                  style={{marginRight: '8px', width: '18px', height: '18px'}}
+                />
+                <span style={{fontWeight: 'bold'}}>Show Progressions/Directions (Bi-Wheel)</span>
+              </label>
+            </div>
+          )}
 
           {formData.showProgressions && (
             <div style={{marginTop: '15px', padding: '15px', border: '2px solid #9C27B0', borderRadius: '4px', backgroundColor: '#f9f5ff'}}>
@@ -3158,6 +3161,8 @@ function App() {
                   </div>
                 </div>
 
+                {/* Hide transit/progression options for horary charts */}
+                {!formData.name?.startsWith('Horary:') && (
                 <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: 'white', borderRadius: '8px', textAlign: 'left' }}>
                   <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', marginBottom: '0.5rem' }}>
                         <input
@@ -3209,6 +3214,7 @@ function App() {
                         </div>
                       )}
                     </div>
+                )}
                 <button
                   className="load-chart-btn"
                   onClick={calculateChartA}
@@ -3648,7 +3654,7 @@ function App() {
           </div>
         ) : viewMode === 'relationship' ? (
           <div className="relationship-container">
-            <h2>💞 Relationship Chart</h2>
+            <h2>Relationship Chart</h2>
 
             <div className="relationship-options">
               <div className="chart-type-selector">
@@ -4316,7 +4322,7 @@ function App() {
             {/* Display relationship chart and aspects when both charts are calculated */}
             {chartData && chartData.success && chartDataB && chartDataB.success && (
               <div className="relationship-results">
-                <h3>{relationshipChartType === 'synastry' ? '💞 Synastry Chart' : '🔮 Composite Chart'}</h3>
+                <h3>{relationshipChartType === 'synastry' ? 'Synastry Chart' : 'Composite Chart'}</h3>
                 <p style={{ fontSize: '0.9em', color: '#666', marginBottom: '1rem' }}>
                   {relationshipChartType === 'synastry'
                     ? 'Bi-wheel showing Person A (inner) and Person B (outer) with synastry aspects'
