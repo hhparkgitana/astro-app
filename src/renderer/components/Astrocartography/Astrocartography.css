@@ -43,6 +43,11 @@
   width: 100%;
   height: auto;
   display: block;
+  cursor: grab;
+}
+
+.astrocartography-map:active {
+  cursor: grabbing;
 }
 
 /* Tooltip */

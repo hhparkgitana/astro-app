@@ -57,11 +57,15 @@ const AstrocartographyMap = ({ chartData, planetConfig, lineTypeConfig }) => {
       .attr('height', dimensions.height)
       .attr('viewBox', `0 0 ${dimensions.width} ${dimensions.height}`);
 
-    // Add background
+    // Add background first (directly to svg, not affected by zoom)
     svg.append('rect')
       .attr('width', dimensions.width)
       .attr('height', dimensions.height)
       .attr('fill', '#e8f4f8');
+
+    // Create a group for all map content (this will be transformed by zoom)
+    const g = svg.append('g')
+      .attr('class', 'map-content');
 
     // Setup projection
     const projection = geoEquirectangular()
@@ -71,11 +75,11 @@ const AstrocartographyMap = ({ chartData, planetConfig, lineTypeConfig }) => {
 
     const path = geoPath().projection(projection);
 
-    // Draw world map
+    // Draw world map (append to g group for zoom)
     try {
       const world = feature(worldMapData, worldMapData.objects.countries);
 
-      svg.append('g')
+      g.append('g')
         .attr('class', 'countries')
         .selectAll('path')
         .data(world.features)
@@ -105,7 +109,7 @@ const AstrocartographyMap = ({ chartData, planetConfig, lineTypeConfig }) => {
       })
       .curve(d3.curveLinear);
 
-    // Draw planetary lines
+    // Draw planetary lines (append to g group for zoom)
     Object.entries(planetLines).forEach(([planetName, lines]) => {
       // Check if planet is enabled
       if (!planetConfig[planetName]?.enabled) {
@@ -113,7 +117,7 @@ const AstrocartographyMap = ({ chartData, planetConfig, lineTypeConfig }) => {
       }
 
       const color = planetConfig[planetName]?.color || '#000000';
-      const lineGroup = svg.append('g')
+      const lineGroup = g.append('g')
         .attr('class', `planet-lines planet-lines-${planetName.toLowerCase().replace(' ', '-')}`);
 
       // Draw each line type (ascendant, descendant, mc, ic)
@@ -192,9 +196,9 @@ const AstrocartographyMap = ({ chartData, planetConfig, lineTypeConfig }) => {
       });
     });
 
-    // Add graticule (lat/lon grid lines)
+    // Add graticule (lat/lon grid lines) - append to g group for zoom
     const graticule = d3.geoGraticule();
-    svg.append('path')
+    g.append('path')
       .datum(graticule)
       .attr('class', 'graticule')
       .attr('d', path)
@@ -202,6 +206,16 @@ const AstrocartographyMap = ({ chartData, planetConfig, lineTypeConfig }) => {
       .attr('stroke', '#ccc')
       .attr('stroke-width', 0.5)
       .attr('stroke-opacity', 0.5);
+
+    // Setup zoom behavior
+    const zoom = d3.zoom()
+      .scaleExtent([1, 8]) // Min zoom 1x, max zoom 8x
+      .on('zoom', (event) => {
+        g.attr('transform', event.transform);
+      });
+
+    // Apply zoom to SVG
+    svg.call(zoom);
 
   }, [worldMapData, planetLines, planetConfig, lineTypeConfig, dimensions]);
 
