@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './TimeSlider.css';
+import { BODY_CATEGORIES } from '../../shared/constants/planetGlyphs.js';
 
 /**
  * TimeSlider Component
@@ -16,7 +17,8 @@ function TimeSlider({
   formData,
   setFormData,
   onDateChange,
-  onRecalculate
+  onRecalculate,
+  displaySettings = {}
 }) {
   // Slider state
   const [sliderPosition, setSliderPosition] = useState(50); // 0-100, represents position in date range
@@ -310,6 +312,24 @@ function TimeSlider({
     }
   }, [dateToPosition, onDateChange, onRecalculate, updateFormData]);
 
+  // Helper function to check if a planet should be included based on display settings
+  const shouldIncludePlanet = useCallback((planetName) => {
+    // Check if planet is in centaurs category
+    if (BODY_CATEGORIES.centaurs.includes(planetName)) {
+      return displaySettings.centaurs !== false;
+    }
+    // Check if planet is in asteroids category
+    if (BODY_CATEGORIES.asteroids.includes(planetName)) {
+      return displaySettings.asteroids !== false;
+    }
+    // Check if planet is in calculated points category
+    if (BODY_CATEGORIES.calculatedPoints.includes(planetName)) {
+      return displaySettings.calculatedPoints !== false;
+    }
+    // Traditional planets and other bodies are always included
+    return true;
+  }, [displaySettings]);
+
   // Calculate aspect markers throughout the date range
   const calculateAspectMarkers = useCallback(async () => {
     if (!chartData || !startDate || !endDate || !showTransits) {
@@ -370,35 +390,37 @@ function TimeSlider({
         transitPlanets.forEach(transitPlanet => {
           if (!positions[transitPlanet]) return;
 
-          // Convert planets object to array
-          Object.values(chartData.planets).forEach(natalPlanet => {
-            const transitLong = positions[transitPlanet];
-            const natalLong = natalPlanet.longitude;
+          // Convert planets object to array and filter based on display settings
+          Object.values(chartData.planets)
+            .filter(natalPlanet => shouldIncludePlanet(natalPlanet.name))
+            .forEach(natalPlanet => {
+              const transitLong = positions[transitPlanet];
+              const natalLong = natalPlanet.longitude;
 
-            // Calculate the angular distance
-            let diff = Math.abs(transitLong - natalLong);
-            if (diff > 180) diff = 360 - diff;
+              // Calculate the angular distance
+              let diff = Math.abs(transitLong - natalLong);
+              if (diff > 180) diff = 360 - diff;
 
-            // Check if within orb of any major aspect
-            Object.entries(majorAspects).forEach(([angle, aspect]) => {
-              const aspectAngle = parseInt(angle);
-              const orb = aspectFilter === 'major' ? aspect.orb : 10;
-              const distanceFromExact = Math.abs(diff - aspectAngle);
+              // Check if within orb of any major aspect
+              Object.entries(majorAspects).forEach(([angle, aspect]) => {
+                const aspectAngle = parseInt(angle);
+                const orb = aspectFilter === 'major' ? aspect.orb : 10;
+                const distanceFromExact = Math.abs(diff - aspectAngle);
 
-              if (distanceFromExact <= orb) {
-                const key = `${transitPlanet}-${natalPlanet.name}-${aspectAngle}`;
+                if (distanceFromExact <= orb) {
+                  const key = `${transitPlanet}-${natalPlanet.name}-${aspectAngle}`;
 
-                if (!aspectTracking.has(key)) {
-                  aspectTracking.set(key, []);
+                  if (!aspectTracking.has(key)) {
+                    aspectTracking.set(key, []);
+                  }
+                  aspectTracking.get(key).push({
+                    timestamp,
+                    orb: distanceFromExact,
+                    index
+                  });
                 }
-                aspectTracking.get(key).push({
-                  timestamp,
-                  orb: distanceFromExact,
-                  index
-                });
-              }
+              });
             });
-          });
         });
       });
 
@@ -440,7 +462,7 @@ function TimeSlider({
         setIsCalculatingMarkers(false);
       }
     }
-  }, [chartData, startDate, endDate, showTransits, aspectFilter]);
+  }, [chartData, startDate, endDate, showTransits, aspectFilter, shouldIncludePlanet]);
 
   // Helper function to get aspect symbol
   const getAspectSymbol = (angle) => {
