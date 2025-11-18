@@ -423,7 +423,8 @@ function ChartWheel({
    * Render Person B's natal-to-natal aspect lines (for synastry mode)
    */
   const renderAspectsB = () => {
-    if (!isSynastry || !chartDataB || !chartDataB.aspects || !showNatalAspectsB) return null;
+    // Render Person B's natal aspects (synastry) OR return chart's internal aspects
+    if ((!isSynastry && !isReturnChart) || !chartDataB || !chartDataB.aspects || !showNatalAspectsB) return null;
 
     const ascendant = chartData.ascendant; // Use Person A's ascendant for orientation
 
@@ -478,7 +479,13 @@ function ChartWheel({
         ? (aspect.applying ? 'Applying' : 'Separating')
         : 'N/A';
       const orbStatus = aspect.inOrb === false ? ' (Out of orb)' : '';
-      const tooltipText = `${personBName}: ${aspect.planet1} ${aspect.symbol} ${aspect.planet2} • Orb: ${aspect.orb.toFixed(2)}°${orbStatus} • ${applyingSeparating}`;
+
+      // Use appropriate label based on chart type
+      const chartLabel = isReturnChart
+        ? (returnType === 'solar' ? 'Solar Return' : 'Lunar Return')
+        : personBName;
+
+      const tooltipText = `${chartLabel} Internal: ${aspect.planet1} ${aspect.symbol} ${aspect.planet2} • Orb: ${aspect.orb.toFixed(2)}°${orbStatus} • ${applyingSeparating}`;
 
       return (
         <line
@@ -505,8 +512,21 @@ function ChartWheel({
    * In synastry mode, this renders synastry aspects between Person A and Person B
    */
   const renderTransitNatalAspects = () => {
+    // In return chart mode, use returnToNatalAspects from chartDataB
     // In synastry mode, use synastryAspects; otherwise use transitAspects
-    const aspects = isSynastry ? chartData.synastryAspects : chartData.transitAspects;
+    const aspects = isReturnChart
+      ? (chartDataB?.returnToNatalAspects || [])
+      : (isSynastry ? chartData.synastryAspects : chartData.transitAspects);
+
+    console.log('🔍 renderTransitNatalAspects:', {
+      isReturnChart,
+      isSynastry,
+      hasAspects: !!aspects,
+      aspectsLength: aspects?.length,
+      firstAspect: aspects?.[0],
+      showTransitNatalAspects,
+      activeTransitAspectsSize: activeTransitAspects.size
+    });
 
     if (!aspects || !transitData || !showTransitNatalAspects) {
       return null;
@@ -576,10 +596,32 @@ function ChartWheel({
       const applyingSeparating = aspect.applying !== null
         ? (aspect.applying ? 'Applying' : 'Separating')
         : 'N/A';
-      const label1 = isSynastry ? personAName : 'Transit';
-      const label2 = isSynastry ? personBName : 'Natal';
+
+      // Determine labels and planet order based on chart type
+      let planet1Name, planet1Label, planet2Name, planet2Label;
+
+      if (isReturnChart) {
+        // Return charts: Based on user feedback, the labels are actually reversed
+        // planet1 should be labeled as Natal, planet2 should be labeled as Return
+        const returnLabel = returnType === 'solar' ? 'Solar Return' : 'Lunar Return';
+        planet1Name = aspect.planet1;
+        planet1Label = 'Natal';
+        planet2Name = aspect.planet2;
+        planet2Label = returnLabel;
+      } else if (isSynastry) {
+        planet1Name = aspect.planet1;
+        planet1Label = personAName;
+        planet2Name = aspect.planet2;
+        planet2Label = personBName;
+      } else {
+        planet1Name = aspect.planet1;
+        planet1Label = 'Transit';
+        planet2Name = aspect.planet2;
+        planet2Label = 'Natal';
+      }
+
       const orbStatus = aspect.inOrb === false ? ' (Out of orb)' : '';
-      const tooltipText = `${aspect.planet1} (${label1}) ${aspect.symbol} ${aspect.planet2} (${label2}) • Orb: ${aspect.orb.toFixed(2)}°${orbStatus} • ${applyingSeparating}`;
+      const tooltipText = `${planet1Name} (${planet1Label}) ${aspect.symbol} ${planet2Name} (${planet2Label}) • Orb: ${aspect.orb.toFixed(2)}°${orbStatus} • ${applyingSeparating}`;
 
       return (
         <g

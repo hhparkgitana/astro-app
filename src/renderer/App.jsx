@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './App.css';
 import './components/AspectTabs.css';
 import LandingPage from './components/LandingPage';
@@ -95,6 +95,42 @@ function App() {
   // Returns mode state
   const [returnType, setReturnType] = useState('solar'); // 'solar' or 'lunar'
   const [returnChartData, setReturnChartData] = useState(null);
+
+  // Process return chart data to convert aspect objects to arrays (IPC serialization fix)
+  const processedReturnChartData = useMemo(() => {
+    if (!returnChartData) return null;
+
+    const processed = {
+      ...returnChartData,
+      natalChart: returnChartData.natalChart ? {
+        ...returnChartData.natalChart,
+        aspects: Array.isArray(returnChartData.natalChart.aspects)
+          ? returnChartData.natalChart.aspects
+          : Object.values(returnChartData.natalChart.aspects || {})
+      } : undefined,
+      aspects: Array.isArray(returnChartData.aspects)
+        ? returnChartData.aspects
+        : Object.values(returnChartData.aspects || {}),
+      returnToNatalAspects: Array.isArray(returnChartData.returnToNatalAspects)
+        ? returnChartData.returnToNatalAspects
+        : Object.values(returnChartData.returnToNatalAspects || {})
+    };
+
+    console.log('✅ useMemo processed return chart data:', {
+      hasNatalAspects: !!processed.natalChart?.aspects,
+      natalAspectsIsArray: Array.isArray(processed.natalChart?.aspects),
+      natalAspectsLength: processed.natalChart?.aspects?.length,
+      hasReturnAspects: !!processed.aspects,
+      returnAspectsIsArray: Array.isArray(processed.aspects),
+      returnAspectsLength: processed.aspects?.length,
+      hasReturnToNatalAspects: !!processed.returnToNatalAspects,
+      returnToNatalAspectsIsArray: Array.isArray(processed.returnToNatalAspects),
+      returnToNatalAspectsLength: processed.returnToNatalAspects?.length
+    });
+
+    return processed;
+  }, [returnChartData]);
+
   const [loadingReturn, setLoadingReturn] = useState(false);
   const [returnsFormData, setReturnsFormData] = useState({
     name: '',
@@ -1098,39 +1134,58 @@ function App() {
 
     // Determine which chart to load into
     if (activeChart === 'A') {
-      // Clear any existing chart data for A
-      setChartData(null);
-      setActiveAspects(new Set());
-      setActiveTransitAspects(new Set());
+      // Check if we're in returns mode
+      if (viewMode === 'returns') {
+        // Load into returns form
+        setReturnsFormData({
+          ...returnsFormData,
+          name: chart.name,
+          year: year,
+          month: month,
+          day: day,
+          hour: hour,
+          minute: minute,
+          latitude: chart.latitude.toString(),
+          longitude: chart.longitude.toString(),
+          location: chart.location,
+          timezone: chart.timezone,
+        });
+        console.log('Loaded famous chart into Returns form:', chart.name);
+      } else {
+        // Clear any existing chart data for A
+        setChartData(null);
+        setActiveAspects(new Set());
+        setActiveTransitAspects(new Set());
 
-      // Populate form with famous chart data
-      setFormData({
-        name: chart.name,
-        year: year,
-        month: month,
-        day: day,
-        hour: hour,
-        minute: minute,
-        latitude: chart.latitude.toString(),
-        longitude: chart.longitude.toString(),
-        location: chart.location,
-        timezone: chart.timezone,
-        houseSystem: formData.houseSystem,
-        showTransits: false,
-        showProgressions: false,
-        transitYear: formData.transitYear,
-        transitMonth: formData.transitMonth,
-        transitDay: formData.transitDay,
-        transitHour: formData.transitHour,
-        transitMinute: formData.transitMinute,
-        progressionYear: formData.progressionYear,
-        progressionMonth: formData.progressionMonth,
-        progressionDay: formData.progressionDay,
-        progressionHour: formData.progressionHour,
-        progressionMinute: formData.progressionMinute,
-      });
+        // Populate form with famous chart data
+        setFormData({
+          name: chart.name,
+          year: year,
+          month: month,
+          day: day,
+          hour: hour,
+          minute: minute,
+          latitude: chart.latitude.toString(),
+          longitude: chart.longitude.toString(),
+          location: chart.location,
+          timezone: chart.timezone,
+          houseSystem: formData.houseSystem,
+          showTransits: false,
+          showProgressions: false,
+          transitYear: formData.transitYear,
+          transitMonth: formData.transitMonth,
+          transitDay: formData.transitDay,
+          transitHour: formData.transitHour,
+          transitMinute: formData.transitMinute,
+          progressionYear: formData.progressionYear,
+          progressionMonth: formData.progressionMonth,
+          progressionDay: formData.progressionDay,
+          progressionHour: formData.progressionHour,
+          progressionMinute: formData.progressionMinute,
+        });
 
-      console.log('Loaded famous chart A:', chart.name);
+        console.log('Loaded famous chart A:', chart.name);
+      }
     } else {
       // Load into Chart B
       setChartDataB(null);
@@ -1403,15 +1458,98 @@ function App() {
 
       console.log('Return chart calculated:', returnResult);
 
+      // Fix: Convert aspects from object to array if needed (IPC serialization issue)
+      // Important: Create new objects instead of mutating to ensure React detects the change
+      const processedReturnResult = {
+        ...returnResult,
+        natalChart: returnResult.natalChart ? {
+          ...returnResult.natalChart,
+          aspects: Array.isArray(returnResult.natalChart.aspects)
+            ? returnResult.natalChart.aspects
+            : Object.values(returnResult.natalChart.aspects || {})
+        } : undefined,
+        aspects: Array.isArray(returnResult.aspects)
+          ? returnResult.aspects
+          : Object.values(returnResult.aspects || {}),
+        returnToNatalAspects: Array.isArray(returnResult.returnToNatalAspects)
+          ? returnResult.returnToNatalAspects
+          : Object.values(returnResult.returnToNatalAspects || {})
+      };
+
+      // Debug: Check natal chart aspects
+      if (processedReturnResult.natalChart) {
+        console.log('✅ Processed natal chart aspects:', {
+          hasAspects: !!processedReturnResult.natalChart.aspects,
+          aspectsLength: processedReturnResult.natalChart.aspects?.length,
+          aspectsIsArray: Array.isArray(processedReturnResult.natalChart.aspects),
+          aspectsType: typeof processedReturnResult.natalChart.aspects,
+          firstAspect: processedReturnResult.natalChart.aspects?.[0]
+        });
+      }
+
+      // Debug: Check return chart aspects
+      console.log('✅ Processed return chart aspects:', {
+        hasAspects: !!processedReturnResult.aspects,
+        aspectsLength: processedReturnResult.aspects?.length,
+        aspectsIsArray: Array.isArray(processedReturnResult.aspects),
+        firstAspect: processedReturnResult.aspects?.[0]
+      });
+
+      // Debug: Check return-to-natal aspects
+      console.log('✅ Processed return-to-natal aspects:', {
+        hasAspects: !!processedReturnResult.returnToNatalAspects,
+        aspectsLength: processedReturnResult.returnToNatalAspects?.length,
+        aspectsIsArray: Array.isArray(processedReturnResult.returnToNatalAspects),
+        firstAspect: processedReturnResult.returnToNatalAspects?.[0]
+      });
+
+      // Use the processed result instead of the original
+      returnResult = processedReturnResult;
+
       // Calculate Return-to-Natal aspects
       if (returnResult.success && returnResult.natalChart) {
         const returnToNatalAspects = calculateTransitAspects(
           returnResult.natalChart.planets,
           returnResult.planets,
-          transitOrb
+          returnNatalOrb
         );
         returnResult.returnToNatalAspects = returnToNatalAspects;
-        console.log('Return-to-natal aspects:', returnToNatalAspects);
+        console.log('Return-to-natal aspects:', {
+          hasAspects: !!returnToNatalAspects,
+          aspectsLength: returnToNatalAspects?.length,
+          aspects: returnToNatalAspects
+        });
+      }
+
+      // Initialize active aspect Sets for return chart
+      // Populate all aspects by default so they're visible
+      if (returnResult.success) {
+        // Natal aspects
+        if (returnResult.natalChart?.aspects) {
+          const natalAspectKeys = new Set(
+            returnResult.natalChart.aspects.map(a => `${a.planet1}-${a.planet2}`)
+          );
+          setActiveAspects(natalAspectKeys);
+          console.log('✅ Initialized natal aspects:', natalAspectKeys.size);
+        }
+
+        // Return-to-natal aspects
+        if (returnResult.returnToNatalAspects) {
+          const returnToNatalKeys = new Set(
+            returnResult.returnToNatalAspects.map(a => `${a.planet1}-${a.planet2}`)
+          );
+          setActiveReturnAspects(returnToNatalKeys);
+          console.log('✅ Initialized return-to-natal aspects:', returnToNatalKeys.size);
+        }
+
+        // Return internal aspects
+        if (returnResult.aspects) {
+          const returnInternalKeys = new Set(
+            returnResult.aspects.map(a => `${a.planet1}-${a.planet2}`)
+          );
+          setActiveReturnInternalAspects(returnInternalKeys);
+          console.log('✅ Initialized return internal aspects:', returnInternalKeys.size);
+        }
       }
 
       setReturnChartData(returnResult);
@@ -2098,36 +2236,57 @@ function App() {
     const targetChart = activeChart || 'A';
 
     if (targetChart === 'A') {
-      // Load into Chart A
-      if (chart.formData) {
-        setFormData(chart.formData);
-      }
-
-      if (chart.chartData) {
-        setChartData(chart.chartData);
-      }
-
-      // Set the view mode based on chart type (only when loading into Chart A)
-      // BUT don't switch away from relationship/returns/dual views unless the chart explicitly requires it
-      if (chart.chartType === 'synastry' || chart.chartType === 'composite') {
-        setViewMode('relationship');
-        setRelationshipChartType(chart.chartType);
-        // Also load Chart B if it exists
-        if (chart.formDataB) {
-          setFormDataB(chart.formDataB);
+      // Check if we're currently in returns mode and loading a natal chart
+      if (viewMode === 'returns' && chart.chartType !== 'solar-return' && chart.chartType !== 'lunar-return') {
+        // Load into returns form instead of regular form
+        if (chart.formData) {
+          setReturnsFormData({
+            ...returnsFormData,
+            name: chart.formData.name || '',
+            year: chart.formData.year || '',
+            month: chart.formData.month || '',
+            day: chart.formData.day || '',
+            hour: chart.formData.hour || '',
+            minute: chart.formData.minute || '',
+            latitude: chart.formData.latitude || '',
+            longitude: chart.formData.longitude || '',
+            location: chart.formData.location || '',
+            timezone: chart.formData.timezone || '',
+          });
         }
-        if (chart.chartDataB) {
-          setChartDataB(chart.chartDataB);
+        console.log('Loaded chart into Returns form:', chart.name);
+      } else {
+        // Load into Chart A normally
+        if (chart.formData) {
+          setFormData(chart.formData);
         }
-      } else if (chart.chartType === 'solar-return' || chart.chartType === 'lunar-return') {
-        setViewMode('returns');
-        setReturnType(chart.chartType === 'solar-return' ? 'solar' : 'lunar');
-      } else if (viewMode !== 'relationship' && viewMode !== 'returns' && viewMode !== 'dual') {
-        // Only switch to single view if we're not already in a multi-chart mode
-        setViewMode('single');
-      }
 
-      console.log('Loaded chart into Chart A:', chart.name);
+        if (chart.chartData) {
+          setChartData(chart.chartData);
+        }
+
+        // Set the view mode based on chart type (only when loading into Chart A)
+        // BUT don't switch away from relationship/returns/dual views unless the chart explicitly requires it
+        if (chart.chartType === 'synastry' || chart.chartType === 'composite') {
+          setViewMode('relationship');
+          setRelationshipChartType(chart.chartType);
+          // Also load Chart B if it exists
+          if (chart.formDataB) {
+            setFormDataB(chart.formDataB);
+          }
+          if (chart.chartDataB) {
+            setChartDataB(chart.chartDataB);
+          }
+        } else if (chart.chartType === 'solar-return' || chart.chartType === 'lunar-return') {
+          setViewMode('returns');
+          setReturnType(chart.chartType === 'solar-return' ? 'solar' : 'lunar');
+        } else if (viewMode !== 'relationship' && viewMode !== 'returns' && viewMode !== 'dual') {
+          // Only switch to single view if we're not already in a multi-chart mode
+          setViewMode('single');
+        }
+
+        console.log('Loaded chart into Chart A:', chart.name);
+      }
     } else {
       // Load into Chart B
       if (chart.formData) {
@@ -2888,6 +3047,7 @@ function App() {
                 formData={formData}
                 setFormData={setFormData}
                 onRecalculate={calculateChart}
+                displaySettings={displaySettings}
               />
             )}
 
@@ -3298,6 +3458,7 @@ function App() {
                         formData={formData}
                         setFormData={setFormData}
                         onRecalculate={calculateChart}
+                        displaySettings={displaySettings}
                       />
                     )}
                   </div>
@@ -3650,6 +3811,7 @@ function App() {
                         formData={formDataB}
                         setFormData={setFormDataB}
                         onRecalculate={(e) => calculateChartB()}
+                        displaySettings={displaySettings}
                       />
                     )}
                   </div>
@@ -4756,6 +4918,25 @@ function App() {
                 </div>
               </div>
 
+              {/* Load chart from library or famous charts */}
+              <div className="load-chart-section">
+                <button
+                  className="load-chart-btn"
+                  type="button"
+                  onClick={() => { setActiveChart('A'); setIsBrowserOpen(true); }}
+                >
+                  📚 Famous Charts
+                </button>
+                <button
+                  className="load-chart-btn"
+                  type="button"
+                  onClick={() => { setActiveChart('A'); setIsLibraryOpen(true); }}
+                  style={{ marginLeft: '0.5rem' }}
+                >
+                  💾 My Library
+                </button>
+              </div>
+
               <button
                 type="submit"
                 disabled={loadingReturn}
@@ -4788,17 +4969,19 @@ function App() {
 
                 <div className="chart-display">
                   <ChartWheel
-                    chartData={returnChartData.natalChart}
-                    chartDataB={returnChartData}
-                    transitData={{ planets: returnChartData.planets }}
+                    chartData={processedReturnChartData.natalChart}
+                    chartDataB={processedReturnChartData}
+                    transitData={{ planets: processedReturnChartData.planets }}
                     isSynastry={true}
-                    activeAspects={new Set()}
-                    onAspectToggle={() => {}}
-                    activeTransitAspects={new Set()}
-                    onTransitAspectToggle={() => {}}
-                    showNatalAspects={false}
+                    activeAspects={activeAspects}
+                    onAspectToggle={handleAspectToggle}
+                    activeTransitAspects={activeReturnAspects}
+                    onTransitAspectToggle={handleReturnAspectToggle}
+                    activeAspectsB={activeReturnInternalAspects}
+                    onAspectToggleB={handleReturnInternalAspectToggle}
+                    showNatalAspects={showNatalAspects}
                     setShowNatalAspects={setShowNatalAspects}
-                    showNatalAspectsB={false}
+                    showNatalAspectsB={showNatalAspectsB}
                     setShowNatalAspectsB={setShowNatalAspectsB}
                     isReturnChart={true}
                     returnType={returnType}
@@ -4841,29 +5024,47 @@ function App() {
                   </div>
 
                   <div className="aspect-tabs-content">
-                    {activeReturnsAspectTab === 'natal' && returnChartData.natalChart && returnChartData.natalChart.aspects && returnChartData.natalChart.aspects.length > 0 && (
-                      <AspectMatrix
-                        chartData={returnChartData.natalChart}
-                        activeAspects={activeAspects}
-                        onAspectToggle={handleAspectToggle}
-                      />
+                    {activeReturnsAspectTab === 'natal' && (
+                      processedReturnChartData?.natalChart && processedReturnChartData.natalChart.aspects && processedReturnChartData.natalChart.aspects.length > 0 ? (
+                        <AspectMatrix
+                          chartData={processedReturnChartData.natalChart}
+                          activeAspects={activeAspects}
+                          onAspectToggle={handleAspectToggle}
+                        />
+                      ) : (
+                        <div style={{ padding: '2rem', textAlign: 'center', color: '#666' }}>
+                          No natal aspects found. This may indicate an issue with the chart calculation.
+                        </div>
+                      )
                     )}
 
-                    {activeReturnsAspectTab === 'return-natal' && returnChartData.returnToNatalAspects && returnChartData.returnToNatalAspects.length > 0 && (
-                      <ReturnAspectMatrix
-                        chartData={returnChartData}
-                        activeReturnAspects={activeReturnAspects}
-                        onReturnAspectToggle={handleReturnAspectToggle}
-                        returnType={returnType}
-                      />
+                    {activeReturnsAspectTab === 'return-natal' && (
+                      processedReturnChartData?.returnToNatalAspects && processedReturnChartData.returnToNatalAspects.length > 0 ? (
+                        <ReturnAspectMatrix
+                          chartData={processedReturnChartData}
+                          activeReturnAspects={activeReturnAspects}
+                          onReturnAspectToggle={handleReturnAspectToggle}
+                          returnType={returnType}
+                        />
+                      ) : (
+                        <div style={{ padding: '2rem', textAlign: 'center', color: '#666' }}>
+                          No return-to-natal aspects found.
+                        </div>
+                      )
                     )}
 
-                    {activeReturnsAspectTab === 'return' && returnChartData.aspects && returnChartData.aspects.length > 0 && (
-                      <AspectMatrix
-                        chartData={returnChartData}
-                        activeAspects={activeReturnInternalAspects}
-                        onAspectToggle={handleReturnInternalAspectToggle}
-                      />
+                    {activeReturnsAspectTab === 'return' && (
+                      processedReturnChartData?.aspects && processedReturnChartData.aspects.length > 0 ? (
+                        <AspectMatrix
+                          chartData={processedReturnChartData}
+                          activeAspects={activeReturnInternalAspects}
+                          onAspectToggle={handleReturnInternalAspectToggle}
+                        />
+                      ) : (
+                        <div style={{ padding: '2rem', textAlign: 'center', color: '#666' }}>
+                          No return aspects found.
+                        </div>
+                      )
                     )}
                   </div>
                 </div>

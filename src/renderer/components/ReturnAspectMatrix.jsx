@@ -20,9 +20,11 @@ const PLANET_GLYPHS = {
 // Aspect colors and symbols
 const ASPECT_CONFIG = {
   'CONJUNCTION': { symbol: '☌', color: '#8B00FF', name: 'Conjunction' },
+  'SEMISEXTILE': { symbol: '⚺', color: '#9370DB', name: 'Semi-Sextile' },
   'SEXTILE': { symbol: '⚹', color: '#4169E1', name: 'Sextile' },
   'SQUARE': { symbol: '□', color: '#DC143C', name: 'Square' },
   'TRINE': { symbol: '△', color: '#0000FF', name: 'Trine' },
+  'QUINCUNX': { symbol: '⚻', color: '#FF8C00', name: 'Quincunx' },
   'OPPOSITION': { symbol: '☍', color: '#FF4500', name: 'Opposition' }
 };
 
@@ -53,6 +55,8 @@ function ReturnAspectMatrix({ chartData, activeReturnAspects, onReturnAspectTogg
   // Check if aspect is active
   const isAspectActive = (aspect) => {
     if (!aspect) return false;
+    if (!activeReturnAspects) return true; // Default to showing all if undefined
+
     const key = `${aspect.planet1}-${aspect.planet2}`;
 
     // If activeReturnAspects is empty, default to showing all aspects
@@ -90,13 +94,13 @@ function ReturnAspectMatrix({ chartData, activeReturnAspects, onReturnAspectTogg
     // Check if ANY aspects for this planet are currently active
     const anyActive = planetAspects.some(aspect => {
       const key = `${aspect.planet1}-${aspect.planet2}`;
-      return activeReturnAspects.has(key);
+      return activeReturnAspects && activeReturnAspects.has(key);
     });
 
     // Determine which aspects to toggle
     const aspectsToToggle = planetAspects.filter(aspect => {
       const key = `${aspect.planet1}-${aspect.planet2}`;
-      const isCurrentlyActive = activeReturnAspects.has(key);
+      const isCurrentlyActive = activeReturnAspects && activeReturnAspects.has(key);
 
       // Toggle: if anyActive, we're turning off; if !anyActive, we're turning on
       if (anyActive && isCurrentlyActive) {
@@ -132,7 +136,7 @@ function ReturnAspectMatrix({ chartData, activeReturnAspects, onReturnAspectTogg
     // Return true if ALL aspects are inactive
     return planetAspects.every(aspect => {
       const key = `${aspect.planet1}-${aspect.planet2}`;
-      return !activeReturnAspects.has(key);
+      return !activeReturnAspects || !activeReturnAspects.has(key);
     });
   };
 
@@ -200,6 +204,13 @@ function ReturnAspectMatrix({ chartData, activeReturnAspects, onReturnAspectTogg
                   }
 
                   const aspectInfo = ASPECT_CONFIG[aspect.type];
+
+                  // Safety check: if aspect type is not recognized, skip it
+                  if (!aspectInfo) {
+                    console.warn(`Unknown aspect type: ${aspect.type}`);
+                    return <td key={returnPlanet} className="aspect-cell empty-cell"></td>;
+                  }
+
                   const symbolSize = getSymbolSize(aspect.orb);
 
                   return (
@@ -228,9 +239,11 @@ function ReturnAspectMatrix({ chartData, activeReturnAspects, onReturnAspectTogg
       </div>
       <div className="aspect-legend">
         <div><span style={{ color: ASPECT_CONFIG.CONJUNCTION.color }}>☌</span> Conjunction</div>
+        <div><span style={{ color: ASPECT_CONFIG.SEMISEXTILE.color }}>⚺</span> Semi-Sextile</div>
         <div><span style={{ color: ASPECT_CONFIG.SEXTILE.color }}>⚹</span> Sextile</div>
         <div><span style={{ color: ASPECT_CONFIG.SQUARE.color }}>□</span> Square</div>
         <div><span style={{ color: ASPECT_CONFIG.TRINE.color }}>△</span> Trine</div>
+        <div><span style={{ color: ASPECT_CONFIG.QUINCUNX.color }}>⚻</span> Quincunx</div>
         <div><span style={{ color: ASPECT_CONFIG.OPPOSITION.color }}>☍</span> Opposition</div>
       </div>
     </div>
