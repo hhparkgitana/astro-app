@@ -38,6 +38,9 @@ const { findEclipses, findEclipsesAffectingChart, findEclipsesDatabaseImpact, fo
 // Load configuration search calculator
 const { searchPlanetaryConfigurations, searchEclipses, getDatabaseMetadata } = require(path.join(__dirname, '..', 'shared', 'calculations', 'configurationSearchCalculator.js'));
 
+// Load ingress calculator
+const { generateIngressChart } = require(path.join(__dirname, '..', 'shared', 'calculations', 'ingressCalculator.js'));
+
 // Lazy-load RAG system for astrological texts (only when needed to avoid Electron compatibility issues)
 let rag = null;
 function getRag() {
@@ -393,6 +396,26 @@ ipcMain.handle('get-ephemeris-metadata', async () => {
   } catch (error) {
     console.error('Error getting ephemeris metadata:', error);
     return null;
+  }
+});
+
+// Handle ingress chart generation
+ipcMain.handle('generate-ingress-chart', async (event, params) => {
+  try {
+    const { year, ingressType, location, orb = 8 } = params;
+
+    if (!year || !ingressType || !location) {
+      throw new Error('Year, ingress type, and location are required');
+    }
+
+    // Generate ingress chart using the ingress calculator
+    const ingressChart = await generateIngressChart(year, ingressType, location, orb);
+
+    console.log(`Generated ${ingressType} ${year} ingress for ${location.name} with orb ${orb}°`);
+    return ingressChart;
+  } catch (error) {
+    console.error('Error generating ingress chart:', error);
+    throw error;
   }
 });
 

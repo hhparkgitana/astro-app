@@ -150,7 +150,8 @@ function calculateChart(params) {
     utcMinute,
     latitude,
     longitude,
-    houseSystem = 'placidus'
+    houseSystem = 'placidus',
+    orb = 8
   } = params;
 
   try {
@@ -289,7 +290,7 @@ function calculateChart(params) {
     };
 
     // Calculate aspects (reuse existing aspect calculation logic)
-    const aspects = calculateAspects(planets);
+    const aspects = calculateAspects(planets, { default: orb });
 
     return {
       success: true,

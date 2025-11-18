@@ -18,6 +18,7 @@ import TimeSlider from './components/TimeSlider';
 import HoraryAnalysis from './components/HoraryAnalysis';
 import FixedStarConjunctions from './components/FixedStars/FixedStarConjunctions';
 import AstrocartographyView from './components/Astrocartography/AstrocartographyView';
+import IngressGenerator from './components/Ingress/IngressGenerator';
 import { DateTime } from 'luxon';
 import { findAspect, getAngularDistance, calculateAspects } from '../shared/calculations/aspectsCalculator';
 import { calculateCompositeChart, calculateGeographicMidpoint } from '../shared/calculations/compositeCalculator';
@@ -105,6 +106,9 @@ function App() {
   // Returns mode state
   const [returnType, setReturnType] = useState('solar'); // 'solar' or 'lunar'
   const [returnChartData, setReturnChartData] = useState(null);
+
+  // Ingress chart state
+  const [ingressChartData, setIngressChartData] = useState(null);
 
   // Process return chart data to convert aspect objects to arrays (IPC serialization fix)
   const processedReturnChartData = useMemo(() => {
@@ -2513,6 +2517,13 @@ function App() {
             title="Astrocartography Map"
           >
             🗺️ Astrocartography
+          </button>
+          <button
+            className={`mode-btn ${viewMode === 'ingress' ? 'active' : ''}`}
+            onClick={() => setViewMode('ingress')}
+            title="Generate Mundane Ingress Charts"
+          >
+            ♈ Ingress
           </button>
           <button
             className={`mode-btn ${isChatOpen ? 'active' : ''}`}
@@ -5239,6 +5250,13 @@ function App() {
           <ConfigurationSearch />
         ) : viewMode === 'astrocartography' ? (
           <AstrocartographyView chartData={chartData} />
+        ) : viewMode === 'ingress' ? (
+          <IngressGenerator
+            onIngressGenerated={(ingressChart) => {
+              setIngressChartData(ingressChart);
+              console.log('Ingress chart generated:', ingressChart);
+            }}
+          />
         ) : null}
       </main>
 

@@ -16,5 +16,6 @@ contextBridge.exposeInMainWorld('astro', {
   exportChartImage: (params) => ipcRenderer.invoke('export-chart-image', params),
   writeDebugLog: (params) => ipcRenderer.invoke('write-debug-log', params),
   getApiKey: () => ipcRenderer.invoke('get-api-key'),
-  setApiKey: (apiKey) => ipcRenderer.invoke('set-api-key', apiKey)
+  setApiKey: (apiKey) => ipcRenderer.invoke('set-api-key', apiKey),
+  generateIngressChart: (params) => ipcRenderer.invoke('generate-ingress-chart', params)
 });
