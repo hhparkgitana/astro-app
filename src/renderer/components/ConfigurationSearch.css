@@ -19,6 +19,45 @@
   font-size: 14px;
 }
 
+/* Search Mode Toggle */
+.search-mode-toggle {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  background: #fff;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  width: fit-content;
+}
+
+.search-mode-toggle label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 500;
+  color: #495057;
+}
+
+.search-mode-toggle label:hover {
+  background: #f8f9fa;
+}
+
+.search-mode-toggle label.active {
+  background: #007bff;
+  color: white;
+}
+
+.search-mode-toggle input[type="radio"] {
+  cursor: pointer;
+  margin: 0;
+}
+
 .search-builder {
   background: #f8f9fa;
   border-radius: 8px;
@@ -247,4 +286,103 @@
 .no-results p {
   margin: 0;
   font-size: 14px;
+}
+
+/* Famous Charts Results */
+.famous-chart-result {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.chart-info h4 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.chart-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.chart-details span {
+  padding: 4px 10px;
+  background: white;
+  border-radius: 4px;
+  font-size: 13px;
+  border: 1px solid #dee2e6;
+}
+
+.chart-category {
+  background: #e7f3ff !important;
+  color: #0056b3 !important;
+  font-weight: 500;
+}
+
+.chart-date {
+  color: #495057;
+}
+
+.chart-location {
+  color: #6c757d;
+}
+
+.rodden-rating {
+  background: #fff3cd !important;
+  color: #856404 !important;
+  font-weight: 500;
+}
+
+.chart-notes {
+  margin: 10px 0 0 0;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.match-details {
+  padding: 12px;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+}
+
+.match-details strong {
+  display: block;
+  margin-bottom: 10px;
+  color: #495057;
+  font-size: 14px;
+}
+
+.match-section {
+  margin-bottom: 8px;
+}
+
+.match-section:last-child {
+  margin-bottom: 0;
+}
+
+.match-section em {
+  display: inline-block;
+  margin-right: 8px;
+  color: #6c757d;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.match-item {
+  display: inline-block;
+  padding: 3px 8px;
+  margin: 2px 4px 2px 0;
+  background: #f8f9fa;
+  border-radius: 3px;
+  font-size: 12px;
+  color: #495057;
+  border: 1px solid #e9ecef;
 }

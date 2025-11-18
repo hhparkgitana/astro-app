@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import './ConfigurationSearch.css';
+import { searchFamousCharts } from '../utils/famousChartsSearchCalculator';
 
 const ConfigurationSearch = () => {
+  // Search mode state
+  const [searchMode, setSearchMode] = useState('timePeriods'); // 'timePeriods' or 'famousCharts'
+
   // Search criteria state
   const [dateRange, setDateRange] = useState({
     startYear: '2024',
@@ -140,7 +144,83 @@ const ConfigurationSearch = () => {
     setSearchResults([]);
 
     try {
-      // Build criteria object
+      // Handle famous charts search mode
+      if (searchMode === 'famousCharts') {
+        // Build criteria object for famous charts search
+        const criteria = {};
+
+        // Add aspects
+        if (aspectCriteria.length > 0) {
+          criteria.aspects = aspectCriteria.map(c => {
+            const aspectDef = {
+              aspect: c.aspect.toLowerCase(),
+              orb: parseFloat(c.orb)
+            };
+
+            // Handle planet1
+            if (c.planet1Type === 'fixed' && c.planet1DegreeInSign !== '' && c.planet1DegreeInSign !== undefined) {
+              const signIndex = signs.indexOf(c.planet1Sign);
+              const absoluteDegree = signIndex * 30 + parseFloat(c.planet1DegreeInSign);
+              aspectDef.planet1FixedDegree = absoluteDegree;
+            } else {
+              aspectDef.planet1 = c.planet1.toLowerCase();
+            }
+
+            // Handle planet2
+            if (c.planet2Type === 'fixed' && c.planet2DegreeInSign !== '' && c.planet2DegreeInSign !== undefined) {
+              const signIndex = signs.indexOf(c.planet2Sign);
+              const absoluteDegree = signIndex * 30 + parseFloat(c.planet2DegreeInSign);
+              aspectDef.planet2FixedDegree = absoluteDegree;
+            } else {
+              aspectDef.planet2 = c.planet2.toLowerCase();
+            }
+
+            return aspectDef;
+          });
+        }
+
+        // Add placements
+        if (placementCriteria.length > 0) {
+          criteria.placements = placementCriteria.map(c => {
+            if (c.type === 'sign') {
+              const placement = {
+                planet: c.planet.toLowerCase(),
+                sign: c.sign.toLowerCase()
+              };
+
+              if (c.signMinDegree !== '' || c.signMaxDegree !== '') {
+                placement.signMinDegree = c.signMinDegree !== '' ? parseFloat(c.signMinDegree) : 0;
+                placement.signMaxDegree = c.signMaxDegree !== '' ? parseFloat(c.signMaxDegree) : 30;
+              }
+
+              return placement;
+            } else {
+              return {
+                planet: c.planet.toLowerCase(),
+                minDegree: parseFloat(c.minDegree),
+                maxDegree: parseFloat(c.maxDegree)
+              };
+            }
+          });
+        }
+
+        // Add retrograde
+        if (retrogradeCriteria.length > 0) {
+          criteria.retrograde = retrogradeCriteria.map(c => ({
+            planet: c.planet.toLowerCase(),
+            isRetrograde: c.isRetrograde
+          }));
+        }
+
+        // Execute famous charts search
+        const matches = searchFamousCharts(criteria);
+        setSearchResults(matches);
+        setResultCount(matches.length);
+        setSearching(false);
+        return;
+      }
+
+      // Build criteria object for time periods search
       const criteria = {};
 
       // Add aspects
@@ -294,8 +374,33 @@ const ConfigurationSearch = () => {
         <p>Search for dates when specific planetary configurations occur</p>
       </div>
 
+      {/* Search Mode Toggle */}
+      <div className="search-mode-toggle">
+        <label className={searchMode === 'timePeriods' ? 'active' : ''}>
+          <input
+            type="radio"
+            name="searchMode"
+            value="timePeriods"
+            checked={searchMode === 'timePeriods'}
+            onChange={(e) => setSearchMode(e.target.value)}
+          />
+          <span>Search Time Periods</span>
+        </label>
+        <label className={searchMode === 'famousCharts' ? 'active' : ''}>
+          <input
+            type="radio"
+            name="searchMode"
+            value="famousCharts"
+            checked={searchMode === 'famousCharts'}
+            onChange={(e) => setSearchMode(e.target.value)}
+          />
+          <span>Search Famous Charts</span>
+        </label>
+      </div>
+
       <div className="search-builder">
-        {/* Date Range */}
+        {/* Date Range - only show for time periods mode */}
+        {searchMode === 'timePeriods' && (
         <div className="criteria-section">
           <h3>Date Range</h3>
           <div className="date-range-inputs">
@@ -319,6 +424,7 @@ const ConfigurationSearch = () => {
             </div>
           </div>
         </div>
+        )}
 
         {/* Aspect Criteria */}
         <div className="criteria-section">
@@ -550,8 +656,72 @@ const ConfigurationSearch = () => {
       {/* Results */}
       {searchResults.length > 0 && (
         <div className="search-results">
-          <h3>Results ({resultCount} date ranges found)</h3>
-          <div className="results-list">
+          {searchMode === 'famousCharts' ? (
+            <>
+              <h3>Results ({resultCount} charts found)</h3>
+              <div className="results-list">
+                {searchResults.slice(0, 100).map((match, index) => (
+                  <div key={index} className="result-item famous-chart-result">
+                    <div className="chart-info">
+                      <h4>{match.chart.name}</h4>
+                      <div className="chart-details">
+                        <span className="chart-category">{match.chart.category}</span>
+                        <span className="chart-date">{match.chart.date} at {match.chart.time}</span>
+                        <span className="chart-location">{match.chart.location}</span>
+                        {match.chart.roddenRating && (
+                          <span className="rodden-rating">Rodden Rating: {match.chart.roddenRating}</span>
+                        )}
+                      </div>
+                      {match.chart.notes && (
+                        <p className="chart-notes">{match.chart.notes}</p>
+                      )}
+                    </div>
+                    <div className="match-details">
+                      <strong>Matching Criteria:</strong>
+                      {match.matchDetails.aspects.length > 0 && (
+                        <div className="match-section">
+                          <em>Aspects:</em>
+                          {match.matchDetails.aspects.map((aspect, i) => (
+                            <span key={i} className="match-item">
+                              {aspect.planet1} {aspect.aspect} {aspect.planet2} (orb: {aspect.orb}°)
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      {match.matchDetails.placements.length > 0 && (
+                        <div className="match-section">
+                          <em>Placements:</em>
+                          {match.matchDetails.placements.map((placement, i) => (
+                            <span key={i} className="match-item">
+                              {placement.planet} in {placement.sign}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      {match.matchDetails.retrogrades.length > 0 && (
+                        <div className="match-section">
+                          <em>Retrograde:</em>
+                          {match.matchDetails.retrogrades.map((retro, i) => (
+                            <span key={i} className="match-item">
+                              {retro.planet} {retro.status}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+                {resultCount > 100 && (
+                  <div className="results-notice">
+                    Showing first 100 charts. Refine your search for more specific results.
+                  </div>
+                )}
+              </div>
+            </>
+          ) : (
+            <>
+              <h3>Results ({resultCount} date ranges found)</h3>
+              <div className="results-list">
             {searchResults.slice(0, 100).map((range, index) => (
               <div key={index} className="result-item">
                 <div className="result-date">
@@ -601,13 +771,19 @@ const ConfigurationSearch = () => {
                 Showing first 100 date ranges. Refine your search for more specific results.
               </div>
             )}
-          </div>
+              </div>
+            </>
+          )}
         </div>
       )}
 
       {searchResults.length === 0 && !searching && (
         <div className="no-results">
-          <p>Add search criteria and click Search to find matching planetary configurations.</p>
+          {searchMode === 'famousCharts' ? (
+            <p>No famous charts found matching your criteria. Try adjusting your search parameters or increasing the orb values.</p>
+          ) : (
+            <p>Add search criteria and click Search to find matching planetary configurations.</p>
+          )}
         </div>
       )}
     </div>
