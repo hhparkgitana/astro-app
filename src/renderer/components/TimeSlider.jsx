@@ -231,18 +231,12 @@ function TimeSlider({
     setCurrentDate(date);
     setSliderPosition(dateToPosition(date));
 
-    // Only update formData and recalculate if NOT in aspect marker mode
-    // In aspect marker mode, we're just viewing pre-calculated aspect times
-    if (increment !== 'aspect') {
-      const overrideData = updateFormData(date);
+    // Update form data and trigger chart recalculation
+    const overrideData = updateFormData(date);
 
-      // Trigger chart recalculation immediately with the override data
-      if (onRecalculate && overrideData) {
-        onRecalculate(null, overrideData);
-      }
-    } else {
-      // In aspect marker mode, just update the form data without triggering recalculation
-      updateFormData(date);
+    // Trigger chart recalculation immediately with the override data
+    if (onRecalculate && overrideData) {
+      onRecalculate(null, overrideData);
     }
 
     // Optional date change callback

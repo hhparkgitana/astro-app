@@ -23,21 +23,34 @@ export function calculateSolarArcs(natalChart, natalDate, targetDate, method = '
   const target = new Date(targetDate);
   const daysElapsed = (target - birthDate) / (1000 * 60 * 60 * 24);
 
+  // Calculate years from birth for display
+  const yearsFromBirth = daysElapsed / 365.25;
+
+  console.log('=== DATE CALCULATION ===');
+  console.log('Birth date:', birthDate);
+  console.log('Target date:', target);
+  console.log('Days elapsed:', daysElapsed);
+  console.log('Years elapsed:', yearsFromBirth);
+
   // Calculate arc amount
+  // Solar Arc Directions use approximately 1 degree per year (Naibod rate: 59'8" per year ≈ 0.9856°/year)
   let arcInDegrees;
 
   if (method === 'precise' && natalChart.planets && natalChart.planets.SUN) {
     // Method 2: Use actual solar arc (would need to calculate Sun position at target date)
     // For now, default to standard method
     // TODO: Implement precise method with actual Sun calculation
-    arcInDegrees = daysElapsed * 0.9856;
+    arcInDegrees = yearsFromBirth * 0.9856;
   } else {
-    // Method 1: Standard average solar motion
-    arcInDegrees = daysElapsed * 0.9856;
+    // Method 1: Standard Naibod rate (0.9856 degrees per YEAR, not per day!)
+    arcInDegrees = yearsFromBirth * 0.9856;
   }
 
-  // Calculate years from birth for display
-  const yearsFromBirth = daysElapsed / 365.25;
+  // Debug logging
+  console.log('=== SOLAR ARC CALCULATION ===');
+  console.log(`Days elapsed: ${daysElapsed}`);
+  console.log(`Years from birth: ${yearsFromBirth.toFixed(2)}`);
+  console.log(`Arc amount: ${arcInDegrees.toFixed(4)}° (${(arcInDegrees % 360).toFixed(4)}° after wrap)`);
 
   // Create Solar Arc chart by advancing all natal positions
   const solarArcChart = {
@@ -57,14 +70,25 @@ export function calculateSolarArcs(natalChart, natalDate, targetDate, method = '
   if (natalChart.planets) {
     for (const planetKey in natalChart.planets) {
       const natalPlanet = natalChart.planets[planetKey];
+      const solarArcLongitude = wrapDegrees(natalPlanet.longitude + arcInDegrees);
+
       solarArcChart.planets[planetKey] = {
         ...natalPlanet,
-        longitude: wrapDegrees(natalPlanet.longitude + arcInDegrees),
+        longitude: solarArcLongitude,
         // Velocity doesn't change (it's still the natal velocity, just at a new position)
         // Some properties stay the same
         natalLongitude: natalPlanet.longitude, // Store original for reference
         arcAmount: arcInDegrees
       };
+
+      // Debug logging for Sun specifically
+      if (planetKey === 'SUN') {
+        console.log(`☉ SUN:`);
+        console.log(`  Natal longitude: ${natalPlanet.longitude.toFixed(4)}°`);
+        console.log(`  Solar Arc longitude: ${solarArcLongitude.toFixed(4)}°`);
+        console.log(`  Arc amount added: ${arcInDegrees.toFixed(4)}°`);
+        console.log(`  Angular distance: ${Math.abs(solarArcLongitude - natalPlanet.longitude).toFixed(4)}°`);
+      }
     }
   }
 
