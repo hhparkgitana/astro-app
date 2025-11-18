@@ -16,6 +16,7 @@ import EclipseDashboard from './components/EclipseDashboard';
 import ConfigurationSearch from './components/ConfigurationSearch';
 import TimeSlider from './components/TimeSlider';
 import HoraryAnalysis from './components/HoraryAnalysis';
+import AstrocartographyView from './components/Astrocartography/AstrocartographyView';
 import { DateTime } from 'luxon';
 import { findAspect, getAngularDistance, calculateAspects } from '../shared/calculations/aspectsCalculator';
 import { calculateCompositeChart, calculateGeographicMidpoint } from '../shared/calculations/compositeCalculator';
@@ -2494,6 +2495,13 @@ function App() {
             title="Search for Planetary Configurations"
           >
             🔍 Configuration Search
+          </button>
+          <button
+            className={`mode-btn ${viewMode === 'astrocartography' ? 'active' : ''}`}
+            onClick={() => setViewMode('astrocartography')}
+            title="Astrocartography Map"
+          >
+            🗺️ Astrocartography
           </button>
           <button
             className={`mode-btn ${isChatOpen ? 'active' : ''}`}
@@ -5205,6 +5213,8 @@ function App() {
           <EclipseDashboard chartData={chartData} />
         ) : viewMode === 'configSearch' ? (
           <ConfigurationSearch />
+        ) : viewMode === 'astrocartography' ? (
+          <AstrocartographyView chartData={chartData} />
         ) : null}
       </main>
 

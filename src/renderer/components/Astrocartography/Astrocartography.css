@@ -1,0 +1,284 @@
+/* Astrocartography View Styles */
+
+.astrocartography-view {
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.astrocartography-view h1 {
+  margin: 0 0 10px 0;
+  font-size: 1.8em;
+  color: #2c3e50;
+}
+
+.astrocartography-view > p {
+  margin: 0 0 20px 0;
+  color: #666;
+  font-size: 0.95em;
+}
+
+/* Main Layout */
+.astrocartography-main {
+  display: flex;
+  gap: 20px;
+  min-height: 700px;
+  height: calc(100vh - 200px);
+}
+
+/* Map Container */
+.astrocartography-map-container {
+  flex: 3;
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.astrocartography-map {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Tooltip */
+.astrocartography-tooltip {
+  position: fixed;
+  display: none;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 12px 15px;
+  border-radius: 6px;
+  font-size: 13px;
+  pointer-events: none;
+  z-index: 10000;
+  max-width: 300px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  line-height: 1.4;
+}
+
+/* Controls Panel */
+.astrocartography-controls {
+  width: 260px;
+  flex-shrink: 0;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  max-height: 800px;
+}
+
+.controls-section {
+  margin-bottom: 30px;
+}
+
+.controls-section:last-child {
+  margin-bottom: 0;
+}
+
+.controls-section h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.1em;
+  color: #2c3e50;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 8px;
+}
+
+/* Planet Toggles */
+.planet-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.planet-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.planet-toggle:hover {
+  background: #f5f5f5;
+}
+
+.planet-toggle input[type="checkbox"] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+
+.planet-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.planet-glyph {
+  font-size: 18px;
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+}
+
+.planet-name {
+  color: #333;
+}
+
+/* Line Type Toggles */
+.line-type-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.line-type-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.line-type-toggle:hover {
+  background: #f5f5f5;
+}
+
+.line-type-toggle input[type="checkbox"] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+
+.line-type-toggle span {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Info Section */
+.info-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #666;
+  margin: 0 0 15px 0;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-list li {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #666;
+  padding-left: 10px;
+  position: relative;
+}
+
+.info-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #3498db;
+  font-weight: bold;
+}
+
+.info-list strong {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Empty State */
+.astrocartography-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: #666;
+}
+
+.astrocartography-empty-state h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.5em;
+  color: #2c3e50;
+}
+
+.astrocartography-empty-state p {
+  margin: 0;
+  font-size: 1em;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .astrocartography-main {
+    flex-direction: column;
+  }
+
+  .astrocartography-controls {
+    width: 100%;
+    max-height: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .astrocartography-view {
+    padding: 15px;
+  }
+
+  .astrocartography-view h1 {
+    font-size: 1.5em;
+  }
+
+  .astrocartography-main {
+    gap: 15px;
+  }
+
+  .astrocartography-controls {
+    padding: 15px;
+  }
+
+  .controls-section h3 {
+    font-size: 1em;
+  }
+}
+
+/* Loading State */
+.astrocartography-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  font-size: 1.1em;
+  color: #666;
+}
+
+/* Map SVG Styles */
+.astrocartography-map .graticule {
+  pointer-events: none;
+}
+
+.astrocartography-map .countries path {
+  transition: fill 0.2s;
+}
+
+.astrocartography-map .countries path:hover {
+  fill: #bdd5d5;
+}

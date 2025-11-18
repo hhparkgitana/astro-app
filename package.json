@@ -162,6 +162,8 @@
     "better-sqlite3": "^9.2.2",
     "cheerio": "^1.1.2",
     "chromadb": "^3.1.0",
+    "d3": "^7.9.0",
+    "d3-geo": "^3.1.1",
     "dotenv": "^17.2.3",
     "electron-store": "^11.0.2",
     "electron-updater": "^6.6.2",
@@ -171,6 +173,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sweph": "^2.10.3-b-1",
+    "topojson-client": "^3.1.0",
     "vectra": "^0.11.1"
   },
   "devDependencies": {
