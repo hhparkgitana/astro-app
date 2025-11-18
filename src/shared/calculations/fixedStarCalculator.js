@@ -178,11 +178,20 @@ export function findFixedStarConjunctions(chart, tier = 'tier1', maxOrb = null) 
   // Calculate fixed star positions for chart date
   const starPositions = calculateAllFixedStarPositions(chart.date || new Date(), tier);
 
+  // Only check conjunctions with major planets and nodes (not asteroids/centaurs)
+  const significantPoints = [
+    'SUN', 'MOON', 'MERCURY', 'VENUS', 'MARS', 'JUPITER', 'SATURN',
+    'URANUS', 'NEPTUNE', 'PLUTO', 'NORTH_NODE', 'SOUTH_NODE'
+  ];
+
   // Check conjunctions with planets
   if (chart.planets) {
     for (const planetKey in chart.planets) {
       const planet = chart.planets[planetKey];
       if (!planet || typeof planet.longitude !== 'number') continue;
+
+      // Skip if not a significant point
+      if (!significantPoints.includes(planetKey)) continue;
 
       for (const starPos of starPositions) {
         const orb = calculateOrb(planet.longitude, starPos.longitude);
