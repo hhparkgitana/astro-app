@@ -2431,11 +2431,34 @@ function App() {
 
   const getZodiacSign = (longitude) => {
     if (longitude === undefined || isNaN(longitude)) return 'N/A';
+
+    console.log(`[getZodiacSign CALLED] longitude=${longitude}`);
+
+    // Use normalizeLongitude to handle edge cases (e.g., 29.999° → 0° of next sign)
+    let normalizedLongitude = longitude;
+    let degreeInSign = longitude % 30;
+    const roundedDegree = parseFloat(degreeInSign.toFixed(2));
+
+    // Debug logging for Sun position
+    console.log(`[getZodiacSign DEBUG] longitude=${longitude}, degreeInSign=${degreeInSign}, roundedDegree=${roundedDegree}`);
+
+    // If rounding causes degree to reach 30°, normalize to next sign
+    if (roundedDegree >= 30) {
+      normalizedLongitude = Math.floor(longitude / 30) * 30 + 30;
+      degreeInSign = 0;
+      console.log(`[getZodiacSign NORMALIZED] normalizedLongitude=${normalizedLongitude}, degreeInSign=${degreeInSign}`);
+    } else {
+      degreeInSign = roundedDegree;
+    }
+
     const signs = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
                    'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'];
-    const signIndex = Math.floor(longitude / 30);
-    const degree = (longitude % 30).toFixed(2);
-    return `${degree}° ${signs[signIndex]}`;
+    const signIndex = Math.floor(normalizedLongitude / 30) % 12;
+    const result = `${degreeInSign.toFixed(2)}° ${signs[signIndex]}`;
+
+    console.log(`[getZodiacSign RESULT] signIndex=${signIndex}, result="${result}"`);
+
+    return result;
   };
 
   const getSignName = (longitude) => {

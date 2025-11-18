@@ -125,30 +125,56 @@ function findExactIngressMoment(approximateDate, targetLongitude) {
   // Binary search to precision of 1 second (1/86400 of a day)
   const precision = 1 / 86400;
 
+  console.log(`\n=== Finding ${targetLongitude}° ingress ===`);
+  console.log(`Search window: ${lowDate.toISOString()} to ${highDate.toISOString()}`);
+
+  let iterationCount = 0;
   while (highJd - lowJd > precision) {
+    iterationCount++;
     const midJd = (lowJd + highJd) / 2;
     const sunLon = getSunLongitude(midJd);
 
     // Calculate angular distance from target (considering circular nature)
-    const distance = angularDistance(targetLongitude, sunLon);
+    // distance > 0 means target is ahead of Sun (Sun needs to move forward in time)
+    // distance < 0 means target is behind Sun (Sun needs to move backward in time)
+    const distance = angularDistance(sunLon, targetLongitude);
+
+    if (iterationCount <= 5 || Math.abs(distance) < 0.1) {
+      console.log(`Iteration ${iterationCount}: Sun at ${sunLon.toFixed(6)}°, distance = ${distance.toFixed(6)}°`);
+    }
 
     if (Math.abs(distance) < 0.0001) {
       // Found it! (within 0.0001 degrees = ~0.36 arcseconds)
-      return julianDayToDate(midJd);
+      console.log(`✓ Found exact ingress at iteration ${iterationCount}`);
+      const resultDate = julianDayToDate(midJd);
+      const finalSunLon = getSunLongitude(midJd);
+      console.log(`Final Sun position: ${finalSunLon.toFixed(6)}° (target: ${targetLongitude}°)`);
+      console.log(`Ingress time: ${resultDate.toISOString()}`);
+      return resultDate;
     }
 
     // Determine which half to search
-    // If Sun hasn't reached target yet, search upper half
-    // If Sun has passed target, search lower half
+    // distance = targetLongitude - sunLongitude (normalized to -180 to +180)
+    // If distance > 0: target is ahead of Sun, Sun needs to move forward (higher JD)
+    // If distance < 0: target is behind Sun, Sun needs to move backward (lower JD)
     if (distance > 0) {
+      // Sun hasn't reached target yet, search later times (upper half)
       lowJd = midJd;
     } else {
+      // Sun has passed target, search earlier times (lower half)
       highJd = midJd;
     }
   }
 
   // Return the midpoint of final range
-  return julianDayToDate((lowJd + highJd) / 2);
+  const resultJd = (lowJd + highJd) / 2;
+  const resultDate = julianDayToDate(resultJd);
+  const finalSunLon = getSunLongitude(resultJd);
+  console.log(`Binary search complete after ${iterationCount} iterations`);
+  console.log(`Final Sun position: ${finalSunLon.toFixed(6)}° (target: ${targetLongitude}°)`);
+  console.log(`Difference: ${Math.abs(finalSunLon - targetLongitude).toFixed(6)}°`);
+  console.log(`Ingress time: ${resultDate.toISOString()}`);
+  return resultDate;
 }
 
 /**

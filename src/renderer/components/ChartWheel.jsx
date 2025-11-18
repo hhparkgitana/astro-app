@@ -230,14 +230,33 @@ function ChartWheel({
 
   /**
    * Format longitude as degrees and minutes within sign
+   * Handles edge cases where rounding causes 60 minutes (normalizes to next degree/sign)
    * @param {number} longitude - Longitude in degrees (0-360)
-   * @returns {string} Formatted string like "15°32'"
+   * @returns {object} { formatted: "15°32'", sign: "Aries" }
    */
   const formatDegreeMinute = (longitude) => {
-    const degreesInSign = longitude % 30;
-    const degrees = Math.floor(degreesInSign);
-    const minutes = Math.round((degreesInSign - degrees) * 60);
-    return `${degrees}°${minutes.toString().padStart(2, '0')}'`;
+    let degreesInSign = longitude % 30;
+    let degrees = Math.floor(degreesInSign);
+    let minutes = Math.round((degreesInSign - degrees) * 60);
+
+    // Handle case where minutes round to 60
+    if (minutes >= 60) {
+      degrees += 1;
+      minutes = 0;
+    }
+
+    // Handle case where degrees reach 30 (move to next sign)
+    let normalizedLongitude = longitude;
+    if (degrees >= 30) {
+      normalizedLongitude = Math.floor(longitude / 30) * 30 + 30; // Move to start of next sign
+      degrees = 0;
+      minutes = 0;
+    }
+
+    const sign = getZodiacSign(normalizedLongitude);
+    const formatted = `${degrees}°${minutes.toString().padStart(2, '0')}'`;
+
+    return { formatted, sign };
   };
 
   /**
@@ -260,8 +279,7 @@ function ChartWheel({
           const glyph = glyphs.planets[fullPlanet.name];
 
           // Format tooltip: "Planet Name: 15°32' Sign"
-          const degreeStr = formatDegreeMinute(fullPlanet.longitude);
-          const sign = getZodiacSign(fullPlanet.longitude);
+          const { formatted: degreeStr, sign } = formatDegreeMinute(fullPlanet.longitude);
           const tooltipText = `${fullPlanet.name}: ${degreeStr} ${sign}`;
 
           elements.push(
@@ -296,8 +314,7 @@ function ChartWheel({
           const glyph = glyphs.planets[fullPlanet.name];
 
           // Format tooltip: "Planet Name: 15°32' Sign"
-          const degreeStr = formatDegreeMinute(fullPlanet.longitude);
-          const sign = getZodiacSign(fullPlanet.longitude);
+          const { formatted: degreeStr, sign } = formatDegreeMinute(fullPlanet.longitude);
           const tooltipText = `${fullPlanet.name}: ${degreeStr} ${sign}`;
 
           // Render connector line from stacked position to actual position

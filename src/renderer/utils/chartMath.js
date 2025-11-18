@@ -56,14 +56,39 @@ export function getDegreeInSign(longitude) {
 }
 
 /**
+ * Normalize longitude to handle edge cases where rounding causes overflow
+ * (e.g., 29.9999° rounds to 30°, which should be 0° of next sign)
+ * @param {number} longitude - Astrological longitude (0-360)
+ * @param {number} precision - Decimal places for rounding (default: 2)
+ * @returns {object} { longitude: normalized longitude, sign: zodiac sign, degree: degree in sign }
+ */
+export function normalizeLongitude(longitude, precision = 2) {
+  let normalizedLongitude = longitude;
+  let degreeInSign = longitude % 30;
+
+  // Round to specified precision
+  const roundedDegree = parseFloat(degreeInSign.toFixed(precision));
+
+  // If rounding causes degree to reach 30°, normalize to next sign
+  if (roundedDegree >= 30) {
+    normalizedLongitude = Math.floor(longitude / 30) * 30 + 30; // Move to start of next sign
+    degreeInSign = 0;
+  } else {
+    degreeInSign = roundedDegree;
+  }
+
+  const sign = getZodiacSign(normalizedLongitude);
+  return { longitude: normalizedLongitude, sign, degree: degreeInSign };
+}
+
+/**
  * Format a longitude as "degree° sign"
  * @param {number} longitude - Astrological longitude (0-360)
  * @returns {string} Formatted string like "15° Aries"
  */
 export function formatLongitude(longitude) {
-  const sign = getZodiacSign(longitude);
-  const degree = getDegreeInSign(longitude).toFixed(2);
-  return `${degree}° ${sign}`;
+  const { sign, degree } = normalizeLongitude(longitude, 2);
+  return `${degree.toFixed(2)}° ${sign}`;
 }
 
 /**
