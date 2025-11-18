@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PlanetDisplaySettings from './PlanetDisplaySettings';
 import ApiKeySettings from './ApiKeySettings';
+import FixedStarSettings from './FixedStarSettings';
 
 /**
  * Settings Menu Component
@@ -8,7 +9,7 @@ import ApiKeySettings from './ApiKeySettings';
  * Dropdown menu accessed via gear icon in header
  * Contains user preferences and display settings
  */
-function SettingsMenu({ displaySettings, setDisplaySettings }) {
+function SettingsMenu({ displaySettings, setDisplaySettings, fixedStarSettings, setFixedStarSettings }) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -57,6 +58,12 @@ function SettingsMenu({ displaySettings, setDisplaySettings }) {
           <div style={styles.dropdownContent}>
             {/* API Key Settings Section */}
             <ApiKeySettings />
+
+            {/* Fixed Star Settings Section */}
+            <FixedStarSettings
+              fixedStarSettings={fixedStarSettings}
+              setFixedStarSettings={setFixedStarSettings}
+            />
 
             {/* Planet Display Settings Section */}
             <PlanetDisplaySettings

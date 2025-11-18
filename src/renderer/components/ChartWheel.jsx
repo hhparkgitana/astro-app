@@ -12,6 +12,7 @@ import {
   calculateChartZones,
   CHART_CONFIG
 } from '../utils/chartMath';
+import { calculateAllFixedStarPositions } from '../../shared/calculations/fixedStarCalculator';
 import ExportMenu from './ExportMenu';
 
 /**
@@ -62,7 +63,8 @@ function ChartWheel({
   personAName = 'Person A',
   personBName = 'Person B',
   formData = null,
-  displaySettings = CHART_CONFIG.defaultDisplay
+  displaySettings = CHART_CONFIG.defaultDisplay,
+  fixedStarSettings = { enabled: false, tier: 'tier1', useDefaultOrb: true, maxOrb: null }
 }) {
   const { size, center, radii, colors, glyphs } = CHART_CONFIG;
 
@@ -336,6 +338,56 @@ function ChartWheel({
     });
 
     return elements;
+  };
+
+  /**
+   * Render fixed stars as small gold stars on the zodiac ring
+   */
+  const renderFixedStars = () => {
+    if (!fixedStarSettings.enabled || !chartData || !chartData.date) return null;
+
+    try {
+      const ascendant = chartData.ascendant;
+      const starPositions = calculateAllFixedStarPositions(
+        chartData.date,
+        fixedStarSettings.tier
+      );
+
+      if (!starPositions || starPositions.length === 0) return null;
+
+      // Position stars slightly inside the zodiac ring
+      const starRadius = zones.zodiacWheel.innerRadius + 8;
+
+      return starPositions.map((star) => {
+        const pos = pointOnCircle(center, center, starRadius, star.longitude, ascendant);
+        const tooltipText = `${star.starName}: ${star.displayPosition}`;
+
+        return (
+          <g key={`fixed-star-${star.starId}`}>
+            <text
+              x={pos.x}
+              y={pos.y}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fontSize="16"
+              fill="#FFD700"
+              fontWeight="bold"
+              style={{
+                cursor: 'pointer',
+                filter: 'drop-shadow(0 0 2px rgba(255, 215, 0, 0.5))'
+              }}
+              onMouseEnter={(e) => showTooltip(e, tooltipText)}
+              onMouseLeave={hideTooltip}
+            >
+              ⭐
+            </text>
+          </g>
+        );
+      });
+    } catch (error) {
+      console.error('Error rendering fixed stars:', error);
+      return null;
+    }
   };
 
   /**
@@ -1463,6 +1515,7 @@ function ChartWheel({
         <g id="houses">{renderHouses()}</g>
         <g id="boundary-circles">{renderBoundaryCircles()}</g>
         <g id="zodiac-ring">{renderZodiacRing()}</g>
+        <g id="fixed-stars">{renderFixedStars()}</g>
         <g id="natal-planets">{renderPlanets(filterDisplayedPlanets(chartData.planets, displaySettings), zones.natalPlanets.center, '#000')}</g>
         {progressionsData && (
           <g id="progression-planets">

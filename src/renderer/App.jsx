@@ -16,6 +16,7 @@ import EclipseDashboard from './components/EclipseDashboard';
 import ConfigurationSearch from './components/ConfigurationSearch';
 import TimeSlider from './components/TimeSlider';
 import HoraryAnalysis from './components/HoraryAnalysis';
+import FixedStarConjunctions from './components/FixedStars/FixedStarConjunctions';
 import AstrocartographyView from './components/Astrocartography/AstrocartographyView';
 import { DateTime } from 'luxon';
 import { findAspect, getAngularDistance, calculateAspects } from '../shared/calculations/aspectsCalculator';
@@ -72,6 +73,14 @@ function App() {
     centaurs: false,      // Optional: Chiron, Pholus
     asteroids: false,     // Optional: Ceres, Pallas, Juno, Vesta
     calculatedPoints: false  // Optional: Lilith (Mean/True)
+  });
+
+  // Fixed star settings
+  const [fixedStarSettings, setFixedStarSettings] = useState({
+    enabled: true,        // Show fixed star conjunctions by default
+    tier: 'tier1',        // Default to Tier 1 (15 essential stars)
+    useDefaultOrb: true,  // Use magnitude-based orbs by default
+    maxOrb: null          // null = use default orbs, otherwise custom orb value
   });
 
   // Horary chart state
@@ -2445,6 +2454,8 @@ function App() {
           <SettingsMenu
             displaySettings={displaySettings}
             setDisplaySettings={setDisplaySettings}
+            fixedStarSettings={fixedStarSettings}
+            setFixedStarSettings={setFixedStarSettings}
           />
         }
       >
@@ -3031,6 +3042,7 @@ function App() {
               natalOrb={natalOrb}
               onNatalOrbChange={handleNatalOrbChange}
               displaySettings={displaySettings}
+              fixedStarSettings={fixedStarSettings}
               transitOrb={transitOrb}
               onTransitOrbChange={handleTransitOrbChange}
               progressionNatalOrb={progressionNatalOrb}
@@ -3077,6 +3089,15 @@ function App() {
               directionType={formData.directionType}
               displaySettings={displaySettings}
             />
+
+            {/* Fixed Star Conjunctions */}
+            {fixedStarSettings.enabled && (
+              <FixedStarConjunctions
+                chartData={chartData}
+                tier={fixedStarSettings.tier}
+                maxOrb={fixedStarSettings.useDefaultOrb ? null : fixedStarSettings.maxOrb}
+              />
+            )}
 
             {/* Horary Analysis - only show for horary charts */}
             {horaryAnalysis && <HoraryAnalysis analysis={horaryAnalysis} />}
@@ -3442,6 +3463,7 @@ function App() {
                       natalOrb={natalOrb}
                       onNatalOrbChange={handleNatalOrbChange}
                       displaySettings={displaySettings}
+                      fixedStarSettings={fixedStarSettings}
                       transitOrb={transitOrb}
                       onTransitOrbChange={handleTransitOrbChange}
                       progressionNatalOrb={progressionNatalOrb}
@@ -3796,6 +3818,7 @@ function App() {
                       natalOrb={natalOrb}
                       onNatalOrbChange={handleNatalOrbChangeB}
                       displaySettings={displaySettings}
+                      fixedStarSettings={fixedStarSettings}
                       transitOrb={transitOrb}
                       onTransitOrbChange={handleTransitOrbChangeB}
                       progressionNatalOrb={progressionNatalOrb}
@@ -4587,6 +4610,7 @@ function App() {
                       natalOrb={natalOrb}
                       onNatalOrbChange={handleNatalOrbChange}
                       displaySettings={displaySettings}
+                      fixedStarSettings={fixedStarSettings}
                       transitOrb={transitOrb}
                       onTransitOrbChange={handleTransitOrbChange}
                       progressionNatalOrb={8}

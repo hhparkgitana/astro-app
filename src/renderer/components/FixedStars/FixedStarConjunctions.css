@@ -1,0 +1,371 @@
+/* Fixed Star Conjunctions Styles */
+
+.fixed-star-conjunctions {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.fixed-star-conjunctions.empty {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.conjunctions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.conjunctions-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.3em;
+}
+
+.conjunction-count {
+  background: #007bff;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.85em;
+  font-weight: 600;
+}
+
+.no-conjunctions {
+  color: #666;
+  font-size: 0.95em;
+  margin: 10px 0;
+}
+
+/* Conjunctions List */
+
+.conjunctions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.star-conjunction-item {
+  padding: 15px;
+  background: white;
+  border-left: 4px solid #FFD700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.star-conjunction-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  border-left-color: #FFA500;
+}
+
+.star-conjunction-item.selected {
+  background: #fffbf0;
+  border-left-color: #FF8C00;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+/* Conjunction Summary */
+
+.conjunction-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.star-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.star-icon {
+  font-size: 20px;
+  color: #FFD700;
+  filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.5));
+}
+
+.star-position {
+  font-size: 13px;
+  color: #666;
+  font-weight: 500;
+  background: #f0f0f0;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* Conjunction Details */
+
+.conjunction-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.planet-conjunction {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #495057;
+}
+
+.planet-glyph,
+.angle-glyph {
+  font-size: 18px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.planet-name,
+.angle-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.conjunction-sign {
+  color: #666;
+  font-size: 13px;
+}
+
+/* Orb Information */
+
+.orb-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.orb-tight {
+  background: #ffebee;
+  color: #d32f2f;
+  border: 1px solid #ef5350;
+}
+
+.orb-moderate {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ff9800;
+}
+
+.orb-wide {
+  background: #e8f5e9;
+  color: #388e3c;
+  border: 1px solid #66bb6a;
+}
+
+.orb-value {
+  font-weight: 700;
+}
+
+.orb-label {
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.applying-indicator {
+  margin-left: 6px;
+  font-size: 12px;
+  color: #1976d2;
+  font-weight: 600;
+}
+
+/* Interpretation Preview */
+
+.interpretation-preview {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 2px solid #e0e0e0;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.interpretation-section {
+  margin: 15px 0;
+  padding: 12px;
+  border-radius: 6px;
+  background: #f5f5f5;
+  border-left: 3px solid #9e9e9e;
+}
+
+.interpretation-section strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #333;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.interpretation-section p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.interpretation-section.positive {
+  background: #e8f5e9;
+  border-left-color: #4caf50;
+}
+
+.interpretation-section.positive strong {
+  color: #2e7d32;
+}
+
+.interpretation-section.negative {
+  background: #ffebee;
+  border-left-color: #f44336;
+}
+
+.interpretation-section.negative strong {
+  color: #c62828;
+}
+
+/* Star Metadata */
+
+.star-metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+  padding: 12px;
+  background: #fafafa;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+
+.metadata-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.metadata-label {
+  font-weight: 600;
+  color: #666;
+}
+
+.metadata-value {
+  color: #333;
+  background: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+}
+
+/* Show All Button */
+
+.show-all-btn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.show-all-btn:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.show-all-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+  .fixed-star-conjunctions {
+    padding: 15px;
+    margin-top: 15px;
+  }
+
+  .conjunctions-header h3 {
+    font-size: 1.1em;
+  }
+
+  .star-conjunction-item {
+    padding: 12px;
+  }
+
+  .conjunction-summary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .star-position {
+    align-self: flex-start;
+  }
+
+  .conjunction-details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .star-metadata {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* Print Styles */
+
+@media print {
+  .fixed-star-conjunctions {
+    page-break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+
+  .star-conjunction-item {
+    page-break-inside: avoid;
+    box-shadow: none;
+  }
+
+  .show-all-btn {
+    display: none;
+  }
+
+  .star-conjunction-item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
