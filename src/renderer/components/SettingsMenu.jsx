@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import PlanetDisplaySettings from './PlanetDisplaySettings';
 import ApiKeySettings from './ApiKeySettings';
 import FixedStarSettings from './FixedStarSettings';
+import DegreeLabelSettings from './DegreeLabelSettings';
 
 /**
  * Settings Menu Component
@@ -63,6 +64,12 @@ function SettingsMenu({ displaySettings, setDisplaySettings, fixedStarSettings, 
             <FixedStarSettings
               fixedStarSettings={fixedStarSettings}
               setFixedStarSettings={setFixedStarSettings}
+            />
+
+            {/* Degree Label Settings Section */}
+            <DegreeLabelSettings
+              displaySettings={displaySettings}
+              setDisplaySettings={setDisplaySettings}
             />
 
             {/* Planet Display Settings Section */}

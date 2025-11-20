@@ -200,6 +200,10 @@ function ChartWheel({
 
       const numberPos = pointOnCircle(center, center, zones.houseNumbers.center, midLongitude, ascendant);
 
+      // Format tooltip: "House 1: 15°32' Aries"
+      const { formatted: degreeStr, sign } = formatDegreeMinute(houseCusp);
+      const tooltipText = `House ${index + 1}: ${degreeStr} ${sign}`;
+
       return (
         <g key={index}>
           {/* House cusp line */}
@@ -210,6 +214,9 @@ function ChartWheel({
             y2={outerPoint.y}
             stroke="#999"
             strokeWidth="1"
+            style={{ cursor: 'pointer' }}
+            onMouseEnter={(e) => showTooltip(e, tooltipText)}
+            onMouseLeave={hideTooltip}
           />
           {/* House number */}
           <text
@@ -282,6 +289,7 @@ function ChartWheel({
           const { formatted: degreeStr, sign } = formatDegreeMinute(fullPlanet.longitude);
           const tooltipText = `${fullPlanet.name}: ${degreeStr} ${sign}`;
 
+          // Render planet glyph
           elements.push(
             <text
               key={planet.key}
@@ -299,6 +307,28 @@ function ChartWheel({
               {glyph}
             </text>
           );
+
+          // Render degree/minute label if enabled
+          if (displaySettings.showDegreeLabels) {
+            const labelOffset = 25; // Distance from planet glyph
+            const labelPos = pointOnCircle(center, center, radius + labelOffset, fullPlanet.longitude, ascendant);
+
+            elements.push(
+              <text
+                key={`label-${planet.key}`}
+                x={labelPos.x}
+                y={labelPos.y}
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fontSize="10"
+                fill={color}
+                fontWeight="400"
+                opacity="0.8"
+              >
+                {degreeStr}
+              </text>
+            );
+          }
         });
       } else {
         // Collision detected - stack vertically
@@ -350,6 +380,27 @@ function ChartWheel({
               {glyph}
             </text>
           );
+
+          // Render degree/minute label if enabled (for stacked planets)
+          if (displaySettings.showDegreeLabels) {
+            const labelOffset = 35; // Horizontal offset from stacked position
+
+            elements.push(
+              <text
+                key={`label-${planet.key}`}
+                x={centerPos.x + labelOffset}
+                y={stackedY}
+                textAnchor="start"
+                dominantBaseline="middle"
+                fontSize="10"
+                fill={color}
+                fontWeight="400"
+                opacity="0.8"
+              >
+                {degreeStr}
+              </text>
+            );
+          }
         });
       }
     });

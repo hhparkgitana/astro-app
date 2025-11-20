@@ -335,7 +335,8 @@ export const CHART_CONFIG = {
     traditional: true,
     centaurs: false,
     asteroids: false,
-    calculatedPoints: false
+    calculatedPoints: false,
+    showDegreeLabels: false  // Show degree/minute labels next to planet glyphs
   }
 };
 

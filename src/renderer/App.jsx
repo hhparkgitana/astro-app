@@ -72,7 +72,8 @@ function App() {
     traditional: true,    // Main planets + nodes always visible by default
     centaurs: false,      // Optional: Chiron, Pholus
     asteroids: false,     // Optional: Ceres, Pallas, Juno, Vesta
-    calculatedPoints: false  // Optional: Lilith (Mean/True)
+    calculatedPoints: false,  // Optional: Lilith (Mean/True)
+    showDegreeLabels: false   // Show degree/minute labels next to planet glyphs
   });
 
   // Fixed star settings
