@@ -29,6 +29,9 @@ const { findTransitExactitude, findDatabaseImpact, formatDate, getZodiacSign } =
 // Load progressions calculator
 const { calculateSecondaryProgressions, formatProgressionInfo } = require(path.join(__dirname, '..', 'shared', 'calculations', 'progressionsCalculator.js'));
 
+// Load returns calculator
+const { calculateSolarReturn, calculateLunarReturn } = require(path.join(__dirname, '..', 'shared', 'calculations', 'returnsCalculator.js'));
+
 // Load aspect pattern detection
 const { detectAspectPatterns } = require(path.join(__dirname, '..', 'shared', 'calculations', 'aspectsCalculator.node.js'));
 
@@ -221,7 +224,10 @@ ipcMain.handle('write-debug-log', async (event, params) => {
 // Handle secondary progressions calculation requests
 ipcMain.handle('calculate-progressions', async (event, params) => {
   try {
+    console.log('IPC calculate-progressions - Received params:', params);
     const { natalData, target } = params;
+    console.log('IPC calculate-progressions - natalData:', natalData);
+    console.log('IPC calculate-progressions - target:', target);
 
     if (!natalData || !target) {
       throw new Error('Natal data and target (date or age) are required');
@@ -235,6 +241,73 @@ ipcMain.handle('calculate-progressions', async (event, params) => {
     };
   } catch (error) {
     console.error('Error calculating progressions:', error);
+    return {
+      success: false,
+      error: error.message,
+    };
+  }
+});
+
+// Handle Solar Return calculation requests
+ipcMain.handle('calculate-solar-return', async (event, params) => {
+  try {
+    console.log('IPC calculate-solar-return - Received params:', params);
+    const { natalData, returnYear, returnLocation } = params;
+
+    if (!natalData || !returnYear || !returnLocation) {
+      throw new Error('Natal data, return year, and return location are required');
+    }
+
+    // Import chart calculator
+    const { calculateChart } = require(path.join(__dirname, '..', 'shared', 'calculations', 'swissEphemerisCalculator.js'));
+
+    const result = await calculateSolarReturn(
+      natalData,
+      returnYear,
+      returnLocation,
+      calculateChart
+    );
+
+    return {
+      success: true,
+      data: result
+    };
+  } catch (error) {
+    console.error('Error calculating Solar Return:', error);
+    return {
+      success: false,
+      error: error.message,
+    };
+  }
+});
+
+// Handle Lunar Return calculation requests
+ipcMain.handle('calculate-lunar-return', async (event, params) => {
+  try {
+    console.log('IPC calculate-lunar-return - Received params:', params);
+    const { natalData, returnYear, returnMonth, returnLocation } = params;
+
+    if (!natalData || !returnYear || !returnMonth || !returnLocation) {
+      throw new Error('Natal data, return year, return month, and return location are required');
+    }
+
+    // Import chart calculator
+    const { calculateChart } = require(path.join(__dirname, '..', 'shared', 'calculations', 'swissEphemerisCalculator.js'));
+
+    const result = await calculateLunarReturn(
+      natalData,
+      returnYear,
+      returnMonth,
+      returnLocation,
+      calculateChart
+    );
+
+    return {
+      success: true,
+      data: result
+    };
+  } catch (error) {
+    console.error('Error calculating Lunar Return:', error);
     return {
       success: false,
       error: error.message,

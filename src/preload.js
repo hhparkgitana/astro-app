@@ -4,6 +4,8 @@ const { contextBridge, ipcRenderer } = require('electron');
 contextBridge.exposeInMainWorld('astro', {
   calculateChart: (params) => ipcRenderer.invoke('calculate-chart', params),
   calculateProgressions: (params) => ipcRenderer.invoke('calculate-progressions', params),
+  calculateSolarReturn: (params) => ipcRenderer.invoke('calculate-solar-return', params),
+  calculateLunarReturn: (params) => ipcRenderer.invoke('calculate-lunar-return', params),
   findEclipses: (params) => ipcRenderer.invoke('find-eclipses', params),
   findEclipseActivations: (params) => ipcRenderer.invoke('find-eclipse-activations', params),
   calculateTransitTimeline: (params) => ipcRenderer.invoke('calculate-transit-timeline', params),

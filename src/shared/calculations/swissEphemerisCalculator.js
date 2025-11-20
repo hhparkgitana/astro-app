@@ -219,6 +219,7 @@ function calculateChart(params) {
       planets[planet.key] = {
         name: planet.name,
         longitude: position.longitude,
+        latitude: position.latitude,
         velocity: position.speedLongitude
       };
     }
@@ -229,6 +230,7 @@ function calculateChart(params) {
       planets[centaur.key] = {
         name: centaur.name,
         longitude: position.longitude,
+        latitude: position.latitude,
         velocity: position.speedLongitude
       };
     }
@@ -239,6 +241,7 @@ function calculateChart(params) {
       planets[asteroid.key] = {
         name: asteroid.name,
         longitude: position.longitude,
+        latitude: position.latitude,
         velocity: position.speedLongitude
       };
     }
@@ -249,6 +252,7 @@ function calculateChart(params) {
       planets[point.key] = {
         name: point.name,
         longitude: position.longitude,
+        latitude: position.latitude,
         velocity: position.speedLongitude
       };
     }
@@ -258,12 +262,14 @@ function calculateChart(params) {
     planets.NORTH_NODE = {
       name: 'North Node',
       longitude: trueNodePosition.longitude,
+      latitude: trueNodePosition.latitude,
       velocity: trueNodePosition.speedLongitude
     };
 
     planets.SOUTH_NODE = {
       name: 'South Node',
       longitude: (trueNodePosition.longitude + 180) % 360,
+      latitude: -trueNodePosition.latitude,  // South Node has opposite latitude
       velocity: trueNodePosition.speedLongitude
     };
 
@@ -286,6 +292,7 @@ function calculateChart(params) {
     planets.PART_OF_FORTUNE = {
       name: 'Part of Fortune',
       longitude: partOfFortune,
+      latitude: 0,  // Part of Fortune is on the ecliptic (zero latitude)
       velocity: 0  // Part of Fortune doesn't have velocity as it's calculated from other points
     };
 

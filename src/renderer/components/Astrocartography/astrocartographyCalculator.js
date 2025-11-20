@@ -271,8 +271,15 @@ function calculatePlanetLines(planet, birthDate) {
 export function calculateAstrocartographyLines(chartData) {
   if (!chartData || !chartData.planets) {
     console.error('Invalid chart data for astrocartography');
+    console.error('chartData:', chartData);
+    console.error('planets:', chartData?.planets);
     return {};
   }
+
+  console.log('=== ASTROCARTOGRAPHY CALCULATOR ===');
+  console.log('Chart data received:', chartData);
+  console.log('Planet keys:', Object.keys(chartData.planets));
+  console.log('Sample planet (SUN):', chartData.planets.SUN);
 
   // Extract birth date from chart data
   // Assuming chartData has birthDate or we can construct it from date/time fields

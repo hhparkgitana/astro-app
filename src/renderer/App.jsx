@@ -22,7 +22,6 @@ import IngressGenerator from './components/Ingress/IngressGenerator';
 import { DateTime } from 'luxon';
 import { findAspect, getAngularDistance, calculateAspects } from '../shared/calculations/aspectsCalculator';
 import { calculateCompositeChart, calculateGeographicMidpoint } from '../shared/calculations/compositeCalculator';
-import { calculateSolarReturn, calculateLunarReturn } from '../shared/calculations/returnsCalculator';
 import { calculateSolarArcs, getSolarArcDefaultOrb } from '../shared/calculations/solarArcsCalculator';
 import { analyzeHoraryChart } from '../shared/calculations/horaryCalculator';
 import { saveChart } from '../utils/db';
@@ -1453,21 +1452,29 @@ function App() {
       let returnResult;
       if (returnType === 'solar') {
         console.log('Calculating Solar Return...');
-        returnResult = await calculateSolarReturn(
+        const response = await window.astro.calculateSolarReturn({
           natalData,
-          parseInt(returnsFormData.returnYear),
-          returnLocation,
-          window.astro.calculateChart
-        );
+          returnYear: parseInt(returnsFormData.returnYear),
+          returnLocation
+        });
+
+        if (!response.success) {
+          throw new Error(response.error || 'Failed to calculate Solar Return');
+        }
+        returnResult = response.data;
       } else {
         console.log('Calculating Lunar Return...');
-        returnResult = await calculateLunarReturn(
+        const response = await window.astro.calculateLunarReturn({
           natalData,
-          parseInt(returnsFormData.returnYear),
-          parseInt(returnsFormData.returnMonth),
-          returnLocation,
-          window.astro.calculateChart
-        );
+          returnYear: parseInt(returnsFormData.returnYear),
+          returnMonth: parseInt(returnsFormData.returnMonth),
+          returnLocation
+        });
+
+        if (!response.success) {
+          throw new Error(response.error || 'Failed to calculate Lunar Return');
+        }
+        returnResult = response.data;
       }
 
       console.log('Return chart calculated:', returnResult);

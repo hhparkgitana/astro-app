@@ -782,7 +782,11 @@ const ConfigurationSearch = () => {
           {searchMode === 'famousCharts' ? (
             <p>No famous charts found matching your criteria. Try adjusting your search parameters or increasing the orb values.</p>
           ) : (
-            <p>Add search criteria and click Search to find matching planetary configurations.</p>
+            resultCount === 0 && (aspectCriteria.length > 0 || placementCriteria.length > 0 || retrogradeCriteria.length > 0 || eclipseCriteria.length > 0) ? (
+              <p>Search returned no results. Try expanding your date range, increasing orb values, or adjusting your criteria.</p>
+            ) : (
+              <p>Add search criteria and click Search to find matching planetary configurations.</p>
+            )
           )}
         </div>
       )}

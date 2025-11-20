@@ -40,7 +40,7 @@ async function findPlanetReturn(
     const mid = new Date((start.getTime() + end.getTime()) / 2);
 
     // Calculate chart at midpoint
-    const midChart = await calculateChart({
+    const midChartResponse = await calculateChart({
       year: mid.getFullYear(),
       month: mid.getMonth() + 1,
       day: mid.getDate(),
@@ -51,7 +51,23 @@ async function findPlanetReturn(
       houseSystem: location.houseSystem || 'placidus',
     });
 
-    if (!midChart.success || !midChart.planets[planetKey]) {
+    // Handle IPC response wrapper - if response has success property, it's wrapped
+    let midChart;
+    if (midChartResponse.success !== undefined) {
+      if (!midChartResponse.success) {
+        throw new Error(`Failed to calculate chart at ${mid}: ${midChartResponse.error || 'Unknown error'}`);
+      }
+      midChart = midChartResponse;
+    } else {
+      midChart = midChartResponse;
+    }
+
+    if (!midChart.planets || !midChart.planets[planetKey]) {
+      console.error(`Chart validation failed at ${mid}:`, {
+        hasPlanets: !!midChart?.planets,
+        hasPlanet: !!midChart?.planets?.[planetKey],
+        planetKeys: midChart?.planets ? Object.keys(midChart.planets) : []
+      });
       throw new Error(`Failed to calculate chart at ${mid}`);
     }
 
@@ -118,14 +134,20 @@ async function findPlanetReturn(
  * @param {function} calculateChart - Chart calculation function
  * @returns {Promise<object>} Solar Return chart data
  */
-export async function calculateSolarReturn(
+async function calculateSolarReturn(
   natalData,
   returnYear,
   returnLocation,
   calculateChart
 ) {
+  console.log('=== calculateSolarReturn ===');
+  console.log('natalData received:', natalData);
+  console.log('natalData keys:', Object.keys(natalData));
+  console.log('natalData.year:', natalData.year);
+  console.log('natalData.month:', natalData.month);
+
   // First, calculate the natal chart to get natal Sun position
-  const natalChart = await calculateChart({
+  const chartParams = {
     year: natalData.year,
     month: natalData.month,
     day: natalData.day,
@@ -134,9 +156,32 @@ export async function calculateSolarReturn(
     latitude: natalData.latitude,
     longitude: natalData.longitude,
     houseSystem: natalData.houseSystem || 'placidus',
-  });
+  };
+  console.log('Calling calculateChart with params:', chartParams);
 
-  if (!natalChart.success || !natalChart.planets.SUN) {
+  const natalChartResponse = await calculateChart(chartParams);
+
+  // Handle IPC response wrapper
+  let natalChart;
+  if (natalChartResponse.success !== undefined) {
+    // IPC response format: {success: true/false, ...data or error}
+    if (!natalChartResponse.success) {
+      throw new Error(`Failed to calculate natal chart: ${natalChartResponse.error || 'Unknown error'}`);
+    }
+    natalChart = natalChartResponse;
+  } else {
+    // Direct calculation result
+    natalChart = natalChartResponse;
+  }
+
+  if (!natalChart || !natalChart.planets || !natalChart.planets.SUN) {
+    console.error('Natal chart validation failed:', {
+      hasChart: !!natalChart,
+      hasPlanets: !!natalChart?.planets,
+      hasSun: !!natalChart?.planets?.SUN,
+      chartKeys: natalChart ? Object.keys(natalChart) : [],
+      planetKeys: natalChart?.planets ? Object.keys(natalChart.planets) : []
+    });
     throw new Error('Failed to calculate natal chart');
   }
 
@@ -179,7 +224,7 @@ export async function calculateSolarReturn(
  * @param {function} calculateChart - Chart calculation function
  * @returns {Promise<object>} Lunar Return chart data
  */
-export async function calculateLunarReturn(
+async function calculateLunarReturn(
   natalData,
   returnYear,
   returnMonth,
@@ -187,7 +232,7 @@ export async function calculateLunarReturn(
   calculateChart
 ) {
   // First, calculate the natal chart to get natal Moon position
-  const natalChart = await calculateChart({
+  const natalChartResponse = await calculateChart({
     year: natalData.year,
     month: natalData.month,
     day: natalData.day,
@@ -198,7 +243,25 @@ export async function calculateLunarReturn(
     houseSystem: natalData.houseSystem || 'placidus',
   });
 
-  if (!natalChart.success || !natalChart.planets.MOON) {
+  // Handle IPC response wrapper
+  let natalChart;
+  if (natalChartResponse.success !== undefined) {
+    if (!natalChartResponse.success) {
+      throw new Error(`Failed to calculate natal chart: ${natalChartResponse.error || 'Unknown error'}`);
+    }
+    natalChart = natalChartResponse;
+  } else {
+    natalChart = natalChartResponse;
+  }
+
+  if (!natalChart || !natalChart.planets || !natalChart.planets.MOON) {
+    console.error('Lunar Return natal chart validation failed:', {
+      hasChart: !!natalChart,
+      hasPlanets: !!natalChart?.planets,
+      hasMoon: !!natalChart?.planets?.MOON,
+      chartKeys: natalChart ? Object.keys(natalChart) : [],
+      planetKeys: natalChart?.planets ? Object.keys(natalChart.planets) : []
+    });
     throw new Error('Failed to calculate natal chart');
   }
 
@@ -226,3 +289,8 @@ export async function calculateLunarReturn(
     natalChart: natalChart,
   };
 }
+
+module.exports = {
+  calculateSolarReturn,
+  calculateLunarReturn
+};
