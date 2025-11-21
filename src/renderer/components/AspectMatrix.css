@@ -21,11 +21,28 @@
 }
 
 .aspect-matrix {
-  display: table;
+  width: 100%;
   background: white;
   padding: 10px;
   border-collapse: collapse;
-  min-width: max-content;
+  table-layout: auto;
+}
+
+.aspect-matrix thead {
+  display: table-header-group;
+}
+
+.aspect-matrix tbody {
+  display: table-row-group;
+}
+
+.aspect-matrix tr {
+  display: table-row;
+}
+
+.aspect-matrix th,
+.aspect-matrix td {
+  display: table-cell;
 }
 
 .matrix-row {
@@ -200,6 +217,33 @@
 
 .legend-name {
   font-size: 0.9em;
+}
+
+/* Additional table styling for Transit-Transit matrix */
+.aspect-matrix-scroll {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-width: 100%;
+  max-height: 600px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.planet-header {
+  background: #f0f0f0;
+  font-weight: bold;
+  font-size: 1.2em;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ddd;
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+}
+
+.planet-header.corner {
+  background: #e0e0e0;
 }
 
 /* Responsive adjustments */
