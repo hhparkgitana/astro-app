@@ -1240,6 +1240,15 @@ function App() {
   const calculateChartA = async () => {
     setLoading(true);
     try {
+      console.log('📊 Calculating Chart A with formData:', {
+        year: formData.year,
+        month: formData.month,
+        day: formData.day,
+        hour: formData.hour,
+        minute: formData.minute,
+        timezone: formData.timezone
+      });
+
       const localTime = DateTime.fromObject({
         year: parseInt(formData.year),
         month: parseInt(formData.month),
@@ -1249,6 +1258,14 @@ function App() {
       }, { zone: formData.timezone });
 
       const utcTime = localTime.toUTC();
+
+      console.log('⏰ UTC Time:', {
+        utcYear: utcTime.year,
+        utcMonth: utcTime.month,
+        utcDay: utcTime.day,
+        utcHour: utcTime.hour,
+        utcMinute: utcTime.minute
+      });
 
       const result = await window.astro.calculateChart({
         year: parseInt(formData.year),
@@ -1265,6 +1282,8 @@ function App() {
         longitude: parseFloat(formData.longitude),
         houseSystem: formData.houseSystem,
       });
+
+      console.log('✅ Chart calculation result:', result);
 
       if (result.success && result.aspects) {
         const allAspectKeys = new Set(
