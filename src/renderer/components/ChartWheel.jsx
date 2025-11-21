@@ -308,6 +308,28 @@ function ChartWheel({
             </text>
           );
 
+          // Render retrograde indicator if planet is retrograde
+          if (fullPlanet.velocity < 0) {
+            const rxOffset = 18; // Distance from planet glyph
+            const rxPos = pointOnCircle(center, center, radius - rxOffset, fullPlanet.longitude, ascendant);
+
+            elements.push(
+              <text
+                key={`rx-${planet.key}`}
+                x={rxPos.x}
+                y={rxPos.y}
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fontSize="10"
+                fill={color}
+                fontWeight="600"
+                opacity="0.8"
+              >
+                Rx
+              </text>
+            );
+          }
+
           // Render degree/minute label if enabled
           if (displaySettings.showDegreeLabels) {
             const labelOffset = 25; // Distance from planet glyph
@@ -380,6 +402,27 @@ function ChartWheel({
               {glyph}
             </text>
           );
+
+          // Render retrograde indicator if planet is retrograde (for stacked planets)
+          if (fullPlanet.velocity < 0) {
+            const rxOffset = 25; // Horizontal offset from stacked position (left side)
+
+            elements.push(
+              <text
+                key={`rx-${planet.key}`}
+                x={centerPos.x - rxOffset}
+                y={stackedY}
+                textAnchor="end"
+                dominantBaseline="middle"
+                fontSize="10"
+                fill={color}
+                fontWeight="600"
+                opacity="0.8"
+              >
+                Rx
+              </text>
+            );
+          }
 
           // Render degree/minute label if enabled (for stacked planets)
           if (displaySettings.showDegreeLabels) {
