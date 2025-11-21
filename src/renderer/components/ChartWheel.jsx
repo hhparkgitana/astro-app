@@ -822,7 +822,8 @@ function ChartWheel({
     return chartData.progressionNatalAspects.map((aspect, index) => {
       // Check if this aspect is active/visible
       const aspectKey = `${aspect.planet1}-${aspect.planet2}`;
-      if (!activeProgressionNatalAspects.has(aspectKey)) return null;
+      // If activeProgressionNatalAspects is empty, default to showing all aspects
+      if (activeProgressionNatalAspects.size > 0 && !activeProgressionNatalAspects.has(aspectKey)) return null;
 
       // Get planet positions (planet1 = progression, planet2 = natal)
       const progressedPlanet = progressionsData.planets[aspect.planet1Key];
