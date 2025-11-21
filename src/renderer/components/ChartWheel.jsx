@@ -353,16 +353,39 @@ function ChartWheel({
           }
         });
       } else {
-        // Collision detected - stack vertically
-        const centerPos = pointOnCircle(center, center, radius, group.centerLongitude, ascendant);
-        const verticalSpacing = 28; // Spacing between stacked planets
-        const groupHeight = (group.planets.length - 1) * verticalSpacing;
-        const startY = centerPos.y - groupHeight / 2;
+        // Collision detected - stack perpendicular to radius
+        // Calculate average angle for the group
+        const avgAngle = group.centerLongitude;
+
+        // Get base position at average angle
+        const centerPos = pointOnCircle(center, center, radius, avgAngle, ascendant);
+
+        // Calculate perpendicular direction to the radius at this angle
+        // Convert to visual angle (accounting for ascendant rotation)
+        const visualAngle = (avgAngle - ascendant + 360) % 360;
+        const angleRad = (visualAngle * Math.PI) / 180;
+
+        // Perpendicular to radius direction in counterclockwise direction
+        // For radius (cos θ, sin θ), perpendicular is (-sin θ, cos θ)
+        // But we need to reverse it so positive offset = counterclockwise (increasing degree)
+        // SVG Y-axis is inverted (positive is down)
+        const perpX = Math.sin(angleRad);
+        const perpY = Math.cos(angleRad);
+
+        // Spacing between stacked planets
+        const spacing = 28;
+        const totalStackSize = (group.planets.length - 1) * spacing;
+        const startOffset = -totalStackSize / 2;
 
         group.planets.forEach((planet, index) => {
           const fullPlanet = planets[planet.key];
           const actualPos = pointOnCircle(center, center, radius, fullPlanet.longitude, ascendant);
-          const stackedY = startY + index * verticalSpacing;
+
+          // Offset along perpendicular direction
+          // Planets are sorted by longitude ascending, so index 0 = lowest degree
+          const offset = startOffset + (index * spacing);
+          const stackedX = centerPos.x + (perpX * offset);
+          const stackedY = centerPos.y + (perpY * offset);
           const glyph = glyphs.planets[fullPlanet.name];
 
           // Format tooltip: "Planet Name: 15°32' Sign"
@@ -373,7 +396,7 @@ function ChartWheel({
           elements.push(
             <line
               key={`connector-${planet.key}`}
-              x1={centerPos.x}
+              x1={stackedX}
               y1={stackedY}
               x2={actualPos.x}
               y2={actualPos.y}
@@ -388,7 +411,7 @@ function ChartWheel({
           elements.push(
             <text
               key={planet.key}
-              x={centerPos.x}
+              x={stackedX}
               y={stackedY}
               textAnchor="middle"
               dominantBaseline="middle"
@@ -410,7 +433,7 @@ function ChartWheel({
             elements.push(
               <text
                 key={`rx-${planet.key}`}
-                x={centerPos.x - rxOffset}
+                x={stackedX - rxOffset}
                 y={stackedY}
                 textAnchor="end"
                 dominantBaseline="middle"
