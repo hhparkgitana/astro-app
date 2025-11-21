@@ -426,44 +426,35 @@ function ChartWheel({
             </text>
           );
 
-          // Render retrograde indicator if planet is retrograde (for stacked planets)
-          if (fullPlanet.velocity < 0) {
-            const rxOffset = 25; // Horizontal offset from stacked position (left side)
-
-            elements.push(
-              <text
-                key={`rx-${planet.key}`}
-                x={stackedX - rxOffset}
-                y={stackedY}
-                textAnchor="end"
-                dominantBaseline="middle"
-                fontSize="10"
-                fill={color}
-                fontWeight="600"
-                opacity="0.8"
-              >
-                Rx
-              </text>
-            );
-          }
-
           // Render degree/minute label if enabled (for stacked planets)
+          // Position label radially outward from center (not along perpendicular)
           if (displaySettings.showDegreeLabels) {
-            const labelOffset = 35; // Horizontal offset from stacked position
+            // Calculate radial direction from center to stacked planet position
+            const dx = stackedX - center;
+            const dy = stackedY - center;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            // Normalize and extend outward
+            const labelDistance = 25; // Additional distance from planet glyph
+            const labelX = center + (dx / distance) * (distance + labelDistance);
+            const labelY = center + (dy / distance) * (distance + labelDistance);
+
+            // Include Rx in label text if planet is retrograde
+            const labelText = fullPlanet.velocity < 0 ? `Rx ${degreeStr}` : degreeStr;
 
             elements.push(
               <text
                 key={`label-${planet.key}`}
-                x={centerPos.x + labelOffset}
-                y={stackedY}
-                textAnchor="start"
+                x={labelX}
+                y={labelY}
+                textAnchor="middle"
                 dominantBaseline="middle"
                 fontSize="10"
                 fill={color}
                 fontWeight="400"
                 opacity="0.8"
               >
-                {degreeStr}
+                {labelText}
               </text>
             );
           }
