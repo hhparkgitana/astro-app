@@ -29,9 +29,11 @@ const PLANET_GLYPHS = {
 // Aspect colors and symbols
 const ASPECT_CONFIG = {
   'CONJUNCTION': { symbol: '☌', color: '#8B00FF', name: 'Conjunction' },
+  'SEMISEXTILE': { symbol: '⚺', color: '#32CD32', name: 'Semi-Sextile' },
   'SEXTILE': { symbol: '⚹', color: '#4169E1', name: 'Sextile' },
   'SQUARE': { symbol: '□', color: '#DC143C', name: 'Square' },
   'TRINE': { symbol: '△', color: '#0000FF', name: 'Trine' },
+  'QUINCUNX': { symbol: '⚻', color: '#228B22', name: 'Quincunx' },
   'OPPOSITION': { symbol: '☍', color: '#FF4500', name: 'Opposition' }
 };
 
