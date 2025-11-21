@@ -711,14 +711,19 @@ function ChartWheel({
       }
 
       // Get planet positions
+      // In return chart mode: planet1 = return planet, planet2 = natal planet
       // In synastry mode: planet1 = Chart A (natal), planet2 = Chart B (transit)
       // In transit mode: planet1 = transit, planet2 = natal
-      const transitPlanet = isSynastry
-        ? transitData.planets[aspect.planet2Key]  // Chart B planet
-        : transitData.planets[aspect.planet1Key];
-      const natalPlanet = isSynastry
-        ? chartData.planets[aspect.planet1Key]    // Chart A planet
-        : chartData.planets[aspect.planet2Key];
+      const transitPlanet = isReturnChart
+        ? transitData.planets[aspect.planet1Key]  // Return planet
+        : (isSynastry
+          ? transitData.planets[aspect.planet2Key]  // Chart B planet
+          : transitData.planets[aspect.planet1Key]);
+      const natalPlanet = isReturnChart
+        ? chartData.planets[aspect.planet2Key]    // Natal planet
+        : (isSynastry
+          ? chartData.planets[aspect.planet1Key]    // Chart A planet
+          : chartData.planets[aspect.planet2Key]);
 
       if (!natalPlanet || !transitPlanet) {
         return null;
@@ -764,13 +769,12 @@ function ChartWheel({
       let planet1Name, planet1Label, planet2Name, planet2Label;
 
       if (isReturnChart) {
-        // Return charts: Based on user feedback, the labels are actually reversed
-        // planet1 should be labeled as Natal, planet2 should be labeled as Return
+        // Return charts: planet1 = return planet, planet2 = natal planet
         const returnLabel = returnType === 'solar' ? 'Solar Return' : 'Lunar Return';
         planet1Name = aspect.planet1;
-        planet1Label = 'Natal';
+        planet1Label = returnLabel;
         planet2Name = aspect.planet2;
-        planet2Label = returnLabel;
+        planet2Label = 'Natal';
       } else if (isSynastry) {
         planet1Name = aspect.planet1;
         planet1Label = personAName;
