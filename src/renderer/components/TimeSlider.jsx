@@ -51,6 +51,7 @@ function TimeSlider({
   const initializedRef = useRef(false);
   const markerCalculationRef = useRef(null); // Cancel token for marker calculation
   const natalChartRef = useRef(null); // Store natal chart to detect when it changes
+  const currentMarkerIndexRef = useRef(-1); // Track current marker index
 
   // Initialize date range based on current date
   useEffect(() => {
@@ -176,35 +177,27 @@ function TimeSlider({
     let date = new Date(currentDate);
 
     if (increment === 'aspect' && showAspectMarkers && aspectMarkers.length > 0) {
-      // Jump to next/previous aspect marker
-      const currentTime = date.getTime();
-
       // Sort markers by date
       const sortedMarkers = [...aspectMarkers].sort((a, b) =>
         new Date(a.date).getTime() - new Date(b.date).getTime()
       );
 
-      let targetMarker = null;
-
+      // Use index-based navigation instead of time comparison
       if (direction > 0) {
-        // Find next marker after current time
-        targetMarker = sortedMarkers.find(marker =>
-          new Date(marker.date).getTime() > currentTime
-        );
-        // Wrap around to first marker if at the end
-        if (!targetMarker) targetMarker = sortedMarkers[0];
-      } else {
-        // Find previous marker before current time
-        for (let i = sortedMarkers.length - 1; i >= 0; i--) {
-          if (new Date(sortedMarkers[i].date).getTime() < currentTime) {
-            targetMarker = sortedMarkers[i];
-            break;
-          }
+        // Move to next marker
+        currentMarkerIndexRef.current++;
+        if (currentMarkerIndexRef.current >= sortedMarkers.length) {
+          currentMarkerIndexRef.current = 0; // Wrap around
         }
-        // Wrap around to last marker if at the beginning
-        if (!targetMarker) targetMarker = sortedMarkers[sortedMarkers.length - 1];
+      } else {
+        // Move to previous marker
+        currentMarkerIndexRef.current--;
+        if (currentMarkerIndexRef.current < 0) {
+          currentMarkerIndexRef.current = sortedMarkers.length - 1; // Wrap around
+        }
       }
 
+      const targetMarker = sortedMarkers[currentMarkerIndexRef.current];
       if (targetMarker) {
         date = new Date(targetMarker.date);
       }
