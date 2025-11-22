@@ -835,7 +835,8 @@ ipcMain.handle('chat-with-claude', async (event, params) => {
       contextMessage += `💞 SYNASTRY ASPECTS (Chart A ↔ Chart B):\n`;
       contextMessage += `This is a relationship chart showing aspects between the two people's natal planets.\n\n`;
       chartContext.synastryAspects.forEach(aspect => {
-        contextMessage += `${aspect.planet1} (Chart A) ${aspect.symbol} ${aspect.planet2} (Chart B) (orb: ${aspect.orb.toFixed(1)}°)\n`;
+        // NOTE: planet1 = Chart B (outer), planet2 = Chart A (inner)
+        contextMessage += `${aspect.planet2} (Chart A) ${aspect.symbol} ${aspect.planet1} (Chart B) (orb: ${aspect.orb.toFixed(1)}°)\n`;
       });
       contextMessage += `\n---\n\n`;
     }
