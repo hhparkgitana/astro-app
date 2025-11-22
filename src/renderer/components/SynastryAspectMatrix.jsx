@@ -65,9 +65,9 @@ function SynastryAspectMatrix({ chartData, activeSynastryAspects: activeSynastry
 
   // Get aspect between Chart A planet and Chart B planet
   const getAspect = (chartAPlanet, chartBPlanet) => {
-    // In App.jsx, aspects are stored as planet1=Chart A, planet2=Chart B
-    // So the key is ${chartAPlanet}-${chartBPlanet}
-    return aspectMap[`${chartAPlanet}-${chartBPlanet}`];
+    // In App.jsx, aspects are stored as planet1=Chart B, planet2=Chart A
+    // So the key is ${chartBPlanet}-${chartAPlanet}
+    return aspectMap[`${chartBPlanet}-${chartAPlanet}`];
   };
 
   // Check if aspect is active
@@ -100,11 +100,11 @@ function SynastryAspectMatrix({ chartData, activeSynastryAspects: activeSynastry
     const planetAspects = chartData.synastryAspects.filter(aspect => {
       if (!aspect || !aspect.planet1 || !aspect.planet2) return false;
       if (isChartB) {
-        // Chart B planet (columns) - match planet2
-        return aspect.planet2 === planet;
-      } else {
-        // Chart A planet (rows) - match planet1
+        // Chart B planet (columns) - match planet1
         return aspect.planet1 === planet;
+      } else {
+        // Chart A planet (rows) - match planet2
+        return aspect.planet2 === planet;
       }
     });
 
@@ -146,11 +146,11 @@ function SynastryAspectMatrix({ chartData, activeSynastryAspects: activeSynastry
 
       const planetAspects = chartData.synastryAspects.filter(aspect => {
         if (isChartB) {
-          // Chart B planet (columns) - match planet2
-          return aspect.planet2 === planet;
-        } else {
-          // Chart A planet (rows) - match planet1
+          // Chart B planet (columns) - match planet1
           return aspect.planet1 === planet;
+        } else {
+          // Chart A planet (rows) - match planet2
+          return aspect.planet2 === planet;
         }
       });
 
@@ -234,7 +234,7 @@ function SynastryAspectMatrix({ chartData, activeSynastryAspects: activeSynastry
                       key={chartBPlanet}
                       className={`aspect-cell ${isActive ? 'active' : 'inactive'}`}
                       onClick={() => handleCellClick(aspect)}
-                      title={`${aspect.planet1} (Chart A) ${aspectInfo.name} ${aspect.planet2} (Chart B)\nOrb: ${formatOrb(aspect.orb)}\nClick to toggle`}
+                      title={`${aspect.planet2} (Chart A) ${aspectInfo.name} ${aspect.planet1} (Chart B)\nOrb: ${formatOrb(aspect.orb)}\nClick to toggle`}
                     >
                       <span
                         className="aspect-symbol"

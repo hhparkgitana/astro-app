@@ -726,17 +726,17 @@ function ChartWheel({
 
       // Get planet positions
       // In return chart mode: planet1 = return planet, planet2 = natal planet
-      // In synastry mode: planet1 = Chart A (natal), planet2 = Chart B (transit)
+      // In synastry mode: planet1 = Chart B (outer), planet2 = Chart A (inner)
       // In transit mode: planet1 = transit, planet2 = natal
       const transitPlanet = isReturnChart
         ? transitData.planets[aspect.planet1Key]  // Return planet
         : (isSynastry
-          ? transitData.planets[aspect.planet2Key]  // Chart B planet
+          ? transitData.planets[aspect.planet1Key]  // Chart B planet (outer)
           : transitData.planets[aspect.planet1Key]);
       const natalPlanet = isReturnChart
         ? chartData.planets[aspect.planet2Key]    // Natal planet
         : (isSynastry
-          ? chartData.planets[aspect.planet1Key]    // Chart A planet
+          ? chartData.planets[aspect.planet2Key]    // Chart A planet (inner)
           : chartData.planets[aspect.planet2Key]);
 
       if (!natalPlanet || !transitPlanet) {
@@ -790,10 +790,11 @@ function ChartWheel({
         planet2Name = aspect.planet2;
         planet2Label = 'Natal';
       } else if (isSynastry) {
+        // aspect.planet1 = Chart B, aspect.planet2 = Chart A
         planet1Name = aspect.planet1;
-        planet1Label = personAName;
+        planet1Label = personBName;
         planet2Name = aspect.planet2;
-        planet2Label = personBName;
+        planet2Label = personAName;
       } else {
         planet1Name = aspect.planet1;
         planet1Label = 'Transit';
