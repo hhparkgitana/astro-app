@@ -589,7 +589,7 @@ function ChartWheel({
           strokeDasharray={undefined}
           style={{ cursor: 'pointer' }}
           onClick={() => onAspectToggle && onAspectToggle(aspect)}
-          onMouseEnter={(e) => showTooltip(e, tooltipText)}
+          onMouseEnter={(e) => aspect.inOrb !== false ? showTooltip(e, tooltipText) : null}
           onMouseLeave={hideTooltip}
         />
       );
@@ -677,7 +677,7 @@ function ChartWheel({
           strokeDasharray={(aspect.type === 'SEMISEXTILE' || aspect.type === 'QUINCUNX') ? '2,4' : '4,4'}  // Dotted for minor aspects, dashed for others
           style={{ cursor: 'pointer' }}
           onClick={() => onAspectToggleB && onAspectToggleB(aspect)}
-          onMouseEnter={(e) => showTooltip(e, tooltipText)}
+          onMouseEnter={(e) => aspect.inOrb !== false ? showTooltip(e, tooltipText) : null}
           onMouseLeave={hideTooltip}
         />
       );
@@ -809,7 +809,7 @@ function ChartWheel({
         <g
           key={`transit-natal-${index}`}
           onClick={() => onTransitAspectToggle && onTransitAspectToggle(aspect)}
-          onMouseEnter={(e) => showTooltip(e, tooltipText)}
+          onMouseEnter={(e) => aspect.inOrb !== false ? showTooltip(e, tooltipText) : null}
           onMouseLeave={hideTooltip}
           style={{ cursor: 'pointer' }}
         >
@@ -892,7 +892,7 @@ function ChartWheel({
         <g
           key={`progression-natal-${index}`}
           onClick={() => onProgressionNatalAspectToggle && onProgressionNatalAspectToggle(aspect)}
-          onMouseEnter={(e) => showTooltip(e, tooltipText)}
+          onMouseEnter={(e) => aspect.inOrb !== false ? showTooltip(e, tooltipText) : null}
           onMouseLeave={hideTooltip}
           style={{ cursor: 'pointer' }}
         >
@@ -975,7 +975,7 @@ function ChartWheel({
           opacity={opacity}
           strokeDasharray={undefined}
           style={{ cursor: 'pointer' }}
-          onMouseEnter={(e) => showTooltip(e, tooltipText)}
+          onMouseEnter={(e) => aspect.inOrb !== false ? showTooltip(e, tooltipText) : null}
           onMouseLeave={hideTooltip}
         />
       );
@@ -1050,7 +1050,7 @@ function ChartWheel({
         <g
           key={`transit-progression-${index}`}
           onClick={() => onTransitProgressionAspectToggle && onTransitProgressionAspectToggle(aspect)}
-          onMouseEnter={(e) => showTooltip(e, tooltipText)}
+          onMouseEnter={(e) => aspect.inOrb !== false ? showTooltip(e, tooltipText) : null}
           onMouseLeave={hideTooltip}
           style={{ cursor: 'pointer' }}
         >
