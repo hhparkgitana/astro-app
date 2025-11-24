@@ -11,6 +11,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { DateTime } = require('luxon');
 const { calculateChart } = require('../src/shared/calculations/chartCalculator.js');
 
 // File paths
@@ -36,7 +37,7 @@ function longitudeToSign(longitude) {
 }
 
 /**
- * Parse date and time from chart entry
+ * Parse date and time from chart entry with timezone support
  */
 function parseDateTime(entry) {
   // Parse date (format: YYYY-MM-DD)
@@ -48,6 +49,33 @@ function parseDateTime(entry) {
     [hour, minute] = entry.time.split(':').map(Number);
   }
 
+  // If timezone is provided, convert local time to UTC
+  if (entry.timezone) {
+    try {
+      // Create DateTime in the specified timezone
+      const localTime = DateTime.fromObject(
+        { year, month, day, hour, minute },
+        { zone: entry.timezone }
+      );
+
+      // Convert to UTC
+      const utcTime = localTime.toUTC();
+
+      return {
+        year: utcTime.year,
+        month: utcTime.month,
+        day: utcTime.day,
+        hour: utcTime.hour,
+        minute: utcTime.minute,
+        latitude: entry.latitude || 0,
+        longitude: entry.longitude || 0
+      };
+    } catch (error) {
+      console.warn(`Warning: Invalid timezone '${entry.timezone}' for ${entry.name}, using time as UTC`);
+    }
+  }
+
+  // No timezone provided or error occurred, treat as UTC
   return {
     year,
     month,

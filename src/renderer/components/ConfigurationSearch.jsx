@@ -23,7 +23,7 @@ const ConfigurationSearch = ({
   setResultCount
 }) => {
 
-  const planets = ['Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto'];
+  const planets = ['Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto', 'North Node', 'South Node', 'Ascendant'];
   const aspects = ['Conjunction', 'Opposition', 'Square', 'Trine', 'Sextile', 'Semisextile', 'Quincunx'];
   const signs = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'];
 
@@ -283,18 +283,16 @@ const ConfigurationSearch = ({
         }));
       }
 
-      // Build date range
-      const startDate = new Date(
-        parseInt(dateRange.startYear),
-        parseInt(dateRange.startMonth) - 1,
-        parseInt(dateRange.startDay)
-      );
+      // Build date range with validation
+      const startYear = parseInt(dateRange?.startYear) || 2024;
+      const startMonth = parseInt(dateRange?.startMonth) || 1;
+      const startDay = parseInt(dateRange?.startDay) || 1;
+      const endYear = parseInt(dateRange?.endYear) || 2025;
+      const endMonth = parseInt(dateRange?.endMonth) || 12;
+      const endDay = parseInt(dateRange?.endDay) || 31;
 
-      const endDate = new Date(
-        parseInt(dateRange.endYear),
-        parseInt(dateRange.endMonth) - 1,
-        parseInt(dateRange.endDay)
-      );
+      const startDate = new Date(startYear, startMonth - 1, startDay);
+      const endDate = new Date(endYear, endMonth - 1, endDay);
 
       // Handle eclipse-only search separately
       if (eclipseCriteria.length > 0 &&
@@ -357,6 +355,16 @@ const ConfigurationSearch = ({
     });
   };
 
+  // Ensure dateRange has all required properties
+  const safeDateRange = dateRange || {
+    startYear: '',
+    startMonth: '',
+    startDay: '',
+    endYear: '',
+    endMonth: '',
+    endDay: ''
+  };
+
   return (
     <div className="configuration-search">
       <div className="search-header">
@@ -396,21 +404,21 @@ const ConfigurationSearch = ({
           <div className="date-range-inputs">
             <div className="date-input-group">
               <label>Start Date:</label>
-              <input type="number" placeholder="Year" value={dateRange.startYear}
-                onChange={(e) => setDateRange({...dateRange, startYear: e.target.value})} />
-              <input type="number" placeholder="Month" value={dateRange.startMonth} min="1" max="12"
-                onChange={(e) => setDateRange({...dateRange, startMonth: e.target.value})} />
-              <input type="number" placeholder="Day" value={dateRange.startDay} min="1" max="31"
-                onChange={(e) => setDateRange({...dateRange, startDay: e.target.value})} />
+              <input type="number" placeholder="Year" value={safeDateRange.startYear}
+                onChange={(e) => setDateRange({...safeDateRange, startYear: e.target.value})} />
+              <input type="number" placeholder="Month" value={safeDateRange.startMonth} min="1" max="12"
+                onChange={(e) => setDateRange({...safeDateRange, startMonth: e.target.value})} />
+              <input type="number" placeholder="Day" value={safeDateRange.startDay} min="1" max="31"
+                onChange={(e) => setDateRange({...safeDateRange, startDay: e.target.value})} />
             </div>
             <div className="date-input-group">
               <label>End Date:</label>
-              <input type="number" placeholder="Year" value={dateRange.endYear}
-                onChange={(e) => setDateRange({...dateRange, endYear: e.target.value})} />
-              <input type="number" placeholder="Month" value={dateRange.endMonth} min="1" max="12"
-                onChange={(e) => setDateRange({...dateRange, endMonth: e.target.value})} />
-              <input type="number" placeholder="Day" value={dateRange.endDay} min="1" max="31"
-                onChange={(e) => setDateRange({...dateRange, endDay: e.target.value})} />
+              <input type="number" placeholder="Year" value={safeDateRange.endYear}
+                onChange={(e) => setDateRange({...safeDateRange, endYear: e.target.value})} />
+              <input type="number" placeholder="Month" value={safeDateRange.endMonth} min="1" max="12"
+                onChange={(e) => setDateRange({...safeDateRange, endMonth: e.target.value})} />
+              <input type="number" placeholder="Day" value={safeDateRange.endDay} min="1" max="31"
+                onChange={(e) => setDateRange({...safeDateRange, endDay: e.target.value})} />
             </div>
           </div>
         </div>
@@ -581,7 +589,8 @@ const ConfigurationSearch = ({
           <button onClick={addRetrogradeCriterion} className="add-btn">+ Add Retrograde Criterion</button>
         </div>
 
-        {/* Eclipse Criteria */}
+        {/* Eclipse Criteria - Only available for Time Periods mode */}
+        {searchMode === 'timePeriods' && (
         <div className="criteria-section">
           <h3>Eclipses</h3>
           {eclipseCriteria.map((criterion) => (
@@ -633,6 +642,7 @@ const ConfigurationSearch = ({
           ))}
           <button onClick={addEclipseCriterion} className="add-btn">+ Add Eclipse Criterion</button>
         </div>
+        )}
 
         {/* Search Button */}
         <div className="search-actions">
@@ -653,22 +663,28 @@ const ConfigurationSearch = ({
                 {searchResults.slice(0, 100).map((match, index) => (
                   <div key={index} className="result-item famous-chart-result">
                     <div className="chart-info">
-                      <h4>{match.chart.name}</h4>
+                      <h4>{match.chart?.name || 'Unknown'}</h4>
                       <div className="chart-details">
-                        <span className="chart-category">{match.chart.category}</span>
-                        <span className="chart-date">{match.chart.date} at {match.chart.time}</span>
-                        <span className="chart-location">{match.chart.location}</span>
-                        {match.chart.roddenRating && (
+                        {match.chart?.category && (
+                          <span className="chart-category">{match.chart.category}</span>
+                        )}
+                        {match.chart?.date && (
+                          <span className="chart-date">{match.chart.date} at {match.chart.time || 'Unknown time'}</span>
+                        )}
+                        {match.chart?.location && (
+                          <span className="chart-location">{match.chart.location}</span>
+                        )}
+                        {match.chart?.roddenRating && (
                           <span className="rodden-rating">Rodden Rating: {match.chart.roddenRating}</span>
                         )}
                       </div>
-                      {match.chart.notes && (
+                      {match.chart?.notes && (
                         <p className="chart-notes">{match.chart.notes}</p>
                       )}
                     </div>
                     <div className="match-details">
                       <strong>Matching Criteria:</strong>
-                      {match.matchDetails.aspects.length > 0 && (
+                      {match.matchDetails?.aspects?.length > 0 && (
                         <div className="match-section">
                           <em>Aspects:</em>
                           {match.matchDetails.aspects.map((aspect, i) => (
@@ -678,7 +694,7 @@ const ConfigurationSearch = ({
                           ))}
                         </div>
                       )}
-                      {match.matchDetails.placements.length > 0 && (
+                      {match.matchDetails?.placements?.length > 0 && (
                         <div className="match-section">
                           <em>Placements:</em>
                           {match.matchDetails.placements.map((placement, i) => (
@@ -688,7 +704,7 @@ const ConfigurationSearch = ({
                           ))}
                         </div>
                       )}
-                      {match.matchDetails.retrogrades.length > 0 && (
+                      {match.matchDetails?.retrogrades?.length > 0 && (
                         <div className="match-section">
                           <em>Retrograde:</em>
                           {match.matchDetails.retrogrades.map((retro, i) => (

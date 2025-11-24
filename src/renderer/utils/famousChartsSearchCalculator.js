@@ -57,6 +57,12 @@ function checkAspect(lon1, lon2, aspectType, orb) {
  */
 function getPlanetLongitude(chart, planetName) {
   const planetKey = planetName.toLowerCase().replace(' ', '_');
+
+  // Handle ascendant specially (it's not in the planets object)
+  if (planetKey === 'ascendant') {
+    return chart.calculated?.ascendant?.longitude ?? null;
+  }
+
   const planet = chart.calculated?.planets?.[planetKey];
   return planet?.longitude ?? null;
 }
@@ -69,6 +75,12 @@ function getPlanetLongitude(chart, planetName) {
  */
 function getPlanetSign(chart, planetName) {
   const planetKey = planetName.toLowerCase().replace(' ', '_');
+
+  // Handle ascendant specially (it's not in the planets object)
+  if (planetKey === 'ascendant') {
+    return chart.calculated?.ascendant?.sign ?? null;
+  }
+
   const planet = chart.calculated?.planets?.[planetKey];
   return planet?.sign ?? null;
 }
