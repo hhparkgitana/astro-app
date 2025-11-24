@@ -69,6 +69,24 @@ function App() {
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [isLibraryOpen, setIsLibraryOpen] = useState(false);
 
+  // Configuration Search state
+  const [configSearchMode, setConfigSearchMode] = useState('timePeriods');
+  const [configDateRange, setConfigDateRange] = useState({
+    startYear: '2024',
+    startMonth: '1',
+    startDay: '1',
+    endYear: '2025',
+    endMonth: '12',
+    endDay: '31'
+  });
+  const [configAspectCriteria, setConfigAspectCriteria] = useState([]);
+  const [configPlacementCriteria, setConfigPlacementCriteria] = useState([]);
+  const [configRetrogradeCriteria, setConfigRetrogradeCriteria] = useState([]);
+  const [configEclipseCriteria, setConfigEclipseCriteria] = useState([]);
+  const [configSearchResults, setConfigSearchResults] = useState([]);
+  const [configSearching, setConfigSearching] = useState(false);
+  const [configResultCount, setConfigResultCount] = useState(0);
+
   // Planet display settings (which bodies to show)
   const [displaySettings, setDisplaySettings] = useState({
     traditional: true,    // Main planets + nodes always visible by default
@@ -5307,7 +5325,26 @@ function App() {
         ) : viewMode === 'eclipses' ? (
           <EclipseDashboard chartData={chartData} />
         ) : viewMode === 'configSearch' ? (
-          <ConfigurationSearch />
+          <ConfigurationSearch
+            searchMode={configSearchMode}
+            setSearchMode={setConfigSearchMode}
+            dateRange={configDateRange}
+            setDateRange={setConfigDateRange}
+            aspectCriteria={configAspectCriteria}
+            setAspectCriteria={setConfigAspectCriteria}
+            placementCriteria={configPlacementCriteria}
+            setPlacementCriteria={setConfigPlacementCriteria}
+            retrogradeCriteria={configRetrogradeCriteria}
+            setRetrogradeCriteria={setConfigRetrogradeCriteria}
+            eclipseCriteria={configEclipseCriteria}
+            setEclipseCriteria={setConfigEclipseCriteria}
+            searchResults={configSearchResults}
+            setSearchResults={setConfigSearchResults}
+            searching={configSearching}
+            setSearching={setConfigSearching}
+            resultCount={configResultCount}
+            setResultCount={setConfigResultCount}
+          />
         ) : viewMode === 'astrocartography' ? (
           <AstrocartographyView chartData={chartData} />
         ) : viewMode === 'ingress' ? (

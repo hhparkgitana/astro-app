@@ -1,37 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './ConfigurationSearch.css';
 import { searchFamousCharts } from '../utils/famousChartsSearchCalculator';
 
-const ConfigurationSearch = () => {
-  // Search mode state
-  const [searchMode, setSearchMode] = useState('timePeriods'); // 'timePeriods' or 'famousCharts'
-
-  // Search criteria state
-  const [dateRange, setDateRange] = useState({
-    startYear: '2024',
-    startMonth: '1',
-    startDay: '1',
-    endYear: '2025',
-    endMonth: '12',
-    endDay: '31'
-  });
-
-  // Aspect criteria
-  const [aspectCriteria, setAspectCriteria] = useState([]);
-
-  // Placement criteria (sign or degree range)
-  const [placementCriteria, setPlacementCriteria] = useState([]);
-
-  // Retrograde criteria
-  const [retrogradeCriteria, setRetrogradeCriteria] = useState([]);
-
-  // Eclipse criteria
-  const [eclipseCriteria, setEclipseCriteria] = useState([]);
-
-  // Search results
-  const [searchResults, setSearchResults] = useState([]);
-  const [searching, setSearching] = useState(false);
-  const [resultCount, setResultCount] = useState(0);
+const ConfigurationSearch = ({
+  searchMode,
+  setSearchMode,
+  dateRange,
+  setDateRange,
+  aspectCriteria,
+  setAspectCriteria,
+  placementCriteria,
+  setPlacementCriteria,
+  retrogradeCriteria,
+  setRetrogradeCriteria,
+  eclipseCriteria,
+  setEclipseCriteria,
+  searchResults,
+  setSearchResults,
+  searching,
+  setSearching,
+  resultCount,
+  setResultCount
+}) => {
 
   const planets = ['Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto'];
   const aspects = ['Conjunction', 'Opposition', 'Square', 'Trine', 'Sextile', 'Semisextile', 'Quincunx'];
