@@ -1,0 +1,390 @@
+/* Dignities Panel Overlay */
+.dignities-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 998;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Dignities Panel */
+.dignities-panel {
+  position: fixed;
+  top: 0;
+  right: -450px;
+  width: 450px;
+  max-width: 100%;
+  height: 100vh;
+  background: #fafafa;
+  box-shadow: -2px 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  transition: right 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.dignities-panel.open {
+  right: 0;
+}
+
+/* Panel Header */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  background: white;
+  flex-shrink: 0;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+  font-weight: 600;
+}
+
+.panel-header h2::before {
+  content: '👑 ';
+}
+
+.source-selector {
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.source-selector:hover {
+  border-color: #4a90e2;
+}
+
+.source-selector:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  padding: 4px 8px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.close-button:hover {
+  color: #333;
+}
+
+/* Panel Content */
+.panel-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* Dignities Explanation */
+.dignities-explanation {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dignities-explanation p {
+  margin: 0 0 12px 0;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.expand-button {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.expand-button:hover {
+  background: #357abd;
+}
+
+.explanation-details {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+}
+
+.explanation-details h4 {
+  margin: 12px 0 8px 0;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.explanation-details ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.explanation-details li {
+  margin: 6px 0;
+  color: #555;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Dignities Table Wrapper */
+.dignities-table-wrapper {
+  background: white;
+  border-radius: 8px;
+  overflow-x: auto;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Dignities Table */
+.dignities-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  font-size: 13px;
+}
+
+.dignities-table th {
+  background: #4a90e2;
+  color: white;
+  padding: 10px 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.dignities-table td {
+  padding: 10px 8px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.dignities-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.dignities-table tbody tr:hover {
+  background: #f5f9ff;
+}
+
+/* Column widths */
+.planet-col {
+  text-align: left !important;
+  min-width: 100px;
+}
+
+.sign-col {
+  min-width: 80px;
+}
+
+.dom-col,
+.exalt-col,
+.detr-col,
+.fall-col,
+.trip-col,
+.term-col,
+.face-col {
+  min-width: 45px;
+}
+
+.total-col {
+  min-width: 60px;
+  font-weight: bold;
+}
+
+/* Planet Cell */
+.planet-cell {
+  text-align: left !important;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.planet-glyph {
+  font-size: 16px;
+  display: inline-block;
+  min-width: 20px;
+}
+
+.planet-name {
+  font-size: 13px;
+}
+
+/* Sign Cell */
+.sign-cell {
+  font-weight: 500;
+}
+
+.degree-text {
+  display: block;
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
+}
+
+/* Dignity Cells */
+.dignity-cell {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Dignity Active (Domicile/Exaltation) */
+.dignity-active {
+  background: #e8f5e9 !important;
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+/* Debility Active (Detriment/Fall) */
+.debility-active {
+  background: #ffebee !important;
+  color: #c62828;
+  font-weight: 600;
+}
+
+/* Minor Dignities (Triplicity/Term/Face) */
+.dignity-minor {
+  background: #fff3e0 !important;
+  color: #e65100;
+  font-weight: 600;
+}
+
+/* Total Score Cell */
+.total-cell {
+  font-weight: bold;
+  font-size: 14px;
+  border-left: 2px solid #ddd;
+}
+
+.total-cell.strong {
+  background: #4caf50;
+  color: white;
+}
+
+.total-cell.moderate {
+  background: #8bc34a;
+  color: white;
+}
+
+.total-cell.neutral {
+  background: #e0e0e0;
+  color: #666;
+}
+
+.total-cell.weak {
+  background: #ff9800;
+  color: white;
+}
+
+.total-cell.very-weak {
+  background: #f44336;
+  color: white;
+}
+
+/* No Dignities Message */
+.no-dignities {
+  padding: 40px 20px;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .dignities-panel {
+    width: 100%;
+    right: -100%;
+  }
+
+  .dignities-table {
+    font-size: 11px;
+  }
+
+  .dignities-table th,
+  .dignities-table td {
+    padding: 8px 4px;
+  }
+
+  .panel-header h2 {
+    font-size: 18px;
+  }
+
+  .planet-glyph {
+    font-size: 14px;
+  }
+
+  .planet-name {
+    font-size: 11px;
+  }
+
+  .dignity-cell {
+    font-size: 11px;
+  }
+
+  .total-cell {
+    font-size: 12px;
+  }
+
+  /* Keep all columns visible - use horizontal scroll if needed */
+}
+
+/* Scrollbar Styling */
+.panel-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.panel-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.panel-content::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.panel-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

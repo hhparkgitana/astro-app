@@ -10,6 +10,7 @@ import AspectMatrix from './components/AspectMatrix';
 import ReturnAspectMatrix from './components/ReturnAspectMatrix';
 import FamousChartsBrowser from './components/FamousChartsBrowser';
 import ChatPanel from './components/ChatPanel';
+import DignitiesPanel from './components/DignitiesPanel';
 import SaveChartModal from './components/SaveChartModal';
 import ChartLibrary from './components/ChartLibrary';
 import EclipseDashboard from './components/EclipseDashboard';
@@ -62,6 +63,7 @@ function App() {
 
   // Chat panel state
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isDignitiesPanelOpen, setIsDignitiesPanelOpen] = useState(false);
 
   // Chart library and save modal state
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
@@ -2581,6 +2583,14 @@ function App() {
             title="AI Assistant"
           >
             🤖 AI Chat
+          </button>
+          <button
+            className={`mode-btn ${isDignitiesPanelOpen ? 'active' : ''}`}
+            onClick={() => setIsDignitiesPanelOpen(!isDignitiesPanelOpen)}
+            disabled={!chartData}
+            title={chartData ? "View planetary dignities" : "Calculate a chart first"}
+          >
+            👑 Dignities
           </button>
           <button
             className="mode-btn"
@@ -5329,6 +5339,15 @@ function App() {
         returnsFormData={returnsFormData}
         isOpen={isChatOpen}
         onToggle={() => setIsChatOpen(!isChatOpen)}
+      />
+
+      <DignitiesPanel
+        chartData={chartData}
+        chartDataB={chartDataB}
+        compositeChartData={compositeChartData}
+        viewMode={viewMode}
+        isOpen={isDignitiesPanelOpen}
+        onClose={() => setIsDignitiesPanelOpen(false)}
       />
 
       <SaveChartModal
