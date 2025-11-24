@@ -2324,6 +2324,14 @@ function App() {
 
         if (chart.chartData) {
           setChartData(chart.chartData);
+
+          // Initialize active aspects if chart data has aspects
+          if (chart.chartData.aspects) {
+            const allAspectKeys = new Set(
+              chart.chartData.aspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+            );
+            setActiveAspects(allAspectKeys);
+          }
         }
 
         // Set the view mode based on chart type (only when loading into Chart A)
@@ -2356,6 +2364,14 @@ function App() {
 
       if (chart.chartData) {
         setChartDataB(chart.chartData);
+
+        // Initialize active aspects if chart data has aspects
+        if (chart.chartData.aspects) {
+          const allAspectKeys = new Set(
+            chart.chartData.aspects.map(aspect => `${aspect.planet1}-${aspect.planet2}`)
+          );
+          setActiveAspectsB(allAspectKeys);
+        }
       }
 
       console.log('Loaded chart into Chart B:', chart.name);
@@ -5344,6 +5360,7 @@ function App() {
             setSearching={setConfigSearching}
             resultCount={configResultCount}
             setResultCount={setConfigResultCount}
+            onLoadChart={handleLoadChart}
           />
         ) : viewMode === 'astrocartography' ? (
           <AstrocartographyView chartData={chartData} />

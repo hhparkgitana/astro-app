@@ -20,7 +20,8 @@ const ConfigurationSearch = ({
   searching,
   setSearching,
   resultCount,
-  setResultCount
+  setResultCount,
+  onLoadChart
 }) => {
 
   const planets = ['Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto', 'North Node', 'South Node', 'Ascendant'];
@@ -126,6 +127,137 @@ const ConfigurationSearch = ({
     setEclipseCriteria(eclipseCriteria.map(c =>
       c.id === id ? { ...c, [field]: value } : c
     ));
+  };
+
+  // Handle loading a famous chart
+  const handleLoadFamousChart = (famousChart) => {
+    if (!onLoadChart) {
+      console.error('onLoadChart callback not provided');
+      return;
+    }
+
+    // Parse date (format: YYYY-MM-DD)
+    const [year, month, day] = famousChart.date.split('-');
+
+    // Parse time (format: HH:MM) or default to noon
+    let hour = '12', minute = '0';
+    if (famousChart.time) {
+      [hour, minute] = famousChart.time.split(':');
+    }
+
+    // Create formData object
+    const formData = {
+      name: famousChart.name || '',
+      year: year || '',
+      month: month || '',
+      day: day || '',
+      hour: hour || '',
+      minute: minute || '',
+      latitude: famousChart.latitude?.toString() || '',
+      longitude: famousChart.longitude?.toString() || '',
+      location: famousChart.location || '',
+      timezone: famousChart.timezone || '',
+      houseSystem: 'placidus'  // Default house system
+    };
+
+    // Check if we have pre-calculated chart data
+    if (famousChart.calculated && famousChart.calculated.planets) {
+      // Use the pre-calculated data - convert it to the format expected by the app
+      const chartData = convertCalculatedDataToChartFormat(famousChart.calculated);
+
+      const chartToLoad = {
+        name: famousChart.name || 'Unknown',
+        formData: formData,
+        chartData: chartData
+      };
+
+      onLoadChart(chartToLoad);
+    } else {
+      // No pre-calculated data, just load the form
+      const chartToLoad = {
+        name: famousChart.name || 'Unknown',
+        formData: formData
+      };
+
+      onLoadChart(chartToLoad);
+    }
+  };
+
+  // Convert calculated data from famous charts format to app chart format
+  const convertCalculatedDataToChartFormat = (calculated) => {
+    // Convert planet names from snake_case to SCREAMING_SNAKE_CASE
+    const planets = {};
+    const planetMap = {
+      'sun': 'SUN',
+      'moon': 'MOON',
+      'mercury': 'MERCURY',
+      'venus': 'VENUS',
+      'mars': 'MARS',
+      'jupiter': 'JUPITER',
+      'saturn': 'SATURN',
+      'uranus': 'URANUS',
+      'neptune': 'NEPTUNE',
+      'pluto': 'PLUTO',
+      'north_node': 'NORTH_NODE',
+      'south_node': 'SOUTH_NODE'
+    };
+
+    // Aspect type info for converting
+    const aspectInfo = {
+      'conjunction': { symbol: '☌', name: 'Conjunction', angle: 0 },
+      'opposition': { symbol: '☍', name: 'Opposition', angle: 180 },
+      'trine': { symbol: '△', name: 'Trine', angle: 120 },
+      'square': { symbol: '□', name: 'Square', angle: 90 },
+      'sextile': { symbol: '⚹', name: 'Sextile', angle: 60 },
+      'quincunx': { symbol: '⚻', name: 'Quincunx', angle: 150 },
+      'semisextile': { symbol: '⚺', name: 'Semi-Sextile', angle: 30 }
+    };
+
+    Object.entries(calculated.planets).forEach(([key, planet]) => {
+      const mappedKey = planetMap[key];
+      if (mappedKey) {
+        planets[mappedKey] = {
+          name: mappedKey.charAt(0) + mappedKey.slice(1).toLowerCase().replace('_', ' '),
+          longitude: planet.longitude,
+          latitude: 0, // Not stored in calculated data
+          velocity: planet.retrograde ? -1 : 1 // Simplified
+        };
+      }
+    });
+
+    // Convert aspects from database format to app format
+    const convertedAspects = (calculated.major_aspects || []).map(aspect => {
+      const aspectType = aspect.aspect.toUpperCase();
+      const planet1Key = planetMap[aspect.planet1] || aspect.planet1.toUpperCase();
+      const planet2Key = planetMap[aspect.planet2] || aspect.planet2.toUpperCase();
+
+      const info = aspectInfo[aspect.aspect.toLowerCase()] || { symbol: '', name: aspect.aspect, angle: 0 };
+
+      return {
+        planet1: planet1Key.charAt(0) + planet1Key.slice(1).toLowerCase().replace('_', ' '),
+        planet1Key: planet1Key,
+        planet2: planet2Key.charAt(0) + planet2Key.slice(1).toLowerCase().replace('_', ' '),
+        planet2Key: planet2Key,
+        type: aspectType,
+        symbol: info.symbol,
+        name: info.name,
+        exactAngle: info.angle,
+        actualAngle: info.angle, // We don't have the actual angle, use exact
+        orb: aspect.orb,
+        applying: aspect.applying
+      };
+    });
+
+    return {
+      success: true,
+      planets: planets,
+      houses: calculated.houses?.map(h => h.longitude) || [],
+      ascendant: calculated.angles?.ascendant?.longitude || 0,
+      midheaven: calculated.angles?.midheaven?.longitude || 0,
+      descendant: calculated.angles?.descendant?.longitude || 0,
+      ic: calculated.angles?.ic?.longitude || 0,
+      aspects: convertedAspects
+    };
   };
 
   // Execute search
@@ -681,6 +813,13 @@ const ConfigurationSearch = ({
                       {match.chart?.notes && (
                         <p className="chart-notes">{match.chart.notes}</p>
                       )}
+                      <button
+                        className="load-chart-btn"
+                        onClick={() => handleLoadFamousChart(match.chart)}
+                        title="Load this chart"
+                      >
+                        Load Chart
+                      </button>
                     </div>
                     <div className="match-details">
                       <strong>Matching Criteria:</strong>

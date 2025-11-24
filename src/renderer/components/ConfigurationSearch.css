@@ -345,6 +345,23 @@
   font-style: italic;
 }
 
+.load-chart-btn {
+  margin-top: 12px;
+  padding: 8px 16px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.load-chart-btn:hover {
+  background: #357abd;
+}
+
 .match-details {
   padding: 12px;
   background: white;
