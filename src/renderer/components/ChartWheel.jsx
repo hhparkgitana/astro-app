@@ -426,6 +426,35 @@ function ChartWheel({
             </text>
           );
 
+          // Render retrograde indicator if planet is retrograde
+          if (fullPlanet.velocity < 0) {
+            const rxOffset = 18; // Distance from planet glyph
+            // Calculate radial direction from center to stacked planet position
+            const dx = stackedX - center;
+            const dy = stackedY - center;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            // Normalize and move inward (toward center) for retrograde indicator
+            const rxX = center + (dx / distance) * (distance - rxOffset);
+            const rxY = center + (dy / distance) * (distance - rxOffset);
+
+            elements.push(
+              <text
+                key={`rx-${planet.key}`}
+                x={rxX}
+                y={rxY}
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fontSize="10"
+                fill={color}
+                fontWeight="600"
+                opacity="0.8"
+              >
+                Rx
+              </text>
+            );
+          }
+
           // Render degree/minute label if enabled (for stacked planets)
           // Position label radially outward from center (not along perpendicular)
           if (displaySettings.showDegreeLabels) {

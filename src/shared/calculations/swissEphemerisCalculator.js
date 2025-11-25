@@ -221,7 +221,8 @@ function calculateChart(params) {
         name: planet.name,
         longitude: position.longitude,
         latitude: position.latitude,
-        velocity: position.speedLongitude
+        velocity: position.speedLongitude,
+        retrograde: position.speedLongitude < 0
       };
     }
 
@@ -232,7 +233,8 @@ function calculateChart(params) {
         name: centaur.name,
         longitude: position.longitude,
         latitude: position.latitude,
-        velocity: position.speedLongitude
+        velocity: position.speedLongitude,
+        retrograde: position.speedLongitude < 0
       };
     }
 
@@ -243,7 +245,8 @@ function calculateChart(params) {
         name: asteroid.name,
         longitude: position.longitude,
         latitude: position.latitude,
-        velocity: position.speedLongitude
+        velocity: position.speedLongitude,
+        retrograde: position.speedLongitude < 0
       };
     }
 
@@ -254,7 +257,8 @@ function calculateChart(params) {
         name: point.name,
         longitude: position.longitude,
         latitude: position.latitude,
-        velocity: position.speedLongitude
+        velocity: position.speedLongitude,
+        retrograde: position.speedLongitude < 0
       };
     }
 
