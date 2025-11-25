@@ -165,6 +165,15 @@ function App() {
     return processed;
   }, [returnChartData]);
 
+  // Extract clean return chart data (without nested natalChart) for ChartWheel
+  const cleanReturnChartData = useMemo(() => {
+    if (!processedReturnChartData) return null;
+
+    // Create a clean copy of just the return chart data without the nested natalChart
+    const { natalChart, ...returnChart } = processedReturnChartData;
+    return returnChart;
+  }, [processedReturnChartData]);
+
   const [loadingReturn, setLoadingReturn] = useState(false);
   const [returnsFormData, setReturnsFormData] = useState({
     name: '',
@@ -2313,6 +2322,7 @@ function App() {
             longitude: chart.formData.longitude || '',
             location: chart.formData.location || '',
             timezone: chart.formData.timezone || '',
+            houseSystem: chart.formData.houseSystem || 'placidus',
           });
         }
         console.log('Loaded chart into Returns form:', chart.name);
@@ -5121,8 +5131,8 @@ function App() {
                 <div className="chart-display">
                   <ChartWheel
                     chartData={processedReturnChartData.natalChart}
-                    chartDataB={processedReturnChartData}
-                    transitData={{ planets: processedReturnChartData.planets }}
+                    chartDataB={cleanReturnChartData}
+                    transitData={{ planets: cleanReturnChartData.planets }}
                     isSynastry={true}
                     activeAspects={activeAspects}
                     onAspectToggle={handleAspectToggle}

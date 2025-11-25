@@ -5,6 +5,8 @@
  * and Lunar Returns (when Moon returns to natal position monthly)
  */
 
+const { DateTime } = require('luxon');
+
 /**
  * Find the exact moment when a planet returns to its natal longitude
  * Uses binary search to find the precise time
@@ -146,6 +148,17 @@ async function calculateSolarReturn(
   console.log('natalData.year:', natalData.year);
   console.log('natalData.month:', natalData.month);
 
+  // Convert natal local time to UTC using Luxon
+  const natalLocalTime = DateTime.fromObject({
+    year: natalData.year,
+    month: natalData.month,
+    day: natalData.day,
+    hour: natalData.hour,
+    minute: natalData.minute,
+  }, { zone: natalData.timezone });
+
+  const natalUtcTime = natalLocalTime.toUTC();
+
   // First, calculate the natal chart to get natal Sun position
   const chartParams = {
     year: natalData.year,
@@ -153,6 +166,11 @@ async function calculateSolarReturn(
     day: natalData.day,
     hour: natalData.hour,
     minute: natalData.minute,
+    utcYear: natalUtcTime.year,
+    utcMonth: natalUtcTime.month,
+    utcDay: natalUtcTime.day,
+    utcHour: natalUtcTime.hour,
+    utcMinute: natalUtcTime.minute,
     latitude: natalData.latitude,
     longitude: natalData.longitude,
     houseSystem: natalData.houseSystem || 'placidus',
@@ -231,6 +249,17 @@ async function calculateLunarReturn(
   returnLocation,
   calculateChart
 ) {
+  // Convert natal local time to UTC using Luxon
+  const natalLocalTime = DateTime.fromObject({
+    year: natalData.year,
+    month: natalData.month,
+    day: natalData.day,
+    hour: natalData.hour,
+    minute: natalData.minute,
+  }, { zone: natalData.timezone });
+
+  const natalUtcTime = natalLocalTime.toUTC();
+
   // First, calculate the natal chart to get natal Moon position
   const natalChartResponse = await calculateChart({
     year: natalData.year,
@@ -238,6 +267,11 @@ async function calculateLunarReturn(
     day: natalData.day,
     hour: natalData.hour,
     minute: natalData.minute,
+    utcYear: natalUtcTime.year,
+    utcMonth: natalUtcTime.month,
+    utcDay: natalUtcTime.day,
+    utcHour: natalUtcTime.hour,
+    utcMinute: natalUtcTime.minute,
     latitude: natalData.latitude,
     longitude: natalData.longitude,
     houseSystem: natalData.houseSystem || 'placidus',
