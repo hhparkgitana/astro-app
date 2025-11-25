@@ -32,7 +32,9 @@ const ASPECT_CONFIG = {
   'SEXTILE': { symbol: '⚹', color: '#4169E1', name: 'Sextile' },
   'SQUARE': { symbol: '□', color: '#DC143C', name: 'Square' },
   'TRINE': { symbol: '△', color: '#0000FF', name: 'Trine' },
-  'OPPOSITION': { symbol: '☍', color: '#FF4500', name: 'Opposition' }
+  'OPPOSITION': { symbol: '☍', color: '#FF4500', name: 'Opposition' },
+  'SEMISEXTILE': { symbol: '⚺', color: '#32CD32', name: 'Semi-Sextile' },
+  'QUINCUNX': { symbol: '⚻', color: '#FF8C00', name: 'Quincunx' }
 };
 
 function ProgressionNatalAspectMatrix({ chartData, activeProgressionNatalAspects, onProgressionNatalAspectToggle, displaySettings = CHART_CONFIG.defaultDisplay }) {
@@ -244,6 +246,8 @@ function ProgressionNatalAspectMatrix({ chartData, activeProgressionNatalAspects
         <div><span style={{ color: ASPECT_CONFIG.SQUARE.color }}>□</span> Square</div>
         <div><span style={{ color: ASPECT_CONFIG.TRINE.color }}>△</span> Trine</div>
         <div><span style={{ color: ASPECT_CONFIG.OPPOSITION.color }}>☍</span> Opposition</div>
+        <div><span style={{ color: ASPECT_CONFIG.SEMISEXTILE.color }}>⚺</span> Semi-Sextile</div>
+        <div><span style={{ color: ASPECT_CONFIG.QUINCUNX.color }}>⚻</span> Quincunx</div>
       </div>
     </div>
   );
