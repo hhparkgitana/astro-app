@@ -1167,33 +1167,130 @@ function ChartWheel({
   };
 
   /**
-   * Render angle labels (As, Ds, Mc, Ic)
+   * Render angle markers (ASC and MC only, with hover-only labels)
    */
   const renderAngleLabels = () => {
     const ascendant = chartData.ascendant;
-    const labels = [
-      { text: 'As', longitude: chartData.ascendant, radius: zones.zodiacWheel.outerRadius + 12 },
-      { text: 'Ds', longitude: chartData.descendant, radius: zones.zodiacWheel.outerRadius + 12 },
-      { text: 'Mc', longitude: chartData.midheaven, radius: zones.zodiacWheel.outerRadius + 12 },
-      { text: 'Ic', longitude: chartData.ic, radius: zones.zodiacWheel.outerRadius + 12 }
+    const tickRadius = zones.zodiacWheel.outerRadius + 2;
+    const tickLength = 5;
+    const labelRadius = zones.zodiacWheel.outerRadius + 15;
+
+    // Only ASC and MC - not DSC/IC
+    const angles = [
+      {
+        name: 'ASC',
+        longitude: chartData.ascendant,
+        color: '#8b5cf6', // Purple
+        fullName: 'Ascendant',
+        description: 'Rising sign - Self presentation'
+      },
+      {
+        name: 'MC',
+        longitude: chartData.midheaven,
+        color: '#3b82f6', // Blue
+        fullName: 'Midheaven',
+        description: 'Career point - Public life'
+      }
     ];
 
-    return labels.map(({ text, longitude, radius }) => {
-      const pos = pointOnCircle(center, center, radius, longitude, ascendant);
+    return angles.map(({ name, longitude, color, fullName, description }) => {
+      // Tick mark positions
+      const outerPos = pointOnCircle(center, center, tickRadius, longitude, ascendant);
+      const innerPos = pointOnCircle(center, center, tickRadius - tickLength, longitude, ascendant);
+
+      // Label position
+      const labelPos = pointOnCircle(center, center, labelRadius, longitude, ascendant);
+
+      // Invisible hover area position
+      const hoverPos = outerPos;
+
+      // Tooltip content
+      const { formatted: degreeStr, sign } = formatDegreeMinute(longitude);
+      const tooltipText = `${fullName}: ${degreeStr} ${sign}`;
+
+      // IDs for hover styling
+      const tickId = `angle-tick-${name}`;
+      const labelId = `angle-label-${name}`;
+
+      const handleMouseEnter = (e) => {
+        // Highlight tick
+        const tickElem = document.getElementById(tickId);
+        if (tickElem) {
+          tickElem.setAttribute('stroke-width', '3');
+          tickElem.setAttribute('opacity', '1');
+        }
+        // Show label
+        const labelElem = document.getElementById(labelId);
+        if (labelElem) {
+          labelElem.setAttribute('opacity', '1');
+        }
+        showTooltip(e, tooltipText);
+      };
+
+      const handleMouseLeave = () => {
+        // Reset tick
+        const tickElem = document.getElementById(tickId);
+        if (tickElem) {
+          tickElem.setAttribute('stroke-width', '2');
+          tickElem.setAttribute('opacity', '0.6');
+        }
+        // Hide label
+        const labelElem = document.getElementById(labelId);
+        if (labelElem) {
+          labelElem.setAttribute('opacity', '0');
+        }
+        hideTooltip();
+      };
 
       return (
-        <text
-          key={text}
-          x={pos.x}
-          y={pos.y}
-          textAnchor="middle"
-          dominantBaseline="middle"
-          fontSize="14"
-          fill="#333"
-          fontWeight="bold"
-        >
-          {text}
-        </text>
+        <g key={name} className="angle-marker">
+          {/* Tick mark */}
+          <line
+            id={tickId}
+            x1={outerPos.x}
+            y1={outerPos.y}
+            x2={innerPos.x}
+            y2={innerPos.y}
+            stroke={color}
+            strokeWidth="2"
+            opacity="0.6"
+            style={{
+              cursor: 'pointer',
+              transition: 'stroke-width 0.15s ease, opacity 0.15s ease'
+            }}
+          />
+
+          {/* Label (hover-only) */}
+          <text
+            id={labelId}
+            x={labelPos.x}
+            y={labelPos.y}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fontSize="10"
+            fill={color}
+            fontWeight="bold"
+            opacity="0"
+            pointerEvents="none"
+            style={{
+              transition: 'opacity 0.15s ease',
+              userSelect: 'none'
+            }}
+          >
+            {name}
+          </text>
+
+          {/* Invisible hover area (larger for easier interaction) */}
+          <circle
+            cx={hoverPos.x}
+            cy={hoverPos.y}
+            r={12}
+            fill="transparent"
+            style={{ cursor: 'pointer' }}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          />
+        </g>
       );
     });
   };
@@ -1206,13 +1303,20 @@ function ChartWheel({
     const innerAscendant = chartData.ascendant; // For rotation reference
     const markers = [];
 
+    // Skip angle markers for simple transit charts (they use natal house structure)
+    // Only show angle markers for return charts, synastry, progressions, or solar arcs
+    const isSimpleTransit = transitData && !isReturnChart && !isSynastry && !progressionsData;
+    if (isSimpleTransit) {
+      return markers; // Return empty array - no angle markers for transits
+    }
+
     // Determine which chart data to use for the outer ring
     // For return charts and synastry, use chartDataB
     // For transits, use transitData
     const outerChartData = (isReturnChart || isSynastry) ? chartDataB : transitData;
 
-    // Bi-wheel or Tri-wheel: show transit/return/synastry outer chart ASC
-    if (outerChartData && outerChartData.ascendant) {
+    // Bi-wheel or Tri-wheel: show return/synastry outer chart ASC (but not transits)
+    if (outerChartData && outerChartData.ascendant && (isReturnChart || isSynastry)) {
       const outerRadius = zones.transitPlanets.outerRadius + 5;
       const innerRadius = zones.transitPlanets.outerRadius - 15;
 
@@ -1231,6 +1335,24 @@ function ChartWheel({
         : (isSynastry ? personBName : 'Transit');
       const tooltipText = `${chartLabel} Ascendant: ${degreeStr} ${sign}`;
 
+      const ascLabelId = 'outer-asc-label';
+
+      const handleAscMouseEnter = (e) => {
+        const labelElem = document.getElementById(ascLabelId);
+        if (labelElem) {
+          labelElem.setAttribute('opacity', '1');
+        }
+        showTooltip(e, tooltipText);
+      };
+
+      const handleAscMouseLeave = () => {
+        const labelElem = document.getElementById(ascLabelId);
+        if (labelElem) {
+          labelElem.setAttribute('opacity', '0');
+        }
+        hideTooltip();
+      };
+
       markers.push(
         <g key="transit-asc-marker">
           {/* Radial line */}
@@ -1242,11 +1364,12 @@ function ChartWheel({
             stroke="#4A6B8A"
             strokeWidth="3"
             style={{ cursor: 'pointer' }}
-            onMouseEnter={(e) => showTooltip(e, tooltipText)}
-            onMouseLeave={hideTooltip}
+            onMouseEnter={handleAscMouseEnter}
+            onMouseLeave={handleAscMouseLeave}
           />
-          {/* ASC label with stroke for readability */}
+          {/* ASC label (hover-only) */}
           <text
+            id={ascLabelId}
             x={labelPoint.x}
             y={labelPoint.y}
             textAnchor="middle"
@@ -1257,63 +1380,43 @@ function ChartWheel({
             stroke="white"
             strokeWidth="0.5"
             paintOrder="stroke"
-            style={{ cursor: 'pointer' }}
-            onMouseEnter={(e) => showTooltip(e, tooltipText)}
-            onMouseLeave={hideTooltip}
+            opacity="0"
+            pointerEvents="none"
+            style={{
+              transition: 'opacity 0.15s ease',
+              userSelect: 'none'
+            }}
           >
             ASC
           </text>
         </g>
       );
 
-      // Add DES (Descendant = ASC + 180°)
-      const descendant = (outerChartData.ascendant + 180) % 360;
-      const desOuterPoint = pointOnCircle(center, center, outerRadius, descendant, innerAscendant);
-      const desInnerPoint = pointOnCircle(center, center, innerRadius, descendant, innerAscendant);
-      const desLabelPoint = pointOnCircle(center, center, labelRadius, descendant, innerAscendant);
-      const { formatted: desDegreeStr, sign: desSign } = formatDegreeMinute(descendant);
-      const desTooltip = `${chartLabel} Descendant: ${desDegreeStr} ${desSign}`;
-
-      markers.push(
-        <g key="transit-des-marker">
-          <line
-            x1={desOuterPoint.x}
-            y1={desOuterPoint.y}
-            x2={desInnerPoint.x}
-            y2={desInnerPoint.y}
-            stroke="#4A6B8A"
-            strokeWidth="3"
-            style={{ cursor: 'pointer' }}
-            onMouseEnter={(e) => showTooltip(e, desTooltip)}
-            onMouseLeave={hideTooltip}
-          />
-          <text
-            x={desLabelPoint.x}
-            y={desLabelPoint.y}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fontSize="13"
-            fill="#4A6B8A"
-            fontWeight="bold"
-            stroke="white"
-            strokeWidth="0.5"
-            paintOrder="stroke"
-            style={{ cursor: 'pointer' }}
-            onMouseEnter={(e) => showTooltip(e, desTooltip)}
-            onMouseLeave={hideTooltip}
-          >
-            DES
-          </text>
-        </g>
-      );
-
-      // Add MC (Midheaven) and IC if available
+      // Add MC (Midheaven) if available
       if (outerChartData.midheaven) {
         const mcOuterPoint = pointOnCircle(center, center, outerRadius, outerChartData.midheaven, innerAscendant);
         const mcInnerPoint = pointOnCircle(center, center, innerRadius, outerChartData.midheaven, innerAscendant);
         const mcLabelPoint = pointOnCircle(center, center, labelRadius, outerChartData.midheaven, innerAscendant);
         const { formatted: mcDegreeStr, sign: mcSign } = formatDegreeMinute(outerChartData.midheaven);
         const mcTooltip = `${chartLabel} Midheaven: ${mcDegreeStr} ${mcSign}`;
+
+        const mcLabelId = 'outer-mc-label';
+
+        const handleMcMouseEnter = (e) => {
+          const labelElem = document.getElementById(mcLabelId);
+          if (labelElem) {
+            labelElem.setAttribute('opacity', '1');
+          }
+          showTooltip(e, mcTooltip);
+        };
+
+        const handleMcMouseLeave = () => {
+          const labelElem = document.getElementById(mcLabelId);
+          if (labelElem) {
+            labelElem.setAttribute('opacity', '0');
+          }
+          hideTooltip();
+        };
 
         markers.push(
           <g key="transit-mc-marker">
@@ -1325,10 +1428,11 @@ function ChartWheel({
               stroke="#4A6B8A"
               strokeWidth="3"
               style={{ cursor: 'pointer' }}
-              onMouseEnter={(e) => showTooltip(e, mcTooltip)}
-              onMouseLeave={hideTooltip}
+              onMouseEnter={handleMcMouseEnter}
+              onMouseLeave={handleMcMouseLeave}
             />
             <text
+              id={mcLabelId}
               x={mcLabelPoint.x}
               y={mcLabelPoint.y}
               textAnchor="middle"
@@ -1339,52 +1443,14 @@ function ChartWheel({
               stroke="white"
               strokeWidth="0.5"
               paintOrder="stroke"
-              style={{ cursor: 'pointer' }}
-              onMouseEnter={(e) => showTooltip(e, mcTooltip)}
-              onMouseLeave={hideTooltip}
+              opacity="0"
+              pointerEvents="none"
+              style={{
+                transition: 'opacity 0.15s ease',
+                userSelect: 'none'
+              }}
             >
               MC
-            </text>
-          </g>
-        );
-
-        // Add IC (Imum Coeli = MC + 180°)
-        const ic = (outerChartData.midheaven + 180) % 360;
-        const icOuterPoint = pointOnCircle(center, center, outerRadius, ic, innerAscendant);
-        const icInnerPoint = pointOnCircle(center, center, innerRadius, ic, innerAscendant);
-        const icLabelPoint = pointOnCircle(center, center, labelRadius, ic, innerAscendant);
-        const { formatted: icDegreeStr, sign: icSign } = formatDegreeMinute(ic);
-        const icTooltip = `${chartLabel} Imum Coeli: ${icDegreeStr} ${icSign}`;
-
-        markers.push(
-          <g key="transit-ic-marker">
-            <line
-              x1={icOuterPoint.x}
-              y1={icOuterPoint.y}
-              x2={icInnerPoint.x}
-              y2={icInnerPoint.y}
-              stroke="#4A6B8A"
-              strokeWidth="3"
-              style={{ cursor: 'pointer' }}
-              onMouseEnter={(e) => showTooltip(e, icTooltip)}
-              onMouseLeave={hideTooltip}
-            />
-            <text
-              x={icLabelPoint.x}
-              y={icLabelPoint.y}
-              textAnchor="middle"
-              dominantBaseline="middle"
-              fontSize="13"
-              fill="#4A6B8A"
-              fontWeight="bold"
-              stroke="white"
-              strokeWidth="0.5"
-              paintOrder="stroke"
-              style={{ cursor: 'pointer' }}
-              onMouseEnter={(e) => showTooltip(e, icTooltip)}
-              onMouseLeave={hideTooltip}
-            >
-              IC
             </text>
           </g>
         );
@@ -1409,6 +1475,25 @@ function ChartWheel({
       const progressionLabel = directionType === 'solarArcs' ? 'Solar Arc' : 'Progressed';
       const tooltipText = `${progressionLabel} Ascendant: ${degreeStr} ${sign}`;
 
+      const progressionColor = "#9C27B0";
+      const progAscLabelId = 'progression-asc-label';
+
+      const handleProgAscMouseEnter = (e) => {
+        const labelElem = document.getElementById(progAscLabelId);
+        if (labelElem) {
+          labelElem.setAttribute('opacity', '1');
+        }
+        showTooltip(e, tooltipText);
+      };
+
+      const handleProgAscMouseLeave = () => {
+        const labelElem = document.getElementById(progAscLabelId);
+        if (labelElem) {
+          labelElem.setAttribute('opacity', '0');
+        }
+        hideTooltip();
+      };
+
       markers.push(
         <g key="progression-asc-marker">
           {/* Radial line */}
@@ -1417,96 +1502,97 @@ function ChartWheel({
             y1={outerPoint.y}
             x2={innerPoint.x}
             y2={innerPoint.y}
-            stroke="#9C27B0"
+            stroke={progressionColor}
             strokeWidth="3"
             style={{ cursor: 'pointer' }}
-            onMouseEnter={(e) => showTooltip(e, tooltipText)}
-            onMouseLeave={hideTooltip}
+            onMouseEnter={handleProgAscMouseEnter}
+            onMouseLeave={handleProgAscMouseLeave}
           />
-          {/* ASC label with stroke for readability */}
+          {/* ASC label (hover-only) */}
           <text
+            id={progAscLabelId}
             x={labelPoint.x}
             y={labelPoint.y}
             textAnchor="middle"
             dominantBaseline="middle"
             fontSize="13"
-            fill="#9C27B0"
+            fill={progressionColor}
             fontWeight="bold"
             stroke="white"
             strokeWidth="0.5"
             paintOrder="stroke"
-            style={{ cursor: 'pointer' }}
-            onMouseEnter={(e) => showTooltip(e, tooltipText)}
-            onMouseLeave={hideTooltip}
+            opacity="0"
+            pointerEvents="none"
+            style={{
+              transition: 'opacity 0.15s ease',
+              userSelect: 'none'
+            }}
           >
             ASC
           </text>
         </g>
       );
 
-      // Add DES, MC, IC for progression tri-wheel
-      const progressionColor = "#9C27B0";
-
-      // DES (Descendant)
-      const progDescendant = (progressionsData.ascendant + 180) % 360;
-      const progDesOuter = pointOnCircle(center, center, outerRadius, progDescendant, innerAscendant);
-      const progDesInner = pointOnCircle(center, center, innerRadius, progDescendant, innerAscendant);
-      const progDesLabel = pointOnCircle(center, center, labelRadius, progDescendant, innerAscendant);
-      const { formatted: progDesDeg, sign: progDesSign } = formatDegreeMinute(progDescendant);
-
-      markers.push(
-        <g key="progression-des-marker">
-          <line x1={progDesOuter.x} y1={progDesOuter.y} x2={progDesInner.x} y2={progDesInner.y}
-                stroke={progressionColor} strokeWidth="3" style={{ cursor: 'pointer' }}
-                onMouseEnter={(e) => showTooltip(e, `${progressionLabel} Descendant: ${progDesDeg} ${progDesSign}`)}
-                onMouseLeave={hideTooltip} />
-          <text x={progDesLabel.x} y={progDesLabel.y} textAnchor="middle" dominantBaseline="middle"
-                fontSize="13" fill={progressionColor} fontWeight="bold" stroke="white" strokeWidth="0.5" paintOrder="stroke"
-                style={{ cursor: 'pointer' }}
-                onMouseEnter={(e) => showTooltip(e, `${progressionLabel} Descendant: ${progDesDeg} ${progDesSign}`)}
-                onMouseLeave={hideTooltip}>DES</text>
-        </g>
-      );
-
-      // MC and IC
+      // Add MC for progression tri-wheel
       if (progressionsData.midheaven) {
         const progMcOuter = pointOnCircle(center, center, outerRadius, progressionsData.midheaven, innerAscendant);
         const progMcInner = pointOnCircle(center, center, innerRadius, progressionsData.midheaven, innerAscendant);
         const progMcLabel = pointOnCircle(center, center, labelRadius, progressionsData.midheaven, innerAscendant);
         const { formatted: progMcDeg, sign: progMcSign } = formatDegreeMinute(progressionsData.midheaven);
+        const progMcTooltip = `${progressionLabel} Midheaven: ${progMcDeg} ${progMcSign}`;
+
+        const progMcLabelId = 'progression-mc-label';
+
+        const handleProgMcMouseEnter = (e) => {
+          const labelElem = document.getElementById(progMcLabelId);
+          if (labelElem) {
+            labelElem.setAttribute('opacity', '1');
+          }
+          showTooltip(e, progMcTooltip);
+        };
+
+        const handleProgMcMouseLeave = () => {
+          const labelElem = document.getElementById(progMcLabelId);
+          if (labelElem) {
+            labelElem.setAttribute('opacity', '0');
+          }
+          hideTooltip();
+        };
 
         markers.push(
           <g key="progression-mc-marker">
-            <line x1={progMcOuter.x} y1={progMcOuter.y} x2={progMcInner.x} y2={progMcInner.y}
-                  stroke={progressionColor} strokeWidth="3" style={{ cursor: 'pointer' }}
-                  onMouseEnter={(e) => showTooltip(e, `${progressionLabel} Midheaven: ${progMcDeg} ${progMcSign}`)}
-                  onMouseLeave={hideTooltip} />
-            <text x={progMcLabel.x} y={progMcLabel.y} textAnchor="middle" dominantBaseline="middle"
-                  fontSize="13" fill={progressionColor} fontWeight="bold" stroke="white" strokeWidth="0.5" paintOrder="stroke"
-                  style={{ cursor: 'pointer' }}
-                  onMouseEnter={(e) => showTooltip(e, `${progressionLabel} Midheaven: ${progMcDeg} ${progMcSign}`)}
-                  onMouseLeave={hideTooltip}>MC</text>
-          </g>
-        );
-
-        // IC
-        const progIc = (progressionsData.midheaven + 180) % 360;
-        const progIcOuter = pointOnCircle(center, center, outerRadius, progIc, innerAscendant);
-        const progIcInner = pointOnCircle(center, center, innerRadius, progIc, innerAscendant);
-        const progIcLabel = pointOnCircle(center, center, labelRadius, progIc, innerAscendant);
-        const { formatted: progIcDeg, sign: progIcSign } = formatDegreeMinute(progIc);
-
-        markers.push(
-          <g key="progression-ic-marker">
-            <line x1={progIcOuter.x} y1={progIcOuter.y} x2={progIcInner.x} y2={progIcInner.y}
-                  stroke={progressionColor} strokeWidth="3" style={{ cursor: 'pointer' }}
-                  onMouseEnter={(e) => showTooltip(e, `${progressionLabel} Imum Coeli: ${progIcDeg} ${progIcSign}`)}
-                  onMouseLeave={hideTooltip} />
-            <text x={progIcLabel.x} y={progIcLabel.y} textAnchor="middle" dominantBaseline="middle"
-                  fontSize="13" fill={progressionColor} fontWeight="bold" stroke="white" strokeWidth="0.5" paintOrder="stroke"
-                  style={{ cursor: 'pointer' }}
-                  onMouseEnter={(e) => showTooltip(e, `${progressionLabel} Imum Coeli: ${progIcDeg} ${progIcSign}`)}
-                  onMouseLeave={hideTooltip}>IC</text>
+            <line
+              x1={progMcOuter.x}
+              y1={progMcOuter.y}
+              x2={progMcInner.x}
+              y2={progMcInner.y}
+              stroke={progressionColor}
+              strokeWidth="3"
+              style={{ cursor: 'pointer' }}
+              onMouseEnter={handleProgMcMouseEnter}
+              onMouseLeave={handleProgMcMouseLeave}
+            />
+            <text
+              id={progMcLabelId}
+              x={progMcLabel.x}
+              y={progMcLabel.y}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fontSize="13"
+              fill={progressionColor}
+              fontWeight="bold"
+              stroke="white"
+              strokeWidth="0.5"
+              paintOrder="stroke"
+              opacity="0"
+              pointerEvents="none"
+              style={{
+                transition: 'opacity 0.15s ease',
+                userSelect: 'none'
+              }}
+            >
+              MC
+            </text>
           </g>
         );
       }
@@ -1529,6 +1615,24 @@ function ChartWheel({
       const { formatted: degreeStr, sign } = formatDegreeMinute(progressionsData.ascendant);
       const progressionLabel = directionType === 'solarArcs' ? 'Solar Arc' : 'Progressed';
       const tooltipText = `${progressionLabel} Ascendant: ${degreeStr} ${sign}`;
+      const progressionColor = directionType === 'solarArcs' ? '#FF8C00' : '#9C27B0';
+      const progAscBiLabelId = 'progression-asc-bi-label';
+
+      const handleProgAscBiMouseEnter = (e) => {
+        const labelElem = document.getElementById(progAscBiLabelId);
+        if (labelElem) {
+          labelElem.setAttribute('opacity', '1');
+        }
+        showTooltip(e, tooltipText);
+      };
+
+      const handleProgAscBiMouseLeave = () => {
+        const labelElem = document.getElementById(progAscBiLabelId);
+        if (labelElem) {
+          labelElem.setAttribute('opacity', '0');
+        }
+        hideTooltip();
+      };
 
       markers.push(
         <g key="progression-asc-marker-bi">
@@ -1538,96 +1642,89 @@ function ChartWheel({
             y1={outerPoint.y}
             x2={innerPoint.x}
             y2={innerPoint.y}
-            stroke={directionType === 'solarArcs' ? '#FF8C00' : '#9C27B0'}
+            stroke={progressionColor}
             strokeWidth="3"
             style={{ cursor: 'pointer' }}
-            onMouseEnter={(e) => showTooltip(e, tooltipText)}
-            onMouseLeave={hideTooltip}
+            onMouseEnter={handleProgAscBiMouseEnter}
+            onMouseLeave={handleProgAscBiMouseLeave}
           />
           {/* ASC label with stroke for readability */}
           <text
+            id={progAscBiLabelId}
             x={labelPoint.x}
             y={labelPoint.y}
             textAnchor="middle"
             dominantBaseline="middle"
             fontSize="13"
-            fill={directionType === 'solarArcs' ? '#FF8C00' : '#9C27B0'}
+            fill={progressionColor}
             fontWeight="bold"
             stroke="white"
             strokeWidth="0.5"
             paintOrder="stroke"
-            style={{ cursor: 'pointer' }}
-            onMouseEnter={(e) => showTooltip(e, tooltipText)}
-            onMouseLeave={hideTooltip}
+            opacity="0"
+            pointerEvents="none"
+            style={{
+              transition: 'opacity 0.15s ease',
+              userSelect: 'none'
+            }}
           >
             ASC
           </text>
         </g>
       );
 
-      // Add DES, MC, IC for bi-wheel progression
-      const biColor = directionType === 'solarArcs' ? '#FF8C00' : '#9C27B0';
-
-      // DES
-      const biDescendant = (progressionsData.ascendant + 180) % 360;
-      const biDesOuter = pointOnCircle(center, center, outerRadius, biDescendant, innerAscendant);
-      const biDesInner = pointOnCircle(center, center, innerRadius, biDescendant, innerAscendant);
-      const biDesLabel = pointOnCircle(center, center, labelRadius, biDescendant, innerAscendant);
-      const { formatted: biDesDeg, sign: biDesSign } = formatDegreeMinute(biDescendant);
-
-      markers.push(
-        <g key="progression-des-marker-bi">
-          <line x1={biDesOuter.x} y1={biDesOuter.y} x2={biDesInner.x} y2={biDesInner.y}
-                stroke={biColor} strokeWidth="3" style={{ cursor: 'pointer' }}
-                onMouseEnter={(e) => showTooltip(e, `${progressionLabel} Descendant: ${biDesDeg} ${biDesSign}`)}
-                onMouseLeave={hideTooltip} />
-          <text x={biDesLabel.x} y={biDesLabel.y} textAnchor="middle" dominantBaseline="middle"
-                fontSize="13" fill={biColor} fontWeight="bold" stroke="white" strokeWidth="0.5" paintOrder="stroke"
-                style={{ cursor: 'pointer' }}
-                onMouseEnter={(e) => showTooltip(e, `${progressionLabel} Descendant: ${biDesDeg} ${biDesSign}`)}
-                onMouseLeave={hideTooltip}>DES</text>
-        </g>
-      );
-
-      // MC and IC
+      // Add MC for bi-wheel progression
       if (progressionsData.midheaven) {
         const biMcOuter = pointOnCircle(center, center, outerRadius, progressionsData.midheaven, innerAscendant);
         const biMcInner = pointOnCircle(center, center, innerRadius, progressionsData.midheaven, innerAscendant);
         const biMcLabel = pointOnCircle(center, center, labelRadius, progressionsData.midheaven, innerAscendant);
         const { formatted: biMcDeg, sign: biMcSign } = formatDegreeMinute(progressionsData.midheaven);
+        const progMcBiLabelId = 'progression-mc-bi-label';
+        const mcTooltip = `${progressionLabel} Midheaven: ${biMcDeg} ${biMcSign}`;
+
+        const handleProgMcBiMouseEnter = (e) => {
+          const labelElem = document.getElementById(progMcBiLabelId);
+          if (labelElem) {
+            labelElem.setAttribute('opacity', '1');
+          }
+          showTooltip(e, mcTooltip);
+        };
+
+        const handleProgMcBiMouseLeave = () => {
+          const labelElem = document.getElementById(progMcBiLabelId);
+          if (labelElem) {
+            labelElem.setAttribute('opacity', '0');
+          }
+          hideTooltip();
+        };
 
         markers.push(
           <g key="progression-mc-marker-bi">
             <line x1={biMcOuter.x} y1={biMcOuter.y} x2={biMcInner.x} y2={biMcInner.y}
-                  stroke={biColor} strokeWidth="3" style={{ cursor: 'pointer' }}
-                  onMouseEnter={(e) => showTooltip(e, `${progressionLabel} Midheaven: ${biMcDeg} ${biMcSign}`)}
-                  onMouseLeave={hideTooltip} />
-            <text x={biMcLabel.x} y={biMcLabel.y} textAnchor="middle" dominantBaseline="middle"
-                  fontSize="13" fill={biColor} fontWeight="bold" stroke="white" strokeWidth="0.5" paintOrder="stroke"
-                  style={{ cursor: 'pointer' }}
-                  onMouseEnter={(e) => showTooltip(e, `${progressionLabel} Midheaven: ${biMcDeg} ${biMcSign}`)}
-                  onMouseLeave={hideTooltip}>MC</text>
-          </g>
-        );
-
-        // IC
-        const biIc = (progressionsData.midheaven + 180) % 360;
-        const biIcOuter = pointOnCircle(center, center, outerRadius, biIc, innerAscendant);
-        const biIcInner = pointOnCircle(center, center, innerRadius, biIc, innerAscendant);
-        const biIcLabel = pointOnCircle(center, center, labelRadius, biIc, innerAscendant);
-        const { formatted: biIcDeg, sign: biIcSign } = formatDegreeMinute(biIc);
-
-        markers.push(
-          <g key="progression-ic-marker-bi">
-            <line x1={biIcOuter.x} y1={biIcOuter.y} x2={biIcInner.x} y2={biIcInner.y}
-                  stroke={biColor} strokeWidth="3" style={{ cursor: 'pointer' }}
-                  onMouseEnter={(e) => showTooltip(e, `${progressionLabel} Imum Coeli: ${biIcDeg} ${biIcSign}`)}
-                  onMouseLeave={hideTooltip} />
-            <text x={biIcLabel.x} y={biIcLabel.y} textAnchor="middle" dominantBaseline="middle"
-                  fontSize="13" fill={biColor} fontWeight="bold" stroke="white" strokeWidth="0.5" paintOrder="stroke"
-                  style={{ cursor: 'pointer' }}
-                  onMouseEnter={(e) => showTooltip(e, `${progressionLabel} Imum Coeli: ${biIcDeg} ${biIcSign}`)}
-                  onMouseLeave={hideTooltip}>IC</text>
+                  stroke={progressionColor} strokeWidth="3" style={{ cursor: 'pointer' }}
+                  onMouseEnter={handleProgMcBiMouseEnter}
+                  onMouseLeave={handleProgMcBiMouseLeave} />
+            <text
+              id={progMcBiLabelId}
+              x={biMcLabel.x}
+              y={biMcLabel.y}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fontSize="13"
+              fill={progressionColor}
+              fontWeight="bold"
+              stroke="white"
+              strokeWidth="0.5"
+              paintOrder="stroke"
+              opacity="0"
+              pointerEvents="none"
+              style={{
+                transition: 'opacity 0.15s ease',
+                userSelect: 'none'
+              }}
+            >
+              MC
+            </text>
           </g>
         );
       }
