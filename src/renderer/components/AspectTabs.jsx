@@ -168,7 +168,7 @@ function AspectTabs({
             </h4>
             <AspectMatrix
               chartData={{ ...chartData.progressions, aspects: chartData.progressionInternalAspects }}
-              activeAspects={new Set()}
+              activeAspects={new Set(chartData.progressionInternalAspects.map(a => `${a.planet1}-${a.planet2}`))}
               onAspectToggle={() => {}}
             />
           </div>
