@@ -182,18 +182,44 @@ function TimeSlider({
         new Date(a.date).getTime() - new Date(b.date).getTime()
       );
 
-      // Use index-based navigation instead of time comparison
-      if (direction > 0) {
-        // Move to next marker
-        currentMarkerIndexRef.current++;
-        if (currentMarkerIndexRef.current >= sortedMarkers.length) {
-          currentMarkerIndexRef.current = 0; // Wrap around
+      // If currentMarkerIndexRef is -1, find the nearest marker to current time
+      if (currentMarkerIndexRef.current === -1) {
+        const currentTime = currentDate.getTime();
+        let nearestIndex = 0;
+        let minDiff = Math.abs(new Date(sortedMarkers[0].date).getTime() - currentTime);
+
+        for (let i = 1; i < sortedMarkers.length; i++) {
+          const diff = Math.abs(new Date(sortedMarkers[i].date).getTime() - currentTime);
+          if (diff < minDiff) {
+            minDiff = diff;
+            nearestIndex = i;
+          }
+        }
+
+        currentMarkerIndexRef.current = nearestIndex;
+
+        // If moving forward and current marker is in the past, start from next one
+        if (direction > 0 && new Date(sortedMarkers[nearestIndex].date).getTime() < currentTime) {
+          currentMarkerIndexRef.current++;
+        }
+        // If moving backward and current marker is in the future, start from previous one
+        else if (direction < 0 && new Date(sortedMarkers[nearestIndex].date).getTime() > currentTime) {
+          currentMarkerIndexRef.current--;
         }
       } else {
-        // Move to previous marker
-        currentMarkerIndexRef.current--;
-        if (currentMarkerIndexRef.current < 0) {
-          currentMarkerIndexRef.current = sortedMarkers.length - 1; // Wrap around
+        // Use index-based navigation
+        if (direction > 0) {
+          // Move to next marker
+          currentMarkerIndexRef.current++;
+          if (currentMarkerIndexRef.current >= sortedMarkers.length) {
+            currentMarkerIndexRef.current = 0; // Wrap around
+          }
+        } else {
+          // Move to previous marker
+          currentMarkerIndexRef.current--;
+          if (currentMarkerIndexRef.current < 0) {
+            currentMarkerIndexRef.current = sortedMarkers.length - 1; // Wrap around
+          }
         }
       }
 
@@ -292,6 +318,10 @@ function TimeSlider({
     setCurrentDate(now);
     setSliderPosition(dateToPosition(now));
     setIsPlaying(false);
+
+    // Reset aspect marker index so it re-initializes from current position
+    currentMarkerIndexRef.current = -1;
+
     const overrideData = updateFormData(now);
 
     // Trigger chart recalculation immediately with the override data
