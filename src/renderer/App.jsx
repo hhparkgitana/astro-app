@@ -3119,6 +3119,20 @@ function App() {
                   {formData.month}/{formData.day}/{formData.year} at {formData.hour}:{formData.minute.padStart(2, '0')}
                   {formData.location && ` - ${formData.location}`}
                 </h3>
+                {chartData.eclipseProximity?.bornDuringEclipse && (
+                  <div className="eclipse-badge" style={{
+                    marginTop: '8px',
+                    padding: '8px 12px',
+                    backgroundColor: '#2d3748',
+                    color: '#ffd700',
+                    borderRadius: '4px',
+                    fontSize: '0.9rem',
+                    fontWeight: '500',
+                    display: 'inline-block'
+                  }}>
+                    ⚡ Eclipse Birth: {chartData.eclipseProximity.eclipse.hoursFromBirth.toFixed(1)}h {chartData.eclipseProximity.eclipse.beforeOrAfter} {chartData.eclipseProximity.eclipse.kind} {chartData.eclipseProximity.eclipse.type} eclipse at {chartData.eclipseProximity.eclipse.formattedPosition}
+                  </div>
+                )}
                 <div className="chart-actions">
                   <button onClick={resetChart} className="secondary-btn">
                     Edit Chart

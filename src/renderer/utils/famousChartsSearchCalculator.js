@@ -182,8 +182,28 @@ function matchesAllCriteria(chart, criteria) {
   const matchDetails = {
     aspects: [],
     placements: [],
-    retrogrades: []
+    retrogrades: [],
+    eclipse: null
   };
+
+  // Check eclipse birth criteria
+  if (criteria.bornDuringEclipse) {
+    const eclipseProximity = chart.eclipseProximity;
+
+    // Chart must have been born during an eclipse
+    if (!eclipseProximity || !eclipseProximity.bornDuringEclipse) {
+      return null;
+    }
+
+    // Add eclipse details
+    matchDetails.eclipse = {
+      type: eclipseProximity.eclipse.type,
+      kind: eclipseProximity.eclipse.kind,
+      hoursFromBirth: eclipseProximity.eclipse.hoursFromBirth,
+      position: eclipseProximity.eclipse.formattedPosition,
+      beforeOrAfter: eclipseProximity.eclipse.beforeOrAfter
+    };
+  }
 
   // Check aspect criteria
   if (criteria.aspects && criteria.aspects.length > 0) {

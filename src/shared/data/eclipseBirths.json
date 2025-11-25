@@ -1,0 +1,172 @@
+[
+  {
+    "name": "Donald Trump",
+    "category": "Politicians",
+    "date": "1946-06-14",
+    "time": "10:54",
+    "eclipse": {
+      "type": "lunar",
+      "kind": "total",
+      "dateTime": "1946-06-14T18:38:45.469Z",
+      "hoursFromBirth": 3.75,
+      "sign": "Sagittarius",
+      "degree": 23.06,
+      "longitude": 263.06,
+      "formattedPosition": "23°03' Sagittarius",
+      "beforeOrAfter": "after"
+    }
+  },
+  {
+    "name": "Mike Johnson",
+    "category": "Politicians",
+    "date": "1972-01-30",
+    "time": "12:00",
+    "eclipse": {
+      "type": "lunar",
+      "kind": "total",
+      "dateTime": "1972-01-30T10:53:22.657Z",
+      "hoursFromBirth": 7.11,
+      "sign": "Leo",
+      "degree": 9.61,
+      "longitude": 129.61,
+      "formattedPosition": "9°37' Leo",
+      "beforeOrAfter": "before"
+    }
+  },
+  {
+    "name": "Stacey Abrams",
+    "category": "Politicians",
+    "date": "1973-12-09",
+    "time": "12:00",
+    "eclipse": {
+      "type": "lunar",
+      "kind": "partial",
+      "dateTime": "1973-12-10T01:44:27.290Z",
+      "hoursFromBirth": 7.74,
+      "sign": "Gemini",
+      "degree": 17.95,
+      "longitude": 77.95,
+      "formattedPosition": "17°57' Gemini",
+      "beforeOrAfter": "after"
+    }
+  },
+  {
+    "name": "John Wayne Gacy",
+    "category": "Villains",
+    "date": "1942-03-17",
+    "time": "00:30",
+    "eclipse": {
+      "type": "solar",
+      "kind": "partial",
+      "dateTime": "1942-03-16T23:36:42.461Z",
+      "hoursFromBirth": 5.89,
+      "sign": "Pisces",
+      "degree": 25.75,
+      "longitude": 355.75,
+      "formattedPosition": "25°45' Pisces",
+      "beforeOrAfter": "before"
+    }
+  },
+  {
+    "name": "Courtney Love",
+    "category": "Famous Couples",
+    "date": "1964-07-09",
+    "time": "12:24",
+    "eclipse": {
+      "type": "solar",
+      "kind": "partial",
+      "dateTime": "1964-07-09T11:17:16.576Z",
+      "hoursFromBirth": 8.11,
+      "sign": "Cancer",
+      "degree": 17.26,
+      "longitude": 107.26,
+      "formattedPosition": "17°15' Cancer",
+      "beforeOrAfter": "before"
+    }
+  },
+  {
+    "name": "Catherine Middleton",
+    "category": "Famous Couples",
+    "date": "1982-01-09",
+    "time": "18:00",
+    "eclipse": {
+      "type": "lunar",
+      "kind": "total",
+      "dateTime": "1982-01-09T19:55:47.151Z",
+      "hoursFromBirth": 1.93,
+      "sign": "Cancer",
+      "degree": 19.27,
+      "longitude": 109.27,
+      "formattedPosition": "19°16' Cancer",
+      "beforeOrAfter": "after"
+    }
+  },
+  {
+    "name": "Prince William",
+    "category": "Famous Couples",
+    "date": "1982-06-21",
+    "time": "21:03",
+    "eclipse": {
+      "type": "solar",
+      "kind": "partial",
+      "dateTime": "1982-06-21T12:03:38.488Z",
+      "hoursFromBirth": 7.99,
+      "sign": "Gemini",
+      "degree": 29.79,
+      "longitude": 89.79,
+      "formattedPosition": "29°47' Gemini",
+      "beforeOrAfter": "before"
+    }
+  },
+  {
+    "name": "John Paul II",
+    "category": "Saints",
+    "date": "1920-05-18",
+    "time": "17:30",
+    "eclipse": {
+      "type": "solar",
+      "kind": "partial",
+      "dateTime": "1920-05-18T06:14:32.795Z",
+      "hoursFromBirth": 9.26,
+      "sign": "Taurus",
+      "degree": 26.99,
+      "longitude": 56.99,
+      "formattedPosition": "26°59' Taurus",
+      "beforeOrAfter": "before"
+    }
+  },
+  {
+    "name": "JonBenét Ramsey",
+    "category": "Unsolved Mysteries",
+    "date": "1990-08-06",
+    "time": "13:46",
+    "eclipse": {
+      "type": "lunar",
+      "kind": "partial",
+      "dateTime": "1990-08-06T14:12:20.198Z",
+      "hoursFromBirth": 3.56,
+      "sign": "Aquarius",
+      "degree": 13.8,
+      "longitude": 313.8,
+      "formattedPosition": "13°48' Aquarius",
+      "beforeOrAfter": "before"
+    }
+  },
+  {
+    "name": "Gilda Radner",
+    "category": "Comedians",
+    "date": "1946-06-28",
+    "time": "20:30",
+    "eclipse": {
+      "type": "solar",
+      "kind": "partial",
+      "dateTime": "1946-06-29T03:51:31.683Z",
+      "hoursFromBirth": 2.36,
+      "sign": "Cancer",
+      "degree": 6.8,
+      "longitude": 96.8,
+      "formattedPosition": "6°48' Cancer",
+      "beforeOrAfter": "after"
+    }
+  }
+]

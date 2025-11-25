@@ -334,6 +334,11 @@ const ConfigurationSearch = ({
           }));
         }
 
+        // Add eclipse filter
+        if (eclipseCriteria.length > 0 && eclipseCriteria[0].bornDuringEclipse) {
+          criteria.bornDuringEclipse = true;
+        }
+
         // Execute famous charts search
         const matches = searchFamousCharts(criteria);
         setSearchResults(matches);
@@ -721,60 +726,81 @@ const ConfigurationSearch = ({
           <button onClick={addRetrogradeCriterion} className="add-btn">+ Add Retrograde Criterion</button>
         </div>
 
-        {/* Eclipse Criteria - Only available for Time Periods mode */}
-        {searchMode === 'timePeriods' && (
+        {/* Eclipse Criteria */}
         <div className="criteria-section">
           <h3>Eclipses</h3>
-          {eclipseCriteria.map((criterion) => (
-            <div key={criterion.id} className="criterion-row">
-              <select value={criterion.type}
-                onChange={(e) => updateEclipseCriterion(criterion.id, 'type', e.target.value)}>
-                <option value="any">Any Eclipse</option>
-                <option value="solar">Solar Eclipse</option>
-                <option value="lunar">Lunar Eclipse</option>
-              </select>
-
-              {/* Optional sign filter */}
-              <span>in</span>
-              <select value={criterion.sign}
-                onChange={(e) => updateEclipseCriterion(criterion.id, 'sign', e.target.value)}>
-                <option value="">Any Sign</option>
-                {signs.map(s => <option key={s} value={s.toLowerCase()}>{s}</option>)}
-              </select>
-
-              {/* Optional degree range within sign */}
-              {criterion.sign && (
-                <>
-                  <span>between</span>
-                  <input
-                    type="number"
-                    value={criterion.minDegree}
-                    min="0"
-                    max="29"
-                    placeholder="0"
-                    style={{width: '60px'}}
-                    onChange={(e) => updateEclipseCriterion(criterion.id, 'minDegree', e.target.value)}
-                  />
-                  <span>° and</span>
-                  <input
-                    type="number"
-                    value={criterion.maxDegree}
-                    min="0"
-                    max="29"
-                    placeholder="29"
-                    style={{width: '60px'}}
-                    onChange={(e) => updateEclipseCriterion(criterion.id, 'maxDegree', e.target.value)}
-                  />
-                  <span>°</span>
-                </>
-              )}
-
-              <button onClick={() => removeEclipseCriterion(criterion.id)} className="remove-btn">✕</button>
+          {searchMode === 'famousCharts' ? (
+            /* Simple eclipse birth filter for Famous Charts */
+            <div className="criterion-row">
+              <label style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14px' }}>
+                <input
+                  type="checkbox"
+                  checked={eclipseCriteria.length > 0}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setEclipseCriteria([{ id: Date.now(), bornDuringEclipse: true }]);
+                    } else {
+                      setEclipseCriteria([]);
+                    }
+                  }}
+                />
+                <span>Born during eclipse (within 12 hours)</span>
+              </label>
             </div>
-          ))}
-          <button onClick={addEclipseCriterion} className="add-btn">+ Add Eclipse Criterion</button>
+          ) : (
+            /* Full eclipse criteria for Time Periods mode */
+            <>
+              {eclipseCriteria.map((criterion) => (
+                <div key={criterion.id} className="criterion-row">
+                  <select value={criterion.type}
+                    onChange={(e) => updateEclipseCriterion(criterion.id, 'type', e.target.value)}>
+                    <option value="any">Any Eclipse</option>
+                    <option value="solar">Solar Eclipse</option>
+                    <option value="lunar">Lunar Eclipse</option>
+                  </select>
+
+                  {/* Optional sign filter */}
+                  <span>in</span>
+                  <select value={criterion.sign}
+                    onChange={(e) => updateEclipseCriterion(criterion.id, 'sign', e.target.value)}>
+                    <option value="">Any Sign</option>
+                    {signs.map(s => <option key={s} value={s.toLowerCase()}>{s}</option>)}
+                  </select>
+
+                  {/* Optional degree range within sign */}
+                  {criterion.sign && (
+                    <>
+                      <span>between</span>
+                      <input
+                        type="number"
+                        value={criterion.minDegree}
+                        min="0"
+                        max="29"
+                        placeholder="0"
+                        style={{width: '60px'}}
+                        onChange={(e) => updateEclipseCriterion(criterion.id, 'minDegree', e.target.value)}
+                      />
+                      <span>° and</span>
+                      <input
+                        type="number"
+                        value={criterion.maxDegree}
+                        min="0"
+                        max="29"
+                        placeholder="29"
+                        style={{width: '60px'}}
+                        onChange={(e) => updateEclipseCriterion(criterion.id, 'maxDegree', e.target.value)}
+                      />
+                      <span>°</span>
+                    </>
+                  )}
+
+                  <button onClick={() => removeEclipseCriterion(criterion.id)} className="remove-btn">✕</button>
+                </div>
+              ))}
+              <button onClick={addEclipseCriterion} className="add-btn">+ Add Eclipse Criterion</button>
+            </>
+          )}
         </div>
-        )}
 
         {/* Search Button */}
         <div className="search-actions">
@@ -823,6 +849,14 @@ const ConfigurationSearch = ({
                     </div>
                     <div className="match-details">
                       <strong>Matching Criteria:</strong>
+                      {match.matchDetails?.eclipse && (
+                        <div className="match-section">
+                          <em>Eclipse Birth:</em>
+                          <span className="match-item">
+                            {match.matchDetails.eclipse.hoursFromBirth.toFixed(1)}h {match.matchDetails.eclipse.beforeOrAfter} {match.matchDetails.eclipse.kind} {match.matchDetails.eclipse.type} eclipse at {match.matchDetails.eclipse.position}
+                          </span>
+                        </div>
+                      )}
                       {match.matchDetails?.aspects?.length > 0 && (
                         <div className="match-section">
                           <em>Aspects:</em>

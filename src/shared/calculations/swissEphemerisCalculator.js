@@ -15,6 +15,7 @@
 const sweph = require('sweph');
 const path = require('path');
 const { app } = require('electron');
+const { calculateEclipseProximity } = require('./eclipseProximityCalculator');
 
 // Load Swiss Ephemeris constants
 const constants = require(path.join(require.resolve('sweph').replace('index.js', ''), 'constants.js'));
@@ -299,6 +300,9 @@ function calculateChart(params) {
     // Calculate aspects (reuse existing aspect calculation logic)
     const aspects = calculateAspects(planets, { default: orb });
 
+    // Calculate eclipse proximity (within 12 hours of birth)
+    const eclipseProximity = calculateEclipseProximity(date, 12);
+
     return {
       success: true,
       planets: planets,
@@ -309,7 +313,8 @@ function calculateChart(params) {
       ic: houseData.ic,
       houses: houseData.houses,
       vertex: houseData.vertex,
-      date: date.toISOString()
+      date: date.toISOString(),
+      eclipseProximity: eclipseProximity
     };
 
   } catch (error) {
