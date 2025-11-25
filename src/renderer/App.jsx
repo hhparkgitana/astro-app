@@ -1069,8 +1069,15 @@ function App() {
             const progressedAspects = calculateTransitAspects(result.planets, progressedData.planets, transitOrb);
             console.log('Progressed-to-natal aspects:', progressedAspects);
 
+            // Calculate progression internal aspects (Progression-to-Progression)
+            const progressionInternalAspects = calculateAspects(progressedData.planets, { default: solarArcInternalOrb });
+            console.log('Progression internal aspects:', progressionInternalAspects);
+
             // Always store progression-natal aspects separately
             result.progressionNatalAspects = progressedAspects;
+
+            // Store progression internal aspects
+            result.progressionInternalAspects = progressionInternalAspects;
 
             // Only set as transitAspects if transits are not also enabled (for backwards compatibility)
             if (!data.showTransits) {
